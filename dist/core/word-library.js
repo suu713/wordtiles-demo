@@ -1,6 +1,6 @@
-import {createBaseDictionary, isTargetAllowed} from './target-policy.js?v=12';
-import {WORD_ENTRIES, WORDLIST_VERSION, wordEntryFor} from './word-source.js?v=12';
-export {WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, wordEntryFor} from './word-source.js?v=12';
+import {createBaseDictionary, isTargetAllowed} from './target-policy.js?v=13';
+import {WORD_ENTRIES, WORDLIST_VERSION, wordEntryFor} from './word-source.js?v=13';
+export {WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, wordEntryFor} from './word-source.js?v=13';
 export const TIER_LABELS=Object.freeze({1:'非常常用',2:'常用',3:'一般',4:'罕见',5:'非常罕见'});
 export const approvedWordCount=WORD_ENTRIES.filter(entry=>isTargetAllowed(entry.word)).length;
 export function createFrequencyDictionary({wordLengths,tiers=[1,2,3],allowUnreviewed=false}) {

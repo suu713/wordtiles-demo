@@ -1,5 +1,5 @@
-import { findWordPaths, signature } from './rules.js?v=12';
-import { reachableDictionaryWords } from './level-statistics.js?v=12';
+import { findWordPaths, signature } from './rules.js?v=13';
+import { reachableDictionaryWords } from './level-statistics.js?v=13';
 
 // Count word sets, not play orders or alternative paths for the same words.
 // The input is the validated initial board; this does not change play rules.

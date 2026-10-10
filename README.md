@@ -4,8 +4,8 @@
 
 ## 试玩与本地启动
 
-- [在线试玩](https://suu713.github.io/wordtiles-demo/?v=12)
-- [本地试玩](http://127.0.0.1:4173/?v=12)
+- [在线试玩](https://suu713.github.io/wordtiles-demo/?v=13)
+- [本地试玩](http://127.0.0.1:4173/?v=13)
 - [GitHub源码](https://github.com/suu713/wordtiles-demo)
 
 双击 `Start-WordTiles.cmd`，或安装Node.js 24后执行 `npm start`。默认只绑定本机127.0.0.1:4173；请保持服务运行。首次开始默认使用算法2的新词库样例。

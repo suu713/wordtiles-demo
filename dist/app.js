@@ -1,11 +1,11 @@
-import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=12';
-import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=12';
-import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=12';
+import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=13';
+import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=13';
+import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=13';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
-import { calculateLevelStatistics } from './core/level-statistics.js?v=12';
-import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/target-policy.js?v=12';
-import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=12';
-import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=12';
+import { calculateLevelStatistics } from './core/level-statistics.js?v=13';
+import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/target-policy.js?v=13';
+import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=13';
+import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=13';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
 let dictionary, sample, game, catalogue;
@@ -448,7 +448,7 @@ function startSolutionAnalysis(deepSearch = false) {
     solutionCache.set(level, result); renderSolutionSummary();
   };
   try {
-    instance = new Worker(new URL('./solutions.worker.js?v=12', import.meta.url), { type:'module' });
+    instance = new Worker(new URL('./solutions.worker.js?v=13', import.meta.url), { type:'module' });
     solutionWorker = instance; solutionLevel = level;
     instance.onmessage = ({ data }) => { if (data.requestId === id) finish(data.result); };
     instance.onerror = () => finish({ ok:false, message:'解法统计线程未能完成，请重新统计。' });
@@ -728,7 +728,7 @@ function generate(seed) {
   }
   cancelGeneration(true); clearSelection();
   const id = ++requestId, initialEpoch = epoch, generationDictionary = dictionary;
-  const instance = new Worker(new URL('./generator.worker.js?v=12', import.meta.url), { type: 'module' });
+  const instance = new Worker(new URL('./generator.worker.js?v=13', import.meta.url), { type: 'module' });
   worker = instance; setBusy(true, 'generate'); $('#seed').value = String(seed);
   generationStats = { seed, config: budget, dictionaryVersion: dictionary.version, result: 'searching' }; renderDebug();
   notice('正在搜索合格关卡，当前关卡仍可试玩。');
@@ -820,7 +820,7 @@ $('#back-lobby').addEventListener('click',showLobby);
 $('#start-game').addEventListener('click',()=>{
   if(!ready)return;
   $('#lobby').hidden=true;$('#game-screen').hidden=false;
-  applyViewport();scheduleFit();startSolutionAnalysis();tileElements.find(tile=>tile.dataset.remaining!=='0')?.focus({preventScroll:true});
+  applyViewport();fitBoard();renderSelection();startSolutionAnalysis();tileElements.find(tile=>tile.dataset.remaining!=='0')?.focus({preventScroll:true});
 });
 $('#solutions-stat').addEventListener('click', () => {
   if (!game) return;
@@ -950,7 +950,7 @@ window.addEventListener('pagehide', () => { cancelGeneration(true); cancelSoluti
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  const responses = await Promise.all([fetch('./seed_20261010.json?v=12'),fetch('./source-levels/catalogue.json')]);
+  const responses = await Promise.all([fetch('./seed_20261010.json?v=13'),fetch('./source-levels/catalogue.json')]);
   if (responses.some(response => !response.ok)) throw new Error('词库、样例或原包关卡目录无法读取');
   [sample,catalogue] = await Promise.all(responses.map(response => response.json()));
   if(COMMON_DICTIONARY.version!==POLICY_VERSION||COMMON_DICTIONARY.words.length!==3333) throw new Error('常用原形词 V2 白名单版本或数量错误');

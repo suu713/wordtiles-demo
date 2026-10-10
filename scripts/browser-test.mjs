@@ -22,12 +22,15 @@ const fixture=await json('../examples/tsv/seed_20261010.json'), dictionary=creat
 const initial=createAlgorithmSession(fixture,dictionary,{bonusDictionary:BONUS_DICTIONARY});
 const stats=calculateLevelStatistics(initial.initial,BONUS_DICTIONARY), solutions=calculateLevelSolutions(initial.initial,dictionary);
 const source=await json('../dist/source-levels/english.json');
-const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=12';
+const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=13';
 const cases=[], errors=[];
 let browser;
 try { browser=await chromium.launch({headless:true,channel:'chrome'}); }
 catch { browser=await chromium.launch({headless:true,channel:'msedge'}); }
 const context=await browser.newContext({viewport:{width:1366,height:768},reducedMotion:'reduce'}), page=await context.newPage();
+await page.addInitScript(()=>document.addEventListener('click',event=>{
+  if(event.target.closest('#start-game')) window.firstPlayfieldWidth=document.querySelector('#board').getBoundingClientRect().width;
+}));
 page.on('pageerror',error=>errors.push(error.message));
 const run=async(name,fn)=>{await fn();cases.push({name,passed:true});console.log('PASS '+name);};
 async function state(tab=page) {
@@ -62,7 +65,7 @@ async function importRejected(level) {
 }
 async function directWorker(input) {
   return page.evaluate(data=>new Promise((resolve,reject)=>{
-    const worker=new Worker(new URL('./generator.worker.js?v=12',location.href),{type:'module'});
+    const worker=new Worker(new URL('./generator.worker.js?v=13',location.href),{type:'module'});
     const timeout=setTimeout(()=>{worker.terminate();reject(new Error('worker timeout'));},15000);
     worker.onmessage=({data})=>{if(data.type==='progress')return;clearTimeout(timeout);worker.terminate();resolve(data);};
     worker.onerror=event=>{clearTimeout(timeout);worker.terminate();reject(new Error(event.message));};
@@ -79,6 +82,7 @@ try {
     assert.ok(icon.x>panel.x+panel.width/2&&icon.y<panel.y+panel.height/4);
     await page.screenshot({path:reports+'/lobby-desktop.png',fullPage:true});
     await page.locator('#start-game').click();assert.equal(await page.locator('#lobby').isVisible(),false);assert.equal(await page.locator('#game-screen').isVisible(),true);
+    assert.ok(await page.evaluate(()=>window.firstPlayfieldWidth>200),'进入游戏的同一次点击内，棋盘必须已恢复到可玩尺寸');
     assert.equal(await page.locator('#algorithm').inputValue(),'2');assert.equal(await page.locator('#hover-help').isVisible(),false);
   });
   await page.locator('#algorithm').selectOption('1');await page.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
