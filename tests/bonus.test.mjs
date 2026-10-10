@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { createAlgorithmSession } from '../dist/core/algorithm-v1-adapter.js';
+import { createAlgorithmSession } from './support/historical-adapter.mjs';
 import { SourceGameSession, convertSourceLevel } from '../dist/core/source-levels.js';
 import { findWordPaths } from '../dist/core/rules.js';
 

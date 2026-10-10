@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+  "seed": 0,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "Y",
+    "L",
+    "F",
+    "E",
+    "P",
+    "E",
+    "R",
+    "I",
+    "C"
+  ],
+  "initialCounts": [
+    2,
+    2,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    2
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "FLY",
+      "canonicalPath": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "ICE",
+      "canonicalPath": [
+        7,
+        8,
+        5
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "RIP",
+      "canonicalPath": [
+        6,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "RICE",
+      "canonicalPath": [
+        6,
+        7,
+        8,
+        5
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "REPLY",
+      "canonicalPath": [
+        6,
+        3,
+        4,
+        1,
+        0
+      ]
+    }
+  ]
+}

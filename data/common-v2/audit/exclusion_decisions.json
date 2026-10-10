@@ -1,0 +1,1907 @@
+[
+  {
+    "word": "AGED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "AGE"
+  },
+  {
+    "word": "AM",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "AMAZED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "AMAZE"
+  },
+  {
+    "word": "AMAZING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "AMAZE"
+  },
+  {
+    "word": "AMUSING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "AMUSE"
+  },
+  {
+    "word": "ANIMATED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "ANIMATE"
+  },
+  {
+    "word": "APPLES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "APPLE"
+  },
+  {
+    "word": "ARE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "ATE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "BAKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAKE"
+  },
+  {
+    "word": "BAKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAKE"
+  },
+  {
+    "word": "BANKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BANK"
+  },
+  {
+    "word": "BEEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BEGAN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEGIN"
+  },
+  {
+    "word": "BEGUN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEGIN"
+  },
+  {
+    "word": "BEING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GOOD"
+  },
+  {
+    "word": "BETTER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GOOD"
+  },
+  {
+    "word": "BIGGER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BIG"
+  },
+  {
+    "word": "BIGGEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BIG"
+  },
+  {
+    "word": "BINOCULAR",
+    "reason": "usually_seen_as_plural",
+    "base": null
+  },
+  {
+    "word": "BIT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BITE"
+  },
+  {
+    "word": "BITTEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BITE"
+  },
+  {
+    "word": "BOOKS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BOOK"
+  },
+  {
+    "word": "BORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEAR"
+  },
+  {
+    "word": "BORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEAR"
+  },
+  {
+    "word": "BORNE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEAR"
+  },
+  {
+    "word": "BOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BIND"
+  },
+  {
+    "word": "BREATHING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BREATHE"
+  },
+  {
+    "word": "BROKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BREAK"
+  },
+  {
+    "word": "BROKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BREAK"
+  },
+  {
+    "word": "BTW",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "BUILDING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BUILD"
+  },
+  {
+    "word": "BUILT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BUILD"
+  },
+  {
+    "word": "BUSES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BUS"
+  },
+  {
+    "word": "CAME",
+    "reason": "inflection_or_strict_homograph",
+    "base": "COME"
+  },
+  {
+    "word": "CARRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CARRY"
+  },
+  {
+    "word": "CARRIES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CARRY"
+  },
+  {
+    "word": "CARRYING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CARRY"
+  },
+  {
+    "word": "CATCHES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CATCH"
+  },
+  {
+    "word": "CATS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CAT"
+  },
+  {
+    "word": "CATTLE",
+    "reason": "plural_only_collective",
+    "base": null
+  },
+  {
+    "word": "CAUGHT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CATCH"
+  },
+  {
+    "word": "CHARMING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CHARM"
+  },
+  {
+    "word": "CHILDREN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CHILD"
+  },
+  {
+    "word": "CHOLESTEROL",
+    "reason": "medical_noun",
+    "base": null
+  },
+  {
+    "word": "CIVIC",
+    "reason": "abstract_or_brand_salience",
+    "base": null
+  },
+  {
+    "word": "CIVILIAN",
+    "reason": "military_context",
+    "base": null
+  },
+  {
+    "word": "CLASSES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CLASS"
+  },
+  {
+    "word": "CLOTHING",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "COLORED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "COLOR"
+  },
+  {
+    "word": "CONFUSED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CONFUSE"
+  },
+  {
+    "word": "COOKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "COOK"
+  },
+  {
+    "word": "COOKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "COOK"
+  },
+  {
+    "word": "COPYWRITER",
+    "reason": "specialist_profession",
+    "base": null
+  },
+  {
+    "word": "COULD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CAN"
+  },
+  {
+    "word": "CPU",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "CREST",
+    "reason": "less_immediate_noun",
+    "base": null
+  },
+  {
+    "word": "CROOKED",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "CROPS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CROP"
+  },
+  {
+    "word": "CUNNING",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "DANCED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DANCE"
+  },
+  {
+    "word": "DANCING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DANCE"
+  },
+  {
+    "word": "DARING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DARE"
+  },
+  {
+    "word": "DATA",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATUM"
+  },
+  {
+    "word": "DATED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATE"
+  },
+  {
+    "word": "DE",
+    "reason": "fragment",
+    "base": null
+  },
+  {
+    "word": "DEALT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DEAL"
+  },
+  {
+    "word": "DELL",
+    "reason": "low_salience_common_sense_or_brand",
+    "base": null
+  },
+  {
+    "word": "DICE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIE"
+  },
+  {
+    "word": "DID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DOES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DOGS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DOG"
+  },
+  {
+    "word": "DOING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DONE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DRANK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRINK"
+  },
+  {
+    "word": "DRAWING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRAW"
+  },
+  {
+    "word": "DRAWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRAW"
+  },
+  {
+    "word": "DRESSING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRESS"
+  },
+  {
+    "word": "DREW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRAW"
+  },
+  {
+    "word": "DRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRY"
+  },
+  {
+    "word": "DRIVEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRIVE"
+  },
+  {
+    "word": "DRIVING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRIVE"
+  },
+  {
+    "word": "DROVE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRIVE"
+  },
+  {
+    "word": "DRUNK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRINK"
+  },
+  {
+    "word": "DRUNKEN",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "DUG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIG"
+  },
+  {
+    "word": "EATEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "EATER",
+    "reason": "low_salience_agent_noun",
+    "base": null
+  },
+  {
+    "word": "ELDER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "ELDERS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "EST",
+    "reason": "abbreviation",
+    "base": null
+  },
+  {
+    "word": "ETC",
+    "reason": "abbreviation",
+    "base": null
+  },
+  {
+    "word": "EVE",
+    "reason": "name_or_context_salience",
+    "base": null
+  },
+  {
+    "word": "EWE",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "FALLEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FALL"
+  },
+  {
+    "word": "FARTHER",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "FASTER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FAST"
+  },
+  {
+    "word": "FASTEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FAST"
+  },
+  {
+    "word": "FBI",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "FED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEED"
+  },
+  {
+    "word": "FEELING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEEL"
+  },
+  {
+    "word": "FEET",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FOOT"
+  },
+  {
+    "word": "FELL",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FALL"
+  },
+  {
+    "word": "FELT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEEL"
+  },
+  {
+    "word": "FEWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEW"
+  },
+  {
+    "word": "FEWEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEW"
+  },
+  {
+    "word": "FIR",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "FISHING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FISH"
+  },
+  {
+    "word": "FITTING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FIT"
+  },
+  {
+    "word": "FLEW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FLY"
+  },
+  {
+    "word": "FLOWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FLY"
+  },
+  {
+    "word": "FORTH",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "FOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FIND"
+  },
+  {
+    "word": "FRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FRY"
+  },
+  {
+    "word": "FURTHER",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "GATHERING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GATHER"
+  },
+  {
+    "word": "GAVE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GEESE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GOOSE"
+  },
+  {
+    "word": "GIVEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GLASSES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GLASS"
+  },
+  {
+    "word": "GOES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GOING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GONE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GOT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GET"
+  },
+  {
+    "word": "GOTTEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GET"
+  },
+  {
+    "word": "GREETING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GREET"
+  },
+  {
+    "word": "GREW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "GROWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "HAD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HANDMADE",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "HANDWRITTEN",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "HAPPIER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAPPY"
+  },
+  {
+    "word": "HAPPIEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAPPY"
+  },
+  {
+    "word": "HAS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HEARD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HEAR"
+  },
+  {
+    "word": "HEARING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HEAR"
+  },
+  {
+    "word": "HELD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HOLD"
+  },
+  {
+    "word": "HENCE",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "HER",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HERON",
+    "reason": "less_immediate_bird",
+    "base": null
+  },
+  {
+    "word": "HERSELF",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HIDE"
+  },
+  {
+    "word": "HIDDEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HIDE"
+  },
+  {
+    "word": "HIM",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HIMSELF",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HIS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HOMEMADE",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "HTML",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "HTTP",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "HUNTING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HUNT"
+  },
+  {
+    "word": "INTERESTED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "INTEREST"
+  },
+  {
+    "word": "INTERESTING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "INTEREST"
+  },
+  {
+    "word": "INTIMATE",
+    "reason": "adult_context_holdout",
+    "base": null
+  },
+  {
+    "word": "IS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "ITSELF",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "IVORY",
+    "reason": "less_immediate_material",
+    "base": null
+  },
+  {
+    "word": "JOKER",
+    "reason": "role_or_card_salience",
+    "base": null
+  },
+  {
+    "word": "JOYLESS",
+    "reason": "less_immediate_derivative",
+    "base": null
+  },
+  {
+    "word": "KEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "KEEP"
+  },
+  {
+    "word": "KNEW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "KNOW"
+  },
+  {
+    "word": "KNOWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "KNOW"
+  },
+  {
+    "word": "LA",
+    "reason": "fragment",
+    "base": null
+  },
+  {
+    "word": "LAD",
+    "reason": "regional_or_dated_salience",
+    "base": null
+  },
+  {
+    "word": "LAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LAY"
+  },
+  {
+    "word": "LAIN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIE"
+  },
+  {
+    "word": "LARGER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LARGE"
+  },
+  {
+    "word": "LARGEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LARGE"
+  },
+  {
+    "word": "LATER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LATE"
+  },
+  {
+    "word": "LATEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LATE"
+  },
+  {
+    "word": "LAY",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIE"
+  },
+  {
+    "word": "LEA",
+    "reason": "low_salience_word",
+    "base": null
+  },
+  {
+    "word": "LEARNED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEARN"
+  },
+  {
+    "word": "LEARNING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEARN"
+  },
+  {
+    "word": "LEAST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LEAVES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAVE"
+  },
+  {
+    "word": "LED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAD"
+  },
+  {
+    "word": "LEFT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAVE"
+  },
+  {
+    "word": "LENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEND"
+  },
+  {
+    "word": "LESS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LIAR",
+    "reason": "negative_role_holdout",
+    "base": null
+  },
+  {
+    "word": "LIKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIKE"
+  },
+  {
+    "word": "LIMITED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIMIT"
+  },
+  {
+    "word": "LIT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIGHT"
+  },
+  {
+    "word": "LIVINGROOM",
+    "reason": "not_standard_single_word",
+    "base": null
+  },
+  {
+    "word": "LOL",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "LORD",
+    "reason": "formal_title",
+    "base": null
+  },
+  {
+    "word": "LOST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOSE"
+  },
+  {
+    "word": "LOVING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOVE"
+  },
+  {
+    "word": "LOWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOW"
+  },
+  {
+    "word": "LOWEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOW"
+  },
+  {
+    "word": "MADE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAKE"
+  },
+  {
+    "word": "MARRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MARRY"
+  },
+  {
+    "word": "MATHEMATICS",
+    "reason": "plural_surface_specialist_holdout",
+    "base": null
+  },
+  {
+    "word": "MEANING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEAN"
+  },
+  {
+    "word": "MEANT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEAN"
+  },
+  {
+    "word": "MEDIA",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEDIUM"
+  },
+  {
+    "word": "MEETING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEET"
+  },
+  {
+    "word": "MEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAN"
+  },
+  {
+    "word": "MET",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEET"
+  },
+  {
+    "word": "MICE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MOUSE"
+  },
+  {
+    "word": "MIGHT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAY"
+  },
+  {
+    "word": "MONDAY",
+    "reason": "proper_calendar_name",
+    "base": null
+  },
+  {
+    "word": "MORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "MOST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "MYSELF",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "NAIVE",
+    "reason": "spelling_diacritic_variant",
+    "base": null
+  },
+  {
+    "word": "NASA",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "NAT",
+    "reason": "abbreviation_or_name",
+    "base": null
+  },
+  {
+    "word": "NATO",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "NAVAL",
+    "reason": "specialized_adjective",
+    "base": null
+  },
+  {
+    "word": "NEWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "NEW"
+  },
+  {
+    "word": "NEWEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "NEW"
+  },
+  {
+    "word": "NOTED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "NOTE"
+  },
+  {
+    "word": "NUN",
+    "reason": "religious_role_holdout",
+    "base": null
+  },
+  {
+    "word": "OAT",
+    "reason": "usually_seen_as_plural",
+    "base": null
+  },
+  {
+    "word": "OATS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OAT"
+  },
+  {
+    "word": "OFFERING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OFFER"
+  },
+  {
+    "word": "OLDER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "OLDEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "OMG",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "OPENING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OPEN"
+  },
+  {
+    "word": "OUGHT",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "OUR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "OURS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "OURSELVES",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "OXEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OX"
+  },
+  {
+    "word": "PAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PAY"
+  },
+  {
+    "word": "PAJAMA",
+    "reason": "usually_seen_as_plural",
+    "base": null
+  },
+  {
+    "word": "PARKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PARK"
+  },
+  {
+    "word": "PEAT",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "PER",
+    "reason": "short_form_ambiguity",
+    "base": null
+  },
+  {
+    "word": "PLAYED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PLAY"
+  },
+  {
+    "word": "PLAYING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PLAY"
+  },
+  {
+    "word": "PLAYS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PLAY"
+  },
+  {
+    "word": "PRAY",
+    "reason": "religious_theme_holdout",
+    "base": null
+  },
+  {
+    "word": "PREFERRED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PREFER"
+  },
+  {
+    "word": "QUADRANGLE",
+    "reason": "technical_noun",
+    "base": null
+  },
+  {
+    "word": "QUIBBLE",
+    "reason": "less_immediate_verb",
+    "base": null
+  },
+  {
+    "word": "QUICKER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "QUICK"
+  },
+  {
+    "word": "QUICKEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "QUICK"
+  },
+  {
+    "word": "QUIVER",
+    "reason": "less_immediate_noun_or_verb",
+    "base": null
+  },
+  {
+    "word": "RAM",
+    "reason": "acronym_or_animal_ambiguity",
+    "base": null
+  },
+  {
+    "word": "RAN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RUN"
+  },
+  {
+    "word": "RANG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RING"
+  },
+  {
+    "word": "RAP",
+    "reason": "short_word_polysemy",
+    "base": null
+  },
+  {
+    "word": "RATED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RATE"
+  },
+  {
+    "word": "RATES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RATE"
+  },
+  {
+    "word": "RATING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RATE"
+  },
+  {
+    "word": "RE",
+    "reason": "fragment",
+    "base": null
+  },
+  {
+    "word": "REASONING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "REASON"
+  },
+  {
+    "word": "RIDDEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RIDE"
+  },
+  {
+    "word": "RIDING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RIDE"
+  },
+  {
+    "word": "RISEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "ROB",
+    "reason": "name_or_crime_salience",
+    "base": null
+  },
+  {
+    "word": "RODE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RIDE"
+  },
+  {
+    "word": "ROM",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "ROOTS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "ROOT"
+  },
+  {
+    "word": "ROSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "RUNG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RING"
+  },
+  {
+    "word": "RUNNING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RUN"
+  },
+  {
+    "word": "RYE",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "SAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SAY"
+  },
+  {
+    "word": "SANG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SING"
+  },
+  {
+    "word": "SAT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SIT"
+  },
+  {
+    "word": "SATURDAY",
+    "reason": "proper_calendar_name",
+    "base": null
+  },
+  {
+    "word": "SAW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SCATTERED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SCATTER"
+  },
+  {
+    "word": "SCISSORS",
+    "reason": "plural_only_noun",
+    "base": null
+  },
+  {
+    "word": "SEEING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SEEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEND"
+  },
+  {
+    "word": "SERENE",
+    "reason": "less_immediate_adjective",
+    "base": null
+  },
+  {
+    "word": "SHAKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHAKE"
+  },
+  {
+    "word": "SHALL",
+    "reason": "formal_modal",
+    "base": null
+  },
+  {
+    "word": "SHOOK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHAKE"
+  },
+  {
+    "word": "SHOPPING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOP"
+  },
+  {
+    "word": "SHOT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOOT"
+  },
+  {
+    "word": "SHOWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOW"
+  },
+  {
+    "word": "SINGING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SING"
+  },
+  {
+    "word": "SITTING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SIT"
+  },
+  {
+    "word": "SKILLED",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "SLEEPING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLEEP"
+  },
+  {
+    "word": "SLEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLEEP"
+  },
+  {
+    "word": "SLID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLIDE"
+  },
+  {
+    "word": "SMALLER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SMALL"
+  },
+  {
+    "word": "SMALLEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SMALL"
+  },
+  {
+    "word": "SOLD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SELL"
+  },
+  {
+    "word": "SOW",
+    "reason": "ambiguous_pronunciation",
+    "base": null
+  },
+  {
+    "word": "SPENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEND"
+  },
+  {
+    "word": "SPOKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEAK"
+  },
+  {
+    "word": "SPOKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEAK"
+  },
+  {
+    "word": "SPOUSE",
+    "reason": "formal_noun",
+    "base": null
+  },
+  {
+    "word": "STOOD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "STAND"
+  },
+  {
+    "word": "STRIKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "STRIKE"
+  },
+  {
+    "word": "STUDIES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "STUDY"
+  },
+  {
+    "word": "SUB",
+    "reason": "ambiguous_shortened_form",
+    "base": null
+  },
+  {
+    "word": "SUE",
+    "reason": "name_or_legal_salience",
+    "base": null
+  },
+  {
+    "word": "SUNG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SING"
+  },
+  {
+    "word": "SWAM",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWIM"
+  },
+  {
+    "word": "SWEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWEEP"
+  },
+  {
+    "word": "SWIMMING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWIM"
+  },
+  {
+    "word": "SWOLLEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWELL"
+  },
+  {
+    "word": "SWUM",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWIM"
+  },
+  {
+    "word": "TAKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TALENTED",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "TEETH",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TOOTH"
+  },
+  {
+    "word": "TEL",
+    "reason": "abbreviation",
+    "base": null
+  },
+  {
+    "word": "THEIR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEIRS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEM",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEMSELVES",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THESE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THIS"
+  },
+  {
+    "word": "THOSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THAT"
+  },
+  {
+    "word": "THREW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THROW"
+  },
+  {
+    "word": "THROWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THROW"
+  },
+  {
+    "word": "TIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIE"
+  },
+  {
+    "word": "TIRED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIRE"
+  },
+  {
+    "word": "TOLD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TELL"
+  },
+  {
+    "word": "TOOK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TRADING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRADE"
+  },
+  {
+    "word": "TRAINING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRAIN"
+  },
+  {
+    "word": "TREES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TREE"
+  },
+  {
+    "word": "TRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRY"
+  },
+  {
+    "word": "TRIES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRY"
+  },
+  {
+    "word": "TRYING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRY"
+  },
+  {
+    "word": "UNCONSCIOUS",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "UNDERSTANDING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "UNDERSTAND"
+  },
+  {
+    "word": "UNDERSTOOD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "UNDERSTAND"
+  },
+  {
+    "word": "UNEXPECTED",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "UNKNOWN",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "UPPER",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "URL",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "USB",
+    "reason": "acronym",
+    "base": null
+  },
+  {
+    "word": "USED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "USE"
+  },
+  {
+    "word": "USES",
+    "reason": "inflection_or_strict_homograph",
+    "base": "USE"
+  },
+  {
+    "word": "USING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "USE"
+  },
+  {
+    "word": "VIA",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "WALKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WALK"
+  },
+  {
+    "word": "WALKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WALK"
+  },
+  {
+    "word": "WALKS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WALK"
+  },
+  {
+    "word": "WARNING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WARN"
+  },
+  {
+    "word": "WAS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WED",
+    "reason": "abbreviation_or_verb_ambiguity",
+    "base": null
+  },
+  {
+    "word": "WEDDING",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "WENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "WERE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WHOM",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "WHOSE",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "WILLING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WILL"
+  },
+  {
+    "word": "WOKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WAKE"
+  },
+  {
+    "word": "WOKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WAKE"
+  },
+  {
+    "word": "WOMEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WOMAN"
+  },
+  {
+    "word": "WON",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIN"
+  },
+  {
+    "word": "WOOLEN",
+    "reason": "regional_spelling_holdout",
+    "base": null
+  },
+  {
+    "word": "WORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WORK"
+  },
+  {
+    "word": "WORKING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WORK"
+  },
+  {
+    "word": "WORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WORST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WOULD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WILL"
+  },
+  {
+    "word": "WOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIND"
+  },
+  {
+    "word": "WOVE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAVE"
+  },
+  {
+    "word": "WOVEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAVE"
+  },
+  {
+    "word": "WRINKLED",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "WRITING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WRITE"
+  },
+  {
+    "word": "WRITTEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WRITE"
+  },
+  {
+    "word": "WROTE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WRITE"
+  },
+  {
+    "word": "YAP",
+    "reason": "colloquial_short_word",
+    "base": null
+  },
+  {
+    "word": "YAW",
+    "reason": "technical_short_word",
+    "base": null
+  },
+  {
+    "word": "YOUNGER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "YOUNG"
+  },
+  {
+    "word": "YOUNGEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "YOUNG"
+  },
+  {
+    "word": "YOUR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOURS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOURSELF",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOURSELVES",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "ZAP",
+    "reason": "colloquial_short_word",
+    "base": null
+  },
+  {
+    "word": "ZOOLOGY",
+    "reason": "specialist_subject",
+    "base": null
+  }
+]

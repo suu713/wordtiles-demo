@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 17,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "G",
+    "A",
+    "P",
+    "E",
+    "T",
+    "G",
+    "C",
+    "A",
+    "R"
+  ],
+  "initialCounts": [
+    3,
+    2,
+    2,
+    3,
+    3,
+    1,
+    1,
+    2,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "CAT",
+      "canonicalPath": [
+        6,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "GAP",
+      "canonicalPath": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "GET",
+      "canonicalPath": [
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "PAGE",
+      "canonicalPath": [
+        2,
+        1,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "GRATE",
+      "canonicalPath": [
+        5,
+        8,
+        7,
+        4,
+        3
+      ]
+    }
+  ]
+}

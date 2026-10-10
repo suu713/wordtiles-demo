@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 6,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "O",
+    "C",
+    "A",
+    "A",
+    "S",
+    "T",
+    "C",
+    "H",
+    "U"
+  ],
+  "initialCounts": [
+    1,
+    2,
+    1,
+    3,
+    2,
+    3,
+    2,
+    3,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "ASH",
+      "canonicalPath": [
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "CAT",
+      "canonicalPath": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "HUT",
+      "canonicalPath": [
+        7,
+        8,
+        5
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "CAST",
+      "canonicalPath": [
+        6,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "COACH",
+      "canonicalPath": [
+        1,
+        0,
+        3,
+        6,
+        7
+      ]
+    }
+  ]
+}

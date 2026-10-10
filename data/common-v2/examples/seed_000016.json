@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 16,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "G",
+    "N",
+    "W",
+    "E",
+    "B",
+    "A",
+    "A",
+    "R",
+    "D"
+  ],
+  "initialCounts": [
+    1,
+    1,
+    1,
+    3,
+    3,
+    2,
+    2,
+    2,
+    3
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "BAD",
+      "canonicalPath": [
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "BEG",
+      "canonicalPath": [
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "EAR",
+      "canonicalPath": [
+        3,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "DAWN",
+      "canonicalPath": [
+        8,
+        5,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "BEARD",
+      "canonicalPath": [
+        4,
+        3,
+        6,
+        7,
+        8
+      ]
+    }
+  ]
+}

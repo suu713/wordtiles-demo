@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 10,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "F",
+    "L",
+    "A",
+    "M",
+    "E",
+    "D",
+    "N",
+    "W",
+    "O"
+  ],
+  "initialCounts": [
+    1,
+    2,
+    1,
+    1,
+    3,
+    3,
+    2,
+    3,
+    2
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "DEW",
+      "canonicalPath": [
+        5,
+        4,
+        7
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "ELF",
+      "canonicalPath": [
+        4,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "OWN",
+      "canonicalPath": [
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "DOWN",
+      "canonicalPath": [
+        5,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "MEDAL",
+      "canonicalPath": [
+        3,
+        4,
+        5,
+        2,
+        1
+      ]
+    }
+  ]
+}

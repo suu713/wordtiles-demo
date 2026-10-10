@@ -313,3 +313,26 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
 .solutions-pagination button{width:32px;height:28px;border:1px solid #d8e3c8;border-radius:5px;background:#f3f7eb;color:#507441}
 .solutions-pagination button:disabled{opacity:.35}
 @media(max-width:380px){.solutions-dialog,.bonus-dialog{padding:16px}.solutions-dialog h2{font-size:16px}}
+
+/* The lobby and collection share the game's quiet paper and green palette. */
+.lobby{width:100%;height:100vh;height:100dvh;display:grid;place-items:center;padding:16px}
+.lobby-panel{position:relative;width:min(420px,calc((100dvh - 32px)*9/16),calc(100vw - 32px));aspect-ratio:9/16;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:30px;background:radial-gradient(ellipse at 50% 45%,#fffef5,#f7f6ed 85%);box-shadow:0 12px 40px -16px #223b3325;border:1px solid #eceee4;border-radius:16px}
+.dictionary-button{position:absolute;top:24px;right:24px;width:46px;height:46px;display:grid;place-items:center;border:1px solid #d8e3c8;border-radius:12px;background:#f0f5e7;color:var(--green)}
+.dictionary-button svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dictionary-count{position:absolute;right:-6px;top:-6px;min-width:19px;height:19px;padding:0 5px;display:grid;place-items:center;background:#577b43;border-radius:10px;color:#fff;font-size:10px}
+.lobby-center{margin:auto 0;text-align:center;width:100%}.lobby-eyebrow{font-size:12px;letter-spacing:5px;color:#8b9d7d;margin:0 0 13px}.lobby-center h1{font-size:clamp(28px,7vw,41px);letter-spacing:-.7px;line-height:1.2;color:var(--ink)}
+.lobby-tiles{width:min(250px,100%);margin:38px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:9px;transform:rotate(-4deg)}
+.lobby-tiles span{aspect-ratio:1;display:grid;place-items:center;border:1px solid #d6ddc8;border-bottom:4px solid #cdd8b9;border-radius:10px;background:linear-gradient(#fffff7,#edf0de);font:650 clamp(20px,6vw,30px)/1 "Segoe UI",sans-serif;color:#376247;box-shadow:0 5px 13px #5974480a}
+.lobby-tiles span:nth-child(3n){background:#e6eed7;transform:translateY(-4px)}
+.lobby-actions{width:100%;margin:0 0 26px}.lobby-start{display:flex;align-items:center;justify-content:center;gap:28px;width:100%;border:0;border-radius:12px;padding:17px 12px;background:var(--green);color:#fffef3;font-size:16px;font-weight:600;box-shadow:0 5px 0 #123d34}
+.lobby-start:hover{background:#216651}.lobby-start span{font-size:24px;line-height:1}.lobby-actions p{height:18px;margin:13px 0 -31px;font-size:12px;color:#819374;text-align:center}
+.home-button{width:32px;height:34px;padding:7px;border:1px solid #d8e3c8;border-radius:7px;background:#f3f7eb;color:#5c8047;flex:none}
+.home-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.game-footer{grid-template-columns:44px minmax(0,1fr) 78px}.small-viewport .game-footer{grid-template-columns:38px minmax(0,1fr) 72px}
+.dictionary-dialog{width:calc(100% - 32px);max-width:530px;max-height:calc(100dvh - 32px);padding:24px;display:flex;flex-direction:column;overflow:hidden}
+.dictionary-dialog:not([open]){display:none}.dictionary-dialog .dialog-top{flex:none;margin-bottom:16px}.dictionary-dialog h2{font-size:22px}.dictionary-dialog .dialog-top p{margin:5px 0 0;font-size:12px;color:#819374}
+#dictionary-search{flex:none;width:100%;height:42px;border:1px solid #d9e3cb;border-radius:8px;padding:0 12px;background:#f5f8ef;color:var(--ink);font-size:13px;margin-bottom:12px}
+.dictionary-list{min-height:0;overflow-y:auto;overscroll-behavior:contain;list-style:none;padding:0;margin:0;display:grid;gap:10px;scrollbar-width:thin}.dictionary-entry{border:1px solid #e0e7d7;background:#fafcf5;border-radius:9px;padding:13px 14px}.dictionary-word-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.dictionary-word-row strong{font-size:19px;font-weight:650;overflow-wrap:anywhere}.dictionary-word-row span{font-size:10px;color:#819374;white-space:nowrap}.dictionary-entry p{font-size:13px;line-height:1.65;color:#6d7f65;margin:7px 0 0;overflow-wrap:anywhere}
+#dictionary-empty{font-size:13px;line-height:1.8;color:#819374;text-align:center;margin:24px 0}#dictionary-storage-note{font-size:12px;color:#ad793e;line-height:1.6;margin:0 0 12px}#dictionary-more{flex:none;margin-top:12px}
+@media(max-height:650px){.lobby-panel{padding:24px}.lobby-actions{margin-bottom:12px}.lobby-tiles{margin-top:24px;gap:7px}.dictionary-button{top:18px;right:18px;width:40px;height:40px}.lobby-start{font-size:14px;padding:14px}.lobby-eyebrow{font-size:10px;margin-bottom:10px}}
+@media(max-width:380px){.dictionary-dialog{padding:18px}.dictionary-word-row strong{font-size:17px}.dictionary-entry p{font-size:12px}}

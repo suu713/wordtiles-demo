@@ -1,0 +1,6 @@
+{
+  "tests": 13,
+  "passed": 13,
+  "failed": 0,
+  "scope": "synthetic schema fixtures, not the unavailable user local master"
+}

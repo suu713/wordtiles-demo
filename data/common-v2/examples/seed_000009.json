@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 9,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "E",
+    "E",
+    "D",
+    "L",
+    "B",
+    "A",
+    "D",
+    "I",
+    "C"
+  ],
+  "initialCounts": [
+    2,
+    2,
+    1,
+    2,
+    3,
+    3,
+    1,
+    1,
+    3
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "BED",
+      "canonicalPath": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "CAB",
+      "canonicalPath": [
+        8,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "EEL",
+      "canonicalPath": [
+        1,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "ACID",
+      "canonicalPath": [
+        5,
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "CABLE",
+      "canonicalPath": [
+        8,
+        5,
+        4,
+        3,
+        0
+      ]
+    }
+  ]
+}

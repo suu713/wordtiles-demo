@@ -1,0 +1,65 @@
+{
+  "url": "http://127.0.0.1:4173/?v=12",
+  "contentPolicyVersion": "wordtiles-common-base-20261010-v2",
+  "wordlistVersion": "wordtiles-tsv-20261010-9c5b22c2b994",
+  "passed": 14,
+  "pageErrors": [],
+  "cases": [
+    {
+      "name": "首屏游戏大厅，词典icon右上角，点击开始才进入关卡",
+      "passed": true
+    },
+    {
+      "name": "算法1原包对照仍正常载入，当前关卡不受英语目标白名单修改",
+      "passed": true
+    },
+    {
+      "name": "算法2使用用户TSV的新样例及1470原形候选，不加载历史词库",
+      "passed": true
+    },
+    {
+      "name": "真实模块Worker使用完整V2对象，默认seed结果逐字段一致，旧词库旁路拒绝",
+      "passed": true
+    },
+    {
+      "name": "拖动FORTY经过目标FOR不提交，松手完成FORTY，共享格次数只减一次",
+      "passed": true
+    },
+    {
+      "name": "未知词只让格子变红，额外词收集去重不扣次数，包可查看和清空",
+      "passed": true
+    },
+    {
+      "name": "提示箭头与路径方向一致，初始统计和解法词组使用本关V2词库",
+      "passed": true
+    },
+    {
+      "name": "旧LAD/OAT关卡和伪造违规关导入拒绝，当前关卡及试玩进度保留",
+      "passed": true
+    },
+    {
+      "name": "正序和反序真实滑动都能清空，重开和切算法保留各自关卡状态",
+      "passed": true
+    },
+    {
+      "name": "预算耗尽不回退、不改当前进度；延迟Worker取消和切算法不会覆盖关卡",
+      "passed": true
+    },
+    {
+      "name": "伪造Worker成功结果仍须导入门禁，违规目标不能出现在游戏",
+      "passed": true
+    },
+    {
+      "name": "词频候选为白名单交集，空档位明确失败；版本不匹配导入拒绝，无未审核开关",
+      "passed": true
+    },
+    {
+      "name": "目标与额外词自动收录，错误不收录，释义搜索、去重和刷新持久化",
+      "passed": true
+    },
+    {
+      "name": "手机真实触屏松手提交，任意顺序清空；游戏和大厅在一个屏幕内",
+      "passed": true
+    }
+  ]
+}

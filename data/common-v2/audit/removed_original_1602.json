@@ -1,0 +1,832 @@
+[
+  {
+    "word": "AGED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "AGE"
+  },
+  {
+    "word": "ARE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "ATE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "BEEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BEGAN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEGIN"
+  },
+  {
+    "word": "BEING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BEST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GOOD"
+  },
+  {
+    "word": "BIT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BITE"
+  },
+  {
+    "word": "BORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEAR"
+  },
+  {
+    "word": "BOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BIND"
+  },
+  {
+    "word": "BROKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BREAK"
+  },
+  {
+    "word": "BUILT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BUILD"
+  },
+  {
+    "word": "CAME",
+    "reason": "inflection_or_strict_homograph",
+    "base": "COME"
+  },
+  {
+    "word": "CIVIC",
+    "reason": "abstract_or_brand_salience",
+    "base": null
+  },
+  {
+    "word": "COULD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CAN"
+  },
+  {
+    "word": "CREST",
+    "reason": "less_immediate_noun",
+    "base": null
+  },
+  {
+    "word": "CROPS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "CROP"
+  },
+  {
+    "word": "DATA",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATUM"
+  },
+  {
+    "word": "DATED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATE"
+  },
+  {
+    "word": "DEALT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DEAL"
+  },
+  {
+    "word": "DICE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIE"
+  },
+  {
+    "word": "DID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DOING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DRANK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRINK"
+  },
+  {
+    "word": "DRAWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRAW"
+  },
+  {
+    "word": "DRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRY"
+  },
+  {
+    "word": "DROVE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRIVE"
+  },
+  {
+    "word": "DUG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIG"
+  },
+  {
+    "word": "EATEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "EATER",
+    "reason": "low_salience_agent_noun",
+    "base": null
+  },
+  {
+    "word": "ELDER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "EVE",
+    "reason": "name_or_context_salience",
+    "base": null
+  },
+  {
+    "word": "EWE",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "FED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEED"
+  },
+  {
+    "word": "FEET",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FOOT"
+  },
+  {
+    "word": "FELL",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FALL"
+  },
+  {
+    "word": "FELT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEEL"
+  },
+  {
+    "word": "FEWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEW"
+  },
+  {
+    "word": "FIR",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "FLEW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FLY"
+  },
+  {
+    "word": "FORTH",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "FOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FIND"
+  },
+  {
+    "word": "FRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "FRY"
+  },
+  {
+    "word": "GAVE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GIVEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GOING",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GONE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GOT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GET"
+  },
+  {
+    "word": "GREW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "GROWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "HAD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HAS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HEARD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HEAR"
+  },
+  {
+    "word": "HELD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HOLD"
+  },
+  {
+    "word": "HENCE",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "HER",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HERON",
+    "reason": "less_immediate_bird",
+    "base": null
+  },
+  {
+    "word": "HID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "HIDE"
+  },
+  {
+    "word": "HIM",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HIS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "IVORY",
+    "reason": "less_immediate_material",
+    "base": null
+  },
+  {
+    "word": "JOKER",
+    "reason": "role_or_card_salience",
+    "base": null
+  },
+  {
+    "word": "KEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "KEEP"
+  },
+  {
+    "word": "KNOWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "KNOW"
+  },
+  {
+    "word": "LAD",
+    "reason": "regional_or_dated_salience",
+    "base": null
+  },
+  {
+    "word": "LAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LAY"
+  },
+  {
+    "word": "LATER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LATE"
+  },
+  {
+    "word": "LAY",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIE"
+  },
+  {
+    "word": "LEAST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAD"
+  },
+  {
+    "word": "LEFT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAVE"
+  },
+  {
+    "word": "LENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEND"
+  },
+  {
+    "word": "LESS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LIAR",
+    "reason": "negative_role_holdout",
+    "base": null
+  },
+  {
+    "word": "LIKED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIKE"
+  },
+  {
+    "word": "LIT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIGHT"
+  },
+  {
+    "word": "LORD",
+    "reason": "formal_title",
+    "base": null
+  },
+  {
+    "word": "LOST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOSE"
+  },
+  {
+    "word": "LOWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOW"
+  },
+  {
+    "word": "MADE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAKE"
+  },
+  {
+    "word": "MEANT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEAN"
+  },
+  {
+    "word": "MEDIA",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEDIUM"
+  },
+  {
+    "word": "MET",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEET"
+  },
+  {
+    "word": "MIGHT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAY"
+  },
+  {
+    "word": "MORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "MOST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "NAIVE",
+    "reason": "spelling_diacritic_variant",
+    "base": null
+  },
+  {
+    "word": "NAVAL",
+    "reason": "specialized_adjective",
+    "base": null
+  },
+  {
+    "word": "NEWER",
+    "reason": "inflection_or_strict_homograph",
+    "base": "NEW"
+  },
+  {
+    "word": "NOTED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "NOTE"
+  },
+  {
+    "word": "NUN",
+    "reason": "religious_role_holdout",
+    "base": null
+  },
+  {
+    "word": "OAT",
+    "reason": "usually_seen_as_plural",
+    "base": null
+  },
+  {
+    "word": "OATS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "OAT"
+  },
+  {
+    "word": "OUGHT",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "OUR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "PAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "PAY"
+  },
+  {
+    "word": "PEAT",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "PRAY",
+    "reason": "religious_theme_holdout",
+    "base": null
+  },
+  {
+    "word": "RAM",
+    "reason": "acronym_or_animal_ambiguity",
+    "base": null
+  },
+  {
+    "word": "RAN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RUN"
+  },
+  {
+    "word": "RANG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RING"
+  },
+  {
+    "word": "RAP",
+    "reason": "short_word_polysemy",
+    "base": null
+  },
+  {
+    "word": "RISEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "ROB",
+    "reason": "name_or_crime_salience",
+    "base": null
+  },
+  {
+    "word": "RODE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RIDE"
+  },
+  {
+    "word": "ROOTS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "ROOT"
+  },
+  {
+    "word": "ROSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "RYE",
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "SAID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SAY"
+  },
+  {
+    "word": "SANG",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SING"
+  },
+  {
+    "word": "SAT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SIT"
+  },
+  {
+    "word": "SAW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SEEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEND"
+  },
+  {
+    "word": "SHALL",
+    "reason": "formal_modal",
+    "base": null
+  },
+  {
+    "word": "SHOOK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHAKE"
+  },
+  {
+    "word": "SHOT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOOT"
+  },
+  {
+    "word": "SHOWN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOW"
+  },
+  {
+    "word": "SLEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLEEP"
+  },
+  {
+    "word": "SLID",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLIDE"
+  },
+  {
+    "word": "SOLD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SELL"
+  },
+  {
+    "word": "SOW",
+    "reason": "ambiguous_pronunciation",
+    "base": null
+  },
+  {
+    "word": "SPENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEND"
+  },
+  {
+    "word": "SPOKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEAK"
+  },
+  {
+    "word": "STOOD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "STAND"
+  },
+  {
+    "word": "SUB",
+    "reason": "ambiguous_shortened_form",
+    "base": null
+  },
+  {
+    "word": "SUE",
+    "reason": "name_or_legal_salience",
+    "base": null
+  },
+  {
+    "word": "SWEPT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWEEP"
+  },
+  {
+    "word": "TAKEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TEETH",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TOOTH"
+  },
+  {
+    "word": "THEIR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEM",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THESE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THIS"
+  },
+  {
+    "word": "THOSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THAT"
+  },
+  {
+    "word": "THREW",
+    "reason": "inflection_or_strict_homograph",
+    "base": "THROW"
+  },
+  {
+    "word": "TIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIE"
+  },
+  {
+    "word": "TIRED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIRE"
+  },
+  {
+    "word": "TOLD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TELL"
+  },
+  {
+    "word": "TOOK",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TRIED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRY"
+  },
+  {
+    "word": "UPPER",
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "USED",
+    "reason": "inflection_or_strict_homograph",
+    "base": "USE"
+  },
+  {
+    "word": "VIA",
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "WAS",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WED",
+    "reason": "abbreviation_or_verb_ambiguity",
+    "base": null
+  },
+  {
+    "word": "WENT",
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "WERE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WHOSE",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "WOKE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WAKE"
+  },
+  {
+    "word": "WOMEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WOMAN"
+  },
+  {
+    "word": "WON",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIN"
+  },
+  {
+    "word": "WORE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORSE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WORST",
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WOULD",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WILL"
+  },
+  {
+    "word": "WOUND",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIND"
+  },
+  {
+    "word": "WOVEN",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAVE"
+  },
+  {
+    "word": "WROTE",
+    "reason": "inflection_or_strict_homograph",
+    "base": "WRITE"
+  },
+  {
+    "word": "YAP",
+    "reason": "colloquial_short_word",
+    "base": null
+  },
+  {
+    "word": "YAW",
+    "reason": "technical_short_word",
+    "base": null
+  },
+  {
+    "word": "YOUR",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOURS",
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "ZAP",
+    "reason": "colloquial_short_word",
+    "base": null
+  }
+]

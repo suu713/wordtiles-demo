@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 0,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "S",
+    "T",
+    "A",
+    "I",
+    "W",
+    "H",
+    "T",
+    "T",
+    "C"
+  ],
+  "initialCounts": [
+    2,
+    3,
+    2,
+    3,
+    2,
+    2,
+    2,
+    1,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "HAT",
+      "canonicalPath": [
+        5,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "SIT",
+      "canonicalPath": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "WIT",
+      "canonicalPath": [
+        4,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "CHAT",
+      "canonicalPath": [
+        8,
+        5,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "TWIST",
+      "canonicalPath": [
+        7,
+        4,
+        3,
+        0,
+        1
+      ]
+    }
+  ]
+}

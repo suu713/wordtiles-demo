@@ -7,10 +7,20 @@
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=10">
+  <link rel="stylesheet" href="./styles.css?v=12">
 </head>
 <body>
-  <div class="app-shell">
+  <main id="lobby" class="lobby" aria-label="游戏大厅">
+    <section class="lobby-panel">
+      <button id="dictionary-button" class="dictionary-button" type="button" aria-label="我的词典" aria-haspopup="dialog" aria-controls="dictionary-dialog" data-help="查看连接成功后收录的单词和释义。">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c-3-3-8-4-12-2v20c4-2 9-1 12 2 3-3 8-4 12-2V6c-4-2-9-1-12 2Z M16 8v20 M8 11l4 1 M8 16l4 1 M20 12l4-1 M20 17l4-1"/></svg>
+        <span id="dictionary-count" class="dictionary-count">0</span>
+      </button>
+      <div class="lobby-center"><p class="lobby-eyebrow">单词消消</p><h1>Word Tile</h1><div class="lobby-tiles" aria-hidden="true"><span>W</span><span>O</span><span>R</span><span>D</span><span>T</span><span>I</span><span>L</span><span>E</span></div></div>
+      <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled>开始游戏 <span aria-hidden="true">↗</span></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
+    </section>
+  </main>
+  <div id="game-screen" class="app-shell" hidden>
     <main class="workspace">
       <aside id="editor-panel" class="editor-panel" aria-label="关卡编辑器">
         <div class="editor-heading">
@@ -29,8 +39,7 @@
           <p id="source-library-status" hidden>正在读取关卡目录…</p>
         </section>
         <div id="generation-section" class="generation-section" hidden>
-          <label class="dictionary-field" for="dictionary-source" data-help="旧验收词库保留原来的 1,602 词与 seed 样例。分级母词库按本关词长、频率档位及人工审核状态筛选；在更多设置的词库入口调整。切换词库保留当前棋盘。">生成词库<select id="dictionary-source"><option value="legacy">旧验收词库 · 1,602 词</option><option value="graded">分级母词库</option></select></label>
-          <span id="lexicon-warning" class="lexicon-warning" hidden data-help="内部测试开关允许未审核词参与生成。词频不代表适合休闲游戏；该开关不代表通过内容审核。" tabindex="0">词库未完成内容审核</span>
+          <label class="dictionary-field" for="dictionary-source" data-help="使用你提供的 words.tsv。完整词表用于额外词和释义；目标词继续与原形白名单取交集，本关有1,470个候选。按档位可进一步筛选，不放宽内容规则。">生成词库<select id="dictionary-source"><option value="common">新词库 · 1,470 个原形词</option><option value="graded">新词库 · 按档位</option></select></label>
           <div class="seed-field"><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
@@ -77,7 +86,7 @@
             <div class="game-footer">
               <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5h10l-3 6H14Z M13 11C6 16 4 24 7 27c3 3 15 3 18 0 3-3 1-11-6-16Z"/><path d="M11 11h10"/><text x="16" y="24" text-anchor="middle">A</text></svg><span id="bonus-count" class="bonus-count">0</span></button>
               <div class="play-actions"><button id="hint" class="secondary-button" type="button" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。">✧ 提示</button><button id="restart" class="secondary-button" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button></div>
-              <div class="game-tools"><button id="editor-toggle" class="game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false">关卡 ▾</button></div>
+              <div class="game-tools"><button id="editor-toggle" class="game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false">关卡 ▾</button><button id="back-lobby" class="home-button" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8 M6 9v12h5v-6h2v6h5V9"/></svg></button></div>
             </div>
           </section>
         </div></div>
@@ -96,10 +105,9 @@
       </div>
       <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
       <div data-settings-pane="lexicon" hidden>
-        <label class="stack-field" for="dictionary-tier" data-help="只按 Zipf 词频分档，不代表玩家熟悉度或游戏难度。1档 ≥5，2档 4～5，3档 3～4，4档 2～3，5档大于0且小于2；无词频独立为未评级。搜索失败不会自动扩到其他档位。">频率档位<select id="dictionary-tier"><option value="1">非常常用</option><option value="1,2">非常常用 + 常用</option><option value="1,2,3" selected>前 3 档 · 非常常用 / 常用 / 一般</option><option value="4">罕见</option><option value="5">非常罕见</option><option value="1,2,3,4,5">全部已评级</option><option value="unrated">未评级</option></select></label>
-        <label class="stack-field" for="unreviewed-mode" data-help="默认仅人工审核通过的词可作为目标。内部测试可显式开放 pending 词；blocked 词始终排除。高频不会自动变成审核通过。">未审核词测试<select id="unreviewed-mode"><option value="false" selected>关闭 · 仅人工审核通过</option><option value="true">开启 · 内部测试未审核词</option></select></label>
-        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">旧验收词库 · 1,602 词</p>
-        <div class="lexicon-links"><a href="./lexicon/dictionary.master.json.gz" download data-help="完整母词库 gzip 文件，保留全部词长、原始拼写、Zipf 词频、待审核状态及来源许可元数据。">完整母词库 ↗</a><a href="./lexicon/sources/wordfreq_NOTICE.md" target="_blank" rel="noopener" data-help="wordfreq 词频数据来源与归属原文。母词库及派生索引保留 CC-BY-SA-4.0 元数据。">来源与许可 ↗</a></div>
+        <label class="stack-field" for="dictionary-tier" data-help="沿用 words.tsv 的原有1～5档：非常常用、常用、一般、罕见、非常罕见。不重新评分，不代表难度；失败不会自动扩档。">单词档位<select id="dictionary-tier"><option value="1">非常常用</option><option value="1,2">非常常用 + 常用</option><option value="1,2,3" selected>前 3 档 · 非常常用 / 常用 / 一般</option><option value="4">罕见</option><option value="5">非常罕见</option><option value="1,2,3,4,5">全部档位</option></select></label>
+        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">新词库 · 21,094 词</p>
+        <div class="lexicon-links"><a href="./wordlist.json" download data-help="用户提供词表的完整词条、档位和中文释义。">当前词表 ↗</a><a href="./common-v2/dictionary.json" download data-help="原形目标词内容白名单。实际候选同时需要存在于当前词表中。">原形白名单 ↗</a></div>
       </div>
       <div id="debug" data-settings-pane="debug" hidden><span class="validation-status" id="validation-badge" data-help-from="version-note" tabindex="0">正在检查</span><p class="debug-explanation" hidden></p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
         <fieldset id="budget-fields" class="budget-fields" hidden data-help="这三个参数控制搜索预算，不代表难度。预算耗尽会明确失败，并保留当前关卡。"><legend>搜索预算</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
@@ -117,7 +125,12 @@
     <nav id="solutions-pagination" class="solutions-pagination" aria-label="解法列表翻页" hidden><button id="solutions-prev" type="button" aria-label="上一页解法">←</button><span id="solutions-page"></span><button id="solutions-next" type="button" aria-label="下一页解法">→</button></nav>
     <button id="solutions-retry" class="secondary-button" type="button" hidden>重新完整统计</button>
   </dialog>
+  <dialog id="dictionary-dialog" class="dictionary-dialog" aria-labelledby="dictionary-title">
+    <div class="dialog-top"><div><h2 id="dictionary-title">我的词典</h2><p id="dictionary-summary">已收录 0 个词</p></div><button id="dictionary-close" class="icon-button" type="button" aria-label="关闭词典">×</button></div>
+    <label class="sr-only" for="dictionary-search">搜索单词或释义</label><input id="dictionary-search" type="search" placeholder="搜索单词或释义" autocomplete="off">
+    <p id="dictionary-storage-note" hidden>当前浏览器无法保存记录，本次收录会保留到关闭页面。</p><p id="dictionary-empty">连接成功的单词会收录在这里</p><ul id="dictionary-list" class="dictionary-list"></ul><button id="dictionary-more" class="secondary-button" type="button" hidden>显示更多</button>
+  </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=10"></script>
+  <script type="module" src="./app.js?v=12"></script>
 </body>
 </html>

@@ -1,0 +1,33 @@
+{
+  "version": "wordtiles-common-base-20261010-v2",
+  "original_version": "demo-test-20261010-v1",
+  "original_sha256": "55f504afe69d4740873fdc14d03bb742ac9eaa0821a351d23271f8e84c9d42f6",
+  "original_count": 1602,
+  "original_kept": 1436,
+  "original_removed": 166,
+  "added_approved_words": 1897,
+  "approved_count": 3333,
+  "current_3to5_count": 1471,
+  "beyond_5_count": 1841,
+  "length_counts": {
+    "1": 2,
+    "2": 19,
+    "3": 245,
+    "4": 568,
+    "5": 658,
+    "6": 524,
+    "7": 501,
+    "8": 371,
+    "9": 232,
+    "10": 124,
+    "11": 60,
+    "12": 16,
+    "13": 7,
+    "14": 5,
+    "15": 1
+  },
+  "scope": "Original supplied 1602 entries fully reviewed; assistant-selected longer headwords added. The user local expanded master is not available in this session. Unknown words are disallowed by exact whitelist, not declared invalid English.",
+  "frequency_scores_created": false,
+  "native_speaker_playtest_performed": false,
+  "selection": "assistant-curated conservative everyday headword whitelist; product policy, not an official universal familiarity standard"
+}

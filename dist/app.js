@@ -1,14 +1,19 @@
-import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=10';
-import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=10';
-import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=10';
+import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=12';
+import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=12';
+import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=12';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
-import { calculateLevelStatistics } from './core/level-statistics.js?v=10';
-import { createLexiconAdapter } from './core/lexicon-adapter.js';
+import { calculateLevelStatistics } from './core/level-statistics.js?v=12';
+import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/target-policy.js?v=12';
+import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=12';
+import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=12';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
 let dictionary, sample, game, catalogue;
-let legacyDictionary, lexiconAdapter, lexiconPromise, dictionaryLoading = false, dictionaryLoadError = null, dictionaryRevision = 0;
-let selectedAlgorithm = 1, ready = false, busyKind = null;
+let baseDictionary, dictionaryLoading = false, dictionaryLoadError = null;
+let selectedAlgorithm = 2, ready = false, busyKind = null;
+let browserStorage;
+try { browserStorage=window.localStorage; } catch {}
+let collection=createWordCollection(browserStorage), collectionLimit=100;
 const banks = new Map(), savedSessions = new Map();
 let selection = [], hint = null, activePointer = null, worker = null, busy = false;
 let epoch = 0, requestId = 0, generationStats = null, lastRejection = null;
@@ -184,12 +189,11 @@ function rememberSession() {
 }
 function applyLevelInfo(kind) {
   const isSource = game.initial.algorithm === 1, source = game.initial.source;
-  const reviewWarning = game.dictionary?.metadata?.reviewWarning;
-  $('#level-kind').textContent = reviewWarning && !kind.includes(reviewWarning) ? kind + ' · ' + reviewWarning : kind;
+  $('#level-kind').textContent = kind;
   $('#active-seed-label').textContent = isSource ? '原关卡 ID' : '当前种子';
   const id = String(isSource ? source.original.id : game.initial.seed ?? '未提供');
   $('#active-seed').textContent = id; $('#active-seed').title = id;
-  $('#game-level-label').textContent = isSource ? '算法1' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : game.dictionary?.metadata?.reviewWarning ? '算法2 · 词库未完成内容审核' : '算法2 · 自由找词';
+  $('#game-level-label').textContent = isSource ? '算法1' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : '算法2 · 自由找词';
   if (isSource) {
     const info = catalogue?.languages.find(item => item.language === source.language);
     $('#source-library-status').textContent = (LANGUAGE_NAMES[source.language] || '原包') + ' · ID ' + source.original.id + (info ? ' · ' + info.count.toLocaleString() + ' 个不同关卡' : '');
@@ -199,7 +203,7 @@ function applyLevelInfo(kind) {
   startSolutionAnalysis();
 }
 function renderLevelStatistics() {
-  const levelDictionary = game.dictionary || dictionary;
+  const levelDictionary = game.bonusDictionaryInput || game.dictionary || dictionary;
   const stats = calculateLevelStatistics(game.initial, levelDictionary);
   $('#extra-word-count').textContent = String(stats.extraWordCount);
   const extraRule = stats.extraWordSource === 'original-list'
@@ -224,7 +228,10 @@ function switchAlgorithm(next) {
   if (next === selectedAlgorithm || !ready) return;
   cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection(); rememberSession();
   selectedAlgorithm = next; showMode(); epoch++;
-  const saved = savedSessions.get(next);
+  let saved = savedSessions.get(next);
+  if(next===2&&saved&&!validateAlgorithmLevel(saved.game.exportInitial||saved.game.initial,saved.game.dictionary).valid) {
+    savedSessions.delete(2); saved=null;
+  }
   if (saved) {
     game = saved.game; generationStats = saved.generationStats; lastRejection = saved.lastRejection;
     buildBoard(game.initial.board.rows, game.initial.board.cols);
@@ -244,56 +251,36 @@ $('#algorithm').addEventListener('change', () => switchAlgorithm(Number($('#algo
 function updateDictionaryUI() {
   const graded = $('#dictionary-source').value === 'graded';
   $('#dictionary-tier').disabled = !graded;
-  $('#unreviewed-mode').disabled = !graded;
-  $('#lexicon-warning').hidden = selectedAlgorithm !== 2 || !graded || $('#unreviewed-mode').value !== 'true';
   const status = $('#lexicon-status');
   if (!graded) {
-    status.textContent = '旧验收词库 · 1,602 词';
-    status.dataset.help = '原始 demo-test-20261010-v1 测试词库保留原样，旧 seed 验收与样例使用此库。词频分档与人工审核开关仅作用于分级母词库。';
+    status.textContent = `新词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${baseDictionary?.words.length.toLocaleString()||'—'} 个原形词`;
+    status.dataset.help = `词库：${WORDLIST_VERSION}。与原形白名单交集共 ${approvedWordCount.toLocaleString()} 词，本关按 3/4/5 字母取子库。保留此前原形出题规则；完整新词表用于额外词识别和词典释义。`;
   } else if (dictionaryLoading || !dictionary) {
     status.textContent = dictionaryLoading ? '正在读取母词库…' : '词库读取失败';
     status.dataset.help = dictionaryLoadError || '正在读取完整词长的候选索引和人工审核覆盖表。';
   } else {
-    status.textContent = `母词库 ${lexiconAdapter.totalEntries.toLocaleString()} 词 · 人工通过 ${lexiconAdapter.approvedCount} 词 · 本关候选 ${dictionary.words.length.toLocaleString()} 词`;
-    status.dataset.help = `运行时版本：${dictionary.version}。按本关 3/4/5 字母、所选词频档位及审核状态提取；母词库保留 1～45 字母词。` + ($('#unreviewed-mode').value === 'true' ? '词库未完成内容审核；blocked 词始终排除。' : '未审核词不参与出题；当前没有人工通过的词时，生成会明确显示候选不足。');
+    status.textContent = `新词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${dictionary.words.length.toLocaleString()} 个原形词`;
+    status.dataset.help = `运行时版本：${dictionary.version}。按用户 words.tsv 的原有 1～5 档筛选，再与原形白名单取交集；不重新评分、不放宽目标词限制。`;
   }
-}
-async function readLexicon() {
-  if (!lexiconPromise) lexiconPromise = (async () => {
-    const responses = await Promise.all([fetch('./lexicon/dictionary.index.json'), fetch('./lexicon/review-overlay.json')]);
-    if (responses.some(response => !response.ok)) throw new Error('母词库候选索引或人工审核覆盖表读取失败');
-    const [index, overlay] = await Promise.all(responses.map(response => response.json()));
-    return createLexiconAdapter(index, overlay);
-  })().catch(error => { lexiconPromise = null; throw error; });
-  return lexiconPromise;
 }
 async function refreshDictionary(announce = true) {
-  const revision = ++dictionaryRevision;
   cancelGeneration(true); epoch++; dictionaryLoadError = null;
-  if ($('#dictionary-source').value === 'legacy') {
-    dictionaryLoading = false; dictionary = legacyDictionary;
-  } else {
-    dictionaryLoading = true; dictionary = null; updateDictionaryUI(); updateEditor();
-    try {
-      const adapter = await readLexicon();
-      if (revision !== dictionaryRevision) return;
-      lexiconAdapter = adapter;
+  dictionaryLoading=false;
+  try {
+    if ($('#dictionary-source').value === 'common') dictionary=baseDictionary;
+    else {
       const tiers = $('#dictionary-tier').value.split(',').map(tier => tier === 'unrated' ? null : Number(tier));
-      dictionary = adapter.createRuntimeDictionary({ wordLengths: DEFAULT_CONFIG.wordLengths, tiers, allowUnreviewed: $('#unreviewed-mode').value === 'true' });
-    } catch (error) {
-      if (revision !== dictionaryRevision) return;
-      dictionaryLoadError = error.message; dictionary = null;
+      dictionary = createFrequencyDictionary({ wordLengths: DEFAULT_CONFIG.wordLengths, tiers });
     }
-    dictionaryLoading = false;
-  }
+  } catch (error) { dictionaryLoadError=error.message;dictionary=null; }
   updateDictionaryUI(); updateEditor(); renderDebug();
   if (announce) {
     if (!dictionary) notice('词库读取失败：' + dictionaryLoadError + '。当前关卡保留。', 'error');
-    else if (!dictionary.words.length) notice('所选范围没有人工审核通过的词，无法生成。可在词库设置中显式开启内部测试。当前关卡保留。', 'error');
+    else if (!dictionary.words.length) notice('当前词长与词频范围没有符合 V2 白名单的候选，无法生成。请调整范围；当前关卡保留。', 'error');
     else notice(`运行时词库已切换，候选 ${dictionary.words.length} 词；生成后应用，当前关卡保留。`);
   }
 }
-for (const id of ['#dictionary-source', '#dictionary-tier', '#unreviewed-mode']) $(id).addEventListener('change', () => refreshDictionary());
+for (const id of ['#dictionary-source', '#dictionary-tier']) $(id).addEventListener('change', () => refreshDictionary());
 
 function editorChanged() {
   const wasBusy = busy;
@@ -461,7 +448,7 @@ function startSolutionAnalysis(deepSearch = false) {
     solutionCache.set(level, result); renderSolutionSummary();
   };
   try {
-    instance = new Worker(new URL('./solutions.worker.js?v=10', import.meta.url), { type:'module' });
+    instance = new Worker(new URL('./solutions.worker.js?v=12', import.meta.url), { type:'module' });
     solutionWorker = instance; solutionLevel = level;
     instance.onmessage = ({ data }) => { if (data.requestId === id) finish(data.result); };
     instance.onerror = () => finish({ ok:false, message:'解法统计线程未能完成，请重新统计。' });
@@ -592,7 +579,7 @@ function cancelGeneration(silent = false) {
 }
 function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictionaryOverride = dictionary } = {}) {
   let next;
-  try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionaryOverride); }
+  try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionaryOverride,{bonusDictionary:BONUS_DICTIONARY}); }
   catch (error) {
     lastRejection = error.report || { message:error.message };
     notice('关卡未通过校验，当前关卡保留。详见调试面板。','error'); renderDebug(); return false;
@@ -668,6 +655,7 @@ function commitSelection() {
   if (!selection.length || !game) return;
   const path = [...selection]; clearSelection();
   const result = game.submit(path);
+  if(collection.collect(result,game.initial.source?.language||'english')) renderCollection();
   render(result.accepted ? path : []);
   if (result.accepted && result.status === 'won') feedback('全部目标完成，所有次数恰好归零。', 'success');
   else if (result.accepted && result.status !== 'anomaly') feedback(`找到了 ${result.word}！继续找下一个。`, 'success');
@@ -740,7 +728,7 @@ function generate(seed) {
   }
   cancelGeneration(true); clearSelection();
   const id = ++requestId, initialEpoch = epoch, generationDictionary = dictionary;
-  const instance = new Worker(new URL('./generator.worker.js', import.meta.url), { type: 'module' });
+  const instance = new Worker(new URL('./generator.worker.js?v=12', import.meta.url), { type: 'module' });
   worker = instance; setBusy(true, 'generate'); $('#seed').value = String(seed);
   generationStats = { seed, config: budget, dictionaryVersion: dictionary.version, result: 'searching' }; renderDebug();
   notice('正在搜索合格关卡，当前关卡仍可试玩。');
@@ -779,7 +767,7 @@ $('#win-next').addEventListener('click', () => selectedAlgorithm === 1 ? advance
 $('#generate-seed').addEventListener('click', () => generate($('#seed').value));
 $('#seed').addEventListener('keydown', event => { if (event.key === 'Enter' && !busy) generate($('#seed').value); });
 $('#cancel-generation').addEventListener('click', () => cancelGeneration());
-$('#load-sample').addEventListener('click', async () => { if (sample) { $('#dictionary-source').value = 'legacy'; await refreshDictionary(false); loadLevel(sample, '固定样例'); } });
+$('#load-sample').addEventListener('click', async () => { if (sample) { $('#dictionary-source').value = 'common'; await refreshDictionary(false); loadLevel(sample, '固定样例'); } });
 $('#restart').addEventListener('click', () => { if (game) { const kind = $('#level-kind').textContent; loadLevel(game.exportInitial || game.initial, kind, { syncDraft: false, dictionaryOverride: game.dictionary }); feedback('已重开。'); } });
 $('#hint').addEventListener('click', () => {
   if (!game) return;
@@ -794,6 +782,46 @@ $('#bonus-button').addEventListener('click', () => {
 });
 $('#bonus-close').addEventListener('click', () => $('#bonus-dialog').close());
 $('#bonus-dialog').addEventListener('close', () => $('#bonus-button').setAttribute('aria-expanded', 'false'));
+
+function renderCollection() {
+  $('#dictionary-count').textContent=String(collection.size);
+  $('#dictionary-button').setAttribute('aria-label',`我的词典，已收录 ${collection.size} 个词`);
+  $('#dictionary-summary').textContent=`已收录 ${collection.size} 个词`;
+  $('#dictionary-storage-note').hidden=collection.persistent;
+  const query=$('#dictionary-search').value.trim().toUpperCase();
+  const matches=collection.entries().filter(entry=>entry.word.includes(query)||(entry.language==='english'&&wordEntryFor(entry.word)?.definition.toUpperCase().includes(query)));
+  $('#dictionary-empty').hidden=matches.length>0;
+  $('#dictionary-empty').textContent=collection.size?'没有找到匹配的单词':'连接成功的单词会收录在这里';
+  const rows=matches.slice(0,collectionLimit).map(entry=>{
+    const item=document.createElement('li');item.className='dictionary-entry';
+    const heading=document.createElement('div');heading.className='dictionary-word-row';
+    const word=document.createElement('strong');word.textContent=entry.word;heading.append(word);
+    const info=entry.language==='english'?wordEntryFor(entry.word):null;
+    const tag=document.createElement('span');tag.textContent=info?TIER_LABELS[info.tier]:LANGUAGE_NAMES[entry.language]||'';heading.append(tag);
+    const definition=document.createElement('p');definition.textContent=info?.definition||'暂无释义';
+    item.append(heading,definition);return item;
+  });
+  $('#dictionary-list').replaceChildren(...rows);
+  $('#dictionary-more').hidden=matches.length<=collectionLimit;
+}
+$('#dictionary-button').addEventListener('click',()=>{
+  collectionLimit=100;$('#dictionary-search').value='';renderCollection();$('#dictionary-dialog').showModal();
+});
+$('#dictionary-close').addEventListener('click',()=>$('#dictionary-dialog').close());
+$('#dictionary-search').addEventListener('input',()=>{collectionLimit=100;renderCollection();});
+$('#dictionary-more').addEventListener('click',()=>{collectionLimit+=100;renderCollection();});
+window.addEventListener('storage',event=>{if(event.key===COLLECTION_KEY){collection=createWordCollection(browserStorage);renderCollection();}});
+
+function showLobby() {
+  cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
+  $('#game-screen').hidden=true;$('#lobby').hidden=false;renderCollection();$('#start-game').focus({preventScroll:true});
+}
+$('#back-lobby').addEventListener('click',showLobby);
+$('#start-game').addEventListener('click',()=>{
+  if(!ready)return;
+  $('#lobby').hidden=true;$('#game-screen').hidden=false;
+  applyViewport();scheduleFit();startSolutionAnalysis();tileElements.find(tile=>tile.dataset.remaining!=='0')?.focus({preventScroll:true});
+});
 $('#solutions-stat').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); closeSettings(false); hideHelp(); solutionPage = 0;
@@ -805,7 +833,7 @@ $('#solutions-retry').addEventListener('click', () => startSolutionAnalysis(true
 $('#solutions-prev').addEventListener('click', () => { solutionPage--; renderSolutionDialog(); });
 $('#solutions-next').addEventListener('click', () => { solutionPage++; renderSolutionDialog(); });
 $('#solutions-help').addEventListener('click', () => showHelp($('#solutions-help')));
-for (const id of ['#bonus-dialog','#solutions-dialog']) {
+for (const id of ['#bonus-dialog','#solutions-dialog','#dictionary-dialog']) {
   $(id).addEventListener('close', hideHelp);
   $(id).addEventListener('click', event => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -884,7 +912,7 @@ document.addEventListener('pointerdown', event => {
 });
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
-  if ($('#bonus-dialog').open || $('#solutions-dialog').open) { hideHelp(); return; }
+  if ($('#bonus-dialog').open || $('#solutions-dialog').open || $('#dictionary-dialog').open) { hideHelp(); return; }
   if (!$('#settings-popover').hidden) { closeSettings(); event.preventDefault(); }
   else if (document.body.classList.contains('editor-open')) { closeEditor(); $('#editor-toggle').focus({ preventScroll: true }); }
   hideHelp();
@@ -922,17 +950,19 @@ window.addEventListener('pagehide', () => { cancelGeneration(true); cancelSoluti
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  const responses = await Promise.all([fetch('./dictionary-v1.json'),fetch('./sample.json'),fetch('./source-levels/catalogue.json')]);
+  const responses = await Promise.all([fetch('./seed_20261010.json?v=12'),fetch('./source-levels/catalogue.json')]);
   if (responses.some(response => !response.ok)) throw new Error('词库、样例或原包关卡目录无法读取');
-  [legacyDictionary,sample,catalogue] = await Promise.all(responses.map(response => response.json()));
-  dictionary = legacyDictionary;
-  if (dictionary.version !== 'demo-test-20261010-v1' || !Array.isArray(dictionary.words) || dictionary.words.length !== 1602)
-    throw new Error('算法2测试词库版本或数量不符合接入要求');
+  [sample,catalogue] = await Promise.all(responses.map(response => response.json()));
+  if(COMMON_DICTIONARY.version!==POLICY_VERSION||COMMON_DICTIONARY.words.length!==3333) throw new Error('常用原形词 V2 白名单版本或数量错误');
+  baseDictionary=createBaseDictionary(DEFAULT_CONFIG.wordLengths); dictionary=baseDictionary;
+  if(!validateAlgorithmLevel(sample,dictionary).valid) throw new Error('新词库正式样例未通过白名单及完整规则校验');
   ready = true;
   for (const id of ['#algorithm','#source-language','#source-order','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = false;
   updateSourceRange();
-  await loadSource();
+  loadLevel(sample,'固定样例',{dismissEditor:false});renderCollection();$('#start-game').disabled=false;
+  $('#lobby-status').textContent='';
 } catch (error) {
+  $('#lobby-status').textContent='加载失败，请刷新后重试。';
   notice('启动失败：' + error.message + '。请通过 HTTP 服务运行。','error');
   feedback('本地关卡文件未能加载。','error');
 }

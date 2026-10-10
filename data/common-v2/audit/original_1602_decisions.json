@@ -1,0 +1,8178 @@
+[
+  {
+    "word": "ABLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ABOUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ABOVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ACID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ACORN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ACT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ACTOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ADAPT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ADD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ADMIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ADOPT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ADORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AFTER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "AGE"
+  },
+  {
+    "word": "AGENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AGREE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AHEAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALBUM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALERT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALIKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALLOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALONG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALSO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ALTER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AMBER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ANGEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ANGER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ANGLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ANT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ANY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "APE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "APPLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "APPLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "APRON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "AREA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARGUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARISE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARMY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ARROW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ART",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ASIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ASK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ASSET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ATE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "AUNT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AVOID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AWAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AWARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AWARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "AWAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BABY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BADGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BANK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BARK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BARN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BASIC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BASIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BASIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BASIS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BATCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BATH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEEF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BEG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEGAN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEGIN"
+  },
+  {
+    "word": "BEGIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEING",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "BELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BELOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BELT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BENCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BERRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BEST",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GOOD"
+  },
+  {
+    "word": "BET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BIG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BIRD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BIRTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BIT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BITE"
+  },
+  {
+    "word": "BITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLANK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLAZE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLIND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLOOM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BLUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BODY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOOK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOOST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BORN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BEAR"
+  },
+  {
+    "word": "BOTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOUND",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BIND"
+  },
+  {
+    "word": "BOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOWL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BOY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BREAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BREAK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BREED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRIEF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BROAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BROKE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BREAK"
+  },
+  {
+    "word": "BROOK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BROOM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BROWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BRUSH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUILD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUILT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BUILD"
+  },
+  {
+    "word": "BUN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUNCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUSH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUSY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "BUY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CABIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CABLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CALM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAME",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "COME"
+  },
+  {
+    "word": "CAMEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CANDY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CANE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CANOE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CARRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CART",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CARVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CATCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAUSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CEDAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHAIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHALK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHEAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHECK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHEEK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHESS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHIEF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHILD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHILI",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHOIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CHORD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CIDER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CITY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CIVIC",
+    "accepted": false,
+    "reason": "abstract_or_brand_salience",
+    "base": null
+  },
+  {
+    "word": "CLAIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLAMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLASS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLEAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLERK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLIFF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLIMB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLOSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLOTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLOUD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLOWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CLUB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COCOA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CODE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COMET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COOK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COOL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CORAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CORD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CORN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COUCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COUGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COULD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "CAN"
+  },
+  {
+    "word": "COUNT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COURT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "COZY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRAB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRAFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRANE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRAWL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRAZY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CREAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CREEK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CREST",
+    "accepted": false,
+    "reason": "less_immediate_noun",
+    "base": null
+  },
+  {
+    "word": "CREW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRISP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CROP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CROPS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "CROP"
+  },
+  {
+    "word": "CROSS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CROWD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CROWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CUBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CUP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CURE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CURL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CURVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CUTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "CYCLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAILY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAIRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAISY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DANCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DARK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DATA",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATUM"
+  },
+  {
+    "word": "DATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DATED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DATE"
+  },
+  {
+    "word": "DAWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEALT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DEAL"
+  },
+  {
+    "word": "DEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DELAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEPTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DESK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DEW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIARY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DICE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIE"
+  },
+  {
+    "word": "DID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DIG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIGIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DINER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIRTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DISH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DITCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOING",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DO"
+  },
+  {
+    "word": "DOOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOUBT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOUGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DOZEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRAFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRANK",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRINK"
+  },
+  {
+    "word": "DRAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRAWN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRAW"
+  },
+  {
+    "word": "DREAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRESS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRIED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRY"
+  },
+  {
+    "word": "DRIFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRINK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DROP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DROVE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DRIVE"
+  },
+  {
+    "word": "DRUM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DUCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DUG",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "DIG"
+  },
+  {
+    "word": "DULL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DUST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "DUTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EAGER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EAGLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EARLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EARN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EARTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EASEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EASY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EATEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "EAT"
+  },
+  {
+    "word": "EATER",
+    "accepted": false,
+    "reason": "low_salience_agent_noun",
+    "base": null
+  },
+  {
+    "word": "EDGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EGG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ELBOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ELDER",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "OLD"
+  },
+  {
+    "word": "ELECT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ELF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ELSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EMPTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "END",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ENJOY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ENTER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ENTRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EQUAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ERA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ERROR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EVE",
+    "accepted": false,
+    "reason": "name_or_context_salience",
+    "base": null
+  },
+  {
+    "word": "EVEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EVENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EVERY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EWE",
+    "accepted": false,
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "EXACT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EXIST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EXTRA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "EYE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FACT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAIRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAITH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FALSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FANCY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEED"
+  },
+  {
+    "word": "FEE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEET",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FOOT"
+  },
+  {
+    "word": "FELL",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FALL"
+  },
+  {
+    "word": "FELT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEEL"
+  },
+  {
+    "word": "FENCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FERN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FERRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FETCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FEWER",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FEW"
+  },
+  {
+    "word": "FIELD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIFTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIFTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FILM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FINAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIR",
+    "accepted": false,
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "FIRE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIRM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIRST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FISH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FIX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLAG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLEET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLESH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLEW",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FLY"
+  },
+  {
+    "word": "FLOAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLOOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLOOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLOUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLUTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOCUS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FORCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FORK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FORM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FORTH",
+    "accepted": false,
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "FORTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOUND",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FIND"
+  },
+  {
+    "word": "FOUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FOX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FREE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRESH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRIED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "FRY"
+  },
+  {
+    "word": "FROG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FROM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRONT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FROST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRUIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FUEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FULL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FUN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FUND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FUNNY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "FUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GAS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GAVE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GEM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GIANT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GIFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GIRL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GIVEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GIVE"
+  },
+  {
+    "word": "GLAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GLASS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GLOBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GLOVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GLOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOING",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GOLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOLF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GONE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "GOOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOOSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GOT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GET"
+  },
+  {
+    "word": "GRACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRANT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRAPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRAPH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRASP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRASS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GRAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GREAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GREEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GREET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GREW",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "GRILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROOM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROSS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROUP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GROWN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GROW"
+  },
+  {
+    "word": "GUARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GUESS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GUEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GUIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GUM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GUY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "GYM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HABIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HAIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HALF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HANG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAPPY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HARP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "HAVE"
+  },
+  {
+    "word": "HAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEARD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "HEAR"
+  },
+  {
+    "word": "HEART",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEAVY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HELD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "HOLD"
+  },
+  {
+    "word": "HELLO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HELP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HENCE",
+    "accepted": false,
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "HER",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HERE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HERO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HERON",
+    "accepted": false,
+    "reason": "less_immediate_bird",
+    "base": null
+  },
+  {
+    "word": "HID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "HIDE"
+  },
+  {
+    "word": "HIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HIGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HIKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HIM",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HINGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HIS",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "HIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOBBY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HONEY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HONOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOOK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HORN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HORSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOTEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOUSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HUG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HUGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HUMAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HUNT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HURT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "HUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ICY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "IDEA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "IDEAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "IMAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INDEX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INNER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INPUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "INTO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "IRON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ISSUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ITEM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "IVORY",
+    "accepted": false,
+    "reason": "less_immediate_material",
+    "base": null
+  },
+  {
+    "word": "JAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JAZZ",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JEWEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JOB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JOIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JOINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JOKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JOKER",
+    "accepted": false,
+    "reason": "role_or_card_salience",
+    "base": null
+  },
+  {
+    "word": "JOY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JUDGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JUICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JUICY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JUMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "JUST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KEPT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "KEEP"
+  },
+  {
+    "word": "KEY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KIND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KNEE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KNEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KNIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KNOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "KNOWN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "KNOW"
+  },
+  {
+    "word": "LABEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LABOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAD",
+    "accepted": false,
+    "reason": "regional_or_dated_salience",
+    "base": null
+  },
+  {
+    "word": "LADY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LAY"
+  },
+  {
+    "word": "LAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAMB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LANE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LARGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LATER",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LATE"
+  },
+  {
+    "word": "LAUGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAY",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIE"
+  },
+  {
+    "word": "LAYER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LAZY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEAF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEARN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEAST",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LEAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAD"
+  },
+  {
+    "word": "LEFT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEAVE"
+  },
+  {
+    "word": "LEG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEMON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LENS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LENT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LEND"
+  },
+  {
+    "word": "LESS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LITTLE"
+  },
+  {
+    "word": "LET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LEVEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIAR",
+    "accepted": false,
+    "reason": "negative_role_holdout",
+    "base": null
+  },
+  {
+    "word": "LID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIFE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIKED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIKE"
+  },
+  {
+    "word": "LILY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIMIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LINEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LINK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LION",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LIGHT"
+  },
+  {
+    "word": "LIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LIVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOAF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOCAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LODGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOGIC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LONG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOOK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOOSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LORD",
+    "accepted": false,
+    "reason": "formal_title",
+    "base": null
+  },
+  {
+    "word": "LOSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOSS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOST",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOSE"
+  },
+  {
+    "word": "LOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOUD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LOWER",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "LOW"
+  },
+  {
+    "word": "LOYAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LUCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LUCKY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "LUNCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MADE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAKE"
+  },
+  {
+    "word": "MAGIC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAJOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAKER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MANGO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MANY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAPLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MARCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MARK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MASK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MASS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MATCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAYBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MAYOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MEAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MEAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MEANT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEAN"
+  },
+  {
+    "word": "MEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MEDAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MEDIA",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEDIUM"
+  },
+  {
+    "word": "MEET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MELON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MELT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MENU",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MERCY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MERGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MERIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MET",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MEET"
+  },
+  {
+    "word": "METAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "METER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MIGHT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MAY"
+  },
+  {
+    "word": "MILD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MILK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MIND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MINOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MISS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MIST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MIX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MODEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MONEY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MONTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MORAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MORE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "MOST",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "MUCH"
+  },
+  {
+    "word": "MOTOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOUSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOUTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MOVIE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MUCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MUD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MUG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MUSIC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "MUST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NAIVE",
+    "accepted": false,
+    "reason": "spelling_diacritic_variant",
+    "base": null
+  },
+  {
+    "word": "NAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NAVAL",
+    "accepted": false,
+    "reason": "specialized_adjective",
+    "base": null
+  },
+  {
+    "word": "NEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NECK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEWER",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "NEW"
+  },
+  {
+    "word": "NEWS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NEXT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NINTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOBLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOISE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NORTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOTED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "NOTE"
+  },
+  {
+    "word": "NOVEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NUN",
+    "accepted": false,
+    "reason": "religious_role_holdout",
+    "base": null
+  },
+  {
+    "word": "NURSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "NUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OAK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OAT",
+    "accepted": false,
+    "reason": "usually_seen_as_plural",
+    "base": null
+  },
+  {
+    "word": "OATS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "OAT"
+  },
+  {
+    "word": "OCEAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ODD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OFF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OFFER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OFTEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OLIVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ONCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ONION",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ONLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OPEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OPERA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ORBIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ORDER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OTHER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OTTER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OUGHT",
+    "accepted": false,
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "OUR",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "OUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OUTER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OVEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OWL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "OWNER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "PAY"
+  },
+  {
+    "word": "PAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PALM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PANEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAPER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PARK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PART",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PARTY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PASS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PASTA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PATCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PATH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAUSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEAK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEARL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEAT",
+    "accepted": false,
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "PEDAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PENNY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PERCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PETAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PHASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PHONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PHOTO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIANO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIECE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PILOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PINK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PITCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PIZZA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLANE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLANT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLAZA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLUM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PLUS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POEM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POLAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POOL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PORCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PORT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POUND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "POWER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRAY",
+    "accepted": false,
+    "reason": "religious_theme_holdout",
+    "base": null
+  },
+  {
+    "word": "PRESS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRIME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRINT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRIOR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PRIZE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PROOF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PROUD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PROVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PULL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PUPIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PUPPY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PURE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PURSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PUSH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "PUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUEEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUIET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUILT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "QUOTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RADAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RADIO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAISE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RALLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAM",
+    "accepted": false,
+    "reason": "acronym_or_animal_ambiguity",
+    "base": null
+  },
+  {
+    "word": "RAN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "RUN"
+  },
+  {
+    "word": "RANCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RANG",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "RING"
+  },
+  {
+    "word": "RANGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RANK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAP",
+    "accepted": false,
+    "reason": "short_word_polysemy",
+    "base": null
+  },
+  {
+    "word": "RAPID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RATIO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REACT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "READ",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "READY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REBEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REEF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REFER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RELAX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RELAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REPLY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "REST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RICH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIDER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIDGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIGID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RINSE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RISE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RISEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "RIVAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RIVER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROB",
+    "accepted": false,
+    "reason": "name_or_crime_salience",
+    "base": null
+  },
+  {
+    "word": "ROBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROBIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROBOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROCKY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RODE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "RIDE"
+  },
+  {
+    "word": "ROLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROLL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROOF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROOM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROOMY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROOTS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "ROOT"
+  },
+  {
+    "word": "ROPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROSE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "RISE"
+  },
+  {
+    "word": "ROUND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROUTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ROYAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RUB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RUG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RULE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RUN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RURAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RUSH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "RYE",
+    "accepted": false,
+    "reason": "less_immediate_short_word",
+    "base": null
+  },
+  {
+    "word": "SAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAFE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SAY"
+  },
+  {
+    "word": "SAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SALAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SALT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SANG",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SING"
+  },
+  {
+    "word": "SAT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SIT"
+  },
+  {
+    "word": "SAUCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SAW",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCARF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCENE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCOOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SCOUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEEK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEEM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEE"
+  },
+  {
+    "word": "SELF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SENT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SEND"
+  },
+  {
+    "word": "SET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEVEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SEW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHALL",
+    "accepted": false,
+    "reason": "formal_modal",
+    "base": null
+  },
+  {
+    "word": "SHAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHAPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHARK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHARP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHEER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHEET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHELF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHIFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHINY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHIRT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOOK",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHAKE"
+  },
+  {
+    "word": "SHOOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHORT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOOT"
+  },
+  {
+    "word": "SHOUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHOWN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SHOW"
+  },
+  {
+    "word": "SHUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SHY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIGN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SILK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SINCE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SINK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SIZE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKI",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKIRT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SKY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLEPT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLEEP"
+  },
+  {
+    "word": "SLICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLID",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SLIDE"
+  },
+  {
+    "word": "SLIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLOPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SLOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SMALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SMART",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SMELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SMILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SMOKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SNAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SNAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SNAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SNOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SODA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOFA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOLAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOLD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SELL"
+  },
+  {
+    "word": "SOLID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOLVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SONG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SORRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SORT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOUL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOUND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOUP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOUTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SOW",
+    "accepted": false,
+    "reason": "ambiguous_pronunciation",
+    "base": null
+  },
+  {
+    "word": "SOY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPEAK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPEED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPENT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEND"
+  },
+  {
+    "word": "SPICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPLIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPOKE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SPEAK"
+  },
+  {
+    "word": "SPOON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPORT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPOT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPRAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SPY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAFF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAIR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAMP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STARE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "START",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STATE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STERN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STOCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STOOD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "STAND"
+  },
+  {
+    "word": "STOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STORE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STORM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STORY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STOVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STRAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STRAW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STRIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STUDY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "STYLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUB",
+    "accepted": false,
+    "reason": "ambiguous_shortened_form",
+    "base": null
+  },
+  {
+    "word": "SUCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUE",
+    "accepted": false,
+    "reason": "name_or_legal_salience",
+    "base": null
+  },
+  {
+    "word": "SUGAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUNNY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SUPER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SURE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWEEP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWEET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWEPT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "SWEEP"
+  },
+  {
+    "word": "SWIFT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "SWIRL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TABLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAKEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TALK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TANK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TASK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TASTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TAX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEACH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEETH",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TOOTH"
+  },
+  {
+    "word": "TELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TENT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TENTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TERM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TEXT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THANK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THEIR",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEM",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "THEME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THERE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THESE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "THIS"
+  },
+  {
+    "word": "THEY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THIEF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THINK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THIRD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THIS",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THORN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THOSE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "THAT"
+  },
+  {
+    "word": "THREE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THREW",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "THROW"
+  },
+  {
+    "word": "THROW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "THUMB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIDY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIE"
+  },
+  {
+    "word": "TIGER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIGHT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIME",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TINY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIRE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TIRED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TIRE"
+  },
+  {
+    "word": "TITLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOAD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TODAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOKEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOLD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TELL"
+  },
+  {
+    "word": "TOLL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOOK",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TAKE"
+  },
+  {
+    "word": "TOOL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOOTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOPIC",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TORCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TORE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TORN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TEAR"
+  },
+  {
+    "word": "TOTAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOUCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOUGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOUR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOWEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOWER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOWN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TOY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRACE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRACK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRAIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRAIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TREAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TREE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TREND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRIAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRIBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRICK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRIED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "TRY"
+  },
+  {
+    "word": "TRIM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TROUT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRUCK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRULY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRUNK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRUST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRUTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TUB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TUBE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TUG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TULIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TUNA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TUNE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TURN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TWICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TWIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TWIST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TWO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "TYPE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNCLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNDER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNION",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNITY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UNTIL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UPON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "UPPER",
+    "accepted": false,
+    "reason": "strict_form_holdout",
+    "base": null
+  },
+  {
+    "word": "UPSET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "URBAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "USAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "USE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "USED",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "USE"
+  },
+  {
+    "word": "USER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "USUAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VALID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VALUE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VALVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VASE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VERY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VIA",
+    "accepted": false,
+    "reason": "formal_connector",
+    "base": null
+  },
+  {
+    "word": "VIDEO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VIEW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VISIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VITAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VIVID",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VOCAL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VOICE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "VOTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WADE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAGE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAGON",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAIST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAKE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WALK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WALL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WANT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WARM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WARN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAS",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WASH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WASTE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WATCH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WATER",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAX",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WAY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEAK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEAVE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEB",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WED",
+    "accepted": false,
+    "reason": "abbreviation_or_verb_ambiguity",
+    "base": null
+  },
+  {
+    "word": "WEED",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEEK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEIGH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WEIRD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WELL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WENT",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "GO"
+  },
+  {
+    "word": "WERE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BE"
+  },
+  {
+    "word": "WEST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHALE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHEAT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHEEL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHERE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHICH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHILE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHOLE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WHOSE",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "WHY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIDE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIDEN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIFE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WILD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WILL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIND",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WINE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WING",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIRE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WISE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WISH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WIT",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WITH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WOKE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WAKE"
+  },
+  {
+    "word": "WOLF",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WOMAN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WOMEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WOMAN"
+  },
+  {
+    "word": "WON",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIN"
+  },
+  {
+    "word": "WOOD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WOOL",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORK",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORLD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAR"
+  },
+  {
+    "word": "WORRY",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WORSE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WORST",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "BAD"
+  },
+  {
+    "word": "WORTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WOULD",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WILL"
+  },
+  {
+    "word": "WOUND",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WIND"
+  },
+  {
+    "word": "WOVEN",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WEAVE"
+  },
+  {
+    "word": "WOW",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WRAP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WRITE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WRONG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "WROTE",
+    "accepted": false,
+    "reason": "inflection_or_strict_homograph",
+    "base": "WRITE"
+  },
+  {
+    "word": "YAM",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YAP",
+    "accepted": false,
+    "reason": "colloquial_short_word",
+    "base": null
+  },
+  {
+    "word": "YARD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YARN",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YAW",
+    "accepted": false,
+    "reason": "technical_short_word",
+    "base": null
+  },
+  {
+    "word": "YEAR",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YEAST",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YES",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YET",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YIELD",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YOU",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YOUNG",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "YOUR",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOURS",
+    "accepted": false,
+    "reason": "pronoun_case_or_possessive",
+    "base": null
+  },
+  {
+    "word": "YOUTH",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ZAP",
+    "accepted": false,
+    "reason": "colloquial_short_word",
+    "base": null
+  },
+  {
+    "word": "ZEBRA",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ZERO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ZIP",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ZONE",
+    "accepted": true,
+    "reason": "approved_common_base"
+  },
+  {
+    "word": "ZOO",
+    "accepted": true,
+    "reason": "approved_common_base"
+  }
+]

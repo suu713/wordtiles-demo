@@ -28,7 +28,11 @@ jobs:
         run: npm test
       - name: Run lexicon classifier boundary tests
         run: python3 -m unittest discover -s wordtiles_lexicon_builder -p test_classifier.py -v
-      - name: Validate 100 seeds with the expanded lexicon
+      - name: Verify supplied V2 whitelist and master application
+        run: |
+          npm run test:whitelist
+          python3 data/common-v2/tests/test_apply.py
+      - name: Validate 100 seeds with the supplied TSV tiers and target policy
         run: npm run test:lexicon
       - name: Validate 1000 generated levels and all completion orders
         run: npm run test:batch

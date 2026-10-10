@@ -15,11 +15,17 @@ try {
   for (const [width,height] of [[1680,900],[1366,768],[1280,720],[1024,600],[768,650],[390,844],[360,640],[320,568]]) {
     const context=await browser.newContext({ viewport:{ width,height },reducedMotion:'reduce' });
     const page=await context.newPage();
-    await page.goto('http://127.0.0.1:4173/');
-    await page.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor({state:'attached'});
+    await page.goto(process.env.WORDTILES_URL || 'http://127.0.0.1:4173/?v=12');
+    await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight),true);
+    assert.equal(await page.locator('.lobby-panel').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.left>=0&&r.bottom<=innerHeight&&r.right<=innerWidth}),true);
+    await page.locator('#start-game').click();
     assert.equal(await page.locator('#settings-popover').isVisible(),false);
     assert.equal(await page.locator('#hover-help').isVisible(),false);
     if(width<=760) { assert.equal(await page.locator('.editor-panel').isVisible(),false); await page.locator('#editor-toggle').click(); }
+    await page.locator('#algorithm').selectOption('1');
+    await page.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
+    if(width<=760&&!await page.locator('.editor-panel').isVisible()) await page.locator('#editor-toggle').click();
     await page.locator('#source-language').selectOption('spanish');
     await page.locator('#source-order').selectOption('all');
     await page.locator('#source-number').selectOption('1221');
@@ -63,9 +69,9 @@ try {
     if(width<=760) await page.locator('#editor-toggle').click();
     await page.locator('#algorithm').selectOption('2');
     await page.locator('#dictionary-source').selectOption('graded');
-    await page.locator('#lexicon-status').filter({hasText:'母词库'}).waitFor({state:'attached'});
+    await page.locator('#lexicon-status').filter({hasText:'新词库 21,094'}).waitFor({state:'attached'});
     await page.locator('#options-menu').selectOption('lexicon');
-    await page.locator('#unreviewed-mode').selectOption('true');
+    assert.equal(await page.locator('#unreviewed-mode').count(),0);
     await page.waitForFunction(()=>!document.querySelector('#generate-seed').disabled);
     await page.locator('#settings-close').click();
     await page.locator('#seed').fill('0'); await page.locator('#generate-seed').click();
@@ -76,7 +82,7 @@ try {
       return { overflow:document.documentElement.scrollWidth>innerWidth || document.documentElement.scrollHeight>innerHeight, fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,cleanTitle:document.querySelector('.game-title-row').innerText==='Word Tile',warning:document.querySelector('#level-kind').textContent };
     });
     assert.equal(graded.overflow,false); assert.equal(graded.fits,true); assert.equal(graded.cleanTitle,true);
-    assert.ok(graded.warning.includes('词库未完成内容审核'));
+    assert.equal(graded.warning,'自动生成');
     await page.screenshot({path:fileURLToPath(new URL('../reports/portrait-graded-'+width+'.png',import.meta.url)),fullPage:true});
     if(width<=760) await page.locator('#editor-toggle').click();
     graded.editorFits = await page.locator('.editor-panel').evaluate(el=>el.scrollHeight<=el.clientHeight+1 && document.querySelector('#level-statistics').getBoundingClientRect().bottom<=el.getBoundingClientRect().bottom);

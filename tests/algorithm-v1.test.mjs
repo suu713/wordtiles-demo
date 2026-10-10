@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { generateLevel, validateLevel, findWordPaths, GENERATOR_VERSION } from '../dist/core/wordtiles-algorithm.js';
-import { createAlgorithmSession, validateAlgorithmLevel } from '../dist/core/algorithm-v1-adapter.js';
+// Historical fixture coverage; current production content gates are in common-v2.test.mjs.
+import { createAlgorithmSession, validateAlgorithmLevel } from './support/historical-adapter.mjs';
 import { freeze } from '../dist/core/rules.js';
 import { checkV1Independently, permutations } from '../scripts/independent-v1-check.mjs';
 

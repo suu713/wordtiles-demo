@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 13,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "D",
+    "A",
+    "M",
+    "O",
+    "P",
+    "T",
+    "G",
+    "O",
+    "A"
+  ],
+  "initialCounts": [
+    3,
+    3,
+    2,
+    2,
+    3,
+    2,
+    1,
+    1,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "MAD",
+      "canonicalPath": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "MAP",
+      "canonicalPath": [
+        2,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "POD",
+      "canonicalPath": [
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "GOAT",
+      "canonicalPath": [
+        6,
+        7,
+        8,
+        5
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "ADOPT",
+      "canonicalPath": [
+        1,
+        0,
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "inputCount": 143581,
+  "enabledCount": 3331,
+  "disabledCount": 140250,
+  "whitelistCount": 3333,
+  "whitelistWordsNotInMaster": [
+    "HAIRDRYER",
+    "LIGHTBULB"
+  ],
+  "reasons": {
+    "approved_by_whitelist": 3331,
+    "outside_approved_whitelist": 140250
+  },
+  "sourceVersion": "en-frequency-v1-0d61aa0f3d623259",
+  "outputVersion": "wordtiles-common-base-20261010-v2-source4284f31c502f-policyf0bebb0fb774-r23b487e3dbc2",
+  "frequencyFieldsModified": false,
+  "sourceFile": "wordtiles_lexicon_builder/lexicon-output/dictionary.master.json",
+  "sourceMasterSha256": "8d5ae8211b7557d41d80e633d80b14da85df62e15fae5392685c316278d951bf",
+  "reviewedMasterSha256": "5c7e5ec11ec53e004d47779c47b1cbda28808df088f2801069d285bb6e296ea4",
+  "explicitBlockedWords": [],
+  "reviewSha256": "23b487e3dbc22d6865c57c758c31797a9858f81428f9f3ab57eef079703ad4e2"
+}

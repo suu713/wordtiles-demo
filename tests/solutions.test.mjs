@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { calculateLevelSolutions } from '../dist/core/level-solutions.js';
 import { convertSourceLevel, SourceGameSession } from '../dist/core/source-levels.js';
-import { createAlgorithmSession } from '../dist/core/algorithm-v1-adapter.js';
-import { createLexiconAdapter } from '../dist/core/lexicon-adapter.js';
+import { createAlgorithmSession } from './support/historical-adapter.mjs';
+import { createLexiconAdapter } from './support/historical-lexicon-adapter.mjs';
 import { generateLevel } from '../dist/core/wordtiles-algorithm.js';
 
 const json = async path => JSON.parse(await readFile(new URL(path, import.meta.url), 'utf8'));

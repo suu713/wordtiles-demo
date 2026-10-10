@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 5,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "W",
+    "N",
+    "O",
+    "O",
+    "I",
+    "P",
+    "N",
+    "H",
+    "S"
+  ],
+  "initialCounts": [
+    2,
+    3,
+    1,
+    3,
+    3,
+    2,
+    2,
+    1,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "NOW",
+      "canonicalPath": [
+        6,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "OWN",
+      "canonicalPath": [
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "PIN",
+      "canonicalPath": [
+        5,
+        4,
+        1
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "SHIP",
+      "canonicalPath": [
+        8,
+        7,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "ONION",
+      "canonicalPath": [
+        2,
+        1,
+        4,
+        3,
+        6
+      ]
+    }
+  ]
+}

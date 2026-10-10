@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 14,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "E",
+    "S",
+    "O",
+    "L",
+    "G",
+    "N",
+    "F",
+    "I",
+    "A"
+  ],
+  "initialCounts": [
+    3,
+    2,
+    2,
+    2,
+    2,
+    3,
+    2,
+    1,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "ELF",
+      "canonicalPath": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "FIG",
+      "canonicalPath": [
+        6,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "SON",
+      "canonicalPath": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "NOSE",
+      "canonicalPath": [
+        5,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "ANGLE",
+      "canonicalPath": [
+        8,
+        5,
+        4,
+        3,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "dictionary": "locally installed US Hunspell; verification only",
+  "spellingNotFound": [
+    "LIGHTBULB",
+    "RAINFOREST"
+  ],
+  "affixOverlapCandidates": {
+    "BED": [
+      [
+        "BE",
+        "D"
+      ]
+    ],
+    "CEILING": [
+      [
+        "CEIL",
+        "G"
+      ]
+    ],
+    "CHEST": [
+      [
+        "CH",
+        "T"
+      ]
+    ],
+    "EVENING": [
+      [
+        "EVEN",
+        "G"
+      ]
+    ],
+    "HONEST": [
+      [
+        "HON",
+        "T"
+      ]
+    ],
+    "MORNING": [
+      [
+        "MORN",
+        "G"
+      ]
+    ],
+    "NEWS": [
+      [
+        "NEW",
+        "S"
+      ]
+    ],
+    "RED": [
+      [
+        "RE",
+        "D"
+      ]
+    ],
+    "REST": [
+      [
+        "RE",
+        "T"
+      ]
+    ],
+    "SHED": [
+      [
+        "SHE",
+        "D"
+      ]
+    ],
+    "THING": [
+      [
+        "THE",
+        "G"
+      ]
+    ],
+    "YES": [
+      [
+        "YE",
+        "S"
+      ]
+    ]
+  },
+  "note": "Affix and POS overlap candidates require sense-level decisions; not evidence that an approved headword is wrong.",
+  "version": "wordtiles-common-base-20261010-v2",
+  "wordCount": 3333,
+  "externalHeadwordChecks": {
+    "LIGHTBULB": "Collins American English headword verified",
+    "RAINFOREST": "Cambridge Essential American headword verified"
+  },
+  "unresolvedSpellingChecks": 0
+}

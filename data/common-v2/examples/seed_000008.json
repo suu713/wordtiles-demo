@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 8,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "W",
+    "O",
+    "F",
+    "L",
+    "R",
+    "A",
+    "A",
+    "R",
+    "I"
+  ],
+  "initialCounts": [
+    2,
+    3,
+    3,
+    1,
+    3,
+    2,
+    1,
+    2,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "FAR",
+      "canonicalPath": [
+        2,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "FOR",
+      "canonicalPath": [
+        2,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "OWL",
+      "canonicalPath": [
+        1,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "FAIR",
+      "canonicalPath": [
+        2,
+        5,
+        8,
+        7
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "ARROW",
+      "canonicalPath": [
+        6,
+        7,
+        4,
+        1,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 18,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "A",
+    "S",
+    "E",
+    "C",
+    "H",
+    "E",
+    "T",
+    "L",
+    "L"
+  ],
+  "initialCounts": [
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    1,
+    1,
+    2
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "ACT",
+      "canonicalPath": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "ASH",
+      "canonicalPath": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "EEL",
+      "canonicalPath": [
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "CASE",
+      "canonicalPath": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "SHELL",
+      "canonicalPath": [
+        1,
+        4,
+        5,
+        8,
+        7
+      ]
+    }
+  ]
+}

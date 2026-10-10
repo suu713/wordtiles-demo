@@ -6,3 +6,6 @@ src/wordtiles-algorithm.ts -text
 dist/dictionary.json -text
 dist/dictionary-v1.json -text
 examples/seed_20261010.json -text
+data/words.tsv -text
+data/common-v2/dictionary*.json -text
+dist/common-v2/dictionary.json -text

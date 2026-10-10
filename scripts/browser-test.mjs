@@ -1,732 +1,236 @@
 import assert from 'node:assert/strict';
-import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
-const require = createRequire(import.meta.url);
+import { createBaseDictionary, isTargetAllowed, POLICY_VERSION } from '../dist/core/target-policy.js';
+import { generateLevel } from '../dist/core/algorithm2.js';
+import { createAlgorithmSession } from '../dist/core/algorithm-v1-adapter.js';
+import { createFrequencyDictionary, WORDLIST_VERSION, BONUS_DICTIONARY, wordEntryFor } from '../dist/core/word-library.js';
+import { findWordPaths } from '../dist/core/rules.js';
+import { calculateLevelStatistics } from '../dist/core/level-statistics.js';
+import { calculateLevelSolutions } from '../dist/core/level-solutions.js';
+import { convertSourceLevel } from '../dist/core/source-levels.js';
+
+const require=createRequire(import.meta.url);
 let chromium;
-try { ({ chromium } = require('playwright')); }
-catch { ({ chromium } = require('C:/Users/huyi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
-const directory = fileURLToPath(new URL('../reports/', import.meta.url));
-await mkdir(directory, { recursive: true });
-const sample = JSON.parse(await readFile(new URL('../dist/sample.json', import.meta.url), 'utf8'));
-const fixture = JSON.parse(await readFile(new URL('../examples/seed_20261010.json', import.meta.url), 'utf8'));
-const { convertSourceLevel } = await import('../dist/core/source-levels.js');
-const { findWordPaths, signature } = await import('../dist/core/rules.js');
-const { createLexiconAdapter } = await import('../dist/core/lexicon-adapter.js');
-const { generateLevel } = await import('../dist/core/wordtiles-algorithm.js');
-const { createAlgorithmSession } = await import('../dist/core/algorithm-v1-adapter.js');
-const { calculateLevelStatistics } = await import('../dist/core/level-statistics.js');
-const lexiconAdapter = await createLexiconAdapter(JSON.parse(await readFile(new URL('../dist/lexicon/dictionary.index.json', import.meta.url), 'utf8')), JSON.parse(await readFile(new URL('../dist/lexicon/review-overlay.json', import.meta.url), 'utf8')));
-const gradedDictionary = lexiconAdapter.createRuntimeDictionary({ wordLengths:[3,3,3,4,5], tiers:[1,2,3], allowUnreviewed:true });
-const sourceCatalogue = JSON.parse(await readFile(new URL('../dist/source-levels/catalogue.json',import.meta.url),'utf8'));
-const sourceBanks = Object.fromEntries(await Promise.all(sourceCatalogue.languages.map(async info => [info.language,JSON.parse(await readFile(new URL('../dist/source-levels/' + info.file,import.meta.url),'utf8'))])));
-const baseURL = process.env.WORDTILES_URL || 'http://127.0.0.1:4173';
-const cases = [], errors = [];
+try { ({chromium}=require('playwright')); }
+catch { ({chromium}=require('C:/Users/huyi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')); }
+const json=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
+const reports=fileURLToPath(new URL('../reports/',import.meta.url));
+await mkdir(reports,{recursive:true});
+const fixture=await json('../examples/tsv/seed_20261010.json'), dictionary=createBaseDictionary([3,3,3,4,5]);
+const initial=createAlgorithmSession(fixture,dictionary,{bonusDictionary:BONUS_DICTIONARY});
+const stats=calculateLevelStatistics(initial.initial,BONUS_DICTIONARY), solutions=calculateLevelSolutions(initial.initial,dictionary);
+const source=await json('../dist/source-levels/english.json');
+const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=12';
+const cases=[], errors=[];
 let browser;
-try { browser = await chromium.launch({ headless: true, channel: 'chrome' }); }
-catch { browser = await chromium.launch({ headless: true, channel: 'msedge' }); }
-const context = await browser.newContext({ viewport: { width: 1280, height: 1040 }, reducedMotion: 'reduce' });
-const page = await context.newPage();
-page.on('pageerror', error => errors.push(error.message));
-async function run(name, task) { await task(); cases.push({ name, passed: true }); console.log(`PASS ${name}`); }
-async function state(target = page) {
-  return target.evaluate(() => ({
-    counts: [...document.querySelectorAll('.tile')].map(tile => Number(tile.dataset.remaining)),
-    completed: [...document.querySelectorAll('.target.completed')].map(target => target.dataset.word),
-    letters: [...document.querySelectorAll('.tile-letter')].map(letter => letter.textContent),
-    seed: document.querySelector('#active-seed').textContent,
-    statistics: {
-      extras: document.querySelector('#extra-word-count').textContent,
-      reverse: document.querySelector('#reverse-word-count').textContent,
-      tileUses: [2,3,4,5].map(uses => document.querySelector('#tile-used-' + uses).textContent),
-      turns: ['straight','one-turn','multi-turn'].map(kind => document.querySelector('#' + kind + '-word-count').textContent),
-    }
-  }));
+try { browser=await chromium.launch({headless:true,channel:'chrome'}); }
+catch { browser=await chromium.launch({headless:true,channel:'msedge'}); }
+const context=await browser.newContext({viewport:{width:1366,height:768},reducedMotion:'reduce'}), page=await context.newPage();
+page.on('pageerror',error=>errors.push(error.message));
+const run=async(name,fn)=>{await fn();cases.push({name,passed:true});console.log('PASS '+name);};
+async function state(tab=page) {
+  return tab.evaluate(()=>({counts:[...document.querySelectorAll('.tile')].map(el=>Number(el.dataset.remaining)),
+    completed:[...document.querySelectorAll('.target.completed')].map(el=>el.dataset.word),seed:document.querySelector('#active-seed').textContent,
+    statistics:['extra-word-count','reverse-word-count','tile-used-2','tile-used-3','tile-used-4','tile-used-5','straight-word-count','one-turn-word-count','multi-turn-word-count'].map(id=>document.getElementById(id).textContent)}));
 }
-async function centers(path, target = page) {
-  await target.locator('#board').scrollIntoViewIfNeeded();
-  return Promise.all(path.map(async cell => {
-    const rect = await target.locator(`[data-cell="${cell}"]`).boundingBox();
-    return { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
-  }));
+async function centers(path,tab=page) {
+  return Promise.all(path.map(async cell=>{const r=await tab.locator(`[data-cell="${cell}"]`).boundingBox();return{x:r.x+r.width/2,y:r.y+r.height/2};}));
 }
-async function drag(path, target = page) {
-  const points = await centers(path, target);
-  await target.mouse.move(points[0].x, points[0].y); await target.mouse.down();
-  for (const point of points.slice(1)) await target.mouse.move(point.x, point.y, { steps: 1 });
-  await target.mouse.up();
+async function drag(path,tab=page) {
+  const points=await centers(path,tab);
+  await tab.mouse.move(points[0].x,points[0].y);await tab.mouse.down();
+  for(const point of points.slice(1)) await tab.mouse.move(point.x,point.y);
+  await tab.mouse.up();
 }
-async function reset() {
-  await page.locator('#file-action').selectOption('sample');
-  assert.deepEqual((await state()).counts, sample.board.counts);
+async function reset(tab=page) {await tab.locator('#file-action').selectOption('sample');assert.deepEqual((await state(tab)).counts,fixture.initialCounts);}
+async function exportLevel(name,tab=page) {
+  const waiting=tab.waitForEvent('download');await tab.locator('#file-action').selectOption('export');const download=await waiting;
+  const path=reports+'/'+name+'.json';await download.saveAs(path);return JSON.parse(await readFile(path,'utf8'));
 }
-async function exportLevel(name) {
-  const downloadPromise = page.waitForEvent('download'); await page.locator('#file-action').selectOption('export');
-  const download = await downloadPromise;
-  await download.saveAs(`${directory}/${name}.json`);
-  return JSON.parse(await readFile(`${directory}/${name}.json`, 'utf8'));
+async function settings(pane) {await page.locator('#options-menu').selectOption(pane);}
+async function closeSettings() {await page.locator('#settings-close').click();}
+async function generate(seed) {
+  await page.locator('#seed').fill(String(seed));await page.locator('#generate-seed').click();
+  await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
 }
-async function openSettings(pane,target=page) { await target.locator('#options-menu').selectOption(pane); }
-async function closeSettings(target=page) { if (await target.locator('#settings-popover').isVisible()) await target.locator('#settings-close').click(); }
-async function setView(value) { await openSettings('view'); await page.locator('#preview-device').selectOption(value); await closeSettings(); }
-async function openEditor(target) { if (await target.locator('#editor-toggle').isVisible() && !await target.locator('.editor-panel').isVisible()) await target.locator('#editor-toggle').click(); }
+async function importRejected(level) {
+  const before=await state();
+  await page.locator('#import-file').setInputFiles({name:'rejected.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(level))});
+  await page.locator('#notice').filter({hasText:'导入被拒绝'}).waitFor({state:'attached'});assert.deepEqual(await state(),before);
+}
+async function directWorker(input) {
+  return page.evaluate(data=>new Promise((resolve,reject)=>{
+    const worker=new Worker(new URL('./generator.worker.js?v=12',location.href),{type:'module'});
+    const timeout=setTimeout(()=>{worker.terminate();reject(new Error('worker timeout'));},15000);
+    worker.onmessage=({data})=>{if(data.type==='progress')return;clearTimeout(timeout);worker.terminate();resolve(data);};
+    worker.onerror=event=>{clearTimeout(timeout);worker.terminate();reject(new Error(event.message));};
+    worker.postMessage({requestId:42,config:{},seed:20261010,...data});
+  }),input);
+}
+
 try {
-  await page.goto(baseURL); await page.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor({ state: 'attached' });
-  async function sourceLevel(language, order='main', position=1, target=page) {
-    await target.locator('#algorithm').selectOption('1');
-    await target.locator('#source-language').selectOption(language);
-    await target.locator('#source-order').selectOption(order);
-    await target.locator('#source-number').selectOption(String(position));
-    await target.locator('#source-load').click();
-    const bank=sourceBanks[language], raw=bank.levels[bank.orders[order][position-1]];
-    await target.waitForFunction(id=>document.querySelector('#active-seed').textContent===String(id),raw.id);
-    await target.locator('#notice').filter({ hasText:'需求不变量校验通过' }).waitFor({ state: 'attached' });
-    return convertSourceLevel(raw,{ language,order,position });
-  }
-  function rawPaths(level,word) { return findWordPaths(level.board.letters,word,null,null,level.board); }
-  async function fitsPortrait(target=page) {
-    return target.evaluate(() => {
-      const viewport=document.querySelector('#game-viewport').getBoundingClientRect();
-      const board=document.querySelector('#board').getBoundingClientRect();
-      const actions=document.querySelector('.play-actions').getBoundingClientRect();
-      return { fits:board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,ratio:viewport.width/viewport.height,tile:document.querySelector('.tile').getBoundingClientRect().width,scroll:document.querySelector('#game-viewport').scrollHeight<=document.querySelector('#game-viewport').clientHeight+1 };
-    });
-  }
-  await run('算法1默认载入真实原包第1关，左编辑器右9:16画面，无手机外框',async () => {
-    const editor=await page.locator('.editor-panel').boundingBox(), viewport=await page.locator('#game-viewport').boundingBox();
-    assert.ok(editor.x+editor.width<viewport.x);
-    assert.ok(Math.abs(viewport.width/viewport.height-9/16)<.001);
-    assert.equal(await page.locator('.phone-frame,.phone-statusbar,.home-indicator').count(),0);
+  await page.goto(baseURL);await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);
+  await run('首屏游戏大厅，词典icon右上角，点击开始才进入关卡',async()=>{
+    assert.equal(await page.locator('#lobby').isVisible(),true);assert.equal(await page.locator('#game-screen').isVisible(),false);
+    assert.equal(await page.locator('#dictionary-count').textContent(),'0');
+    const icon=await page.locator('#dictionary-button').boundingBox(),panel=await page.locator('.lobby-panel').boundingBox();
+    assert.ok(icon.x>panel.x+panel.width/2&&icon.y<panel.y+panel.height/4);
+    await page.screenshot({path:reports+'/lobby-desktop.png',fullPage:true});
+    await page.locator('#start-game').click();assert.equal(await page.locator('#lobby').isVisible(),false);assert.equal(await page.locator('#game-screen').isVisible(),true);
+    assert.equal(await page.locator('#algorithm').inputValue(),'2');assert.equal(await page.locator('#hover-help').isVisible(),false);
+  });
+  await page.locator('#algorithm').selectOption('1');await page.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
+  await run('算法1原包对照仍正常载入，当前关卡不受英语目标白名单修改',async()=>{
     assert.equal(await page.locator('#algorithm').inputValue(),'1');
-    assert.equal(await page.locator('#active-seed').textContent(),'191596');
-    assert.equal(await page.locator('#source-number').getAttribute('max'),'5000');
-    assert.equal(await page.locator('#board-cols').isDisabled(),true);
-    assert.equal(await page.locator('#word-count').inputValue(),'3');
-    assert.deepEqual((await state()).counts,Array(9).fill(1));
-    assert.deepEqual((await state()).statistics,{extras:'0',reverse:'0 / 3',tileUses:['0','0','0','0'],turns:['1','2','0']});
-    assert.equal((await fitsPortrait()).fits,true);
-    assert.equal((await fitsPortrait()).scroll,true);
-    await page.screenshot({ path:directory+'/source-desktop.png',fullPage:true });
+    const first=convertSourceLevel(source.levels[source.orders.main[0]],{language:'english',order:'main',position:1});
+    for(const target of [...first.targets].reverse()) await drag(target.path);
+    assert.deepEqual((await state()).counts,Array(9).fill(0));await page.locator('#restart').click();
   });
-  await run('APK第0行在下方，英语第1关上到下为SUN/JIC/OBE，键盘方向随画面',async () => {
-    const screenLetters=await page.locator('.tile').evaluateAll(tiles=>tiles.map(tile=>{
-      const rect=tile.getBoundingClientRect(); return {x:rect.x,y:rect.y,letter:tile.querySelector('.tile-letter').textContent};
-    }).sort((a,b)=>Math.abs(a.y-b.y)>1?a.y-b.y:a.x-b.x).map(tile=>tile.letter));
-    assert.deepEqual(screenLetters,['S','U','N','J','I','C','O','B','E']);
-    assert.deepEqual((await state()).letters,['O','B','E','J','I','C','S','U','N']);
-    await page.locator('[data-cell="0"]').focus(); await page.keyboard.press('ArrowUp');
-    assert.equal(await page.locator('[data-cell="3"]').evaluate(el=>el===document.activeElement),true);
-    await page.keyboard.press('ArrowDown');
-    assert.equal(await page.locator('[data-cell="0"]').evaluate(el=>el===document.activeElement),true);
-    await page.locator('[data-cell="4"]').focus();
-    for(const key of ['Space','ArrowRight','Space','ArrowDown','Space','Enter']) await page.keyboard.press(key);
-    assert.deepEqual((await state()).completed,['ICE']);
-    await page.locator('#restart').click();
-    const exported=await exportLevel('source-orientation');
-    assert.equal(exported.source.original.letters,'OBE,JIC,SUN');
-    assert.deepEqual(exported.board.letters,['O','B','E','J','I','C','S','U','N']);
-  });
-  await run('原包真实鼠标反序清空，第2关额外词记录且不扣次数',async () => {
-    const bank=sourceBanks.english, first=convertSourceLevel(bank.levels[bank.orders.main[0]],{ language:'english',order:'main',position:1 });
-    for (const target of [...first.targets].reverse()) await drag(target.path);
-    assert.equal(await page.locator('#win-banner').isVisible(),true);
-    assert.deepEqual((await state()).counts,Array(9).fill(0));
-    await page.screenshot({ path:directory+'/source-completed.png',fullPage:true });
-    await page.locator('#win-next').click(); await page.waitForFunction(()=>document.querySelector('#active-seed').textContent==='191599');
-    assert.equal(await page.locator('#source-number').inputValue(),'2');
-    const second=await exportLevel('source-second'), before=await state();
-    assert.equal(before.statistics.extras,'2');
-    await drag(rawPaths(second,'FRO')[0]);
-    assert.deepEqual(await state(),before);
-    assert.ok((await page.locator('#feedback').textContent()).includes('额外词 FRO 已记录'));
-    await drag(rawPaths(second,'FRO')[0]);
-    assert.ok((await page.locator('#feedback').textContent()).includes('已经记过'));
-    assert.deepEqual(second.source.original,bank.levels[bank.orders.main[1]]);
-  });
-  await run('原包JSON往返、破损次数导入拒绝，切换算法自动跟随导入格式',async () => {
-    const exported=await exportLevel('source-roundtrip'), before=await state(), wrong=structuredClone(exported);
-    wrong.board.counts[0]++;
-    await page.locator('#import-file').setInputFiles({ name:'source-wrong.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(wrong)) });
-    await page.locator('#notice').filter({ hasText:'导入被拒绝' }).waitFor({ state: 'attached' }); assert.deepEqual(await state(),before);
-    await page.locator('#algorithm').selectOption('2');
-    await page.locator('#validation-badge').filter({ hasText:'32 / 32 通过' }).waitFor({ state: 'attached' });
-    await page.locator('#import-file').setInputFiles({ name:'source-valid.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported)) });
-    await page.locator('#level-kind').filter({ hasText:'JSON 导入' }).waitFor();
-    assert.equal(await page.locator('#algorithm').inputValue(),'1');
-    assert.deepEqual((await state()).counts,exported.board.counts);
-    assert.deepEqual((await exportLevel('source-after-import')).source,exported.source);
-  });
-  await run('两算法各自保留试玩进度，算法2显示固定V1规则',async () => {
-    const level=await sourceLevel('english');
-    await drag(level.targets[0].path); const native=await state();
-    await page.locator('#algorithm').selectOption('2'); await reset();
-    await drag([0,3,4]); const generated=await state();
-    assert.equal(await page.locator('#board-cols').isDisabled(),true);
-    await page.locator('#algorithm').selectOption('1'); assert.deepEqual(await state(),native);
-    await page.locator('#algorithm').selectOption('2'); assert.deepEqual(await state(),generated);
-    assert.equal(await page.locator('#board-cols').inputValue(),'3');
-    assert.equal(await page.locator('#draft-tag').textContent(),'已应用');
-    await reset();
-  });
-  await run('五语言主线关卡均来自原包，Unicode字母可拖动清空',async () => {
-    for (const language of sourceCatalogue.languages.map(info=>info.language)) {
-      const level=await sourceLevel(language), raw=sourceBanks[language].levels[sourceBanks[language].orders.main[0]];
-      assert.deepEqual((await exportLevel('source-'+language)).source.original,raw);
-      assert.deepEqual((await state()).letters,level.board.letters);
-      for (const target of level.targets) await drag(target.path);
-      assert.equal((await state()).counts.reduce((a,b)=>a+b,0),0);
-      assert.equal((await fitsPortrait()).fits,true);
-    }
-  });
-  await run('原包18目标、高次数数字徽标与长词，在360×640内保护棋盘和操作区',async () => {
-    await setView('360x640');
-    const large=await sourceLevel('spanish','all',1221);
-    assert.equal(large.targets.length,18);
-    assert.equal(await page.locator('.target').count(),18);
-    assert.equal(await page.locator('#word-count').inputValue(),'18');
-    assert.ok(await page.locator('.count-badge').count()>0);
-    const fitted=await fitsPortrait();
-    assert.equal(fitted.fits,true); assert.equal(fitted.scroll,true); assert.ok(fitted.tile>=32);
-    await page.screenshot({ path:directory+'/source-18-targets.png',fullPage:true });
-    for (const target of [...large.targets].reverse()) await drag(target.path);
-    assert.deepEqual((await state()).counts,Array(large.board.letters.length).fill(0));
-    const bank=sourceBanks.english, raw=Object.values(bank.levels).find(raw=>raw.target_words.some(t=>t.word.length===10));
-    const position=bank.orders.all.indexOf(raw.id)+1;
-    const long=await sourceLevel('english','all',position);
-    assert.ok(long.config.wordLengths.includes(10));
-    await page.locator('#hint').click();
-    assert.equal((await fitsPortrait()).fits,true);
-    await page.screenshot({ path:directory+'/source-long-word.png',fullPage:true });
-    for (const target of long.targets) await drag(target.path);
-    assert.equal((await state()).counts.reduce((a,b)=>a+b,0),0);
-    await setView('auto');
-  });
-  await run('原包不同消耗路径真实提交拒绝，参考路径可完成整关',async () => {
-    const level=await sourceLevel('english','all',8);
-    let selected;
-    for (const target of level.targets) {
-      const paths=rawPaths(level,target.word), alternate=paths.find(path=>signature(path)!==signature(target.path));
-      if (alternate) { selected=alternate; break; }
-    }
-    assert.ok(selected); const before=await state(); await drag(selected);
-    assert.deepEqual(await state(),before);
-    assert.ok((await page.locator('#feedback').textContent()).includes('换一条消耗路径'));
-    for (const target of level.targets) await drag(target.path);
-    assert.equal((await state()).counts.reduce((a,b)=>a+b,0),0);
-  });
-  await run('载入迟到结果不能覆盖切算法或新的关卡序号',async () => {
-    const isolated=await browser.newContext({ viewport:{ width:1280,height:1040 },reducedMotion:'reduce' }), tab=await isolated.newPage();
-    tab.on('pageerror',error=>errors.push(error.message));
-    for (const language of ['portuguese','russian']) await tab.route('**/source-levels/'+language+'.json',async route=>{
-      await new Promise(resolve=>setTimeout(resolve,500));
-      await route.fulfill({ contentType:'application/json',body:JSON.stringify(sourceBanks[language]) });
-    });
-    await tab.goto(baseURL); await tab.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor({ state: 'attached' });
-    await tab.locator('#source-language').selectOption('portuguese');
-    await tab.locator('#algorithm').selectOption('2');
-    await tab.waitForTimeout(700);
-    assert.equal(await tab.locator('#algorithm').inputValue(),'2');
-    assert.deepEqual((await state(tab)).counts,sample.board.counts);
-    await tab.locator('#algorithm').selectOption('1');
-    await tab.locator('#source-language').selectOption('russian');
-    await tab.locator('#source-number').selectOption('2');
-    await tab.waitForTimeout(700);
-    assert.equal(await tab.locator('#active-seed').textContent(),'191596');
-    assert.equal(await tab.locator('#draft-tag').textContent(),'待应用');
-    await tab.locator('#source-load').click();
-    await tab.waitForFunction(id=>document.querySelector('#active-seed').textContent===String(id),sourceBanks.russian.orders.main[1]);
-    await isolated.close();
-  });
-  await page.locator('#algorithm').selectOption('2'); await reset();
-  await page.locator('#validation-badge').filter({ hasText:'32 / 32 通过' }).waitFor({ state: 'attached' });
-  await run('桌面左侧编辑器、右侧竖屏预览，默认折叠调试面板', async () => {
-    const editor = await page.locator('.editor-panel').boundingBox();
-    const phone = await page.locator('.game-viewport').boundingBox();
-    assert.ok(editor.x + editor.width < phone.x);
-    assert.ok(Math.abs(phone.width / phone.height - 9 / 16) < .001);
-    assert.ok((await fitsPortrait()).fits);
-    assert.equal(await page.locator('#game-viewport').evaluate(el => el.scrollHeight <= el.clientHeight + 1), true, '默认手游界面应完整显示');
-    assert.equal(await page.locator('#word-lengths select').count(), 1);
-    assert.equal(await page.locator('#target-length-list option').count(), 5);
-    assert.equal(await page.locator('.tile').count(), 9);
-    assert.equal(await page.locator('.target').count(), 5);
-    assert.equal(await page.locator('#settings-popover').isVisible(), false);
-    assert.deepEqual((await state()).counts, sample.board.counts);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth && document.documentElement.scrollHeight <= window.innerHeight), true);
-    await page.screenshot({ path: `${directory}/desktop.png`, fullPage: true });
-  });
-  await run('真实拖动 FEED；经过 FEE 时不提交，松手才扣减', async () => {
-    const points = await centers([1, 4, 7, 8]);
-    await page.mouse.move(points[0].x, points[0].y); await page.mouse.down();
-    for (const point of points.slice(1, 3)) await page.mouse.move(point.x, point.y);
-    assert.equal(await page.locator('#current-word').textContent(), 'FEE');
-    assert.deepEqual((await state()).counts, sample.board.counts);
-    assert.deepEqual((await state()).completed, []);
-    await page.mouse.move(points[3].x, points[3].y); await page.mouse.up();
-    assert.deepEqual((await state()).completed, ['FEED']);
-    assert.equal((await state()).counts.reduce((a, b) => a + b), 14);
-  });
-  await run('EYE 两种走法、归零空位保留原布局', async () => {
-    await reset(); await drag([0, 3, 4]); const forward = await state();
-    assert.equal(await page.locator('.tile').count(), 9);
-    assert.equal(await page.locator('[data-cell="0"]').getAttribute('aria-disabled'), 'true');
-    assert.equal(await page.locator('[data-cell="3"] .tile-letter').textContent(), '·');
-    await reset(); await drag([4, 3, 0]); assert.deepEqual(await state(), forward);
-  });
-  await run('拖回上一格撤回一步；斜向和重复格不追加', async () => {
-    await reset(); const points = await centers([0, 3, 4, 3]);
-    await page.mouse.move(points[0].x, points[0].y); await page.mouse.down();
-    for (const point of points.slice(1)) await page.mouse.move(point.x, point.y);
-    assert.equal(await page.locator('#current-word').textContent(), 'EY');
-    await page.mouse.up(); assert.deepEqual((await state()).counts, sample.board.counts);
-    await drag([0, 4]); assert.deepEqual((await state()).counts, sample.board.counts);
-  });
-  await run('非目标与已完成目标不扣减；取消拖动不提交', async () => {
-    await reset(); await drag([0, 1, 2]); assert.deepEqual((await state()).counts, sample.board.counts);
-    await drag([1, 4, 7]); const before = await state(); await drag([1, 4, 7]); assert.deepEqual(await state(), before);
-    await reset(); const points = await centers([0, 3, 4]);
-    await page.mouse.move(points[0].x, points[0].y); await page.mouse.down();
-    for (const point of points.slice(1)) await page.mouse.move(point.x, point.y);
-    await page.dispatchEvent('#board', 'pointercancel', { pointerId: 1, pointerType: 'mouse', isPrimary: true });
-    await page.mouse.up(); assert.deepEqual((await state()).counts, sample.board.counts);
-  });
-  await run('键盘找词、提示不消耗、真实鼠标完成整关', async () => {
-    await reset(); await page.locator('[data-cell="0"]').focus();
-    for (const key of ['Space', 'ArrowDown', 'Space', 'ArrowRight', 'Space']) await page.keyboard.press(key);
-    assert.equal(await page.locator('#current-word').textContent(), 'EYE');
-    await page.keyboard.press('Enter'); assert.deepEqual((await state()).completed, ['EYE']);
-    const before = await state(); await page.locator('#hint').click(); assert.deepEqual(await state(), before);
-    assert.ok(await page.locator('.hinted').count() >= 3);
-    for (const target of sample.targets.slice(1)) await drag(target.path);
-    assert.deepEqual((await state()).counts, Array(9).fill(0));
-    assert.equal(await page.locator('#win-banner').isVisible(), true);
-    assert.equal(await page.locator('#hint').isDisabled(), true);
-    await page.screenshot({ path: `${directory}/completed.png`, fullPage: true });
-    await page.locator('#restart').click(); await page.waitForTimeout(350);
-    assert.deepEqual((await state()).counts, sample.board.counts);
-  });
-  await run('JSON 导出初始状态、拒绝次数错误和多集合、有效导入', async () => {
-    await drag([0, 3, 4]); const exported = await exportLevel('sample-export');
-    assert.deepEqual(exported.board.counts, sample.board.counts);
-    const before = await state();
-    const wrong = structuredClone(sample); [wrong.board.counts[0], wrong.board.counts[1]] = [wrong.board.counts[1], wrong.board.counts[0]];
-    await page.locator('#import-file').setInputFiles({ name: 'wrong.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(wrong)) });
-    await page.locator('#notice').filter({ hasText: '导入被拒绝' }).waitFor({ state: 'attached' }); assert.deepEqual(await state(), before);
-    const ambiguous = structuredClone(sample); ambiguous.board.letters[6] = 'F';
-    await page.locator('#import-file').setInputFiles({ name: 'ambiguous.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(ambiguous)) });
-    await page.waitForFunction(() => document.querySelector('#debug-rejection').textContent.includes('AMBIGUOUS')); assert.deepEqual(await state(), before);
-    await page.locator('#import-file').setInputFiles({ name: 'broken.json', mimeType: 'application/json', buffer: Buffer.from('{broken') });
-    await page.locator('#notice').filter({ hasText: '导入失败' }).waitFor({ state: 'attached' }); assert.deepEqual(await state(), before);
-    await page.locator('#import-file').setInputFiles({ name: 'sample.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(exported)) });
-    await page.locator('#level-kind').filter({ hasText: 'JSON 导入' }).waitFor(); assert.deepEqual((await state()).counts, sample.board.counts);
-  });
-  await run('真实 Worker 生成，seed 重现同关，导出后再次导入', async () => {
-    await page.locator('#seed').fill('20261010'); await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({ hasText: '生成成功' }).waitFor({ state: 'attached' });
-    const first = await exportLevel('generated-export');
-    assert.deepEqual(first,fixture);
+  await page.locator('#algorithm').selectOption('2');
+  await run('算法2使用用户TSV的新样例及1470原形候选，不加载历史词库',async()=>{
+    await page.locator('#validation-badge').filter({hasText:'32 / 32 通过'}).waitFor({state:'attached'});
     assert.deepEqual((await state()).counts,fixture.initialCounts);
-    assert.deepEqual((await state()).letters,fixture.letters);
-    await page.screenshot({path:directory+'/algorithm-v1-generated.png',fullPage:true});
-    await page.locator('#generate-seed').click(); await page.locator('#notice').filter({ hasText: '生成成功' }).waitFor({ state: 'attached' });
-    assert.deepEqual(await exportLevel('generated-repeat'), first);
-    await page.locator('#import-file').setInputFiles({ name: 'generated.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(first)) });
-    await page.locator('#level-kind').filter({ hasText: 'JSON 导入' }).waitFor();
-    assert.equal((await state()).seed, String(first.seed));
-    for (const target of first.targets) await drag(target.canonicalPath);
-    assert.deepEqual((await state()).counts, Array(9).fill(0));
-    assert.equal(await page.locator('#completion').textContent(),'5 / 5');
-    await page.screenshot({path:directory+'/algorithm-v1-completed.png',fullPage:true});
-    await page.locator('#restart').click();
-    for (const target of [...first.targets].reverse()) await drag(target.canonicalPath);
-    assert.deepEqual((await state()).counts,Array(9).fill(0));
-    assert.deepEqual(await exportLevel('algorithm-v1-after-win'),fixture);
+    assert.deepEqual(await page.locator('.target').evaluateAll(items=>items.map(item=>item.dataset.word)),fixture.targets.map(t=>t.word));
+    assert.equal(await page.locator('#dictionary-source').inputValue(),'common');
+    assert.equal(await page.locator('#unreviewed-mode').count(),0);
+    await settings('lexicon');assert.match(await page.locator('#lexicon-status').textContent(),/21,094 词 · 本关 1,470 个原形词/);await closeSettings();
+    assert.match(await page.locator('#version-note').textContent(),new RegExp(POLICY_VERSION));
+    const requested=await page.evaluate(()=>performance.getEntriesByType('resource').map(item=>item.name));
+    assert.ok(!requested.some(url=>/\/(dictionary-v1|sample)\.json/.test(url)));
+    assert.equal(await page.locator('.game-title-row').innerText(),'Word Tile');
+    assert.deepEqual(await page.locator('.count-badge').allTextContents(),fixture.initialCounts.map(String));
+    assert.equal(await page.locator('.target-letter').count(),18);
+    await page.mouse.move(0,0);await page.screenshot({path:reports+'/tsv-desktop.png',fullPage:true});
   });
-  await run('极小预算失败提示明确，棋盘和进度保留', async () => {
-    await reset(); await drag([0, 3, 4]); const before = await state();
-    await openSettings('debug');
-    for (const id of ['#budget-attempt', '#budget-tries', '#budget-total']) await page.locator(id).fill('1');
-    await closeSettings();
-    await page.locator('#generate-seed').click();
-    await page.waitForFunction(()=>document.querySelector('#debug-generation').textContent.includes('SEARCH_BUDGET_EXCEEDED'));
-    assert.ok((await page.locator('#notice').textContent()).includes('保留'));
-    assert.deepEqual(await state(), before);
-    await openSettings('debug');
-    await page.locator('#budget-attempt').fill('10000'); await page.locator('#budget-tries').fill('30'); await page.locator('#budget-total').fill('300000');
-    await closeSettings();
+  await run('真实模块Worker使用完整V2对象，默认seed结果逐字段一致，旧词库旁路拒绝',async()=>{
+    const result=await directWorker({dictionary});assert.equal(result.type,'result');assert.equal(result.result.ok,true);assert.deepEqual(result.result.level,fixture);
+    for(const invalid of [dictionary.words,await json('../dist/dictionary-v1.json'),{...dictionary,words:[...dictionary.words,'RATED']}]) {
+      const reply=await directWorker({dictionary:invalid});assert.equal(reply.result.ok,false);assert.equal(reply.result.code,'DICTIONARY_POLICY');assert.ok(!reply.result.level);
+    }
+    await generate(20261010);assert.deepEqual(await exportLevel('tsv-worker-export'),fixture);
   });
-  await run('取消生成和切关隔离旧 Worker；旧效果不会污染重开', async () => {
-    await page.route('**/generator.worker.js', async route => {
-      const original = await readFile(new URL('../dist/generator.worker.js', import.meta.url), 'utf8');
-      await route.fulfill({ contentType: 'text/javascript', body: `${original}\nconst handler=self.onmessage;self.onmessage=event=>setTimeout(()=>handler(event),500);` });
-    });
-    await reset(); const before = await state();
-    await page.locator('#generate-seed').click(); await page.locator('#cancel-generation').click();
-    await page.waitForTimeout(700); assert.deepEqual(await state(), before);
-    assert.ok((await page.locator('#notice').textContent()).includes('取消'));
-    await page.locator('#generate-seed').click(); await page.locator('#algorithm').selectOption('1');
-    const originalSource = await state();
-    await page.waitForTimeout(700); assert.deepEqual(await state(), originalSource);
-    assert.equal(await page.locator('#algorithm').inputValue(), '1');
-    await page.locator('#algorithm').selectOption('2'); assert.deepEqual(await state(), before);
-    await page.locator('#generate-seed').click(); await page.locator('#file-action').selectOption('sample');
-    await page.waitForTimeout(700); assert.equal(await page.locator('#level-kind').textContent(), '固定样例');
-    assert.deepEqual((await state()).counts, sample.board.counts);
-    await drag([0,3,4]);
-    await page.locator('#generate-seed').click(); await page.locator('#restart').click();
-    await page.waitForTimeout(700);
-    assert.deepEqual((await state()).counts, sample.board.counts);
-    assert.equal(await page.locator('#cancel-generation').isVisible(), false);
-    assert.equal(await page.locator('#draft-tag').textContent(), '已应用');
-    assert.ok((await page.locator('#feedback').textContent()).includes('重开'));
-    assert.ok((await page.locator('#debug-generation').textContent()).includes('CANCELLED'));
-    await page.locator('#seed').fill('1'); await page.locator('#generate-seed').click();
-    // Repeated clicks during an active request are disabled; cancel and start a new request.
-    assert.equal(await page.locator('#generate-seed').isDisabled(),true);
-    await page.locator('#cancel-generation').click();
-    await page.locator('#seed').fill('20261010'); await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({ state: 'attached' });
-    await page.waitForTimeout(700);
-    assert.deepEqual(await exportLevel('algorithm-v1-after-cancel'),fixture);
+  await run('拖动FORTY经过目标FOR不提交，松手完成FORTY，共享格次数只减一次',async()=>{
+    const hello=fixture.targets.find(t=>t.word==='FORTY'),points=await centers(hello.canonicalPath);
+    await page.mouse.move(points[0].x,points[0].y);await page.mouse.down();
+    for(const p of points.slice(1,3)) await page.mouse.move(p.x,p.y);
+    assert.equal(await page.locator('#current-word').textContent(),'FOR');assert.deepEqual((await state()).counts,fixture.initialCounts);assert.deepEqual((await state()).completed,[]);
+    for(const p of points.slice(3)) await page.mouse.move(p.x,p.y);await page.mouse.up();
+    const expected=[...fixture.initialCounts];hello.canonicalPath.forEach(cell=>expected[cell]--);
+    assert.deepEqual((await state()).counts,expected);assert.deepEqual((await state()).completed,['FORTY']);
+  });
+  await run('未知词只让格子变红，额外词收集去重不扣次数，包可查看和清空',async()=>{
+    await reset();const before=await state();await drag([0,3,6]);
+    assert.deepEqual(await state(),before);assert.equal(await page.locator('.invalid-word').count(),3);
+    assert.ok(stats.extraWords.length>0);const bonus=stats.extraWords[0],path=findWordPaths(initial.initial.board.letters,bonus,null,null,initial.initial.board)[0];
+    await drag(path);await drag(path);assert.deepEqual(await state(),before);assert.equal(await page.locator('#bonus-count').textContent(),'1');
+    await page.locator('#bonus-button').click();assert.deepEqual(await page.locator('#bonus-words li').allTextContents(),[bonus]);await page.locator('#bonus-close').click();
+    await page.locator('#restart').click();assert.equal(await page.locator('#bonus-count').textContent(),'0');
+  });
+  await run('提示箭头与路径方向一致，初始统计和解法词组使用本关V2词库',async()=>{
+    const before=await state();await page.locator('#hint').click();assert.deepEqual(await state(),before);
+    const path=fixture.targets[0].canonicalPath;
+    assert.deepEqual(await page.locator('.hint-arrow').evaluateAll(items=>items.map(el=>[Number(el.dataset.from),Number(el.dataset.to)])),path.slice(1).map((cell,i)=>[path[i],cell]));
+    assert.equal(before.statistics[0],String(stats.extraWords.length));assert.equal(before.statistics[1],`${stats.reverseWords.length} / 5`);
+    await page.locator('#solutions-count').filter({hasText:`${solutions.count} 种`}).waitFor();await page.locator('#solutions-stat').click();
+    const displayed=await page.locator('.solution-words').evaluateAll(items=>items.map(el=>[...el.children].map(child=>child.textContent)));
+    assert.deepEqual(displayed,solutions.solutions.map(solution=>solution.words));assert.ok(displayed.flat().every(isTargetAllowed));
+    await page.locator('#solutions-close').click();
+    await drag(fixture.targets[0].canonicalPath);assert.deepEqual((await state()).statistics,before.statistics);
+  });
+  await run('旧LAD/OAT关卡和伪造违规关导入拒绝，当前关卡及试玩进度保留',async()=>{
+    await importRejected(await json('../dist/sample.json'));await importRejected(await json('../examples/seed_20261010.json'));
+    const illegal=structuredClone(fixture);illegal.targets[0].word='RATED';await importRejected(illegal);
+    const broken=structuredClone(fixture);broken.initialCounts[0]++;await importRejected(broken);
+    await page.locator('#import-file').setInputFiles({name:'v2.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixture))});
+    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();assert.deepEqual((await state()).counts,fixture.initialCounts);
+  });
+  await run('正序和反序真实滑动都能清空，重开和切算法保留各自关卡状态',async()=>{
+    for(const order of [fixture.targets,[...fixture.targets].reverse()]) {
+      await reset();for(const target of order) await drag(target.canonicalPath);
+      assert.deepEqual((await state()).counts,Array(9).fill(0));assert.equal(await page.locator('#win-banner').isVisible(),true);
+    }
+    await page.locator('#restart').click();await drag(fixture.targets[0].canonicalPath);const before=await state();
+    await page.locator('#algorithm').selectOption('1');await page.locator('#algorithm').selectOption('2');assert.deepEqual(await state(),before);
     await reset();
-    await page.unroute('**/generator.worker.js');
-    await closeSettings();
   });
-  async function generateSeed(seed) {
-    await page.locator('#seed').fill(String(seed)); await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({ hasText: '生成成功' }).waitFor({ state: 'attached', timeout: 60000 });
-  }
-  await run('V1尺寸、目标数与逐词长度锁定，预算可调并共用新词库', async () => {
-    await reset();
-    for (const id of ['#board-cols','#board-rows','#word-count','#uniform-length']) assert.equal(await page.locator(id).isDisabled(),true);
-    assert.equal(await page.locator('#word-count').inputValue(),'5');
-    assert.deepEqual(await page.locator('#target-length-list option').evaluateAll(items=>items.map(el=>Number(el.textContent.match(/· (\d+)/)[1]))),[3,3,3,4,5]);
-    await openSettings('board');
-    await page.locator('#target-length-list').selectOption('4');
-    assert.equal(await page.locator('#draft-tag').textContent(),'已应用');
-    assert.deepEqual(await page.locator('#target-length-list option').evaluateAll(items=>items.map(el=>Number(el.textContent.match(/· (\d+)/)[1]))),[3,3,3,4,5]);
-    await closeSettings();
-    assert.ok((await page.locator('#config-status').textContent()).includes('V1 固定规则'));
-    assert.ok((await page.locator('#version-note').textContent()).includes('demo-test-20261010-v1'));
-    assert.ok((await page.locator('#version-note').textContent()).includes('1602'));
-    assert.equal(await page.locator('#draft-tag').textContent(), '已应用');
+  await run('预算耗尽不回退、不改当前进度；延迟Worker取消和切算法不会覆盖关卡',async()=>{
+    await drag(fixture.targets[0].canonicalPath);const before=await state();await settings('debug');
+    for(const id of ['#budget-attempt','#budget-tries','#budget-total']) await page.locator(id).fill('1');await closeSettings();
+    await page.locator('#generate-seed').click();await page.waitForFunction(()=>document.querySelector('#debug-generation').textContent.includes('SEARCH_BUDGET_EXCEEDED'));
+    assert.deepEqual(await state(),before);await settings('debug');
+    await page.locator('#budget-attempt').fill('10000');await page.locator('#budget-tries').fill('30');await page.locator('#budget-total').fill('300000');await closeSettings();
+    const workerSource=await readFile(new URL('../dist/generator.worker.js',import.meta.url),'utf8');
+    await page.route('**/generator.worker.js?*',route=>route.fulfill({contentType:'text/javascript',body:workerSource+'\nconst run=self.onmessage;self.onmessage=event=>setTimeout(()=>run(event),500);'}));
+    await page.locator('#generate-seed').click();await page.locator('#cancel-generation').click();await page.waitForTimeout(650);assert.deepEqual(await state(),before);
+    await page.locator('#generate-seed').click();await page.locator('#algorithm').selectOption('1');await page.waitForTimeout(650);assert.equal(await page.locator('#algorithm').inputValue(),'1');
+    await page.locator('#algorithm').selectOption('2');assert.deepEqual(await state(),before);await page.unroute('**/generator.worker.js?*');
   });
-  await run('平铺V1 JSON往返与重开不混入游玩状态，拒绝坏路径、次数、ID和非白名单词', async () => {
-    await generateSeed(20261010); await drag(fixture.targets[0].canonicalPath);
-    const before=await state(); assert.deepEqual(await exportLevel('algorithm-v1-partial'),fixture);
-    const mutations=[l=>l.initialCounts[0]++,l=>l.targets[1].id=l.targets[0].id,
-      l=>l.targets[0].canonicalPath=[8,4,2],l=>l.targets[0].word='ZZZ',l=>l.targets=['EAT'],l=>l.maxCellUses=4];
-    for(const mutate of mutations) {
-      const level=structuredClone(fixture); mutate(level);
-      await page.locator('#import-file').setInputFiles({name:'invalid-v1.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(level))});
-      await page.locator('#notice').filter({hasText:'导入被拒绝'}).waitFor({ state: 'attached' });
-      assert.deepEqual(await state(),before);
-    }
-    await page.locator('#restart').click();
-    assert.deepEqual((await state()).counts,fixture.initialCounts);
-    assert.deepEqual((await state()).completed,[]);
-    assert.deepEqual(await exportLevel('algorithm-v1-restarted'),fixture);
-    await page.locator('#import-file').setInputFiles({name:'seed_20261010.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixture))});
-    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();
-    assert.deepEqual(await exportLevel('algorithm-v1-imported'),fixture);
+  await run('伪造Worker成功结果仍须导入门禁，违规目标不能出现在游戏',async()=>{
+    const bad=structuredClone(fixture);bad.targets[0].word='RATED';const before=await state();
+    await page.route('**/generator.worker.js?*',route=>route.fulfill({contentType:'text/javascript',body:`self.onmessage=({data})=>self.postMessage({type:'result',requestId:data.requestId,result:{ok:true,level:${JSON.stringify(bad)},stats:{nodes:1}}});`}));
+    await page.locator('#generate-seed').click();await page.locator('#notice').filter({hasText:'关卡未通过校验'}).waitFor({state:'attached'});
+    assert.deepEqual(await state(),before);assert.equal(await page.locator('.target[data-word="RATED"]').count(),0);await page.unroute('**/generator.worker.js?*');
   });
-  await run('非法seed及预算输入不启动Worker、不改当前关卡；seed0有效', async () => {
-    await drag(fixture.targets[0].canonicalPath); const before=await state();
-    for(const seed of ['', '-1', '1.5', 'abc', '4294967296']) {
-      await page.locator('#seed').fill(seed); await page.locator('#generate-seed').click();
-      assert.ok((await page.locator('#notice').textContent()).includes('seed 必须'));
-      assert.deepEqual(await state(),before); assert.equal(await page.locator('#cancel-generation').isVisible(),false);
-    }
-    await openSettings('debug');
-    await page.locator('#budget-attempt').fill('1.5'); await closeSettings(); await page.locator('#generate').click();
-    assert.ok((await page.locator('#notice').textContent()).includes('正整数')); assert.deepEqual(await state(),before);
-    await openSettings('debug'); await page.locator('#budget-attempt').fill('10000'); await closeSettings();
-    await generateSeed(0); assert.equal((await state()).seed,'0');
-    assert.equal((await exportLevel('algorithm-v1-seed-zero')).seed,0);
-  });
-  await run('多关真实拖动任意顺序清空，下一关与生成新关使用uint32种子', async () => {
-    for(const seed of [0,42,999]) {
-      await generateSeed(seed);
-      const level=await exportLevel('algorithm-v1-browser-'+seed);
-      assert.equal(level.dictionaryVersion,'demo-test-20261010-v1'); assert.equal(await page.locator('#validation-badge').textContent(),'32 / 32 通过');
-      for(const target of [...level.targets].reverse()) await drag(target.canonicalPath);
-      assert.deepEqual((await state()).counts,Array(9).fill(0));
-    }
-    await page.locator('#win-next').click(); await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({ state: 'attached' });
-    const next=await exportLevel('algorithm-v1-next'); assert.ok(Number.isInteger(next.seed) && next.seed>=0 && next.seed<=4294967295);
-    assert.deepEqual((await state()).completed,[]);
-    await page.locator('#generate').click(); await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({ state: 'attached' });
-    const fresh=await exportLevel('algorithm-v1-random'); assert.ok(Number.isInteger(fresh.seed) && fresh.seed>=0 && fresh.seed<=4294967295);
-  });
-  await run('V1同集合反向路径接受，JSON切关取消迟到Worker且保持原始数据',async()=>{
-    const rawSample={...fixture,letters:sample.board.letters,initialCounts:sample.board.counts,
-      targets:sample.targets.map((t,i)=>({id:'W'+i,word:t.word,canonicalPath:t.path}))};
-    await page.locator('#import-file').setInputFiles({name:'palindrome-v1.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(rawSample))});
-    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();
-    await drag([4,3,0]); assert.deepEqual((await state()).completed,['EYE']);
-    assert.deepEqual(await exportLevel('algorithm-v1-palindrome'),rawSample);
-    await page.route('**/generator.worker.js',async route=>{
-      const original=await readFile(new URL('../dist/generator.worker.js',import.meta.url),'utf8');
-      await route.fulfill({contentType:'text/javascript',body:`${original}\nconst handler=self.onmessage;self.onmessage=event=>setTimeout(()=>handler(event),500);`});
-    });
-    await page.locator('#generate-seed').click();
-    await page.locator('#import-file').setInputFiles({name:'seed_20261010.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixture))});
-    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();
-    await drag(fixture.targets[0].canonicalPath); const before=await state();
-    await page.waitForTimeout(700); assert.deepEqual(await state(),before);
-    assert.deepEqual(await exportLevel('algorithm-v1-after-import-cancel'),fixture);
-    await page.unroute('**/generator.worker.js');
-  });
-  await run('Worker异常明确失败，保留V1当前关卡和已完成目标',async()=>{
-    const before=await state();
-    await page.route('**/generator.worker.js',route=>route.fulfill({contentType:'text/javascript',body:'self.onmessage=()=>{throw new Error("test-worker-failure")};'}));
-    await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({hasText:'生成线程未能启动'}).waitFor({ state: 'attached' });
-    assert.deepEqual(await state(),before); assert.equal(await page.locator('#cancel-generation').isVisible(),false);
-    await page.unroute('**/generator.worker.js');
-  });
-  await run('初始关卡统计按确认口径显示，悬停查看词和全部Tile分布，消除后保持不变', async () => {
-    await page.locator('#seed').fill('20261010'); await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
-    const before=(await state()).statistics;
-    assert.equal(before.reverse,'4 / 5');
-    assert.deepEqual(before.tileUses,['3','3','0','0']); assert.deepEqual(before.turns,['1','3','1']);
-    await page.locator('#reverse-word-stat').hover();
-    assert.ok((await page.locator('#hover-help').textContent()).includes('终点在起点左侧或上方'));
-    assert.ok((await page.locator('#hover-help').textContent()).includes('EAT、LOT、OAT、NEAT'));
-    await page.locator('#tile-usage-heading').hover();
-    assert.ok((await page.locator('#hover-help').textContent()).includes('1 次 3 格'));
-    await page.locator('#multi-turn-word-stat').hover();
-    assert.ok((await page.locator('#hover-help').textContent()).includes('CLOTH'));
-    await page.mouse.move(0,0);
-    for(const target of [...fixture.targets].reverse()) await drag(target.canonicalPath);
-    assert.deepEqual((await state()).statistics,before);
-    await page.locator('#restart').click(); assert.deepEqual((await state()).statistics,before);
-  });
-  await run('母词库审核默认关闭，显式内部测试后生成/导入共用新词库，旧验收保持隔离', async () => {
-    await drag(fixture.targets[0].canonicalPath); const before=await state();
+  await run('词频候选为白名单交集，空档位明确失败；版本不匹配导入拒绝，无未审核开关',async()=>{
     await page.locator('#dictionary-source').selectOption('graded');
-    await page.locator('#lexicon-status').filter({hasText:'母词库'}).waitFor({state:'attached'});
-    assert.equal(await page.locator('#unreviewed-mode').inputValue(),'false');
-    assert.equal(await page.locator('#generate-seed').isDisabled(),true);
-    assert.equal(await page.locator('#lexicon-warning').isVisible(),false);
-    assert.deepEqual(await state(),before);
-    await openSettings('lexicon'); await page.locator('#unreviewed-mode').selectOption('true');
-    await page.waitForFunction(()=>!document.querySelector('#generate-seed').disabled);
-    assert.ok((await page.locator('#lexicon-status').textContent()).includes('6,592'));
-    assert.equal(await page.locator('#lexicon-warning').isVisible(),true);
-    await closeSettings();
-    await page.locator('#seed').fill('0'); await page.locator('#generate-seed').click();
-    await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
-    const exported=await exportLevel('lexicon-generated');
-    const expected=generateLevel({},gradedDictionary,0); assert.equal(expected.ok,true); assert.deepEqual(exported,expected.level);
-    assert.ok((await page.locator('#game-level-label').textContent()).includes('词库未完成内容审核'));
-    const stats=calculateLevelStatistics(createAlgorithmSession(exported,gradedDictionary).initial,gradedDictionary);
-    const shown=(await state()).statistics;
-    assert.equal(shown.extras,String(stats.extraWordCount)); assert.equal(shown.reverse,`${stats.reverseWordCount} / 5`);
-    assert.deepEqual(shown.tileUses,[2,3,4,5].map(uses=>String(stats.usageHistogram[uses]||0)));
-    assert.deepEqual(shown.turns,[stats.straightWordCount,stats.oneTurnWordCount,stats.multiTurnWordCount].map(String));
-    await page.screenshot({path:directory+'/lexicon-desktop.png',fullPage:true});
-    for(const target of [...exported.targets].reverse()) await drag(target.canonicalPath);
-    assert.deepEqual((await state()).counts,Array(9).fill(0)); assert.deepEqual((await state()).statistics,shown);
-    await page.locator('#restart').click();
-    await page.locator('#import-file').setInputFiles({name:'graded.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
-    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();
-    await drag(exported.targets[0].canonicalPath); const progress=await state();
-    await openSettings('lexicon'); await page.locator('#unreviewed-mode').selectOption('false'); await closeSettings();
-    assert.deepEqual(await state(),progress);
-    assert.equal(await page.locator('#generate-seed').isDisabled(),true);
-    assert.ok((await page.locator('#game-level-label').textContent()).includes('词库未完成内容审核'));
-    await page.locator('#import-file').setInputFiles({name:'graded-mismatch.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
-    await page.locator('#notice').filter({hasText:'导入被拒绝'}).waitFor({state:'attached'}); assert.deepEqual(await state(),progress);
-    assert.ok((await page.locator('#notice').textContent()).includes('词库版本'));
-    await page.locator('#restart').click(); assert.deepEqual((await state()).counts,exported.initialCounts);
-    assert.deepEqual((await state()).statistics,shown);
-    await reset(); assert.equal(await page.locator('#dictionary-source').inputValue(),'legacy');
-    assert.equal(await page.locator('#lexicon-warning').isVisible(),false);
-  });
-  await run('切词库取消旧Worker，缺失索引明确报错且不回退或覆盖当前棋盘', async () => {
-    await page.route('**/generator.worker.js',async route=>{
-      const original=await readFile(new URL('../dist/generator.worker.js',import.meta.url),'utf8');
-      await route.fulfill({contentType:'text/javascript',body:`${original}\nconst handler=self.onmessage;self.onmessage=event=>setTimeout(()=>handler(event),500);`});
-    });
-    const before=await state(); await page.locator('#generate-seed').click();
-    await page.locator('#dictionary-source').selectOption('graded'); await page.waitForTimeout(700);
-    assert.deepEqual(await state(),before); assert.equal(await page.locator('#cancel-generation').isVisible(),false);
-    await page.unroute('**/generator.worker.js'); await page.locator('#dictionary-source').selectOption('legacy');
-    const tab=await context.newPage();
-    await tab.route('**/lexicon/dictionary.index.json',route=>route.fulfill({status:404,body:'missing'}));
-    await tab.goto(baseURL); await tab.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
-    await tab.locator('#algorithm').selectOption('2'); const initial=await state(tab);
-    await tab.locator('#dictionary-source').selectOption('graded');
-    await tab.locator('#notice').filter({hasText:'词库读取失败'}).waitFor({state:'attached'});
-    assert.deepEqual(await state(tab),initial); assert.equal(await tab.locator('#generate-seed').isDisabled(),true);
-    await tab.close();
-  });
-  await run('9:16画面尺寸与缩放可调整，保持关卡和进度', async () => {
-    const before = await state();
-    await openSettings('view');
-    await page.locator('#preview-device').selectOption('450x800');
-    await page.locator('#preview-zoom').selectOption('100');
-    assert.deepEqual(await page.locator('#game-viewport').evaluate(el => [el.offsetWidth, el.offsetHeight]), [450, 800]);
-    const big = await page.locator('.viewport-sizer').boundingBox();
-    await page.locator('#preview-zoom').selectOption('75');
-    const small = await page.locator('.viewport-sizer').boundingBox();
-    assert.ok(small.width < big.width && small.height < big.height);
-    await page.locator('#preview-device').selectOption('360x640');
-    assert.deepEqual(await page.locator('#game-viewport').evaluate(el => [el.offsetWidth, el.offsetHeight]), [360, 640]);
-    assert.deepEqual(await state(), before);
-    await page.locator('#preview-device').selectOption('auto');
-    await page.locator('#preview-zoom').selectOption('100');
-    await closeSettings();
-    await reset();
-  });
-  await run('玩法悬停提示与移动端收起编辑器，真实触摸拖动', async () => {
-    await page.locator('#rules-button').hover(); assert.equal(await page.locator('#hover-help').isVisible(), true);
-    assert.ok((await page.locator('#hover-help').textContent()).includes('松手提交'));
-    await page.mouse.move(0,0); assert.equal(await page.locator('#hover-help').isVisible(),false);
-    await page.locator('#rules-button').focus(); assert.equal(await page.locator('#hover-help').isVisible(),true);
-    await page.keyboard.press('Escape'); assert.equal(await page.locator('#hover-help').isVisible(),false);
-    const mobileContext = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: 'reduce' });
-    const mobile = await mobileContext.newPage(); mobile.on('pageerror', error => errors.push(error.message));
-    await mobile.goto(baseURL); await mobile.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor({ state: 'attached' });
-    assert.equal((await fitsPortrait(mobile)).fits,true);
-    assert.ok(Math.abs((await fitsPortrait(mobile)).ratio-9/16)<.001);
-    assert.equal(await mobile.locator('.editor-panel').isVisible(),false);
-    await mobile.screenshot({ path:directory+'/source-mobile.png',fullPage:true });
-    const native=convertSourceLevel(sourceBanks.english.levels[sourceBanks.english.orders.main[0]],{ language:'english',order:'main',position:1 });
-    const nativePoints=await centers(native.targets[0].path,mobile);
-    const nativeTouch=await mobileContext.newCDPSession(mobile);
-    await nativeTouch.send('Input.dispatchTouchEvent',{ type:'touchStart',touchPoints:[nativePoints[0]] });
-    for (const point of nativePoints.slice(1)) await nativeTouch.send('Input.dispatchTouchEvent',{ type:'touchMove',touchPoints:[point] });
-    await nativeTouch.send('Input.dispatchTouchEvent',{ type:'touchEnd',touchPoints:[] });
-    await mobile.locator('.target.completed').filter({ hasText:'ICE' }).waitFor();
-    assert.deepEqual((await state(mobile)).completed,['ICE']);
-    await openEditor(mobile); await mobile.locator('#algorithm').selectOption('2');
-    await mobile.locator('#validation-badge').filter({ hasText:'32 / 32 通过' }).waitFor({ state: 'attached' });
-    await mobile.locator('#editor-close').click();
-    assert.equal(await mobile.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth && document.documentElement.scrollHeight <= window.innerHeight), true);
-    await mobile.screenshot({ path: `${directory}/mobile.png`, fullPage: true });
-    const points = await centers([1, 4, 7, 8], mobile);
-    const session = await mobileContext.newCDPSession(mobile);
-    await session.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [points[0]] });
-    for (let i = 1; i < 3; i++) {
-      await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [points[i]] });
-      await mobile.waitForFunction(word => document.querySelector('#current-word').textContent === word, ['F', 'FE', 'FEE'][i]);
+    const graded=createFrequencyDictionary({wordLengths:[3,3,3,4,5],tiers:[1,2,3]});
+    await generate(0);const level=await exportLevel('tsv-graded-worker-export');assert.deepEqual(level,generateLevel({},graded,0).level);
+    assert.ok(level.targets.every(t=>isTargetAllowed(t.word)));await importRejected(fixture);
+    for(const option of ['1','1,2','1,2,3','4','5','1,2,3,4,5']) {
+      const before=await state();await settings('lexicon');await page.locator('#dictionary-tier').selectOption(option);
+      const tiers=option.split(',').map(Number);const expected=createFrequencyDictionary({wordLengths:[3,3,3,4,5],tiers});
+      await page.waitForFunction(()=>!document.querySelector('#lexicon-status').textContent.includes('正在读取'));
+      assert.ok((await page.locator('#lexicon-status').textContent()).includes(`本关 ${expected.words.length.toLocaleString()} 个原形词`));
+      assert.equal(await page.locator('#unreviewed-mode').count(),0);await closeSettings();assert.deepEqual(await state(),before);
+      if(expected.words.length<5) assert.equal(await page.locator('#generate-seed').isDisabled(),true);
     }
-    assert.equal(await mobile.locator('#current-word').textContent(), 'FEE');
-    assert.deepEqual((await state(mobile)).counts, sample.board.counts);
-    await session.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [points[3]] });
-    await mobile.waitForFunction(() => document.querySelector('#current-word').textContent === 'FEED');
-    await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
-    await mobile.locator('.target.completed').filter({ hasText: 'FEED' }).waitFor();
-    assert.deepEqual((await state(mobile)).completed, ['FEED']);
-    await openEditor(mobile); await mobile.locator('#seed').fill('20261010'); await mobile.locator('#generate-seed').click();
-    await mobile.locator('#notice').filter({hasText:'生成成功'}).waitFor({ state: 'attached' });
-    assert.deepEqual((await state(mobile)).counts,fixture.initialCounts);
+    await page.locator('#dictionary-source').selectOption('common');await reset();
+  });
+  await run('目标与额外词自动收录，错误不收录，释义搜索、去重和刷新持久化',async()=>{
+    const isolated=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'}),tab=await isolated.newPage();tab.on('pageerror',error=>errors.push(error.message));
+    await tab.goto(baseURL);await tab.waitForFunction(()=>!document.querySelector('#start-game').disabled);
+    await tab.locator('#dictionary-button').click();assert.equal(await tab.locator('#dictionary-empty').isVisible(),true);await tab.locator('#dictionary-close').click();
+    await tab.locator('#start-game').click();await drag(fixture.targets[0].canonicalPath,tab);const partial=await state(tab);
+    await tab.locator('#back-lobby').click();assert.equal(await tab.locator('#dictionary-count').textContent(),'1');
+    await tab.locator('#start-game').click();assert.deepEqual(await state(tab),partial);
+    await tab.locator('#restart').click();await drag(fixture.targets[0].canonicalPath,tab);
+    await tab.locator('#restart').click();const bonus=stats.extraWords.find(word=>!isTargetAllowed(word));
+    const path=findWordPaths(initial.initial.board.letters,bonus,null,null,initial.initial.board)[0];await drag(path,tab);await drag(path,tab);await drag([0,3,6],tab);
+    await tab.locator('#back-lobby').click();assert.equal(await tab.locator('#dictionary-count').textContent(),'2');await tab.locator('#dictionary-button').click();
+    assert.deepEqual((await tab.locator('.dictionary-word-row strong').allTextContents()).sort(),['FOR',bonus].sort());
+    await tab.locator('#dictionary-search').fill('for');assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),['FOR',bonus].filter(word=>word.includes('FOR')).sort());
+    assert.equal(await tab.locator('.dictionary-entry p').first().textContent(),wordEntryFor('FOR').definition);
+    await tab.locator('#dictionary-search').fill(wordEntryFor('FOR').definition);assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),['FOR']);
+    await tab.locator('#dictionary-search').fill('不存在的释义');assert.equal(await tab.locator('#dictionary-empty').isVisible(),true);
+    await tab.locator('#dictionary-close').click();await tab.reload();await tab.waitForFunction(()=>!document.querySelector('#start-game').disabled);
+    assert.equal(await tab.locator('#lobby').isVisible(),true);assert.equal(await tab.locator('#dictionary-count').textContent(),'2');
+    await tab.locator('#dictionary-button').click();assert.equal(await tab.locator('.dictionary-entry').count(),2);
+    await tab.screenshot({path:reports+'/dictionary-mobile.png',fullPage:true});await isolated.close();
+  });
+  await run('手机真实触屏松手提交，任意顺序清空；游戏和大厅在一个屏幕内',async()=>{
+    const mobileContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1,reducedMotion:'reduce'}),mobile=await mobileContext.newPage();
+    mobile.on('pageerror',error=>errors.push(error.message));await mobile.goto(baseURL);
+    await mobile.waitForFunction(()=>!document.querySelector('#start-game').disabled);
+    await mobile.screenshot({path:reports+'/lobby-mobile.png',fullPage:true});await mobile.locator('#start-game').click();
+    const cdp=await mobileContext.newCDPSession(mobile);
     for(const target of [...fixture.targets].reverse()) {
-      const cells=await centers(target.canonicalPath,mobile);
-      await session.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[cells[0]]});
-      for(const point of cells.slice(1)) await session.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[point]});
-      await session.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+      const points=await centers(target.canonicalPath,mobile),before=await state(mobile);
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[points[0]]});
+      for(const p of points.slice(1)) await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[p]});
+      assert.deepEqual(await state(mobile),before);
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
     }
     assert.deepEqual((await state(mobile)).counts,Array(9).fill(0));
-    assert.equal((await fitsPortrait(mobile)).fits,true);
-    await mobile.screenshot({path:directory+'/algorithm-v1-mobile-completed.png',fullPage:true});
-    await mobileContext.close();
+    assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight),true);
+    await mobile.screenshot({path:reports+'/tsv-mobile-completed.png',fullPage:true});await mobileContext.close();
   });
-  await run('主界面仅Word Tile、方格目标和大数字次数，提示每段带方向箭头，错误格子变红', async () => {
-    const first=await sourceLevel('english'); await page.waitForTimeout(100);
-    assert.equal(await page.locator('.game-title-row').innerText(),'Word Tile');
-    assert.equal(await page.locator('.target-length,.hint-number,.tile-pips i').count(),0);
-    assert.equal(await page.locator('#feedback,#current-word,#game-level-label,#completion').evaluateAll(items=>items.every(item=>item.closest('.sr-only'))),true);
-    assert.deepEqual(await page.locator('.count-badge').allTextContents(),Array(9).fill('1'));
-    assert.equal(await page.locator('.target-letter').evaluateAll(items=>items.every(item=>Math.abs(item.getBoundingClientRect().width-item.getBoundingClientRect().height)<1)),true);
-    await page.locator('#hint').click();
-    assert.deepEqual(await page.locator('.hint-arrow').evaluateAll(items=>items.map(item=>[Number(item.dataset.from),Number(item.dataset.to)])),[[4,5],[5,2]]);
-    await page.screenshot({path:directory+'/player-direction-hint.png',fullPage:true});
-    const before=await state(); await drag([0,1,2]);
-    assert.deepEqual(await state(),before); assert.equal(await page.locator('.invalid-word').count(),3);
-    assert.deepEqual(await page.locator('.invalid-word').evaluateAll(items=>items.map(item=>getComputedStyle(item).backgroundColor)),Array(3).fill('rgb(251, 217, 213)'));
-    await page.screenshot({path:directory+'/player-invalid-word.png',fullPage:true});
-    await page.locator('.invalid-word').first().waitFor({state:'detached'});
-    await drag(first.targets[0].path);
-    assert.deepEqual(await page.locator('.target.completed .target-letter').allTextContents(),['I','C','E']);
-    assert.equal(await page.locator('.tile.empty .count-badge').evaluateAll(items=>items.every(item=>item.hidden)),true);
-  });
-  await run('单词包可查看，重复词不新增，切算法保留各包，重开清空，新词库选项不改当前验词', async () => {
-    const second=await sourceLevel('english','main',2), before=await state();
-    await drag(rawPaths(second,'FRO')[0]); await drag(rawPaths(second,'FRO')[0]);
-    assert.deepEqual(await state(),before); assert.equal(await page.locator('#bonus-count').textContent(),'1');
-    await page.locator('#bonus-button').click(); assert.deepEqual(await page.locator('#bonus-words li').allTextContents(),['FRO']);
-    await page.screenshot({path:directory+'/player-extra-words.png',fullPage:true});
-    await page.keyboard.press('Escape'); assert.equal(await page.locator('#bonus-dialog').isVisible(),false);
-    await page.locator('#algorithm').selectOption('2'); await page.locator('#dictionary-source').selectOption('legacy');
-    await page.locator('#import-file').setInputFiles({name:'fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixture))});
-    await page.waitForFunction(()=>document.querySelector('#active-seed').textContent==='20261010' && document.querySelectorAll('.target.completed').length===0);
-    const initial=await state(); await drag([7,4,3]);
-    assert.deepEqual(await state(),initial); assert.equal(await page.locator('#bonus-count').textContent(),'1');
-    await page.locator('#bonus-button').click(); assert.deepEqual(await page.locator('#bonus-words li').allTextContents(),['NOT']); await page.locator('#bonus-close').click();
-    await page.locator('#algorithm').selectOption('1'); assert.equal(await page.locator('#bonus-count').textContent(),'1');
-    await page.locator('#bonus-button').click(); assert.deepEqual(await page.locator('#bonus-words li').allTextContents(),['FRO']); await page.locator('#bonus-close').click();
-    await page.locator('#algorithm').selectOption('2'); assert.equal(await page.locator('#bonus-count').textContent(),'1');
-    await page.locator('#dictionary-source').selectOption('graded'); await page.locator('#lexicon-status').filter({hasText:'母词库'}).waitFor({state:'attached'});
-    await drag([4,7,8]); assert.equal(await page.locator('#bonus-count').textContent(),'2');
-    await page.locator('#restart').click(); assert.equal(await page.locator('#bonus-count').textContent(),'0');
-    await page.locator('#bonus-button').click(); assert.equal(await page.locator('#bonus-empty').isVisible(),true); await page.locator('#bonus-close').click();
-    await page.locator('#dictionary-source').selectOption('legacy');
-  });
-  await run('原包第3关没有倒序词，4种解法可查看，初始统计不受试玩影响', async () => {
-    const third=await sourceLevel('english','main',3);
-    assert.equal(await page.locator('#reverse-word-count').textContent(),'0 / 4');
-    await page.locator('#solutions-count').filter({hasText:'4 种'}).waitFor();
-    await page.locator('#solutions-stat').click();
-    assert.equal(await page.locator('.solution-item').count(),4);
-    const wordSets=await page.locator('.solution-words').evaluateAll(items=>items.map(item=>[...item.children].map(chip=>chip.textContent).sort().join('|')).sort());
-    assert.deepEqual(wordSets,['AUNT|BAG|BET|BUN','AUNT|BAG|BET|NUB','AUNT|BET|BUN|GAB','AUNT|BET|GAB|NUB']);
-    assert.equal(await page.locator('.solution-current').textContent(),'当前目标');
-    await page.locator('#solutions-help').hover();
-    assert.equal(await page.locator('#hover-help').evaluate(el=>el.closest('dialog')?.id),'solutions-dialog');
-    assert.ok((await page.locator('#hover-help').textContent()).includes('试玩仍按当前目标词判定'));
-    await page.mouse.move(0,0); await page.screenshot({path:directory+'/level-solutions.png',fullPage:true});
-    await page.keyboard.press('Escape'); assert.equal(await page.locator('#solutions-dialog').isVisible(),false);
-    await drag(third.targets.find(target=>target.word==='BAG').path);
-    assert.equal(await page.locator('#solutions-count').textContent(),'4 种');
-  });
-  await run('切关终止旧解法线程；线程异常显示未完成且不污染关卡，重新统计可恢复', async () => {
-    await page.route('**/solutions.worker.js?*',route=>route.fulfill({contentType:'text/javascript',body:'import {calculateLevelSolutions} from "./core/level-solutions.js?v=10"; self.onmessage=({data})=>setTimeout(()=>self.postMessage({requestId:data.requestId,result:data.level.source.original.id===191602?{ok:true,count:999,solutions:[]}:calculateLevelSolutions(data.level,data.dictionary)}),600);'}));
-    await page.locator('#restart').click();
-    const first=await sourceLevel('english');
-    await page.locator('#solutions-count').filter({hasText:'1 种'}).waitFor(); await page.waitForTimeout(700);
-    assert.equal(await page.locator('#solutions-count').textContent(),'1 种');
-    await page.unroute('**/solutions.worker.js?*');
-    await page.route('**/solutions.worker.js?*',route=>route.fulfill({contentType:'text/javascript',body:'self.onmessage=()=>{throw new Error("test-solution-worker-failure")};'}));
-    await page.locator('#restart').click(); await page.locator('#solutions-count').filter({hasText:'未完成'}).waitFor();
-    const before=await state(); await page.locator('#solutions-stat').click();
-    assert.ok((await page.locator('#solutions-status').textContent()).includes('未能完成')); assert.equal(await page.locator('.solution-item').count(),0);
-    await page.unroute('**/solutions.worker.js?*'); await page.locator('#solutions-retry').click();
-    await page.locator('#solutions-title').filter({hasText:'1 种'}).waitFor();
-    assert.deepEqual(await state(),before); assert.equal(await page.locator('.solution-item').count(),1); await page.locator('#solutions-close').click();
-    for (const target of first.targets) await drag(target.path);
-    assert.equal(await page.locator('#solutions-count').textContent(),'1 种');
-  });
-  await run('新词库真实15解关卡支持翻页，不因不同路径或顺序重复计数', async () => {
-    await page.locator('#algorithm').selectOption('2'); await page.locator('#dictionary-source').selectOption('graded');
-    await page.locator('#lexicon-status').filter({hasText:'母词库'}).waitFor({state:'attached'});
-    await openSettings('lexicon'); await page.locator('#unreviewed-mode').selectOption('true'); await page.waitForFunction(()=>!document.querySelector('#generate-seed').disabled); await closeSettings();
-    await page.locator('#seed').fill('9'); await page.locator('#generate-seed').click(); await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
-    await page.locator('#solutions-count').filter({hasText:'15 种'}).waitFor(); await page.locator('#solutions-stat').click();
-    assert.equal(await page.locator('.solution-item').count(),12); assert.equal(await page.locator('#solutions-page').textContent(),'1 / 2');
-    assert.equal(await page.locator('#solutions-prev').isDisabled(),true); await page.locator('#solutions-next').click();
-    assert.equal(await page.locator('.solution-item').count(),3); assert.equal(await page.locator('#solutions-page').textContent(),'2 / 2');
-    assert.equal(await page.locator('#solutions-next').isDisabled(),true); await page.locator('#solutions-prev').click(); assert.equal(await page.locator('.solution-item').count(),12);
-    await page.locator('#solutions-close').click();
-  });
-  assert.deepEqual(errors, []);
-  await writeFile(`${directory}/browser.json`, JSON.stringify({ passed: cases.length, failed: 0, pageErrors: errors, cases, screenshots: ['source-desktop.png','source-mobile.png','source-completed.png','source-18-targets.png','source-long-word.png','desktop.png','mobile.png','completed.png','algorithm-v1-generated.png','algorithm-v1-completed.png','algorithm-v1-mobile-completed.png'] }, null, 2) + '\n');
-  console.log(`Browser acceptance: ${cases.length} passed, no page errors.`);
-} catch (error) {
-  await page.screenshot({ path: `${directory}/browser-failure.png`, fullPage: true });
-  await writeFile(`${directory}/browser.json`, JSON.stringify({ passed: cases.length, failed: 1, cases, errors, failure: error.stack }, null, 2) + '\n');
+  assert.deepEqual(errors,[]);
+  await writeFile(reports+'/tsv-browser.json',JSON.stringify({url:baseURL,contentPolicyVersion:POLICY_VERSION,wordlistVersion:WORDLIST_VERSION,passed:cases.length,pageErrors:errors,cases},null,2)+'\n');
+  console.log(`TOTAL ${cases.length}/${cases.length}, page errors: ${errors.length}`);
+} catch(error) {
+  await page.screenshot({path:reports+'/tsv-browser-failure.png',fullPage:true});
+  await writeFile(reports+'/tsv-browser-failure.json',JSON.stringify({passed:cases.length,cases,pageErrors:errors,error:error.stack},null,2)+'\n');
   throw error;
 } finally { await browser.close(); }

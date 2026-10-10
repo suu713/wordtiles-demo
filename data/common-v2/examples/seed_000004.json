@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 4,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "R",
+    "A",
+    "E",
+    "I",
+    "S",
+    "T",
+    "T",
+    "A",
+    "P"
+  ],
+  "initialCounts": [
+    2,
+    1,
+    2,
+    2,
+    3,
+    2,
+    3,
+    2,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "SIR",
+      "canonicalPath": [
+        4,
+        3,
+        0
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "SIT",
+      "canonicalPath": [
+        4,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "TAP",
+      "canonicalPath": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "TEAR",
+      "canonicalPath": [
+        5,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "TASTE",
+      "canonicalPath": [
+        6,
+        7,
+        4,
+        5,
+        2
+      ]
+    }
+  ]
+}

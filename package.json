@@ -1,13 +1,14 @@
 {
   "name": "wordtiles-local-editor",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build:algorithm": "node scripts/build-algorithm.mjs",
-    "test": "node --test tests/rules.test.mjs tests/generator.test.mjs tests/editor.test.mjs tests/source.test.mjs tests/algorithm-v1.test.mjs tests/statistics.test.mjs tests/lexicon.test.mjs tests/solutions.test.mjs tests/bonus.test.mjs",
-    "package:lexicon": "node scripts/package-lexicon.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "package:words": "node scripts/package-wordlist.mjs",
+    "test:whitelist": "node data/common-v2/tests/test-gate.mjs",
     "test:lexicon": "node scripts/benchmark-lexicon.mjs 100",
     "test:source": "node scripts/verify-source-levels.mjs",
     "test:portrait": "node scripts/check-portrait.mjs",

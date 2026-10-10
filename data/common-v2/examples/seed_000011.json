@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5",
+  "seed": 11,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "W",
+    "A",
+    "M",
+    "A",
+    "P",
+    "E",
+    "Y",
+    "L",
+    "E"
+  ],
+  "initialCounts": [
+    2,
+    2,
+    1,
+    3,
+    2,
+    1,
+    3,
+    2,
+    2
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "EEL",
+      "canonicalPath": [
+        5,
+        8,
+        7
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "PAY",
+      "canonicalPath": [
+        4,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "WAY",
+      "canonicalPath": [
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "AWAY",
+      "canonicalPath": [
+        1,
+        0,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "MAPLE",
+      "canonicalPath": [
+        2,
+        1,
+        4,
+        7,
+        8
+      ]
+    }
+  ]
+}

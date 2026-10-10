@@ -149,13 +149,13 @@ export function validateLevel(level, dictionary, { onVisit = null } = {}) {
   report.valid = !report.errors.length && statesPass; return report;
 }
 export class GameSession {
-  constructor(level,dictionary,{ validator=validateLevel }={}) {
+  constructor(level,dictionary,{ validator=validateLevel,bonusDictionary=dictionary }={}) {
     const report=validator(level,dictionary);
     if (!report.valid) throw Object.assign(new Error('关卡未通过完整校验'),{ report });
     this.initial=freeze(clone(level)); this.report=report;
     this.neighbors=createNeighbors(level.board.rows,level.board.cols);
     this.counts=[...level.board.counts]; this.completed=new Set(); this.status='playing'; this.debug=null;
-    this.bonusCompleted=new Set(); this.bonusDictionaryInput=dictionary; this.bonusWords=null;
+    this.bonusCompleted=new Set(); this.bonusDictionaryInput=bonusDictionary; this.bonusWords=null;
   }
   get pending() { return this.initial.targets.filter(t=>!this.completed.has(t.word)); }
   get total() { return this.counts.reduce((a,b)=>a+b,0); }

@@ -9,3 +9,4 @@ reports/apk-analysis/
 __pycache__/
 *.py[cod]
 wordtiles_lexicon_builder/lexicon-output/
+wordtiles_lexicon_builder/lexicon-clean-v2/

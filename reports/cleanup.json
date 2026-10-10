@@ -1,0 +1,19 @@
+{
+  "removedFiles": 1273,
+  "removedBytes": 192453161.0,
+  "removedMB": 183.54,
+  "scope": [
+    "temporary virtual environment and investigation files",
+    "superseded V2 frequency build output",
+    "obsolete screenshots and intermediate browser exports",
+    "unused frequency packaging modules"
+  ],
+  "preserved": [
+    "user Downloads/words.tsv",
+    "data/words.tsv",
+    "original dictionaries",
+    "source APK banks",
+    "original lexicon-output mother library",
+    "source code and regression reports"
+  ]
+}
