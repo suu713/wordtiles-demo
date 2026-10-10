@@ -26,6 +26,10 @@ jobs:
         run: npm run build:algorithm
       - name: Run rules and integration tests
         run: npm test
+      - name: Run lexicon classifier boundary tests
+        run: python3 -m unittest discover -s wordtiles_lexicon_builder -p test_classifier.py -v
+      - name: Validate 100 seeds with the expanded lexicon
+        run: npm run test:lexicon
       - name: Validate 1000 generated levels and all completion orders
         run: npm run test:batch
       - name: Configure GitHub Pages

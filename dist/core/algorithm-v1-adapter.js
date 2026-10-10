@@ -17,6 +17,9 @@ function toDemoLevel(level) {
 }
 export function validateAlgorithmLevel(level, dictionary) {
   if (!isV1Level(level)) return validateDemo(level, dictionary);
+  if (level.dictionaryVersion !== dictionary?.version) return {
+    valid: false, errors: [{ code: 'DICTIONARY_VERSION', message: '关卡词库版本与当前运行时词库不一致，请选择生成本关时的词库、频率档位和审核模式。' }],
+  };
   const algorithmValidation = validateV1(level, dictionary);
   if (!algorithmValidation.ok) return {
     valid: false,
@@ -31,6 +34,7 @@ export function createAlgorithmSession(level, dictionary) {
   if (!report.valid) throw Object.assign(new Error('关卡未通过完整校验'), { report });
   const normalized = isV1Level(level) ? toDemoLevel(level) : level;
   const session = new GameSession(normalized, dictionary, { validator: () => report });
+  Object.defineProperty(session, 'dictionary', { value: dictionary });
   session.exportInitial = freeze(clone(level));
   return session;
 }

@@ -1,0 +1,15 @@
+test_case_flag_not_claimed_proper_noun (test_classifier.ClassifierTests.test_case_flag_not_claimed_proper_noun) ... ok
+test_invalid_scores_rejected (test_classifier.ClassifierTests.test_invalid_scores_rejected) ... ok
+test_missing_is_unrated (test_classifier.ClassifierTests.test_missing_is_unrated) ... ok
+test_no_length_cutoff (test_classifier.ClassifierTests.test_no_length_cutoff) ... ok
+test_no_punctuation_stripping (test_classifier.ClassifierTests.test_no_punctuation_stripping) ... ok
+test_original_case_is_preserved (test_classifier.ClassifierTests.test_original_case_is_preserved) ... ok
+test_sort_is_deterministic (test_classifier.ClassifierTests.test_sort_is_deterministic) ... ok
+test_thresholds (test_classifier.ClassifierTests.test_thresholds) ... ok
+test_unreviewed_never_production_approved (test_classifier.ClassifierTests.test_unreviewed_never_production_approved) ... ok
+test_zero_serializes_to_null_score (test_classifier.ClassifierTests.test_zero_serializes_to_null_score) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK

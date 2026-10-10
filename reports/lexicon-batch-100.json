@@ -1,0 +1,2075 @@
+{
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "en-frequency-v1-0d61aa0f3d623259-i8d5ae8211b75-wordtiles-human-review-v1-r4f53cda18c2b-l3_4_5-t1_2_3-pending-test",
+  "dictionaryWords": 6592,
+  "motherVersion": "en-frequency-v1-0d61aa0f3d623259",
+  "masterSha256": "8d5ae8211b7557d41d80e633d80b14da85df62e15fae5392685c316278d951bf",
+  "reviewSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "reviewWarning": "词库未完成内容审核；本次为显式开放未审核词的内部算法测试，不能作为产品内容验收。",
+  "approvedCount": 0,
+  "selection": {
+    "wordLengths": [
+      3,
+      3,
+      3,
+      4,
+      5
+    ],
+    "tiers": [
+      1,
+      2,
+      3
+    ],
+    "allowUnreviewed": true
+  },
+  "config": {
+    "maxNodesPerAttempt": 10000,
+    "maxAttempts": 30,
+    "maxTotalNodes": 300000
+  },
+  "seedRange": [
+    0,
+    99
+  ],
+  "succeeded": 100,
+  "failed": 0,
+  "successRate": 1,
+  "distinctTargetSets": 100,
+  "targetTierDistribution": [
+    {
+      "tier": 1,
+      "count": 52,
+      "proportion": 0.104
+    },
+    {
+      "tier": 2,
+      "count": 139,
+      "proportion": 0.278
+    },
+    {
+      "tier": 3,
+      "count": 309,
+      "proportion": 0.618
+    },
+    {
+      "tier": 4,
+      "count": 0,
+      "proportion": 0
+    },
+    {
+      "tier": 5,
+      "count": 0,
+      "proportion": 0
+    },
+    {
+      "tier": null,
+      "count": 0,
+      "proportion": 0
+    }
+  ],
+  "independentStatesChecked": 3200,
+  "actualOrdersReplayed": 12000,
+  "elapsedMs": 941,
+  "results": [
+    {
+      "seed": 0,
+      "ok": true,
+      "words": [
+        "EMO",
+        "ROM",
+        "TIE",
+        "TROT",
+        "CUTIE"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 26848,
+        "currentAttemptNodes": 6848,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 1,
+      "ok": true,
+      "words": [
+        "BOR",
+        "JAR",
+        "ROC",
+        "ARIA",
+        "ARBOR"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6493,
+        "currentAttemptNodes": 6493,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 2,
+      "ok": true,
+      "words": [
+        "APC",
+        "CPA",
+        "TLC",
+        "MELT",
+        "CALEB"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 25594,
+        "currentAttemptNodes": 5594,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 3,
+      "ok": true,
+      "words": [
+        "AMD",
+        "ONE",
+        "ROD",
+        "REDO",
+        "DREAM"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9569,
+        "currentAttemptNodes": 9569,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 4,
+      "ok": true,
+      "words": [
+        "HUG",
+        "SKA",
+        "UGH",
+        "HUGH",
+        "PEAKS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8264,
+        "currentAttemptNodes": 8264,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 5,
+      "ok": true,
+      "words": [
+        "HEM",
+        "MEH",
+        "SSH",
+        "SKYE",
+        "MESSY"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4222,
+        "currentAttemptNodes": 4222,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 6,
+      "ok": true,
+      "words": [
+        "ERS",
+        "ROE",
+        "RON",
+        "VINE",
+        "LEONE"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 19647,
+        "currentAttemptNodes": 9647,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 7,
+      "ok": true,
+      "words": [
+        "MEL",
+        "MOB",
+        "OLE",
+        "SOBS",
+        "MELON"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5614,
+        "currentAttemptNodes": 5614,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 8,
+      "ok": true,
+      "words": [
+        "ASS",
+        "CUM",
+        "SAS",
+        "MUCK",
+        "SASSY"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 19469,
+        "currentAttemptNodes": 9469,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 9,
+      "ok": true,
+      "words": [
+        "AMI",
+        "MUN",
+        "RAN",
+        "BRIM",
+        "RAMON"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4632,
+        "currentAttemptNodes": 4632,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 10,
+      "ok": true,
+      "words": [
+        "POT",
+        "SSE",
+        "TOP",
+        "TOYS",
+        "KEEPS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 3820,
+        "currentAttemptNodes": 3820,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 11,
+      "ok": true,
+      "words": [
+        "ART",
+        "FAB",
+        "SSR",
+        "RAFT",
+        "BLISS"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 16435,
+        "currentAttemptNodes": 6435,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 12,
+      "ok": true,
+      "words": [
+        "FOL",
+        "ROO",
+        "TOR",
+        "TOOL",
+        "SCARF"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4827,
+        "currentAttemptNodes": 4827,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 13,
+      "ok": true,
+      "words": [
+        "DUN",
+        "MOS",
+        "UNI",
+        "OMNI",
+        "SOUTH"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8640,
+        "currentAttemptNodes": 8640,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 14,
+      "ok": true,
+      "words": [
+        "ENT",
+        "TAB",
+        "YEN",
+        "STAB",
+        "GENUS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4853,
+        "currentAttemptNodes": 4853,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 15,
+      "ok": true,
+      "words": [
+        "AVE",
+        "LEV",
+        "LIE",
+        "MANI",
+        "VENUE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4197,
+        "currentAttemptNodes": 4197,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 16,
+      "ok": true,
+      "words": [
+        "AID",
+        "DEF",
+        "ORR",
+        "FEAR",
+        "IDEAL"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 3875,
+        "currentAttemptNodes": 3875,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 17,
+      "ok": true,
+      "words": [
+        "AGE",
+        "ELI",
+        "LAG",
+        "EVIL",
+        "GRAVE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4851,
+        "currentAttemptNodes": 4851,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 18,
+      "ok": true,
+      "words": [
+        "INA",
+        "ING",
+        "UNA",
+        "JUNG",
+        "ANIME"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5426,
+        "currentAttemptNodes": 5426,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 19,
+      "ok": true,
+      "words": [
+        "BRO",
+        "MOB",
+        "ORB",
+        "SPOT",
+        "ROOMS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5415,
+        "currentAttemptNodes": 5415,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 20,
+      "ok": true,
+      "words": [
+        "APE",
+        "BCE",
+        "DOG",
+        "DOGS",
+        "PACED"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 13000,
+        "currentAttemptNodes": 3000,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 21,
+      "ok": true,
+      "words": [
+        "HAP",
+        "ICU",
+        "KIA",
+        "CASH",
+        "HAIKU"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 3188,
+        "currentAttemptNodes": 3188,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 22,
+      "ok": true,
+      "words": [
+        "INC",
+        "OLD",
+        "WIN",
+        "INCL",
+        "LOWRY"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6808,
+        "currentAttemptNodes": 6808,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 23,
+      "ok": true,
+      "words": [
+        "COW",
+        "LEW",
+        "MAC",
+        "MACS",
+        "SWELL"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8572,
+        "currentAttemptNodes": 8572,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 24,
+      "ok": true,
+      "words": [
+        "BEG",
+        "BIG",
+        "THU",
+        "BILL",
+        "LIGHT"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 14150,
+        "currentAttemptNodes": 4150,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 25,
+      "ok": true,
+      "words": [
+        "REF",
+        "SER",
+        "SUB",
+        "SUBS",
+        "WAFER"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 18779,
+        "currentAttemptNodes": 8779,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 26,
+      "ok": true,
+      "words": [
+        "BUG",
+        "EGG",
+        "GEL",
+        "BUGS",
+        "LAMBS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4278,
+        "currentAttemptNodes": 4278,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 27,
+      "ok": true,
+      "words": [
+        "MOS",
+        "REC",
+        "ROC",
+        "MICE",
+        "FROST"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5765,
+        "currentAttemptNodes": 5765,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 28,
+      "ok": true,
+      "words": [
+        "KAY",
+        "ROT",
+        "SET",
+        "TORY",
+        "WORKS"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 13888,
+        "currentAttemptNodes": 3888,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 29,
+      "ok": true,
+      "words": [
+        "DUO",
+        "LCD",
+        "TLC",
+        "WHOA",
+        "ADULT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6658,
+        "currentAttemptNodes": 6658,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 30,
+      "ok": true,
+      "words": [
+        "MAR",
+        "OBI",
+        "ROB",
+        "RAFT",
+        "OBAMA"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5748,
+        "currentAttemptNodes": 5748,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 31,
+      "ok": true,
+      "words": [
+        "EOS",
+        "IST",
+        "LEO",
+        "TIER",
+        "ROSIE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5432,
+        "currentAttemptNodes": 5432,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 32,
+      "ok": true,
+      "words": [
+        "HEM",
+        "MEH",
+        "OLE",
+        "LORD",
+        "RHYME"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7810,
+        "currentAttemptNodes": 7810,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 33,
+      "ok": true,
+      "words": [
+        "OLD",
+        "SIS",
+        "SOL",
+        "HOSE",
+        "LOSES"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 15875,
+        "currentAttemptNodes": 5875,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 8,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 34,
+      "ok": true,
+      "words": [
+        "HAE",
+        "JAR",
+        "ORR",
+        "RAJA",
+        "ERROR"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9331,
+        "currentAttemptNodes": 9331,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 35,
+      "ok": true,
+      "words": [
+        "CHI",
+        "DOC",
+        "ODD",
+        "DIFF",
+        "CHICO"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6276,
+        "currentAttemptNodes": 6276,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 36,
+      "ok": true,
+      "words": [
+        "EMP",
+        "MPH",
+        "VAL",
+        "KEMP",
+        "VALVE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7669,
+        "currentAttemptNodes": 7669,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 37,
+      "ok": true,
+      "words": [
+        "CPL",
+        "LIT",
+        "SID",
+        "TIDE",
+        "SPLIT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4141,
+        "currentAttemptNodes": 4141,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 38,
+      "ok": true,
+      "words": [
+        "ARE",
+        "TOY",
+        "WHY",
+        "CRAY",
+        "WATER"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8761,
+        "currentAttemptNodes": 8761,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 39,
+      "ok": true,
+      "words": [
+        "ASK",
+        "CAL",
+        "HUD",
+        "DUCK",
+        "LOCKS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5292,
+        "currentAttemptNodes": 5292,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 40,
+      "ok": true,
+      "words": [
+        "DOT",
+        "MOO",
+        "ROT",
+        "DOOR",
+        "MOTTO"
+      ],
+      "stats": {
+        "attempts": 4,
+        "nodes": 33931,
+        "currentAttemptNodes": 3931,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 5,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 41,
+      "ok": true,
+      "words": [
+        "ION",
+        "ONT",
+        "RAY",
+        "TRAY",
+        "NOISY"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9646,
+        "currentAttemptNodes": 9646,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 42,
+      "ok": true,
+      "words": [
+        "ALE",
+        "ESL",
+        "SEE",
+        "FRET",
+        "REELS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7641,
+        "currentAttemptNodes": 7641,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 43,
+      "ok": true,
+      "words": [
+        "EDS",
+        "EPA",
+        "PAD",
+        "PEAS",
+        "BADGE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 3989,
+        "currentAttemptNodes": 3989,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 44,
+      "ok": true,
+      "words": [
+        "CAN",
+        "EYE",
+        "ICE",
+        "CANS",
+        "YEMEN"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5825,
+        "currentAttemptNodes": 5825,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 45,
+      "ok": true,
+      "words": [
+        "ONT",
+        "RUB",
+        "TAU",
+        "NORA",
+        "HAUNT"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 26473,
+        "currentAttemptNodes": 6473,
+        "completedLayouts": 3,
+        "prunedAmbiguity": 8,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 46,
+      "ok": true,
+      "words": [
+        "NIL",
+        "TIL",
+        "TWO",
+        "TILL",
+        "BLOWN"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 17580,
+        "currentAttemptNodes": 7580,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 47,
+      "ok": true,
+      "words": [
+        "DEE",
+        "EEG",
+        "MAC",
+        "CAMO",
+        "MEADE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4482,
+        "currentAttemptNodes": 4482,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 48,
+      "ok": true,
+      "words": [
+        "ORA",
+        "TAO",
+        "TRI",
+        "RIOT",
+        "TORSO"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7413,
+        "currentAttemptNodes": 7413,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 49,
+      "ok": true,
+      "words": [
+        "EBB",
+        "ETA",
+        "ITS",
+        "TEST",
+        "RABBI"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5134,
+        "currentAttemptNodes": 5134,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 50,
+      "ok": true,
+      "words": [
+        "ENT",
+        "KEN",
+        "RID",
+        "DIRK",
+        "RENTS"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 26855,
+        "currentAttemptNodes": 6855,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 51,
+      "ok": true,
+      "words": [
+        "ETC",
+        "OCT",
+        "SEN",
+        "COWS",
+        "GENES"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 29821,
+        "currentAttemptNodes": 9821,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 1,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 52,
+      "ok": true,
+      "words": [
+        "ALP",
+        "IRE",
+        "ISP",
+        "SALT",
+        "SAFER"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5597,
+        "currentAttemptNodes": 5597,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 53,
+      "ok": true,
+      "words": [
+        "HRS",
+        "MEW",
+        "MRS",
+        "EMMY",
+        "THREW"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8858,
+        "currentAttemptNodes": 8858,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 54,
+      "ok": true,
+      "words": [
+        "GER",
+        "ORC",
+        "PEG",
+        "LACY",
+        "PERCY"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6361,
+        "currentAttemptNodes": 6361,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 55,
+      "ok": true,
+      "words": [
+        "BEN",
+        "CUB",
+        "ECT",
+        "TASK",
+        "SCENT"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 13572,
+        "currentAttemptNodes": 3572,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 56,
+      "ok": true,
+      "words": [
+        "NIP",
+        "RAG",
+        "VIP",
+        "EVER",
+        "GAVIN"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6318,
+        "currentAttemptNodes": 6318,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 57,
+      "ok": true,
+      "words": [
+        "IST",
+        "JOE",
+        "PEI",
+        "PUTS",
+        "JOSIE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8314,
+        "currentAttemptNodes": 8314,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 58,
+      "ok": true,
+      "words": [
+        "DAR",
+        "EAR",
+        "ETH",
+        "WADE",
+        "EARTH"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5122,
+        "currentAttemptNodes": 5122,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 59,
+      "ok": true,
+      "words": [
+        "ETA",
+        "OPS",
+        "TAT",
+        "OOPS",
+        "TOTAL"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 14452,
+        "currentAttemptNodes": 4452,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 60,
+      "ok": true,
+      "words": [
+        "ABE",
+        "LES",
+        "SLY",
+        "BALL",
+        "TILES"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6678,
+        "currentAttemptNodes": 6678,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 61,
+      "ok": true,
+      "words": [
+        "BAS",
+        "BIT",
+        "COT",
+        "BITE",
+        "SCOTT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9956,
+        "currentAttemptNodes": 9956,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 62,
+      "ok": true,
+      "words": [
+        "BUT",
+        "HAE",
+        "TEA",
+        "OSHA",
+        "BUTTE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4624,
+        "currentAttemptNodes": 4624,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 63,
+      "ok": true,
+      "words": [
+        "EMP",
+        "OWE",
+        "TON",
+        "TONS",
+        "TEMPT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4346,
+        "currentAttemptNodes": 4346,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 64,
+      "ok": true,
+      "words": [
+        "NOS",
+        "PAC",
+        "SON",
+        "CANT",
+        "SOAPS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6866,
+        "currentAttemptNodes": 6866,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 65,
+      "ok": true,
+      "words": [
+        "ARA",
+        "AWE",
+        "FEW",
+        "SPAR",
+        "WAFER"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5006,
+        "currentAttemptNodes": 5006,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 66,
+      "ok": true,
+      "words": [
+        "GPA",
+        "IOS",
+        "PAR",
+        "WRAP",
+        "TWIGS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5156,
+        "currentAttemptNodes": 5156,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 67,
+      "ok": true,
+      "words": [
+        "EDO",
+        "FAN",
+        "ODE",
+        "FANG",
+        "FACES"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 23821,
+        "currentAttemptNodes": 3821,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 68,
+      "ok": true,
+      "words": [
+        "MAI",
+        "REM",
+        "TRI",
+        "WIRE",
+        "EMAIL"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5350,
+        "currentAttemptNodes": 5350,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 69,
+      "ok": true,
+      "words": [
+        "SEW",
+        "SSH",
+        "WWI",
+        "HISS",
+        "EWING"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 18534,
+        "currentAttemptNodes": 8534,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 70,
+      "ok": true,
+      "words": [
+        "ADC",
+        "CDS",
+        "DAB",
+        "BOOM",
+        "CRABS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7245,
+        "currentAttemptNodes": 7245,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 71,
+      "ok": true,
+      "words": [
+        "EMU",
+        "MEL",
+        "OIL",
+        "LION",
+        "PLUME"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7536,
+        "currentAttemptNodes": 7536,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 72,
+      "ok": true,
+      "words": [
+        "ERE",
+        "LOG",
+        "OLE",
+        "LOGO",
+        "PEREZ"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7320,
+        "currentAttemptNodes": 7320,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 8,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 73,
+      "ok": true,
+      "words": [
+        "HON",
+        "IND",
+        "MRI",
+        "HONG",
+        "GRIND"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 17760,
+        "currentAttemptNodes": 7760,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 74,
+      "ok": true,
+      "words": [
+        "ANS",
+        "AWS",
+        "IMO",
+        "SWIM",
+        "MANIC"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7938,
+        "currentAttemptNodes": 7938,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 75,
+      "ok": true,
+      "words": [
+        "ASK",
+        "DAS",
+        "IDA",
+        "ROSS",
+        "DISKS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6975,
+        "currentAttemptNodes": 6975,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 76,
+      "ok": true,
+      "words": [
+        "AGO",
+        "AID",
+        "LOG",
+        "DIAL",
+        "OLLIE"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 15162,
+        "currentAttemptNodes": 5162,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 77,
+      "ok": true,
+      "words": [
+        "ASH",
+        "ETH",
+        "STE",
+        "SETS",
+        "SHREK"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 28208,
+        "currentAttemptNodes": 8208,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 78,
+      "ok": true,
+      "words": [
+        "HAE",
+        "SKY",
+        "USE",
+        "YEAH",
+        "DUCKS"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 18771,
+        "currentAttemptNodes": 8771,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 79,
+      "ok": true,
+      "words": [
+        "ACC",
+        "ICC",
+        "LIP",
+        "LORE",
+        "ERICA"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 3114,
+        "currentAttemptNodes": 3114,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 80,
+      "ok": true,
+      "words": [
+        "GEN",
+        "GER",
+        "RUN",
+        "CURT",
+        "BRENT"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 17551,
+        "currentAttemptNodes": 7551,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 81,
+      "ok": true,
+      "words": [
+        "BAG",
+        "ELI",
+        "SAG",
+        "LIAR",
+        "BASEL"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 7094,
+        "currentAttemptNodes": 7094,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 82,
+      "ok": true,
+      "words": [
+        "BRA",
+        "DEW",
+        "RAW",
+        "BOYD",
+        "WIDER"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 14837,
+        "currentAttemptNodes": 4837,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 83,
+      "ok": true,
+      "words": [
+        "MPS",
+        "STE",
+        "TAP",
+        "PALE",
+        "STARR"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 4397,
+        "currentAttemptNodes": 4397,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 84,
+      "ok": true,
+      "words": [
+        "JED",
+        "LIT",
+        "TED",
+        "JETS",
+        "STILL"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 8691,
+        "currentAttemptNodes": 8691,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 85,
+      "ok": true,
+      "words": [
+        "COB",
+        "CPU",
+        "LAM",
+        "ALUM",
+        "COULD"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 12920,
+        "currentAttemptNodes": 2920,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 86,
+      "ok": true,
+      "words": [
+        "EDS",
+        "HIP",
+        "SSE",
+        "HESS",
+        "HYPED"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9463,
+        "currentAttemptNodes": 9463,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 87,
+      "ok": true,
+      "words": [
+        "RIM",
+        "TED",
+        "TOE",
+        "MINE",
+        "INERT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 5802,
+        "currentAttemptNodes": 5802,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 88,
+      "ok": true,
+      "words": [
+        "EMS",
+        "ITS",
+        "OIL",
+        "LENS",
+        "LIMIT"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6678,
+        "currentAttemptNodes": 6678,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 3,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 89,
+      "ok": true,
+      "words": [
+        "AND",
+        "BIG",
+        "DEA",
+        "BEAN",
+        "RIGID"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 25908,
+        "currentAttemptNodes": 5908,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 2,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 90,
+      "ok": true,
+      "words": [
+        "GIS",
+        "GOO",
+        "ZOO",
+        "ZOOS",
+        "TIGHT"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 18037,
+        "currentAttemptNodes": 8037,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 91,
+      "ok": true,
+      "words": [
+        "INA",
+        "IRA",
+        "LOT",
+        "TROT",
+        "VIRAL"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 26493,
+        "currentAttemptNodes": 6493,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 10,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 92,
+      "ok": true,
+      "words": [
+        "KEW",
+        "SEE",
+        "WEE",
+        "BAKE",
+        "REESE"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 9948,
+        "currentAttemptNodes": 9948,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 93,
+      "ok": true,
+      "words": [
+        "EST",
+        "PIG",
+        "SEC",
+        "SLUG",
+        "TULIP"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 23409,
+        "currentAttemptNodes": 3409,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 94,
+      "ok": true,
+      "words": [
+        "BAR",
+        "DAB",
+        "IDS",
+        "BARS",
+        "AUDIO"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6017,
+        "currentAttemptNodes": 6017,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 95,
+      "ok": true,
+      "words": [
+        "COL",
+        "LSD",
+        "STU",
+        "DUCK",
+        "SLUTS"
+      ],
+      "stats": {
+        "attempts": 1,
+        "nodes": 6697,
+        "currentAttemptNodes": 6697,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 96,
+      "ok": true,
+      "words": [
+        "GNU",
+        "HOG",
+        "UFO",
+        "FROG",
+        "THORN"
+      ],
+      "stats": {
+        "attempts": 4,
+        "nodes": 35654,
+        "currentAttemptNodes": 5654,
+        "completedLayouts": 3,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 97,
+      "ok": true,
+      "words": [
+        "ICS",
+        "ISP",
+        "UPS",
+        "CRIB",
+        "PUBIC"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 18312,
+        "currentAttemptNodes": 8312,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 98,
+      "ok": true,
+      "words": [
+        "BBC",
+        "BBL",
+        "NAM",
+        "BALD",
+        "AMEND"
+      ],
+      "stats": {
+        "attempts": 2,
+        "nodes": 17311,
+        "currentAttemptNodes": 7311,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    },
+    {
+      "seed": 99,
+      "ok": true,
+      "words": [
+        "ORA",
+        "RAT",
+        "TAU",
+        "AUTO",
+        "TUTOR"
+      ],
+      "stats": {
+        "attempts": 3,
+        "nodes": 27275,
+        "currentAttemptNodes": 7275,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 8,
+        "prunedCoverage": 0,
+        "validationRejected": 0
+      }
+    }
+  ]
+}

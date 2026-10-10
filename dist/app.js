@@ -2,9 +2,12 @@ import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDi
 import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js';
 import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
+import { calculateLevelStatistics } from './core/level-statistics.js';
+import { createLexiconAdapter } from './core/lexicon-adapter.js';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
 let dictionary, sample, game, catalogue;
+let legacyDictionary, lexiconAdapter, lexiconPromise, dictionaryLoading = false, dictionaryLoadError = null, dictionaryRevision = 0;
 let selectedAlgorithm = 1, ready = false, busyKind = null;
 const banks = new Map(), savedSessions = new Map();
 let selection = [], hint = null, activePointer = null, worker = null, busy = false;
@@ -66,6 +69,7 @@ function checkEditor() {
     const valid = game?.initial.algorithm === 1;
     return { config, report: { valid, errors: valid ? [] : [{ message:'请选择并载入原包关卡' }], stateCount:game?.report.stateCount || 0 } };
   }
+  if (dictionaryLoading || !dictionary) return { config, report: { valid: false, errors: [{ message: dictionaryLoading ? '正在读取母词库' : dictionaryLoadError || '运行时词库不可用' }], stateCount: 32 } };
   const report = checkConfiguration(config, dictionary);
   return { config, report };
 }
@@ -109,7 +113,7 @@ function updateEditor() {
   $('#summary-letters').textContent = count === draftLengths.length ? String(draftLengths.reduce((a,b) => a+b,0)) : '—';
   const source = game?.initial.source;
   const sourceDirty = isSource && source && (source.language !== $('#source-language').value || (source.order && source.order !== $('#source-order').value) || (source.position && source.position !== Number($('#source-number').value)));
-  const dirty = !game || !report.valid || (isSource ? sourceDirty : JSON.stringify(config) !== JSON.stringify(configForLevel(game.initial)));
+  const dirty = !game || !report.valid || (isSource ? sourceDirty : JSON.stringify(config) !== JSON.stringify(configForLevel(game.initial)) || game.dictionary?.version !== dictionary?.version);
   $('#config-status').textContent = isSource
     ? (!validSourcePosition() ? '序号必须为 1～' + sourceLimit() + ' 的整数。' : dirty ? '已选新关卡，点击“载入”应用。' : '原包参数已锁定 · 固定消耗集合保证任意完成顺序。')
     : report.valid ? 'V1 固定规则：3×3 · 5 词 · 3/3/3/4/5 · 校验全部 32 种完成状态。' : report.errors.map(error => error.message).join('；') + '。';
@@ -133,9 +137,12 @@ function showMode() {
   $('#budget-fields').hidden = isSource;
   $('#debug-generation').hidden = isSource;
   $('#options-menu option[value="source"]').disabled = !isSource;
+  $('#options-menu option[value="lexicon"]').disabled = isSource;
   $('#file-action option[value="sample"]').hidden = isSource;
   $('#file-action option[value="sample"]').disabled = isSource;
   if (!isSource && $('#options-menu').value === 'source') closeSettings();
+  if (isSource && $('#settings-popover').dataset.pane === 'lexicon') closeSettings();
+  updateDictionaryUI();
   $('#word-count').max = String(isSource ? 18 : 10);
   for (const id of ['#board-cols','#board-rows','#word-count','#uniform-length']) $(id).disabled = true;
   $('#uniform-length').querySelector('option[value=""]').textContent = isSource ? '按原关卡显示' : '固定词长组合';
@@ -178,11 +185,35 @@ function applyLevelInfo(kind) {
   $('#active-seed-label').textContent = isSource ? '原关卡 ID' : '当前种子';
   const id = String(isSource ? source.original.id : game.initial.seed ?? '未提供');
   $('#active-seed').textContent = id; $('#active-seed').title = id;
-  $('#game-level-label').textContent = isSource ? '算法1' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : '算法2 · 自由找词';
+  $('#game-level-label').textContent = isSource ? '算法1' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : game.dictionary?.metadata?.reviewWarning ? '算法2 · 词库未完成内容审核' : '算法2 · 自由找词';
   if (isSource) {
     const info = catalogue?.languages.find(item => item.language === source.language);
     $('#source-library-status').textContent = (LANGUAGE_NAMES[source.language] || '原包') + ' · ID ' + source.original.id + (info ? ' · ' + info.count.toLocaleString() + ' 个不同关卡' : '');
     $('#source-meta').textContent = JSON.stringify(source.original, null, 2);
+  }
+  renderLevelStatistics();
+}
+function renderLevelStatistics() {
+  const levelDictionary = game.dictionary || dictionary;
+  const stats = calculateLevelStatistics(game.initial, levelDictionary);
+  $('#extra-word-count').textContent = String(stats.extraWordCount);
+  const extraRule = stats.extraWordSource === 'original-list'
+    ? '按原包本关 extra_words 列表统计，去重并排除目标词。'
+    : `在 ${levelDictionary.version} 词库中，统计初始棋盘能用四向相邻路径拼出的非目标词；同一格不能重复经过，同一单词的多条路径只算一次。`;
+  $('#extra-word-stat').dataset.help = extraRule + (stats.extraWords.length ? ' 单词：' + stats.extraWords.join('、') + '。' : ' 本关没有非目标词。') + ' 这是初始关卡数量，试玩时保持不变。';
+  $('#reverse-word-count').textContent = `${stats.reverseWordCount} / ${stats.targetCount}`;
+  $('#reverse-word-percent').textContent = `${Number(stats.reversePercentage.toFixed(1))}%`;
+  $('#reverse-word-stat').dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。起点在终点左侧为正序；同列或右侧都算倒序。比例 = 倒序目标数 ÷ 全部目标数。' + (stats.reverseWords.length ? ' 倒序词：' + stats.reverseWords.join('、') + '。' : ' 本关全部目标为正序。') + ' 试玩时保持不变。';
+  for (let uses = 2; uses <= 5; uses++) {
+    const cells = stats.tileUses.flatMap((count, cell) => count === uses ? [cell] : []);
+    $(`#tile-used-${uses}`).textContent = String(cells.length);
+    $(`#tile-use-stat-${uses}`).dataset.help = `恰好被 ${uses} 个目标词的参考路径使用的格子数；每个目标对同一格只算一次，非目标词不计入。` + (cells.length ? ' 格子编号：' + cells.join('、') + '。' : ' 本关没有此类格子。');
+  }
+  $('#tile-usage-heading').dataset.help = '按完整初始关卡的目标参考路径反算，显示恰好使用 2、3、4、5 次的格子数；试玩消除不会改变统计。全部分布：' + Object.entries(stats.usageHistogram).map(([uses, count]) => `${uses} 次 ${count} 格`).join('；') + '。';
+  for (const [id, matches] of [['straight', target => target.turns === 0], ['one-turn', target => target.turns === 1], ['multi-turn', target => target.turns >= 2]]) {
+    const words = stats.targetPaths.filter(matches).map(target => target.word);
+    $(`#${id}-word-count`).textContent = String(words.length);
+    $(`#${id}-word-stat`).dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。相邻两段的行进方向改变算 1 次转弯；直线为 0 拐，1 拐为恰好 1 次，多拐为 2 次及以上。' + (words.length ? ' 单词：' + words.join('、') + '。' : ' 本关没有此类目标词。');
   }
 }
 function switchAlgorithm(next) {
@@ -205,6 +236,60 @@ function switchAlgorithm(next) {
   else loadSource();
 }
 $('#algorithm').addEventListener('change', () => switchAlgorithm(Number($('#algorithm').value)));
+
+function updateDictionaryUI() {
+  const graded = $('#dictionary-source').value === 'graded';
+  $('#dictionary-tier').disabled = !graded;
+  $('#unreviewed-mode').disabled = !graded;
+  $('#lexicon-warning').hidden = selectedAlgorithm !== 2 || !graded || $('#unreviewed-mode').value !== 'true';
+  const status = $('#lexicon-status');
+  if (!graded) {
+    status.textContent = '旧验收词库 · 1,602 词';
+    status.dataset.help = '原始 demo-test-20261010-v1 测试词库保留原样，旧 seed 验收与样例使用此库。词频分档与人工审核开关仅作用于分级母词库。';
+  } else if (dictionaryLoading || !dictionary) {
+    status.textContent = dictionaryLoading ? '正在读取母词库…' : '词库读取失败';
+    status.dataset.help = dictionaryLoadError || '正在读取完整词长的候选索引和人工审核覆盖表。';
+  } else {
+    status.textContent = `母词库 ${lexiconAdapter.totalEntries.toLocaleString()} 词 · 人工通过 ${lexiconAdapter.approvedCount} 词 · 本关候选 ${dictionary.words.length.toLocaleString()} 词`;
+    status.dataset.help = `运行时版本：${dictionary.version}。按本关 3/4/5 字母、所选词频档位及审核状态提取；母词库保留 1～45 字母词。` + ($('#unreviewed-mode').value === 'true' ? '词库未完成内容审核；blocked 词始终排除。' : '未审核词不参与出题；当前没有人工通过的词时，生成会明确显示候选不足。');
+  }
+}
+async function readLexicon() {
+  if (!lexiconPromise) lexiconPromise = (async () => {
+    const responses = await Promise.all([fetch('./lexicon/dictionary.index.json'), fetch('./lexicon/review-overlay.json')]);
+    if (responses.some(response => !response.ok)) throw new Error('母词库候选索引或人工审核覆盖表读取失败');
+    const [index, overlay] = await Promise.all(responses.map(response => response.json()));
+    return createLexiconAdapter(index, overlay);
+  })().catch(error => { lexiconPromise = null; throw error; });
+  return lexiconPromise;
+}
+async function refreshDictionary(announce = true) {
+  const revision = ++dictionaryRevision;
+  cancelGeneration(true); epoch++; dictionaryLoadError = null;
+  if ($('#dictionary-source').value === 'legacy') {
+    dictionaryLoading = false; dictionary = legacyDictionary;
+  } else {
+    dictionaryLoading = true; dictionary = null; updateDictionaryUI(); updateEditor();
+    try {
+      const adapter = await readLexicon();
+      if (revision !== dictionaryRevision) return;
+      lexiconAdapter = adapter;
+      const tiers = $('#dictionary-tier').value.split(',').map(tier => tier === 'unrated' ? null : Number(tier));
+      dictionary = adapter.createRuntimeDictionary({ wordLengths: DEFAULT_CONFIG.wordLengths, tiers, allowUnreviewed: $('#unreviewed-mode').value === 'true' });
+    } catch (error) {
+      if (revision !== dictionaryRevision) return;
+      dictionaryLoadError = error.message; dictionary = null;
+    }
+    dictionaryLoading = false;
+  }
+  updateDictionaryUI(); updateEditor(); renderDebug();
+  if (announce) {
+    if (!dictionary) notice('词库读取失败：' + dictionaryLoadError + '。当前关卡保留。', 'error');
+    else if (!dictionary.words.length) notice('所选范围没有人工审核通过的词，无法生成。可在词库设置中显式开启内部测试。当前关卡保留。', 'error');
+    else notice(`运行时词库已切换，候选 ${dictionary.words.length} 词；生成后应用，当前关卡保留。`);
+  }
+}
+for (const id of ['#dictionary-source', '#dictionary-tier', '#unreviewed-mode']) $(id).addEventListener('change', () => refreshDictionary());
 
 function editorChanged() {
   const wasBusy = busy;
@@ -338,7 +423,7 @@ function renderDebug() {
   $('#debug-rejection').textContent = JSON.stringify(lastRejection || game.debug, null, 2);
   $('#version-note').textContent = game.initial.algorithm === 1
     ? '算法1 · ' + SOURCE_VERSION + ' · Word Tiles 1.4.0 · 原包从左下角起按行编号，画面与 APK 一致。需求不变量校验，未逐项枚举完成状态。'
-    : '算法2 · ' + GENERATOR_VERSION + ' · 词库 ' + dictionary.version + ' · ' + normalizeDictionary(dictionary).length + ' 个候选词。';
+    : '算法2 · ' + GENERATOR_VERSION + ' · 词库 ' + game.dictionary.version + ' · ' + normalizeDictionary(game.dictionary).length + ' 个候选词。';
 }
 function render(consumed = []) {
   if (!game) return;
@@ -408,9 +493,9 @@ function cancelGeneration(silent = false) {
     notice(previousKind === 'source' ? '载入已取消，当前关卡保留。' : '生成已取消，当前关卡保留。'); renderDebug();
   }
 }
-function loadLevel(level, kind, { syncDraft = true, dismissEditor = true } = {}) {
+function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictionaryOverride = dictionary } = {}) {
   let next;
-  try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionary); }
+  try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionaryOverride); }
   catch (error) {
     lastRejection = error.report || { message:error.message };
     notice('关卡未通过校验，当前关卡保留。详见调试面板。','error'); renderDebug(); return false;
@@ -553,7 +638,7 @@ function generate(seed) {
     notice('seed 必须为 0～4294967295 的整数。当前关卡保留。', 'error'); $('#seed').focus(); return;
   }
   cancelGeneration(true); clearSelection();
-  const id = ++requestId, initialEpoch = epoch;
+  const id = ++requestId, initialEpoch = epoch, generationDictionary = dictionary;
   const instance = new Worker(new URL('./generator.worker.js', import.meta.url), { type: 'module' });
   worker = instance; setBusy(true, 'generate'); $('#seed').value = String(seed);
   generationStats = { seed, config: budget, dictionaryVersion: dictionary.version, result: 'searching' }; renderDebug();
@@ -574,7 +659,7 @@ function generate(seed) {
       code: result.ok ? undefined : result.code, message: result.ok ? undefined : result.message,
       dictionaryReport: result.dictionaryReport, validation: result.validation };
     if (result.ok) {
-      if (loadLevel(result.level, '自动生成')) notice(`生成成功：${result.stats.nodes} 个搜索节点；完整校验 ${game.report.stateChecks}/${game.report.stateCount} 通过。`, 'success');
+      if (loadLevel(result.level, '自动生成', { dictionaryOverride: generationDictionary })) notice(`生成成功：${result.stats.nodes} 个搜索节点；完整校验 ${game.report.stateChecks}/${game.report.stateCount} 通过。`, 'success');
     } else {
       notice(`${result.message} 当前关卡和试玩进度保留。`, 'error'); renderDebug();
     }
@@ -585,7 +670,7 @@ function generate(seed) {
     generationStats = { ...generationStats, result: 'worker-error', message: event.message };
     notice('生成线程未能启动，当前关卡保留。请通过 HTTP 服务打开本 Demo。', 'error'); renderDebug();
   };
-  instance.postMessage({ requestId: id, dictionary, seed, config: budget });
+  instance.postMessage({ requestId: id, dictionary: generationDictionary, seed, config: budget });
 }
 function randomSeed() { return crypto.getRandomValues(new Uint32Array(1))[0]; }
 $('#generate').addEventListener('click', () => generate(randomSeed()));
@@ -593,8 +678,8 @@ $('#win-next').addEventListener('click', () => selectedAlgorithm === 1 ? advance
 $('#generate-seed').addEventListener('click', () => generate($('#seed').value));
 $('#seed').addEventListener('keydown', event => { if (event.key === 'Enter' && !busy) generate($('#seed').value); });
 $('#cancel-generation').addEventListener('click', () => cancelGeneration());
-$('#load-sample').addEventListener('click', () => { if (sample) loadLevel(sample, '固定样例'); });
-$('#restart').addEventListener('click', () => { if (game) { const kind = $('#level-kind').textContent; loadLevel(game.exportInitial || game.initial, kind, { syncDraft: false }); feedback('已重开。'); } });
+$('#load-sample').addEventListener('click', async () => { if (sample) { $('#dictionary-source').value = 'legacy'; await refreshDictionary(false); loadLevel(sample, '固定样例'); } });
+$('#restart').addEventListener('click', () => { if (game) { const kind = $('#level-kind').textContent; loadLevel(game.exportInitial || game.initial, kind, { syncDraft: false, dictionaryOverride: game.dictionary }); feedback('已重开。'); } });
 $('#hint').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); hint = game.hint();
@@ -611,6 +696,7 @@ $('#import-file').addEventListener('change', async event => {
     const text = await file.text();
     if (epoch !== importEpoch || requestId !== importId) return;
     const level = JSON.parse(text);
+    if (level?.schemaVersion !== 3 && (dictionaryLoading || !dictionary)) throw new Error('当前运行时词库不可用，请先选择并载入词库');
     const report = level?.schemaVersion === 3 ? validateSourceLevel(level) : validateAlgorithmLevel(level, dictionary);
     if (!report.valid) {
       lastRejection = report;
@@ -696,7 +782,7 @@ document.addEventListener('pointerover', event => {
 document.addEventListener('pointerout', event => { if (helpAnchor && !helpAnchor.contains(event.relatedTarget)) hideHelp(); });
 document.addEventListener('focusin', event => { const anchor = event.target.closest('[data-help],[data-help-from]'); if (anchor) showHelp(anchor); else hideHelp(); });
 document.addEventListener('focusout', hideHelp);
-for (const id of ['#rules-button','#editor-status']) $(id).addEventListener('click', () => showHelp($(id)));
+for (const id of ['#rules-button','#editor-status','#extra-word-stat','#reverse-word-stat','#tile-usage-heading','#tile-use-stat-2','#tile-use-stat-3','#tile-use-stat-4','#tile-use-stat-5','#straight-word-stat','#one-turn-word-stat','#multi-turn-word-stat']) $(id).addEventListener('click', () => showHelp($(id)));
 window.addEventListener('resize', () => { positionSettings(); hideHelp(); });
 for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
@@ -708,7 +794,8 @@ for (const id of ['#algorithm','#source-language','#source-order','#generate','#
 try {
   const responses = await Promise.all([fetch('./dictionary-v1.json'),fetch('./sample.json'),fetch('./source-levels/catalogue.json')]);
   if (responses.some(response => !response.ok)) throw new Error('词库、样例或原包关卡目录无法读取');
-  [dictionary,sample,catalogue] = await Promise.all(responses.map(response => response.json()));
+  [legacyDictionary,sample,catalogue] = await Promise.all(responses.map(response => response.json()));
+  dictionary = legacyDictionary;
   if (dictionary.version !== 'demo-test-20261010-v1' || !Array.isArray(dictionary.words) || dictionary.words.length !== 1602)
     throw new Error('算法2测试词库版本或数量不符合接入要求');
   ready = true;

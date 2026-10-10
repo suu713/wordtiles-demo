@@ -110,8 +110,14 @@ select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-col
 .source-actions{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:7px;margin-top:10px}
 .source-actions>button:last-child{border:1px solid #dce3d2;border-radius:7px;background:#eef4e7;color:#678854;font-size:11px}
 .primary-button{padding:11px 12px;font-size:11px;border-radius:7px;justify-content:center;gap:20px}
-.generation-section{padding:0;border:0;margin-bottom:18px}
+.generation-section{padding:0;border:0;margin-bottom:14px}
 .generation-section>label{font-size:11px;margin-bottom:7px}
+.generation-section>.dictionary-field{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.dictionary-field select{height:36px;padding:0 9px;border:1px solid #dce3d2;border-radius:6px;background:#f6f8f0;color:#486643;font-size:11px}
+.lexicon-warning{display:block;font-size:10px;color:#987237;margin:0 0 7px}
+.lexicon-status{font-size:11px;color:#6c8064;line-height:1.7;margin:10px 0 14px}
+.lexicon-links{display:flex;gap:18px;font-size:10px}
+.lexicon-links a{color:#557745;text-decoration:none}
 .seed-row{margin-bottom:10px}
 .seed-row input{padding:11px 10px;font-size:12px}
 .seed-row button{font-size:11px;padding:0 15px}
@@ -123,6 +129,22 @@ select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-col
 .editor-status{display:block;max-width:100%;border:0;background:transparent;color:#75876a;font-size:10px;padding:0;margin-top:10px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .editor-status.error{color:var(--error)}
 .editor-status.success{color:#557745}
+.level-statistics{margin-top:16px;padding:12px;border:1px solid #e0e6d5;border-radius:8px;background:#f6f8f0}
+.stat-button{border:0;padding:0;background:transparent;color:#718165;cursor:help;font-size:10px;text-align:left}
+.stat-button strong{color:#476a3a;font-weight:600}
+.stat-button small{font-size:10px;font-weight:400;margin-left:5px;color:#7a8b6d}
+.word-stat-summary{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+.word-stat-summary .stat-button{display:flex;flex-direction:column;gap:5px}
+.word-stat-summary strong{font-size:20px;line-height:23px;white-space:nowrap}
+.word-stat-summary small{font-size:12px}
+.stat-heading{display:block;margin-top:11px;margin-bottom:6px}
+.tile-use-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.tile-use-stats .stat-button{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.tile-use-stats strong{font-size:12px;white-space:nowrap}
+.tile-use-stats small{margin-left:2px;font-size:9px}
+.turn-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid #e0e6d5;margin-top:10px;padding-top:9px}
+.turn-stats .stat-button{display:flex;justify-content:space-between;align-items:center;gap:5px}
+.turn-stats strong{font-size:13px}
 .preview-column{height:100%;min-height:0;width:100%;justify-content:center;align-items:center}
 .game-viewport{box-shadow:0 12px 44px -22px #223b3333}
 .game-title-row{padding-bottom:18px;gap:12px}
@@ -188,4 +210,9 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
   .game-tools{gap:6px}
   .settings-popover{max-height:calc(100dvh - 16px)}
 }
-@media(max-height:620px) and (min-width:761px){.editor-panel{padding:16px}.editor-heading{margin-bottom:16px}.algorithm-field{margin-bottom:13px}.source-controls{margin-bottom:14px}.editor-menus{padding-top:13px}.editor-current{margin-top:13px}}
+@media(max-height:680px){.editor-panel{padding:16px}.editor-heading{margin-bottom:13px}.algorithm-field{margin-bottom:10px}.source-controls{margin-bottom:11px}.source-position-label{margin-top:12px}.editor-menus{padding-top:10px}.editor-current{margin-top:11px}.level-statistics{margin-top:12px;padding:10px}.word-stat-summary strong{font-size:18px;line-height:21px}.stat-heading{margin-top:8px}.turn-stats{margin-top:8px;padding-top:7px}}
+@media(max-height:620px){.editor-panel{padding:14px}.editor-heading{margin-bottom:11px}.algorithm-field select{height:36px}.field-grid select{height:34px}.source-navigation select{height:32px}.editor-current{margin-top:8px}.editor-status{margin-top:8px}.level-statistics{padding:9px}}
+@media(max-height:620px){.editor-heading .eyebrow{margin-bottom:3px}.algorithm-field{margin-bottom:8px;gap:5px}.source-position-label{margin-top:10px;margin-bottom:5px}.source-actions{margin-top:8px}.source-controls{margin-bottom:8px}.editor-menus{padding-top:8px}.primary-button{padding-top:9px;padding-bottom:9px}.level-statistics{margin-top:10px}.editor-status{margin-top:6px}}
+@media(max-height:580px){.editor-heading{margin-bottom:8px}.editor-heading .eyebrow{display:none}.algorithm-field select{height:32px}.field-grid select,.editor-menus select{height:32px}.level-statistics{padding:8px}.stat-heading{margin-top:6px}.turn-stats{margin-top:6px;padding-top:6px}}
+@media(max-height:680px){.generation-section>.dictionary-field{margin-bottom:8px;gap:5px}.lexicon-warning{margin-bottom:6px}.generation-section{margin-bottom:11px}}
+@media(max-height:620px){.dictionary-field select{height:32px}.seed-row input{padding-top:9px;padding-bottom:9px}.generation-section>label{margin-bottom:5px}}

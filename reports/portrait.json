@@ -12,7 +12,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": false,
-      "targetOverflow": false
+      "targetOverflow": false,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 669,
+        "clientHeight": 669,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 1366,
@@ -25,7 +39,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 669,
+        "clientHeight": 669,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 1280,
@@ -38,7 +66,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 669,
+        "clientHeight": 669,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 1024,
@@ -51,7 +93,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 550,
+        "clientHeight": 550,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 768,
@@ -64,7 +120,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 599,
+        "clientHeight": 599,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 390,
@@ -77,7 +147,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 661,
+        "clientHeight": 661,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 360,
@@ -90,7 +174,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 597,
+        "clientHeight": 597,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     },
     {
       "screenWidth": 320,
@@ -103,7 +201,21 @@
       "fits": true,
       "countOverlap": false,
       "scrollHint": true,
-      "targetOverflow": true
+      "targetOverflow": true,
+      "editorFit": {
+        "fits": true,
+        "scrollHeight": 514,
+        "clientHeight": 514,
+        "statsVisible": true,
+        "inScreen": true
+      },
+      "graded": {
+        "overflow": false,
+        "fits": true,
+        "warningFits": true,
+        "warning": "算法2 · 词库未完成内容审核",
+        "editorFits": true
+      }
     }
   ]
 }

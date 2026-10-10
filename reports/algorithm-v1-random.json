@@ -3,79 +3,79 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 991390894,
+  "seed": 2535019632,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "A",
-    "C",
-    "U",
+    "D",
     "R",
+    "D",
+    "L",
+    "I",
     "E",
-    "T",
-    "C",
+    "F",
     "A",
-    "C"
+    "R"
   ],
   "initialCounts": [
-    2,
-    2,
-    2,
-    3,
-    3,
-    3,
     1,
     1,
-    1
+    2,
+    1,
+    2,
+    3,
+    2,
+    3,
+    3
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "ARC",
+      "word": "ERA",
       "canonicalPath": [
-        0,
-        3,
-        6
+        5,
+        8,
+        7
       ]
     },
     {
       "id": "W1",
-      "word": "ARE",
+      "word": "FAR",
       "canonicalPath": [
-        0,
-        3,
-        4
+        6,
+        7,
+        8
       ]
     },
     {
       "id": "W2",
-      "word": "CUT",
+      "word": "RED",
       "canonicalPath": [
-        1,
-        2,
-        5
+        8,
+        5,
+        2
       ]
     },
     {
       "id": "W3",
-      "word": "CUTE",
+      "word": "FAIL",
       "canonicalPath": [
-        1,
-        2,
-        5,
-        4
+        6,
+        7,
+        4,
+        3
       ]
     },
     {
       "id": "W4",
-      "word": "REACT",
+      "word": "DRIED",
       "canonicalPath": [
-        3,
+        0,
+        1,
         4,
-        7,
-        8,
-        5
+        5,
+        2
       ]
     }
   ]

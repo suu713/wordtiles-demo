@@ -1,0 +1,46 @@
+{
+  "version": "en-frequency-v1-0d61aa0f3d623259",
+  "masterSha256": "8d5ae8211b7557d41d80e633d80b14da85df62e15fae5392685c316278d951bf",
+  "files": [
+    {
+      "name": "dictionary.master.json.gz",
+      "bytes": 2026877,
+      "sha256": "534cc28178e64b020bf76b456a27a8a8e88ec1ccc83a36d7f7bac114d15bd3cd"
+    },
+    {
+      "name": "dictionary.index.json",
+      "bytes": 1688681,
+      "sha256": "d83c440dc4a2a2235944fec3efaf3682b2288bb7975f5e519d9e62abc03374ac"
+    },
+    {
+      "name": "summary.json",
+      "bytes": 1250,
+      "sha256": "92526b2f61623cd02dd0c2b4b0d809ea106670b32e69377d033b6bbd30896947"
+    },
+    {
+      "name": "excluded.entries.json.gz",
+      "bytes": 97047,
+      "sha256": "3d83dc523bc1cae6e47d71b684ec2f80448f0562b69b3b7aa1e2a4ca179b2851"
+    },
+    {
+      "name": "sources/source_wordlist.txt",
+      "bytes": 1635915,
+      "sha256": "815abb6f1855304a6c3f358aa1e5ce85823140a547226ce4114386f9b796c30f"
+    },
+    {
+      "name": "sources/ESDB_Copyright.txt",
+      "bytes": 4903,
+      "sha256": "71bffd4b74ad47fff01c8b3c666e77da92737854e568850d8728024e0a53f304"
+    },
+    {
+      "name": "sources/wordfreq_NOTICE.md",
+      "bytes": 2891,
+      "sha256": "d9b104dafe63886af55e7cea7484824e32e12d4e1f57f319923dd643b36d6b15"
+    },
+    {
+      "name": "sources/wordfreq_LICENSE.txt",
+      "bytes": 675,
+      "sha256": "8990c551671a51765c4dfe9428f3e1d58dc327f49aca346a32d28cc0fcc7aa88"
+    }
+  ]
+}

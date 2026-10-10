@@ -3,28 +3,28 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 659279532,
+  "seed": 3046592736,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "C",
-    "K",
-    "U",
-    "A",
-    "P",
-    "N",
-    "R",
+    "L",
     "E",
-    "D"
+    "F",
+    "O",
+    "A",
+    "T",
+    "R",
+    "I",
+    "S"
   ],
   "initialCounts": [
-    2,
+    1,
+    1,
     1,
     1,
     3,
-    2,
-    1,
+    3,
     3,
     3,
     2
@@ -32,48 +32,48 @@
   "targets": [
     {
       "id": "W0",
-      "word": "CAP",
+      "word": "AIR",
       "canonicalPath": [
-        0,
-        3,
-        4
+        4,
+        7,
+        6
       ]
     },
     {
       "id": "W1",
-      "word": "ERA",
+      "word": "OAT",
       "canonicalPath": [
-        7,
-        6,
-        3
+        3,
+        4,
+        5
       ]
     },
     {
       "id": "W2",
-      "word": "RED",
+      "word": "SIR",
       "canonicalPath": [
-        6,
+        8,
         7,
-        8
+        6
       ]
     },
     {
       "id": "W3",
-      "word": "PACK",
+      "word": "LEFT",
       "canonicalPath": [
-        4,
-        3,
         0,
-        1
+        1,
+        2,
+        5
       ]
     },
     {
       "id": "W4",
-      "word": "UNDER",
+      "word": "STAIR",
       "canonicalPath": [
-        2,
-        5,
         8,
+        5,
+        4,
         7,
         6
       ]

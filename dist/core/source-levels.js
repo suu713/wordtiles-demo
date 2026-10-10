@@ -14,6 +14,8 @@ function inspectSource(raw) {
   if (!letters.every(letter => /^\p{L}$/u.test(letter))) throw new Error('原包字母格式不合法');
   if (!Array.isArray(raw.target_words) || raw.target_words.length < 1 || raw.target_words.length > 18 || !raw.target_words.every(t => t && typeof t.word === 'string' && /^\p{L}{3,10}$/u.test(t.word))) throw new Error('原包目标格式不合法');
   if (new Set(raw.target_words.map(t => t.word)).size !== raw.target_words.length) throw new Error('原包目标词重复');
+  if (raw.extra_words != null && (!Array.isArray(raw.extra_words) || !raw.extra_words.every(entry => entry && typeof entry.word === 'string' && entry.word.length)))
+    throw new Error('原包额外词列表格式不合法');
   const shape = { rows:raw.height, cols:raw.width }, counts = Array(letters.length).fill(0);
   const targets = [], details = [];
   for (const target of raw.target_words) {

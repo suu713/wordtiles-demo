@@ -8,3 +8,4 @@ node_modules/
 reports/apk-analysis/
 __pycache__/
 *.py[cod]
+wordtiles_lexicon_builder/lexicon-output/

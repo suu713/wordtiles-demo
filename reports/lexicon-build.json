@@ -1,0 +1,1504 @@
+{
+  "version": "en-frequency-v1-0d61aa0f3d623259",
+  "rawNonemptyLines": 168608,
+  "uniqueASCIIBoardSpellings": 143581,
+  "excludedNonASCIILetterEntries": 22649,
+  "lengthMin": 1,
+  "lengthMax": 45,
+  "longerThan5Letters": 128028,
+  "tiers": [
+    {
+      "tier": 1,
+      "label": "非常常用",
+      "count": 1061
+    },
+    {
+      "tier": 2,
+      "label": "常用",
+      "count": 5975
+    },
+    {
+      "tier": 3,
+      "label": "一般",
+      "count": 19568
+    },
+    {
+      "tier": 4,
+      "label": "罕见",
+      "count": 35005
+    },
+    {
+      "tier": 5,
+      "label": "非常罕见",
+      "count": 35698
+    },
+    {
+      "tier": null,
+      "label": "未评级",
+      "count": 46274
+    }
+  ],
+  "lengths": {
+    "1": 26,
+    "2": 398,
+    "3": 1678,
+    "4": 4551,
+    "5": 8900,
+    "6": 14474,
+    "7": 19882,
+    "8": 21977,
+    "9": 20908,
+    "10": 17405,
+    "11": 12790,
+    "12": 8612,
+    "13": 5389,
+    "14": 3045,
+    "15": 1747,
+    "16": 901,
+    "17": 490,
+    "18": 223,
+    "19": 104,
+    "20": 40,
+    "21": 16,
+    "22": 8,
+    "23": 5,
+    "24": 2,
+    "25": 1,
+    "27": 1,
+    "28": 1,
+    "29": 2,
+    "30": 1,
+    "31": 1,
+    "32": 1,
+    "34": 1,
+    "45": 1
+  },
+  "productionApprovedCount": 0,
+  "masterBytes": 72849070,
+  "masterSha256": "8d5ae8211b7557d41d80e633d80b14da85df62e15fae5392685c316278d951bf",
+  "samplesByTier": [
+    {
+      "tier": 1,
+      "entries": [
+        {
+          "word": "A",
+          "length": 1,
+          "originalForms": [
+            "A",
+            "a"
+          ],
+          "zipf": 7.36,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABLE",
+          "length": 4,
+          "originalForms": [
+            "able"
+          ],
+          "zipf": 5.43,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABOUT",
+          "length": 5,
+          "originalForms": [
+            "about"
+          ],
+          "zipf": 6.4,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABOVE",
+          "length": 5,
+          "originalForms": [
+            "above"
+          ],
+          "zipf": 5.2,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACCESS",
+          "length": 6,
+          "originalForms": [
+            "access"
+          ],
+          "zipf": 5.05,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACCORDING",
+          "length": 9,
+          "originalForms": [
+            "according"
+          ],
+          "zipf": 5.28,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACCOUNT",
+          "length": 7,
+          "originalForms": [
+            "account"
+          ],
+          "zipf": 5.21,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACROSS",
+          "length": 6,
+          "originalForms": [
+            "across"
+          ],
+          "zipf": 5.25,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "entries": [
+        {
+          "word": "AA",
+          "length": 2,
+          "originalForms": [
+            "AA",
+            "aa"
+          ],
+          "zipf": 4.01,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "AARON",
+          "length": 5,
+          "originalForms": [
+            "Aaron"
+          ],
+          "zipf": 4.23,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AB",
+          "length": 2,
+          "originalForms": [
+            "AB",
+            "ab"
+          ],
+          "zipf": 4.06,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABANDON",
+          "length": 7,
+          "originalForms": [
+            "abandon"
+          ],
+          "zipf": 4.02,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABANDONED",
+          "length": 9,
+          "originalForms": [
+            "abandoned"
+          ],
+          "zipf": 4.4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABC",
+          "length": 3,
+          "originalForms": [
+            "ABC"
+          ],
+          "zipf": 4.24,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABILITIES",
+          "length": 9,
+          "originalForms": [
+            "abilities"
+          ],
+          "zipf": 4.21,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABILITY",
+          "length": 7,
+          "originalForms": [
+            "ability"
+          ],
+          "zipf": 4.96,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "entries": [
+        {
+          "word": "AAA",
+          "length": 3,
+          "originalForms": [
+            "AAA"
+          ],
+          "zipf": 3.77,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABA",
+          "length": 3,
+          "originalForms": [
+            "ABA",
+            "aba"
+          ],
+          "zipf": 3.32,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABANDONING",
+          "length": 10,
+          "originalForms": [
+            "abandoning"
+          ],
+          "zipf": 3.51,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABANDONMENT",
+          "length": 11,
+          "originalForms": [
+            "abandonment"
+          ],
+          "zipf": 3.4,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABBA",
+          "length": 4,
+          "originalForms": [
+            "abba"
+          ],
+          "zipf": 3.15,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABBAS",
+          "length": 5,
+          "originalForms": [
+            "Abbas",
+            "abbas"
+          ],
+          "zipf": 3.41,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABBEY",
+          "length": 5,
+          "originalForms": [
+            "abbey"
+          ],
+          "zipf": 3.88,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ABBOT",
+          "length": 5,
+          "originalForms": [
+            "abbot"
+          ],
+          "zipf": 3.43,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "entries": [
+        {
+          "word": "AACHEN",
+          "length": 6,
+          "originalForms": [
+            "Aachen"
+          ],
+          "zipf": 2.6,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AAH",
+          "length": 3,
+          "originalForms": [
+            "aah"
+          ],
+          "zipf": 2.81,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALBORG",
+          "length": 7,
+          "originalForms": [
+            "Aalborg"
+          ],
+          "zipf": 2.14,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALIYAH",
+          "length": 7,
+          "originalForms": [
+            "Aaliyah"
+          ],
+          "zipf": 2.58,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALTO",
+          "length": 5,
+          "originalForms": [
+            "Aalto"
+          ],
+          "zipf": 2.19,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARDVARK",
+          "length": 8,
+          "originalForms": [
+            "aardvark"
+          ],
+          "zipf": 2.39,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARHUS",
+          "length": 6,
+          "originalForms": [
+            "Aarhus"
+          ],
+          "zipf": 2.58,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABACK",
+          "length": 5,
+          "originalForms": [
+            "aback"
+          ],
+          "zipf": 2.99,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    },
+    {
+      "tier": 5,
+      "entries": [
+        {
+          "word": "AAHING",
+          "length": 6,
+          "originalForms": [
+            "aahing"
+          ],
+          "zipf": 1.32,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AAHS",
+          "length": 4,
+          "originalForms": [
+            "aahs"
+          ],
+          "zipf": 1.69,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALST",
+          "length": 5,
+          "originalForms": [
+            "Aalst"
+          ],
+          "zipf": 1.61,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARDVARKS",
+          "length": 9,
+          "originalForms": [
+            "aardvarks"
+          ],
+          "zipf": 1.68,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARDWOLF",
+          "length": 8,
+          "originalForms": [
+            "aardwolf"
+          ],
+          "zipf": 1.11,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARGH",
+          "length": 5,
+          "originalForms": [
+            "aargh"
+          ],
+          "zipf": 1.83,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARONIC",
+          "length": 7,
+          "originalForms": [
+            "Aaronic"
+          ],
+          "zipf": 1.6,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABACA",
+          "length": 5,
+          "originalForms": [
+            "abaca"
+          ],
+          "zipf": 1.77,
+          "frequencyTier": 5,
+          "frequencyLabel": "非常罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    },
+    {
+      "tier": null,
+      "entries": [
+        {
+          "word": "AAHED",
+          "length": 5,
+          "originalForms": [
+            "aahed"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALII",
+          "length": 5,
+          "originalForms": [
+            "aalii"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALIIS",
+          "length": 6,
+          "originalForms": [
+            "aaliis"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARDWOLVES",
+          "length": 10,
+          "originalForms": [
+            "aardwolves"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABACAS",
+          "length": 6,
+          "originalForms": [
+            "abacas"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABAMP",
+          "length": 5,
+          "originalForms": [
+            "abamp"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABAMPERE",
+          "length": 8,
+          "originalForms": [
+            "abampere"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABAMPERES",
+          "length": 9,
+          "originalForms": [
+            "abamperes"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    }
+  ],
+  "measuredBoundarySamples": [
+    {
+      "zipf": 5,
+      "entries": [
+        {
+          "word": "ASS",
+          "length": 3,
+          "originalForms": [
+            "ass"
+          ],
+          "zipf": 5,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "BEGINNING",
+          "length": 9,
+          "originalForms": [
+            "beginning"
+          ],
+          "zipf": 5,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "CALIFORNIA",
+          "length": 10,
+          "originalForms": [
+            "California"
+          ],
+          "zipf": 5,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "CAMPAIGN",
+          "length": 8,
+          "originalForms": [
+            "campaign"
+          ],
+          "zipf": 5,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "CERTAINLY",
+          "length": 9,
+          "originalForms": [
+            "certainly"
+          ],
+          "zipf": 5,
+          "frequencyTier": 1,
+          "frequencyLabel": "非常常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        }
+      ]
+    },
+    {
+      "zipf": 4,
+      "entries": [
+        {
+          "word": "ABUSED",
+          "length": 6,
+          "originalForms": [
+            "abused"
+          ],
+          "zipf": 4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACUTE",
+          "length": 5,
+          "originalForms": [
+            "acute"
+          ],
+          "zipf": 4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ADMIRAL",
+          "length": 7,
+          "originalForms": [
+            "admiral"
+          ],
+          "zipf": 4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "AMANDA",
+          "length": 6,
+          "originalForms": [
+            "Amanda"
+          ],
+          "zipf": 4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ARNOLD",
+          "length": 6,
+          "originalForms": [
+            "Arnold"
+          ],
+          "zipf": 4,
+          "frequencyTier": 2,
+          "frequencyLabel": "常用",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": false,
+          "caseReviewRequired": true,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    },
+    {
+      "zipf": 3,
+      "entries": [
+        {
+          "word": "ABJECT",
+          "length": 6,
+          "originalForms": [
+            "abject"
+          ],
+          "zipf": 3,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ACTIONABLE",
+          "length": 10,
+          "originalForms": [
+            "actionable"
+          ],
+          "zipf": 3,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "ADMINISTERS",
+          "length": 11,
+          "originalForms": [
+            "administers"
+          ],
+          "zipf": 3,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "AFFECTIVE",
+          "length": 9,
+          "originalForms": [
+            "affective"
+          ],
+          "zipf": 3,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        },
+        {
+          "word": "AFIELD",
+          "length": 6,
+          "originalForms": [
+            "afield"
+          ],
+          "zipf": 3,
+          "frequencyTier": 3,
+          "frequencyLabel": "一般",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "high"
+        }
+      ]
+    },
+    {
+      "zipf": 2,
+      "entries": [
+        {
+          "word": "ABBS",
+          "length": 4,
+          "originalForms": [
+            "abbs"
+          ],
+          "zipf": 2,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ADAMANTINE",
+          "length": 10,
+          "originalForms": [
+            "adamantine"
+          ],
+          "zipf": 2,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ADJOURNS",
+          "length": 8,
+          "originalForms": [
+            "adjourns"
+          ],
+          "zipf": 2,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ADJUVANTS",
+          "length": 9,
+          "originalForms": [
+            "adjuvants"
+          ],
+          "zipf": 2,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ADSORBENT",
+          "length": 9,
+          "originalForms": [
+            "adsorbent"
+          ],
+          "zipf": 2,
+          "frequencyTier": 4,
+          "frequencyLabel": "罕见",
+          "frequencyStatus": "measured",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    },
+    {
+      "zipf": null,
+      "entries": [
+        {
+          "word": "AAHED",
+          "length": 5,
+          "originalForms": [
+            "aahed"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALII",
+          "length": 5,
+          "originalForms": [
+            "aalii"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AALIIS",
+          "length": 6,
+          "originalForms": [
+            "aaliis"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "AARDWOLVES",
+          "length": 10,
+          "originalForms": [
+            "aardwolves"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        },
+        {
+          "word": "ABACAS",
+          "length": 6,
+          "originalForms": [
+            "abacas"
+          ],
+          "zipf": null,
+          "frequencyTier": null,
+          "frequencyLabel": "未评级",
+          "frequencyStatus": "not_in_frequency_list",
+          "frequencyScope": "en_combined_not_US_only",
+          "hasLowercaseDictionaryEntry": true,
+          "caseReviewRequired": false,
+          "familiarity": null,
+          "reviewStatus": "pending",
+          "targetEnabled": false,
+          "reviewPriority": "normal"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "dictionary.master.json.gz",
+      "bytes": 2026877,
+      "sha256": "534cc28178e64b020bf76b456a27a8a8e88ec1ccc83a36d7f7bac114d15bd3cd"
+    },
+    {
+      "name": "dictionary.index.json",
+      "bytes": 1688681,
+      "sha256": "d83c440dc4a2a2235944fec3efaf3682b2288bb7975f5e519d9e62abc03374ac"
+    },
+    {
+      "name": "summary.json",
+      "bytes": 1250,
+      "sha256": "92526b2f61623cd02dd0c2b4b0d809ea106670b32e69377d033b6bbd30896947"
+    },
+    {
+      "name": "excluded.entries.json.gz",
+      "bytes": 97047,
+      "sha256": "3d83dc523bc1cae6e47d71b684ec2f80448f0562b69b3b7aa1e2a4ca179b2851"
+    },
+    {
+      "name": "sources/source_wordlist.txt",
+      "bytes": 1635915,
+      "sha256": "815abb6f1855304a6c3f358aa1e5ce85823140a547226ce4114386f9b796c30f"
+    },
+    {
+      "name": "sources/ESDB_Copyright.txt",
+      "bytes": 4903,
+      "sha256": "71bffd4b74ad47fff01c8b3c666e77da92737854e568850d8728024e0a53f304"
+    },
+    {
+      "name": "sources/wordfreq_NOTICE.md",
+      "bytes": 2891,
+      "sha256": "d9b104dafe63886af55e7cea7484824e32e12d4e1f57f319923dd643b36d6b15"
+    },
+    {
+      "name": "sources/wordfreq_LICENSE.txt",
+      "bytes": 675,
+      "sha256": "8990c551671a51765c4dfe9428f3e1d58dc327f49aca346a32d28cc0fcc7aa88"
+    },
+    {
+      "name": "manifest.json",
+      "bytes": 1433,
+      "sha256": "6cbbe2d76d2d0fcea3098e79fc48ad2e3f181c4ed404e36b2cc303c54a81d61d"
+    }
+  ]
+}

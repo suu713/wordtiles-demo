@@ -7,7 +7,7 @@
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=6">
+  <link rel="stylesheet" href="./styles.css?v=7">
 </head>
 <body>
   <div class="app-shell">
@@ -26,15 +26,35 @@
           <p id="source-library-status" hidden>正在读取关卡目录…</p>
         </section>
         <div id="generation-section" class="generation-section" hidden>
+          <label class="dictionary-field" for="dictionary-source" data-help="旧验收词库保留原来的 1,602 词与 seed 样例。分级母词库按本关词长、频率档位及人工审核状态筛选；在更多设置的词库入口调整。切换词库保留当前棋盘。">生成词库<select id="dictionary-source"><option value="legacy">旧验收词库 · 1,602 词</option><option value="graded">分级母词库</option></select></label>
+          <span id="lexicon-warning" class="lexicon-warning" hidden data-help="内部测试开关允许未审核词参与生成。词频不代表适合休闲游戏；该开关不代表通过内容审核。" tabindex="0">词库未完成内容审核</span>
           <label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label>
           <div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
         </div>
         <div class="editor-menus">
-          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘参数、画面尺寸、校验报告和原包数据。"><option value="">更多设置…</option><option value="board">棋盘与目标</option><option value="view">画面尺寸</option><option value="debug">校验与预算</option><option value="source">原包数据</option></select>
+          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘参数、画面尺寸、词库、校验报告和原包数据。"><option value="">更多设置…</option><option value="board">棋盘与目标</option><option value="view">画面尺寸</option><option value="lexicon" disabled>词库与频率档位</option><option value="debug">校验与预算</option><option value="source">原包数据</option></select>
           <label for="file-action" class="sr-only">关卡文件</label><select id="file-action" aria-label="关卡文件" data-help="导入或导出完整初始关卡 JSON。导入前会使用当前算法的词库和规则进行校验。"><option value="">关卡文件…</option><option value="import">导入 JSON</option><option value="export">导出 JSON</option><option value="sample" hidden>固定样例</option></select>
         </div>
+        <section id="level-statistics" class="level-statistics" aria-label="关卡初始统计">
+          <div class="word-stat-summary">
+            <button id="extra-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>非目标词</span><strong id="extra-word-count">—</strong></button>
+            <button id="reverse-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>倒序目标词</span><strong><span id="reverse-word-count">—</span><small id="reverse-word-percent">—</small></strong></button>
+          </div>
+          <button id="tile-usage-heading" class="stat-heading stat-button" type="button" data-help="正在读取关卡统计。">目标 Tile 使用次数</button>
+          <div class="tile-use-stats">
+            <button id="tile-use-stat-2" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>2 次</span><strong><span id="tile-used-2">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-3" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>3 次</span><strong><span id="tile-used-3">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-4" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>4 次</span><strong><span id="tile-used-4">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-5" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>5 次</span><strong><span id="tile-used-5">—</span><small>格</small></strong></button>
+          </div>
+          <div class="turn-stats">
+            <button id="straight-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>直线</span><strong id="straight-word-count">—</strong></button>
+            <button id="one-turn-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>1 拐</span><strong id="one-turn-word-count">—</strong></button>
+            <button id="multi-turn-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>多拐</span><strong id="multi-turn-word-count">—</strong></button>
+          </div>
+        </section>
         <div class="editor-current"><span id="level-kind" data-help-from="source-library-status">原包关卡</span><span><span id="active-seed-label" class="sr-only">原关卡 ID</span><code id="active-seed">—</code></span></div>
         <button id="editor-status" class="editor-status" type="button" data-help-from="notice">正在加载…</button>
         <p id="notice" hidden role="status" aria-live="polite">正在加载本地关卡…</p>
@@ -69,6 +89,12 @@
         <div hidden><select id="uniform-length"><option value="">按原关卡显示</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><span id="uses-note"></span><span id="cols-note"></span><span id="rows-note"></span><span id="count-note"></span><span id="length-note"></span><span id="uniform-note"></span></div>
       </div>
       <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
+      <div data-settings-pane="lexicon" hidden>
+        <label class="stack-field" for="dictionary-tier" data-help="只按 Zipf 词频分档，不代表玩家熟悉度或游戏难度。1档 ≥5，2档 4～5，3档 3～4，4档 2～3，5档大于0且小于2；无词频独立为未评级。搜索失败不会自动扩到其他档位。">频率档位<select id="dictionary-tier"><option value="1">非常常用</option><option value="1,2">非常常用 + 常用</option><option value="1,2,3" selected>前 3 档 · 非常常用 / 常用 / 一般</option><option value="4">罕见</option><option value="5">非常罕见</option><option value="1,2,3,4,5">全部已评级</option><option value="unrated">未评级</option></select></label>
+        <label class="stack-field" for="unreviewed-mode" data-help="默认仅人工审核通过的词可作为目标。内部测试可显式开放 pending 词；blocked 词始终排除。高频不会自动变成审核通过。">未审核词测试<select id="unreviewed-mode"><option value="false" selected>关闭 · 仅人工审核通过</option><option value="true">开启 · 内部测试未审核词</option></select></label>
+        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">旧验收词库 · 1,602 词</p>
+        <div class="lexicon-links"><a href="./lexicon/dictionary.master.json.gz" download data-help="完整母词库 gzip 文件，保留全部词长、原始拼写、Zipf 词频、待审核状态及来源许可元数据。">完整母词库 ↗</a><a href="./lexicon/sources/wordfreq_NOTICE.md" target="_blank" rel="noopener" data-help="wordfreq 词频数据来源与归属原文。母词库及派生索引保留 CC-BY-SA-4.0 元数据。">来源与许可 ↗</a></div>
+      </div>
       <div id="debug" data-settings-pane="debug" hidden><span class="validation-status" id="validation-badge" data-help-from="version-note" tabindex="0">正在检查</span><p class="debug-explanation" hidden></p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
         <fieldset id="budget-fields" class="budget-fields" hidden data-help="这三个参数控制搜索预算，不代表难度。预算耗尽会明确失败，并保留当前关卡。"><legend>搜索预算</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
         <pre id="debug-generation" hidden>尚未进行自动生成。</pre><pre id="debug-rejection" hidden></pre><p id="version-note" hidden></p>
@@ -77,6 +103,6 @@
     </div>
   </section>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=6"></script>
+  <script type="module" src="./app.js?v=7"></script>
 </body>
 </html>

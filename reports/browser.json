@@ -1,5 +1,5 @@
 {
-  "passed": 27,
+  "passed": 30,
   "failed": 0,
   "pageErrors": [],
   "cases": [
@@ -101,6 +101,18 @@
     },
     {
       "name": "Worker异常明确失败，保留V1当前关卡和已完成目标",
+      "passed": true
+    },
+    {
+      "name": "初始关卡统计按确认口径显示，悬停查看词和全部Tile分布，消除后保持不变",
+      "passed": true
+    },
+    {
+      "name": "母词库审核默认关闭，显式内部测试后生成/导入共用新词库，旧验收保持隔离",
+      "passed": true
+    },
+    {
+      "name": "切词库取消旧Worker，缺失索引明确报错且不回退或覆盖当前棋盘",
       "passed": true
     },
     {

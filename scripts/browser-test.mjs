@@ -12,6 +12,12 @@ const sample = JSON.parse(await readFile(new URL('../dist/sample.json', import.m
 const fixture = JSON.parse(await readFile(new URL('../examples/seed_20261010.json', import.meta.url), 'utf8'));
 const { convertSourceLevel } = await import('../dist/core/source-levels.js');
 const { findWordPaths, signature } = await import('../dist/core/rules.js');
+const { createLexiconAdapter } = await import('../dist/core/lexicon-adapter.js');
+const { generateLevel } = await import('../dist/core/wordtiles-algorithm.js');
+const { createAlgorithmSession } = await import('../dist/core/algorithm-v1-adapter.js');
+const { calculateLevelStatistics } = await import('../dist/core/level-statistics.js');
+const lexiconAdapter = await createLexiconAdapter(JSON.parse(await readFile(new URL('../dist/lexicon/dictionary.index.json', import.meta.url), 'utf8')), JSON.parse(await readFile(new URL('../dist/lexicon/review-overlay.json', import.meta.url), 'utf8')));
+const gradedDictionary = lexiconAdapter.createRuntimeDictionary({ wordLengths:[3,3,3,4,5], tiers:[1,2,3], allowUnreviewed:true });
 const sourceCatalogue = JSON.parse(await readFile(new URL('../dist/source-levels/catalogue.json',import.meta.url),'utf8'));
 const sourceBanks = Object.fromEntries(await Promise.all(sourceCatalogue.languages.map(async info => [info.language,JSON.parse(await readFile(new URL('../dist/source-levels/' + info.file,import.meta.url),'utf8'))])));
 const baseURL = process.env.WORDTILES_URL || 'http://127.0.0.1:4173';
@@ -28,7 +34,14 @@ async function state(target = page) {
     counts: [...document.querySelectorAll('.tile')].map(tile => Number(tile.dataset.remaining)),
     completed: [...document.querySelectorAll('.target.completed')].map(target => target.dataset.word),
     letters: [...document.querySelectorAll('.tile-letter')].map(letter => letter.textContent),
-    seed: document.querySelector('#active-seed').textContent
+    seed: document.querySelector('#active-seed').textContent,
+    statistics: {
+      extras: document.querySelector('#extra-word-count').textContent,
+      reverse: document.querySelector('#reverse-word-count').textContent,
+      percent: document.querySelector('#reverse-word-percent').textContent,
+      tileUses: [2,3,4,5].map(uses => document.querySelector('#tile-used-' + uses).textContent),
+      turns: ['straight','one-turn','multi-turn'].map(kind => document.querySelector('#' + kind + '-word-count').textContent),
+    }
   }));
 }
 async function centers(path, target = page) {
@@ -91,6 +104,7 @@ try {
     assert.equal(await page.locator('#board-cols').isDisabled(),true);
     assert.equal(await page.locator('#word-count').inputValue(),'3');
     assert.deepEqual((await state()).counts,Array(9).fill(1));
+    assert.deepEqual((await state()).statistics,{extras:'0',reverse:'0 / 3',percent:'0%',tileUses:['0','0','0','0'],turns:['1','2','0']});
     assert.equal((await fitsPortrait()).fits,true);
     assert.equal((await fitsPortrait()).scroll,true);
     await page.screenshot({ path:directory+'/source-desktop.png',fullPage:true });
@@ -122,6 +136,7 @@ try {
     await page.locator('#win-next').click(); await page.waitForFunction(()=>document.querySelector('#active-seed').textContent==='191599');
     assert.equal(await page.locator('#source-number').inputValue(),'2');
     const second=await exportLevel('source-second'), before=await state();
+    assert.equal(before.statistics.extras,'2');
     await drag(rawPaths(second,'FRO')[0]);
     assert.deepEqual(await state(),before);
     assert.ok((await page.locator('#feedback').textContent()).includes('额外词 FRO 已记录'));
@@ -470,6 +485,85 @@ try {
     await page.locator('#notice').filter({hasText:'生成线程未能启动'}).waitFor({ state: 'attached' });
     assert.deepEqual(await state(),before); assert.equal(await page.locator('#cancel-generation').isVisible(),false);
     await page.unroute('**/generator.worker.js');
+  });
+  await run('初始关卡统计按确认口径显示，悬停查看词和全部Tile分布，消除后保持不变', async () => {
+    await page.locator('#seed').fill('20261010'); await page.locator('#generate-seed').click();
+    await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
+    const before=(await state()).statistics;
+    assert.equal(before.reverse,'3 / 5'); assert.equal(before.percent,'60%');
+    assert.deepEqual(before.tileUses,['3','3','0','0']); assert.deepEqual(before.turns,['1','3','1']);
+    await page.locator('#reverse-word-stat').hover();
+    assert.ok((await page.locator('#hover-help').textContent()).includes('同列或右侧都算倒序'));
+    assert.ok((await page.locator('#hover-help').textContent()).includes('CLOTH'));
+    await page.locator('#tile-usage-heading').hover();
+    assert.ok((await page.locator('#hover-help').textContent()).includes('1 次 3 格'));
+    await page.locator('#multi-turn-word-stat').hover();
+    assert.ok((await page.locator('#hover-help').textContent()).includes('CLOTH'));
+    await page.mouse.move(0,0);
+    for(const target of [...fixture.targets].reverse()) await drag(target.canonicalPath);
+    assert.deepEqual((await state()).statistics,before);
+    await page.locator('#restart').click(); assert.deepEqual((await state()).statistics,before);
+  });
+  await run('母词库审核默认关闭，显式内部测试后生成/导入共用新词库，旧验收保持隔离', async () => {
+    await drag(fixture.targets[0].canonicalPath); const before=await state();
+    await page.locator('#dictionary-source').selectOption('graded');
+    await page.locator('#lexicon-status').filter({hasText:'母词库'}).waitFor({state:'attached'});
+    assert.equal(await page.locator('#unreviewed-mode').inputValue(),'false');
+    assert.equal(await page.locator('#generate-seed').isDisabled(),true);
+    assert.equal(await page.locator('#lexicon-warning').isVisible(),false);
+    assert.deepEqual(await state(),before);
+    await openSettings('lexicon'); await page.locator('#unreviewed-mode').selectOption('true');
+    await page.waitForFunction(()=>!document.querySelector('#generate-seed').disabled);
+    assert.ok((await page.locator('#lexicon-status').textContent()).includes('6,592'));
+    assert.equal(await page.locator('#lexicon-warning').isVisible(),true);
+    await closeSettings();
+    await page.locator('#seed').fill('0'); await page.locator('#generate-seed').click();
+    await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
+    const exported=await exportLevel('lexicon-generated');
+    const expected=generateLevel({},gradedDictionary,0); assert.equal(expected.ok,true); assert.deepEqual(exported,expected.level);
+    assert.ok((await page.locator('#game-level-label').textContent()).includes('词库未完成内容审核'));
+    const stats=calculateLevelStatistics(createAlgorithmSession(exported,gradedDictionary).initial,gradedDictionary);
+    const shown=(await state()).statistics;
+    assert.equal(shown.extras,String(stats.extraWordCount)); assert.equal(shown.reverse,`${stats.reverseWordCount} / 5`);
+    assert.equal(shown.percent,`${Number(stats.reversePercentage.toFixed(1))}%`);
+    assert.deepEqual(shown.tileUses,[2,3,4,5].map(uses=>String(stats.usageHistogram[uses]||0)));
+    assert.deepEqual(shown.turns,[stats.straightWordCount,stats.oneTurnWordCount,stats.multiTurnWordCount].map(String));
+    await page.screenshot({path:directory+'/lexicon-desktop.png',fullPage:true});
+    for(const target of [...exported.targets].reverse()) await drag(target.canonicalPath);
+    assert.deepEqual((await state()).counts,Array(9).fill(0)); assert.deepEqual((await state()).statistics,shown);
+    await page.locator('#restart').click();
+    await page.locator('#import-file').setInputFiles({name:'graded.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
+    await page.locator('#level-kind').filter({hasText:'JSON 导入'}).waitFor();
+    await drag(exported.targets[0].canonicalPath); const progress=await state();
+    await openSettings('lexicon'); await page.locator('#unreviewed-mode').selectOption('false'); await closeSettings();
+    assert.deepEqual(await state(),progress);
+    assert.equal(await page.locator('#generate-seed').isDisabled(),true);
+    assert.ok((await page.locator('#game-level-label').textContent()).includes('词库未完成内容审核'));
+    await page.locator('#import-file').setInputFiles({name:'graded-mismatch.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(exported))});
+    await page.locator('#notice').filter({hasText:'导入被拒绝'}).waitFor({state:'attached'}); assert.deepEqual(await state(),progress);
+    assert.ok((await page.locator('#notice').textContent()).includes('词库版本'));
+    await page.locator('#restart').click(); assert.deepEqual((await state()).counts,exported.initialCounts);
+    assert.deepEqual((await state()).statistics,shown);
+    await reset(); assert.equal(await page.locator('#dictionary-source').inputValue(),'legacy');
+    assert.equal(await page.locator('#lexicon-warning').isVisible(),false);
+  });
+  await run('切词库取消旧Worker，缺失索引明确报错且不回退或覆盖当前棋盘', async () => {
+    await page.route('**/generator.worker.js',async route=>{
+      const original=await readFile(new URL('../dist/generator.worker.js',import.meta.url),'utf8');
+      await route.fulfill({contentType:'text/javascript',body:`${original}\nconst handler=self.onmessage;self.onmessage=event=>setTimeout(()=>handler(event),500);`});
+    });
+    const before=await state(); await page.locator('#generate-seed').click();
+    await page.locator('#dictionary-source').selectOption('graded'); await page.waitForTimeout(700);
+    assert.deepEqual(await state(),before); assert.equal(await page.locator('#cancel-generation').isVisible(),false);
+    await page.unroute('**/generator.worker.js'); await page.locator('#dictionary-source').selectOption('legacy');
+    const tab=await context.newPage();
+    await tab.route('**/lexicon/dictionary.index.json',route=>route.fulfill({status:404,body:'missing'}));
+    await tab.goto(baseURL); await tab.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
+    await tab.locator('#algorithm').selectOption('2'); const initial=await state(tab);
+    await tab.locator('#dictionary-source').selectOption('graded');
+    await tab.locator('#notice').filter({hasText:'词库读取失败'}).waitFor({state:'attached'});
+    assert.deepEqual(await state(tab),initial); assert.equal(await tab.locator('#generate-seed').isDisabled(),true);
+    await tab.close();
   });
   await run('9:16画面尺寸与缩放可调整，保持关卡和进度', async () => {
     const before = await state();
