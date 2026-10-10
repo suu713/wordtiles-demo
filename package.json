@@ -1,0 +1,12 @@
+{
+  "name": "wordtiles-demo-v1",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/rules.test.mjs tests/generator.test.mjs",
+    "test:batch": "node scripts/batch.mjs",
+    "test:browser": "node scripts/browser-test.mjs"
+  }
+}

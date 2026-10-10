@@ -1,0 +1,56 @@
+{
+  "passed": 11,
+  "failed": 0,
+  "pageErrors": [],
+  "cases": [
+    {
+      "name": "桌面首屏、固定 9 格和默认折叠调试面板",
+      "passed": true
+    },
+    {
+      "name": "真实拖动 FEED；经过 FEE 时不提交，松手才扣减",
+      "passed": true
+    },
+    {
+      "name": "EYE 两种走法、归零空位保留原布局",
+      "passed": true
+    },
+    {
+      "name": "拖回上一格撤回一步；斜向和重复格不追加",
+      "passed": true
+    },
+    {
+      "name": "非目标与已完成目标不扣减；取消拖动不提交",
+      "passed": true
+    },
+    {
+      "name": "键盘找词、提示不消耗、真实鼠标完成整关",
+      "passed": true
+    },
+    {
+      "name": "JSON 导出初始状态、拒绝次数错误和多集合、有效导入",
+      "passed": true
+    },
+    {
+      "name": "真实 Worker 生成，seed 重现同关，导出后再次导入",
+      "passed": true
+    },
+    {
+      "name": "极小预算失败提示明确，棋盘和进度保留",
+      "passed": true
+    },
+    {
+      "name": "取消生成和切关隔离旧 Worker；旧效果不会污染重开",
+      "passed": true
+    },
+    {
+      "name": "玩法弹窗开关和移动端真实触摸拖动",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "desktop.png",
+    "mobile.png",
+    "completed.png"
+  ]
+}

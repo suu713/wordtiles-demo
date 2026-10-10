@@ -1,0 +1,5 @@
+node_modules/
+.openai/workflow/
+.openai/tmp/
+*.tar.gz
+*.zip

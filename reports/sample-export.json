@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "id": "fixed-sample-v1",
+  "seed": "固定样例",
+  "algorithmVersion": "wordtiles-v1.0.0",
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "E",
+      "F",
+      "L",
+      "Y",
+      "E",
+      "A",
+      "P",
+      "E",
+      "D"
+    ],
+    "counts": [
+      1,
+      2,
+      2,
+      1,
+      3,
+      2,
+      1,
+      3,
+      3
+    ]
+  },
+  "targets": [
+    {
+      "word": "EYE",
+      "path": [
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      "word": "FEE",
+      "path": [
+        1,
+        4,
+        7
+      ]
+    },
+    {
+      "word": "LAD",
+      "path": [
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "word": "FEED",
+      "path": [
+        1,
+        4,
+        7,
+        8
+      ]
+    },
+    {
+      "word": "PEDAL",
+      "path": [
+        6,
+        7,
+        8,
+        5,
+        2
+      ]
+    }
+  ]
+}

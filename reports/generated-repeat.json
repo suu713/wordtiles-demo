@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "id": "generated-browser-acceptance",
+  "seed": "browser-acceptance",
+  "algorithmVersion": "wordtiles-v1.0.0",
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "S",
+      "E",
+      "R",
+      "W",
+      "V",
+      "E",
+      "O",
+      "W",
+      "N"
+    ],
+    "counts": [
+      1,
+      3,
+      1,
+      1,
+      3,
+      3,
+      2,
+      2,
+      2
+    ]
+  },
+  "targets": [
+    {
+      "word": "EVE",
+      "path": [
+        1,
+        4,
+        5
+      ]
+    },
+    {
+      "word": "OWN",
+      "path": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "word": "WOW",
+      "path": [
+        3,
+        6,
+        7
+      ]
+    },
+    {
+      "word": "EVER",
+      "path": [
+        1,
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "word": "SEVEN",
+      "path": [
+        0,
+        1,
+        4,
+        5,
+        8
+      ]
+    }
+  ],
+  "generation": {
+    "dictionaryVersion": "whitelist-v1",
+    "budget": {
+      "maxNodesPerAttempt": 10000,
+      "maxAttempts": 30,
+      "maxTotalNodes": 300000
+    },
+    "nodes": 2440,
+    "attempts": 1
+  }
+}
