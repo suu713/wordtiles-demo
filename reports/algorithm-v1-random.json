@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "demo-test-20261010-v1",
+  "seed": 681554072,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "C",
+    "P",
+    "K",
+    "L",
+    "I",
+    "C",
+    "E",
+    "T",
+    "A"
+  ],
+  "initialCounts": [
+    1,
+    2,
+    1,
+    3,
+    3,
+    1,
+    3,
+    3,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "ATE",
+      "canonicalPath": [
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "LET",
+      "canonicalPath": [
+        3,
+        6,
+        7
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "TIP",
+      "canonicalPath": [
+        7,
+        4,
+        1
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "PILE",
+      "canonicalPath": [
+        1,
+        4,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "CLICK",
+      "canonicalPath": [
+        0,
+        3,
+        4,
+        5,
+        2
+      ]
+    }
+  ]
+}

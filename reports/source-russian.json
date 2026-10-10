@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 3,
+  "algorithm": 1,
+  "id": "source-russian-102795",
+  "seed": "APK-russian-102795",
+  "algorithmVersion": "xapk-levels-v1",
+  "config": {
+    "rows": 3,
+    "cols": 3,
+    "wordLengths": [
+      3,
+      3,
+      3
+    ]
+  },
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "А",
+      "К",
+      "Я",
+      "Б",
+      "Ф",
+      "Е",
+      "Г",
+      "О",
+      "Д"
+    ],
+    "counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "БАК",
+      "path": [
+        3,
+        0,
+        1
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "ГОД",
+      "path": [
+        6,
+        7,
+        8
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "ФЕЯ",
+      "path": [
+        4,
+        5,
+        2
+      ],
+      "sourceType": 0
+    }
+  ],
+  "source": {
+    "packageName": "com.agavegames.wordtiles",
+    "version": "1.4.0",
+    "language": "russian",
+    "order": "main",
+    "position": 1,
+    "original": {
+      "id": 102795,
+      "width": 3,
+      "height": 3,
+      "target_words": [
+        {
+          "word": "БАК",
+          "type": 0
+        },
+        {
+          "word": "ГОД",
+          "type": 0
+        },
+        {
+          "word": "ФЕЯ",
+          "type": 0
+        }
+      ],
+      "extra_words": [
+        {
+          "word": "ГОДЕ",
+          "type": 1
+        },
+        {
+          "word": "ДОГ",
+          "type": 0
+        }
+      ],
+      "letters": "АКЯ,БФЕ,ГОД",
+      "obstacles": []
+    },
+    "consumptionPolicy": "reference-set"
+  }
+}

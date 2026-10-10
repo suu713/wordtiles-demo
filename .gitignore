@@ -3,3 +3,8 @@ node_modules/
 .openai/tmp/
 *.tar.gz
 *.zip
+
+# Local investigation output and Python caches are not needed to run the Demo.
+reports/apk-analysis/
+__pycache__/
+*.py[cod]

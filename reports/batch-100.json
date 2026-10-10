@@ -1,6 +1,6 @@
 {
-  "algorithmVersion": "wordtiles-v1.0.0",
-  "dictionaryVersion": "whitelist-v1",
+  "algorithmVersion": "wordtiles-v2.0.0",
+  "dictionaryVersion": "whitelist-v2",
   "budget": {
     "maxNodesPerAttempt": 10000,
     "maxAttempts": 30,
@@ -11,28 +11,39 @@
   "failed": 0,
   "successRate": "100.0%",
   "failureReasons": {},
-  "elapsedMs": 222.46,
-  "medianMs": 1.07,
-  "maxMs": 6.58,
+  "elapsedMs": 392.06,
+  "medianMs": 1.94,
+  "maxMs": 10.15,
   "allSuccessfulFullyValidated": true,
   "records": [
     {
       "seed": "batch-000",
       "success": true,
-      "milliseconds": 6.58,
+      "milliseconds": 7.84,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-000",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 8527,
-        "attemptNodes": 8527,
+        "nodes": 7231,
+        "attemptNodes": 7231,
         "failures": {
           "no-compatible-word-path": 48,
           "ambiguous-consumption": 4
@@ -40,10 +51,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-000",
         "seed": "batch-000",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -121,30 +143,52 @@
     {
       "seed": "batch-001",
       "success": true,
-      "milliseconds": 1.8,
+      "milliseconds": 1.95,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-001",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1976,
-        "attemptNodes": 1976,
+        "nodes": 584,
+        "attemptNodes": 584,
         "failures": {
           "no-compatible-word-path": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-001",
         "seed": "batch-001",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -222,20 +266,31 @@
     {
       "seed": "batch-002",
       "success": true,
-      "milliseconds": 1.91,
+      "milliseconds": 2.62,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-002",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3310,
-        "attemptNodes": 3310,
+        "nodes": 2030,
+        "attemptNodes": 2030,
         "failures": {
           "no-compatible-word-path": 7,
           "ambiguous-consumption": 8
@@ -243,10 +298,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-002",
         "seed": "batch-002",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -324,20 +390,31 @@
     {
       "seed": "batch-003",
       "success": true,
-      "milliseconds": 1.43,
+      "milliseconds": 1.68,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-003",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2877,
-        "attemptNodes": 2877,
+        "nodes": 1581,
+        "attemptNodes": 1581,
         "failures": {
           "no-compatible-word-path": 8,
           "ambiguous-consumption": 3
@@ -345,10 +422,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-003",
         "seed": "batch-003",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -426,30 +514,52 @@
     {
       "seed": "batch-004",
       "success": true,
-      "milliseconds": 1.2,
+      "milliseconds": 2.43,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-004",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3621,
-        "attemptNodes": 3621,
+        "nodes": 2325,
+        "attemptNodes": 2325,
         "failures": {
           "no-compatible-word-path": 15
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-004",
         "seed": "batch-004",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -527,20 +637,31 @@
     {
       "seed": "batch-005",
       "success": true,
-      "milliseconds": 0.67,
+      "milliseconds": 1.8,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-005",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1893,
-        "attemptNodes": 1893,
+        "nodes": 581,
+        "attemptNodes": 581,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 1
@@ -548,10 +669,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-005",
         "seed": "batch-005",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -629,20 +761,31 @@
     {
       "seed": "batch-006",
       "success": true,
-      "milliseconds": 4.31,
+      "milliseconds": 6.45,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-006",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 11984,
-        "attemptNodes": 1984,
+        "nodes": 10704,
+        "attemptNodes": 704,
         "failures": {
           "no-compatible-word-path": 80,
           "ambiguous-consumption": 11,
@@ -657,10 +800,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-006",
         "seed": "batch-006",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -738,30 +892,52 @@
     {
       "seed": "batch-007",
       "success": true,
-      "milliseconds": 2.47,
+      "milliseconds": 1.68,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-007",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2349,
-        "attemptNodes": 2349,
+        "nodes": 1021,
+        "attemptNodes": 1021,
         "failures": {
           "no-compatible-word-path": 4
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-007",
         "seed": "batch-007",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -839,30 +1015,52 @@
     {
       "seed": "batch-008",
       "success": true,
-      "milliseconds": 0.58,
+      "milliseconds": 1.67,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-008",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2231,
-        "attemptNodes": 2231,
+        "nodes": 639,
+        "attemptNodes": 639,
         "failures": {
           "no-compatible-word-path": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-008",
         "seed": "batch-008",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -940,30 +1138,52 @@
     {
       "seed": "batch-009",
       "success": true,
-      "milliseconds": 1.93,
+      "milliseconds": 3.23,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-009",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 7704,
-        "attemptNodes": 7704,
+        "nodes": 6376,
+        "attemptNodes": 6376,
         "failures": {
           "no-compatible-word-path": 50
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-009",
         "seed": "batch-009",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1041,28 +1261,50 @@
     {
       "seed": "batch-010",
       "success": true,
-      "milliseconds": 0.61,
+      "milliseconds": 2.45,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-010",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1817,
-        "attemptNodes": 1817,
+        "nodes": 481,
+        "attemptNodes": 481,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-010",
         "seed": "batch-010",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1140,30 +1382,52 @@
     {
       "seed": "batch-011",
       "success": true,
-      "milliseconds": 1.59,
+      "milliseconds": 2.27,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-011",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2482,
-        "attemptNodes": 2482,
+        "nodes": 1202,
+        "attemptNodes": 1202,
         "failures": {
           "no-compatible-word-path": 6
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-011",
         "seed": "batch-011",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1241,28 +1505,50 @@
     {
       "seed": "batch-012",
       "success": true,
-      "milliseconds": 2.35,
+      "milliseconds": 3.23,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-012",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1825,
-        "attemptNodes": 1825,
+        "nodes": 457,
+        "attemptNodes": 457,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-012",
         "seed": "batch-012",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1340,20 +1626,31 @@
     {
       "seed": "batch-013",
       "success": true,
-      "milliseconds": 2.18,
+      "milliseconds": 3.7,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-013",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 8004,
-        "attemptNodes": 8004,
+        "nodes": 6660,
+        "attemptNodes": 6660,
         "failures": {
           "ambiguous-consumption": 5,
           "no-compatible-word-path": 46
@@ -1361,10 +1658,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-013",
         "seed": "batch-013",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1442,30 +1750,52 @@
     {
       "seed": "batch-014",
       "success": true,
-      "milliseconds": 1.88,
+      "milliseconds": 2,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-014",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 4594,
-        "attemptNodes": 4594,
+        "nodes": 3274,
+        "attemptNodes": 3274,
         "failures": {
           "no-compatible-word-path": 16
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-014",
         "seed": "batch-014",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1543,20 +1873,31 @@
     {
       "seed": "batch-015",
       "success": true,
-      "milliseconds": 2.69,
+      "milliseconds": 2.53,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-015",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2882,
-        "attemptNodes": 2882,
+        "nodes": 1446,
+        "attemptNodes": 1446,
         "failures": {
           "no-compatible-word-path": 6,
           "ambiguous-consumption": 1,
@@ -1565,10 +1906,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-015",
         "seed": "batch-015",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1646,28 +1998,50 @@
     {
       "seed": "batch-016",
       "success": true,
-      "milliseconds": 0.66,
+      "milliseconds": 1.32,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-016",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1798,
-        "attemptNodes": 1798,
+        "nodes": 450,
+        "attemptNodes": 450,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-016",
         "seed": "batch-016",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1745,20 +2119,31 @@
     {
       "seed": "batch-017",
       "success": true,
-      "milliseconds": 1.69,
+      "milliseconds": 2.01,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-017",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5358,
-        "attemptNodes": 5358,
+        "nodes": 3886,
+        "attemptNodes": 3886,
         "failures": {
           "ambiguous-consumption": 27,
           "no-compatible-word-path": 8
@@ -1766,10 +2151,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-017",
         "seed": "batch-017",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1847,30 +2243,52 @@
     {
       "seed": "batch-018",
       "success": true,
-      "milliseconds": 1.76,
+      "milliseconds": 1.36,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-018",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2327,
-        "attemptNodes": 2327,
+        "nodes": 999,
+        "attemptNodes": 999,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-018",
         "seed": "batch-018",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -1948,28 +2366,50 @@
     {
       "seed": "batch-019",
       "success": true,
-      "milliseconds": 2.09,
+      "milliseconds": 1.25,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-019",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1762,
-        "attemptNodes": 1762,
+        "nodes": 482,
+        "attemptNodes": 482,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-019",
         "seed": "batch-019",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2047,28 +2487,50 @@
     {
       "seed": "batch-020",
       "success": true,
-      "milliseconds": 0.59,
+      "milliseconds": 1.83,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-020",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1925,
-        "attemptNodes": 1925,
+        "nodes": 477,
+        "attemptNodes": 477,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-020",
         "seed": "batch-020",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2146,20 +2608,31 @@
     {
       "seed": "batch-021",
       "success": true,
-      "milliseconds": 1.16,
+      "milliseconds": 2.1,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-021",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 6958,
-        "attemptNodes": 6958,
+        "nodes": 5590,
+        "attemptNodes": 5590,
         "failures": {
           "no-compatible-word-path": 32,
           "ambiguous-consumption": 2
@@ -2167,10 +2640,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-021",
         "seed": "batch-021",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2248,30 +2732,52 @@
     {
       "seed": "batch-022",
       "success": true,
-      "milliseconds": 0.56,
+      "milliseconds": 1.85,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-022",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1924,
-        "attemptNodes": 1924,
+        "nodes": 572,
+        "attemptNodes": 572,
         "failures": {
           "ambiguous-consumption": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-022",
         "seed": "batch-022",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2349,30 +2855,52 @@
     {
       "seed": "batch-023",
       "success": true,
-      "milliseconds": 2.3,
+      "milliseconds": 2.71,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-023",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 9822,
-        "attemptNodes": 9822,
+        "nodes": 8510,
+        "attemptNodes": 8510,
         "failures": {
           "no-compatible-word-path": 56
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-023",
         "seed": "batch-023",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2450,30 +2978,52 @@
     {
       "seed": "batch-024",
       "success": true,
-      "milliseconds": 0.61,
+      "milliseconds": 1.36,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-024",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2111,
-        "attemptNodes": 2111,
+        "nodes": 735,
+        "attemptNodes": 735,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-024",
         "seed": "batch-024",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2551,20 +3101,31 @@
     {
       "seed": "batch-025",
       "success": true,
-      "milliseconds": 1.05,
+      "milliseconds": 2.2,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-025",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 6707,
-        "attemptNodes": 6707,
+        "nodes": 5297,
+        "attemptNodes": 5297,
         "failures": {
           "no-compatible-word-path": 44,
           "ambiguous-consumption": 6
@@ -2572,10 +3133,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-025",
         "seed": "batch-025",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2653,20 +3225,31 @@
     {
       "seed": "batch-026",
       "success": true,
-      "milliseconds": 0.66,
+      "milliseconds": 2.46,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-026",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2468,
-        "attemptNodes": 2468,
+        "nodes": 884,
+        "attemptNodes": 884,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 2
@@ -2674,10 +3257,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-026",
         "seed": "batch-026",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2755,20 +3349,31 @@
     {
       "seed": "batch-027",
       "success": true,
-      "milliseconds": 2.76,
+      "milliseconds": 3.09,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-027",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5560,
-        "attemptNodes": 5560,
+        "nodes": 4120,
+        "attemptNodes": 4120,
         "failures": {
           "no-compatible-word-path": 6,
           "ambiguous-consumption": 30
@@ -2776,10 +3381,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-027",
         "seed": "batch-027",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2857,30 +3473,52 @@
     {
       "seed": "batch-028",
       "success": true,
-      "milliseconds": 0.75,
+      "milliseconds": 1.36,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-028",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2044,
-        "attemptNodes": 2044,
+        "nodes": 668,
+        "attemptNodes": 668,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-028",
         "seed": "batch-028",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -2958,20 +3596,31 @@
     {
       "seed": "batch-029",
       "success": true,
-      "milliseconds": 0.91,
+      "milliseconds": 1.68,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-029",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3674,
-        "attemptNodes": 3674,
+        "nodes": 2362,
+        "attemptNodes": 2362,
         "failures": {
           "ambiguous-consumption": 3,
           "no-compatible-word-path": 13
@@ -2979,10 +3628,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-029",
         "seed": "batch-029",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3060,20 +3720,31 @@
     {
       "seed": "batch-030",
       "success": true,
-      "milliseconds": 1.19,
+      "milliseconds": 2.56,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-030",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2747,
-        "attemptNodes": 2747,
+        "nodes": 1483,
+        "attemptNodes": 1483,
         "failures": {
           "no-compatible-word-path": 6,
           "ambiguous-consumption": 1
@@ -3081,10 +3752,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-030",
         "seed": "batch-030",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3162,20 +3844,31 @@
     {
       "seed": "batch-031",
       "success": true,
-      "milliseconds": 1.72,
+      "milliseconds": 2.91,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-031",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 6179,
-        "attemptNodes": 6179,
+        "nodes": 4649,
+        "attemptNodes": 4649,
         "failures": {
           "ambiguous-consumption": 34,
           "no-compatible-word-path": 2
@@ -3183,10 +3876,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-031",
         "seed": "batch-031",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3264,20 +3968,31 @@
     {
       "seed": "batch-032",
       "success": true,
-      "milliseconds": 1.2,
+      "milliseconds": 2.84,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-032",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3067,
-        "attemptNodes": 3067,
+        "nodes": 1621,
+        "attemptNodes": 1621,
         "failures": {
           "ambiguous-consumption": 2,
           "no-compatible-word-path": 5
@@ -3285,10 +4000,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-032",
         "seed": "batch-032",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3366,20 +4092,31 @@
     {
       "seed": "batch-033",
       "success": true,
-      "milliseconds": 1.28,
+      "milliseconds": 1.46,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-033",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3211,
-        "attemptNodes": 3211,
+        "nodes": 1811,
+        "attemptNodes": 1811,
         "failures": {
           "ambiguous-consumption": 2,
           "no-compatible-word-path": 5
@@ -3387,10 +4124,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-033",
         "seed": "batch-033",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3468,30 +4216,52 @@
     {
       "seed": "batch-034",
       "success": true,
-      "milliseconds": 1.18,
+      "milliseconds": 1.45,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-034",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2445,
-        "attemptNodes": 2445,
+        "nodes": 1053,
+        "attemptNodes": 1053,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-034",
         "seed": "batch-034",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3569,30 +4339,52 @@
     {
       "seed": "batch-035",
       "success": true,
-      "milliseconds": 1.11,
+      "milliseconds": 1.74,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-035",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3855,
-        "attemptNodes": 3855,
+        "nodes": 2367,
+        "attemptNodes": 2367,
         "failures": {
           "no-compatible-word-path": 11
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-035",
         "seed": "batch-035",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3670,20 +4462,31 @@
     {
       "seed": "batch-036",
       "success": true,
-      "milliseconds": 0.73,
+      "milliseconds": 2.68,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-036",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3162,
-        "attemptNodes": 3162,
+        "nodes": 1755,
+        "attemptNodes": 1755,
         "failures": {
           "no-compatible-word-path": 12,
           "ambiguous-consumption": 1
@@ -3691,10 +4494,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-036",
         "seed": "batch-036",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3772,20 +4586,31 @@
     {
       "seed": "batch-037",
       "success": true,
-      "milliseconds": 0.85,
+      "milliseconds": 1.51,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-037",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2170,
-        "attemptNodes": 2170,
+        "nodes": 874,
+        "attemptNodes": 874,
         "failures": {
           "ambiguous-consumption": 3,
           "no-compatible-word-path": 1
@@ -3793,10 +4618,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-037",
         "seed": "batch-037",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3874,20 +4710,31 @@
     {
       "seed": "batch-038",
       "success": true,
-      "milliseconds": 3.12,
+      "milliseconds": 3.16,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-038",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 12051,
-        "attemptNodes": 2051,
+        "nodes": 10595,
+        "attemptNodes": 595,
         "failures": {
           "ambiguous-consumption": 40,
           "no-compatible-word-path": 51,
@@ -3902,10 +4749,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-038",
         "seed": "batch-038",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -3983,30 +4841,52 @@
     {
       "seed": "batch-039",
       "success": true,
-      "milliseconds": 1.05,
+      "milliseconds": 1.44,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-039",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1973,
-        "attemptNodes": 1973,
+        "nodes": 577,
+        "attemptNodes": 577,
         "failures": {
           "ambiguous-consumption": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-039",
         "seed": "batch-039",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4084,20 +4964,31 @@
     {
       "seed": "batch-040",
       "success": true,
-      "milliseconds": 1.16,
+      "milliseconds": 2.54,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-040",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1867,
-        "attemptNodes": 1867,
+        "nodes": 603,
+        "attemptNodes": 603,
         "failures": {
           "no-compatible-word-path": 2,
           "coverage-bound": 1
@@ -4105,10 +4996,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-040",
         "seed": "batch-040",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4186,20 +5088,31 @@
     {
       "seed": "batch-041",
       "success": true,
-      "milliseconds": 1.22,
+      "milliseconds": 1.36,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-041",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2375,
-        "attemptNodes": 2375,
+        "nodes": 1031,
+        "attemptNodes": 1031,
         "failures": {
           "ambiguous-consumption": 7,
           "no-compatible-word-path": 3
@@ -4207,10 +5120,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-041",
         "seed": "batch-041",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4288,30 +5212,52 @@
     {
       "seed": "batch-042",
       "success": true,
-      "milliseconds": 4.86,
+      "milliseconds": 1.53,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-042",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3553,
-        "attemptNodes": 3553,
+        "nodes": 2225,
+        "attemptNodes": 2225,
         "failures": {
           "no-compatible-word-path": 14
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-042",
         "seed": "batch-042",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4389,30 +5335,52 @@
     {
       "seed": "batch-043",
       "success": true,
-      "milliseconds": 0.63,
+      "milliseconds": 1.3,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-043",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1767,
-        "attemptNodes": 1767,
+        "nodes": 471,
+        "attemptNodes": 471,
         "failures": {
           "ambiguous-consumption": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-043",
         "seed": "batch-043",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4490,28 +5458,50 @@
     {
       "seed": "batch-044",
       "success": true,
-      "milliseconds": 0.68,
+      "milliseconds": 1.28,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-044",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1886,
-        "attemptNodes": 1886,
+        "nodes": 590,
+        "attemptNodes": 590,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-044",
         "seed": "batch-044",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4589,28 +5579,50 @@
     {
       "seed": "batch-045",
       "success": true,
-      "milliseconds": 0.66,
+      "milliseconds": 2.78,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-045",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2143,
-        "attemptNodes": 2143,
+        "nodes": 567,
+        "attemptNodes": 567,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-045",
         "seed": "batch-045",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4688,30 +5700,52 @@
     {
       "seed": "batch-046",
       "success": true,
-      "milliseconds": 0.69,
+      "milliseconds": 1.48,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-046",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2435,
-        "attemptNodes": 2435,
+        "nodes": 1123,
+        "attemptNodes": 1123,
         "failures": {
           "no-compatible-word-path": 6
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-046",
         "seed": "batch-046",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4789,20 +5823,31 @@
     {
       "seed": "batch-047",
       "success": true,
-      "milliseconds": 0.76,
+      "milliseconds": 1.71,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-047",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2829,
-        "attemptNodes": 2829,
+        "nodes": 1493,
+        "attemptNodes": 1493,
         "failures": {
           "ambiguous-consumption": 8,
           "no-compatible-word-path": 3
@@ -4810,10 +5855,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-047",
         "seed": "batch-047",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4891,30 +5947,52 @@
     {
       "seed": "batch-048",
       "success": true,
-      "milliseconds": 0.74,
+      "milliseconds": 1.94,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-048",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3093,
-        "attemptNodes": 3093,
+        "nodes": 1773,
+        "attemptNodes": 1773,
         "failures": {
           "no-compatible-word-path": 10
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-048",
         "seed": "batch-048",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -4992,20 +6070,31 @@
     {
       "seed": "batch-049",
       "success": true,
-      "milliseconds": 0.64,
+      "milliseconds": 1.46,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-049",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2213,
-        "attemptNodes": 2213,
+        "nodes": 917,
+        "attemptNodes": 917,
         "failures": {
           "ambiguous-consumption": 5,
           "no-compatible-word-path": 3
@@ -5013,10 +6102,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-049",
         "seed": "batch-049",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5094,20 +6194,31 @@
     {
       "seed": "batch-050",
       "success": true,
-      "milliseconds": 3.37,
+      "milliseconds": 3.05,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-050",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 8522,
-        "attemptNodes": 8522,
+        "nodes": 7178,
+        "attemptNodes": 7178,
         "failures": {
           "no-compatible-word-path": 42,
           "ambiguous-consumption": 2
@@ -5115,10 +6226,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-050",
         "seed": "batch-050",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5196,28 +6318,50 @@
     {
       "seed": "batch-051",
       "success": true,
-      "milliseconds": 1.1,
+      "milliseconds": 1.41,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-051",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1777,
-        "attemptNodes": 1777,
+        "nodes": 457,
+        "attemptNodes": 457,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-051",
         "seed": "batch-051",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5295,20 +6439,31 @@
     {
       "seed": "batch-052",
       "success": true,
-      "milliseconds": 0.9,
+      "milliseconds": 1.42,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-052",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2832,
-        "attemptNodes": 2832,
+        "nodes": 1120,
+        "attemptNodes": 1120,
         "failures": {
           "no-compatible-word-path": 2,
           "ambiguous-consumption": 2
@@ -5316,10 +6471,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-052",
         "seed": "batch-052",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5397,28 +6563,50 @@
     {
       "seed": "batch-053",
       "success": true,
-      "milliseconds": 0.67,
+      "milliseconds": 1.3,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-053",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1634,
-        "attemptNodes": 1634,
+        "nodes": 402,
+        "attemptNodes": 402,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-053",
         "seed": "batch-053",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5496,20 +6684,31 @@
     {
       "seed": "batch-054",
       "success": true,
-      "milliseconds": 0.77,
+      "milliseconds": 1.66,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-054",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2939,
-        "attemptNodes": 2939,
+        "nodes": 1555,
+        "attemptNodes": 1555,
         "failures": {
           "no-compatible-word-path": 4,
           "ambiguous-consumption": 1
@@ -5517,10 +6716,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-054",
         "seed": "batch-054",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5598,20 +6808,31 @@
     {
       "seed": "batch-055",
       "success": true,
-      "milliseconds": 1.04,
+      "milliseconds": 1.94,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-055",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5619,
-        "attemptNodes": 5619,
+        "nodes": 4271,
+        "attemptNodes": 4271,
         "failures": {
           "ambiguous-consumption": 4,
           "no-compatible-word-path": 27
@@ -5619,10 +6840,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-055",
         "seed": "batch-055",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5700,20 +6932,31 @@
     {
       "seed": "batch-056",
       "success": true,
-      "milliseconds": 0.81,
+      "milliseconds": 1.76,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-056",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3585,
-        "attemptNodes": 3585,
+        "nodes": 2281,
+        "attemptNodes": 2281,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 15
@@ -5721,10 +6964,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-056",
         "seed": "batch-056",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5802,20 +7056,31 @@
     {
       "seed": "batch-057",
       "success": true,
-      "milliseconds": 0.62,
+      "milliseconds": 1.49,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-057",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2652,
-        "attemptNodes": 2652,
+        "nodes": 1112,
+        "attemptNodes": 1112,
         "failures": {
           "no-compatible-word-path": 1,
           "ambiguous-consumption": 7
@@ -5823,10 +7088,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-057",
         "seed": "batch-057",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -5904,20 +7180,31 @@
     {
       "seed": "batch-058",
       "success": true,
-      "milliseconds": 4.28,
+      "milliseconds": 3.45,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-058",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5393,
-        "attemptNodes": 5393,
+        "nodes": 3917,
+        "attemptNodes": 3917,
         "failures": {
           "no-compatible-word-path": 19,
           "ambiguous-consumption": 5
@@ -5925,10 +7212,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-058",
         "seed": "batch-058",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6006,30 +7304,52 @@
     {
       "seed": "batch-059",
       "success": true,
-      "milliseconds": 0.66,
+      "milliseconds": 2.23,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-059",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2313,
-        "attemptNodes": 2313,
+        "nodes": 841,
+        "attemptNodes": 841,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-059",
         "seed": "batch-059",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6107,20 +7427,31 @@
     {
       "seed": "batch-060",
       "success": true,
-      "milliseconds": 1.93,
+      "milliseconds": 2.48,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-060",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2218,
-        "attemptNodes": 2218,
+        "nodes": 954,
+        "attemptNodes": 954,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 5
@@ -6128,10 +7459,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-060",
         "seed": "batch-060",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6209,20 +7551,31 @@
     {
       "seed": "batch-061",
       "success": true,
-      "milliseconds": 1,
+      "milliseconds": 2.21,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-061",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2402,
-        "attemptNodes": 2402,
+        "nodes": 962,
+        "attemptNodes": 962,
         "failures": {
           "no-compatible-word-path": 3,
           "ambiguous-consumption": 1
@@ -6230,10 +7583,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-061",
         "seed": "batch-061",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6311,20 +7675,31 @@
     {
       "seed": "batch-062",
       "success": true,
-      "milliseconds": 2.37,
+      "milliseconds": 10.15,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-062",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 14524,
-        "attemptNodes": 4524,
+        "nodes": 13252,
+        "attemptNodes": 3252,
         "failures": {
           "no-compatible-word-path": 72,
           "ambiguous-consumption": 10,
@@ -6339,10 +7714,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-062",
         "seed": "batch-062",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6420,20 +7806,31 @@
     {
       "seed": "batch-063",
       "success": true,
-      "milliseconds": 0.7,
+      "milliseconds": 1.59,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-063",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2865,
-        "attemptNodes": 2865,
+        "nodes": 1521,
+        "attemptNodes": 1521,
         "failures": {
           "no-compatible-word-path": 7,
           "ambiguous-consumption": 3
@@ -6441,10 +7838,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-063",
         "seed": "batch-063",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6522,30 +7930,52 @@
     {
       "seed": "batch-064",
       "success": true,
-      "milliseconds": 0.8,
+      "milliseconds": 1.95,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-064",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 4015,
-        "attemptNodes": 4015,
+        "nodes": 2651,
+        "attemptNodes": 2651,
         "failures": {
           "no-compatible-word-path": 23
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-064",
         "seed": "batch-064",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6623,20 +8053,31 @@
     {
       "seed": "batch-065",
       "success": true,
-      "milliseconds": 1.09,
+      "milliseconds": 1.74,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-065",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2593,
-        "attemptNodes": 2593,
+        "nodes": 1233,
+        "attemptNodes": 1233,
         "failures": {
           "ambiguous-consumption": 4,
           "no-compatible-word-path": 4
@@ -6644,10 +8085,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-065",
         "seed": "batch-065",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6725,30 +8177,52 @@
     {
       "seed": "batch-066",
       "success": true,
-      "milliseconds": 0.98,
+      "milliseconds": 1.44,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-066",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1955,
-        "attemptNodes": 1955,
+        "nodes": 491,
+        "attemptNodes": 491,
         "failures": {
           "ambiguous-consumption": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-066",
         "seed": "batch-066",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6826,30 +8300,52 @@
     {
       "seed": "batch-067",
       "success": true,
-      "milliseconds": 1.1,
+      "milliseconds": 1.56,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-067",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2075,
-        "attemptNodes": 2075,
+        "nodes": 779,
+        "attemptNodes": 779,
         "failures": {
           "no-compatible-word-path": 4
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-067",
         "seed": "batch-067",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -6927,30 +8423,52 @@
     {
       "seed": "batch-068",
       "success": true,
-      "milliseconds": 1.01,
+      "milliseconds": 1.62,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-068",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1944,
-        "attemptNodes": 1944,
+        "nodes": 712,
+        "attemptNodes": 712,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-068",
         "seed": "batch-068",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7028,20 +8546,31 @@
     {
       "seed": "batch-069",
       "success": true,
-      "milliseconds": 2.15,
+      "milliseconds": 1.68,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-069",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 4100,
-        "attemptNodes": 4100,
+        "nodes": 2690,
+        "attemptNodes": 2690,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 13
@@ -7049,10 +8578,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-069",
         "seed": "batch-069",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7130,30 +8670,52 @@
     {
       "seed": "batch-070",
       "success": true,
-      "milliseconds": 1.28,
+      "milliseconds": 2.84,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-070",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1968,
-        "attemptNodes": 1968,
+        "nodes": 588,
+        "attemptNodes": 588,
         "failures": {
           "no-compatible-word-path": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-070",
         "seed": "batch-070",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7231,28 +8793,50 @@
     {
       "seed": "batch-071",
       "success": true,
-      "milliseconds": 1.03,
+      "milliseconds": 1.47,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-071",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1724,
-        "attemptNodes": 1724,
+        "nodes": 444,
+        "attemptNodes": 444,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-071",
         "seed": "batch-071",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7330,30 +8914,52 @@
     {
       "seed": "batch-072",
       "success": true,
-      "milliseconds": 1.18,
+      "milliseconds": 3.22,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-072",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2599,
-        "attemptNodes": 2599,
+        "nodes": 1255,
+        "attemptNodes": 1255,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-072",
         "seed": "batch-072",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7431,20 +9037,31 @@
     {
       "seed": "batch-073",
       "success": true,
-      "milliseconds": 2,
+      "milliseconds": 2.24,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-073",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 7419,
-        "attemptNodes": 7419,
+        "nodes": 5945,
+        "attemptNodes": 5945,
         "failures": {
           "ambiguous-consumption": 11,
           "no-compatible-word-path": 34
@@ -7452,10 +9069,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-073",
         "seed": "batch-073",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7533,30 +9161,52 @@
     {
       "seed": "batch-074",
       "success": true,
-      "milliseconds": 1.09,
+      "milliseconds": 1.44,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-074",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2623,
-        "attemptNodes": 2623,
+        "nodes": 1213,
+        "attemptNodes": 1213,
         "failures": {
           "no-compatible-word-path": 7
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-074",
         "seed": "batch-074",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7634,20 +9284,31 @@
     {
       "seed": "batch-075",
       "success": true,
-      "milliseconds": 1.95,
+      "milliseconds": 2.39,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-075",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3953,
-        "attemptNodes": 3953,
+        "nodes": 2625,
+        "attemptNodes": 2625,
         "failures": {
           "ambiguous-consumption": 14,
           "no-compatible-word-path": 9
@@ -7655,10 +9316,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-075",
         "seed": "batch-075",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7736,20 +9408,31 @@
     {
       "seed": "batch-076",
       "success": true,
-      "milliseconds": 0.66,
+      "milliseconds": 2.03,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-076",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1952,
-        "attemptNodes": 1952,
+        "nodes": 624,
+        "attemptNodes": 624,
         "failures": {
           "no-compatible-word-path": 1,
           "ambiguous-consumption": 1
@@ -7757,10 +9440,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-076",
         "seed": "batch-076",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7838,20 +9532,31 @@
     {
       "seed": "batch-077",
       "success": true,
-      "milliseconds": 0.73,
+      "milliseconds": 2.37,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-077",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3089,
-        "attemptNodes": 3089,
+        "nodes": 1777,
+        "attemptNodes": 1777,
         "failures": {
           "ambiguous-consumption": 1,
           "no-compatible-word-path": 10
@@ -7859,10 +9564,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-077",
         "seed": "batch-077",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -7940,28 +9656,50 @@
     {
       "seed": "batch-078",
       "success": true,
-      "milliseconds": 0.58,
+      "milliseconds": 1.94,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-078",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1847,
-        "attemptNodes": 1847,
+        "nodes": 463,
+        "attemptNodes": 463,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-078",
         "seed": "batch-078",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8039,28 +9777,50 @@
     {
       "seed": "batch-079",
       "success": true,
-      "milliseconds": 0.56,
+      "milliseconds": 2.35,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-079",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1761,
-        "attemptNodes": 1761,
+        "nodes": 449,
+        "attemptNodes": 449,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-079",
         "seed": "batch-079",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8138,20 +9898,31 @@
     {
       "seed": "batch-080",
       "success": true,
-      "milliseconds": 0.72,
+      "milliseconds": 2.4,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-080",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2453,
-        "attemptNodes": 2453,
+        "nodes": 953,
+        "attemptNodes": 953,
         "failures": {
           "no-compatible-word-path": 2,
           "ambiguous-consumption": 1
@@ -8159,10 +9930,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-080",
         "seed": "batch-080",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8240,20 +10022,31 @@
     {
       "seed": "batch-081",
       "success": true,
-      "milliseconds": 1.36,
+      "milliseconds": 1.55,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-081",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3309,
-        "attemptNodes": 3309,
+        "nodes": 1965,
+        "attemptNodes": 1965,
         "failures": {
           "no-compatible-word-path": 12,
           "ambiguous-consumption": 1
@@ -8261,10 +10054,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-081",
         "seed": "batch-081",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8342,20 +10146,31 @@
     {
       "seed": "batch-082",
       "success": true,
-      "milliseconds": 2.88,
+      "milliseconds": 4.38,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-082",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 14748,
-        "attemptNodes": 4748,
+        "nodes": 13380,
+        "attemptNodes": 3380,
         "failures": {
           "no-compatible-word-path": 69,
           "ambiguous-consumption": 5,
@@ -8370,10 +10185,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-082",
         "seed": "batch-082",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8451,20 +10277,31 @@
     {
       "seed": "batch-083",
       "success": true,
-      "milliseconds": 3.75,
+      "milliseconds": 3.45,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-083",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 12006,
-        "attemptNodes": 2006,
+        "nodes": 10654,
+        "attemptNodes": 654,
         "failures": {
           "no-compatible-word-path": 42,
           "coverage-bound": 2,
@@ -8479,10 +10316,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-083",
         "seed": "batch-083",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8560,20 +10408,31 @@
     {
       "seed": "batch-084",
       "success": true,
-      "milliseconds": 0.8,
+      "milliseconds": 1.43,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-084",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2624,
-        "attemptNodes": 2624,
+        "nodes": 1216,
+        "attemptNodes": 1216,
         "failures": {
           "no-compatible-word-path": 6,
           "ambiguous-consumption": 1
@@ -8581,10 +10440,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-084",
         "seed": "batch-084",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8662,30 +10532,52 @@
     {
       "seed": "batch-085",
       "success": true,
-      "milliseconds": 0.79,
+      "milliseconds": 1.5,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-085",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 3026,
-        "attemptNodes": 3026,
+        "nodes": 1730,
+        "attemptNodes": 1730,
         "failures": {
           "no-compatible-word-path": 10
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-085",
         "seed": "batch-085",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8763,30 +10655,52 @@
     {
       "seed": "batch-086",
       "success": true,
-      "milliseconds": 0.65,
+      "milliseconds": 1.3,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-086",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1984,
-        "attemptNodes": 1984,
+        "nodes": 736,
+        "attemptNodes": 736,
         "failures": {
           "no-compatible-word-path": 1
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-086",
         "seed": "batch-086",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8864,20 +10778,31 @@
     {
       "seed": "batch-087",
       "success": true,
-      "milliseconds": 1.97,
+      "milliseconds": 3.43,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-087",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 2,
-        "nodes": 13139,
-        "attemptNodes": 3139,
+        "nodes": 11779,
+        "attemptNodes": 1779,
         "failures": {
           "ambiguous-consumption": 17,
           "no-compatible-word-path": 79,
@@ -8892,10 +10817,21 @@
         ]
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-087",
         "seed": "batch-087",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -8973,20 +10909,31 @@
     {
       "seed": "batch-088",
       "success": true,
-      "milliseconds": 0.71,
+      "milliseconds": 1.3,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-088",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2053,
-        "attemptNodes": 2053,
+        "nodes": 709,
+        "attemptNodes": 709,
         "failures": {
           "no-compatible-word-path": 1,
           "ambiguous-consumption": 3
@@ -8994,10 +10941,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-088",
         "seed": "batch-088",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9075,20 +11033,31 @@
     {
       "seed": "batch-089",
       "success": true,
-      "milliseconds": 0.6,
+      "milliseconds": 1.28,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-089",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1860,
-        "attemptNodes": 1860,
+        "nodes": 548,
+        "attemptNodes": 548,
         "failures": {
           "ambiguous-consumption": 2,
           "coverage-bound": 5
@@ -9096,10 +11065,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-089",
         "seed": "batch-089",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9177,30 +11157,52 @@
     {
       "seed": "batch-090",
       "success": true,
-      "milliseconds": 0.58,
+      "milliseconds": 1.46,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-090",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2085,
-        "attemptNodes": 2085,
+        "nodes": 753,
+        "attemptNodes": 753,
         "failures": {
           "no-compatible-word-path": 2
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-090",
         "seed": "batch-090",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9278,30 +11280,52 @@
     {
       "seed": "batch-091",
       "success": true,
-      "milliseconds": 0.64,
+      "milliseconds": 1.51,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-091",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2625,
-        "attemptNodes": 2625,
+        "nodes": 1329,
+        "attemptNodes": 1329,
         "failures": {
           "no-compatible-word-path": 6
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-091",
         "seed": "batch-091",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9379,20 +11403,31 @@
     {
       "seed": "batch-092",
       "success": true,
-      "milliseconds": 1.07,
+      "milliseconds": 2.28,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-092",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 6514,
-        "attemptNodes": 6514,
+        "nodes": 5170,
+        "attemptNodes": 5170,
         "failures": {
           "no-compatible-word-path": 32,
           "ambiguous-consumption": 7
@@ -9400,10 +11435,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-092",
         "seed": "batch-092",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9481,30 +11527,52 @@
     {
       "seed": "batch-093",
       "success": true,
-      "milliseconds": 0.61,
+      "milliseconds": 1.77,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-093",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2423,
-        "attemptNodes": 2423,
+        "nodes": 1089,
+        "attemptNodes": 1089,
         "failures": {
           "no-compatible-word-path": 5
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-093",
         "seed": "batch-093",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9582,20 +11650,31 @@
     {
       "seed": "batch-094",
       "success": true,
-      "milliseconds": 5.29,
+      "milliseconds": 4.63,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-094",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 8086,
-        "attemptNodes": 8086,
+        "nodes": 6700,
+        "attemptNodes": 6700,
         "failures": {
           "ambiguous-consumption": 8,
           "no-compatible-word-path": 38
@@ -9603,10 +11682,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-094",
         "seed": "batch-094",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9684,20 +11774,31 @@
     {
       "seed": "batch-095",
       "success": true,
-      "milliseconds": 1.39,
+      "milliseconds": 2.25,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-095",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5693,
-        "attemptNodes": 5693,
+        "nodes": 4397,
+        "attemptNodes": 4397,
         "failures": {
           "no-compatible-word-path": 32,
           "ambiguous-consumption": 1
@@ -9705,10 +11806,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-095",
         "seed": "batch-095",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9786,30 +11898,52 @@
     {
       "seed": "batch-096",
       "success": true,
-      "milliseconds": 0.78,
+      "milliseconds": 1.49,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-096",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 2793,
-        "attemptNodes": 2793,
+        "nodes": 1529,
+        "attemptNodes": 1529,
         "failures": {
           "no-compatible-word-path": 7
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-096",
         "seed": "batch-096",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9887,28 +12021,50 @@
     {
       "seed": "batch-097",
       "success": true,
-      "milliseconds": 0.65,
+      "milliseconds": 1.34,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-097",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 1756,
-        "attemptNodes": 1756,
+        "nodes": 436,
+        "attemptNodes": 436,
         "failures": {},
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-097",
         "seed": "batch-097",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -9986,20 +12142,31 @@
     {
       "seed": "batch-098",
       "success": true,
-      "milliseconds": 1.05,
+      "milliseconds": 1.82,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-098",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 5079,
-        "attemptNodes": 5079,
+        "nodes": 3847,
+        "attemptNodes": 3847,
         "failures": {
           "no-compatible-word-path": 28,
           "ambiguous-consumption": 2
@@ -10007,10 +12174,21 @@
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-098",
         "seed": "batch-098",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,
@@ -10088,30 +12266,52 @@
     {
       "seed": "batch-099",
       "success": true,
-      "milliseconds": 2.94,
+      "milliseconds": 2.39,
       "reason": null,
       "stats": {
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
         "seed": "batch-099",
-        "dictionarySize": 1433,
+        "dictionarySize": 2086,
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "budget": {
           "maxNodesPerAttempt": 10000,
           "maxAttempts": 30,
           "maxTotalNodes": 300000
         },
         "attempts": 1,
-        "nodes": 7409,
-        "attemptNodes": 7409,
+        "nodes": 6057,
+        "attemptNodes": 6057,
         "failures": {
           "no-compatible-word-path": 28
         },
         "attemptReports": []
       },
       "level": {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "id": "generated-batch-099",
         "seed": "batch-099",
-        "algorithmVersion": "wordtiles-v1.0.0",
+        "algorithmVersion": "wordtiles-v2.0.0",
+        "config": {
+          "rows": 3,
+          "cols": 3,
+          "wordLengths": [
+            3,
+            3,
+            3,
+            4,
+            5
+          ]
+        },
         "board": {
           "rows": 3,
           "cols": 3,

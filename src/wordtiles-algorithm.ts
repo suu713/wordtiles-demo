@@ -1,0 +1,408 @@
+/**
+ * Word Tiles V1: deterministic generator + independent validator.
+ * No UI, renderer, network, global random source, or third-party dependency.
+ * Rule scope: 3x3, 5 distinct targets of lengths 3/3/3/4/5, uses 1..3.
+ */
+export const GENERATOR_VERSION = "backtrack-v1.0.0";
+export type CellId = number;
+export interface TargetWord {
+  id: string;
+  word: string;
+  canonicalPath: CellId[];
+}
+export interface LevelData {
+  schemaVersion: 1;
+  rulesVersion: "wordtiles-v1";
+  generatorVersion: string;
+  dictionaryVersion: string;
+  seed: number;
+  rows: 3;
+  cols: 3;
+  maxCellUses: 3;
+  letters: string[];
+  initialCounts: number[];
+  targets: TargetWord[];
+}
+export interface DictionaryInput { version: string; words: readonly string[] }
+export interface DictionaryReport {
+  accepted: number;
+  countsByLength: Record<3 | 4 | 5, number>;
+  duplicateCount: number;
+  rejectedIndices: number[];
+}
+export interface GeneratorConfig {
+  maxNodesPerAttempt?: number;
+  maxAttempts?: number;
+  maxTotalNodes?: number;
+}
+export interface GenerationStats {
+  attempts: number;
+  nodes: number;
+  currentAttemptNodes: number;
+  completedLayouts: number;
+  prunedAmbiguity: number;
+  prunedCoverage: number;
+  validationRejected: number;
+}
+export interface GeneratorHooks {
+  /** Optional cooperative cancel predicate. A UI should normally terminate its Worker. */
+  isCancelled?: () => boolean;
+  onProgress?: (stats: Readonly<GenerationStats>) => void;
+}
+export interface TargetAnalysis {
+  id: string;
+  word: string;
+  pathCount: number;
+  consumptionSetCount: number;
+  paths: number[][];
+}
+export interface ValidationReport {
+  ok: boolean;
+  errors: string[];
+  targets: TargetAnalysis[];
+  statesChecked: number;
+}
+export type GenerationResult =
+  | { ok: true; level: LevelData; validation: ValidationReport;
+      stats: GenerationStats; dictionaryReport: DictionaryReport }
+  | { ok: false; code: "INVALID_INPUT" | "DICTIONARY_INSUFFICIENT" |
+      "SEARCH_BUDGET_EXCEEDED" | "SEARCH_ATTEMPTS_EXCEEDED" |
+      "SEARCH_EXHAUSTED" | "CANCELLED";
+      message: string; stats: GenerationStats; dictionaryReport?: DictionaryReport };
+
+const SLOTS = [5, 4, 3, 3, 3] as const;
+const NEIGHBORS: readonly (readonly number[])[] = Object.freeze(
+  Array.from({ length: 9 }, (_, id) => Object.freeze(
+    Array.from({ length: 9 }, (_, j) => j).filter(j =>
+      Math.abs(Math.floor(id / 3) - Math.floor(j / 3)) +
+      Math.abs(id % 3 - j % 3) === 1))));
+const DEFAULTS = { maxNodesPerAttempt: 10_000, maxAttempts: 30, maxTotalNodes: 300_000 };
+type Tick = () => void;
+const noop: Tick = () => {};
+const compareText = (a: string, b: string) => a < b ? -1 : a > b ? 1 : 0;
+const maskOf = (path: readonly number[]) => path.reduce((m, i) => m | (1 << i), 0);
+const isRecord = (v: unknown): v is Record<string, unknown> =>
+  typeof v === "object" && v !== null && !Array.isArray(v);
+const isUint32 = (n: unknown): n is number =>
+  typeof n === "number" && Number.isInteger(n) && n >= 0 && n <= 0xffffffff;
+
+export function getNeighbors(cellId: number): number[] {
+  return Number.isInteger(cellId) && cellId >= 0 && cellId < 9 ? [...NEIGHBORS[cellId]] : [];
+}
+
+function prepareDictionary(input: DictionaryInput) {
+  if (!isRecord(input) || typeof input.version !== "string" || !input.version.trim() ||
+      !Array.isArray(input.words)) throw new Error("词库必须包含非空 version 和 words 数组。");
+  const set = new Set<string>();
+  const report: DictionaryReport = {
+    accepted: 0, countsByLength: { 3: 0, 4: 0, 5: 0 }, duplicateCount: 0, rejectedIndices: [],
+  };
+  input.words.forEach((raw: unknown, index: number) => {
+    if (typeof raw !== "string") { report.rejectedIndices.push(index); return; }
+    const word = raw.trim().toUpperCase();
+    if (!/^[A-Z]{3,5}$/.test(word)) { report.rejectedIndices.push(index); return; }
+    if (set.has(word)) { report.duplicateCount++; return; }
+    set.add(word);
+  });
+  const words = [...set].sort(compareText);
+  const byLength: Record<3 | 4 | 5, string[]> = { 3: [], 4: [], 5: [] };
+  for (const word of words) byLength[word.length as 3 | 4 | 5].push(word);
+  report.accepted = words.length;
+  for (const len of [3, 4, 5] as const) report.countsByLength[len] = byLength[len].length;
+  return { words, set, byLength, report };
+}
+
+/** Private state, uint32 arithmetic; seed 0 is valid. */
+class SeededRandom {
+  constructor(private state: number) {}
+  next(): number {
+    this.state = (this.state + 0x6d2b79f5) >>> 0;
+    let t = this.state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+  shuffle<T>(source: readonly T[]): T[] {
+    const result = [...source];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(this.next() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+}
+
+class SearchStop extends Error {
+  constructor(readonly kind: "ATTEMPT" | "TOTAL" | "CANCELLED") { super(kind); }
+}
+function emptyStats(): GenerationStats {
+  return { attempts: 0, nodes: 0, currentAttemptNodes: 0, completedLayouts: 0,
+    prunedAmbiguity: 0, prunedCoverage: 0, validationRejected: 0 };
+}
+class Budget {
+  readonly stats = emptyStats();
+  constructor(readonly limits: Required<GeneratorConfig>, private hooks: GeneratorHooks) {}
+  tick = (): void => {
+    if (this.hooks.isCancelled?.()) throw new SearchStop("CANCELLED");
+    if (this.stats.nodes >= this.limits.maxTotalNodes) throw new SearchStop("TOTAL");
+    if (this.stats.currentAttemptNodes >= this.limits.maxNodesPerAttempt) throw new SearchStop("ATTEMPT");
+    this.stats.nodes++;
+    this.stats.currentAttemptNodes++;
+    if (this.stats.nodes % 2048 === 0) this.hooks.onProgress?.({ ...this.stats });
+  };
+  startAttempt(): void {
+    this.stats.attempts++;
+    this.stats.currentAttemptNodes = 0;
+    this.hooks.onProgress?.({ ...this.stats });
+  }
+}
+
+/**
+ * A null cell is NOT a wildcard here. This searches already fixed letters.
+ * An optional mask-set limit is only used to reject an ambiguous partial board.
+ */
+function searchFixedPaths(
+  letters: readonly (string | null)[], word: string, remaining: readonly number[],
+  tick: Tick = noop, maxSets = Infinity,
+): number[][] {
+  const result: number[][] = [];
+  const sets = new Set<number>();
+  const path: number[] = [];
+  function visit(cell: number, k: number, visited: number): void {
+    tick();
+    if (sets.size >= maxSets || (visited & (1 << cell)) || remaining[cell] <= 0 ||
+        letters[cell] !== word[k]) return;
+    const nextMask = visited | (1 << cell);
+    path.push(cell);
+    if (k === word.length - 1) {
+      result.push([...path]);
+      sets.add(nextMask);
+    } else {
+      for (const next of NEIGHBORS[cell]) {
+        if (sets.size >= maxSets) break;
+        visit(next, k + 1, nextMask);
+      }
+    }
+    path.pop();
+  }
+  for (let cell = 0; cell < 9 && sets.size < maxSets; cell++) visit(cell, 0, 0);
+  return result;
+}
+
+export function findWordPaths(
+  letters: readonly (string | null)[], word: string,
+  remaining: readonly number[] = Array(9).fill(1),
+): number[][] {
+  if (!Array.isArray(letters) || letters.length !== 9 ||
+      letters.some(c => c !== null && (typeof c !== "string" || !/^[A-Z]$/.test(c))) ||
+      !/^[A-Z]{3,5}$/.test(word) || !Array.isArray(remaining) || remaining.length !== 9 ||
+      remaining.some(n => !Number.isInteger(n) || n < 0 || n > 3)) {
+    throw new Error("找词输入错误：固定9格、大写3～5字母词、9个0～3整数次数。");
+  }
+  return searchFixedPaths(letters, word, remaining);
+}
+
+function isValidPath(letters: readonly string[], word: string, path: unknown): path is number[] {
+  return Array.isArray(path) && path.length === word.length &&
+    path.every((id, k) => Number.isInteger(id) && id >= 0 && id < 9 &&
+      letters[id] === word[k] && (k === 0 || NEIGHBORS[path[k - 1]]?.includes(id))) &&
+    new Set(path).size === path.length;
+}
+
+function validatePrepared(value: unknown, allowed: Set<string>, tick: Tick): ValidationReport {
+  const report: ValidationReport = { ok: false, errors: [], targets: [], statesChecked: 0 };
+  const fail = (message: string) => { report.errors.push(message); return report; };
+  tick();
+  if (!isRecord(value)) return fail("SCHEMA: 关卡必须是对象。");
+  if (value.schemaVersion !== 1 || value.rulesVersion !== "wordtiles-v1" ||
+      value.rows !== 3 || value.cols !== 3 || value.maxCellUses !== 3)
+    return fail("SCHEMA: 版本、尺寸或次数上限不符合V1。");
+  if (typeof value.generatorVersion !== "string" || !value.generatorVersion.trim() ||
+      typeof value.dictionaryVersion !== "string" || !value.dictionaryVersion.trim() || !isUint32(value.seed))
+    return fail("SCHEMA: 缺少版本信息或seed不是uint32。");
+  if (!Array.isArray(value.letters) || value.letters.length !== 9 ||
+      value.letters.some(c => typeof c !== "string" || !/^[A-Z]$/.test(c)))
+    return fail("LETTERS: 初始棋盘必须有9个大写字母。");
+  if (!Array.isArray(value.initialCounts) || value.initialCounts.length !== 9 ||
+      value.initialCounts.some(n => !Number.isInteger(n) || n < 1 || n > 3))
+    return fail("COUNTS: 初始次数必须是9个1～3整数。");
+  if (!Array.isArray(value.targets) || value.targets.length !== 5 || value.targets.some(t =>
+      !isRecord(t) || typeof t.id !== "string" || !t.id.trim() ||
+      typeof t.word !== "string" || !/^[A-Z]{3,5}$/.test(t.word)))
+    return fail("TARGETS: 必须有5个有效目标。");
+  const level = value as unknown as LevelData;
+  const targets = level.targets;
+  if (new Set(targets.map(t => t.id)).size !== 5 || new Set(targets.map(t => t.word)).size !== 5)
+    return fail("TARGETS: 目标id与单词均不能重复。");
+  if (targets.map(t => t.word.length).sort((a, b) => a - b).join(",") !== "3,3,3,4,5")
+    return fail("TARGETS: 目标长度必须为3、3、3、4、5。");
+  if (targets.some(t => !allowed.has(t.word))) return fail("DICTIONARY: 目标不在给定白名单中。");
+  for (const target of targets) {
+    if (!isValidPath(level.letters, target.word, target.canonicalPath))
+      return fail(`PATH: ${target.word}参考路径非法。`);
+  }
+  const uniqueMasks: number[] = [];
+  const expected = Array<number>(9).fill(0);
+  for (const target of targets) {
+    const paths = searchFixedPaths(level.letters, target.word, level.initialCounts, tick);
+    const sets = new Set(paths.map(maskOf));
+    report.targets.push({ id: target.id, word: target.word, pathCount: paths.length,
+      consumptionSetCount: sets.size, paths });
+    if (sets.size !== 1) return fail(`CONSUMPTION_SET: ${target.word}有${sets.size}种消耗集合，应为1。`);
+    const mask = paths.length ? maskOf(paths[0]) : 0;
+    if (maskOf(target.canonicalPath) !== mask) return fail(`PATH: ${target.word}参考集合不匹配。`);
+    uniqueMasks.push(mask);
+    for (let i = 0; i < 9; i++) if (mask & (1 << i)) expected[i]++;
+  }
+  if (expected.some((n, i) => n !== level.initialCounts[i]))
+    return fail("COUNT_MISMATCH: 次数必须逐格等于全部目标的真实需求。");
+  for (let completed = 0; completed < 32; completed++) {
+    tick();
+    const remaining = [...level.initialCounts];
+    let expectedSum = 0;
+    targets.forEach((target, ti) => {
+      if (completed & (1 << ti)) {
+        for (let i = 0; i < 9; i++) if (uniqueMasks[ti] & (1 << i)) remaining[i]--;
+      } else expectedSum += target.word.length;
+    });
+    if (remaining.some(n => n < 0) || remaining.reduce((s, n) => s + n, 0) !== expectedSum)
+      return fail(`STATE: 完成集合${completed}的次数不正确。`);
+    for (let ti = 0; ti < 5; ti++) {
+      if (completed & (1 << ti)) continue;
+      const paths = searchFixedPaths(level.letters, targets[ti].word, remaining, tick);
+      if (!paths.length || paths.some(p => maskOf(p) !== uniqueMasks[ti]))
+        return fail(`STATE: 完成集合${completed}中${targets[ti].word}不可安全完成。`);
+    }
+    if (completed === 31 && remaining.some(n => n !== 0)) return fail("STATE: 完成后未清空。");
+    report.statesChecked++;
+  }
+  report.ok = true;
+  return report;
+}
+
+/** Validate JSON imports as well as generated output. Input is never mutated. */
+export function validateLevel(value: unknown, dictionary: DictionaryInput): ValidationReport {
+  let allowed: Set<string>;
+  try { allowed = prepareDictionary(dictionary).set; }
+  catch (e) { return { ok: false, errors: [String(e)], targets: [], statesChecked: 0 }; }
+  return validatePrepared(value, allowed, noop);
+}
+
+interface Placement { word: string; path: number[] }
+interface PartialState { letters: (string | null)[]; counts: number[]; placed: Placement[] }
+
+function compatiblePaths(state: PartialState, word: string, tick: Tick): number[][] {
+  const paths: number[][] = [];
+  const path: number[] = [];
+  function visit(cell: number, k: number, visited: number): void {
+    tick();
+    if ((visited & (1 << cell)) || state.counts[cell] >= 3 ||
+        (state.letters[cell] !== null && state.letters[cell] !== word[k])) return;
+    path.push(cell);
+    if (k === word.length - 1) paths.push([...path]);
+    else for (const next of NEIGHBORS[cell]) visit(next, k + 1, visited | (1 << cell));
+    path.pop();
+  }
+  for (let cell = 0; cell < 9; cell++) visit(cell, 0, 0);
+  return paths;
+}
+
+function makeLevel(state: PartialState, dictionaryVersion: string, seed: number): LevelData {
+  const ordered = [...state.placed].sort((a, b) => a.word.length - b.word.length || compareText(a.word, b.word));
+  const initialCounts = Array<number>(9).fill(0);
+  for (const item of ordered) for (const cell of item.path) initialCounts[cell]++;
+  if (initialCounts.some((n, i) => n !== state.counts[i])) throw new Error("Internal counter mismatch.");
+  return { schemaVersion: 1, rulesVersion: "wordtiles-v1", generatorVersion: GENERATOR_VERSION,
+    dictionaryVersion, seed, rows: 3, cols: 3, maxCellUses: 3,
+    letters: state.letters.map(c => { if (!c) throw new Error("Uncovered cell."); return c; }),
+    initialCounts, targets: ordered.map((p, i) => ({ id: `W${i}`, word: p.word, canonicalPath: [...p.path] })) };
+}
+
+/**
+ * Main entry. Deterministic for the same version, normalized dictionary, seed and budgets.
+ * A bounded failure does not prove that no level exists. Never substitutes a fixture.
+ * Use in a Worker: the function itself is synchronous and CPU-bound.
+ */
+export function generateLevel(
+  config: GeneratorConfig, dictionary: DictionaryInput, seed: number, hooks: GeneratorHooks = {},
+): GenerationResult {
+  const invalid = (message: string): GenerationResult =>
+    ({ ok: false, code: "INVALID_INPUT", message, stats: emptyStats() });
+  if (!isUint32(seed)) return invalid("seed必须是0～4294967295的整数。");
+  if (!isRecord(config)) return invalid("config必须是对象，可传{}使用默认值。");
+  const unknownKeys = Object.keys(config).filter(k => !Object.prototype.hasOwnProperty.call(DEFAULTS, k));
+  if (unknownKeys.length) return invalid(`未知配置字段：${unknownKeys.join(", ")}；本版只允许修改搜索预算。`);
+  const limits = { ...DEFAULTS, ...config };
+  for (const key of Object.keys(DEFAULTS) as (keyof typeof DEFAULTS)[]) {
+    if (!Number.isSafeInteger(limits[key]) || limits[key] <= 0) return invalid(`${key}必须是正整数。`);
+  }
+  let dict: ReturnType<typeof prepareDictionary>;
+  try { dict = prepareDictionary(dictionary); }
+  catch (e) { return invalid(String(e)); }
+  if (dict.byLength[3].length < 3 || !dict.byLength[4].length || !dict.byLength[5].length)
+    return { ok: false, code: "DICTIONARY_INSUFFICIENT", message: "至少需要3个三字母词、1个四字母词、1个五字母词。",
+      stats: emptyStats(), dictionaryReport: dict.report };
+  const rng = new SeededRandom(seed);
+  const budget = new Budget(limits, hooks);
+  const active = Array<number>(9).fill(1);
+  const fail = (code: Extract<GenerationResult, { ok: false }>['code'], message: string): GenerationResult =>
+    ({ ok: false, code, message, stats: { ...budget.stats }, dictionaryReport: dict.report });
+  function search(state: PartialState, slot: number): { level: LevelData; validation: ValidationReport } | null {
+    budget.tick();
+    if (slot === 5) {
+      if (state.letters.some(c => c === null)) { budget.stats.prunedCoverage++; return null; }
+      budget.stats.completedLayouts++;
+      const level = makeLevel(state, dictionary.version, seed);
+      const validation = validatePrepared(level, dict.set, budget.tick);
+      if (validation.ok) return { level, validation };
+      budget.stats.validationRejected++;
+      return null;
+    }
+    const words = rng.shuffle(dict.byLength[SLOTS[slot]]);
+    const uncovered = state.letters.filter(c => c === null).length;
+    const lettersLeft = SLOTS.slice(slot).reduce<number>((a, n) => a + n, 0);
+    // Only an ordering heuristic: preserve a few empty cells for later short words.
+    const desiredNewCells = slot === 0 ? 5 : Math.ceil(uncovered * SLOTS[slot] / lettersLeft);
+    for (const word of words) {
+      budget.tick();
+      if (state.placed.some(p => p.word === word)) continue;
+      const paths = rng.shuffle(compatiblePaths(state, word, budget.tick));
+      const score = (path: number[]) => Math.abs(path.filter(i => state.letters[i] === null).length - desiredNewCells);
+      paths.sort((a, b) => score(a) - score(b));
+      for (const path of paths) {
+        budget.tick();
+        const next: PartialState = { letters: [...state.letters], counts: [...state.counts],
+          placed: [...state.placed, { word, path: [...path] }] };
+        path.forEach((cell, k) => { next.letters[cell] = word[k]; next.counts[cell]++; });
+        const restLength = SLOTS.slice(slot + 1).reduce<number>((a, n) => a + n, 0);
+        if (next.letters.filter(c => c === null).length > restLength) {
+          budget.stats.prunedCoverage++; continue;
+        }
+        let ambiguous = false;
+        for (const item of next.placed) {
+          const actual = searchFixedPaths(next.letters, item.word, active, budget.tick, 2);
+          if (new Set(actual.map(maskOf)).size > 1) { ambiguous = true; break; }
+        }
+        if (ambiguous) { budget.stats.prunedAmbiguity++; continue; }
+        const found = search(next, slot + 1);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+  for (let attempt = 0; attempt < limits.maxAttempts; attempt++) {
+    budget.startAttempt();
+    try {
+      const found = search({ letters: Array(9).fill(null), counts: Array(9).fill(0), placed: [] }, 0);
+      if (found) return { ok: true, ...found, stats: { ...budget.stats }, dictionaryReport: dict.report };
+      return fail("SEARCH_EXHAUSTED", "在当前词库和固定规则下完整遍历完毕，未找到合格关卡。");
+    } catch (e) {
+      if (!(e instanceof SearchStop)) throw e;
+      if (e.kind === "CANCELLED") return fail("CANCELLED", "本次生成已取消。");
+      if (e.kind === "TOTAL" || budget.stats.nodes >= limits.maxTotalNodes)
+        return fail("SEARCH_BUDGET_EXCEEDED", "本次全局搜索预算内未找到合格关卡，不代表不存在解。");
+      // Per-attempt limit: restart with the next seeded random ordering, not the same tree prefix.
+    }
+  }
+  return fail("SEARCH_ATTEMPTS_EXCEEDED", "本次尝试次数内未找到合格关卡，不代表不存在解。");
+}

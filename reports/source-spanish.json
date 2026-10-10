@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "algorithm": 1,
+  "id": "source-spanish-51476",
+  "seed": "APK-spanish-51476",
+  "algorithmVersion": "xapk-levels-v1",
+  "config": {
+    "rows": 3,
+    "cols": 3,
+    "wordLengths": [
+      3,
+      3,
+      3
+    ]
+  },
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "J",
+      "O",
+      "E",
+      "A",
+      "P",
+      "I",
+      "D",
+      "Í",
+      "A"
+    ],
+    "counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "AJO",
+      "path": [
+        3,
+        0,
+        1
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "DÍA",
+      "path": [
+        6,
+        7,
+        8
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "PIE",
+      "path": [
+        4,
+        5,
+        2
+      ],
+      "sourceType": 0
+    }
+  ],
+  "source": {
+    "packageName": "com.agavegames.wordtiles",
+    "version": "1.4.0",
+    "language": "spanish",
+    "order": "main",
+    "position": 1,
+    "original": {
+      "id": 51476,
+      "width": 3,
+      "height": 3,
+      "target_words": [
+        {
+          "word": "AJO",
+          "type": 0
+        },
+        {
+          "word": "DÍA",
+          "type": 0
+        },
+        {
+          "word": "PIE",
+          "type": 0
+        }
+      ],
+      "extra_words": [
+        {
+          "word": "PAJO",
+          "type": 0
+        }
+      ],
+      "letters": "JOE,API,DÍA",
+      "obstacles": []
+    },
+    "consumptionPolicy": "reference-set"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "demo-test-20261010-v1",
+  "seed": 20261010,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "C",
+    "L",
+    "T",
+    "T",
+    "O",
+    "A",
+    "H",
+    "N",
+    "E"
+  ],
+  "initialCounts": [
+    1,
+    2,
+    3,
+    2,
+    3,
+    3,
+    1,
+    1,
+    2
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "EAT",
+      "canonicalPath": [
+        8,
+        5,
+        2
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "LOT",
+      "canonicalPath": [
+        1,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "OAT",
+      "canonicalPath": [
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "NEAT",
+      "canonicalPath": [
+        7,
+        8,
+        5,
+        2
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "CLOTH",
+      "canonicalPath": [
+        0,
+        1,
+        4,
+        3,
+        6
+      ]
+    }
+  ]
+}

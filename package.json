@@ -1,12 +1,15 @@
 {
-  "name": "wordtiles-demo-v1",
-  "version": "1.0.0",
+  "name": "wordtiles-local-editor",
+  "version": "4.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test tests/rules.test.mjs tests/generator.test.mjs",
-    "test:batch": "node scripts/batch.mjs",
+    "build:algorithm": "node scripts/build-algorithm.mjs",
+    "test": "node --test tests/rules.test.mjs tests/generator.test.mjs tests/editor.test.mjs tests/source.test.mjs tests/algorithm-v1.test.mjs",
+    "test:source": "node scripts/verify-source-levels.mjs",
+    "test:portrait": "node scripts/check-portrait.mjs",
+    "test:batch": "node scripts/benchmark-v1.mjs 1000",
     "test:browser": "node scripts/browser-test.mjs"
   }
 }

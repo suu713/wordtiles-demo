@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+
+# Preserve the original supplied files byte for byte, including their hashes.
+src/wordtiles-algorithm.ts -text
+dist/dictionary.json -text
+dist/dictionary-v1.json -text
+examples/seed_20261010.json -text

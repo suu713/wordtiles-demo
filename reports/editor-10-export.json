@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "id": "generated-matrix-4x4-10",
+  "seed": "matrix-4x4-10",
+  "algorithmVersion": "wordtiles-v2.0.0",
+  "config": {
+    "rows": 4,
+    "cols": 4,
+    "wordLengths": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4
+    ]
+  },
+  "board": {
+    "rows": 4,
+    "cols": 4,
+    "letters": [
+      "A",
+      "T",
+      "A",
+      "L",
+      "H",
+      "E",
+      "E",
+      "F",
+      "T",
+      "R",
+      "C",
+      "A",
+      "D",
+      "Y",
+      "E",
+      "N"
+    ],
+    "counts": [
+      1,
+      3,
+      2,
+      1,
+      3,
+      3,
+      2,
+      3,
+      2,
+      3,
+      1,
+      1,
+      1,
+      3,
+      2,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "CRY",
+      "path": [
+        10,
+        9,
+        13
+      ]
+    },
+    {
+      "word": "DYE",
+      "path": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "word": "EAT",
+      "path": [
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "word": "FAN",
+      "path": [
+        7,
+        11,
+        15
+      ]
+    },
+    {
+      "word": "FEE",
+      "path": [
+        7,
+        6,
+        5
+      ]
+    },
+    {
+      "word": "HER",
+      "path": [
+        4,
+        5,
+        9
+      ]
+    },
+    {
+      "word": "RYE",
+      "path": [
+        9,
+        13,
+        14
+      ]
+    },
+    {
+      "word": "THE",
+      "path": [
+        8,
+        4,
+        5
+      ]
+    },
+    {
+      "word": "FLAT",
+      "path": [
+        7,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "word": "THAT",
+      "path": [
+        8,
+        4,
+        0,
+        1
+      ]
+    }
+  ],
+  "generation": {
+    "dictionaryVersion": "whitelist-v2",
+    "budget": {
+      "maxNodesPerAttempt": 10000,
+      "maxAttempts": 30,
+      "maxTotalNodes": 300000
+    },
+    "nodes": 184714,
+    "attempts": 19
+  }
+}

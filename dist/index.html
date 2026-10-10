@@ -3,61 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f5ef">
-  <meta name="description" content="在 3×3 棋盘上连接字母，找到五个目标单词。自动生成、完整校验，先找到哪个都可以。">
-  <title>WordTiles · 单词消消</title>
+  <meta name="theme-color" content="#f4f5f0">
+  <meta name="description" content="WordTiles 本地关卡编辑器：原包关卡与自动生成，竖屏适配，连词试玩，无需登录。">
+  <title>WordTiles · 关卡编辑器</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" href="./" aria-label="WordTiles 首页">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3"/><rect x="18" y="2" width="12" height="12" rx="3"/><rect x="2" y="18" width="12" height="12" rx="3"/><path d="M21 24h6m-3-3v6"/></svg>
-        <span>WordTiles<span class="brand-dot">.</span></span>
-      </a>
-      <div class="header-end"><span class="edition">PLAYABLE DEMO / V1</span><button class="text-button" id="rules-button" type="button">怎么玩 <span aria-hidden="true">↗</span></button></div>
+      <a class="brand" href="./" aria-label="WordTiles 首页"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3"/><rect x="18" y="2" width="12" height="12" rx="3"/><rect x="2" y="18" width="12" height="12" rx="3"/><path d="M21 24h6m-3-3v6"/></svg><span>WordTiles<span class="brand-dot">.</span></span></a>
+      <div class="header-end"><span class="local-badge"><i></i> 本地工作台</span><button class="text-button" id="rules-button" type="button">玩法说明 ↗</button></div>
     </header>
-    <main>
-      <div class="intro"><div><p class="eyebrow"><span class="live-dot"></span> 一小块棋盘，一点找词的乐趣</p><h1>单词消消</h1><p class="subtitle">连接字母，找到单词，让棋盘一点点清空。</p></div><div class="intro-mark" aria-hidden="true">3 <span>×</span> 3</div></div>
-      <div class="game-layout">
-        <section class="play-panel" aria-label="单词棋盘">
-          <div class="play-header"><span class="micro-label">FIND THE WORDS</span><span id="completion" class="completion">0 <span>/ 5</span></span></div>
-          <div id="targets" class="targets" aria-label="五个目标词"></div>
-          <div class="board-surround">
-            <div class="board-top"><span>上下左右 · 可以转弯</span><span id="remaining">剩余次数 18</span></div>
-            <div id="board" class="board" aria-label="3 行 3 列字母棋盘，按空格选字母，方向键移动，回车提交"></div>
-            <div class="readout"><span class="readout-label" id="readout-label">正在连接</span><strong id="current-word" aria-live="polite">—</strong><span class="release-label">松手提交</span></div>
+    <main class="workspace">
+      <aside class="editor-panel" aria-label="关卡编辑器">
+        <div class="editor-heading"><div><p class="eyebrow">LEVEL EDITOR</p><h1>关卡编辑器</h1></div><span id="draft-tag" class="draft-tag">已应用</span></div>
+        <p class="editor-description">选择原包关卡，或用 V1 算法生成，再到右侧试玩。</p>
+        <label class="algorithm-field" for="algorithm">关卡算法<select id="algorithm"><option value="1">算法1 · 原包关卡</option><option value="2">算法2 · 回溯生成 V1</option></select></label>
+        <section id="source-controls" class="source-controls" aria-label="算法1关卡库">
+          <div class="field-grid">
+            <label for="source-language">语言<select id="source-language"><option value="english">英语</option><option value="portuguese">葡萄牙语</option><option value="russian">俄语</option><option value="spanish">西班牙语</option><option value="turkish">土耳其语</option></select></label>
+            <label for="source-order">关卡列表<select id="source-order"><option value="main">原始主线</option><option value="all">全部关卡</option></select></label>
           </div>
-          <p id="feedback" class="feedback" role="status" aria-live="polite">拖动连接相邻的字母，松手提交。</p>
-          <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空，做得好！</strong><p>五个单词，都找到了。</p></div><button id="win-next" type="button">再来一关 ↗</button></div>
-          <div class="play-actions"><button id="hint" class="secondary-button" type="button"><span aria-hidden="true">✧</span> 给我提示</button><button id="restart" class="secondary-button" type="button"><span aria-hidden="true">↻</span> 重开本关</button></div>
-          <p class="quiet-note">不限时，不计步。输错也不会扣次数。</p>
+          <label class="source-position-label" for="source-number">关卡序号 <span id="source-range">—</span></label>
+          <div class="source-navigation"><button id="source-prev" type="button" aria-label="上一关">←</button><input id="source-number" type="number" min="1" step="1" value="1" aria-label="原包关卡序号"><button id="source-next" type="button" aria-label="下一关">→</button><button id="source-load" type="button">载入</button><button id="source-random" type="button">随机</button></div>
+          <p id="source-library-status" class="source-library-status" aria-live="polite">正在读取关卡目录…</p>
+          <p class="source-policy">原棋盘与目标词 · 反算次数 · 固定消耗集合</p>
         </section>
-        <aside class="lab-panel" aria-label="关卡工具">
-          <div class="lab-heading"><span class="micro-label">LEVEL LAB</span><span class="lab-symbol" aria-hidden="true">⌘</span></div>
-          <h2>下一块棋盘，<br>会藏着什么？</h2>
-          <p class="lab-description">每一关都有 5 个目标词。<br>先找到哪个，都可以。</p>
-          <button id="generate" class="primary-button" type="button">生成新关 <span aria-hidden="true">↗</span></button>
-          <button id="cancel-generation" class="cancel-button" type="button" hidden>取消生成</button>
-          <div class="seed-section"><label for="seed">用种子重现一关 <span>SEED</span></label><div class="seed-row"><input id="seed" value="acceptance-0" maxlength="128" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" aria-label="按种子生成" title="按种子生成">→</button></div></div>
-          <div class="level-info"><div><span>当前关卡</span><strong id="level-kind">固定样例</strong></div><div><span>当前种子</span><code id="active-seed">固定样例</code></div><div><span>完整校验</span><strong id="validation-badge" class="validation-badge">32 / 32 通过</strong></div></div>
-          <p id="notice" class="notice" role="status" aria-live="polite">正在加载本地词库…</p>
-          <div class="lab-bottom"><button id="load-sample" class="text-button" type="button">载入固定样例 <span aria-hidden="true">↗</span></button><div class="file-actions"><button id="import" type="button">导入 JSON</button><button id="export" type="button">导出 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden></div>
-        </aside>
-      </div>
-      <details id="debug" class="debug"><summary><span><span aria-hidden="true">⌁</span> 调试面板</span><span class="debug-summary">路径 · 次数 · 完整校验</span></summary><div class="debug-body">
-        <p class="debug-explanation">路径数与消耗集合数分别统计。允许不同走法，只要消耗同一组格子。</p>
-        <div class="debug-scroll"><table><thead><tr><th>目标词</th><th>合法路径数</th><th>消耗集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div>
-        <div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
-        <fieldset class="budget-fields"><legend>生成预算（调试）</legend><label>每次节点上限<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试次数<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点上限<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
-        <pre id="debug-generation">尚未进行自动生成。</pre><pre id="debug-rejection" hidden></pre>
-        <p class="version-note" id="version-note"></p>
-      </div></details>
+        <section class="editor-section">
+          <div class="section-heading"><h2><span>01</span> 棋盘设置</h2><span id="uses-note" class="section-note">按原包展示</span></div>
+          <div class="field-grid"><label for="board-cols">宽度 / 列<input id="board-cols" type="number" min="2" max="6" step="1" value="3"><small id="cols-note">原关卡列数</small></label><label for="board-rows">高度 / 行<input id="board-rows" type="number" min="2" max="6" step="1" value="3"><small id="rows-note">原关卡行数</small></label></div>
+        </section>
+        <section class="editor-section">
+          <div class="section-heading"><h2><span>02</span> 目标词设置</h2><span id="length-note" class="section-note">原始目标词长度</span></div>
+          <div class="field-grid"><label for="word-count">单词数量<input id="word-count" type="number" min="1" max="18" step="1" value="3"><small id="count-note">原关卡目标数量</small></label><label for="uniform-length">统一设置长度<select id="uniform-length"><option value="">逐词自定义</option><option value="3">全部 3 字母</option><option value="4">全部 4 字母</option><option value="5">全部 5 字母</option><option value="6">全部 6 字母</option><option value="7">全部 7 字母</option><option value="8">全部 8 字母</option><option value="9">全部 9 字母</option><option value="10">全部 10 字母</option></select><small id="uniform-note">算法2可手动修改长度</small></label></div>
+          <div id="word-lengths" class="word-lengths" aria-label="逐个目标词长度"></div>
+        </section>
+        <div class="draft-summary"><div><strong id="summary-cells">9</strong><span>棋盘格子</span></div><div><strong id="summary-targets">3</strong><span>目标单词</span></div><div><strong id="summary-letters">9</strong><span>总字母数</span></div></div>
+        <p id="config-status" class="config-status" aria-live="polite">正在检查关卡…</p>
+        <div id="generation-section" class="generation-section" hidden>
+          <label for="seed">随机种子 <span>相同参数与种子可重现同一关</span></label>
+          <div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button">按种子生成</button></div>
+          <button id="generate" class="primary-button" type="button"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
+          <button id="cancel-generation" class="cancel-button" type="button" hidden>取消生成，保留当前关卡</button>
+        </div>
+        <p id="notice" class="notice" role="status" aria-live="polite">正在加载本地关卡…</p>
+        <div class="level-info"><div><span>当前关卡</span><strong id="level-kind">原包关卡</strong></div><div><span id="active-seed-label">原关卡 ID</span><code id="active-seed">—</code></div><div><span>完整校验</span><strong id="validation-badge">正在检查</strong></div></div>
+        <details id="source-metadata" class="source-metadata"><summary>查看原包数据</summary><p>额外词只记录，不扣次数。特殊障碍数据完整保留在导出中；当前试玩沿用网页连词规则。</p><pre id="source-meta"></pre></details>
+        <div class="file-actions"><button id="load-sample" type="button" hidden>载入固定样例</button><button id="import" type="button">导入 JSON</button><button id="export" type="button">导出 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
+        <details id="debug" class="debug"><summary><span>校验与调试</span><span aria-hidden="true">＋</span></summary>
+          <div class="debug-body"><p class="debug-explanation">路径数与消耗集合数分开统计。算法1仅接受参考消耗集合。</p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
+            <fieldset id="budget-fields" class="budget-fields" hidden><legend>算法2搜索预算（不代表难度）</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
+            <pre id="debug-generation" hidden>尚未进行自动生成。</pre><pre id="debug-rejection" hidden></pre><p id="version-note" class="version-note"></p>
+          </div>
+        </details>
+      </aside>
+      <section class="preview-column" aria-label="竖屏游戏预览">
+        <div class="preview-toolbar"><div><p class="eyebrow">LIVE PREVIEW</p><h2>竖屏游戏预览</h2></div><div class="preview-controls"><select id="preview-device" aria-label="画面尺寸"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select><select id="preview-zoom" aria-label="预览缩放"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></div></div>
+        <p id="preview-state" class="preview-state">正在加载试玩关卡…</p>
+        <div class="viewport-sizer"><div id="game-viewport" class="game-viewport">
+          <section class="play-panel" aria-label="单词棋盘">
+            <div class="game-title-row"><div><span class="game-eyebrow">WORDTILES</span><h2>单词消消</h2></div><span id="game-level-label" class="game-level-label">算法1 · 第1关</span></div>
+            <div class="play-header"><span class="micro-label">找到全部单词</span><span id="completion" class="completion">0 <span>/ 3</span></span></div>
+            <div id="targets" class="targets" aria-label="目标词"></div>
+            <span id="targets-note" class="targets-note" hidden>上下滑动查看其余目标 ↓</span>
+            <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
+            <div class="readout"><span id="readout-label" class="readout-label">正在连接</span><strong id="current-word" aria-live="polite">—</strong><span class="release-label">松手提交</span></div>
+            <p id="feedback" class="feedback" role="status" aria-live="polite">拖动连接相邻字母，松手提交。</p>
+            <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空，做得好！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
+            <div class="play-actions"><button id="hint" class="secondary-button" type="button">✧ 提示</button><button id="restart" class="secondary-button" type="button">↻ 重开</button></div>
+            <p class="quiet-note">上下左右 · 可以转弯 · 输错不扣次数</p>
+          </section>
+        </div></div>
+        <p id="preview-note" class="preview-note">拖动连词，松手提交。点击提示查看可用路径。</p>
+      </section>
     </main>
-    <footer><span>WORDTILES / A LITTLE WORD PLAY</span><span>3×3 棋盘 · 5 个词 · 18 次消耗</span></footer>
+    <footer><span>WORDTILES / LOCAL LEVEL STUDIO</span><span>完整校验后载入 · 无需登录</span></footer>
   </div>
-  <dialog id="rules-dialog"><div class="dialog-top"><span class="micro-label">HOW TO PLAY</span><button id="close-rules" class="icon-button" type="button" aria-label="关闭玩法说明">×</button></div><h2>每个字母，<br>都有它的去处。</h2><ol><li>按住字母，连接上下左右相邻的格子。可以转弯，不能斜走或重复经过同一格。</li><li>松开鼠标或手指时提交单词。顶部的空格提示目标词长度。</li><li>找到目标词后，每个经过的格子减 1 次。角上的圆点表示剩余次数；归零后原位置留空。</li><li>找到全部 5 个词，并清空棋盘，就通关了。完成顺序不限，输错不处罚。</li></ol><p class="keyboard-note">键盘：方向键移动焦点，空格选格，Backspace 撤回，Enter 提交，Esc 取消。</p><button id="start-playing" class="primary-button" type="button">开始找词 →</button></dialog>
+  <dialog id="rules-dialog"><div class="dialog-top"><span class="micro-label">HOW TO PLAY</span><button id="close-rules" class="icon-button" type="button" aria-label="关闭玩法说明">×</button></div><h2>连接字母，<br>让棋盘慢慢清空。</h2><ol><li>按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。</li><li>松开鼠标或手指时提交。顶部的空格表示目标词长度，中途经过较短目标不会提前提交。</li><li>找到目标后，经过的格子次数减 1。右上角圆点或数字表示剩余次数；归零后留空，棋盘不移动。</li><li>算法1沿用原包棋盘和目标，固定每个词的消耗集合。路径不匹配时不扣次数，点击提示可查看可用路径。额外词只记录。</li><li>目标全部完成、次数全部归零时通关。完成顺序不限，输错不处罚。</li></ol><p class="keyboard-note">键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。</p><button id="start-playing" class="primary-button" type="button">开始试玩 →</button></dialog>
   <script type="module" src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,141 @@
+{
+  "total": 13216,
+  "cleared": 13216,
+  "failed": 0,
+  "elapsedMs": 4296,
+  "languages": [
+    {
+      "language": "english",
+      "validated": 3459,
+      "cleared": 3459,
+      "mainPositions": 5000,
+      "maxUses": 15,
+      "maxTargets": 17,
+      "maxLength": 10,
+      "ambiguous": 1255,
+      "obstacleMetadata": 423,
+      "examples": {
+        "highCounts": {
+          "id": 89,
+          "position": 2
+        },
+        "ambiguous": {
+          "id": 95,
+          "position": 8
+        },
+        "long": {
+          "id": 2642,
+          "position": 511
+        }
+      }
+    },
+    {
+      "language": "portuguese",
+      "validated": 1863,
+      "cleared": 1863,
+      "mainPositions": 1500,
+      "maxUses": 13,
+      "maxTargets": 14,
+      "maxLength": 9,
+      "ambiguous": 932,
+      "obstacleMetadata": 0,
+      "examples": {
+        "highCounts": {
+          "id": 15586,
+          "position": 1
+        },
+        "ambiguous": {
+          "id": 19881,
+          "position": 2
+        },
+        "long": {
+          "id": 36186,
+          "position": 642
+        }
+      }
+    },
+    {
+      "language": "russian",
+      "validated": 2744,
+      "cleared": 2744,
+      "mainPositions": 4000,
+      "maxUses": 15,
+      "maxTargets": 17,
+      "maxLength": 9,
+      "ambiguous": 879,
+      "obstacleMetadata": 475,
+      "examples": {
+        "highCounts": {
+          "id": 27,
+          "position": 1
+        },
+        "ambiguous": {
+          "id": 96,
+          "position": 4
+        },
+        "long": {
+          "id": 25137,
+          "position": 1164
+        }
+      }
+    },
+    {
+      "language": "spanish",
+      "validated": 1865,
+      "cleared": 1865,
+      "mainPositions": 1500,
+      "maxUses": 16,
+      "maxTargets": 18,
+      "maxLength": 10,
+      "ambiguous": 826,
+      "obstacleMetadata": 0,
+      "examples": {
+        "highCounts": {
+          "id": 22,
+          "position": 1
+        },
+        "ambiguous": {
+          "id": 30,
+          "position": 4
+        },
+        "long": {
+          "id": 1242,
+          "position": 272
+        },
+        "large": {
+          "id": 14155,
+          "position": 1221
+        }
+      }
+    },
+    {
+      "language": "turkish",
+      "validated": 3285,
+      "cleared": 3285,
+      "mainPositions": 5000,
+      "maxUses": 16,
+      "maxTargets": 18,
+      "maxLength": 9,
+      "ambiguous": 1603,
+      "obstacleMetadata": 474,
+      "examples": {
+        "highCounts": {
+          "id": 93,
+          "position": 2
+        },
+        "ambiguous": {
+          "id": 97,
+          "position": 6
+        },
+        "long": {
+          "id": 2427,
+          "position": 562
+        },
+        "large": {
+          "id": 38505,
+          "position": 2224
+        }
+      }
+    }
+  ]
+}

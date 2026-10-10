@@ -16,5 +16,5 @@ const server = createServer(async (request, response) => {
     response.end(await readFile(location));
   } catch { response.writeHead(404).end('Not found'); }
 });
-server.listen(port, '127.0.0.1', () => console.log(`Local: http://localhost:${port}`));
+server.listen(port, '127.0.0.1', () => console.log(`Local: http://127.0.0.1:${port}/`));
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => server.close(() => process.exit(0)));

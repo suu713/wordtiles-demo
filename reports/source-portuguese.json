@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 3,
+  "algorithm": 1,
+  "id": "source-portuguese-99104",
+  "seed": "APK-portuguese-99104",
+  "algorithmVersion": "xapk-levels-v1",
+  "config": {
+    "rows": 3,
+    "cols": 3,
+    "wordLengths": [
+      3,
+      3,
+      3
+    ]
+  },
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "O",
+      "I",
+      "Z",
+      "B",
+      "N",
+      "O",
+      "L",
+      "U",
+      "A"
+    ],
+    "counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "BOI",
+      "path": [
+        3,
+        0,
+        1
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "LUA",
+      "path": [
+        6,
+        7,
+        8
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "NOZ",
+      "path": [
+        4,
+        5,
+        2
+      ],
+      "sourceType": 0
+    }
+  ],
+  "source": {
+    "packageName": "com.agavegames.wordtiles",
+    "version": "1.4.0",
+    "language": "portuguese",
+    "order": "main",
+    "position": 1,
+    "original": {
+      "id": 99104,
+      "width": 3,
+      "height": 3,
+      "target_words": [
+        {
+          "word": "BOI",
+          "type": 0
+        },
+        {
+          "word": "LUA",
+          "type": 0
+        },
+        {
+          "word": "NOZ",
+          "type": 0
+        }
+      ],
+      "extra_words": [
+        {
+          "word": "UNO",
+          "type": 0
+        }
+      ],
+      "letters": "OIZ,BNO,LUA",
+      "obstacles": []
+    },
+    "consumptionPolicy": "reference-set"
+  }
+}

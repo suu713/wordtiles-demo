@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "demo-test-20261010-v1",
+  "seed": 1088864574,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "H",
+    "Y",
+    "N",
+    "S",
+    "U",
+    "N",
+    "P",
+    "O",
+    "T"
+  ],
+  "initialCounts": [
+    1,
+    2,
+    1,
+    3,
+    1,
+    1,
+    3,
+    3,
+    3
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "POT",
+      "canonicalPath": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "SHY",
+      "canonicalPath": [
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "TOP",
+      "canonicalPath": [
+        8,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "SPOT",
+      "canonicalPath": [
+        3,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "SUNNY",
+      "canonicalPath": [
+        3,
+        4,
+        5,
+        2,
+        1
+      ]
+    }
+  ]
+}

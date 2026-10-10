@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "demo-test-20261010-v1",
+  "seed": 999,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "P",
+    "A",
+    "N",
+    "S",
+    "T",
+    "R",
+    "H",
+    "O",
+    "O"
+  ],
+  "initialCounts": [
+    2,
+    3,
+    3,
+    2,
+    3,
+    1,
+    1,
+    2,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "HOT",
+      "canonicalPath": [
+        6,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "PAN",
+      "canonicalPath": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "TAN",
+      "canonicalPath": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "SPAN",
+      "canonicalPath": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "ROOTS",
+      "canonicalPath": [
+        5,
+        8,
+        7,
+        4,
+        3
+      ]
+    }
+  ]
+}

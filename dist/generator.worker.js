@@ -1,8 +1,8 @@
-import { generateLevel } from './core/generator.js';
+import { generateLevel } from './core/wordtiles-algorithm.js';
 self.onmessage = ({ data }) => {
-  const { requestId, dictionary, seed, budget } = data;
+  const { requestId, dictionary, seed, config } = data;
   try {
-    const result = generateLevel(dictionary, seed, { budget, onProgress: stats => self.postMessage({ type: 'progress', requestId, stats }) });
+    const result = generateLevel(config, dictionary, seed, { onProgress: stats => self.postMessage({ type: 'progress', requestId, stats }) });
     self.postMessage({ type: 'result', requestId, result });
   } catch (error) {
     self.postMessage({ type: 'error', requestId, message: error.message });

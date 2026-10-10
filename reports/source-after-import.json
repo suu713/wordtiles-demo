@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 3,
+  "algorithm": 1,
+  "id": "source-english-191599",
+  "seed": "APK-english-191599",
+  "algorithmVersion": "xapk-levels-v1",
+  "config": {
+    "rows": 3,
+    "cols": 3,
+    "wordLengths": [
+      3,
+      3,
+      4
+    ]
+  },
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "K",
+      "I",
+      "D",
+      "R",
+      "O",
+      "A",
+      "F",
+      "U",
+      "N"
+    ],
+    "counts": [
+      1,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "FUN",
+      "path": [
+        6,
+        7,
+        8
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "KID",
+      "path": [
+        0,
+        1,
+        2
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "ROAD",
+      "path": [
+        3,
+        4,
+        5,
+        2
+      ],
+      "sourceType": 0
+    }
+  ],
+  "source": {
+    "packageName": "com.agavegames.wordtiles",
+    "version": "1.4.0",
+    "language": "english",
+    "order": "main",
+    "position": 2,
+    "original": {
+      "id": 191599,
+      "width": 3,
+      "height": 3,
+      "target_words": [
+        {
+          "word": "FUN",
+          "type": 0
+        },
+        {
+          "word": "KID",
+          "type": 0
+        },
+        {
+          "word": "ROAD",
+          "type": 0
+        }
+      ],
+      "extra_words": [
+        {
+          "word": "FRO",
+          "type": 0
+        },
+        {
+          "word": "ROAN",
+          "type": 1
+        }
+      ],
+      "letters": "KID,ROA,FUN",
+      "obstacles": []
+    },
+    "consumptionPolicy": "reference-set"
+  }
+}

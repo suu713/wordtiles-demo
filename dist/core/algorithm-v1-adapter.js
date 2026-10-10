@@ -1,0 +1,36 @@
+import { validateLevel as validateV1 } from './wordtiles-algorithm.js';
+import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js';
+
+// V1 files use flat arrays; the existing renderer and session use board/targets.path.
+// Keep the original file separately so exporting or restarting never changes its schema.
+export function isV1Level(level) {
+  return !!level && typeof level === 'object' &&
+    (level.rulesVersion === 'wordtiles-v1' || 'letters' in level || 'initialCounts' in level ||
+      (Array.isArray(level.targets) && level.targets.some(target => target && typeof target === 'object' && 'canonicalPath' in target)));
+}
+function toDemoLevel(level) {
+  return {
+    schemaVersion: 1, seed: level.seed,
+    board: { rows: level.rows, cols: level.cols, letters: [...level.letters], counts: [...level.initialCounts] },
+    targets: level.targets.map(target => ({ word: target.word, path: [...target.canonicalPath] })),
+  };
+}
+export function validateAlgorithmLevel(level, dictionary) {
+  if (!isV1Level(level)) return validateDemo(level, dictionary);
+  const algorithmValidation = validateV1(level, dictionary);
+  if (!algorithmValidation.ok) return {
+    valid: false,
+    errors: algorithmValidation.errors.map(message => ({ code: message.split(':')[0], message })),
+    algorithmValidation,
+  };
+  // This validator has its own DFS implementation, independent of the supplied generator.
+  return { ...validateDemo(toDemoLevel(level), dictionary), algorithmValidation };
+}
+export function createAlgorithmSession(level, dictionary) {
+  const report = validateAlgorithmLevel(level, dictionary);
+  if (!report.valid) throw Object.assign(new Error('关卡未通过完整校验'), { report });
+  const normalized = isV1Level(level) ? toDemoLevel(level) : level;
+  const session = new GameSession(normalized, dictionary, { validator: () => report });
+  session.exportInitial = freeze(clone(level));
+  return session;
+}

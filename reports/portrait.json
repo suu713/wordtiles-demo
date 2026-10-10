@@ -1,0 +1,53 @@
+{
+  "passed": 4,
+  "results": [
+    {
+      "screenWidth": 320,
+      "ratio": 0.5625076828518746,
+      "width": 286,
+      "height": 508.4375,
+      "tile": 36,
+      "overflow": false,
+      "fits": true,
+      "countOverlap": false,
+      "scrollHint": true,
+      "targetOverflow": true
+    },
+    {
+      "screenWidth": 360,
+      "ratio": 0.562508425224448,
+      "width": 326,
+      "height": 579.546875,
+      "tile": 55.328125,
+      "overflow": false,
+      "fits": true,
+      "countOverlap": false,
+      "scrollHint": true,
+      "targetOverflow": true
+    },
+    {
+      "screenWidth": 390,
+      "ratio": 0.5625123444598065,
+      "width": 356,
+      "height": 632.875,
+      "tile": 69.65625,
+      "overflow": false,
+      "fits": true,
+      "countOverlap": false,
+      "scrollHint": true,
+      "targetOverflow": true
+    },
+    {
+      "screenWidth": 1440,
+      "ratio": 0.5625073734712336,
+      "width": 447,
+      "height": 794.65625,
+      "tile": 81.65625,
+      "overflow": false,
+      "fits": true,
+      "countOverlap": false,
+      "scrollHint": false,
+      "targetOverflow": false
+    }
+  ]
+}

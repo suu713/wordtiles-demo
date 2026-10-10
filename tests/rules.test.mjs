@@ -106,7 +106,7 @@ test('空格不作为通配符，禁止斜线、行尾绕行和重复格', () =>
 });
 
 test('词库标准化、白名单与损坏 JSON 结构防护', () => {
-  assert.deepEqual(normalizeDictionary(['eye', 'EYE', 'FEE', ' ice ', 'A1B', 'A-B', 'TO', 2, 'TOOLONG']), ['EYE', 'FEE']);
+  assert.deepEqual(normalizeDictionary(['eye', 'EYE', 'FEE', ' ice ', 'A1B', 'A-B', 'TO', 2, 'TOOLONGER']), ['EYE', 'FEE']);
   assert.ok(normalizeDictionary(dictionary).length >= 100);
   for (const invalid of [null, {}, [], { schemaVersion: 1, board: [] }, { ...sample, targets: null }]) assert.equal(validateLevel(invalid, dictionary).valid, false);
   const missing = clone(sample); missing.targets[0].word = 'XYZ';

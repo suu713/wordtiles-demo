@@ -1,10 +1,42 @@
 {
-  "passed": 11,
+  "passed": 26,
   "failed": 0,
   "pageErrors": [],
   "cases": [
     {
-      "name": "桌面首屏、固定 9 格和默认折叠调试面板",
+      "name": "算法1默认载入真实原包第1关，左编辑器右9:16画面，无手机外框",
+      "passed": true
+    },
+    {
+      "name": "原包真实鼠标反序清空，第2关额外词记录且不扣次数",
+      "passed": true
+    },
+    {
+      "name": "原包JSON往返、破损次数导入拒绝，切换算法自动跟随导入格式",
+      "passed": true
+    },
+    {
+      "name": "两算法各自保留试玩进度，算法2显示固定V1规则",
+      "passed": true
+    },
+    {
+      "name": "五语言主线关卡均来自原包，Unicode字母可拖动清空",
+      "passed": true
+    },
+    {
+      "name": "原包18目标、高次数数字徽标与长词，在360×640内保护棋盘和操作区",
+      "passed": true
+    },
+    {
+      "name": "原包不同消耗路径真实提交拒绝，参考路径可完成整关",
+      "passed": true
+    },
+    {
+      "name": "载入迟到结果不能覆盖切算法或新的关卡序号",
+      "passed": true
+    },
+    {
+      "name": "桌面左侧编辑器、右侧竖屏预览，默认折叠调试面板",
       "passed": true
     },
     {
@@ -44,13 +76,49 @@
       "passed": true
     },
     {
+      "name": "V1尺寸、目标数与逐词长度锁定，预算可调并共用新词库",
+      "passed": true
+    },
+    {
+      "name": "平铺V1 JSON往返与重开不混入游玩状态，拒绝坏路径、次数、ID和非白名单词",
+      "passed": true
+    },
+    {
+      "name": "非法seed及预算输入不启动Worker、不改当前关卡；seed0有效",
+      "passed": true
+    },
+    {
+      "name": "多关真实拖动任意顺序清空，下一关与生成新关使用uint32种子",
+      "passed": true
+    },
+    {
+      "name": "V1同集合反向路径接受，JSON切关取消迟到Worker且保持原始数据",
+      "passed": true
+    },
+    {
+      "name": "Worker异常明确失败，保留V1当前关卡和已完成目标",
+      "passed": true
+    },
+    {
+      "name": "9:16画面尺寸与缩放可调整，保持关卡和进度",
+      "passed": true
+    },
+    {
       "name": "玩法弹窗开关和移动端真实触摸拖动",
       "passed": true
     }
   ],
   "screenshots": [
+    "source-desktop.png",
+    "source-mobile.png",
+    "source-completed.png",
+    "source-18-targets.png",
+    "source-long-word.png",
     "desktop.png",
     "mobile.png",
-    "completed.png"
+    "completed.png",
+    "algorithm-v1-generated.png",
+    "algorithm-v1-completed.png",
+    "algorithm-v1-mobile-completed.png"
   ]
 }

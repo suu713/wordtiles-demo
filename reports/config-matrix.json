@@ -1,0 +1,673 @@
+[
+  {
+    "config": {
+      "rows": 3,
+      "cols": 4,
+      "wordLengths": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ]
+    },
+    "seed": "matrix-3x4-5",
+    "success": true,
+    "reason": null,
+    "nodes": 1516,
+    "attempts": 1,
+    "stateChecks": 32,
+    "level": {
+      "schemaVersion": 2,
+      "id": "generated-matrix-3x4-5",
+      "seed": "matrix-3x4-5",
+      "algorithmVersion": "wordtiles-v2.0.0",
+      "config": {
+        "rows": 3,
+        "cols": 4,
+        "wordLengths": [
+          3,
+          3,
+          3,
+          4,
+          5
+        ]
+      },
+      "board": {
+        "rows": 3,
+        "cols": 4,
+        "letters": [
+          "E",
+          "R",
+          "A",
+          "I",
+          "A",
+          "R",
+          "Y",
+          "S",
+          "O",
+          "N",
+          "E",
+          "E"
+        ],
+        "counts": [
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          3,
+          2
+        ]
+      },
+      "targets": [
+        {
+          "word": "ONE",
+          "path": [
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "word": "RYE",
+          "path": [
+            5,
+            6,
+            10
+          ]
+        },
+        {
+          "word": "SEE",
+          "path": [
+            7,
+            11,
+            10
+          ]
+        },
+        {
+          "word": "AREA",
+          "path": [
+            2,
+            1,
+            0,
+            4
+          ]
+        },
+        {
+          "word": "RAISE",
+          "path": [
+            1,
+            2,
+            3,
+            7,
+            11
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "config": {
+      "rows": 4,
+      "cols": 4,
+      "wordLengths": [
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ]
+    },
+    "seed": "matrix-4x4-6",
+    "success": true,
+    "reason": null,
+    "nodes": 1094,
+    "attempts": 1,
+    "stateChecks": 64,
+    "level": {
+      "schemaVersion": 2,
+      "id": "generated-matrix-4x4-6",
+      "seed": "matrix-4x4-6",
+      "algorithmVersion": "wordtiles-v2.0.0",
+      "config": {
+        "rows": 4,
+        "cols": 4,
+        "wordLengths": [
+          3,
+          3,
+          4,
+          4,
+          5,
+          5
+        ]
+      },
+      "board": {
+        "rows": 4,
+        "cols": 4,
+        "letters": [
+          "T",
+          "E",
+          "L",
+          "T",
+          "R",
+          "A",
+          "U",
+          "R",
+          "H",
+          "C",
+          "E",
+          "Y",
+          "R",
+          "I",
+          "U",
+          "J"
+        ],
+        "counts": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          3,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1
+        ]
+      },
+      "targets": [
+        {
+          "word": "ART",
+          "path": [
+            5,
+            4,
+            0
+          ]
+        },
+        {
+          "word": "TRY",
+          "path": [
+            3,
+            7,
+            11
+          ]
+        },
+        {
+          "word": "RICH",
+          "path": [
+            12,
+            13,
+            9,
+            8
+          ]
+        },
+        {
+          "word": "RULE",
+          "path": [
+            7,
+            6,
+            2,
+            1
+          ]
+        },
+        {
+          "word": "JUICE",
+          "path": [
+            15,
+            14,
+            13,
+            9,
+            10
+          ]
+        },
+        {
+          "word": "TEACH",
+          "path": [
+            0,
+            1,
+            5,
+            9,
+            8
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "config": {
+      "rows": 4,
+      "cols": 4,
+      "wordLengths": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        4,
+        4
+      ]
+    },
+    "seed": "matrix-4x4-10",
+    "success": true,
+    "reason": null,
+    "nodes": 184714,
+    "attempts": 19,
+    "stateChecks": 1024,
+    "level": {
+      "schemaVersion": 2,
+      "id": "generated-matrix-4x4-10",
+      "seed": "matrix-4x4-10",
+      "algorithmVersion": "wordtiles-v2.0.0",
+      "config": {
+        "rows": 4,
+        "cols": 4,
+        "wordLengths": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4
+        ]
+      },
+      "board": {
+        "rows": 4,
+        "cols": 4,
+        "letters": [
+          "A",
+          "T",
+          "A",
+          "L",
+          "H",
+          "E",
+          "E",
+          "F",
+          "T",
+          "R",
+          "C",
+          "A",
+          "D",
+          "Y",
+          "E",
+          "N"
+        ],
+        "counts": [
+          1,
+          3,
+          2,
+          1,
+          3,
+          3,
+          2,
+          3,
+          2,
+          3,
+          1,
+          1,
+          1,
+          3,
+          2,
+          1
+        ]
+      },
+      "targets": [
+        {
+          "word": "CRY",
+          "path": [
+            10,
+            9,
+            13
+          ]
+        },
+        {
+          "word": "DYE",
+          "path": [
+            12,
+            13,
+            14
+          ]
+        },
+        {
+          "word": "EAT",
+          "path": [
+            6,
+            2,
+            1
+          ]
+        },
+        {
+          "word": "FAN",
+          "path": [
+            7,
+            11,
+            15
+          ]
+        },
+        {
+          "word": "FEE",
+          "path": [
+            7,
+            6,
+            5
+          ]
+        },
+        {
+          "word": "HER",
+          "path": [
+            4,
+            5,
+            9
+          ]
+        },
+        {
+          "word": "RYE",
+          "path": [
+            9,
+            13,
+            14
+          ]
+        },
+        {
+          "word": "THE",
+          "path": [
+            8,
+            4,
+            5
+          ]
+        },
+        {
+          "word": "FLAT",
+          "path": [
+            7,
+            3,
+            2,
+            1
+          ]
+        },
+        {
+          "word": "THAT",
+          "path": [
+            8,
+            4,
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "config": {
+      "rows": 5,
+      "cols": 5,
+      "wordLengths": [
+        4,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5
+      ]
+    },
+    "seed": "matrix-5x5-7",
+    "success": true,
+    "reason": null,
+    "nodes": 51885,
+    "attempts": 6,
+    "stateChecks": 128,
+    "level": {
+      "schemaVersion": 2,
+      "id": "generated-matrix-5x5-7",
+      "seed": "matrix-5x5-7",
+      "algorithmVersion": "wordtiles-v2.0.0",
+      "config": {
+        "rows": 5,
+        "cols": 5,
+        "wordLengths": [
+          4,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5
+        ]
+      },
+      "board": {
+        "rows": 5,
+        "cols": 5,
+        "letters": [
+          "H",
+          "V",
+          "A",
+          "K",
+          "E",
+          "O",
+          "U",
+          "L",
+          "Y",
+          "V",
+          "M",
+          "E",
+          "T",
+          "E",
+          "A",
+          "K",
+          "W",
+          "S",
+          "A",
+          "L",
+          "N",
+          "O",
+          "H",
+          "D",
+          "I"
+        ],
+        "counts": [
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1
+        ]
+      },
+      "targets": [
+        {
+          "word": "HOME",
+          "path": [
+            0,
+            5,
+            10,
+            11
+          ]
+        },
+        {
+          "word": "KNOW",
+          "path": [
+            15,
+            20,
+            21,
+            16
+          ]
+        },
+        {
+          "word": "LAKE",
+          "path": [
+            7,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "word": "SHOW",
+          "path": [
+            17,
+            22,
+            21,
+            16
+          ]
+        },
+        {
+          "word": "VALID",
+          "path": [
+            9,
+            14,
+            19,
+            24,
+            23
+          ]
+        },
+        {
+          "word": "VALUE",
+          "path": [
+            1,
+            2,
+            7,
+            6,
+            11
+          ]
+        },
+        {
+          "word": "YEAST",
+          "path": [
+            8,
+            13,
+            18,
+            17,
+            12
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "config": {
+      "rows": 6,
+      "cols": 6,
+      "wordLengths": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    "seed": "matrix-6x6-8",
+    "success": false,
+    "reason": "budget-exhausted",
+    "nodes": 300000,
+    "attempts": 30
+  },
+  {
+    "config": {
+      "rows": 2,
+      "cols": 4,
+      "wordLengths": [
+        8
+      ]
+    },
+    "seed": "matrix-2x4-1",
+    "success": true,
+    "reason": null,
+    "nodes": 417,
+    "attempts": 1,
+    "stateChecks": 2,
+    "level": {
+      "schemaVersion": 2,
+      "id": "generated-matrix-2x4-1",
+      "seed": "matrix-2x4-1",
+      "algorithmVersion": "wordtiles-v2.0.0",
+      "config": {
+        "rows": 2,
+        "cols": 4,
+        "wordLengths": [
+          8
+        ]
+      },
+      "board": {
+        "rows": 2,
+        "cols": 4,
+        "letters": [
+          "R",
+          "D",
+          "I",
+          "A",
+          "E",
+          "T",
+          "E",
+          "M"
+        ],
+        "counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "targets": [
+        {
+          "word": "DIAMETER",
+          "path": [
+            1,
+            2,
+            3,
+            7,
+            6,
+            5,
+            4,
+            0
+          ]
+        }
+      ]
+    }
+  }
+]
