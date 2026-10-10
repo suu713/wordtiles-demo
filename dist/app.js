@@ -1,6 +1,6 @@
 import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js';
-import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js';
-import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js';
+import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=8';
+import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=8';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
 import { calculateLevelStatistics } from './core/level-statistics.js';
 import { createLexiconAdapter } from './core/lexicon-adapter.js';
