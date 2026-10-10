@@ -3,78 +3,78 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 681554072,
+  "seed": 1435101389,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "C",
+    "S",
+    "T",
+    "A",
+    "A",
     "P",
     "K",
-    "L",
-    "I",
-    "C",
-    "E",
-    "T",
-    "A"
+    "D",
+    "U",
+    "C"
   ],
   "initialCounts": [
-    1,
     2,
     1,
+    1,
     3,
     3,
     1,
     3,
-    3,
-    1
+    2,
+    2
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "ATE",
+      "word": "CUP",
       "canonicalPath": [
         8,
         7,
-        6
+        4
       ]
     },
     {
       "id": "W1",
-      "word": "LET",
+      "word": "PAD",
       "canonicalPath": [
-        3,
-        6,
-        7
-      ]
-    },
-    {
-      "id": "W2",
-      "word": "TIP",
-      "canonicalPath": [
-        7,
-        4,
-        1
-      ]
-    },
-    {
-      "id": "W3",
-      "word": "PILE",
-      "canonicalPath": [
-        1,
         4,
         3,
         6
       ]
     },
     {
-      "id": "W4",
-      "word": "CLICK",
+      "id": "W2",
+      "word": "SAD",
       "canonicalPath": [
         0,
         3,
+        6
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "DUCK",
+      "canonicalPath": [
+        6,
+        7,
+        8,
+        5
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "PASTA",
+      "canonicalPath": [
         4,
-        5,
+        3,
+        0,
+        1,
         2
       ]
     }

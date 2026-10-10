@@ -12,32 +12,49 @@ catch { browser=await chromium.launch({ headless:true,channel:'msedge' }); }
 const bank=JSON.parse(await readFile(new URL('../dist/source-levels/spanish.json',import.meta.url),'utf8'));
 const results=[];
 try {
-  for (const width of [320,360,390,1440]) {
-    const context=await browser.newContext({ viewport:{ width,height:width===1440?1000:844 },reducedMotion:'reduce' });
+  for (const [width,height] of [[1680,900],[1366,768],[1280,720],[1024,600],[768,650],[390,844],[360,640],[320,568]]) {
+    const context=await browser.newContext({ viewport:{ width,height },reducedMotion:'reduce' });
     const page=await context.newPage();
     await page.goto('http://127.0.0.1:4173/');
-    await page.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor();
+    await page.locator('#validation-badge').filter({ hasText:'需求不变量通过' }).waitFor({state:'attached'});
+    assert.equal(await page.locator('#settings-popover').isVisible(),false);
+    assert.equal(await page.locator('#hover-help').isVisible(),false);
+    if(width<=760) { assert.equal(await page.locator('.editor-panel').isVisible(),false); await page.locator('#editor-toggle').click(); }
     await page.locator('#source-language').selectOption('spanish');
     await page.locator('#source-order').selectOption('all');
-    await page.locator('#source-number').fill('1221');
+    await page.locator('#source-number').selectOption('1221');
     await page.locator('#source-load').click();
     await page.waitForFunction(()=>document.querySelector('#active-seed').textContent==='14155');
     await page.waitForTimeout(100);
     const metrics=await page.evaluate(() => {
       const viewport=document.querySelector('#game-viewport').getBoundingClientRect(),board=document.querySelector('#board').getBoundingClientRect(),actions=document.querySelector('.play-actions').getBoundingClientRect();
-      return { ratio:viewport.width/viewport.height,width:viewport.width,height:viewport.height,tile:document.querySelector('.tile').getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>window.innerWidth,fits:board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,countOverlap:[...document.querySelectorAll('.many-uses')].some(tile=>{
+      return { ratio:viewport.width/viewport.height,width:viewport.width,height:viewport.height,tile:document.querySelector('.tile').getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>window.innerWidth || document.documentElement.scrollHeight>window.innerHeight,fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && viewport.left>=0 && viewport.right<=innerWidth+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,countOverlap:[...document.querySelectorAll('.many-uses')].some(tile=>{
         const letter=tile.querySelector('.tile-letter').getBoundingClientRect(),badge=tile.querySelector('.count-badge').getBoundingClientRect();
         return letter.left<badge.right && letter.right>badge.left && letter.top<badge.bottom && letter.bottom>badge.top;
       }),scrollHint:!document.querySelector('#targets-note').hidden,targetOverflow:document.querySelector('#targets').scrollHeight>document.querySelector('#targets').clientHeight+1 };
     });
     await page.screenshot({ path:fileURLToPath(new URL('../reports/portrait-'+width+'.png',import.meta.url)),fullPage:true });
-    console.log(JSON.stringify({ screenWidth:width,...metrics }));
+    console.log(JSON.stringify({ screenWidth:width,screenHeight:height,...metrics }));
     assert.ok(Math.abs(metrics.ratio-9/16)<.001);
     assert.equal(metrics.overflow,false); assert.equal(metrics.fits,true);
     assert.ok(metrics.tile>=30); assert.equal(metrics.countOverlap,false);
     assert.equal(metrics.scrollHint,metrics.targetOverflow);
     assert.equal(bank.levels[14155].target_words.length,18);
-    results.push({ screenWidth:width,...metrics });
+    if(width<=760) await page.locator('#editor-toggle').click();
+    await page.locator('#options-menu').selectOption('board');
+    assert.equal(await page.locator('#target-length-list option').count(),18);
+    assert.equal(await page.locator('#word-lengths select').count(),1);
+    assert.equal(await page.locator('#source-number').evaluate(el=>el.tagName),'SELECT');
+    await page.locator('#options-menu').selectOption('debug');
+    assert.equal(await page.locator('#settings-popover').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0 && r.top>=0 && r.right<=innerWidth+1 && r.bottom<=innerHeight+1;}),true);
+    await page.locator('#settings-close').click();
+    if(width<=760) await page.locator('#editor-close').click();
+    await page.locator('#rules-button').hover();
+    assert.equal(await page.locator('#hover-help').isVisible(),true);
+    assert.equal(await page.locator('#hover-help').evaluate(el=>{const r=el.getBoundingClientRect();return r.left>=0 && r.top>=0 && r.right<=innerWidth+1 && r.bottom<=innerHeight+1;}),true);
+    await page.mouse.move(0,0);
+    assert.equal(await page.locator('#hover-help').isVisible(),false);
+    results.push({ screenWidth:width,screenHeight:height,...metrics });
     await context.close();
   }
   await writeFile(new URL('../reports/portrait.json',import.meta.url),JSON.stringify({ passed:results.length,results },null,2)+'\n');

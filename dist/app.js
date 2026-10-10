@@ -36,20 +36,14 @@ function buildBoard(rows, cols) {
 }
 
 function renderWordRows() {
-  $('#word-lengths').replaceChildren();
+  const select = document.createElement('select');
+  select.id = 'target-length-list'; select.setAttribute('aria-label', '逐个目标词长度');
   draftLengths.forEach((length, index) => {
-    const item = document.createElement('div'); item.className = 'word-length-item';
-    const label = document.createElement('label'); label.htmlFor = `word-length-${index}`;
-    label.textContent = `目标 ${String(index + 1).padStart(2, '0')}`;
-    const select = document.createElement('select');
-    select.id = label.htmlFor; select.dataset.index = String(index);
-    select.setAttribute('aria-label', `第 ${index + 1} 个单词长度`);
-    for (let value = LIMITS.minLength; value <= (selectedAlgorithm === 1 ? 10 : LIMITS.maxLength); value++) {
-      const option = document.createElement('option'); option.value = String(value);
-      option.textContent = `${value} 个字母`; select.append(option);
-    }
-    select.value = String(length); select.disabled = true; item.append(label, select); $('#word-lengths').append(item);
+    const option = document.createElement('option'); option.value = String(index);
+    option.textContent = `目标 ${String(index + 1).padStart(2, '0')} · ${length} 个字母`;
+    select.append(option);
   });
+  $('#word-lengths').replaceChildren(select);
   syncUniformLength();
 }
 function syncUniformLength() {
@@ -81,9 +75,22 @@ function validSourcePosition() {
 }
 function updateSourceRange() {
   const limit = sourceLimit();
-  $('#source-number').max = String(limit || 1);
+  populateSourceOptions();
+  $('#source-number').setAttribute('max', String(limit || 1));
   $('#source-range').textContent = limit ? '1–' + limit : '—';
   updateEditor();
+}
+function populateSourceOptions() {
+  const select = $('#source-number'), limit = sourceLimit();
+  const key = `${$('#source-language').value}:${$('#source-order').value}:${limit}`;
+  if (select.dataset.optionsKey === key) return;
+  const current = Number(select.value) || 1;
+  const options = Array.from({ length: Math.max(1, limit) }, (_, index) => {
+    const option = document.createElement('option'); option.value = String(index + 1);
+    option.textContent = `第 ${index + 1} 关`; return option;
+  });
+  select.replaceChildren(...options); select.dataset.optionsKey = key;
+  select.value = String(Math.min(current, Math.max(1, limit)));
 }
 function updateEditor() {
   const { config, report } = checkEditor(), isSource = selectedAlgorithm === 1;
@@ -118,6 +125,10 @@ function showMode() {
   $('#load-sample').hidden = isSource;
   $('#budget-fields').hidden = isSource;
   $('#debug-generation').hidden = isSource;
+  $('#options-menu option[value="source"]').disabled = !isSource;
+  $('#file-action option[value="sample"]').hidden = isSource;
+  $('#file-action option[value="sample"]').disabled = isSource;
+  if (!isSource && $('#options-menu').value === 'source') closeSettings();
   $('#word-count').max = String(isSource ? 18 : 10);
   for (const id of ['#board-cols','#board-rows','#word-count','#uniform-length']) $(id).disabled = true;
   $('#uniform-length').querySelector('option[value=""]').textContent = isSource ? '按原关卡显示' : '固定词长组合';
@@ -135,8 +146,9 @@ function syncSourceControls(level) {
   const source = level.source;
   if (source?.language in LANGUAGE_NAMES) $('#source-language').value = source.language;
   if (source?.order === 'main' || source?.order === 'all') $('#source-order').value = source.order;
+  populateSourceOptions();
   if (Number.isInteger(source?.position)) $('#source-number').value = String(source.position);
-  $('#source-number').max = String(sourceLimit() || 1);
+  $('#source-number').setAttribute('max', String(sourceLimit() || 1));
   $('#source-range').textContent = sourceLimit() ? '1–' + sourceLimit() : '—';
 }
 function syncEditor(level) {
@@ -180,9 +192,9 @@ function switchAlgorithm(next) {
       draftLengths = [...saved.draft.lengths]; renderWordRows(); updateEditor();
     }
     applyLevelInfo(saved.kind); render();
-    feedback(game.status === 'won' ? '全部目标已完成，棋盘已经清空。' : '拖动连接相邻的字母，松手提交。');
+    feedback(game.status === 'won' ? '全部目标已完成。' : '');
     notice('已恢复算法' + next + '的关卡与试玩进度。', 'success');
-  } else if (next === 2) loadLevel(sample, '固定样例');
+  } else if (next === 2) loadLevel(sample, '固定样例', { dismissEditor: false });
   else loadSource();
 }
 $('#algorithm').addEventListener('change', () => switchAlgorithm(Number($('#algorithm').value)));
@@ -211,21 +223,16 @@ $('#uniform-length').addEventListener('change', () => {
   if (length) { draftLengths.fill(length); renderWordRows(); }
   editorChanged();
 });
-$('#word-lengths').addEventListener('change', event => {
-  const index = Number(event.target.dataset.index);
-  if (!Number.isInteger(index) || !event.target.matches('select')) return;
-  draftLengths[index] = Number(event.target.value); syncUniformLength(); editorChanged();
-});
 
 function applyViewport() {
   const column = $('.preview-column');
   let width, height;
   if ($('#preview-device').value === 'auto') {
-    const availableHeight = Math.max(640, window.innerHeight - 205);
-    width = Math.floor(Math.min(450, column.clientWidth - 2, availableHeight * 9 / 16));
+    const availableHeight = column.clientHeight;
+    width = Math.max(1, Math.floor(Math.min(520, column.clientWidth, availableHeight * 9 / 16)));
     height = width * 16 / 9;
   } else [width,height] = $('#preview-device').value.split('x').map(Number);
-  const scale = Math.min(Number($('#preview-zoom').value) / 100, Math.max(.1, (column.clientWidth - 2) / width));
+  const scale = Math.min(Number($('#preview-zoom').value) / 100, column.clientWidth / width, column.clientHeight / height);
   column.style.setProperty('--device-width', width + 'px');
   column.style.setProperty('--device-height', height + 'px');
   column.style.setProperty('--preview-scale', String(scale));
@@ -261,9 +268,16 @@ window.addEventListener('resize', applyViewport);
 
 function feedback(message, tone = '') {
   $('#feedback').textContent = message; $('#feedback').className = `feedback ${tone}`;
+  $('#feedback').dataset.help = message;
 }
 function notice(message, tone = '') {
   $('#notice').textContent = message; $('#notice').className = `notice ${tone}`;
+  const status = $('#editor-status');
+  status.className = `editor-status ${tone}`;
+  status.textContent = tone === 'error' ? message.split(/[：。]/)[0] :
+    busy ? (busyKind === 'generate' ? '正在生成…' : '正在载入…') :
+    message.startsWith('已导出') ? 'JSON 已导出' : message.includes('取消') ? '已取消' :
+    message.includes('恢复') ? '进度已恢复' : '✓ 关卡已就绪';
 }
 function clearSelection() {
   const oldPointer = activePointer;
@@ -376,6 +390,7 @@ function setBusy(value, kind = null) {
   $('#win-next').textContent = lastSource ? '最后一关' : '下一关 ↗';
   $('#cancel-generation').hidden = !value || kind !== 'generate';
   $('#generate-label').textContent = value && kind === 'generate' ? '正在生成…' : '生成并试玩';
+  for (const id of ['#options-menu','#file-action','#source-number']) $(id).disabled = !ready;
 }
 function cancelGeneration(silent = false) {
   requestId++;
@@ -386,7 +401,7 @@ function cancelGeneration(silent = false) {
     notice(previousKind === 'source' ? '载入已取消，当前关卡保留。' : '生成已取消，当前关卡保留。'); renderDebug();
   }
 }
-function loadLevel(level, kind, { syncDraft = true } = {}) {
+function loadLevel(level, kind, { syncDraft = true, dismissEditor = true } = {}) {
   let next;
   try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionary); }
   catch (error) {
@@ -400,11 +415,11 @@ function loadLevel(level, kind, { syncDraft = true } = {}) {
   buildBoard(next.initial.board.rows,next.initial.board.cols);
   if (syncDraft) syncEditor(next.initial); else updateEditor();
   applyLevelInfo(kind);
-  feedback('拖动连接相邻的字母，松手提交。');
+  feedback('');
   notice(nextMode === 1 ? '原包对照与需求不变量校验通过，任意找词顺序都能完成。' : '完整校验通过：' + game.report.stateCount + ' 种完成状态均可继续找词。','success');
-  render(); return true;
+  render(); closeSettings(false); if (dismissEditor) closeEditor(); return true;
 }
-async function loadSource({ language = $('#source-language').value, order = $('#source-order').value, position = Number($('#source-number').value) } = {}) {
+async function loadSource({ language = $('#source-language').value, order = $('#source-order').value, position = Number($('#source-number').value), dismissEditor = true } = {}) {
   if (selectedAlgorithm !== 1 || !ready) return;
   const info = catalogue.languages.find(item => item.language === language), limit = info && (order === 'main' ? info.mainCount : info.count);
   if (!info || !['main','all'].includes(order) || !Number.isInteger(position) || position < 1 || position > limit) {
@@ -426,7 +441,7 @@ async function loadSource({ language = $('#source-language').value, order = $('#
     const rawId = bank.orders[order][position-1], raw = bank.levels[String(rawId)];
     if (!raw) throw new Error('原序号对应的关卡不存在');
     const level = convertSourceLevel(raw,{ language,order,position });
-    if (!loadLevel(level,'原包 · ' + LANGUAGE_NAMES[language] + '第 ' + position + ' 关')) setBusy(false);
+    if (!loadLevel(level,'原包 · ' + LANGUAGE_NAMES[language] + '第 ' + position + ' 关', { dismissEditor })) setBusy(false);
   } catch (error) {
     if (id !== requestId || selectedAlgorithm !== 1) return;
     setBusy(false); notice('载入失败：' + error.message + '。当前关卡保留。','error');
@@ -441,7 +456,7 @@ function advanceSource() {
   }
 }
 for (const id of ['#source-language','#source-order']) $(id).addEventListener('change', () => {
-  $('#source-number').value = '1'; updateSourceRange(); loadSource();
+  $('#source-number').value = '1'; updateSourceRange(); loadSource({ dismissEditor: false });
 });
 $('#source-number').addEventListener('input', () => { cancelGeneration(true); updateEditor(); });
 $('#source-number').addEventListener('keydown', event => { if (event.key === 'Enter') loadSource(); });
@@ -571,11 +586,11 @@ $('#generate-seed').addEventListener('click', () => generate($('#seed').value));
 $('#seed').addEventListener('keydown', event => { if (event.key === 'Enter' && !busy) generate($('#seed').value); });
 $('#cancel-generation').addEventListener('click', () => cancelGeneration());
 $('#load-sample').addEventListener('click', () => { if (sample) loadLevel(sample, '固定样例'); });
-$('#restart').addEventListener('click', () => { if (game) { const kind = $('#level-kind').textContent; loadLevel(game.exportInitial || game.initial, kind, { syncDraft: false }); feedback('已经重开，所有字母恢复初始次数。'); } });
+$('#restart').addEventListener('click', () => { if (game) { const kind = $('#level-kind').textContent; loadLevel(game.exportInitial || game.initial, kind, { syncDraft: false }); feedback('已重开。'); } });
 $('#hint').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); hint = game.hint();
-  if (hint) { renderSelection(); feedback(`提示：按标记的 1～${hint.path.length} 顺序连接，松手提交。`); }
+  if (hint) { renderSelection(); feedback(`提示：${hint.word}`); }
   else render();
 });
 $('#import').addEventListener('click', () => $('#import-file').click());
@@ -607,13 +622,78 @@ $('#export').addEventListener('click', () => {
   link.download = `wordtiles-${String(game.initial.seed ?? 'level').replace(/[^a-zA-Z0-9_-]/g, '_')}.json`;
   link.click(); URL.revokeObjectURL(url); notice('已导出本关初始数据；重载后从完整棋盘开始。', 'success');
 });
-const dialog = $('#rules-dialog');
-$('#rules-button').addEventListener('click', () => { clearSelection(); dialog.showModal(); });
-for (const id of ['#close-rules', '#start-playing']) $(id).addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
-  const rect = dialog.getBoundingClientRect();
-  if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+function closeEditor() {
+  document.body.classList.remove('editor-open'); $('#editor-toggle').setAttribute('aria-expanded', 'false'); hideHelp();
+}
+function closeSettings(restoreFocus = true) {
+  const wasOpen = !$('#settings-popover').hidden;
+  $('#settings-popover').hidden = true; $('#options-menu').value = ''; hideHelp();
+  if (wasOpen && restoreFocus) $('#options-menu').focus({ preventScroll: true });
+}
+function positionSettings() {
+  const panel = $('#settings-popover'); if (panel.hidden) return;
+  const anchor = $('#options-menu').getBoundingClientRect(), rect = panel.getBoundingClientRect();
+  const left = Math.max(8, Math.min(window.innerWidth - rect.width - 8, anchor.right + 12));
+  const top = Math.max(8, Math.min(window.innerHeight - rect.height - 8, anchor.top));
+  panel.style.left = `${left}px`; panel.style.top = `${top}px`;
+}
+$('#options-menu').addEventListener('change', () => {
+  const value = $('#options-menu').value; if (!value) { closeSettings(); return; }
+  clearSelection(); hideHelp();
+  document.querySelectorAll('[data-settings-pane]').forEach(pane => { pane.hidden = pane.dataset.settingsPane !== value; });
+  const panel = $('#settings-popover'); panel.dataset.pane = value;
+  $('#settings-title').textContent = $('#options-menu').selectedOptions[0].textContent;
+  panel.hidden = false; positionSettings(); panel.focus({ preventScroll: true });
 });
+$('#settings-close').addEventListener('click', () => closeSettings());
+$('#editor-toggle').addEventListener('click', () => {
+  const open = !document.body.classList.contains('editor-open'); clearSelection(); closeSettings(false); hideHelp();
+  document.body.classList.toggle('editor-open', open); $('#editor-toggle').setAttribute('aria-expanded', String(open));
+  if (open) $('#algorithm').focus({ preventScroll: true });
+});
+$('#editor-close').addEventListener('click', () => { closeSettings(false); closeEditor(); $('#editor-toggle').focus({ preventScroll: true }); });
+$('#file-action').addEventListener('change', () => {
+  const value = $('#file-action').value; $('#file-action').value = ''; closeSettings(false); hideHelp();
+  if (value) $(value === 'sample' ? '#load-sample' : '#' + value).click();
+});
+document.addEventListener('pointerdown', event => {
+  if (!$('#settings-popover').hidden && !event.target.closest('#settings-popover,#options-menu')) closeSettings(false);
+  if (document.body.classList.contains('editor-open') && !event.target.closest('#editor-panel,#editor-toggle,#settings-popover')) closeEditor();
+  if (!event.target.closest('[data-help],[data-help-from]')) hideHelp();
+});
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape') return;
+  if (!$('#settings-popover').hidden) { closeSettings(); event.preventDefault(); }
+  else if (document.body.classList.contains('editor-open')) { closeEditor(); $('#editor-toggle').focus({ preventScroll: true }); }
+  hideHelp();
+});
+let helpAnchor = null;
+function hideHelp() {
+  if (helpAnchor) helpAnchor.removeAttribute('aria-describedby');
+  helpAnchor = null; $('#hover-help').hidden = true;
+}
+function showHelp(anchor) {
+  const message = anchor.dataset.helpFrom ? document.getElementById(anchor.dataset.helpFrom)?.textContent : anchor.dataset.help;
+  if (!message) return;
+  hideHelp(); const tooltip = $('#hover-help'); tooltip.textContent = message; tooltip.hidden = false;
+  helpAnchor = anchor; anchor.setAttribute('aria-describedby', 'hover-help');
+  const rect = anchor.getBoundingClientRect(), box = tooltip.getBoundingClientRect();
+  tooltip.style.left = `${Math.max(8, Math.min(window.innerWidth - box.width - 8, rect.left + rect.width / 2 - box.width / 2))}px`;
+  tooltip.style.top = `${Math.max(8, Math.min(window.innerHeight - box.height - 8, rect.bottom + box.height + 8 <= window.innerHeight ? rect.bottom + 8 : rect.top - box.height - 8))}px`;
+}
+document.addEventListener('pointerover', event => {
+  if (event.pointerType === 'touch') return;
+  const anchor = event.target.closest('[data-help],[data-help-from]'); if (anchor && anchor !== helpAnchor) showHelp(anchor);
+});
+document.addEventListener('pointerout', event => { if (helpAnchor && !helpAnchor.contains(event.relatedTarget)) hideHelp(); });
+document.addEventListener('focusin', event => { const anchor = event.target.closest('[data-help],[data-help-from]'); if (anchor) showHelp(anchor); else hideHelp(); });
+document.addEventListener('focusout', hideHelp);
+for (const id of ['#rules-button','#editor-status']) $(id).addEventListener('click', () => showHelp($(id)));
+window.addEventListener('resize', () => { positionSettings(); hideHelp(); });
+for (let value = 1; value <= 18; value++) {
+  const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
+}
+$('#word-count').value = '3';
 window.addEventListener('pagehide', () => cancelGeneration(true));
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = true;

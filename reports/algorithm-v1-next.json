@@ -3,54 +3,54 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 1088864574,
+  "seed": 925935425,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "H",
-    "Y",
-    "N",
-    "S",
     "U",
-    "N",
-    "P",
-    "O",
-    "T"
+    "R",
+    "D",
+    "M",
+    "B",
+    "A",
+    "W",
+    "E",
+    "N"
   ],
   "initialCounts": [
-    1,
+    2,
+    2,
     2,
     1,
     3,
+    3,
     1,
     1,
-    3,
-    3,
     3
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "POT",
+      "word": "BAD",
       "canonicalPath": [
-        6,
-        7,
-        8
+        4,
+        5,
+        2
       ]
     },
     {
       "id": "W1",
-      "word": "SHY",
+      "word": "BAN",
       "canonicalPath": [
-        3,
-        0,
-        1
+        4,
+        5,
+        8
       ]
     },
     {
       "id": "W2",
-      "word": "TOP",
+      "word": "NEW",
       "canonicalPath": [
         8,
         7,
@@ -59,23 +59,23 @@
     },
     {
       "id": "W3",
-      "word": "SPOT",
+      "word": "DRUM",
       "canonicalPath": [
-        3,
-        6,
-        7,
-        8
+        2,
+        1,
+        0,
+        3
       ]
     },
     {
       "id": "W4",
-      "word": "SUNNY",
+      "word": "URBAN",
       "canonicalPath": [
-        3,
+        0,
+        1,
         4,
         5,
-        2,
-        1
+        8
       ]
     }
   ]
