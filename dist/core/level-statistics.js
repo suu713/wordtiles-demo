@@ -1,4 +1,4 @@
-import { createNeighbors, normalizeDictionary } from './rules.js';
+import { createNeighbors, normalizeDictionary } from './rules.js?v=10';
 
 const dictionaryTries = new WeakMap();
 function dictionaryTrie(dictionary) {
@@ -17,10 +17,11 @@ function dictionaryTrie(dictionary) {
   return root;
 }
 
-function reachableDictionaryWords(board, dictionary) {
+export function reachableDictionaryWords(board, dictionary, onVisit = null) {
   const root = dictionaryTrie(dictionary), neighbors = createNeighbors(board.rows, board.cols);
   const used = Array(board.letters.length).fill(false), found = new Set();
   function walk(cell, parent) {
+    onVisit?.();
     if (used[cell]) return;
     const node = parent.children.get(board.letters[cell]);
     if (!node) return;
@@ -46,11 +47,13 @@ export function calculateLevelStatistics(level, dictionary) {
     for (const cell of new Set(target.path)) tileUses[cell]++;
     const startCell = target.path[0], endCell = target.path.at(-1);
     const startColumn = startCell % board.cols, endColumn = endCell % board.cols;
+    const screenRow = cell => isSource ? board.rows - 1 - Math.floor(cell / board.cols) : Math.floor(cell / board.cols);
+    const reverse = endColumn < startColumn || screenRow(endCell) < screenRow(startCell);
     let turns = 0;
     for (let i = 2; i < target.path.length; i++) {
       if (target.path[i] - target.path[i - 1] !== target.path[i - 1] - target.path[i - 2]) turns++;
     }
-    return { word: target.word, startCell, endCell, startColumn, endColumn, reverse: startColumn >= endColumn, turns };
+    return { word: target.word, startCell, endCell, startColumn, endColumn, reverse, turns };
   });
   const usageHistogram = {};
   for (const uses of tileUses) usageHistogram[uses] = (usageHistogram[uses] || 0) + 1;

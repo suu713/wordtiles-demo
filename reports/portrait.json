@@ -15,16 +15,16 @@
       "targetOverflow": false,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 769,
-        "clientHeight": 769,
+        "scrollHeight": 777,
+        "clientHeight": 777,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -34,7 +34,7 @@
       "ratio": 0.5625,
       "width": 414,
       "height": 736,
-      "tile": 68.328125,
+      "tile": 80.25,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -42,16 +42,16 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 733,
-        "clientHeight": 733,
+        "scrollHeight": 718,
+        "clientHeight": 718,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -61,7 +61,7 @@
       "ratio": 0.5625,
       "width": 387,
       "height": 688,
-      "tile": 63.328125,
+      "tile": 75.5,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -77,8 +77,8 @@
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -88,7 +88,7 @@
       "ratio": 0.5625102677838015,
       "width": 321,
       "height": 570.65625,
-      "tile": 54.328125,
+      "tile": 61,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -96,16 +96,16 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 561,
-        "clientHeight": 561,
+        "scrollHeight": 562,
+        "clientHeight": 562,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -115,7 +115,7 @@
       "ratio": 0.5625062959605117,
       "width": 349,
       "height": 620.4375,
-      "tile": 67.65625,
+      "tile": 68,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -123,16 +123,16 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 567,
-        "clientHeight": 567,
+        "scrollHeight": 568,
+        "clientHeight": 568,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -142,7 +142,7 @@
       "ratio": 0.5625117503290092,
       "width": 374,
       "height": 664.875,
-      "tile": 57,
+      "tile": 72.25,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -150,16 +150,16 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 729,
-        "clientHeight": 729,
+        "scrollHeight": 714,
+        "clientHeight": 714,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -169,7 +169,7 @@
       "ratio": 0.5625079843634226,
       "width": 344,
       "height": 611.546875,
-      "tile": 65.328125,
+      "tile": 66.75,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -177,16 +177,16 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 567,
-        "clientHeight": 567,
+        "scrollHeight": 568,
+        "clientHeight": 568,
         "statsVisible": true,
         "inScreen": true
       },
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     },
@@ -196,7 +196,7 @@
       "ratio": 0.5625072279403261,
       "width": 304,
       "height": 540.4375,
-      "tile": 46,
+      "tile": 56.75,
       "overflow": false,
       "fits": true,
       "countOverlap": false,
@@ -212,8 +212,8 @@
       "graded": {
         "overflow": false,
         "fits": true,
-        "warningFits": true,
-        "warning": "算法2 · 词库未完成内容审核",
+        "cleanTitle": true,
+        "warning": "自动生成 · 词库未完成内容审核",
         "editorFits": true
       }
     }

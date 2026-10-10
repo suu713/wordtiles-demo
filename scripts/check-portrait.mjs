@@ -28,7 +28,7 @@ try {
     await page.waitForTimeout(100);
     const metrics=await page.evaluate(() => {
       const viewport=document.querySelector('#game-viewport').getBoundingClientRect(),board=document.querySelector('#board').getBoundingClientRect(),actions=document.querySelector('.play-actions').getBoundingClientRect();
-      return { ratio:viewport.width/viewport.height,width:viewport.width,height:viewport.height,tile:document.querySelector('.tile').getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>window.innerWidth || document.documentElement.scrollHeight>window.innerHeight,fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && viewport.left>=0 && viewport.right<=innerWidth+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,countOverlap:[...document.querySelectorAll('.many-uses')].some(tile=>{
+      return { ratio:viewport.width/viewport.height,width:viewport.width,height:viewport.height,tile:document.querySelector('.tile').getBoundingClientRect().width,overflow:document.documentElement.scrollWidth>window.innerWidth || document.documentElement.scrollHeight>window.innerHeight,fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && viewport.left>=0 && viewport.right<=innerWidth+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,countOverlap:[...document.querySelectorAll('.tile:not(.empty)')].some(tile=>{
         const letter=tile.querySelector('.tile-letter').getBoundingClientRect(),badge=tile.querySelector('.count-badge').getBoundingClientRect();
         return letter.left<badge.right && letter.right>badge.left && letter.top<badge.bottom && letter.bottom>badge.top;
       }),scrollHint:!document.querySelector('#targets-note').hidden,targetOverflow:document.querySelector('#targets').scrollHeight>document.querySelector('#targets').clientHeight+1 };
@@ -72,10 +72,10 @@ try {
     await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
     await page.waitForTimeout(100);
     const graded = await page.evaluate(() => {
-      const viewport=document.querySelector('#game-viewport').getBoundingClientRect(),board=document.querySelector('#board').getBoundingClientRect(),actions=document.querySelector('.play-actions').getBoundingClientRect(),label=document.querySelector('#game-level-label').getBoundingClientRect(),completion=document.querySelector('#completion').getBoundingClientRect();
-      return { overflow:document.documentElement.scrollWidth>innerWidth || document.documentElement.scrollHeight>innerHeight, fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,warningFits:label.right<completion.left,warning:document.querySelector('#game-level-label').textContent };
+      const viewport=document.querySelector('#game-viewport').getBoundingClientRect(),board=document.querySelector('#board').getBoundingClientRect(),actions=document.querySelector('.play-actions').getBoundingClientRect();
+      return { overflow:document.documentElement.scrollWidth>innerWidth || document.documentElement.scrollHeight>innerHeight, fits:viewport.top>=0 && viewport.bottom<=innerHeight+1 && board.top>=viewport.top && board.bottom<=viewport.bottom+1 && actions.bottom<=viewport.bottom+1,cleanTitle:document.querySelector('.game-title-row').innerText==='Word Tile',warning:document.querySelector('#level-kind').textContent };
     });
-    assert.equal(graded.overflow,false); assert.equal(graded.fits,true); assert.equal(graded.warningFits,true);
+    assert.equal(graded.overflow,false); assert.equal(graded.fits,true); assert.equal(graded.cleanTitle,true);
     assert.ok(graded.warning.includes('词库未完成内容审核'));
     await page.screenshot({path:fileURLToPath(new URL('../reports/portrait-graded-'+width+'.png',import.meta.url)),fullPage:true});
     if(width<=760) await page.locator('#editor-toggle').click();

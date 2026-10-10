@@ -1,8 +1,8 @@
-import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js';
-import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=8';
-import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=8';
+import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=10';
+import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=10';
+import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=10';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
-import { calculateLevelStatistics } from './core/level-statistics.js';
+import { calculateLevelStatistics } from './core/level-statistics.js?v=10';
 import { createLexiconAdapter } from './core/lexicon-adapter.js';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
@@ -13,6 +13,9 @@ const banks = new Map(), savedSessions = new Map();
 let selection = [], hint = null, activePointer = null, worker = null, busy = false;
 let epoch = 0, requestId = 0, generationStats = null, lastRejection = null;
 const tileElements = [];
+let rejectedTiles = [], rejectionTimer = null;
+const solutionCache = new WeakMap(), SOLUTIONS_PER_PAGE = 12;
+let solutionWorker = null, solutionLevel = null, solutionRequest = 0, solutionPage = 0;
 let draftLengths = [...DEFAULT_CONFIG.wordLengths], editorValid = false;
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const connections = document.createElementNS(SVG_NS, 'svg');
@@ -21,6 +24,7 @@ connections.setAttribute('viewBox', '0 0 1000 1000');
 connections.setAttribute('preserveAspectRatio', 'none');
 connections.setAttribute('aria-hidden', 'true');
 function buildBoard(rows, cols) {
+  clearWordError();
   tileElements.length = 0; board.replaceChildren();
   // APK rows start at the lower left. Keep its original cell IDs and JSON,
   // and place those cells in browser rows that run from top to bottom.
@@ -39,8 +43,7 @@ function buildBoard(rows, cols) {
     tile.style.gridColumn = String(cell % cols + 1);
     const letter = document.createElement('span'); letter.className = 'tile-letter';
     const pips = document.createElement('span'); pips.className = 'tile-pips'; pips.setAttribute('aria-hidden', 'true');
-    const hintNumber = document.createElement('span'); hintNumber.className = 'hint-number'; hintNumber.hidden = true; hintNumber.setAttribute('aria-hidden', 'true');
-    tile.append(letter, pips, hintNumber); board.append(tile); tileElements.push(tile);
+    tile.append(letter, pips); board.append(tile); tileElements.push(tile);
   }
   board.append(connections);
 }
@@ -181,7 +184,8 @@ function rememberSession() {
 }
 function applyLevelInfo(kind) {
   const isSource = game.initial.algorithm === 1, source = game.initial.source;
-  $('#level-kind').textContent = kind;
+  const reviewWarning = game.dictionary?.metadata?.reviewWarning;
+  $('#level-kind').textContent = reviewWarning && !kind.includes(reviewWarning) ? kind + ' · ' + reviewWarning : kind;
   $('#active-seed-label').textContent = isSource ? '原关卡 ID' : '当前种子';
   const id = String(isSource ? source.original.id : game.initial.seed ?? '未提供');
   $('#active-seed').textContent = id; $('#active-seed').title = id;
@@ -192,6 +196,7 @@ function applyLevelInfo(kind) {
     $('#source-meta').textContent = JSON.stringify(source.original, null, 2);
   }
   renderLevelStatistics();
+  startSolutionAnalysis();
 }
 function renderLevelStatistics() {
   const levelDictionary = game.dictionary || dictionary;
@@ -202,7 +207,7 @@ function renderLevelStatistics() {
     : `在 ${levelDictionary.version} 词库中，统计初始棋盘能用四向相邻路径拼出的非目标词；同一格不能重复经过，同一单词的多条路径只算一次。`;
   $('#extra-word-stat').dataset.help = extraRule + (stats.extraWords.length ? ' 单词：' + stats.extraWords.join('、') + '。' : ' 本关没有非目标词。') + ' 这是初始关卡数量，试玩时保持不变。';
   $('#reverse-word-count').textContent = `${stats.reverseWordCount} / ${stats.targetCount}`;
-  $('#reverse-word-stat').dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。起点在终点左侧为正序；同列或右侧都算倒序。左边是倒序目标词数量，右边是本关目标词总数。' + (stats.reverseWords.length ? ' 倒序词：' + stats.reverseWords.join('、') + '。' : ' 本关全部目标为正序。') + ' 试玩时保持不变。';
+  $('#reverse-word-stat').dataset.help = '只比较参考路径的起点和终点：终点在起点左侧或上方，才计为倒序。中途的转弯方向不影响统计；同列向下的词不计入。按画面坐标计算，原包的上下行序会先换算。左边是倒序目标词数量，右边是本关目标词总数。' + (stats.reverseWords.length ? ' 倒序词：' + stats.reverseWords.join('、') + '。' : ' 本关全部目标为正序。') + ' 试玩时保持不变。';
   for (let uses = 2; uses <= 5; uses++) {
     const cells = stats.tileUses.flatMap((count, cell) => count === uses ? [cell] : []);
     $(`#tile-used-${uses}`).textContent = String(cells.length);
@@ -217,7 +222,7 @@ function renderLevelStatistics() {
 }
 function switchAlgorithm(next) {
   if (next === selectedAlgorithm || !ready) return;
-  cancelGeneration(true); clearSelection(); rememberSession();
+  cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection(); rememberSession();
   selectedAlgorithm = next; showMode(); epoch++;
   const saved = savedSessions.get(next);
   if (saved) {
@@ -351,6 +356,9 @@ function fitBoard() {
   board.style.width = width + 'px';
   const cellSize = (width - padding - (cols-1)*gap) / cols;
   board.style.setProperty('--tile-font', Math.min(40, Math.max(16, cellSize*.48)) + 'px');
+  board.dataset.compactCells = String(cellSize < 90);
+  board.style.setProperty('--count-font', Math.min(17, Math.max(11, cellSize * .17)) + 'px');
+  board.style.setProperty('--count-height', Math.min(23, Math.max(13, cellSize * .23)) + 'px');
 }
 for (const id of ['#preview-device','#preview-zoom']) $(id).addEventListener('change', applyViewport);
 new ResizeObserver(applyViewport).observe($('.preview-column'));
@@ -365,12 +373,10 @@ function notice(message, tone = '') {
   $('#notice').textContent = message; $('#notice').className = `notice ${tone}`;
   const status = $('#editor-status');
   status.className = `editor-status ${tone}`;
-  status.textContent = tone === 'error' ? message.split(/[：。]/)[0] :
-    busy ? (busyKind === 'generate' ? '正在生成…' : '正在载入…') :
-    message.startsWith('已导出') ? 'JSON 已导出' : message.includes('取消') ? '已取消' :
-    message.includes('恢复') ? '进度已恢复' : '✓ 关卡已就绪';
+  status.textContent = '●'; status.setAttribute('aria-label', message);
 }
 function clearSelection() {
+  clearWordError();
   const oldPointer = activePointer;
   activePointer = null; selection = []; hint = null;
   if (oldPointer !== null && board.hasPointerCapture(oldPointer)) board.releasePointerCapture(oldPointer);
@@ -380,9 +386,6 @@ function renderSelection() {
   tileElements.forEach((tile, cell) => {
     tile.classList.toggle('selected', selection.includes(cell));
     tile.classList.toggle('hinted', !!hint?.path.includes(cell));
-    const badge = tile.querySelector('.hint-number');
-    const at = hint?.path.indexOf(cell) ?? -1;
-    badge.hidden = at < 0; badge.textContent = at >= 0 ? String(at + 1) : '';
   });
   $('#readout-label').textContent = hint && !selection.length ? '提示单词' : '正在连接';
   $('#current-word').textContent = selection.length && game ? selection.map(i => game.initial.board.letters[i]).join('') : (hint?.word || '—');
@@ -390,16 +393,115 @@ function renderSelection() {
   const path = selection.length ? selection : hint?.path;
   if (path?.length > 1) {
     const area = board.getBoundingClientRect();
+    const width = board.offsetWidth, height = board.offsetHeight;
+    connections.setAttribute('viewBox', `0 0 ${width} ${height}`);
     const points = path.map(cell => {
       const rect = tileElements[cell].getBoundingClientRect();
-      return `${((rect.left + rect.width / 2 - area.left) / area.width) * 1000},${((rect.top + rect.height / 2 - area.top) / area.height) * 1000}`;
-    }).join(' ');
+      return { x:(rect.left + rect.width / 2 - area.left) / area.width * width, y:(rect.top + rect.height / 2 - area.top) / area.height * height };
+    });
     const polyline = document.createElementNS(SVG_NS, 'polyline');
-    polyline.setAttribute('points', points);
+    polyline.setAttribute('points', points.map(point => `${point.x},${point.y}`).join(' '));
     if (!selection.length) polyline.classList.add('hint-line');
     connections.append(polyline);
+    if (!selection.length) for (let index = 1; index < points.length; index++) {
+      const from = points[index - 1], to = points[index];
+      const dx = to.x - from.x, dy = to.y - from.y, distance = Math.hypot(dx, dy);
+      const ux = dx / distance, uy = dy / distance, size = Math.max(5, Math.min(11, distance * .12));
+      const tip = { x:from.x + dx * .62, y:from.y + dy * .62 };
+      const base = { x:tip.x - ux * size, y:tip.y - uy * size };
+      const arrow = document.createElementNS(SVG_NS, 'path');
+      arrow.classList.add('hint-arrow'); arrow.dataset.from = String(path[index - 1]); arrow.dataset.to = String(path[index]);
+      arrow.setAttribute('d', `M ${base.x - uy * size * .65} ${base.y + ux * size * .65} L ${tip.x} ${tip.y} L ${base.x + uy * size * .65} ${base.y - ux * size * .65}`);
+      connections.append(arrow);
+    }
   }
   $('#targets').querySelectorAll('.target').forEach(target => target.classList.toggle('hinted', target.dataset.word === hint?.word));
+}
+function clearWordError() {
+  clearTimeout(rejectionTimer); rejectionTimer = null;
+  rejectedTiles.forEach(tile => tile.classList.remove('invalid-word')); rejectedTiles = [];
+}
+function showWordError(path) {
+  clearWordError(); rejectedTiles = path.map(cell => tileElements[cell]).filter(Boolean);
+  rejectedTiles.forEach(tile => tile.classList.add('invalid-word'));
+  rejectionTimer = setTimeout(clearWordError, 850);
+}
+function renderBonusWords() {
+  const words = [...(game?.bonusCompleted || [])].sort((a, b) => a.localeCompare(b));
+  $('#bonus-count').textContent = String(words.length);
+  $('#bonus-button').disabled = !game;
+  $('#bonus-button').setAttribute('aria-label', `额外单词包，已收集 ${words.length} 个单词`);
+  $('#bonus-title').textContent = `额外单词 · ${words.length}`;
+  $('#bonus-words').replaceChildren(...words.map(word => { const item = document.createElement('li'); item.textContent = word; return item; }));
+  $('#bonus-empty').hidden = words.length > 0;
+}
+function closeGameDialogs() {
+  for (const id of ['#bonus-dialog', '#solutions-dialog']) if ($(id).open) $(id).close();
+  hideHelp();
+}
+function cancelSolutionAnalysis() {
+  solutionRequest++;
+  if (solutionWorker) {
+    solutionWorker.terminate(); solutionWorker = null;
+    if (solutionCache.get(solutionLevel)?.pending) solutionCache.delete(solutionLevel);
+  }
+  solutionLevel = null;
+}
+function startSolutionAnalysis(deepSearch = false) {
+  cancelSolutionAnalysis(); solutionPage = 0;
+  if (!game) return;
+  const level = game.initial;
+  if (solutionCache.has(level) && !deepSearch) { renderSolutionSummary(); return; }
+  solutionCache.set(level, { pending:true }); renderSolutionSummary();
+  const id = solutionRequest;
+  let instance;
+  const finish = result => {
+    if (solutionWorker !== instance || id !== solutionRequest || game.initial !== level) return;
+    instance.terminate(); solutionWorker = null; solutionLevel = null;
+    solutionCache.set(level, result); renderSolutionSummary();
+  };
+  try {
+    instance = new Worker(new URL('./solutions.worker.js?v=10', import.meta.url), { type:'module' });
+    solutionWorker = instance; solutionLevel = level;
+    instance.onmessage = ({ data }) => { if (data.requestId === id) finish(data.result); };
+    instance.onerror = () => finish({ ok:false, message:'解法统计线程未能完成，请重新统计。' });
+    instance.postMessage({ requestId:id, level, dictionary:game.dictionary || null,
+      options:deepSearch ? { maxNodes:10_000_000, maxMilliseconds:15000, maxPathsPerWord:100_000 } : undefined });
+  } catch (error) {
+    cancelSolutionAnalysis(); solutionCache.set(level, { ok:false, message:'解法统计未能启动：' + error.message }); renderSolutionSummary();
+  }
+}
+function renderSolutionSummary() {
+  const result = game && solutionCache.get(game.initial);
+  const label = !result ? '—' : result.pending ? '统计中…' : result.ok ? `${result.count} 种` : '未完成';
+  $('#solutions-count').textContent = label;
+  $('#solutions-stat').disabled = !game;
+  $('#solutions-stat').setAttribute('aria-label', `本关解法，${label}，点击查看词组`);
+  if ($('#solutions-dialog').open) renderSolutionDialog();
+}
+function renderSolutionDialog() {
+  const result = game && solutionCache.get(game.initial), status = $('#solutions-status'), list = $('#solutions-list');
+  list.replaceChildren(); $('#solutions-pagination').hidden = true; $('#solutions-retry').hidden = true;
+  status.className = 'solutions-status'; status.hidden = false;
+  $('#solutions-title').textContent = result?.ok ? `本关解法 · ${result.count} 种` : '本关解法';
+  if (!result || result.pending) { status.textContent = '正在统计…'; return; }
+  if (!result.ok) { status.textContent = result.message; status.classList.add('error'); $('#solutions-retry').hidden = false; return; }
+  if (!result.count) { status.textContent = '未找到符合本关配置的词组。'; return; }
+  status.hidden = true;
+  const pages = Math.ceil(result.count / SOLUTIONS_PER_PAGE);
+  solutionPage = Math.max(0, Math.min(solutionPage, pages - 1));
+  const first = solutionPage * SOLUTIONS_PER_PAGE;
+  for (const [index, solution] of result.solutions.slice(first, first + SOLUTIONS_PER_PAGE).entries()) {
+    const item = document.createElement('li'); item.className = 'solution-item';
+    const heading = document.createElement('div'); heading.className = 'solution-item-heading'; heading.textContent = `解法 ${first + index + 1}`;
+    if (solution.isTargetSet) { const tag = document.createElement('span'); tag.className = 'solution-current'; tag.textContent = '当前目标'; heading.append(tag); }
+    const words = document.createElement('div'); words.className = 'solution-words';
+    solution.words.forEach(word => { const chip = document.createElement('span'); chip.textContent = word; words.append(chip); });
+    item.append(heading, words); list.append(item);
+  }
+  $('#solutions-pagination').hidden = pages <= 1;
+  $('#solutions-page').textContent = `${solutionPage + 1} / ${pages}`;
+  $('#solutions-prev').disabled = solutionPage === 0; $('#solutions-next').disabled = solutionPage === pages - 1;
 }
 function renderDebug() {
   if (!game) return;
@@ -430,10 +532,7 @@ function render(consumed = []) {
     const count = game.counts[cell];
     tile.querySelector('.tile-letter').textContent = count ? game.initial.board.letters[cell] : '·';
     const pips = tile.querySelector('.tile-pips');
-    pips.classList.toggle('count-badge', count > 3);
-    pips.replaceChildren();
-    if (count > 3) pips.textContent = String(count);
-    else pips.append(...Array.from({ length:count }, () => document.createElement('i')));
+    pips.classList.add('count-badge'); pips.textContent = String(count); pips.hidden = count === 0;
     tile.dataset.remaining = String(count);
     tile.classList.toggle('many-uses', count > 3);
     tile.classList.toggle('empty', count === 0);
@@ -448,8 +547,7 @@ function render(consumed = []) {
     item.setAttribute('aria-label', done ? `${target.word} 已完成` : `${target.word.length} 字母目标，未完成`);
     const slots = document.createElement('div'); slots.className = 'target-slots'; slots.setAttribute('aria-hidden', 'true');
     [...target.word].forEach(letter => { const slot = document.createElement('span'); slot.className = 'target-letter'; slot.textContent = done ? letter : ''; slots.append(slot); });
-    const length = document.createElement('span'); length.className = 'target-length'; length.textContent = done ? '✓ 找到了' : `${target.word.length} LETTERS`;
-    item.append(slots, length); $('#targets').append(item);
+    item.append(slots); $('#targets').append(item);
   });
   $('#completion').replaceChildren(document.createTextNode(`${game.completed.size} `));
   const tail = document.createElement('span'); tail.textContent = `/ ${game.initial.targets.length}`; $('#completion').append(tail);
@@ -464,7 +562,7 @@ function render(consumed = []) {
   $('#hint').disabled = game.status !== 'playing';
   $('#validation-badge').textContent = game.status === 'anomaly' ? '关卡状态异常' : game.initial.algorithm === 1 ? '原包对照 · 需求不变量通过' : `${game.report.stateChecks} / ${game.report.stateCount} 通过`;
   if (game.status === 'anomaly') { feedback('关卡状态异常，请查看调试信息。', 'error'); console.error('WordTiles invariant violation', game.debug); }
-  renderSelection(); renderDebug(); scheduleFit(); setBusy(busy, busyKind);
+  renderSelection(); renderBonusWords(); renderDebug(); scheduleFit(); setBusy(busy, busyKind);
 }
 function setBusy(value, kind = null) {
   busy = value; busyKind = value ? kind : null;
@@ -499,7 +597,7 @@ function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictio
     lastRejection = error.report || { message:error.message };
     notice('关卡未通过校验，当前关卡保留。详见调试面板。','error'); renderDebug(); return false;
   }
-  cancelGeneration(true); clearSelection();
+  cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection();
   const nextMode = next.initial.algorithm === 1 ? 1 : 2;
   if (nextMode !== selectedAlgorithm) { rememberSession(); selectedAlgorithm = nextMode; showMode(); }
   epoch++; game = next; lastRejection = null;
@@ -561,6 +659,7 @@ $('#source-random').addEventListener('click', () => {
 
 function addCell(cell) {
   if (!game || game.status !== 'playing' || !game.counts[cell]) return;
+  clearWordError();
   if (selection.length > 1 && selection.at(-2) === cell) selection.pop();
   else if (!selection.includes(cell) && (!selection.length || game.neighbors[selection.at(-1)].includes(cell))) selection.push(cell);
   renderSelection();
@@ -574,8 +673,11 @@ function commitSelection() {
   else if (result.accepted && result.status !== 'anomaly') feedback(`找到了 ${result.word}！继续找下一个。`, 'success');
   else if (result.reason === 'already-completed') feedback(`${result.word} 已经找过了，次数保持不变。`);
   else if (result.reason === 'extra-word') feedback(result.isNew ? `额外词 ${result.word} 已记录，次数保持不变。` : `额外词 ${result.word} 已经记过，次数保持不变。`, 'success');
-  else if (result.reason === 'not-target') feedback(`${result.word} 不是本关目标，次数保持不变。`);
-  else if (result.reason !== 'anomaly') feedback(result.message || '这次连接无效，次数保持不变。');
+  else if (result.reason === 'not-target') { showWordError(path); feedback(`${result.word} 不在本关词库中，次数保持不变。`, 'error'); }
+  else if (result.reason !== 'anomaly') { showWordError(path); feedback(result.message || '这次连接无效，次数保持不变。', 'error'); }
+  if (result.reason === 'extra-word' && result.isNew) {
+    const button = $('#bonus-button'); button.classList.remove('collected'); void button.offsetWidth; button.classList.add('collected');
+  }
 }
 function tileAt(event) {
   const tile = document.elementFromPoint(event.clientX, event.clientY)?.closest('[data-cell]');
@@ -685,6 +787,31 @@ $('#hint').addEventListener('click', () => {
   if (hint) { renderSelection(); feedback(`提示：${hint.word}`); }
   else render();
 });
+$('#bonus-button').addEventListener('click', () => {
+  if (!game) return;
+  clearSelection(); hideHelp(); renderBonusWords();
+  $('#bonus-dialog').showModal(); $('#bonus-button').setAttribute('aria-expanded', 'true');
+});
+$('#bonus-close').addEventListener('click', () => $('#bonus-dialog').close());
+$('#bonus-dialog').addEventListener('close', () => $('#bonus-button').setAttribute('aria-expanded', 'false'));
+$('#solutions-stat').addEventListener('click', () => {
+  if (!game) return;
+  clearSelection(); closeSettings(false); hideHelp(); solutionPage = 0;
+  $('#solutions-help').dataset.help = $('#solutions-stat').dataset.help;
+  renderSolutionDialog(); $('#solutions-dialog').showModal();
+});
+$('#solutions-close').addEventListener('click', () => $('#solutions-dialog').close());
+$('#solutions-retry').addEventListener('click', () => startSolutionAnalysis(true));
+$('#solutions-prev').addEventListener('click', () => { solutionPage--; renderSolutionDialog(); });
+$('#solutions-next').addEventListener('click', () => { solutionPage++; renderSolutionDialog(); });
+$('#solutions-help').addEventListener('click', () => showHelp($('#solutions-help')));
+for (const id of ['#bonus-dialog','#solutions-dialog']) {
+  $(id).addEventListener('close', hideHelp);
+  $(id).addEventListener('click', event => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    if (event.target === event.currentTarget && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) event.currentTarget.close();
+  });
+}
 $('#import').addEventListener('click', () => $('#import-file').click());
 $('#import-file').addEventListener('change', async event => {
   const file = event.target.files[0]; event.target.value = ''; if (!file) return;
@@ -750,12 +877,14 @@ $('#file-action').addEventListener('change', () => {
   if (value) $(value === 'sample' ? '#load-sample' : '#' + value).click();
 });
 document.addEventListener('pointerdown', event => {
+  if (event.target.closest('dialog[open]')) return;
   if (!$('#settings-popover').hidden && !event.target.closest('#settings-popover,#options-menu')) closeSettings(false);
   if (document.body.classList.contains('editor-open') && !event.target.closest('#editor-panel,#editor-toggle,#settings-popover')) closeEditor();
   if (!event.target.closest('[data-help],[data-help-from]')) hideHelp();
 });
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
+  if ($('#bonus-dialog').open || $('#solutions-dialog').open) { hideHelp(); return; }
   if (!$('#settings-popover').hidden) { closeSettings(); event.preventDefault(); }
   else if (document.body.classList.contains('editor-open')) { closeEditor(); $('#editor-toggle').focus({ preventScroll: true }); }
   hideHelp();
@@ -769,6 +898,8 @@ function showHelp(anchor) {
   const message = anchor.dataset.helpFrom ? document.getElementById(anchor.dataset.helpFrom)?.textContent : anchor.dataset.help;
   if (!message) return;
   hideHelp(); const tooltip = $('#hover-help'); tooltip.textContent = message; tooltip.hidden = false;
+  const scope = anchor.closest('dialog[open]') || document.body;
+  if (tooltip.parentElement !== scope) scope.append(tooltip);
   helpAnchor = anchor; anchor.setAttribute('aria-describedby', 'hover-help');
   const rect = anchor.getBoundingClientRect(), box = tooltip.getBoundingClientRect();
   tooltip.style.left = `${Math.max(8, Math.min(window.innerWidth - box.width - 8, rect.left + rect.width / 2 - box.width / 2))}px`;
@@ -787,7 +918,7 @@ for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
 }
 $('#word-count').value = '3';
-window.addEventListener('pagehide', () => cancelGeneration(true));
+window.addEventListener('pagehide', () => { cancelGeneration(true); cancelSolutionAnalysis(); });
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = true;
 try {

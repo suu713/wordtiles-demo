@@ -1,5 +1,5 @@
 import { validateLevel as validateV1 } from './wordtiles-algorithm.js';
-import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js';
+import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js?v=10';
 
 // V1 files use flat arrays; the existing renderer and session use board/targets.path.
 // Keep the original file separately so exporting or restarting never changes its schema.

@@ -216,7 +216,7 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
   .game-tools{gap:6px}
   .settings-popover{max-height:calc(100dvh - 16px)}
 }
-@media(max-height:850px){.stat-row{min-height:24px;padding:2px 8px}.stat-list{gap:3px}.stat-heading{margin:8px 0 5px}}
+@media(max-height:850px){.stat-row{min-height:23px;padding:1px 8px}.stat-list{gap:3px}.stat-heading{margin:8px 0 5px}}
 @media(max-height:740px){.editor-panel{padding:16px}.editor-heading{margin-bottom:13px}.algorithm-field{margin-bottom:10px}.source-controls{margin-bottom:11px}.source-position-label{margin-top:12px}.editor-menus{padding-top:10px}.editor-current{margin-top:11px}.level-statistics{margin-top:12px;padding:9px}.stat-row{min-height:22px;padding:1px 7px}.stat-list{gap:2px}.stat-heading{margin:6px 0 4px;line-height:14px}.stat-button strong{font-size:14px;line-height:17px}}
 @media(max-height:620px){.editor-panel{padding:14px}.editor-heading{margin-bottom:11px}.algorithm-field select{height:36px}.field-grid select{height:34px}.source-navigation select{height:32px}.editor-current{margin-top:8px}.editor-status{margin-top:8px}.level-statistics{padding:9px}}
 @media(max-height:620px){.editor-heading .eyebrow{margin-bottom:3px}.algorithm-field{margin-bottom:8px;gap:5px}.source-position-label{margin-top:10px;margin-bottom:5px}.source-actions{margin-top:8px}.source-controls{margin-bottom:8px}.editor-menus{padding-top:8px}.primary-button{padding-top:9px;padding-bottom:9px}.level-statistics{margin-top:10px}.editor-status{margin-top:6px}}
@@ -243,3 +243,73 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
   .editor-status{margin-top:6px}
 }
 @media(max-height:580px){.editor-panel{padding:10px 12px}.editor-heading{margin-bottom:6px}.source-controls .field-grid select{height:32px}.level-statistics{padding:6px}.stat-row{min-height:19px}.stat-heading{margin:3px 0 2px}}
+/* Player surface: plain title, letter slots, numeric counters and word bag. */
+.game-title-row,.compact-device .game-title-row,.small-viewport .game-title-row,.dense-targets .game-title-row{justify-content:center;padding:4px 0 18px;flex:none}
+.game-title-row h2,.compact-device .game-title-row h2,.small-viewport .game-title-row h2{margin:0;font-size:29px;line-height:1.2;letter-spacing:.2px;font-weight:650;text-align:center}
+.target-slots{gap:4px}
+.target-letter{width:28px;min-width:28px;height:28px;border:1px solid #cbd5ba;border-radius:4px;background:#fffef7;font-size:17px;line-height:1}
+.target.completed .target-letter{border-color:#8dac77;background:#edf4e4;color:#3d6630}
+.target.hinted .target-letter{border-color:#c49b50;background:#fff6dc}
+.dense-targets .target-slots{gap:3px}
+.dense-targets .target-letter{width:21px;min-width:21px;height:21px;font-size:14px}
+.compact-device .target-letter,.small-viewport .target-letter{width:22px;min-width:22px;height:22px;font-size:15px}
+.compact-device.dense-targets .target-letter,.small-viewport.dense-targets .target-letter{width:18px;min-width:18px;height:18px;font-size:12px}
+.targets,.compact-device .targets,.small-viewport .targets{margin-top:10px}
+.tile-pips.count-badge{top:5px;right:5px;min-width:21px;height:var(--count-height,23px);padding:0 4px;border-radius:5px;background:#e0e9d3;color:#4f733d;font:700 var(--count-font,17px)/1 "Segoe UI",sans-serif}
+.tile.many-uses .tile-letter,.tile.hinted .tile-letter{font-size:var(--tile-font);transform:none}
+.board[data-compact-cells="true"] .tile-letter{font-size:calc(var(--tile-font)*.82);transform:translateY(6px)}
+.board[data-compact-cells="true"] .count-badge{top:1px;right:2px;min-width:15px;padding:0 2px;border-radius:3px}
+.tile.invalid-word,.tile.invalid-word:hover:not(.empty):not(.selected){background:#fbd9d5;border-color:#cb635a;color:#a03229;box-shadow:0 3px 0 #dda099}
+.tile.invalid-word .count-badge{background:#f3b9b3;color:#a03229}
+.connections polyline{stroke-width:4}
+.connections polyline.hint-line{stroke-width:2.5;stroke:#b88a39;stroke-dasharray:5 7;opacity:.65}
+.connections .hint-arrow{fill:none;stroke:#a97622;stroke-width:3.3;stroke-linecap:round;stroke-linejoin:round}
+.game-spacer{height:64px;flex:none}
+.compact-device .game-spacer{height:52px}
+.small-viewport .game-spacer{height:40px}
+.has-won .game-spacer{height:12px}
+.game-footer{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:8px;flex:none}
+.game-footer .play-actions{gap:8px}
+.game-footer .secondary-button{min-width:0;padding:11px 15px}
+.game-footer .game-tools{justify-content:end;gap:0}
+.game-footer #editor-toggle{height:34px;padding:0 5px;font-size:9px}
+.bonus-button{position:relative;display:grid;place-items:center;width:42px;height:42px;border:1px solid #cfddbd;border-radius:10px;background:#edf3e3;color:#5c8047}
+.bonus-button:hover{background:#e0ebd3}
+.bonus-button svg{width:28px;height:28px}
+.bonus-button path{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.bonus-button text{fill:currentColor;stroke:none;font-size:13px;font-weight:600}
+.bonus-count{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px;background:#577b43;border-radius:9px;color:#fffef2;font-size:10px;font-weight:600}
+.bonus-button.collected{animation:bag-collected .5s ease}
+@keyframes bag-collected{50%{transform:translateY(-4px);background:#d1e5bd}}
+.bonus-dialog{max-width:370px;max-height:calc(100dvh - 32px);overflow:auto;padding:22px}
+.bonus-dialog .dialog-top{margin-bottom:16px}
+.bonus-dialog h2{font-size:18px;font-weight:600}
+.bonus-words{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(85px,1fr));gap:8px;padding:0;margin:0}
+.bonus-words li{padding:10px 7px;border:1px solid #dce5d0;border-radius:7px;background:#f3f7eb;text-align:center;font-size:15px;font-weight:600;overflow-wrap:anywhere}
+#bonus-empty{font-size:13px;color:#859476;text-align:center;margin:22px 0}
+.small-viewport .game-footer{grid-template-columns:38px minmax(0,1fr) 38px;gap:6px}
+.small-viewport .game-footer .secondary-button{padding:9px 10px;font-size:11px}
+.small-viewport .bonus-button{width:36px;height:36px;border-radius:8px}
+.small-viewport .bonus-button svg{width:25px;height:25px}
+.small-viewport .game-title-row h2{font-size:25px}
+.small-viewport .game-title-row{padding-bottom:12px}
+.editor-kicker .editor-status{display:inline-flex;align-items:center;justify-content:center;flex:none;margin:0;padding:0;width:12px;height:12px;font-size:9px;cursor:help;overflow:visible}
+.solutions-stat{cursor:pointer}
+.solutions-stat .stat-open{font-size:12px;margin-left:3px;color:#759864}
+.solutions-dialog{max-width:530px;max-height:calc(100dvh - 32px);padding:22px;overflow:auto;overscroll-behavior:contain}
+.solutions-dialog .dialog-top{margin-bottom:16px}
+.solutions-dialog h2{font-size:18px;font-weight:600}
+.dialog-tools{display:flex;gap:12px;align-items:center}
+.solution-help{width:23px;height:23px;padding:0;border:1px solid #cddabb;background:#f1f6e9;border-radius:50%;color:#72915d;font-size:13px;font-style:italic;cursor:help}
+.solutions-status{font-size:13px;color:#7c9070;line-height:1.7;margin:10px 0 20px}
+.solutions-status.error{color:var(--error)}
+.solutions-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.solution-item{padding:12px;border:1px solid #dce5d0;border-radius:8px;background:#f5f8ee}
+.solution-item-heading{display:flex;align-items:center;gap:12px;color:#829275;font-size:11px;margin-bottom:9px}
+.solution-current{margin-left:auto;color:#4b713a;background:#e2ecd6;border-radius:4px;font-size:10px;padding:3px 6px}
+.solution-words{display:flex;flex-wrap:wrap;gap:6px}
+.solution-words span{padding:5px 7px;background:#fffef7;border:1px solid #d8e3c8;border-radius:5px;color:#3c6047;font:600 14px/1.2 "Segoe UI",sans-serif;overflow-wrap:anywhere}
+.solutions-pagination{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px;color:#809071;font-size:12px}
+.solutions-pagination button{width:32px;height:28px;border:1px solid #d8e3c8;border-radius:5px;background:#f3f7eb;color:#507441}
+.solutions-pagination button:disabled{opacity:.35}
+@media(max-width:380px){.solutions-dialog,.bonus-dialog{padding:16px}.solutions-dialog h2{font-size:16px}}

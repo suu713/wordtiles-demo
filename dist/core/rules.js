@@ -155,6 +155,7 @@ export class GameSession {
     this.initial=freeze(clone(level)); this.report=report;
     this.neighbors=createNeighbors(level.board.rows,level.board.cols);
     this.counts=[...level.board.counts]; this.completed=new Set(); this.status='playing'; this.debug=null;
+    this.bonusCompleted=new Set(); this.bonusDictionaryInput=dictionary; this.bonusWords=null;
   }
   get pending() { return this.initial.targets.filter(t=>!this.completed.has(t.word)); }
   get total() { return this.counts.reduce((a,b)=>a+b,0); }
@@ -173,7 +174,14 @@ export class GameSession {
     const inspected=inspectPath(this.initial.board.letters,path,this.counts,this.initial.board);
     if (!inspected.valid) return { accepted:false,reason:'invalid-path',message:inspected.reason };
     const word=inspected.word;
-    if (!this.initial.targets.some(t=>t.word===word)) return { accepted:false,reason:'not-target',word };
+    if (!this.initial.targets.some(t=>t.word===word)) {
+      this.bonusWords ||= new Set(normalizeDictionary(this.bonusDictionaryInput));
+      if (this.bonusWords.has(word)) {
+        const isNew=!this.bonusCompleted.has(word); this.bonusCompleted.add(word);
+        return { accepted:false,reason:'extra-word',word,isNew };
+      }
+      return { accepted:false,reason:'not-target',word };
+    }
     if (this.completed.has(word)) return { accepted:false,reason:'already-completed',word };
     if (this.report.enforceConsumption) {
       const expected=this.report.targets.find(t=>t.word===word).consumption;

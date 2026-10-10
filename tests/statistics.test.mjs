@@ -11,11 +11,11 @@ const dictionary = await json('../dist/dictionary-v1.json');
 const fixture = await json('../examples/seed_20261010.json');
 const bank = await json('../dist/source-levels/english.json');
 
-test('原验收关倒序包括同列；直线/1拐/多拐与逐格目标使用数符合人工结果', () => {
+test('倒序只比较画面中起点和终点，拐数和目标格子使用数保持原口径', () => {
   const game = createAlgorithmSession(fixture, dictionary);
   const stats = calculateLevelStatistics(game.initial, dictionary);
-  assert.deepEqual(stats.reverseWords, ['EAT', 'LOT', 'CLOTH']);
-  assert.equal(stats.reverseWordCount, 3); assert.equal(stats.reversePercentage, 60);
+  assert.deepEqual(stats.reverseWords, ['EAT', 'LOT', 'OAT', 'NEAT']);
+  assert.equal(stats.reverseWordCount, 4); assert.equal(stats.reversePercentage, 80);
   assert.deepEqual([stats.straightWordCount, stats.oneTurnWordCount, stats.multiTurnWordCount], [1, 3, 1]);
   assert.deepEqual(stats.targetPaths.map(target => target.turns), [0, 1, 1, 1, 3]);
   assert.deepEqual(stats.usageHistogram, { 1: 3, 2: 3, 3: 3 });
@@ -26,11 +26,25 @@ test('原验收关倒序包括同列；直线/1拐/多拐与逐格目标使用�
   assert.deepEqual(stats.extraWords, extras);
 });
 
+test('用户截图的原包第3关BAG/BET/BUN/AUNT全程向右或向下，不计倒序', () => {
+  const level = convertSourceLevel(bank.levels[bank.orders.main[2]]);
+  const stats = calculateLevelStatistics(level, null);
+  assert.deepEqual(new Set(level.targets.map(target => target.word)), new Set(['BAG', 'BET', 'BUN', 'AUNT']));
+  assert.deepEqual(stats.reverseWords, []);
+  assert.equal(stats.reverseWordCount, 0);
+  const reflected = structuredClone(level);
+  reflected.algorithm = 2;
+  reflected.targets = level.targets.map(target => ({ ...target, path:target.path.map(cell => (level.board.rows - 1 - Math.floor(cell / level.board.cols)) * level.board.cols + cell % level.board.cols) }));
+  reflected.board.letters = Array(level.board.letters.length);
+  level.board.letters.forEach((letter,cell) => { reflected.board.letters[(level.board.rows - 1 - Math.floor(cell / level.board.cols)) * level.board.cols + cell % level.board.cols] = letter; });
+  assert.deepEqual(calculateLevelStatistics(reflected, { version:'direction-test', words:level.targets.map(target=>target.word) }).reverseWords, []);
+});
+
 test('同词多路径只计一次，目标不计额外词，禁止对角连接和重复格子', () => {
   const level = { board: { rows: 2, cols: 2, letters: ['A', 'B', 'B', 'A'], counts: [1, 1, 1, 1] }, targets: [{ word: 'ABAB', path: [0, 1, 3, 2] }] };
   const stats = calculateLevelStatistics(level, { version: 'paths-test', words: ['ABA', 'ABA', 'BAB', 'ABAB', 'ABABA', 'AAA', 'AAB'] });
   assert.deepEqual(stats.extraWords, ['ABA', 'BAB']);
-  assert.equal(stats.extraWordCount, 2); assert.equal(stats.reversePercentage, 100);
+  assert.equal(stats.extraWordCount, 2); assert.equal(stats.reversePercentage, 0);
   assert.equal(stats.multiTurnWordCount, 1);
 });
 

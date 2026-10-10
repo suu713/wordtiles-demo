@@ -1,4 +1,4 @@
-import { GameSession, clone, signature, findWordPaths, inspectPath } from './rules.js';
+import { GameSession, clone, signature, findWordPaths, inspectPath } from './rules.js?v=10';
 
 export const SOURCE_VERSION = 'xapk-levels-v1';
 export const LANGUAGE_NAMES = Object.freeze({ english:'英语', portuguese:'葡萄牙语', russian:'俄语', spanish:'西班牙语', turkish:'土耳其语' });

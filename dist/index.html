@@ -7,14 +7,14 @@
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=9">
+  <link rel="stylesheet" href="./styles.css?v=10">
 </head>
 <body>
   <div class="app-shell">
     <main class="workspace">
       <aside id="editor-panel" class="editor-panel" aria-label="关卡编辑器">
         <div class="editor-heading">
-          <div class="editor-title"><div class="editor-kicker"><span class="eyebrow">WORDTILES</span><span id="draft-tag" class="draft-tag" data-help-from="config-status" tabindex="0">已应用</span></div><h1>关卡编辑器</h1></div>
+          <div class="editor-title"><div class="editor-kicker"><span class="eyebrow">WORDTILES</span><span id="draft-tag" class="draft-tag" data-help-from="config-status" tabindex="0">已应用</span><button id="editor-status" class="editor-status" type="button" data-help-from="notice" aria-label="正在加载">●</button></div><h1>关卡编辑器</h1></div>
           <label class="algorithm-field" for="algorithm" data-help="算法1读取原安装包关卡；算法2使用 V1 回溯生成器。切换时保留各自的试玩进度。">关卡算法<select id="algorithm"><option value="1">算法1 · 原包关卡</option><option value="2">算法2 · 回溯生成 V1</option></select></label>
           <button id="editor-close" class="icon-button" type="button" aria-label="收起关卡编辑器">×</button>
         </div>
@@ -43,6 +43,7 @@
           <div class="word-stat-summary stat-list">
             <button id="extra-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>非目标词</span><strong><span id="extra-word-count">—</span><small>个</small></strong></button>
             <button id="reverse-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>倒序目标词</span><strong id="reverse-word-count">—</strong></button>
+            <button id="solutions-stat" class="stat-button stat-row solutions-stat" type="button" data-help="保留本关目标数量与词长分布，统计能用完全部初始格子次数的不同词组，包含候选非目标词。同一词组的完成顺序或连线路径不同只算一次。点击查看各组词语；试玩仍按当前目标词判定。" aria-haspopup="dialog" disabled><span>本关解法 <span class="stat-open" aria-hidden="true">↗</span></span><strong id="solutions-count" aria-live="polite">—</strong></button>
           </div>
           <button id="tile-usage-heading" class="stat-heading stat-button" type="button" data-help="正在读取关卡统计。">目标格子使用次数</button>
           <div class="tile-use-stats stat-list">
@@ -59,7 +60,6 @@
           </div>
         </section>
         <div class="editor-current"><span id="level-kind" data-help-from="source-library-status">原包关卡</span><span><span id="active-seed-label" class="sr-only">原关卡 ID</span><code id="active-seed">—</code></span></div>
-        <button id="editor-status" class="editor-status" type="button" data-help-from="notice">正在加载…</button>
         <p id="notice" hidden role="status" aria-live="polite">正在加载本地关卡…</p>
         <p id="config-status" hidden></p><p id="preview-state" hidden></p><p id="preview-note" hidden></p>
         <div hidden><button id="load-sample" type="button">载入固定样例</button><button id="import" type="button">导入 JSON</button><button id="export" type="button">导出 JSON</button></div><input id="import-file" type="file" accept=".json,application/json" hidden>
@@ -67,15 +67,18 @@
       <section class="preview-column" aria-label="竖屏游戏">
         <div class="viewport-sizer"><div id="game-viewport" class="game-viewport">
           <section class="play-panel" aria-label="单词棋盘">
-            <div class="game-title-row"><div><span class="game-eyebrow">WORDTILES</span><h2>单词消消</h2></div><div class="game-tools"><button id="editor-toggle" class="game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false">关卡 ▾</button><button id="rules-button" class="game-tool help-button" type="button" aria-label="玩法说明" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交，经过短词时不会提前提交。找到目标后经过的格子次数减 1，归零后留空。算法1只接受每个目标固定的消耗集合，额外词只记录。完成顺序不限，输错不扣次数。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">?</button></div></div>
-            <div class="play-header"><span id="game-level-label" class="game-level-label" data-help-from="preview-state" tabindex="0">算法1 · 第1关</span><span id="completion" class="completion">0 <span>/ 3</span></span></div>
+            <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交，经过短词时不会提前提交。找到目标后格子数字减 1，归零后留空。提示箭头指向下一格。词库内的非目标词收进额外单词包，只收集一次且不扣次数。完成顺序不限。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
+            <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="completion">0 <span>/ 3</span></span><span id="readout-label"></span><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
             <div id="targets" class="targets" aria-label="目标词"></div>
-            <span id="targets-note" class="targets-note" hidden tabindex="0" aria-label="上下滑动查看其余目标" data-help="上下滑动这个目标区域，查看其余目标词。">⋯ ↕</span>
-            <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining" data-help="每格右上角的圆点或数字表示剩余次数。次数归零后格子留空，棋盘不移动。" tabindex="0">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
-            <div class="readout"><span id="readout-label" class="readout-label">正在连接</span><strong id="current-word" aria-live="polite">—</strong></div>
-            <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+            <span id="targets-note" class="sr-only" hidden aria-label="上下滑动查看其余目标"></span>
+            <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining" data-help="每格右上角的数字表示剩余次数。次数归零后格子留空，棋盘不移动。" tabindex="0">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
+            <div class="game-spacer" aria-hidden="true"></div>
             <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
-            <div class="play-actions"><button id="hint" class="secondary-button" type="button" data-help="标出一个尚未完成目标的可用路径，按编号顺序连接。">✧ 提示</button><button id="restart" class="secondary-button" type="button" data-help="重开当前关卡，恢复全部初始字母和次数。">↻ 重开</button></div>
+            <div class="game-footer">
+              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5h10l-3 6H14Z M13 11C6 16 4 24 7 27c3 3 15 3 18 0 3-3 1-11-6-16Z"/><path d="M11 11h10"/><text x="16" y="24" text-anchor="middle">A</text></svg><span id="bonus-count" class="bonus-count">0</span></button>
+              <div class="play-actions"><button id="hint" class="secondary-button" type="button" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。">✧ 提示</button><button id="restart" class="secondary-button" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button></div>
+              <div class="game-tools"><button id="editor-toggle" class="game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false">关卡 ▾</button></div>
+            </div>
           </section>
         </div></div>
       </section>
@@ -105,7 +108,16 @@
       <div data-settings-pane="source" hidden><div id="source-metadata" data-help="额外词只记录，不扣次数。原包特殊障碍和其他字段完整保留在导出数据中；试玩沿用网页连词规则。" tabindex="0"><pre id="source-meta"></pre></div></div>
     </div>
   </section>
+  <dialog id="bonus-dialog" class="bonus-dialog" aria-labelledby="bonus-title"><div class="dialog-top"><h2 id="bonus-title">额外单词</h2><button id="bonus-close" class="icon-button" type="button" aria-label="关闭额外单词包">×</button></div><ul id="bonus-words" class="bonus-words"></ul><p id="bonus-empty">还没有找到额外单词</p></dialog>
+  <dialog id="solutions-dialog" class="solutions-dialog" aria-labelledby="solutions-title" aria-describedby="solutions-rule">
+    <div class="dialog-top"><h2 id="solutions-title">本关解法</h2><div class="dialog-tools"><button id="solutions-help" class="solution-help" type="button" aria-label="查看解法统计口径">i</button><button id="solutions-close" class="icon-button" type="button" aria-label="关闭解法列表" autofocus>×</button></div></div>
+    <p id="solutions-rule" class="sr-only">统计满足本关目标数量、词长分布和全部初始格子次数的不同词组。包含候选非目标词，试玩仍按当前目标词判定。同一组词的完成顺序或路径不同只算一次。</p>
+    <p id="solutions-status" class="solutions-status" role="status"></p>
+    <ol id="solutions-list" class="solutions-list"></ol>
+    <nav id="solutions-pagination" class="solutions-pagination" aria-label="解法列表翻页" hidden><button id="solutions-prev" type="button" aria-label="上一页解法">←</button><span id="solutions-page"></span><button id="solutions-next" type="button" aria-label="下一页解法">→</button></nav>
+    <button id="solutions-retry" class="secondary-button" type="button" hidden>重新完整统计</button>
+  </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=9"></script>
+  <script type="module" src="./app.js?v=10"></script>
 </body>
 </html>

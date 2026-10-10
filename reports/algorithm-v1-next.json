@@ -3,79 +3,79 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 2397038896,
+  "seed": 1645713960,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "S",
+    "E",
+    "L",
+    "A",
+    "Y",
+    "D",
+    "E",
+    "R",
     "T",
-    "F",
-    "U",
-    "N",
-    "I",
-    "M",
-    "N",
-    "O"
+    "N"
   ],
   "initialCounts": [
-    2,
     1,
     1,
+    1,
     3,
+    2,
     3,
     3,
     2,
-    2,
-    1
+    2
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "FIN",
+      "word": "DEN",
       "canonicalPath": [
-        2,
+        4,
         5,
-        4
+        8
       ]
     },
     {
       "id": "W1",
-      "word": "INN",
+      "word": "RYE",
       "canonicalPath": [
-        5,
-        4,
-        7
+        6,
+        3,
+        0
       ]
     },
     {
       "id": "W2",
-      "word": "SUM",
+      "word": "TRY",
       "canonicalPath": [
-        0,
-        3,
-        6
+        7,
+        6,
+        3
       ]
     },
     {
       "id": "W3",
-      "word": "MUST",
+      "word": "DEAL",
       "canonicalPath": [
-        6,
-        3,
-        0,
+        4,
+        5,
+        2,
         1
       ]
     },
     {
       "id": "W4",
-      "word": "UNION",
+      "word": "ENTRY",
       "canonicalPath": [
-        3,
-        4,
         5,
         8,
-        7
+        7,
+        6,
+        3
       ]
     }
   ]
