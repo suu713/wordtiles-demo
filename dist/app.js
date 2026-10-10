@@ -202,14 +202,13 @@ function renderLevelStatistics() {
     : `在 ${levelDictionary.version} 词库中，统计初始棋盘能用四向相邻路径拼出的非目标词；同一格不能重复经过，同一单词的多条路径只算一次。`;
   $('#extra-word-stat').dataset.help = extraRule + (stats.extraWords.length ? ' 单词：' + stats.extraWords.join('、') + '。' : ' 本关没有非目标词。') + ' 这是初始关卡数量，试玩时保持不变。';
   $('#reverse-word-count').textContent = `${stats.reverseWordCount} / ${stats.targetCount}`;
-  $('#reverse-word-percent').textContent = `${Number(stats.reversePercentage.toFixed(1))}%`;
-  $('#reverse-word-stat').dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。起点在终点左侧为正序；同列或右侧都算倒序。比例 = 倒序目标数 ÷ 全部目标数。' + (stats.reverseWords.length ? ' 倒序词：' + stats.reverseWords.join('、') + '。' : ' 本关全部目标为正序。') + ' 试玩时保持不变。';
+  $('#reverse-word-stat').dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。起点在终点左侧为正序；同列或右侧都算倒序。左边是倒序目标词数量，右边是本关目标词总数。' + (stats.reverseWords.length ? ' 倒序词：' + stats.reverseWords.join('、') + '。' : ' 本关全部目标为正序。') + ' 试玩时保持不变。';
   for (let uses = 2; uses <= 5; uses++) {
     const cells = stats.tileUses.flatMap((count, cell) => count === uses ? [cell] : []);
     $(`#tile-used-${uses}`).textContent = String(cells.length);
-    $(`#tile-use-stat-${uses}`).dataset.help = `恰好被 ${uses} 个目标词的参考路径使用的格子数；每个目标对同一格只算一次，非目标词不计入。` + (cells.length ? ' 格子编号：' + cells.join('、') + '。' : ' 本关没有此类格子。');
+    $(`#tile-use-stat-${uses}`).dataset.help = `恰好被 ${uses} 个目标词共用的格子有 ${cells.length} 格。按各目标词的参考路径统计，每个目标对同一格只算一次，非目标词不计入。` + (cells.length ? ' 格子编号：' + cells.join('、') + '。' : ' 本关没有此类格子。');
   }
-  $('#tile-usage-heading').dataset.help = '按完整初始关卡的目标参考路径反算，显示恰好使用 2、3、4、5 次的格子数；试玩消除不会改变统计。全部分布：' + Object.entries(stats.usageHistogram).map(([uses, count]) => `${uses} 次 ${count} 格`).join('；') + '。';
+  $('#tile-usage-heading').dataset.help = '格子就是棋盘上的字母方块。这里统计有多少格子被多个目标词共用，例如“被 2 个目标词使用：3 格”表示有 3 个格子各被 2 个目标词使用。只按初始关卡的目标参考路径统计，非目标词不计入，试玩消除不会改变统计。全部分布：' + Object.entries(stats.usageHistogram).map(([uses, count]) => `${uses} 次 ${count} 格`).join('；') + '。';
   for (const [id, matches] of [['straight', target => target.turns === 0], ['one-turn', target => target.turns === 1], ['multi-turn', target => target.turns >= 2]]) {
     const words = stats.targetPaths.filter(matches).map(target => target.word);
     $(`#${id}-word-count`).textContent = String(words.length);

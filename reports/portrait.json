@@ -15,8 +15,8 @@
       "targetOverflow": false,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 669,
-        "clientHeight": 669,
+        "scrollHeight": 769,
+        "clientHeight": 769,
         "statsVisible": true,
         "inScreen": true
       },
@@ -42,8 +42,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 669,
-        "clientHeight": 669,
+        "scrollHeight": 733,
+        "clientHeight": 733,
         "statsVisible": true,
         "inScreen": true
       },
@@ -69,8 +69,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 669,
-        "clientHeight": 669,
+        "scrollHeight": 645,
+        "clientHeight": 645,
         "statsVisible": true,
         "inScreen": true
       },
@@ -96,8 +96,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 550,
-        "clientHeight": 550,
+        "scrollHeight": 561,
+        "clientHeight": 561,
         "statsVisible": true,
         "inScreen": true
       },
@@ -123,8 +123,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 599,
-        "clientHeight": 599,
+        "scrollHeight": 567,
+        "clientHeight": 567,
         "statsVisible": true,
         "inScreen": true
       },
@@ -150,8 +150,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 661,
-        "clientHeight": 661,
+        "scrollHeight": 729,
+        "clientHeight": 729,
         "statsVisible": true,
         "inScreen": true
       },
@@ -177,8 +177,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 597,
-        "clientHeight": 597,
+        "scrollHeight": 567,
+        "clientHeight": 567,
         "statsVisible": true,
         "inScreen": true
       },
@@ -204,8 +204,8 @@
       "targetOverflow": true,
       "editorFit": {
         "fits": true,
-        "scrollHeight": 514,
-        "clientHeight": 514,
+        "scrollHeight": 536,
+        "clientHeight": 536,
         "statsVisible": true,
         "inScreen": true
       },

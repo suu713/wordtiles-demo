@@ -88,22 +88,29 @@
 /* One viewport: the game is always playable; secondary controls open on demand. */
 html,body{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
 .app-shell{width:100%;max-width:1180px;height:100vh;height:100dvh;padding:16px 24px;margin:0 auto}
-.workspace{height:100%;min-height:0;display:grid;grid-template-columns:290px minmax(0,1fr);gap:40px;padding:0;align-items:center}
+.workspace{height:100%;min-height:0;display:grid;grid-template-columns:320px minmax(0,1fr);gap:32px;padding:0;align-items:center}
 .editor-panel{width:100%;max-height:100%;padding:22px;border-radius:14px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;box-shadow:0 8px 30px -22px #223b3333}
-.editor-heading{gap:10px;margin-bottom:22px}
-.editor-heading .eyebrow{display:block;font-size:9px;letter-spacing:2px;margin-bottom:6px}
+.editor-heading{display:grid;grid-template-columns:minmax(100px,1fr) minmax(0,1.35fr);gap:12px;margin-bottom:16px;align-items:center}
+.editor-title{min-width:0}
+.editor-kicker{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.editor-heading .eyebrow{display:block;font-size:8px;letter-spacing:1px;margin:0}
+.editor-kicker .draft-tag{margin:0;font-size:8px;padding:2px 4px}
+.editor-title h1{white-space:nowrap}
 h1{font-size:19px;letter-spacing:.5px}
 .draft-tag{margin-left:auto;font-size:9px;padding:4px 6px;white-space:nowrap}
 .icon-button{border:0;background:transparent;color:#6e816b;padding:0 4px;line-height:1;font-size:26px}
 #editor-close,#editor-toggle{display:none}
 .algorithm-field{font-size:11px;margin-bottom:16px;gap:7px}
 .algorithm-field select{height:40px;font-size:11px;padding:0 10px}
+.editor-heading .algorithm-field{min-width:0;margin:0;gap:5px;font-size:10px}
+.editor-heading .algorithm-field select{height:36px;padding:0 7px;font-size:10px}
 .source-controls{border:0;border-radius:0;background:transparent;padding:0;margin-bottom:18px}
 .field-grid{gap:10px}
 .field-grid label{font-size:11px;color:#6c8064;gap:7px}
 .field-grid select,.stack-field select,#word-lengths select,.editor-menus select{height:36px;min-width:0;width:100%;padding:0 9px;background:#f6f8f0;color:#486643;border:1px solid #dce3d2;border-radius:6px;font-size:11px}
+.source-controls .field-grid label{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px;font-size:10px}
 select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-color:#718264}
-.source-position-label{font-size:11px;margin:16px 0 7px}
+.source-position-label{font-size:11px;margin:9px 0 6px}
 .source-navigation{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;gap:6px}
 .source-navigation select{width:100%;height:36px;min-width:0;padding:0 9px;border:1px solid #dce3d2;border-radius:6px;background:#f6f8f0;color:#45643c;font-size:11px}
 .source-navigation button{font-size:15px;padding:5px}
@@ -112,7 +119,7 @@ select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-col
 .primary-button{padding:11px 12px;font-size:11px;border-radius:7px;justify-content:center;gap:20px}
 .generation-section{padding:0;border:0;margin-bottom:14px}
 .generation-section>label{font-size:11px;margin-bottom:7px}
-.generation-section>.dictionary-field{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.generation-section>.dictionary-field{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:center;gap:8px;margin-bottom:10px}
 .dictionary-field select{height:36px;padding:0 9px;border:1px solid #dce3d2;border-radius:6px;background:#f6f8f0;color:#486643;font-size:11px}
 .lexicon-warning{display:block;font-size:10px;color:#987237;margin:0 0 7px}
 .lexicon-status{font-size:11px;color:#6c8064;line-height:1.7;margin:10px 0 14px}
@@ -121,6 +128,11 @@ select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-col
 .seed-row{margin-bottom:10px}
 .seed-row input{padding:11px 10px;font-size:12px}
 .seed-row button{font-size:11px;padding:0 15px}
+.seed-field{display:grid;grid-template-columns:52px minmax(0,1fr);align-items:center;gap:8px;margin-bottom:10px}
+.seed-field>label{font-size:11px;color:#6c8064}
+.seed-field .seed-row{margin:0}
+.seed-field input{padding:9px 8px}
+.seed-field button{padding:0 10px}
 .cancel-button{font-size:11px;padding:8px}
 .editor-menus{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-top:16px;border-top:1px solid var(--line)}
 .editor-current{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px;font-size:10px;color:#7a8b6d}
@@ -129,22 +141,16 @@ select:disabled{opacity:1;color:#718264;background:#f1f4e9;-webkit-text-fill-col
 .editor-status{display:block;max-width:100%;border:0;background:transparent;color:#75876a;font-size:10px;padding:0;margin-top:10px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .editor-status.error{color:var(--error)}
 .editor-status.success{color:#557745}
-.level-statistics{margin-top:16px;padding:12px;border:1px solid #e0e6d5;border-radius:8px;background:#f6f8f0}
-.stat-button{border:0;padding:0;background:transparent;color:#718165;cursor:help;font-size:10px;text-align:left}
-.stat-button strong{color:#476a3a;font-weight:600}
-.stat-button small{font-size:10px;font-weight:400;margin-left:5px;color:#7a8b6d}
-.word-stat-summary{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
-.word-stat-summary .stat-button{display:flex;flex-direction:column;gap:5px}
-.word-stat-summary strong{font-size:20px;line-height:23px;white-space:nowrap}
-.word-stat-summary small{font-size:12px}
-.stat-heading{display:block;margin-top:11px;margin-bottom:6px}
-.tile-use-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-.tile-use-stats .stat-button{display:flex;align-items:center;justify-content:space-between;gap:4px}
-.tile-use-stats strong{font-size:12px;white-space:nowrap}
-.tile-use-stats small{margin-left:2px;font-size:9px}
-.turn-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;border-top:1px solid #e0e6d5;margin-top:10px;padding-top:9px}
-.turn-stats .stat-button{display:flex;justify-content:space-between;align-items:center;gap:5px}
-.turn-stats strong{font-size:13px}
+.level-statistics{margin-top:14px;padding:11px;border:1px solid #dce5d2;border-radius:10px;background:#f6f8f0}
+.stat-button{border:0;padding:0;background:transparent;color:#53684c;cursor:help;font-size:12px;line-height:16px;text-align:left}
+.stat-button strong{color:#305a40;font-size:15px;font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stat-button small{font-size:11px;font-weight:400;margin-left:5px;color:#718165}
+.stat-list{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+.stat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;width:100%;padding:3px 9px;border:1px solid #e1e7d9;border-radius:6px;background:#fffefb}
+.stat-row:hover,.stat-row:focus-visible{background:#edf3e6;border-color:#c2d0b4}
+.stat-row>span{min-width:0;white-space:nowrap}
+.stat-row strong{margin-left:auto;line-height:18px}
+.stat-heading{display:block;width:100%;margin:9px 0 6px;font-size:11px;font-weight:600;line-height:16px;color:#5f7a51}
 .preview-column{height:100%;min-height:0;width:100%;justify-content:center;align-items:center}
 .game-viewport{box-shadow:0 12px 44px -22px #223b3333}
 .game-title-row{padding-bottom:18px;gap:12px}
@@ -196,7 +202,7 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
 #source-meta{margin:0}
 .hover-help{position:fixed;z-index:40;width:max-content;max-width:min(310px,calc(100vw - 16px));max-height:calc(100dvh - 16px);overflow:auto;border-radius:8px;padding:12px 14px;background:#263f35;color:#f4f5e9;font-size:11px;line-height:1.8;box-shadow:0 7px 25px #20392b25;pointer-events:none;overflow-wrap:anywhere}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
-@media(max-width:1050px){.app-shell{padding:14px 18px}.workspace{grid-template-columns:270px minmax(0,1fr);gap:26px}.editor-panel{padding:20px}}
+@media(max-width:1050px){.app-shell{padding:14px 18px}.workspace{grid-template-columns:300px minmax(0,1fr);gap:26px}.editor-panel{padding:20px}}
 @media(max-width:760px){
   .app-shell{padding:8px;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom))}
   .workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:0;height:100%;padding:0}
@@ -204,15 +210,36 @@ pre{font-size:10px;line-height:1.7;max-height:none;margin:10px 0 0;overflow:visi
   .editor-panel{display:none;position:fixed;z-index:15;left:12px;top:12px;width:min(320px,calc(100vw - 24px));max-height:calc(100dvh - 24px);padding:20px;order:0;box-shadow:0 18px 70px #223b3345}
   .editor-open .editor-panel{display:block}
   #editor-close,#editor-toggle{display:block}
-  .editor-heading{gap:8px;margin-bottom:20px}
+  .editor-heading{grid-template-columns:90px minmax(0,1fr) 18px;gap:8px;margin-bottom:16px}
   .editor-heading h1{font-size:18px}
   .game-title-row{align-items:center}
   .game-tools{gap:6px}
   .settings-popover{max-height:calc(100dvh - 16px)}
 }
-@media(max-height:680px){.editor-panel{padding:16px}.editor-heading{margin-bottom:13px}.algorithm-field{margin-bottom:10px}.source-controls{margin-bottom:11px}.source-position-label{margin-top:12px}.editor-menus{padding-top:10px}.editor-current{margin-top:11px}.level-statistics{margin-top:12px;padding:10px}.word-stat-summary strong{font-size:18px;line-height:21px}.stat-heading{margin-top:8px}.turn-stats{margin-top:8px;padding-top:7px}}
+@media(max-height:850px){.stat-row{min-height:24px;padding:2px 8px}.stat-list{gap:3px}.stat-heading{margin:8px 0 5px}}
+@media(max-height:740px){.editor-panel{padding:16px}.editor-heading{margin-bottom:13px}.algorithm-field{margin-bottom:10px}.source-controls{margin-bottom:11px}.source-position-label{margin-top:12px}.editor-menus{padding-top:10px}.editor-current{margin-top:11px}.level-statistics{margin-top:12px;padding:9px}.stat-row{min-height:22px;padding:1px 7px}.stat-list{gap:2px}.stat-heading{margin:6px 0 4px;line-height:14px}.stat-button strong{font-size:14px;line-height:17px}}
 @media(max-height:620px){.editor-panel{padding:14px}.editor-heading{margin-bottom:11px}.algorithm-field select{height:36px}.field-grid select{height:34px}.source-navigation select{height:32px}.editor-current{margin-top:8px}.editor-status{margin-top:8px}.level-statistics{padding:9px}}
 @media(max-height:620px){.editor-heading .eyebrow{margin-bottom:3px}.algorithm-field{margin-bottom:8px;gap:5px}.source-position-label{margin-top:10px;margin-bottom:5px}.source-actions{margin-top:8px}.source-controls{margin-bottom:8px}.editor-menus{padding-top:8px}.primary-button{padding-top:9px;padding-bottom:9px}.level-statistics{margin-top:10px}.editor-status{margin-top:6px}}
-@media(max-height:580px){.editor-heading{margin-bottom:8px}.editor-heading .eyebrow{display:none}.algorithm-field select{height:32px}.field-grid select,.editor-menus select{height:32px}.level-statistics{padding:8px}.stat-heading{margin-top:6px}.turn-stats{margin-top:6px;padding-top:6px}}
-@media(max-height:680px){.generation-section>.dictionary-field{margin-bottom:8px;gap:5px}.lexicon-warning{margin-bottom:6px}.generation-section{margin-bottom:11px}}
+@media(max-height:580px){.editor-heading{margin-bottom:8px}.editor-heading .eyebrow{display:none}.editor-heading .algorithm-field{gap:3px}.editor-heading .algorithm-field select{height:32px}.editor-kicker{margin-bottom:3px}.field-grid select,.editor-menus select{height:32px}.level-statistics{padding:8px}.stat-row{min-height:20px;padding:0 7px}.stat-heading{margin:5px 0 3px}}
+@media(max-height:740px){.generation-section>.dictionary-field{margin-bottom:8px}.lexicon-warning{margin-bottom:6px}.generation-section{margin-bottom:11px}.seed-field{margin-bottom:8px}}
 @media(max-height:620px){.dictionary-field select{height:32px}.seed-row input{padding-top:9px;padding-bottom:9px}.generation-section>label{margin-bottom:5px}}
+@media(max-height:850px){.source-actions{margin-top:8px}.source-controls .primary-button{padding-top:9px;padding-bottom:9px}}
+@media(max-height:680px){
+  .editor-panel{padding:12px}
+  .editor-heading{margin-bottom:8px}
+  .editor-menus{padding-top:6px}
+  .editor-menus select{height:32px}
+  .source-position-label{margin:8px 0 5px}
+  .source-actions{margin-top:6px}
+  .source-controls{margin-bottom:6px}
+  .source-controls .primary-button{padding-top:8px;padding-bottom:8px}
+  .generation-section{margin-bottom:8px}
+  .seed-field input{padding-top:7px;padding-bottom:7px}
+  .level-statistics{margin-top:8px;padding:8px}
+  .stat-row{min-height:20px;padding:0 7px}
+  .stat-list{gap:1px}
+  .stat-heading{margin:5px 0 3px}
+  .editor-current{margin-top:6px}
+  .editor-status{margin-top:6px}
+}
+@media(max-height:580px){.editor-panel{padding:10px 12px}.editor-heading{margin-bottom:6px}.source-controls .field-grid select{height:32px}.level-statistics{padding:6px}.stat-row{min-height:19px}.stat-heading{margin:3px 0 2px}}

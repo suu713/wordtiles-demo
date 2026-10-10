@@ -7,14 +7,17 @@
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=8">
+  <link rel="stylesheet" href="./styles.css?v=9">
 </head>
 <body>
   <div class="app-shell">
     <main class="workspace">
       <aside id="editor-panel" class="editor-panel" aria-label="关卡编辑器">
-        <div class="editor-heading"><div><span class="eyebrow">WORDTILES</span><h1>关卡编辑器</h1></div><span id="draft-tag" class="draft-tag" data-help-from="config-status" tabindex="0">已应用</span><button id="editor-close" class="icon-button" type="button" aria-label="收起关卡编辑器">×</button></div>
-        <label class="algorithm-field" for="algorithm" data-help="算法1读取原安装包关卡；算法2使用 V1 回溯生成器。切换时保留各自的试玩进度。">关卡算法<select id="algorithm"><option value="1">算法1 · 原包关卡</option><option value="2">算法2 · 回溯生成 V1</option></select></label>
+        <div class="editor-heading">
+          <div class="editor-title"><div class="editor-kicker"><span class="eyebrow">WORDTILES</span><span id="draft-tag" class="draft-tag" data-help-from="config-status" tabindex="0">已应用</span></div><h1>关卡编辑器</h1></div>
+          <label class="algorithm-field" for="algorithm" data-help="算法1读取原安装包关卡；算法2使用 V1 回溯生成器。切换时保留各自的试玩进度。">关卡算法<select id="algorithm"><option value="1">算法1 · 原包关卡</option><option value="2">算法2 · 回溯生成 V1</option></select></label>
+          <button id="editor-close" class="icon-button" type="button" aria-label="收起关卡编辑器">×</button>
+        </div>
         <section id="source-controls" class="source-controls" aria-label="算法1关卡库">
           <div class="field-grid">
             <label for="source-language" data-help="选择原安装包中的语言词库。">语言<select id="source-language"><option value="english">英语</option><option value="portuguese">葡萄牙语</option><option value="russian">俄语</option><option value="spanish">西班牙语</option><option value="turkish">土耳其语</option></select></label>
@@ -28,8 +31,7 @@
         <div id="generation-section" class="generation-section" hidden>
           <label class="dictionary-field" for="dictionary-source" data-help="旧验收词库保留原来的 1,602 词与 seed 样例。分级母词库按本关词长、频率档位及人工审核状态筛选；在更多设置的词库入口调整。切换词库保留当前棋盘。">生成词库<select id="dictionary-source"><option value="legacy">旧验收词库 · 1,602 词</option><option value="graded">分级母词库</option></select></label>
           <span id="lexicon-warning" class="lexicon-warning" hidden data-help="内部测试开关允许未审核词参与生成。词频不代表适合休闲游戏；该开关不代表通过内容审核。" tabindex="0">词库未完成内容审核</span>
-          <label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label>
-          <div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div>
+          <div class="seed-field"><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
         </div>
@@ -38,21 +40,22 @@
           <label for="file-action" class="sr-only">关卡文件</label><select id="file-action" aria-label="关卡文件" data-help="导入或导出完整初始关卡 JSON。导入前会使用当前算法的词库和规则进行校验。"><option value="">关卡文件…</option><option value="import">导入 JSON</option><option value="export">导出 JSON</option><option value="sample" hidden>固定样例</option></select>
         </div>
         <section id="level-statistics" class="level-statistics" aria-label="关卡初始统计">
-          <div class="word-stat-summary">
-            <button id="extra-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>非目标词</span><strong id="extra-word-count">—</strong></button>
-            <button id="reverse-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>倒序目标词</span><strong><span id="reverse-word-count">—</span><small id="reverse-word-percent">—</small></strong></button>
+          <div class="word-stat-summary stat-list">
+            <button id="extra-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>非目标词</span><strong><span id="extra-word-count">—</span><small>个</small></strong></button>
+            <button id="reverse-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>倒序目标词</span><strong id="reverse-word-count">—</strong></button>
           </div>
-          <button id="tile-usage-heading" class="stat-heading stat-button" type="button" data-help="正在读取关卡统计。">目标 Tile 使用次数</button>
-          <div class="tile-use-stats">
-            <button id="tile-use-stat-2" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>2 次</span><strong><span id="tile-used-2">—</span><small>格</small></strong></button>
-            <button id="tile-use-stat-3" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>3 次</span><strong><span id="tile-used-3">—</span><small>格</small></strong></button>
-            <button id="tile-use-stat-4" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>4 次</span><strong><span id="tile-used-4">—</span><small>格</small></strong></button>
-            <button id="tile-use-stat-5" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>5 次</span><strong><span id="tile-used-5">—</span><small>格</small></strong></button>
+          <button id="tile-usage-heading" class="stat-heading stat-button" type="button" data-help="正在读取关卡统计。">目标格子使用次数</button>
+          <div class="tile-use-stats stat-list">
+            <button id="tile-use-stat-2" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>被 2 个目标词使用</span><strong><span id="tile-used-2">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-3" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>被 3 个目标词使用</span><strong><span id="tile-used-3">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-4" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>被 4 个目标词使用</span><strong><span id="tile-used-4">—</span><small>格</small></strong></button>
+            <button id="tile-use-stat-5" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>被 5 个目标词使用</span><strong><span id="tile-used-5">—</span><small>格</small></strong></button>
           </div>
-          <div class="turn-stats">
-            <button id="straight-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>直线</span><strong id="straight-word-count">—</strong></button>
-            <button id="one-turn-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>1 拐</span><strong id="one-turn-word-count">—</strong></button>
-            <button id="multi-turn-word-stat" class="stat-button" type="button" data-help="正在读取关卡统计。"><span>多拐</span><strong id="multi-turn-word-count">—</strong></button>
+          <h2 class="stat-heading">目标词连线形状</h2>
+          <div class="turn-stats stat-list">
+            <button id="straight-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>直线单词</span><strong><span id="straight-word-count">—</span><small>个</small></strong></button>
+            <button id="one-turn-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>1 拐单词</span><strong><span id="one-turn-word-count">—</span><small>个</small></strong></button>
+            <button id="multi-turn-word-stat" class="stat-button stat-row" type="button" data-help="正在读取关卡统计。"><span>多拐单词</span><strong><span id="multi-turn-word-count">—</span><small>个</small></strong></button>
           </div>
         </section>
         <div class="editor-current"><span id="level-kind" data-help-from="source-library-status">原包关卡</span><span><span id="active-seed-label" class="sr-only">原关卡 ID</span><code id="active-seed">—</code></span></div>
@@ -103,6 +106,6 @@
     </div>
   </section>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=8"></script>
+  <script type="module" src="./app.js?v=9"></script>
 </body>
 </html>

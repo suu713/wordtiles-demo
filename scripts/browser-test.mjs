@@ -38,7 +38,6 @@ async function state(target = page) {
     statistics: {
       extras: document.querySelector('#extra-word-count').textContent,
       reverse: document.querySelector('#reverse-word-count').textContent,
-      percent: document.querySelector('#reverse-word-percent').textContent,
       tileUses: [2,3,4,5].map(uses => document.querySelector('#tile-used-' + uses).textContent),
       turns: ['straight','one-turn','multi-turn'].map(kind => document.querySelector('#' + kind + '-word-count').textContent),
     }
@@ -104,7 +103,7 @@ try {
     assert.equal(await page.locator('#board-cols').isDisabled(),true);
     assert.equal(await page.locator('#word-count').inputValue(),'3');
     assert.deepEqual((await state()).counts,Array(9).fill(1));
-    assert.deepEqual((await state()).statistics,{extras:'0',reverse:'0 / 3',percent:'0%',tileUses:['0','0','0','0'],turns:['1','2','0']});
+    assert.deepEqual((await state()).statistics,{extras:'0',reverse:'0 / 3',tileUses:['0','0','0','0'],turns:['1','2','0']});
     assert.equal((await fitsPortrait()).fits,true);
     assert.equal((await fitsPortrait()).scroll,true);
     await page.screenshot({ path:directory+'/source-desktop.png',fullPage:true });
@@ -490,7 +489,7 @@ try {
     await page.locator('#seed').fill('20261010'); await page.locator('#generate-seed').click();
     await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});
     const before=(await state()).statistics;
-    assert.equal(before.reverse,'3 / 5'); assert.equal(before.percent,'60%');
+    assert.equal(before.reverse,'3 / 5');
     assert.deepEqual(before.tileUses,['3','3','0','0']); assert.deepEqual(before.turns,['1','3','1']);
     await page.locator('#reverse-word-stat').hover();
     assert.ok((await page.locator('#hover-help').textContent()).includes('同列或右侧都算倒序'));
@@ -525,7 +524,6 @@ try {
     const stats=calculateLevelStatistics(createAlgorithmSession(exported,gradedDictionary).initial,gradedDictionary);
     const shown=(await state()).statistics;
     assert.equal(shown.extras,String(stats.extraWordCount)); assert.equal(shown.reverse,`${stats.reverseWordCount} / 5`);
-    assert.equal(shown.percent,`${Number(stats.reversePercentage.toFixed(1))}%`);
     assert.deepEqual(shown.tileUses,[2,3,4,5].map(uses=>String(stats.usageHistogram[uses]||0)));
     assert.deepEqual(shown.turns,[stats.straightWordCount,stats.oneTurnWordCount,stats.multiTurnWordCount].map(String));
     await page.screenshot({path:directory+'/lexicon-desktop.png',fullPage:true});

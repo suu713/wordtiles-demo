@@ -3,79 +3,79 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 3046592736,
+  "seed": 2397038896,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "L",
-    "E",
-    "F",
-    "O",
-    "A",
+    "S",
     "T",
-    "R",
+    "F",
+    "U",
+    "N",
     "I",
-    "S"
+    "M",
+    "N",
+    "O"
   ],
   "initialCounts": [
-    1,
-    1,
+    2,
     1,
     1,
     3,
     3,
     3,
-    3,
-    2
+    2,
+    2,
+    1
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "AIR",
+      "word": "FIN",
       "canonicalPath": [
-        4,
-        7,
-        6
+        2,
+        5,
+        4
       ]
     },
     {
       "id": "W1",
-      "word": "OAT",
+      "word": "INN",
       "canonicalPath": [
-        3,
+        5,
         4,
-        5
+        7
       ]
     },
     {
       "id": "W2",
-      "word": "SIR",
+      "word": "SUM",
       "canonicalPath": [
-        8,
-        7,
+        0,
+        3,
         6
       ]
     },
     {
       "id": "W3",
-      "word": "LEFT",
+      "word": "MUST",
       "canonicalPath": [
+        6,
+        3,
         0,
-        1,
-        2,
-        5
+        1
       ]
     },
     {
       "id": "W4",
-      "word": "STAIR",
+      "word": "UNION",
       "canonicalPath": [
-        8,
-        5,
+        3,
         4,
-        7,
-        6
+        5,
+        8,
+        7
       ]
     }
   ]
