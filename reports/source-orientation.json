@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "algorithm": 1,
+  "id": "source-english-191596",
+  "seed": "APK-english-191596",
+  "algorithmVersion": "xapk-levels-v1",
+  "config": {
+    "rows": 3,
+    "cols": 3,
+    "wordLengths": [
+      3,
+      3,
+      3
+    ]
+  },
+  "board": {
+    "rows": 3,
+    "cols": 3,
+    "letters": [
+      "O",
+      "B",
+      "E",
+      "J",
+      "I",
+      "C",
+      "S",
+      "U",
+      "N"
+    ],
+    "counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "targets": [
+    {
+      "word": "ICE",
+      "path": [
+        4,
+        5,
+        2
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "JOB",
+      "path": [
+        3,
+        0,
+        1
+      ],
+      "sourceType": 0
+    },
+    {
+      "word": "SUN",
+      "path": [
+        6,
+        7,
+        8
+      ],
+      "sourceType": 0
+    }
+  ],
+  "source": {
+    "packageName": "com.agavegames.wordtiles",
+    "version": "1.4.0",
+    "language": "english",
+    "order": "main",
+    "position": 1,
+    "original": {
+      "id": 191596,
+      "width": 3,
+      "height": 3,
+      "target_words": [
+        {
+          "word": "ICE",
+          "type": 0
+        },
+        {
+          "word": "JOB",
+          "type": 0
+        },
+        {
+          "word": "SUN",
+          "type": 0
+        }
+      ],
+      "extra_words": [],
+      "letters": "OBE,JIC,SUN",
+      "obstacles": []
+    },
+    "consumptionPolicy": "reference-set"
+  }
+}

@@ -3,79 +3,79 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 925935425,
+  "seed": 659279532,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
+    "C",
+    "K",
     "U",
-    "R",
-    "D",
-    "M",
-    "B",
     "A",
-    "W",
+    "P",
+    "N",
+    "R",
     "E",
-    "N"
+    "D"
   ],
   "initialCounts": [
     2,
-    2,
+    1,
+    1,
+    3,
     2,
     1,
     3,
     3,
-    1,
-    1,
-    3
+    2
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "BAD",
+      "word": "CAP",
       "canonicalPath": [
-        4,
-        5,
-        2
+        0,
+        3,
+        4
       ]
     },
     {
       "id": "W1",
-      "word": "BAN",
+      "word": "ERA",
       "canonicalPath": [
-        4,
-        5,
-        8
-      ]
-    },
-    {
-      "id": "W2",
-      "word": "NEW",
-      "canonicalPath": [
-        8,
         7,
-        6
-      ]
-    },
-    {
-      "id": "W3",
-      "word": "DRUM",
-      "canonicalPath": [
-        2,
-        1,
-        0,
+        6,
         3
       ]
     },
     {
-      "id": "W4",
-      "word": "URBAN",
+      "id": "W2",
+      "word": "RED",
       "canonicalPath": [
-        0,
-        1,
-        4,
-        5,
+        6,
+        7,
         8
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "PACK",
+      "canonicalPath": [
+        4,
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "UNDER",
+      "canonicalPath": [
+        2,
+        5,
+        8,
+        7,
+        6
       ]
     }
   ]

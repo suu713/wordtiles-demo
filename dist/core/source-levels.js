@@ -6,6 +6,9 @@ export const LANGUAGE_NAMES = Object.freeze({ english:'英语', portuguese:'葡�
 function inspectSource(raw) {
   if (!raw || typeof raw !== 'object' || !Number.isInteger(raw.width) || !Number.isInteger(raw.height) || raw.width < 2 || raw.width > 6 || raw.height < 2 || raw.height > 6 || typeof raw.letters !== 'string') throw new Error('原包棋盘格式不合法');
   const rows = raw.letters.split(',');
+  // The APK places row 0 at local Y=0 and subsequent rows at positive Y.
+  // Preserve that bottom-up index order for paths, counts and JSON roundtrips.
+  // The renderer maps it to browser screen rows; see apk-grid-orientation.json.
   if (rows.length !== raw.height || rows.some(row => [...row].length !== raw.width)) throw new Error('原包字母数量与行列不一致');
   const letters = rows.flatMap(row => [...row]);
   if (!letters.every(letter => /^\p{L}$/u.test(letter))) throw new Error('原包字母格式不合法');

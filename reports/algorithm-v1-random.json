@@ -3,79 +3,79 @@
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
   "dictionaryVersion": "demo-test-20261010-v1",
-  "seed": 1435101389,
+  "seed": 991390894,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "S",
-    "T",
     "A",
-    "A",
-    "P",
-    "K",
-    "D",
+    "C",
     "U",
+    "R",
+    "E",
+    "T",
+    "C",
+    "A",
     "C"
   ],
   "initialCounts": [
     2,
-    1,
-    1,
-    3,
-    3,
-    1,
-    3,
     2,
-    2
+    2,
+    3,
+    3,
+    3,
+    1,
+    1,
+    1
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "CUP",
+      "word": "ARC",
       "canonicalPath": [
-        8,
-        7,
-        4
+        0,
+        3,
+        6
       ]
     },
     {
       "id": "W1",
-      "word": "PAD",
+      "word": "ARE",
       "canonicalPath": [
-        4,
+        0,
         3,
-        6
+        4
       ]
     },
     {
       "id": "W2",
-      "word": "SAD",
+      "word": "CUT",
       "canonicalPath": [
-        0,
-        3,
-        6
-      ]
-    },
-    {
-      "id": "W3",
-      "word": "DUCK",
-      "canonicalPath": [
-        6,
-        7,
-        8,
+        1,
+        2,
         5
       ]
     },
     {
-      "id": "W4",
-      "word": "PASTA",
+      "id": "W3",
+      "word": "CUTE",
       "canonicalPath": [
-        4,
-        3,
-        0,
         1,
-        2
+        2,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "REACT",
+      "canonicalPath": [
+        3,
+        4,
+        7,
+        8,
+        5
       ]
     }
   ]

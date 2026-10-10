@@ -1,10 +1,14 @@
 {
-  "passed": 26,
+  "passed": 27,
   "failed": 0,
   "pageErrors": [],
   "cases": [
     {
       "name": "算法1默认载入真实原包第1关，左编辑器右9:16画面，无手机外框",
+      "passed": true
+    },
+    {
+      "name": "APK第0行在下方，英语第1关上到下为SUN/JIC/OBE，键盘方向随画面",
       "passed": true
     },
     {

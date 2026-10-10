@@ -1,0 +1,86 @@
+{
+  "packageName": "com.agavegames.wordtiles",
+  "version": "1.4.0",
+  "xapkSha256": "01f0e935e537cb6883fd9587b32ccfdc282f8d7928dbf0ece30262216ed4d43f",
+  "nativeSha256": "9abe4e22c3309ab0fb5a90674d270343263c36949c9098b87771023c1245c505",
+  "coordinateRule": {
+    "storedRows": "bottom-to-top",
+    "lettersInEachRow": "left-to-right",
+    "localPosition": "(column * positiveStepX, row * positiveStepY, 0)"
+  },
+  "layoutConstants": {
+    "height_at_most_2": {
+      "address": "0xf44ab0",
+      "values": [
+        1.068600058555603,
+        1.100000023841858,
+        0.30000001192092896,
+        0.14499999582767487
+      ],
+      "cellScale": 1.100000023841858,
+      "stepX": 1.068600058555603,
+      "stepY": 1.100000023841858,
+      "paddingX": 0.30000001192092896,
+      "paddingTop": 0.14499999582767487
+    },
+    "height_above_2": {
+      "address": "0xf44ac0",
+      "values": [
+        0.9599999785423279,
+        1.0,
+        0.27000001072883606,
+        0.13050000369548798
+      ],
+      "cellScale": 1.0,
+      "stepX": 0.9599999785423279,
+      "stepY": 1.0,
+      "paddingX": 0.27000001072883606,
+      "paddingTop": 0.13050000369548798
+    }
+  },
+  "evidence": [
+    {
+      "method": "Gameplay.GridManager.CreateGrid",
+      "address": "0xf6a010",
+      "detail": "Split letters on comma; take row sl and column sb directly, no height-1-row conversion; local y is row times stepY."
+    },
+    {
+      "method": "UnityEngine.Transform.set_localPosition",
+      "thunk": "0x1dd9b70",
+      "address": "0x315b364",
+      "detail": "CreateGrid places cells with this transform API."
+    },
+    {
+      "method": "Agave.LevelDataExtensions.TryGetLetterAt",
+      "address": "0xe84d38",
+      "detail": "Reads comma-separated rows[y][x] directly."
+    },
+    {
+      "method": "Gameplay.GridManager.GetGridTopY",
+      "address": "0xf7233c",
+      "detail": "Top Y = grid transform Y + (height - 1) * positiveStepY + half cell scale."
+    },
+    {
+      "method": "Gameplay.GridManager.ApplyBoardLayoutPositions",
+      "address": "0xf6b520",
+      "detail": "Centers grid by translating its parent, without reversing row indexes."
+    }
+  ],
+  "example": {
+    "id": 191596,
+    "entry": "assets/Levels/english/191596.level",
+    "storedLetters": "OBE,JIC,SUN",
+    "storedRows": [
+      "OBE",
+      "JIC",
+      "SUN"
+    ],
+    "screenRowsTopToBottom": [
+      "SUN",
+      "JIC",
+      "OBE"
+    ],
+    "extractedJsonEqualsApk": true
+  },
+  "limitation": "Static evidence from supplied Word Tiles 1.4.0; no Android device or app was executed."
+}

@@ -95,6 +95,24 @@ try {
     assert.equal((await fitsPortrait()).scroll,true);
     await page.screenshot({ path:directory+'/source-desktop.png',fullPage:true });
   });
+  await run('APK第0行在下方，英语第1关上到下为SUN/JIC/OBE，键盘方向随画面',async () => {
+    const screenLetters=await page.locator('.tile').evaluateAll(tiles=>tiles.map(tile=>{
+      const rect=tile.getBoundingClientRect(); return {x:rect.x,y:rect.y,letter:tile.querySelector('.tile-letter').textContent};
+    }).sort((a,b)=>Math.abs(a.y-b.y)>1?a.y-b.y:a.x-b.x).map(tile=>tile.letter));
+    assert.deepEqual(screenLetters,['S','U','N','J','I','C','O','B','E']);
+    assert.deepEqual((await state()).letters,['O','B','E','J','I','C','S','U','N']);
+    await page.locator('[data-cell="0"]').focus(); await page.keyboard.press('ArrowUp');
+    assert.equal(await page.locator('[data-cell="3"]').evaluate(el=>el===document.activeElement),true);
+    await page.keyboard.press('ArrowDown');
+    assert.equal(await page.locator('[data-cell="0"]').evaluate(el=>el===document.activeElement),true);
+    await page.locator('[data-cell="4"]').focus();
+    for(const key of ['Space','ArrowRight','Space','ArrowDown','Space','Enter']) await page.keyboard.press(key);
+    assert.deepEqual((await state()).completed,['ICE']);
+    await page.locator('#restart').click();
+    const exported=await exportLevel('source-orientation');
+    assert.equal(exported.source.original.letters,'OBE,JIC,SUN');
+    assert.deepEqual(exported.board.letters,['O','B','E','J','I','C','S','U','N']);
+  });
   await run('原包真实鼠标反序清空，第2关额外词记录且不扣次数',async () => {
     const bank=sourceBanks.english, first=convertSourceLevel(bank.levels[bank.orders.main[0]],{ language:'english',order:'main',position:1 });
     for (const target of [...first.targets].reverse()) await drag(target.path);

@@ -19,6 +19,10 @@ connections.setAttribute('preserveAspectRatio', 'none');
 connections.setAttribute('aria-hidden', 'true');
 function buildBoard(rows, cols) {
   tileElements.length = 0; board.replaceChildren();
+  // APK rows start at the lower left. Keep its original cell IDs and JSON,
+  // and place those cells in browser rows that run from top to bottom.
+  const bottomUp = game?.initial.algorithm === 1;
+  board.dataset.rowOrder = bottomUp ? 'bottom-up' : 'top-down';
   const dimension = Math.max(rows, cols);
   board.style.setProperty('--cols', String(cols));
   board.style.setProperty('--tile-gap', dimension >= 5 ? '6px' : '9px');
@@ -27,6 +31,9 @@ function buildBoard(rows, cols) {
   for (let cell = 0; cell < rows * cols; cell++) {
     const tile = document.createElement('button');
     tile.type = 'button'; tile.className = 'tile'; tile.dataset.cell = String(cell);
+    const row = Math.floor(cell / cols);
+    tile.style.gridRow = String(bottomUp ? rows - row : row + 1);
+    tile.style.gridColumn = String(cell % cols + 1);
     const letter = document.createElement('span'); letter.className = 'tile-letter';
     const pips = document.createElement('span'); pips.className = 'tile-pips'; pips.setAttribute('aria-hidden', 'true');
     const hintNumber = document.createElement('span'); hintNumber.className = 'hint-number'; hintNumber.hidden = true; hintNumber.setAttribute('aria-hidden', 'true');
@@ -330,7 +337,7 @@ function renderDebug() {
   $('#debug-rejection').hidden = !lastRejection && !game.debug;
   $('#debug-rejection').textContent = JSON.stringify(lastRejection || game.debug, null, 2);
   $('#version-note').textContent = game.initial.algorithm === 1
-    ? '算法1 · ' + SOURCE_VERSION + ' · Word Tiles 1.4.0 · 需求不变量校验，未逐项枚举完成状态。'
+    ? '算法1 · ' + SOURCE_VERSION + ' · Word Tiles 1.4.0 · 原包从左下角起按行编号，画面与 APK 一致。需求不变量校验，未逐项枚举完成状态。'
     : '算法2 · ' + GENERATOR_VERSION + ' · 词库 ' + dictionary.version + ' · ' + normalizeDictionary(dictionary).length + ' 个候选词。';
 }
 function render(consumed = []) {
@@ -516,7 +523,8 @@ board.addEventListener('keydown', event => {
   const tile = event.target.closest('[data-cell]'); if (!tile) return;
   const cell = Number(tile.dataset.cell);
   const columns = game.initial.board.cols;
-  const delta = { ArrowUp: -columns, ArrowDown: columns, ArrowLeft: -1, ArrowRight: 1 }[event.key];
+  const up = game.initial.algorithm === 1 ? columns : -columns;
+  const delta = { ArrowUp: up, ArrowDown: -up, ArrowLeft: -1, ArrowRight: 1 }[event.key];
   if (delta) {
     event.preventDefault(); const next = cell + delta;
     if (game.neighbors[cell].includes(next)) tileElements[next].focus({ preventScroll: true });
