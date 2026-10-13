@@ -1,0 +1,98 @@
+[
+  {
+    "file": "tile-letter.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.002396095406268394
+  },
+  {
+    "file": "tile-selection.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.0011609345523146133
+  },
+  {
+    "file": "button-primary.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.00034876998858136615
+  },
+  {
+    "file": "tile-answer-filled.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.00203533338760889
+  },
+  {
+    "file": "tile-answer-empty.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.30491928446771377
+  },
+  {
+    "file": "utility-disc.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.0013034783229769302
+  },
+  {
+    "file": "back.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.0030469226081657527
+  },
+  {
+    "file": "calendar.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.007582449941107185
+  },
+  {
+    "file": "settings.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.015129682997118156
+  },
+  {
+    "file": "shuffle.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.010936757013789824
+  },
+  {
+    "file": "hint.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.012616704516780217
+  },
+  {
+    "file": "coin.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.0016660258874791746
+  },
+  {
+    "file": "coin-pill.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.29845538215286116
+  },
+  {
+    "file": "counter-badge.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.004054350208196362
+  },
+  {
+    "file": "progress-active.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.01171875
+  },
+  {
+    "file": "progress-empty.png",
+    "frameValid": true,
+    "alphaMaxDiff": 0,
+    "meanColorDiff": 0.009836065573770493
+  }
+]

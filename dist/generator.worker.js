@@ -1,4 +1,4 @@
-import { generateLevel } from './core/algorithm2.js?v=13';
+import { generateLevel } from './core/algorithm2.js?v=14';
 self.onmessage = ({ data }) => {
   const { requestId, dictionary, seed, config } = data;
   try {

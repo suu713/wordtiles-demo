@@ -1,4 +1,4 @@
-import input from '../wordlist.json?v=13' with {type:'json'};
+import input from '../wordlist.json?v=14' with {type:'json'};
 
 export const WORDLIST_VERSION=input.version;
 export const WORDLIST_HASH=input.source.sha256;

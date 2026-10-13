@@ -1,0 +1,62 @@
+{
+  "assets/ui/button-primary.png": {
+    "sourceWidth": 816,
+    "sourceHeight": 184,
+    "insets": {
+      "left": 96,
+      "right": 96,
+      "top": 70,
+      "bottom": 70
+    }
+  },
+  "assets/ui/tile-letter.png": {
+    "sourceWidth": 256,
+    "sourceHeight": 256,
+    "insets": {
+      "left": 40,
+      "right": 40,
+      "top": 40,
+      "bottom": 40
+    }
+  },
+  "assets/ui/tile-answer-filled.png": {
+    "sourceWidth": 160,
+    "sourceHeight": 160,
+    "insets": {
+      "left": 28,
+      "right": 28,
+      "top": 28,
+      "bottom": 28
+    }
+  },
+  "assets/ui/tile-answer-empty.png": {
+    "sourceWidth": 160,
+    "sourceHeight": 160,
+    "insets": {
+      "left": 28,
+      "right": 28,
+      "top": 28,
+      "bottom": 28
+    }
+  },
+  "assets/ui/coin-pill.png": {
+    "sourceWidth": 240,
+    "sourceHeight": 100,
+    "insets": {
+      "left": 52,
+      "right": 52,
+      "top": 38,
+      "bottom": 38
+    }
+  },
+  "assets/ui/tile-selection.png": {
+    "sourceWidth": 256,
+    "sourceHeight": 256,
+    "insets": {
+      "left": 40,
+      "right": 40,
+      "top": 40,
+      "bottom": 40
+    }
+  }
+}

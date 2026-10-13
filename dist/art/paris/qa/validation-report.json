@@ -1,0 +1,668 @@
+{
+  "validatedAt": "2026-10-13T02:23:31.067Z",
+  "assets": [
+    {
+      "id": "bg_lobby",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "alpha": false,
+      "hashValid": true
+    },
+    {
+      "id": "bg_level",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "alpha": false,
+      "hashValid": true
+    },
+    {
+      "id": "button_primary",
+      "dimensions": [
+        816,
+        184
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "tile_letter",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "tile_answer",
+      "dimensions": [
+        160,
+        160
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "tile-answer-empty",
+      "dimensions": [
+        160,
+        160
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "utility-disc",
+      "dimensions": [
+        160,
+        160
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "coin-pill",
+      "dimensions": [
+        240,
+        100
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "counter-badge",
+      "dimensions": [
+        64,
+        64
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "progress-active",
+      "dimensions": [
+        64,
+        64
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "progress-empty",
+      "dimensions": [
+        64,
+        64
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "tile-selection",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "back",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "calendar",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "settings",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "shuffle",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "hint",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    },
+    {
+      "id": "coin",
+      "dimensions": [
+        128,
+        128
+      ],
+      "alpha": true,
+      "hashValid": true
+    }
+  ],
+  "viewports": {
+    "desktopLobby": {
+      "screen": {
+        "width": 390,
+        "height": 693.328125
+      },
+      "labels": [
+        {
+          "id": "coins",
+          "within": true
+        },
+        {
+          "id": "gameTitle",
+          "within": true
+        },
+        {
+          "id": "destination",
+          "within": true
+        },
+        {
+          "id": "chapter",
+          "within": true
+        },
+        {
+          "id": "journeyProgress",
+          "within": true
+        },
+        {
+          "id": "play",
+          "within": true
+        },
+        {
+          "id": "playLevel",
+          "within": true
+        }
+      ],
+      "spritesLoaded": true,
+      "fonts": [
+        {
+          "weight": 400,
+          "loaded": true
+        },
+        {
+          "weight": 700,
+          "loaded": true
+        },
+        {
+          "weight": 900,
+          "loaded": true
+        }
+      ],
+      "cells": []
+    },
+    "desktopLevel": {
+      "screen": {
+        "width": 390,
+        "height": 693.328125
+      },
+      "labels": [
+        {
+          "id": "coins",
+          "within": true
+        },
+        {
+          "id": "levelTitle",
+          "within": true
+        },
+        {
+          "id": "place",
+          "within": true
+        },
+        {
+          "id": "wordProgress",
+          "within": true
+        },
+        {
+          "id": "roam-0",
+          "within": true
+        },
+        {
+          "id": "roam-1",
+          "within": true
+        },
+        {
+          "id": "roam-2",
+          "within": true
+        },
+        {
+          "id": "roam-3",
+          "within": true
+        },
+        {
+          "id": "arm-0",
+          "within": true
+        },
+        {
+          "id": "arm-1",
+          "within": true
+        },
+        {
+          "id": "arm-2",
+          "within": true
+        },
+        {
+          "id": "oar-0",
+          "within": true
+        },
+        {
+          "id": "oar-1",
+          "within": true
+        },
+        {
+          "id": "oar-2",
+          "within": true
+        },
+        {
+          "id": "hintCount",
+          "within": true
+        },
+        {
+          "id": "letter-0",
+          "within": true
+        },
+        {
+          "id": "count-0",
+          "within": true
+        },
+        {
+          "id": "letter-1",
+          "within": true
+        },
+        {
+          "id": "count-1",
+          "within": true
+        },
+        {
+          "id": "letter-2",
+          "within": true
+        },
+        {
+          "id": "count-2",
+          "within": true
+        },
+        {
+          "id": "letter-3",
+          "within": true
+        },
+        {
+          "id": "count-3",
+          "within": true
+        },
+        {
+          "id": "letter-4",
+          "within": true
+        },
+        {
+          "id": "count-4",
+          "within": true
+        },
+        {
+          "id": "letter-5",
+          "within": true
+        },
+        {
+          "id": "count-5",
+          "within": true
+        },
+        {
+          "id": "letter-6",
+          "within": true
+        },
+        {
+          "id": "count-6",
+          "within": true
+        },
+        {
+          "id": "letter-7",
+          "within": true
+        },
+        {
+          "id": "count-7",
+          "within": true
+        },
+        {
+          "id": "letter-8",
+          "within": true
+        },
+        {
+          "id": "count-8",
+          "within": true
+        }
+      ],
+      "spritesLoaded": true,
+      "fonts": [
+        {
+          "weight": 400,
+          "loaded": true
+        },
+        {
+          "weight": 700,
+          "loaded": true
+        },
+        {
+          "weight": 900,
+          "loaded": true
+        }
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "centered": true
+        },
+        {
+          "index": 1,
+          "centered": true
+        },
+        {
+          "index": 2,
+          "centered": true
+        },
+        {
+          "index": 3,
+          "centered": true
+        },
+        {
+          "index": 4,
+          "centered": true
+        },
+        {
+          "index": 5,
+          "centered": true
+        },
+        {
+          "index": 6,
+          "centered": true
+        },
+        {
+          "index": 7,
+          "centered": true
+        },
+        {
+          "index": 8,
+          "centered": true
+        }
+      ]
+    },
+    "mobileLobby": {
+      "screen": {
+        "width": 360,
+        "height": 640
+      },
+      "labels": [
+        {
+          "id": "coins",
+          "within": true
+        },
+        {
+          "id": "gameTitle",
+          "within": true
+        },
+        {
+          "id": "destination",
+          "within": true
+        },
+        {
+          "id": "chapter",
+          "within": true
+        },
+        {
+          "id": "journeyProgress",
+          "within": true
+        },
+        {
+          "id": "play",
+          "within": true
+        },
+        {
+          "id": "playLevel",
+          "within": true
+        }
+      ],
+      "spritesLoaded": true,
+      "fonts": [
+        {
+          "weight": 400,
+          "loaded": true
+        },
+        {
+          "weight": 700,
+          "loaded": true
+        },
+        {
+          "weight": 900,
+          "loaded": true
+        }
+      ],
+      "cells": []
+    },
+    "mobileLevel": {
+      "screen": {
+        "width": 360,
+        "height": 640
+      },
+      "labels": [
+        {
+          "id": "coins",
+          "within": true
+        },
+        {
+          "id": "levelTitle",
+          "within": true
+        },
+        {
+          "id": "place",
+          "within": true
+        },
+        {
+          "id": "wordProgress",
+          "within": true
+        },
+        {
+          "id": "roam-0",
+          "within": true
+        },
+        {
+          "id": "roam-1",
+          "within": true
+        },
+        {
+          "id": "roam-2",
+          "within": true
+        },
+        {
+          "id": "roam-3",
+          "within": true
+        },
+        {
+          "id": "arm-0",
+          "within": true
+        },
+        {
+          "id": "arm-1",
+          "within": true
+        },
+        {
+          "id": "arm-2",
+          "within": true
+        },
+        {
+          "id": "oar-0",
+          "within": true
+        },
+        {
+          "id": "oar-1",
+          "within": true
+        },
+        {
+          "id": "oar-2",
+          "within": true
+        },
+        {
+          "id": "hintCount",
+          "within": true
+        },
+        {
+          "id": "letter-0",
+          "within": true
+        },
+        {
+          "id": "count-0",
+          "within": true
+        },
+        {
+          "id": "letter-1",
+          "within": true
+        },
+        {
+          "id": "count-1",
+          "within": true
+        },
+        {
+          "id": "letter-2",
+          "within": true
+        },
+        {
+          "id": "count-2",
+          "within": true
+        },
+        {
+          "id": "letter-3",
+          "within": true
+        },
+        {
+          "id": "count-3",
+          "within": true
+        },
+        {
+          "id": "letter-4",
+          "within": true
+        },
+        {
+          "id": "count-4",
+          "within": true
+        },
+        {
+          "id": "letter-5",
+          "within": true
+        },
+        {
+          "id": "count-5",
+          "within": true
+        },
+        {
+          "id": "letter-6",
+          "within": true
+        },
+        {
+          "id": "count-6",
+          "within": true
+        },
+        {
+          "id": "letter-7",
+          "within": true
+        },
+        {
+          "id": "count-7",
+          "within": true
+        },
+        {
+          "id": "letter-8",
+          "within": true
+        },
+        {
+          "id": "count-8",
+          "within": true
+        }
+      ],
+      "spritesLoaded": true,
+      "fonts": [
+        {
+          "weight": 400,
+          "loaded": true
+        },
+        {
+          "weight": 700,
+          "loaded": true
+        },
+        {
+          "weight": 900,
+          "loaded": true
+        }
+      ],
+      "cells": [
+        {
+          "index": 0,
+          "centered": true
+        },
+        {
+          "index": 1,
+          "centered": true
+        },
+        {
+          "index": 2,
+          "centered": true
+        },
+        {
+          "index": 3,
+          "centered": true
+        },
+        {
+          "index": 4,
+          "centered": true
+        },
+        {
+          "index": 5,
+          "centered": true
+        },
+        {
+          "index": 6,
+          "centered": true
+        },
+        {
+          "index": 7,
+          "centered": true
+        },
+        {
+          "index": 8,
+          "centered": true
+        }
+      ]
+    }
+  },
+  "interactions": {
+    "enterLevel": true,
+    "ratCompleted": true,
+    "hintCompleted": true,
+    "shufflePreservesLetters": true,
+    "reset": true
+  },
+  "runtimeErrors": [],
+  "missingFiles": []
+}

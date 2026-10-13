@@ -1,0 +1,44 @@
+居中悬浮版资源包 · 生成记录
+
+生成方式：内置 image_gen；背景和三个主要空白 UI 素材由生图生成。
+其余简洁图标、状态边框及小控件为本包原创 SVG，并同时输出透明 PNG。
+字母、角标次数、金币、关卡、答案与标题全部由运行时文字绘制，未烘焙进可实装图片。
+背景归一化为 1080×1920，主控件保留透明通道，按独立资源拆分。
+
+1. pack_bg_lobby / bg-paris-lobby.png
+transparent_background: false
+Use case: precise-object-edit. Asset type: an independent opaque full-screen mobile game background texture. Input image 1 is the exact source lobby illustration with temporary UI overlays.
+Warm minimalist travel-game art. Palette: peach dawn, terracotta #C76D4A, warm ivory #F4ECDD, muted sage, warm charcoal. Quiet fine paper grain, restrained soft shading. Clean front view. Match the supplied centered floating Paris game design. The finished asset must be reusable underneath text and numbers rendered by the game.
+Remove EVERY UI overlay from this image: all title letters, Paris text, chapter caption, calendar, coin pill and numbers, settings gear, progress dots and 8/20, PLAY button and LEVEL08. Reconstruct only the natural uninterrupted scenery behind them. Preserve the original scene composition, Eiffel Tower placement, building architecture, lamp, framing leaves, Seine water, reflected dawn colors and stone promenade. Do not redesign the scene or move its landmarks. There must be absolutely ZERO words, letters, digits, buttons, badges, icons or interface marks in the result.
+Full-bleed portrait 9:16 illustration, top-to-bottom dawn Paris landscape. Keep the large open sky area where the lobby headings used to appear, and actual river where the play button used to appear. Natural illustration reaches all four edges, no card, frame, border, white fade or empty canvas. Exact one background image, ideally 1080x1920 portrait, opaque.
+
+2. pack_bg_level / bg-paris-level.png
+transparent_background: false
+Use case: precise-object-edit. Asset type: an independent opaque full-screen mobile game background texture. Input image 1 is the exact source gameplay illustration with temporary UI overlays.
+Warm minimalist travel-game art. Palette: peach dawn, terracotta #C76D4A, warm ivory #F4ECDD, muted sage, warm charcoal. Quiet fine paper grain, restrained soft shading. Clean front view. Match the supplied centered floating Paris game design. The finished asset must be reusable underneath text and numbers rendered by the game.
+Remove EVERY UI overlay: back disc and arrow, LEVEL08, coins and 240, Paris/France caption, 3/5 words, all ROAM ARM OAR target tiles, all blank word slots, hint bulb badge and shuffle disc, the entire 3x3 lower letter board and all its letters/numerals. Reconstruct only natural Paris sky, architecture, Seine and promenade behind all removed UI. Preserve the source illustration's Eiffel Tower on the right, original lamp on left, tree canopy, subtle dawn sun, buildings, riverbanks, water and stone foreground. Do not move the landmarks or crop away scenery. No rectangles from the old board may remain.
+There must be ZERO text, letters, numerals, controls, icons, circles, tile shapes or card remnants. Keep the open pale peach sky available for the upper word slots. Keep the actual lower river/promenenade available for future letter-board overlays. Full-bleed portrait 9:16, preferably 1080x1920, opaque background, no frame or empty margins. Produce exactly ONE clean landscape texture.
+
+3. pack_button_primary / button-primary.png
+transparent_background: true
+Use case: ui-mockup. Asset type: ONE standalone transparent game UI button base, no text.
+Input image 1 is a style reference. Derive only the terracotta wide pill PLAY button surface from this lobby, and create an isolated EMPTY button base that the game can overlay with dynamic words.
+Warm minimalist travel-game art. Palette: peach dawn, terracotta #C76D4A, warm ivory #F4ECDD, muted sage, warm charcoal. Quiet fine paper grain, restrained soft shading. Clean front view. Match the supplied centered floating Paris game design. The finished asset must be reusable underneath text and numbers rendered by the game.
+Exactly one long horizontal terracotta pill shape, front-facing, width-to-height ratio about 4.4:1, perfectly symmetrical semicircular endcaps. Very subtle natural paper grain and a gentle warm surface gradient; virtually flat, only a soft discreet edge shadow. NO letters, no PLAY, no LEVEL, no numerals, no icons, no scene, no border around the canvas. The background is genuinely transparent alpha, including outside its curved corners. Center the button on a landscape canvas with just enough transparent clearance for its small shadow. It should occupy at least 80% of canvas width. Preserve a plain calm fill suitable for white runtime text. Output ONE empty reusable pill button, not multiple states or a sheet.
+
+4. pack_tile_letter / tile-letter.png
+transparent_background: true
+Use case: ui-mockup. Asset type: ONE standalone transparent game letter tile base, without baked text.
+Input image 1 is a style reference; use ONLY the visual surface of ONE lower 3x3 board cell.
+Warm minimalist travel-game art. Palette: peach dawn, terracotta #C76D4A, warm ivory #F4ECDD, muted sage, warm charcoal. Quiet fine paper grain, restrained soft shading. Clean front view. Match the supplied centered floating Paris game design. The finished asset must be reusable underneath text and numbers rendered by the game.
+Generate exactly ONE empty square letter-cell tile, front-facing orthographic. Warm ivory lightly textured opaque fill, fine 4px-style terracotta outline, subtly softened 16px-style rounded corners on a 256px-style square tile, a restrained small bottom shadow. Sides strictly equal length, straight edges, uniform stroke and no tilt. The silhouette is a square with modest rounded corners, not a circle or pill. NO letter, NO digit in a corner, no icon. The game overlays all letters and counters later.
+One tile centered almost filling a square canvas, small transparent padding around edge and shadow. Truly transparent alpha background outside the tile, no colored matte or checkerboard baked into the pixels. No 3x3 board, no multiple tiles, no scenery. Output ONE blank reusable tile.
+
+5. pack_tile_answer / tile-answer-filled.png
+transparent_background: true
+Use case: ui-mockup. Asset type: ONE standalone transparent solved-word tile base.
+Input image 1 is a style reference; use ONLY the surface treatment of one upper terracotta solved-word tile, such as the R tile in ROAM.
+Warm minimalist travel-game art. Palette: peach dawn, terracotta #C76D4A, warm ivory #F4ECDD, muted sage, warm charcoal. Quiet fine paper grain, restrained soft shading. Clean front view. Match the supplied centered floating Paris game design. The finished asset must be reusable underneath text and numbers rendered by the game.
+Exactly ONE empty terracotta rounded-square tile for a solved answer slot. Simple filled terracotta surface, fine quiet paper grain, extremely subtle shade variation, moderate corners around 15% of tile side, virtually no shadow, no heavy border. Perfectly front-facing, equal side lengths, balanced uniform corners.
+NO letters, no words, no numbers, no icon. White answer letters are drawn later by the game. One tile centered nearly filling a square canvas with a small clean transparent margin. Genuine alpha transparency outside corners, no background color, no scenery, no 3x3 array. Output a single reusable blank filled answer tile.
+

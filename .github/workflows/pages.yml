@@ -26,6 +26,8 @@ jobs:
         run: npm run build:algorithm
       - name: Run rules and integration tests
         run: npm test
+      - name: Verify original art and font checksums
+        run: node scripts/check-paris-art.mjs --assets-only
       - name: Run lexicon classifier boundary tests
         run: python3 -m unittest discover -s wordtiles_lexicon_builder -p test_classifier.py -v
       - name: Verify supplied V2 whitelist and master application

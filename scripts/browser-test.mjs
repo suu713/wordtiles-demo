@@ -22,7 +22,7 @@ const fixture=await json('../examples/tsv/seed_20261010.json'), dictionary=creat
 const initial=createAlgorithmSession(fixture,dictionary,{bonusDictionary:BONUS_DICTIONARY});
 const stats=calculateLevelStatistics(initial.initial,BONUS_DICTIONARY), solutions=calculateLevelSolutions(initial.initial,dictionary);
 const source=await json('../dist/source-levels/english.json');
-const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=13';
+const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=14';
 const cases=[], errors=[];
 let browser;
 try { browser=await chromium.launch({headless:true,channel:'chrome'}); }
@@ -65,7 +65,7 @@ async function importRejected(level) {
 }
 async function directWorker(input) {
   return page.evaluate(data=>new Promise((resolve,reject)=>{
-    const worker=new Worker(new URL('./generator.worker.js?v=13',location.href),{type:'module'});
+    const worker=new Worker(new URL('./generator.worker.js?v=14',location.href),{type:'module'});
     const timeout=setTimeout(()=>{worker.terminate();reject(new Error('worker timeout'));},15000);
     worker.onmessage=({data})=>{if(data.type==='progress')return;clearTimeout(timeout);worker.terminate();resolve(data);};
     worker.onerror=event=>{clearTimeout(timeout);worker.terminate();reject(new Error(event.message));};

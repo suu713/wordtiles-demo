@@ -1,0 +1,32 @@
+{
+  "name": "Centered Floating · Paris",
+  "colors": {
+    "text": "#353832",
+    "accent": "#C76D4A",
+    "accentDark": "#8A4B32",
+    "ivory": "#F6EEDD",
+    "border": "#AB9C83",
+    "white": "#FFFFFF"
+  },
+  "fonts": {
+    "regular": "fonts/NunitoSans-Regular.ttf",
+    "bold": "fonts/NunitoSans-Bold.ttf",
+    "black": "fonts/NunitoSans-Black.ttf",
+    "latinAndNumbers": true
+  },
+  "interaction": {
+    "pressScale": 0.96,
+    "disabledOpacity": 0.42,
+    "selectedOverlay": "assets/ui/tile-selection.png"
+  },
+  "background": {
+    "fit": "cover",
+    "opaque": true
+  },
+  "spriteRendering": {
+    "premultipliedAlpha": false,
+    "filter": "linear",
+    "wrap": "clamp",
+    "mipmapsForUI": false
+  }
+}

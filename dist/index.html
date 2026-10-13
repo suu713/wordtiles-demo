@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f4f5f0">
+  <meta name="theme-color" content="#f6eedd">
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=13">
+  <link rel="icon" href="./art/paris/assets/svg/coin.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css?v=14">
+  <link rel="stylesheet" href="./paris.css?v=14">
+  <link rel="preload" as="image" href="./art/paris/assets/backgrounds/bg-paris-lobby.png">
 </head>
 <body>
   <main id="lobby" class="lobby" aria-label="游戏大厅">
     <section class="lobby-panel">
+      <button id="activity-button" class="art-disc lobby-calendar" type="button" aria-label="收词日历" aria-haspopup="dialog" aria-controls="activity-dialog" data-help="按日期查看已收录的单词。"><img src="./art/paris/assets/icons/calendar.png" alt=""></button>
+      <div class="art-coin lobby-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/paris/assets/icons/coin.png" alt=""><span id="dictionary-count" class="dictionary-count">0</span></div>
       <button id="dictionary-button" class="dictionary-button" type="button" aria-label="我的词典" aria-haspopup="dialog" aria-controls="dictionary-dialog" data-help="查看连接成功后收录的单词和释义。">
         <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c-3-3-8-4-12-2v20c4-2 9-1 12 2 3-3 8-4 12-2V6c-4-2-9-1-12 2Z M16 8v20 M8 11l4 1 M8 16l4 1 M20 12l4-1 M20 17l4-1"/></svg>
-        <span id="dictionary-count" class="dictionary-count">0</span>
       </button>
-      <div class="lobby-center"><p class="lobby-eyebrow">单词消消</p><h1>Word Tile</h1><div class="lobby-tiles" aria-hidden="true"><span>W</span><span>O</span><span>R</span><span>D</span><span>T</span><span>I</span><span>L</span><span>E</span></div></div>
-      <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled>开始游戏 <span aria-hidden="true">↗</span></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
+      <button id="lobby-settings" class="art-disc lobby-settings" type="button" aria-label="画面设置" data-help="调整竖屏画面尺寸和缩放。"><img src="./art/paris/assets/icons/settings.png" alt=""></button>
+      <div class="lobby-center"><h1>Word Tile</h1><p class="lobby-destination">Paris</p><p class="lobby-eyebrow">FRANCE</p></div>
+      <div class="lobby-progress"><div id="lobby-progress-dots" class="progress-dots" aria-hidden="true"></div><p id="lobby-progress-label" aria-live="polite">0 / 5</p></div>
+      <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled><span>开始游戏</span></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
     </section>
   </main>
   <div id="game-screen" class="app-shell" hidden>
@@ -76,6 +81,9 @@
       <section class="preview-column" aria-label="竖屏游戏">
         <div class="viewport-sizer"><div id="game-viewport" class="game-viewport">
           <section class="play-panel" aria-label="单词棋盘">
+            <button id="back-lobby" class="art-disc game-back" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><img src="./art/paris/assets/icons/back.png" alt=""></button>
+            <div class="art-coin game-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/paris/assets/icons/coin.png" alt=""><span id="game-collection-count">0</span></div>
+            <button id="editor-toggle" class="art-disc game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false" data-help="查看关卡编辑器和统计。"><img src="./art/paris/assets/icons/settings.png" alt=""></button>
             <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交，经过短词时不会提前提交。找到目标后格子数字减 1，归零后留空。提示箭头指向下一格。词库内的非目标词收进额外单词包，只收集一次且不扣次数。完成顺序不限。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
             <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="completion">0 <span>/ 3</span></span><span id="readout-label"></span><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
             <div id="targets" class="targets" aria-label="目标词"></div>
@@ -85,9 +93,8 @@
             <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
             <div class="game-footer">
               <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5h10l-3 6H14Z M13 11C6 16 4 24 7 27c3 3 15 3 18 0 3-3 1-11-6-16Z"/><path d="M11 11h10"/><text x="16" y="24" text-anchor="middle">A</text></svg><span id="bonus-count" class="bonus-count">0</span></button>
-              <div class="play-actions"><button id="hint" class="secondary-button" type="button" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。">✧ 提示</button><button id="restart" class="secondary-button" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button></div>
-              <div class="game-tools"><button id="editor-toggle" class="game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false">关卡 ▾</button><button id="back-lobby" class="home-button" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8 M6 9v12h5v-6h2v6h5V9"/></svg></button></div>
             </div>
+            <div class="play-actions game-art-actions"><button id="new-level" class="art-disc" type="button" aria-label="换一关" data-help="载入一关新棋盘，保留收词记录。算法2生成并校验新关卡，算法1随机载入原包关卡。"><img src="./art/paris/assets/icons/shuffle.png" alt=""></button><button id="restart" class="art-restart" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button><button id="hint" class="art-disc" type="button" aria-label="提示" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。角标表示尚未完成的目标数量。"><img src="./art/paris/assets/icons/hint.png" alt=""><span id="hint-remaining" class="art-badge">5</span></button></div>
           </section>
         </div></div>
       </section>
@@ -130,7 +137,8 @@
     <label class="sr-only" for="dictionary-search">搜索单词或释义</label><input id="dictionary-search" type="search" placeholder="搜索单词或释义" autocomplete="off">
     <p id="dictionary-storage-note" hidden>当前浏览器无法保存记录，本次收录会保留到关闭页面。</p><p id="dictionary-empty">连接成功的单词会收录在这里</p><ul id="dictionary-list" class="dictionary-list"></ul><button id="dictionary-more" class="secondary-button" type="button" hidden>显示更多</button>
   </dialog>
+  <dialog id="activity-dialog" class="activity-dialog" aria-labelledby="activity-title"><div class="dialog-top"><div><h2 id="activity-title">收词日历</h2><p id="activity-summary"></p></div><button id="activity-close" class="icon-button" type="button" aria-label="关闭收词日历">×</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty">找到第一个词后，收词记录会显示在这里</p></dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=13"></script>
+  <script type="module" src="./app.js?v=14"></script>
 </body>
 </html>

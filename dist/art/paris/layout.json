@@ -1,0 +1,676 @@
+{
+  "schema": "word-journey-centered-layout-v1",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "origin": "top-left",
+    "coordinateUnits": "design-pixels",
+    "anchorsDefault": [
+      0.5,
+      0.5
+    ],
+    "aspect": "9:16",
+    "scaleMode": "uniform-fit",
+    "safeInsets": {
+      "top": 48,
+      "right": 40,
+      "bottom": 48,
+      "left": 40
+    }
+  },
+  "screens": {
+    "lobby": {
+      "background": "assets/backgrounds/bg-paris-lobby.png",
+      "calendar": {
+        "disc": {
+          "x": 43.61,
+          "y": 70.09,
+          "width": 99.85,
+          "height": 99.96
+        },
+        "icon": {
+          "x": 63.12,
+          "y": 88.47,
+          "width": 61.98,
+          "height": 62.05
+        }
+      },
+      "settings": {
+        "icon": {
+          "x": 954.9,
+          "y": 78.13,
+          "width": 78.04,
+          "height": 78.13
+        }
+      },
+      "coin": {
+        "pill": {
+          "x": 732.24,
+          "y": 71.24,
+          "width": 199.7,
+          "height": 86.18
+        },
+        "icon": {
+          "x": 751.75,
+          "y": 89.62,
+          "width": 52.79,
+          "height": 52.85
+        },
+        "text": {
+          "id": "coins",
+          "value": "240",
+          "center": {
+            "x": 874.56,
+            "y": 116.05
+          },
+          "fontSize": 40.17,
+          "fontWeight": 700,
+          "letterSpacing": 0,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "labels": [
+        {
+          "id": "gameTitle",
+          "value": "WORD JOURNEY",
+          "center": {
+            "x": 540,
+            "y": 259.68
+          },
+          "fontSize": 41.32,
+          "fontWeight": 900,
+          "letterSpacing": 5.74,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "destination",
+          "value": "Paris",
+          "center": {
+            "x": 540,
+            "y": 427.43
+          },
+          "fontSize": 168.71,
+          "fontWeight": 900,
+          "letterSpacing": 0,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "chapter",
+          "value": "FRANCE · CHAPTER 01",
+          "center": {
+            "x": 540,
+            "y": 549.23
+          },
+          "fontSize": 28.69,
+          "fontWeight": 700,
+          "letterSpacing": 4.25,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "journeyProgress",
+          "value": "8 / 20",
+          "center": {
+            "x": 540,
+            "y": 1499.46
+          },
+          "fontSize": 37.87,
+          "fontWeight": 700,
+          "letterSpacing": 0,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "progressNodes": [
+        {
+          "rect": {
+            "x": 429.25,
+            "y": 1423.63,
+            "width": 36.73,
+            "height": 36.77
+          },
+          "active": true
+        },
+        {
+          "rect": {
+            "x": 491.22,
+            "y": 1423.63,
+            "width": 36.73,
+            "height": 36.77
+          },
+          "active": true
+        },
+        {
+          "rect": {
+            "x": 553.2,
+            "y": 1423.63,
+            "width": 36.73,
+            "height": 36.77
+          },
+          "active": false
+        },
+        {
+          "rect": {
+            "x": 615.18,
+            "y": 1423.63,
+            "width": 36.73,
+            "height": 36.77
+          },
+          "active": false
+        }
+      ],
+      "play": {
+        "rect": {
+          "x": 172.16,
+          "y": 1538.53,
+          "width": 735.69,
+          "height": 173.5
+        },
+        "title": {
+          "id": "play",
+          "value": "PLAY",
+          "center": {
+            "x": 540,
+            "y": 1614.36
+          },
+          "fontSize": 74.6,
+          "fontWeight": 900,
+          "letterSpacing": 4.59,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        "subtitle": {
+          "id": "playLevel",
+          "value": "LEVEL 08",
+          "center": {
+            "x": 540,
+            "y": 1671.81
+          },
+          "fontSize": 32.14,
+          "fontWeight": 700,
+          "letterSpacing": 3.44,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      }
+    },
+    "level": {
+      "background": "assets/backgrounds/bg-paris-level.png",
+      "back": {
+        "disc": {
+          "x": 43.61,
+          "y": 68.94,
+          "width": 101,
+          "height": 101.11
+        },
+        "icon": {
+          "x": 70.01,
+          "y": 93.07,
+          "width": 48.2,
+          "height": 54
+        }
+      },
+      "coin": {
+        "pill": {
+          "x": 732.24,
+          "y": 71.24,
+          "width": 199.7,
+          "height": 86.18
+        },
+        "icon": {
+          "x": 751.75,
+          "y": 89.62,
+          "width": 52.79,
+          "height": 52.85
+        },
+        "text": {
+          "id": "coins",
+          "value": "240",
+          "center": {
+            "x": 874.56,
+            "y": 116.05
+          },
+          "fontSize": 40.17,
+          "fontWeight": 700,
+          "letterSpacing": 0,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "labels": [
+        {
+          "id": "levelTitle",
+          "value": "LEVEL 08",
+          "center": {
+            "x": 540,
+            "y": 117.2
+          },
+          "fontSize": 41.32,
+          "fontWeight": 900,
+          "letterSpacing": 4.59,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "place",
+          "value": "Paris · France",
+          "center": {
+            "x": 540,
+            "y": 232.1
+          },
+          "fontSize": 35.58,
+          "fontWeight": 700,
+          "letterSpacing": 4.59,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "wordProgress",
+          "value": "3 / 5 words",
+          "center": {
+            "x": 540,
+            "y": 319.43
+          },
+          "fontSize": 33.28,
+          "fontWeight": 700,
+          "letterSpacing": 0,
+          "color": "#353832",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "answers": [
+        {
+          "id": "roam",
+          "word": "ROAM",
+          "solved": true,
+          "slots": [
+            {
+              "x": 323.66,
+              "y": 351.6,
+              "width": 98.7,
+              "height": 99.96
+            },
+            {
+              "x": 433.84,
+              "y": 351.6,
+              "width": 98.7,
+              "height": 99.96
+            },
+            {
+              "x": 544.02,
+              "y": 351.6,
+              "width": 98.7,
+              "height": 99.96
+            },
+            {
+              "x": 654.2,
+              "y": 351.6,
+              "width": 98.7,
+              "height": 99.96
+            }
+          ]
+        },
+        {
+          "id": "arm",
+          "word": "ARM",
+          "solved": true,
+          "slots": [
+            {
+              "x": 224.95,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            },
+            {
+              "x": 321.36,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            },
+            {
+              "x": 417.77,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            }
+          ]
+        },
+        {
+          "id": "oar",
+          "word": "OAR",
+          "solved": true,
+          "slots": [
+            {
+              "x": 576.15,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            },
+            {
+              "x": 672.56,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            },
+            {
+              "x": 768.97,
+              "y": 475.69,
+              "width": 91.82,
+              "height": 93.07
+            }
+          ]
+        },
+        {
+          "id": "rat",
+          "word": "RAT",
+          "solved": false,
+          "slots": [
+            {
+              "x": 224.95,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            },
+            {
+              "x": 321.36,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            },
+            {
+              "x": 417.77,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            }
+          ]
+        },
+        {
+          "id": "tea",
+          "word": "TEA",
+          "solved": false,
+          "slots": [
+            {
+              "x": 576.15,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            },
+            {
+              "x": 672.56,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            },
+            {
+              "x": 768.97,
+              "y": 594.04,
+              "width": 91.82,
+              "height": 91.92
+            }
+          ]
+        }
+      ],
+      "answerLetterStyle": {
+        "fontSize": 64.2720510095643,
+        "fontWeight": 900,
+        "color": "#FFFFFF"
+      },
+      "shuffle": {
+        "disc": {
+          "x": 196.26,
+          "y": 1069.73,
+          "width": 128.54,
+          "height": 128.69
+        },
+        "icon": {
+          "x": 229.54,
+          "y": 1103.05,
+          "width": 61.98,
+          "height": 62.05
+        }
+      },
+      "hint": {
+        "disc": {
+          "x": 751.75,
+          "y": 1069.73,
+          "width": 128.54,
+          "height": 128.69
+        },
+        "icon": {
+          "x": 787.33,
+          "y": 1098.46,
+          "width": 57.39,
+          "height": 71.24
+        },
+        "badge": {
+          "x": 837.83,
+          "y": 1065.13,
+          "width": 56.24,
+          "height": 56.3
+        },
+        "count": {
+          "id": "hintCount",
+          "value": "3",
+          "center": {
+            "x": 865.95,
+            "y": 1093.29
+          },
+          "fontSize": 33.28,
+          "fontWeight": 700,
+          "letterSpacing": 0,
+          "color": "#FFFFFF",
+          "align": "center",
+          "anchor": [
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "board": {
+        "rows": 3,
+        "columns": 3,
+        "rect": {
+          "x": 234.13,
+          "y": 1220.25,
+          "width": 610.58,
+          "height": 611.27
+        },
+        "cellSize": {
+          "x": 0,
+          "y": 0,
+          "width": 196.26,
+          "height": 196.48
+        },
+        "gap": 11.477151965993624,
+        "letterStyle": {
+          "fontSize": 90.66950053134963,
+          "fontWeight": 900,
+          "color": "#353832"
+        },
+        "counterStyle": {
+          "fontSize": 35.57917109458023,
+          "fontWeight": 700,
+          "fontStyle": "italic",
+          "color": "#C76D4A",
+          "anchor": [
+            1,
+            0
+          ]
+        },
+        "cells": [
+          {
+            "index": 0,
+            "row": 0,
+            "column": 0,
+            "letter": "R",
+            "count": 1,
+            "rect": {
+              "x": 234.13,
+              "y": 1220.25,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 1,
+            "row": 0,
+            "column": 1,
+            "letter": "O",
+            "count": 2,
+            "rect": {
+              "x": 441.87,
+              "y": 1220.25,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 2,
+            "row": 0,
+            "column": 2,
+            "letter": "T",
+            "count": 2,
+            "rect": {
+              "x": 649.61,
+              "y": 1220.25,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 3,
+            "row": 1,
+            "column": 0,
+            "letter": "M",
+            "count": 2,
+            "rect": {
+              "x": 234.13,
+              "y": 1428.22,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 4,
+            "row": 1,
+            "column": 1,
+            "letter": "A",
+            "count": 2,
+            "rect": {
+              "x": 441.87,
+              "y": 1428.22,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 5,
+            "row": 1,
+            "column": 2,
+            "letter": "E",
+            "count": 2,
+            "rect": {
+              "x": 649.61,
+              "y": 1428.22,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 6,
+            "row": 2,
+            "column": 0,
+            "letter": "R",
+            "count": 2,
+            "rect": {
+              "x": 234.13,
+              "y": 1636.19,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 7,
+            "row": 2,
+            "column": 1,
+            "letter": "S",
+            "count": 1,
+            "rect": {
+              "x": 441.87,
+              "y": 1636.19,
+              "width": 196.26,
+              "height": 196.48
+            }
+          },
+          {
+            "index": 8,
+            "row": 2,
+            "column": 2,
+            "letter": "A",
+            "count": 2,
+            "rect": {
+              "x": 649.61,
+              "y": 1636.19,
+              "width": 196.26,
+              "height": 196.48
+            }
+          }
+        ]
+      }
+    }
+  },
+  "runtimeText": {
+    "bakedIntoArt": false,
+    "fontFamily": "Nunito Sans",
+    "letterBoard": "letters and corner counters are separate runtime text",
+    "localizable": true
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "style": "Regular",
+    "weight": 400,
+    "file": "NunitoSans-Regular.ttf",
+    "bytes": 113564,
+    "static": true
+  },
+  {
+    "style": "Bold",
+    "weight": 700,
+    "file": "NunitoSans-Bold.ttf",
+    "bytes": 113648,
+    "static": true
+  },
+  {
+    "style": "Black",
+    "weight": 900,
+    "file": "NunitoSans-Black.ttf",
+    "bytes": 113612,
+    "static": true
+  }
+]

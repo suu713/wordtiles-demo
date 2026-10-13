@@ -1,7 +1,7 @@
-import input from '../common-v2/dictionary.json?v=13' with { type:'json' };
-import blocks from '../common-v2/blocked-words.json?v=13' with { type:'json' };
-import { createWordGate } from './whitelist.js?v=13';
-import { WORDLIST_HASH, WORDLIST_VERSION, sourceHasWord } from './word-source.js?v=13';
+import input from '../common-v2/dictionary.json?v=14' with { type:'json' };
+import blocks from '../common-v2/blocked-words.json?v=14' with { type:'json' };
+import { createWordGate } from './whitelist.js?v=14';
+import { WORDLIST_HASH, WORDLIST_VERSION, sourceHasWord } from './word-source.js?v=14';
 
 export const COMMON_DICTIONARY=Object.freeze({version:input.version,words:Object.freeze([...input.words])});
 export const POLICY_VERSION=COMMON_DICTIONARY.version;

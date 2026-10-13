@@ -1,0 +1,296 @@
+{
+  "package": "Centered Floating Resource Pack",
+  "version": "1.0",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "origin": "top-left",
+    "coordinateUnits": "design-pixels",
+    "anchorsDefault": [
+      0.5,
+      0.5
+    ],
+    "aspect": "9:16",
+    "scaleMode": "uniform-fit",
+    "safeInsets": {
+      "top": 48,
+      "right": 40,
+      "bottom": 48,
+      "left": 40
+    }
+  },
+  "backgrounds": 2,
+  "sprites": 16,
+  "assets": [
+    {
+      "id": "bg_lobby",
+      "path": "assets/backgrounds/bg-paris-lobby.png",
+      "width": 1080,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "d10c6424024361eadad00f19ceeaf05181aee6be79053e41b983b6ec0c68a061",
+      "source": "image_gen",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "bg_level",
+      "path": "assets/backgrounds/bg-paris-level.png",
+      "width": 1080,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "6654304eacd255e525f845ede63192684cf5f89a6c499688fc1f18f2be63ee32",
+      "source": "image_gen",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "button_primary",
+      "path": "assets/ui/button-primary.png",
+      "width": 816,
+      "height": 184,
+      "hasAlpha": true,
+      "sha256": "44b00ad6f739686ea39957311c199fd313214dc9c49b0f9a46e3197295ffd8cb",
+      "source": "image_gen",
+      "nineSlice": {
+        "left": 96,
+        "right": 96,
+        "top": 70,
+        "bottom": 70
+      },
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "tile_letter",
+      "path": "assets/ui/tile-letter.png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "sha256": "f44b3e930ff8cf03a0ebeba8c364441e6353d8f11a0a65ce90ac2e65765a4313",
+      "source": "image_gen",
+      "nineSlice": {
+        "left": 40,
+        "right": 40,
+        "top": 40,
+        "bottom": 40
+      },
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "tile_answer",
+      "path": "assets/ui/tile-answer-filled.png",
+      "width": 160,
+      "height": 160,
+      "hasAlpha": true,
+      "sha256": "f06f1d7fc4bc281127b8e82acb00619511cb1111ebe0cd25db53ff5de4f186ca",
+      "source": "image_gen",
+      "nineSlice": {
+        "left": 28,
+        "right": 28,
+        "top": 28,
+        "bottom": 28
+      },
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "tile-answer-empty",
+      "path": "assets/ui/tile-answer-empty.png",
+      "width": 160,
+      "height": 160,
+      "hasAlpha": true,
+      "sha256": "b5fef27116ed89771e31200ea5dcb62e2834a48e0e2e1df6444ff6067a5ea035",
+      "source": "original_vector",
+      "svg": "assets/svg/tile-answer-empty.svg",
+      "runtimeTextBaked": false,
+      "nineSlice": {
+        "left": 28,
+        "right": 28,
+        "top": 28,
+        "bottom": 28
+      }
+    },
+    {
+      "id": "utility-disc",
+      "path": "assets/ui/utility-disc.png",
+      "width": 160,
+      "height": 160,
+      "hasAlpha": true,
+      "sha256": "03cc7722455383230e7035e42672073b921faa158ccf6fcabb5b353d75fef142",
+      "source": "original_vector",
+      "svg": "assets/svg/utility-disc.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "coin-pill",
+      "path": "assets/ui/coin-pill.png",
+      "width": 240,
+      "height": 100,
+      "hasAlpha": true,
+      "sha256": "fe63a9d53bc80f4a3b2c11349bf3ba6c3258eb1c2e41666bef336e777e4ba043",
+      "source": "original_vector",
+      "svg": "assets/svg/coin-pill.svg",
+      "runtimeTextBaked": false,
+      "nineSlice": {
+        "left": 52,
+        "right": 52,
+        "top": 38,
+        "bottom": 38
+      }
+    },
+    {
+      "id": "counter-badge",
+      "path": "assets/ui/counter-badge.png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "sha256": "95c20b5766c316cc47b97987375b24d73f08ae59a2e0b97e3f47f4fc337df308",
+      "source": "original_vector",
+      "svg": "assets/svg/counter-badge.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "progress-active",
+      "path": "assets/ui/progress-active.png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "sha256": "5a35fa2b30051bf5504361426f4abae8995b2072d70f5799d6c9cb521e487918",
+      "source": "original_vector",
+      "svg": "assets/svg/progress-active.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "progress-empty",
+      "path": "assets/ui/progress-empty.png",
+      "width": 64,
+      "height": 64,
+      "hasAlpha": true,
+      "sha256": "ee17207e31491791f7af3f607fbd46ce4077ea571e27d01cf18f32ca7207fc56",
+      "source": "original_vector",
+      "svg": "assets/svg/progress-empty.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "tile-selection",
+      "path": "assets/ui/tile-selection.png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "sha256": "4eb8fa2a011a54402b1f4407cb6230499e7624742deddb579ca740038690a3b9",
+      "source": "original_vector",
+      "svg": "assets/svg/tile-selection.svg",
+      "runtimeTextBaked": false,
+      "nineSlice": {
+        "left": 40,
+        "right": 40,
+        "top": 40,
+        "bottom": 40
+      }
+    },
+    {
+      "id": "back",
+      "path": "assets/icons/back.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "f47aa9df58b6ebba51fb7af34d7ad784d31478970a8d47239e92a9aea56f6b0c",
+      "source": "original_vector",
+      "svg": "assets/svg/back.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "calendar",
+      "path": "assets/icons/calendar.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "72feab7c28d91e16e0fa096f6a34c72fe02f7dc0b8a3b07995f8b3ea1d8362f3",
+      "source": "original_vector",
+      "svg": "assets/svg/calendar.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "settings",
+      "path": "assets/icons/settings.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "b003beccd22a2cc43be8222207559874745b1ed34c565d10cac6fa7ee96e2f42",
+      "source": "original_vector",
+      "svg": "assets/svg/settings.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "shuffle",
+      "path": "assets/icons/shuffle.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "ce1bc689587dd7a7ec04e64bc443f539a682dbbcbaeb5c05c32a4e788d02483a",
+      "source": "original_vector",
+      "svg": "assets/svg/shuffle.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "hint",
+      "path": "assets/icons/hint.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "ebd3dd64474dba371453bf189ba59e08fde772c08debc4e85c93fe972d212444",
+      "source": "original_vector",
+      "svg": "assets/svg/hint.svg",
+      "runtimeTextBaked": false
+    },
+    {
+      "id": "coin",
+      "path": "assets/icons/coin.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "f13730006de8cf44c198cf01c3d151721f4630b9edf57d06f883178e3c9461da",
+      "source": "original_vector",
+      "svg": "assets/svg/coin.svg",
+      "runtimeTextBaked": false
+    }
+  ],
+  "fontLicense": "fonts/OFL.txt",
+  "generationMode": "built-in image_gen",
+  "runtimeTextBaked": false,
+  "fonts": [
+    {
+      "path": "fonts/NunitoSans-Regular.ttf",
+      "weight": 400,
+      "static": true,
+      "sha256": "963edcad534c1ec758250b3d8b1d12a40a04d84a2038438e5acbe8bf79807fd1"
+    },
+    {
+      "path": "fonts/NunitoSans-Bold.ttf",
+      "weight": 700,
+      "static": true,
+      "sha256": "a47aedabdd34a8db9897cff9cdcc7b76a2b872ec65f841653b9c674df6b76f60"
+    },
+    {
+      "path": "fonts/NunitoSans-Black.ttf",
+      "weight": 900,
+      "static": true,
+      "sha256": "9fa9b85f6cada2613170c9bb6b50832747e5a88a0981e2e07b67d14c51d68fd5"
+    }
+  ],
+  "atlas": {
+    "image": "assets/atlas/ui-atlas.png",
+    "data": "assets/atlas/ui-atlas.json",
+    "width": 2048,
+    "height": 512,
+    "frames": 16
+  },
+  "validation": {
+    "report": "qa/validation-report.json",
+    "fontReport": "qa/font-validation.json",
+    "atlasReport": "qa/atlas-validation.json",
+    "screenshots": [
+      "qa/lobby-assembled-1080x1920.png",
+      "qa/level-assembled-1080x1920.png"
+    ],
+    "offlinePreviewVerified": true
+  },
+  "generationPrompts": "generation-prompts.txt"
+}

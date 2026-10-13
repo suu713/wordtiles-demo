@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:4173/?v=14",
+  "artFiles": 18,
+  "fontFiles": 3,
+  "hashesMatch": true,
+  "passed": 7,
+  "pageErrors": [],
+  "assetErrors": [],
+  "cases": [
+    {
+      "name": "18个素材与3个字体的原始哈希一致，字体许可保留",
+      "passed": true
+    },
+    {
+      "name": "大厅、全部18素材、字体在首个可玩画面前加载",
+      "passed": true
+    },
+    {
+      "name": "大厅设置与空日历可用，点击开始之前仍在大厅",
+      "passed": true
+    },
+    {
+      "name": "原始字母格、选中覆盖、空答案、完成答案、提示方向和动态角标",
+      "passed": true
+    },
+    {
+      "name": "错误变红、额外词不扣次数、金币位真实收词数、进度点和日历持久记录",
+      "passed": true
+    },
+    {
+      "name": "换关图标使用原生成器与完整校验，保留词典",
+      "passed": true
+    },
+    {
+      "name": "手机真实触摸、通关、返回大厅和词典全部适配",
+      "passed": true
+    }
+  ]
+}
