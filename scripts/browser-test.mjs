@@ -22,7 +22,7 @@ const fixture=await json('../examples/tsv/seed_20261010.json'), dictionary=creat
 const initial=createAlgorithmSession(fixture,dictionary,{bonusDictionary:BONUS_DICTIONARY});
 const stats=calculateLevelStatistics(initial.initial,BONUS_DICTIONARY), solutions=calculateLevelSolutions(initial.initial,dictionary);
 const source=await json('../dist/source-levels/english.json');
-const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=14';
+const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=15';
 const cases=[], errors=[];
 let browser;
 try { browser=await chromium.launch({headless:true,channel:'chrome'}); }
@@ -65,7 +65,7 @@ async function importRejected(level) {
 }
 async function directWorker(input) {
   return page.evaluate(data=>new Promise((resolve,reject)=>{
-    const worker=new Worker(new URL('./generator.worker.js?v=14',location.href),{type:'module'});
+    const worker=new Worker(new URL('./generator.worker.js?v=15',location.href),{type:'module'});
     const timeout=setTimeout(()=>{worker.terminate();reject(new Error('worker timeout'));},15000);
     worker.onmessage=({data})=>{if(data.type==='progress')return;clearTimeout(timeout);worker.terminate();resolve(data);};
     worker.onerror=event=>{clearTimeout(timeout);worker.terminate();reject(new Error(event.message));};
@@ -86,20 +86,20 @@ try {
     assert.equal(await page.locator('#algorithm').inputValue(),'2');assert.equal(await page.locator('#hover-help').isVisible(),false);
   });
   await page.locator('#algorithm').selectOption('1');await page.locator('#validation-badge').filter({hasText:'需求不变量通过'}).waitFor({state:'attached'});
-  await run('算法1原包对照仍正常载入，当前关卡不受英语目标白名单修改',async()=>{
+  await run('算法1载入已审原包关卡，反序提交仍可清空',async()=>{
     assert.equal(await page.locator('#algorithm').inputValue(),'1');
     const first=convertSourceLevel(source.levels[source.orders.main[0]],{language:'english',order:'main',position:1});
     for(const target of [...first.targets].reverse()) await drag(target.path);
     assert.deepEqual((await state()).counts,Array(9).fill(0));await page.locator('#restart').click();
   });
   await page.locator('#algorithm').selectOption('2');
-  await run('算法2使用用户TSV的新样例及1470原形候选，不加载历史词库',async()=>{
+  await run('算法2使用原包豁免的新样例及2925目标候选，不加载历史词库',async()=>{
     await page.locator('#validation-badge').filter({hasText:'32 / 32 通过'}).waitFor({state:'attached'});
     assert.deepEqual((await state()).counts,fixture.initialCounts);
     assert.deepEqual(await page.locator('.target').evaluateAll(items=>items.map(item=>item.dataset.word)),fixture.targets.map(t=>t.word));
     assert.equal(await page.locator('#dictionary-source').inputValue(),'common');
     assert.equal(await page.locator('#unreviewed-mode').count(),0);
-    await settings('lexicon');assert.match(await page.locator('#lexicon-status').textContent(),/21,094 词 · 本关 1,470 个原形词/);await closeSettings();
+    await settings('lexicon');assert.match(await page.locator('#lexicon-status').textContent(),/7,618 词 · 本关 2,925 个目标候选/);await closeSettings();
     assert.match(await page.locator('#version-note').textContent(),new RegExp(POLICY_VERSION));
     const requested=await page.evaluate(()=>performance.getEntriesByType('resource').map(item=>item.name));
     assert.ok(!requested.some(url=>/\/(dictionary-v1|sample)\.json/.test(url)));
@@ -115,14 +115,16 @@ try {
     }
     await generate(20261010);assert.deepEqual(await exportLevel('tsv-worker-export'),fixture);
   });
-  await run('拖动FORTY经过目标FOR不提交，松手完成FORTY，共享格次数只减一次',async()=>{
-    const hello=fixture.targets.find(t=>t.word==='FORTY'),points=await centers(hello.canonicalPath);
+  await run('拖动SIXTH经过目标SIX不提交，松手完成SIXTH，共享格次数只减一次',async()=>{
+    const prefix=await json('../examples/tsv/prefix-regression.json');
+    await generate(prefix.seed);
+    const hello=prefix.targets.find(t=>t.word==='SIXTH'),points=await centers(hello.canonicalPath);
     await page.mouse.move(points[0].x,points[0].y);await page.mouse.down();
     for(const p of points.slice(1,3)) await page.mouse.move(p.x,p.y);
-    assert.equal(await page.locator('#current-word').textContent(),'FOR');assert.deepEqual((await state()).counts,fixture.initialCounts);assert.deepEqual((await state()).completed,[]);
+    assert.equal(await page.locator('#current-word').textContent(),'SIX');assert.deepEqual((await state()).counts,prefix.initialCounts);assert.deepEqual((await state()).completed,[]);
     for(const p of points.slice(3)) await page.mouse.move(p.x,p.y);await page.mouse.up();
-    const expected=[...fixture.initialCounts];hello.canonicalPath.forEach(cell=>expected[cell]--);
-    assert.deepEqual((await state()).counts,expected);assert.deepEqual((await state()).completed,['FORTY']);
+    const expected=[...prefix.initialCounts];hello.canonicalPath.forEach(cell=>expected[cell]--);
+    assert.deepEqual((await state()).counts,expected);assert.deepEqual((await state()).completed,['SIXTH']);
   });
   await run('未知词只让格子变红，额外词收集去重不扣次数，包可查看和清空',async()=>{
     await reset();const before=await state();await drag([0,3,6]);
@@ -144,7 +146,7 @@ try {
     await drag(fixture.targets[0].canonicalPath);assert.deepEqual((await state()).statistics,before.statistics);
   });
   await run('旧LAD/OAT关卡和伪造违规关导入拒绝，当前关卡及试玩进度保留',async()=>{
-    await importRejected(await json('../dist/sample.json'));await importRejected(await json('../examples/seed_20261010.json'));
+    await importRejected(await json('../examples/seed_20261010.json'));
     const illegal=structuredClone(fixture);illegal.targets[0].word='RATED';await importRejected(illegal);
     const broken=structuredClone(fixture);broken.initialCounts[0]++;await importRejected(broken);
     await page.locator('#import-file').setInputFiles({name:'v2.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(fixture))});
@@ -186,7 +188,7 @@ try {
       const before=await state();await settings('lexicon');await page.locator('#dictionary-tier').selectOption(option);
       const tiers=option.split(',').map(Number);const expected=createFrequencyDictionary({wordLengths:[3,3,3,4,5],tiers});
       await page.waitForFunction(()=>!document.querySelector('#lexicon-status').textContent.includes('正在读取'));
-      assert.ok((await page.locator('#lexicon-status').textContent()).includes(`本关 ${expected.words.length.toLocaleString()} 个原形词`));
+      assert.ok((await page.locator('#lexicon-status').textContent()).includes(`本关 ${expected.words.length.toLocaleString()} 个目标候选`));
       assert.equal(await page.locator('#unreviewed-mode').count(),0);await closeSettings();assert.deepEqual(await state(),before);
       if(expected.words.length<5) assert.equal(await page.locator('#generate-seed').isDisabled(),true);
     }
@@ -200,13 +202,13 @@ try {
     await tab.locator('#back-lobby').click();assert.equal(await tab.locator('#dictionary-count').textContent(),'1');
     await tab.locator('#start-game').click();assert.deepEqual(await state(tab),partial);
     await tab.locator('#restart').click();await drag(fixture.targets[0].canonicalPath,tab);
-    await tab.locator('#restart').click();const bonus=stats.extraWords.find(word=>!isTargetAllowed(word));
+    await tab.locator('#restart').click();const bonus=stats.extraWords[0],targetWord=fixture.targets[0].word;
     const path=findWordPaths(initial.initial.board.letters,bonus,null,null,initial.initial.board)[0];await drag(path,tab);await drag(path,tab);await drag([0,3,6],tab);
     await tab.locator('#back-lobby').click();assert.equal(await tab.locator('#dictionary-count').textContent(),'2');await tab.locator('#dictionary-button').click();
-    assert.deepEqual((await tab.locator('.dictionary-word-row strong').allTextContents()).sort(),['FOR',bonus].sort());
-    await tab.locator('#dictionary-search').fill('for');assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),['FOR',bonus].filter(word=>word.includes('FOR')).sort());
-    assert.equal(await tab.locator('.dictionary-entry p').first().textContent(),wordEntryFor('FOR').definition);
-    await tab.locator('#dictionary-search').fill(wordEntryFor('FOR').definition);assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),['FOR']);
+    assert.deepEqual((await tab.locator('.dictionary-word-row strong').allTextContents()).sort(),[targetWord,bonus].sort());
+    await tab.locator('#dictionary-search').fill(targetWord.toLowerCase());assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),[targetWord,bonus].filter(word=>word.includes(targetWord)).sort());
+    assert.equal(await tab.locator('.dictionary-entry p').first().textContent(),wordEntryFor(targetWord).definition);
+    await tab.locator('#dictionary-search').fill(wordEntryFor(targetWord).definition);assert.deepEqual(await tab.locator('.dictionary-word-row strong').allTextContents(),[targetWord]);
     await tab.locator('#dictionary-search').fill('不存在的释义');assert.equal(await tab.locator('#dictionary-empty').isVisible(),true);
     await tab.locator('#dictionary-close').click();await tab.reload();await tab.waitForFunction(()=>!document.querySelector('#start-game').disabled);
     assert.equal(await tab.locator('#lobby').isVisible(),true);assert.equal(await tab.locator('#dictionary-count').textContent(),'2');

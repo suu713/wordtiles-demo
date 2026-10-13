@@ -22,6 +22,13 @@ export function normalizeDictionary(input) {
   return [...new Set((Array.isArray(words) ? words : []).filter(x => typeof x === 'string')
     .map(x => x.toUpperCase()).filter(x => /^[A-Z]{3,8}$/.test(x)))].sort();
 }
+// Target generation still uses the configured 3–8 letter limit. Bonus words
+// have their own exact spelling list, including longer packaged words.
+export function normalizeBonusDictionary(input) {
+  const words=Array.isArray(input)?input:input?.words;
+  return [...new Set((Array.isArray(words)?words:[]).filter(w=>typeof w==='string')
+    .map(w=>w.toUpperCase()).filter(w=>/^\p{L}{3,45}$/u.test(w)))].sort();
+}
 export function configForLevel(level) {
   return level.schemaVersion === 2 ? clone(level.config) : {
     rows: level.board.rows, cols: level.board.cols, wordLengths: level.targets.map(t => t.word.length)
@@ -175,7 +182,7 @@ export class GameSession {
     if (!inspected.valid) return { accepted:false,reason:'invalid-path',message:inspected.reason };
     const word=inspected.word;
     if (!this.initial.targets.some(t=>t.word===word)) {
-      this.bonusWords ||= new Set(normalizeDictionary(this.bonusDictionaryInput));
+      this.bonusWords ||= new Set(normalizeBonusDictionary(this.bonusDictionaryInput));
       if (this.bonusWords.has(word)) {
         const isNew=!this.bonusCompleted.has(word); this.bonusCompleted.add(word);
         return { accepted:false,reason:'extra-word',word,isNew };

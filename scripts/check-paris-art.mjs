@@ -3,13 +3,21 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
+import {createBaseDictionary} from '../dist/core/target-policy.js';
+import {createAlgorithmSession} from '../dist/core/algorithm-v1-adapter.js';
+import {BONUS_DICTIONARY} from '../dist/core/word-source.js';
+import {findWordPaths} from '../dist/core/rules.js';
+import {calculateLevelStatistics} from '../dist/core/level-statistics.js';
 
 const json=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
 const manifest=await json('../dist/art/paris/manifest.json');
 const fixture=await json('../examples/tsv/seed_20261010.json');
+const initial=createAlgorithmSession(fixture,createBaseDictionary([3,3,3,4,5]));
+const bonus=calculateLevelStatistics(initial.initial,BONUS_DICTIONARY).extraWords[0];
+const bonusPath=findWordPaths(fixture.letters,bonus,null,null,initial.initial.board)[0];
 const reportDirectory=fileURLToPath(new URL(process.env.ART_REPORT_DIR||'../reports/',import.meta.url));
 await mkdir(reportDirectory,{recursive:true});
-const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=14';
+const baseURL=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=15';
 const cases=[],pageErrors=[],assetErrors=[];
 const pass=name=>{cases.push({name,passed:true});console.log('PASS '+name);};
 for(const entry of [...manifest.assets,...manifest.fonts]){
@@ -51,10 +59,10 @@ try {
   await page.locator('[data-cell="0"]').press('Escape');
   const points=await geometry(page,fixture.targets[0].canonicalPath);await page.mouse.move(points[0].x,points[0].y);await page.mouse.down();await page.mouse.move(points[1].x,points[1].y);assert.match(await background(page,'.tile.selected','::before'),/tile-selection\.png/);await screenshot(page,'paris-level-selected');await page.mouse.move(points[2].x,points[2].y);await page.mouse.up();
   assert.equal(await page.locator('.target.completed').count(),1);assert.match(await background(page,'.target.completed .target-letter'),/tile-answer-filled\.png/);assert.equal(await page.locator('#hint-remaining').textContent(),'4');await screenshot(page,'paris-level-desktop');pass('原始字母格、选中覆盖、空答案、完成答案、提示方向和动态角标');
-  const before=await counts(page);await drag(page,[0,3,6]);assert.equal(await page.locator('.tile.invalid-word').count(),3);assert.deepEqual(await counts(page),before);
-  await drag(page,[0,1,4,5]);assert.deepEqual(await counts(page),before);assert.equal(await page.locator('#bonus-count').textContent(),'1');assert.equal(await page.locator('#game-collection-count').textContent(),'2');
+  const before=await counts(page);await drag(page,[2,5,8]);assert.equal(await page.locator('.tile.invalid-word').count(),3);assert.deepEqual(await counts(page),before);
+  await drag(page,bonusPath);assert.deepEqual(await counts(page),before);assert.equal(await page.locator('#bonus-count').textContent(),'1');assert.equal(await page.locator('#game-collection-count').textContent(),'2');
   await page.locator('#back-lobby').click();assert.equal(await page.locator('#dictionary-count').textContent(),'2');assert.equal(await page.locator('.progress-dot.active').count(),1);assert.equal(await page.locator('#lobby-progress-label').textContent(),'1 / 5');assert.match(await background(page,'.progress-dot.active'),/progress-active\.png/);assert.match(await background(page,'.progress-dot:not(.active)'),/progress-empty\.png/);
-  await page.locator('#activity-button').click();assert.deepEqual((await page.locator('.activity-words span').allTextContents()).sort(),['FOR','FORT']);assert.match(await page.locator('.activity-day h3').textContent(),/^\d{4}-\d{2}-\d{2}$/);await screenshot(page,'paris-activity');await page.locator('#activity-close').click();
+  await page.locator('#activity-button').click();assert.deepEqual((await page.locator('.activity-words span').allTextContents()).sort(),[fixture.targets[0].word,bonus].sort());assert.match(await page.locator('.activity-day h3').textContent(),/^\d{4}-\d{2}-\d{2}$/);await screenshot(page,'paris-activity');await page.locator('#activity-close').click();
   await page.locator('#dictionary-button').click();assert.equal(await page.locator('.dictionary-entry').count(),2);await page.locator('#dictionary-close').click();await page.reload();await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);assert.equal(await page.locator('#dictionary-count').textContent(),'2');pass('错误变红、额外词不扣次数、金币位真实收词数、进度点和日历持久记录');
   await page.locator('#start-game').click();await page.locator('#new-level').click();await page.locator('#notice').filter({hasText:'生成成功'}).waitFor({state:'attached'});assert.match(await page.locator('#validation-badge').textContent(),/32 \/ 32/);assert.equal(await page.locator('.target').count(),5);assert.equal(await page.locator('#dictionary-count').textContent(),'2');pass('换关图标使用原生成器与完整校验，保留词典');await context.close();
   const mobileContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:1,reducedMotion:'reduce'}),mobile=await mobileContext.newPage();mobile.on('pageerror',error=>pageErrors.push(error.message));await mobile.goto(baseURL);await mobile.waitForFunction(()=>!document.querySelector('#start-game').disabled);await fits(mobile);await screenshot(mobile,'paris-lobby-mobile');await mobile.locator('#start-game').click();

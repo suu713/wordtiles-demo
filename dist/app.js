@@ -1,12 +1,12 @@
-import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=14';
-import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=14';
-import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=14';
+import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=15';
+import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=15';
+import { createAlgorithmSession, validateAlgorithmLevel } from './core/algorithm-v1-adapter.js?v=15';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
-import { calculateLevelStatistics } from './core/level-statistics.js?v=14';
-import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/target-policy.js?v=14';
-import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=14';
-import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=14';
-import { preloadArt } from './core/art-theme.js?v=14';
+import { calculateLevelStatistics } from './core/level-statistics.js?v=15';
+import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/target-policy.js?v=15';
+import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=15';
+import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=15';
+import { preloadArt } from './core/art-theme.js?v=15';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
 let dictionary, sample, game, catalogue;
@@ -255,14 +255,14 @@ function updateDictionaryUI() {
   $('#dictionary-tier').disabled = !graded;
   const status = $('#lexicon-status');
   if (!graded) {
-    status.textContent = `新词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${baseDictionary?.words.length.toLocaleString()||'—'} 个原形词`;
-    status.dataset.help = `词库：${WORDLIST_VERSION}。与原形白名单交集共 ${approvedWordCount.toLocaleString()} 词，本关按 3/4/5 字母取子库。保留此前原形出题规则；完整新词表用于额外词识别和词典释义。`;
+    status.textContent = `游戏词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${baseDictionary?.words.length.toLocaleString()||'—'} 个目标候选`;
+    status.dataset.help = `词库：${WORDLIST_VERSION}。原形白名单加原包目标共 ${approvedWordCount.toLocaleString()} 词，本关按所选长度取子库。额外词包含全部原包词，释义单独校订。`;
   } else if (dictionaryLoading || !dictionary) {
     status.textContent = dictionaryLoading ? '正在读取母词库…' : '词库读取失败';
     status.dataset.help = dictionaryLoadError || '正在读取完整词长的候选索引和人工审核覆盖表。';
   } else {
-    status.textContent = `新词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${dictionary.words.length.toLocaleString()} 个原形词`;
-    status.dataset.help = `运行时版本：${dictionary.version}。按用户 words.tsv 的原有 1～5 档筛选，再与原形白名单取交集；不重新评分、不放宽目标词限制。`;
+    status.textContent = `游戏词库 ${WORD_ENTRIES.length.toLocaleString()} 词 · 本关 ${dictionary.words.length.toLocaleString()} 个目标候选`;
+    status.dataset.help = `运行时版本：${dictionary.version}。按用户 words.tsv 原有 1～5 档筛选；目标范围为原形白名单加原包目标，不为缺档位词编造评分。`;
   }
 }
 async function refreshDictionary(announce = true) {
@@ -450,7 +450,7 @@ function startSolutionAnalysis(deepSearch = false) {
     solutionCache.set(level, result); renderSolutionSummary();
   };
   try {
-    instance = new Worker(new URL('./solutions.worker.js?v=14', import.meta.url), { type:'module' });
+    instance = new Worker(new URL('./solutions.worker.js?v=15', import.meta.url), { type:'module' });
     solutionWorker = instance; solutionLevel = level;
     instance.onmessage = ({ data }) => { if (data.requestId === id) finish(data.result); };
     instance.onerror = () => finish({ ok:false, message:'解法统计线程未能完成，请重新统计。' });
@@ -611,7 +611,7 @@ async function loadSource({ language = $('#source-language').value, order = $('#
   setBusy(true,'source'); notice('正在载入' + LANGUAGE_NAMES[language] + '第 ' + position + ' 关…');
   try {
     if (!banks.has(language)) {
-      const pending = fetch('./source-levels/' + info.file).then(async response => {
+      const pending = fetch('./source-levels/' + info.file+'?v=15').then(async response => {
         if (!response.ok) throw new Error('关卡库读取失败');
         return response.json();
       }).catch(error => { banks.delete(language); throw error; });
@@ -733,7 +733,7 @@ function generate(seed) {
   }
   cancelGeneration(true); clearSelection();
   const id = ++requestId, initialEpoch = epoch, generationDictionary = dictionary;
-  const instance = new Worker(new URL('./generator.worker.js?v=14', import.meta.url), { type: 'module' });
+  const instance = new Worker(new URL('./generator.worker.js?v=15', import.meta.url), { type: 'module' });
   worker = instance; setBusy(true, 'generate'); $('#seed').value = String(seed);
   generationStats = { seed, config: budget, dictionaryVersion: dictionary.version, result: 'searching' }; renderDebug();
   notice('正在搜索合格关卡，当前关卡仍可试玩。');
@@ -804,7 +804,7 @@ function renderCollection() {
     const heading=document.createElement('div');heading.className='dictionary-word-row';
     const word=document.createElement('strong');word.textContent=entry.word;heading.append(word);
     const info=entry.language==='english'?wordEntryFor(entry.word):null;
-    const tag=document.createElement('span');tag.textContent=info?TIER_LABELS[info.tier]:LANGUAGE_NAMES[entry.language]||'';heading.append(tag);
+    const tag=document.createElement('span');tag.textContent=info?.tier?TIER_LABELS[info.tier]:LANGUAGE_NAMES[entry.language]||'';heading.append(tag);
     const definition=document.createElement('p');definition.textContent=info?.definition||'暂无释义';
     item.append(heading,definition);return item;
   });
@@ -993,9 +993,10 @@ window.addEventListener('pagehide', () => { cancelGeneration(true); cancelSoluti
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#restart','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  const [responses] = await Promise.all([Promise.all([fetch('./seed_20261010.json?v=14'),fetch('./source-levels/catalogue.json')]),preloadArt()]);
+  const [responses] = await Promise.all([Promise.all([fetch('./seed_20261010.json?v=15'),fetch('./source-levels/catalogue.json?v=15')]),preloadArt()]);
   if (responses.some(response => !response.ok)) throw new Error('词库、样例或原包关卡目录无法读取');
   [sample,catalogue] = await Promise.all(responses.map(response => response.json()));
+  $('#source-language').replaceChildren(...catalogue.languages.map(item=>{const option=document.createElement('option');option.value=item.language;option.textContent=LANGUAGE_NAMES[item.language];return option;}));
   if(COMMON_DICTIONARY.version!==POLICY_VERSION||COMMON_DICTIONARY.words.length!==3333) throw new Error('常用原形词 V2 白名单版本或数量错误');
   baseDictionary=createBaseDictionary(DEFAULT_CONFIG.wordLengths); dictionary=baseDictionary;
   if(!validateAlgorithmLevel(sample,dictionary).valid) throw new Error('新词库正式样例未通过白名单及完整规则校验');

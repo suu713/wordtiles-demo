@@ -1,8 +1,8 @@
 {
   "generatorVersion": "backtrack-v1.0.0",
-  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
-  "dictionaryWords": 1418,
-  "wordlistVersion": "wordtiles-tsv-20261010-9c5b22c2b994",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
+  "dictionaryWords": 2235,
+  "wordlistVersion": "wordtiles-reviewed-9c5b22c2b994-12baad0fe26c",
   "contentPolicyVersion": "wordtiles-common-base-20261010-v2",
   "outsideWhitelistTargets": 0,
   "selection": {
@@ -35,18 +35,18 @@
   "targetTierDistribution": [
     {
       "tier": 1,
-      "count": 256,
-      "proportion": 0.512
+      "count": 214,
+      "proportion": 0.428
     },
     {
       "tier": 2,
-      "count": 149,
-      "proportion": 0.298
+      "count": 144,
+      "proportion": 0.288
     },
     {
       "tier": 3,
-      "count": 95,
-      "proportion": 0.19
+      "count": 142,
+      "proportion": 0.284
     },
     {
       "tier": 4,
@@ -66,25 +66,25 @@
   ],
   "independentStatesChecked": 3200,
   "actualOrdersReplayed": 12000,
-  "elapsedMs": 948,
+  "elapsedMs": 824,
   "results": [
     {
       "seed": 0,
       "ok": true,
       "words": [
-        "FLY",
-        "ICE",
-        "RIP",
-        "RICE",
-        "REPLY"
+        "BOY",
+        "DAM",
+        "PUB",
+        "DAMP",
+        "BUDDY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 15321,
-        "currentAttemptNodes": 5321,
+        "attempts": 1,
+        "nodes": 3446,
+        "currentAttemptNodes": 3446,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -93,19 +93,19 @@
       "seed": 1,
       "ok": true,
       "words": [
-        "ASH",
-        "SAD",
-        "YOU",
-        "DASH",
-        "ROUND"
+        "LAY",
+        "RAY",
+        "RED",
+        "PLAY",
+        "ORDER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 5134,
-        "currentAttemptNodes": 5134,
+        "nodes": 5162,
+        "currentAttemptNodes": 5162,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -114,19 +114,19 @@
       "seed": 2,
       "ok": true,
       "words": [
-        "ERA",
-        "OWL",
-        "TOW",
-        "LAST",
-        "TOWER"
+        "BIN",
+        "GUM",
+        "MUG",
+        "BIND",
+        "GUILT"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 5,
-        "nodes": 42773,
-        "currentAttemptNodes": 2773,
+        "nodes": 42776,
+        "currentAttemptNodes": 2776,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -135,19 +135,19 @@
       "seed": 3,
       "ok": true,
       "words": [
-        "LOW",
-        "TAP",
-        "TOP",
-        "CLIP",
-        "CLOTH"
+        "HOT",
+        "SEW",
+        "WHO",
+        "TYPE",
+        "WHOSE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 13305,
-        "currentAttemptNodes": 3305,
+        "nodes": 16561,
+        "currentAttemptNodes": 6561,
         "completedLayouts": 1,
-        "prunedAmbiguity": 6,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -156,19 +156,19 @@
       "seed": 4,
       "ok": true,
       "words": [
-        "ASH",
-        "ERA",
-        "PEA",
-        "CARE",
-        "SPACE"
+        "ATE",
+        "BUT",
+        "PET",
+        "BURY",
+        "PETTY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 13006,
-        "currentAttemptNodes": 3006,
+        "attempts": 3,
+        "nodes": 23529,
+        "currentAttemptNodes": 3529,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 12,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -177,19 +177,19 @@
       "seed": 5,
       "ok": true,
       "words": [
-        "APE",
-        "LAP",
-        "RIM",
-        "MALL",
-        "REPLY"
+        "CAT",
+        "CUP",
+        "FAT",
+        "CAFE",
+        "ERUPT"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 7216,
-        "currentAttemptNodes": 7216,
+        "attempts": 4,
+        "nodes": 37234,
+        "currentAttemptNodes": 7234,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -198,17 +198,17 @@
       "seed": 6,
       "ok": true,
       "words": [
-        "ACT",
-        "ERA",
-        "THE",
-        "CARD",
-        "REACH"
+        "END",
+        "YES",
+        "YET",
+        "TEND",
+        "DUSTY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4230,
-        "currentAttemptNodes": 4230,
+        "nodes": 4655,
+        "currentAttemptNodes": 4655,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -219,17 +219,17 @@
       "seed": 7,
       "ok": true,
       "words": [
-        "ALL",
-        "PIT",
-        "TIP",
-        "MEAL",
-        "SPILL"
+        "RED",
+        "RID",
+        "ROB",
+        "BORN",
+        "DINER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 25624,
-        "currentAttemptNodes": 5624,
+        "attempts": 4,
+        "nodes": 33395,
+        "currentAttemptNodes": 3395,
         "completedLayouts": 1,
         "prunedAmbiguity": 1,
         "prunedCoverage": 0,
@@ -240,19 +240,19 @@
       "seed": 8,
       "ok": true,
       "words": [
-        "EAT",
-        "LEG",
-        "TAN",
-        "BEAT",
-        "ANGEL"
+        "AID",
+        "ROD",
+        "ROW",
+        "GROW",
+        "AUDIT"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 14307,
-        "currentAttemptNodes": 4307,
+        "nodes": 15837,
+        "currentAttemptNodes": 5837,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -261,17 +261,17 @@
       "seed": 9,
       "ok": true,
       "words": [
-        "ASK",
-        "SEA",
-        "SET",
-        "EAST",
-        "SWIFT"
+        "ART",
+        "ILL",
+        "LAB",
+        "TILL",
+        "EXTRA"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 22746,
-        "currentAttemptNodes": 2746,
+        "attempts": 1,
+        "nodes": 7971,
+        "currentAttemptNodes": 7971,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -282,19 +282,19 @@
       "seed": 10,
       "ok": true,
       "words": [
-        "HEN",
-        "PET",
-        "SUN",
-        "THEN",
-        "PAUSE"
+        "ANT",
+        "CAN",
+        "MAT",
+        "CHAT",
+        "MATCH"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 33204,
-        "currentAttemptNodes": 3204,
+        "attempts": 1,
+        "nodes": 3678,
+        "currentAttemptNodes": 3678,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -303,19 +303,19 @@
       "seed": 11,
       "ok": true,
       "words": [
-        "APE",
-        "ERA",
-        "LOG",
-        "GOLF",
-        "PAPER"
+        "INN",
+        "SIN",
+        "SON",
+        "MASS",
+        "UNION"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 45310,
-        "currentAttemptNodes": 5310,
+        "attempts": 2,
+        "nodes": 13903,
+        "currentAttemptNodes": 3903,
         "completedLayouts": 1,
-        "prunedAmbiguity": 6,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -324,17 +324,17 @@
       "seed": 12,
       "ok": true,
       "words": [
-        "FIG",
-        "SUM",
-        "TUG",
-        "MUST",
-        "FIGHT"
+        "OUR",
+        "WED",
+        "WET",
+        "TOUR",
+        "QUOTE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 3700,
-        "currentAttemptNodes": 3700,
+        "nodes": 4903,
+        "currentAttemptNodes": 4903,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -345,19 +345,19 @@
       "seed": 13,
       "ok": true,
       "words": [
-        "EAR",
-        "OLD",
-        "PAL",
-        "PIER",
-        "POLAR"
+        "CAN",
+        "HAS",
+        "ONE",
+        "CANE",
+        "WHOSE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 25745,
-        "currentAttemptNodes": 5745,
+        "attempts": 1,
+        "nodes": 4565,
+        "currentAttemptNodes": 4565,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -366,19 +366,19 @@
       "seed": 14,
       "ok": true,
       "words": [
-        "DOT",
-        "SAD",
-        "USE",
-        "TALE",
-        "SALAD"
+        "CAR",
+        "CAT",
+        "SUE",
+        "TYRE",
+        "CATER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 44214,
-        "currentAttemptNodes": 4214,
+        "attempts": 1,
+        "nodes": 2952,
+        "currentAttemptNodes": 2952,
         "completedLayouts": 1,
-        "prunedAmbiguity": 10,
+        "prunedAmbiguity": 4,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -387,19 +387,19 @@
       "seed": 15,
       "ok": true,
       "words": [
-        "ART",
-        "BUS",
-        "SHE",
-        "CRAB",
-        "CRASH"
+        "GEM",
+        "JET",
+        "RID",
+        "RITE",
+        "RIDGE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 2827,
-        "currentAttemptNodes": 2827,
+        "nodes": 5897,
+        "currentAttemptNodes": 5897,
         "completedLayouts": 1,
-        "prunedAmbiguity": 5,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -408,19 +408,19 @@
       "seed": 16,
       "ok": true,
       "words": [
-        "ART",
-        "ERA",
-        "TIE",
-        "TILE",
-        "EARTH"
+        "PIN",
+        "RAN",
+        "ROW",
+        "SPIN",
+        "ARROW"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 43360,
-        "currentAttemptNodes": 3360,
+        "attempts": 1,
+        "nodes": 5057,
+        "currentAttemptNodes": 5057,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -429,19 +429,19 @@
       "seed": 17,
       "ok": true,
       "words": [
-        "BUD",
-        "END",
-        "LOT",
-        "LOSE",
-        "BLEND"
+        "AIM",
+        "BET",
+        "BIT",
+        "BITE",
+        "CLAIM"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 34756,
-        "currentAttemptNodes": 4756,
+        "attempts": 1,
+        "nodes": 6943,
+        "currentAttemptNodes": 6943,
         "completedLayouts": 1,
-        "prunedAmbiguity": 5,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -450,19 +450,19 @@
       "seed": 18,
       "ok": true,
       "words": [
-        "ALL",
-        "CAP",
-        "LAW",
-        "WALL",
-        "CHEAP"
+        "AGE",
+        "RAG",
+        "SIR",
+        "IRIS",
+        "AGING"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 14508,
-        "currentAttemptNodes": 4508,
+        "attempts": 5,
+        "nodes": 45401,
+        "currentAttemptNodes": 5401,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -471,19 +471,19 @@
       "seed": 19,
       "ok": true,
       "words": [
-        "EAR",
-        "ERA",
-        "SEE",
-        "PASS",
-        "SHEER"
+        "AGO",
+        "LAW",
+        "ROW",
+        "GOAL",
+        "GROOM"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 9596,
-        "currentAttemptNodes": 9596,
+        "nodes": 3950,
+        "currentAttemptNodes": 3950,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -492,17 +492,17 @@
       "seed": 20,
       "ok": true,
       "words": [
-        "FLY",
-        "PAL",
-        "PAY",
-        "PALE",
-        "SPELL"
+        "HER",
+        "SIR",
+        "THE",
+        "HIKE",
+        "WRIST"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4886,
-        "currentAttemptNodes": 4886,
+        "nodes": 8299,
+        "currentAttemptNodes": 8299,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -513,19 +513,19 @@
       "seed": 21,
       "ok": true,
       "words": [
-        "HUG",
-        "NEW",
-        "SET",
-        "NEWS",
-        "SWEET"
+        "ELF",
+        "OIL",
+        "OLD",
+        "FOLD",
+        "FLIER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 2832,
-        "currentAttemptNodes": 2832,
+        "nodes": 2550,
+        "currentAttemptNodes": 2550,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -534,17 +534,17 @@
       "seed": 22,
       "ok": true,
       "words": [
-        "LAP",
-        "LOT",
-        "PAL",
-        "PLOT",
-        "BLAST"
+        "BED",
+        "BID",
+        "WOE",
+        "WOMB",
+        "VIDEO"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 15401,
-        "currentAttemptNodes": 5401,
+        "attempts": 1,
+        "nodes": 4641,
+        "currentAttemptNodes": 4641,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -555,17 +555,17 @@
       "seed": 23,
       "ok": true,
       "words": [
-        "ARC",
-        "CAR",
-        "EAR",
-        "BEAR",
-        "REBEL"
+        "ELF",
+        "ONE",
+        "WHO",
+        "HONE",
+        "FENCE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 8490,
-        "currentAttemptNodes": 8490,
+        "nodes": 7677,
+        "currentAttemptNodes": 7677,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -576,19 +576,19 @@
       "seed": 24,
       "ok": true,
       "words": [
-        "JAM",
-        "LIP",
-        "MAP",
-        "PILL",
-        "MAJOR"
+        "DEN",
+        "JOY",
+        "ROW",
+        "WORN",
+        "ENJOY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23772,
-        "currentAttemptNodes": 3772,
+        "attempts": 4,
+        "nodes": 34633,
+        "currentAttemptNodes": 4633,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 3,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -597,19 +597,19 @@
       "seed": 25,
       "ok": true,
       "words": [
-        "ART",
-        "FRY",
-        "TIN",
-        "RAIN",
-        "FORTY"
+        "BOX",
+        "HER",
+        "HIS",
+        "BORE",
+        "EXIST"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 14049,
-        "currentAttemptNodes": 4049,
+        "nodes": 13834,
+        "currentAttemptNodes": 3834,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 6,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -618,19 +618,19 @@
       "seed": 26,
       "ok": true,
       "words": [
-        "ANY",
-        "ONE",
-        "SUN",
-        "SOME",
-        "SUNNY"
+        "ERA",
+        "LAP",
+        "PAL",
+        "RAIL",
+        "PRESS"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 5422,
-        "currentAttemptNodes": 5422,
+        "nodes": 4815,
+        "currentAttemptNodes": 4815,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -639,17 +639,17 @@
       "seed": 27,
       "ok": true,
       "words": [
-        "LOG",
-        "SOY",
-        "YES",
-        "LILY",
-        "GOOSE"
+        "ARC",
+        "VAN",
+        "VET",
+        "VETO",
+        "ARENA"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4817,
-        "currentAttemptNodes": 4817,
+        "nodes": 2669,
+        "currentAttemptNodes": 2669,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -660,19 +660,19 @@
       "seed": 28,
       "ok": true,
       "words": [
-        "CAB",
-        "GUM",
-        "MUG",
-        "BACK",
-        "BADGE"
+        "DOT",
+        "GOD",
+        "VET",
+        "VETO",
+        "DODGE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 13441,
-        "currentAttemptNodes": 3441,
+        "attempts": 1,
+        "nodes": 7763,
+        "currentAttemptNodes": 7763,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -681,19 +681,19 @@
       "seed": 29,
       "ok": true,
       "words": [
-        "AGE",
-        "ILL",
-        "LEG",
-        "GAIN",
-        "LINEN"
+        "ARC",
+        "DYE",
+        "LAD",
+        "LADY",
+        "CURRY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 13902,
-        "currentAttemptNodes": 3902,
+        "nodes": 17484,
+        "currentAttemptNodes": 7484,
         "completedLayouts": 1,
-        "prunedAmbiguity": 6,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -702,19 +702,19 @@
       "seed": 30,
       "ok": true,
       "words": [
-        "DIP",
-        "RAT",
-        "RID",
-        "TIDE",
-        "START"
+        "HOT",
+        "HOW",
+        "LOW",
+        "LOOM",
+        "TOWEL"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 15352,
-        "currentAttemptNodes": 5352,
+        "attempts": 1,
+        "nodes": 7177,
+        "currentAttemptNodes": 7177,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -723,17 +723,17 @@
       "seed": 31,
       "ok": true,
       "words": [
-        "ART",
-        "ERA",
-        "FIG",
-        "TRAP",
-        "FIGHT"
+        "MAP",
+        "SEE",
+        "USE",
+        "LEAP",
+        "AMUSE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 2706,
-        "currentAttemptNodes": 2706,
+        "nodes": 6206,
+        "currentAttemptNodes": 6206,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -744,17 +744,17 @@
       "seed": 32,
       "ok": true,
       "words": [
-        "BAT",
-        "EAR",
-        "TIP",
-        "PEAR",
-        "ORBIT"
+        "LAW",
+        "LOW",
+        "RAP",
+        "WORN",
+        "POLAR"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 3096,
-        "currentAttemptNodes": 3096,
+        "attempts": 3,
+        "nodes": 23437,
+        "currentAttemptNodes": 3437,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -765,19 +765,19 @@
       "seed": 33,
       "ok": true,
       "words": [
-        "END",
-        "LID",
-        "SON",
-        "SOIL",
-        "PHONE"
+        "KIT",
+        "PAN",
+        "SKI",
+        "SNAP",
+        "THANK"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 38072,
-        "currentAttemptNodes": 8072,
+        "attempts": 1,
+        "nodes": 6915,
+        "currentAttemptNodes": 6915,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -786,17 +786,17 @@
       "seed": 34,
       "ok": true,
       "words": [
-        "HIP",
-        "PEA",
-        "TEA",
-        "CHIP",
-        "WASTE"
+        "INK",
+        "SOB",
+        "SON",
+        "LINK",
+        "SOBER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 46023,
-        "currentAttemptNodes": 6023,
+        "attempts": 3,
+        "nodes": 24756,
+        "currentAttemptNodes": 4756,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -807,19 +807,19 @@
       "seed": 35,
       "ok": true,
       "words": [
-        "ACT",
-        "CAT",
-        "HAM",
-        "THAT",
-        "MATCH"
+        "BET",
+        "BUD",
+        "ERA",
+        "BETA",
+        "TIRED"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 49428,
-        "currentAttemptNodes": 9428,
+        "attempts": 1,
+        "nodes": 3473,
+        "currentAttemptNodes": 3473,
         "completedLayouts": 1,
-        "prunedAmbiguity": 3,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -829,18 +829,18 @@
       "ok": true,
       "words": [
         "APE",
-        "ARC",
-        "PEA",
-        "PEAR",
-        "CREEK"
+        "BAR",
+        "BEE",
+        "KEEP",
+        "BARGE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23465,
-        "currentAttemptNodes": 3465,
+        "attempts": 1,
+        "nodes": 4502,
+        "currentAttemptNodes": 4502,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -849,19 +849,19 @@
       "seed": 37,
       "ok": true,
       "words": [
-        "BOY",
-        "EAT",
-        "TRY",
-        "EAST",
-        "BEAST"
+        "HIS",
+        "SIN",
+        "SUN",
+        "THIS",
+        "MINUS"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 25469,
-        "currentAttemptNodes": 5469,
+        "attempts": 2,
+        "nodes": 14692,
+        "currentAttemptNodes": 4692,
         "completedLayouts": 1,
-        "prunedAmbiguity": 7,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -870,19 +870,19 @@
       "seed": 38,
       "ok": true,
       "words": [
-        "DIP",
-        "SEW",
-        "USE",
-        "WRAP",
-        "PAUSE"
+        "HAM",
+        "HOT",
+        "VET",
+        "HAVE",
+        "SHAME"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 5329,
-        "currentAttemptNodes": 5329,
+        "nodes": 6218,
+        "currentAttemptNodes": 6218,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -891,19 +891,19 @@
       "seed": 39,
       "ok": true,
       "words": [
-        "LID",
-        "PAD",
-        "PAN",
-        "PINE",
-        "DINER"
+        "ARC",
+        "CAB",
+        "ERA",
+        "DARE",
+        "BASIC"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 3933,
-        "currentAttemptNodes": 3933,
+        "attempts": 3,
+        "nodes": 28262,
+        "currentAttemptNodes": 8262,
         "completedLayouts": 1,
-        "prunedAmbiguity": 7,
+        "prunedAmbiguity": 9,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -912,19 +912,19 @@
       "seed": 40,
       "ok": true,
       "words": [
-        "ASH",
-        "TWO",
-        "VET",
-        "WASH",
-        "SOLVE"
+        "APT",
+        "OWE",
+        "TOW",
+        "WEEP",
+        "QUOTE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 6,
-        "nodes": 54171,
-        "currentAttemptNodes": 4171,
-        "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "attempts": 3,
+        "nodes": 23393,
+        "currentAttemptNodes": 3393,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -933,20 +933,20 @@
       "seed": 41,
       "ok": true,
       "words": [
-        "ART",
-        "EAT",
-        "EGG",
-        "MEAT",
-        "MERGE"
+        "AGE",
+        "ONE",
+        "TON",
+        "NEAR",
+        "AGENT"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4416,
-        "currentAttemptNodes": 4416,
+        "nodes": 4394,
+        "currentAttemptNodes": 4394,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
-        "prunedCoverage": 1,
+        "prunedCoverage": 0,
         "validationRejected": 0
       }
     },
@@ -954,19 +954,19 @@
       "seed": 42,
       "ok": true,
       "words": [
-        "ART",
-        "INK",
-        "TIN",
-        "KNIT",
-        "GRADE"
+        "HOT",
+        "SHE",
+        "TOE",
+        "SHOE",
+        "TEMPO"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 16504,
-        "currentAttemptNodes": 6504,
+        "attempts": 1,
+        "nodes": 5711,
+        "currentAttemptNodes": 5711,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -975,19 +975,19 @@
       "seed": 43,
       "ok": true,
       "words": [
-        "ALL",
-        "CUT",
-        "ILL",
-        "HILL",
-        "YACHT"
+        "BEE",
+        "ROW",
+        "WOE",
+        "REED",
+        "CROWD"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 5246,
-        "currentAttemptNodes": 5246,
+        "attempts": 8,
+        "nodes": 74807,
+        "currentAttemptNodes": 4807,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 6,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -996,19 +996,19 @@
       "seed": 44,
       "ok": true,
       "words": [
-        "BED",
-        "OFF",
-        "RAW",
-        "FEAR",
-        "BEARD"
+        "LAP",
+        "ONE",
+        "PAL",
+        "CAMP",
+        "ALONE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 7,
-        "nodes": 65424,
-        "currentAttemptNodes": 5424,
+        "attempts": 1,
+        "nodes": 6489,
+        "currentAttemptNodes": 6489,
         "completedLayouts": 1,
-        "prunedAmbiguity": 6,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1017,17 +1017,17 @@
       "seed": 45,
       "ok": true,
       "words": [
-        "ARC",
-        "CAP",
-        "ERA",
-        "AREA",
-        "PRESS"
+        "APT",
+        "ASK",
+        "SKY",
+        "PAST",
+        "PUPPY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4179,
-        "currentAttemptNodes": 4179,
+        "nodes": 6793,
+        "currentAttemptNodes": 6793,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1038,20 +1038,20 @@
       "seed": 46,
       "ok": true,
       "words": [
-        "CUT",
-        "SON",
-        "THE",
-        "NOSE",
-        "CHEST"
+        "CAP",
+        "CUP",
+        "USE",
+        "PACE",
+        "FOCUS"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 3600,
-        "currentAttemptNodes": 3600,
+        "nodes": 5830,
+        "currentAttemptNodes": 5830,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
-        "prunedCoverage": 1,
+        "prunedAmbiguity": 0,
+        "prunedCoverage": 0,
         "validationRejected": 0
       }
     },
@@ -1059,19 +1059,19 @@
       "seed": 47,
       "ok": true,
       "words": [
-        "BAR",
-        "NEW",
-        "SIR",
-        "NEWS",
-        "SIREN"
+        "ARC",
+        "CUT",
+        "FAR",
+        "FLAT",
+        "CRAWL"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 17576,
-        "currentAttemptNodes": 7576,
+        "nodes": 13180,
+        "currentAttemptNodes": 3180,
         "completedLayouts": 1,
-        "prunedAmbiguity": 5,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1080,19 +1080,19 @@
       "seed": 48,
       "ok": true,
       "words": [
-        "BUT",
-        "ERA",
-        "TAB",
-        "STAY",
-        "BERRY"
+        "ALL",
+        "HOT",
+        "LAW",
+        "WALL",
+        "TOUCH"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 14077,
-        "currentAttemptNodes": 4077,
+        "nodes": 16567,
+        "currentAttemptNodes": 6567,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1101,19 +1101,19 @@
       "seed": 49,
       "ok": true,
       "words": [
-        "NEW",
-        "ONE",
-        "WET",
-        "NEAT",
-        "OFTEN"
+        "MUD",
+        "SHE",
+        "THE",
+        "DUMB",
+        "DEPTH"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 25023,
-        "currentAttemptNodes": 5023,
+        "attempts": 5,
+        "nodes": 45880,
+        "currentAttemptNodes": 5880,
         "completedLayouts": 1,
-        "prunedAmbiguity": 6,
+        "prunedAmbiguity": 12,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1122,19 +1122,19 @@
       "seed": 50,
       "ok": true,
       "words": [
-        "CAN",
-        "ELF",
-        "MAN",
-        "NAME",
-        "CLEAN"
+        "SAG",
+        "SET",
+        "TEA",
+        "TEAR",
+        "GUARD"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 34274,
-        "currentAttemptNodes": 4274,
+        "attempts": 1,
+        "nodes": 4437,
+        "currentAttemptNodes": 4437,
         "completedLayouts": 1,
-        "prunedAmbiguity": 8,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1143,20 +1143,20 @@
       "seed": 51,
       "ok": true,
       "words": [
-        "ARC",
-        "RAG",
-        "ZIP",
-        "CLIP",
-        "CRAZY"
+        "MOB",
+        "SOB",
+        "USE",
+        "MOLD",
+        "AMUSE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 5146,
-        "currentAttemptNodes": 5146,
-        "completedLayouts": 1,
-        "prunedAmbiguity": 0,
-        "prunedCoverage": 0,
+        "attempts": 3,
+        "nodes": 23530,
+        "currentAttemptNodes": 3530,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 4,
+        "prunedCoverage": 2,
         "validationRejected": 0
       }
     },
@@ -1164,19 +1164,19 @@
       "seed": 52,
       "ok": true,
       "words": [
-        "RUN",
-        "SIT",
-        "YES",
-        "BITE",
-        "NURSE"
+        "ALL",
+        "ASK",
+        "SKI",
+        "BIAS",
+        "ALIKE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 33874,
-        "currentAttemptNodes": 3874,
+        "attempts": 1,
+        "nodes": 7674,
+        "currentAttemptNodes": 7674,
         "completedLayouts": 1,
-        "prunedAmbiguity": 9,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1185,19 +1185,19 @@
       "seed": 53,
       "ok": true,
       "words": [
-        "BAD",
-        "BAT",
-        "TAB",
-        "BATH",
-        "BADGE"
+        "KID",
+        "RID",
+        "SKI",
+        "SKIP",
+        "TIRED"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 16918,
-        "currentAttemptNodes": 6918,
+        "attempts": 1,
+        "nodes": 3956,
+        "currentAttemptNodes": 3956,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1206,17 +1206,17 @@
       "seed": 54,
       "ok": true,
       "words": [
-        "GEL",
-        "ILL",
-        "WIN",
-        "WILL",
-        "SWING"
+        "INN",
+        "RID",
+        "SIT",
+        "SEND",
+        "RINSE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23513,
-        "currentAttemptNodes": 3513,
+        "attempts": 2,
+        "nodes": 14745,
+        "currentAttemptNodes": 4745,
         "completedLayouts": 1,
         "prunedAmbiguity": 1,
         "prunedCoverage": 0,
@@ -1227,17 +1227,17 @@
       "seed": 55,
       "ok": true,
       "words": [
-        "FOR",
-        "OLD",
-        "RAY",
-        "GOLD",
-        "FLOOR"
+        "INK",
+        "SIN",
+        "SKY",
+        "KNIT",
+        "TASTY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4978,
-        "currentAttemptNodes": 4978,
+        "nodes": 4752,
+        "currentAttemptNodes": 4752,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1248,19 +1248,19 @@
       "seed": 56,
       "ok": true,
       "words": [
-        "INK",
-        "LAW",
-        "TIN",
-        "KNIT",
-        "BLAST"
+        "SAG",
+        "SEE",
+        "SKI",
+        "SEEK",
+        "ASIDE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 19337,
-        "currentAttemptNodes": 9337,
+        "attempts": 1,
+        "nodes": 3887,
+        "currentAttemptNodes": 3887,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1269,19 +1269,19 @@
       "seed": 57,
       "ok": true,
       "words": [
-        "RED",
-        "TRY",
-        "WAR",
-        "DEAR",
-        "REACT"
+        "APE",
+        "PEN",
+        "RIM",
+        "GRIM",
+        "MANGO"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 15255,
-        "currentAttemptNodes": 5255,
+        "attempts": 5,
+        "nodes": 43057,
+        "currentAttemptNodes": 3057,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 6,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1290,19 +1290,19 @@
       "seed": 58,
       "ok": true,
       "words": [
-        "ARC",
-        "CAN",
-        "NUT",
-        "TUNA",
-        "ROUTE"
+        "DOT",
+        "HEN",
+        "PEN",
+        "THEN",
+        "THIRD"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 7,
-        "nodes": 67624,
-        "currentAttemptNodes": 7624,
+        "attempts": 1,
+        "nodes": 5748,
+        "currentAttemptNodes": 5748,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1311,19 +1311,19 @@
       "seed": 59,
       "ok": true,
       "words": [
-        "NAP",
-        "PAN",
-        "RIP",
-        "RANK",
-        "BRICK"
+        "ANT",
+        "BOY",
+        "RAN",
+        "OBEY",
+        "CRANE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 3,
-        "nodes": 25817,
-        "currentAttemptNodes": 5817,
+        "nodes": 25000,
+        "currentAttemptNodes": 5000,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1332,19 +1332,19 @@
       "seed": 60,
       "ok": true,
       "words": [
-        "BED",
-        "DEN",
-        "WEB",
-        "NEWS",
-        "WIDEN"
+        "KIN",
+        "PER",
+        "SKI",
+        "KIND",
+        "SUPER"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 44740,
-        "currentAttemptNodes": 4740,
+        "attempts": 1,
+        "nodes": 4983,
+        "currentAttemptNodes": 4983,
         "completedLayouts": 1,
-        "prunedAmbiguity": 17,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1353,19 +1353,19 @@
       "seed": 61,
       "ok": true,
       "words": [
-        "BET",
-        "BUT",
-        "TIE",
-        "TUBE",
-        "FLEET"
+        "GUM",
+        "MUG",
+        "SUN",
+        "RUIN",
+        "MINUS"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 5,
-        "nodes": 42547,
-        "currentAttemptNodes": 2547,
+        "attempts": 2,
+        "nodes": 16588,
+        "currentAttemptNodes": 6588,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1374,20 +1374,20 @@
       "seed": 62,
       "ok": true,
       "words": [
-        "ALL",
-        "LOT",
-        "NET",
-        "TALL",
-        "TASTE"
+        "LAW",
+        "RAW",
+        "WAR",
+        "LAWN",
+        "STRAW"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 4329,
-        "currentAttemptNodes": 4329,
+        "attempts": 2,
+        "nodes": 16303,
+        "currentAttemptNodes": 6303,
         "completedLayouts": 1,
         "prunedAmbiguity": 1,
-        "prunedCoverage": 1,
+        "prunedCoverage": 0,
         "validationRejected": 0
       }
     },
@@ -1395,19 +1395,19 @@
       "seed": 63,
       "ok": true,
       "words": [
-        "NEW",
-        "NOW",
-        "WHO",
-        "NEWS",
-        "WHOLE"
+        "ANT",
+        "INK",
+        "TEA",
+        "MEAN",
+        "THINK"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4210,
-        "currentAttemptNodes": 4210,
+        "nodes": 6436,
+        "currentAttemptNodes": 6436,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1416,17 +1416,17 @@
       "seed": 64,
       "ok": true,
       "words": [
-        "TIE",
-        "WAX",
-        "WAY",
-        "AWAY",
-        "EXACT"
+        "FIN",
+        "PER",
+        "PIN",
+        "ACRE",
+        "KNIFE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 6961,
-        "currentAttemptNodes": 6961,
+        "attempts": 4,
+        "nodes": 34422,
+        "currentAttemptNodes": 4422,
         "completedLayouts": 1,
         "prunedAmbiguity": 2,
         "prunedCoverage": 0,
@@ -1437,19 +1437,19 @@
       "seed": 65,
       "ok": true,
       "words": [
-        "TEA",
-        "TEN",
-        "TOE",
-        "TENT",
-        "SWEAT"
+        "END",
+        "EVE",
+        "VAN",
+        "HAUL",
+        "HAVEN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 6,
-        "nodes": 53139,
-        "currentAttemptNodes": 3139,
+        "attempts": 3,
+        "nodes": 23177,
+        "currentAttemptNodes": 3177,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 3,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1458,17 +1458,17 @@
       "seed": 66,
       "ok": true,
       "words": [
-        "HEN",
-        "RAW",
-        "WIT",
-        "WHEN",
-        "THREE"
+        "BIN",
+        "EVE",
+        "ICY",
+        "EVEN",
+        "CABIN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 2838,
-        "currentAttemptNodes": 2838,
+        "nodes": 4074,
+        "currentAttemptNodes": 4074,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1479,17 +1479,17 @@
       "seed": 67,
       "ok": true,
       "words": [
-        "LID",
-        "ODD",
-        "ROD",
-        "WORD",
-        "BUILD"
+        "RAN",
+        "RUN",
+        "TAX",
+        "TAXI",
+        "LUNAR"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 24229,
-        "currentAttemptNodes": 4229,
+        "attempts": 1,
+        "nodes": 5317,
+        "currentAttemptNodes": 5317,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1500,19 +1500,19 @@
       "seed": 68,
       "ok": true,
       "words": [
-        "AIM",
-        "ART",
-        "WET",
-        "WAGE",
-        "IMAGE"
+        "FLU",
+        "HOT",
+        "TEN",
+        "WHEN",
+        "HOTEL"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23334,
-        "currentAttemptNodes": 3334,
-        "completedLayouts": 2,
-        "prunedAmbiguity": 2,
+        "attempts": 1,
+        "nodes": 3724,
+        "currentAttemptNodes": 3724,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1521,17 +1521,17 @@
       "seed": 69,
       "ok": true,
       "words": [
-        "DIG",
-        "RID",
-        "RUG",
-        "HARD",
-        "RIGHT"
+        "SET",
+        "TOE",
+        "TON",
+        "TUNA",
+        "NOISE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 4930,
-        "currentAttemptNodes": 4930,
+        "nodes": 3322,
+        "currentAttemptNodes": 3322,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1542,19 +1542,19 @@
       "seed": 70,
       "ok": true,
       "words": [
-        "FIT",
-        "SEE",
-        "SIR",
-        "RISE",
-        "FLEET"
+        "MAN",
+        "OWE",
+        "SEA",
+        "EARN",
+        "WOMAN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 6,
-        "nodes": 53227,
-        "currentAttemptNodes": 3227,
+        "nodes": 55030,
+        "currentAttemptNodes": 5030,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 6,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1563,19 +1563,19 @@
       "seed": 71,
       "ok": true,
       "words": [
-        "LIP",
-        "LOW",
-        "TOW",
-        "POND",
-        "PILOT"
+        "INK",
+        "RUN",
+        "SIN",
+        "SINK",
+        "DRUNK"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 10,
-        "nodes": 99642,
-        "currentAttemptNodes": 9642,
+        "attempts": 1,
+        "nodes": 5696,
+        "currentAttemptNodes": 5696,
         "completedLayouts": 1,
-        "prunedAmbiguity": 10,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1584,19 +1584,19 @@
       "seed": 72,
       "ok": true,
       "words": [
-        "CUP",
-        "PET",
-        "SET",
-        "VEST",
-        "UPSET"
+        "MAD",
+        "PIE",
+        "RIP",
+        "DAMP",
+        "EERIE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 13776,
-        "currentAttemptNodes": 3776,
+        "attempts": 1,
+        "nodes": 3650,
+        "currentAttemptNodes": 3650,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1605,19 +1605,19 @@
       "seed": 73,
       "ok": true,
       "words": [
-        "CAN",
-        "GEL",
-        "LEG",
-        "KING",
-        "CLEAN"
+        "ATE",
+        "CUE",
+        "TAG",
+        "GATE",
+        "COUCH"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 9758,
-        "currentAttemptNodes": 9758,
+        "attempts": 3,
+        "nodes": 25907,
+        "currentAttemptNodes": 5907,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 3,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1626,19 +1626,19 @@
       "seed": 74,
       "ok": true,
       "words": [
-        "HOT",
-        "SHE",
-        "TOP",
-        "SHOP",
-        "SWEEP"
+        "BIN",
+        "INK",
+        "ROB",
+        "BORN",
+        "BROOM"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 13663,
-        "currentAttemptNodes": 3663,
+        "attempts": 4,
+        "nodes": 34819,
+        "currentAttemptNodes": 4819,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 4,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1647,19 +1647,19 @@
       "seed": 75,
       "ok": true,
       "words": [
-        "ARM",
-        "EAR",
-        "SHE",
-        "FISH",
-        "SWEAR"
+        "ASH",
+        "HOW",
+        "ROW",
+        "SHOE",
+        "ARROW"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 2,
-        "nodes": 13435,
-        "currentAttemptNodes": 3435,
+        "nodes": 18420,
+        "currentAttemptNodes": 8420,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 3,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1668,19 +1668,19 @@
       "seed": 76,
       "ok": true,
       "words": [
-        "END",
-        "LIP",
-        "OWL",
-        "LION",
-        "PHONE"
+        "BAN",
+        "ILL",
+        "LID",
+        "BANG",
+        "GLIDE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 3532,
-        "currentAttemptNodes": 3532,
+        "attempts": 4,
+        "nodes": 35791,
+        "currentAttemptNodes": 5791,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 5,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1689,19 +1689,19 @@
       "seed": 77,
       "ok": true,
       "words": [
-        "ICE",
-        "ICY",
-        "SHY",
-        "PUSH",
-        "PRICE"
+        "LAB",
+        "PRO",
+        "ROB",
+        "BORE",
+        "PLACE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 5543,
-        "currentAttemptNodes": 5543,
+        "attempts": 2,
+        "nodes": 14467,
+        "currentAttemptNodes": 4467,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 4,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1710,17 +1710,17 @@
       "seed": 78,
       "ok": true,
       "words": [
-        "FIN",
-        "NUT",
-        "TIE",
-        "REEF",
-        "UNITE"
+        "ELK",
+        "PAR",
+        "RAT",
+        "LENS",
+        "SPARK"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 3576,
-        "currentAttemptNodes": 3576,
+        "nodes": 3329,
+        "currentAttemptNodes": 3329,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1731,17 +1731,17 @@
       "seed": 79,
       "ok": true,
       "words": [
-        "GEL",
-        "NEW",
-        "SHE",
-        "NEWS",
-        "SHELF"
+        "FUN",
+        "LAB",
+        "ROB",
+        "FULL",
+        "LABOR"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 3177,
-        "currentAttemptNodes": 3177,
+        "attempts": 2,
+        "nodes": 15946,
+        "currentAttemptNodes": 5946,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1752,19 +1752,19 @@
       "seed": 80,
       "ok": true,
       "words": [
-        "INK",
-        "KIT",
-        "TIE",
-        "EVEN",
-        "THINK"
+        "BAT",
+        "TAB",
+        "TOE",
+        "VIEW",
+        "ABOVE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 4,
-        "nodes": 34784,
-        "currentAttemptNodes": 4784,
-        "completedLayouts": 2,
-        "prunedAmbiguity": 0,
+        "nodes": 37039,
+        "currentAttemptNodes": 7039,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1773,17 +1773,17 @@
       "seed": 81,
       "ok": true,
       "words": [
-        "DEN",
-        "ROD",
-        "TRY",
-        "THAN",
-        "ENTRY"
+        "ASK",
+        "CAT",
+        "RUB",
+        "TASK",
+        "SCRUB"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 5199,
-        "currentAttemptNodes": 5199,
+        "nodes": 4845,
+        "currentAttemptNodes": 4845,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1794,18 +1794,18 @@
       "seed": 82,
       "ok": true,
       "words": [
-        "RAW",
-        "SHE",
-        "WAR",
-        "CODE",
-        "CRASH"
+        "ART",
+        "ERA",
+        "FAT",
+        "LEFT",
+        "FLARE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 33186,
-        "currentAttemptNodes": 3186,
-        "completedLayouts": 2,
+        "attempts": 1,
+        "nodes": 6572,
+        "currentAttemptNodes": 6572,
+        "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
@@ -1815,19 +1815,19 @@
       "seed": 83,
       "ok": true,
       "words": [
-        "CAB",
-        "CAN",
-        "NAP",
-        "HEAP",
-        "BACON"
+        "DOG",
+        "GOD",
+        "NOD",
+        "NEED",
+        "GREEN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 4099,
-        "currentAttemptNodes": 4099,
+        "attempts": 4,
+        "nodes": 39507,
+        "currentAttemptNodes": 9507,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1836,18 +1836,18 @@
       "seed": 84,
       "ok": true,
       "words": [
-        "PET",
-        "RAT",
-        "TAN",
-        "RIPE",
-        "GRAND"
+        "NOT",
+        "NUT",
+        "THE",
+        "HUGE",
+        "STUNT"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 2,
-        "nodes": 14628,
-        "currentAttemptNodes": 4628,
-        "completedLayouts": 1,
+        "attempts": 5,
+        "nodes": 45243,
+        "currentAttemptNodes": 5243,
+        "completedLayouts": 2,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
@@ -1857,20 +1857,20 @@
       "seed": 85,
       "ok": true,
       "words": [
-        "EAT",
-        "GAP",
-        "TAG",
-        "LEAP",
-        "GREAT"
+        "DYE",
+        "ERA",
+        "FAR",
+        "FEND",
+        "ERASE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 3,
-        "nodes": 25204,
-        "currentAttemptNodes": 5204,
+        "nodes": 24584,
+        "currentAttemptNodes": 4584,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
-        "prunedCoverage": 0,
+        "prunedCoverage": 3,
         "validationRejected": 0
       }
     },
@@ -1878,17 +1878,17 @@
       "seed": 86,
       "ok": true,
       "words": [
-        "ASH",
-        "ERA",
-        "TOE",
-        "AREA",
-        "THREE"
+        "LET",
+        "OWL",
+        "WIT",
+        "HOWL",
+        "WHITE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23677,
-        "currentAttemptNodes": 3677,
+        "attempts": 1,
+        "nodes": 3590,
+        "currentAttemptNodes": 3590,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -1899,19 +1899,19 @@
       "seed": 87,
       "ok": true,
       "words": [
-        "AIR",
-        "BEE",
-        "RED",
-        "BEAD",
-        "BREED"
+        "ELF",
+        "ERA",
+        "RAY",
+        "FLEE",
+        "CARVE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
         "attempts": 1,
-        "nodes": 5140,
-        "currentAttemptNodes": 5140,
+        "nodes": 2882,
+        "currentAttemptNodes": 2882,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1920,19 +1920,19 @@
       "seed": 88,
       "ok": true,
       "words": [
-        "ELF",
-        "FAT",
-        "SHE",
-        "BEAT",
-        "SHELF"
+        "HUE",
+        "MAN",
+        "PIN",
+        "WHIP",
+        "HUMAN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 34979,
-        "currentAttemptNodes": 4979,
+        "attempts": 7,
+        "nodes": 64661,
+        "currentAttemptNodes": 4661,
         "completedLayouts": 1,
-        "prunedAmbiguity": 0,
+        "prunedAmbiguity": 2,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1941,19 +1941,19 @@
       "seed": 89,
       "ok": true,
       "words": [
-        "AIM",
-        "FAR",
-        "ICY",
-        "FARM",
-        "JUICY"
+        "END",
+        "RAG",
+        "RIG",
+        "SEND",
+        "CIGAR"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 36557,
-        "currentAttemptNodes": 6557,
+        "attempts": 3,
+        "nodes": 23711,
+        "currentAttemptNodes": 3711,
         "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1962,19 +1962,19 @@
       "seed": 90,
       "ok": true,
       "words": [
-        "DUE",
-        "KIT",
-        "SKY",
-        "KITE",
-        "SUITE"
+        "ASH",
+        "GIG",
+        "RAT",
+        "SIGH",
+        "WRATH"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 4779,
-        "currentAttemptNodes": 4779,
+        "attempts": 4,
+        "nodes": 34906,
+        "currentAttemptNodes": 4906,
         "completedLayouts": 1,
-        "prunedAmbiguity": 4,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -1983,19 +1983,19 @@
       "seed": 91,
       "ok": true,
       "words": [
-        "ILL",
-        "LIE",
-        "OFF",
-        "TELL",
-        "FLUTE"
+        "COW",
+        "LIP",
+        "OIL",
+        "CLIP",
+        "CLOWN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 4,
-        "nodes": 35009,
-        "currentAttemptNodes": 5009,
+        "attempts": 3,
+        "nodes": 26487,
+        "currentAttemptNodes": 6487,
         "completedLayouts": 1,
-        "prunedAmbiguity": 2,
+        "prunedAmbiguity": 5,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -2004,17 +2004,17 @@
       "seed": 92,
       "ok": true,
       "words": [
-        "END",
-        "HEN",
-        "THE",
-        "NICE",
-        "THIRD"
+        "CAN",
+        "KID",
+        "KIN",
+        "CASE",
+        "NAKED"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 27152,
-        "currentAttemptNodes": 7152,
+        "attempts": 1,
+        "nodes": 4684,
+        "currentAttemptNodes": 4684,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -2025,19 +2025,19 @@
       "seed": 93,
       "ok": true,
       "words": [
-        "ASH",
-        "HIP",
-        "PIT",
-        "SHIP",
-        "STEEL"
+        "AND",
+        "EYE",
+        "YET",
+        "TEND",
+        "CANDY"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23073,
-        "currentAttemptNodes": 3073,
-        "completedLayouts": 1,
-        "prunedAmbiguity": 1,
+        "attempts": 4,
+        "nodes": 34378,
+        "currentAttemptNodes": 4378,
+        "completedLayouts": 2,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -2046,17 +2046,17 @@
       "seed": 94,
       "ok": true,
       "words": [
-        "POT",
-        "TOP",
-        "VET",
-        "VEST",
-        "SPORT"
+        "EAR",
+        "PEA",
+        "PRO",
+        "PEAK",
+        "ROAST"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 6517,
-        "currentAttemptNodes": 6517,
+        "attempts": 3,
+        "nodes": 27219,
+        "currentAttemptNodes": 7219,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -2067,19 +2067,19 @@
       "seed": 95,
       "ok": true,
       "words": [
-        "ASK",
-        "RAY",
-        "SKY",
-        "CASE",
-        "ROCKY"
+        "ATE",
+        "SUE",
+        "TAP",
+        "PIER",
+        "SETUP"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 6,
-        "nodes": 54118,
-        "currentAttemptNodes": 4118,
-        "completedLayouts": 3,
-        "prunedAmbiguity": 12,
+        "attempts": 2,
+        "nodes": 15307,
+        "currentAttemptNodes": 5307,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 1,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -2088,17 +2088,17 @@
       "seed": 96,
       "ok": true,
       "words": [
-        "EAR",
-        "RAW",
-        "WHY",
-        "EARN",
-        "WHERE"
+        "ILL",
+        "LIE",
+        "NOD",
+        "ONLY",
+        "YIELD"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 24531,
-        "currentAttemptNodes": 4531,
+        "attempts": 2,
+        "nodes": 12877,
+        "currentAttemptNodes": 2877,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -2109,17 +2109,17 @@
       "seed": 97,
       "ok": true,
       "words": [
-        "HAM",
-        "INN",
-        "SHE",
-        "NAME",
-        "SHAME"
+        "SAY",
+        "TAB",
+        "TEA",
+        "BURY",
+        "BEAST"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 1,
-        "nodes": 3274,
-        "currentAttemptNodes": 3274,
+        "attempts": 3,
+        "nodes": 24264,
+        "currentAttemptNodes": 4264,
         "completedLayouts": 1,
         "prunedAmbiguity": 0,
         "prunedCoverage": 0,
@@ -2130,19 +2130,19 @@
       "seed": 98,
       "ok": true,
       "words": [
-        "MAP",
-        "PAL",
-        "YES",
-        "POSE",
-        "APPLY"
+        "MAT",
+        "NET",
+        "PIG",
+        "GONE",
+        "IMAGE"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 23730,
-        "currentAttemptNodes": 3730,
-        "completedLayouts": 2,
-        "prunedAmbiguity": 1,
+        "attempts": 2,
+        "nodes": 14578,
+        "currentAttemptNodes": 4578,
+        "completedLayouts": 1,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }
@@ -2151,19 +2151,19 @@
       "seed": 99,
       "ok": true,
       "words": [
-        "CUT",
-        "HOT",
-        "OUT",
-        "TRAP",
-        "TOUCH"
+        "DEN",
+        "NOW",
+        "OWE",
+        "FOOD",
+        "WIDEN"
       ],
-      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+      "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
       "stats": {
-        "attempts": 3,
-        "nodes": 25350,
-        "currentAttemptNodes": 5350,
+        "attempts": 2,
+        "nodes": 15882,
+        "currentAttemptNodes": 5882,
         "completedLayouts": 1,
-        "prunedAmbiguity": 5,
+        "prunedAmbiguity": 0,
         "prunedCoverage": 0,
         "validationRejected": 0
       }

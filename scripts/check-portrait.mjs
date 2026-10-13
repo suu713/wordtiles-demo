@@ -15,7 +15,7 @@ try {
   for (const [width,height] of [[1680,900],[1366,768],[1280,720],[1024,600],[768,650],[390,844],[360,640],[320,568]]) {
     const context=await browser.newContext({ viewport:{ width,height },reducedMotion:'reduce' });
     const page=await context.newPage();
-    await page.goto(process.env.WORDTILES_URL || 'http://127.0.0.1:4173/?v=14');
+    await page.goto(process.env.WORDTILES_URL || 'http://127.0.0.1:4173/?v=15');
     await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight),true);
     assert.equal(await page.locator('.lobby-panel').evaluate(el=>{const r=el.getBoundingClientRect();return r.top>=0&&r.left>=0&&r.bottom<=innerHeight&&r.right<=innerWidth}),true);
@@ -69,7 +69,7 @@ try {
     if(width<=760) await page.locator('#editor-toggle').click();
     await page.locator('#algorithm').selectOption('2');
     await page.locator('#dictionary-source').selectOption('graded');
-    await page.locator('#lexicon-status').filter({hasText:'新词库 21,094'}).waitFor({state:'attached'});
+    await page.locator('#lexicon-status').filter({hasText:'游戏词库 7,618'}).waitFor({state:'attached'});
     await page.locator('#options-menu').selectOption('lexicon');
     assert.equal(await page.locator('#unreviewed-mode').count(),0);
     await page.waitForFunction(()=>!document.querySelector('#generate-seed').disabled);

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "wordtiles-v1",
+  "generatorVersion": "backtrack-v1.0.0",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c",
+  "seed": 6,
+  "rows": 3,
+  "cols": 3,
+  "maxCellUses": 3,
+  "letters": [
+    "I",
+    "L",
+    "L",
+    "D",
+    "X",
+    "T",
+    "S",
+    "I",
+    "H"
+  ],
+  "initialCounts": [
+    3,
+    3,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    1
+  ],
+  "targets": [
+    {
+      "id": "W0",
+      "word": "ILL",
+      "canonicalPath": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W1",
+      "word": "LID",
+      "canonicalPath": [
+        1,
+        0,
+        3
+      ]
+    },
+    {
+      "id": "W2",
+      "word": "SIX",
+      "canonicalPath": [
+        6,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "W3",
+      "word": "DILL",
+      "canonicalPath": [
+        3,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "W4",
+      "word": "SIXTH",
+      "canonicalPath": [
+        6,
+        7,
+        4,
+        5,
+        8
+      ]
+    }
+  ]
+}

@@ -2,80 +2,80 @@
   "schemaVersion": 1,
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
-  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c",
   "seed": 20261010,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
-    "F",
-    "O",
-    "Y",
-    "P",
-    "R",
-    "T",
     "A",
-    "L",
-    "C"
+    "S",
+    "I",
+    "T",
+    "E",
+    "D",
+    "K",
+    "E",
+    "N"
   ],
   "initialCounts": [
+    3,
+    3,
+    1,
     2,
+    3,
     2,
     1,
-    3,
     2,
-    1,
-    3,
-    3,
     1
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "FOR",
+      "word": "ATE",
       "canonicalPath": [
         0,
-        1,
+        3,
         4
       ]
     },
     {
       "id": "W1",
-      "word": "LAP",
+      "word": "END",
       "canonicalPath": [
         7,
-        6,
-        3
+        8,
+        5
       ]
     },
     {
       "id": "W2",
-      "word": "PAL",
+      "word": "SAT",
       "canonicalPath": [
-        3,
-        6,
-        7
-      ]
-    },
-    {
-      "id": "W3",
-      "word": "CLAP",
-      "canonicalPath": [
-        8,
-        7,
-        6,
+        1,
+        0,
         3
       ]
     },
     {
+      "id": "W3",
+      "word": "SEEK",
+      "canonicalPath": [
+        1,
+        4,
+        7,
+        6
+      ]
+    },
+    {
       "id": "W4",
-      "word": "FORTY",
+      "word": "ASIDE",
       "canonicalPath": [
         0,
         1,
-        4,
+        2,
         5,
-        2
+        4
       ]
     }
   ]

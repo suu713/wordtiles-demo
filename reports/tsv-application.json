@@ -5,23 +5,34 @@
     "description": "分级词表：由 tools/build-wordlist.py 从 ECDICT（MIT）生成；单词\t档位(1非常常用-5非常罕见)\t释义",
     "license": "MIT (as declared in the supplied TSV header)"
   },
-  "version": "wordtiles-tsv-20261010-9c5b22c2b994",
-  "entries": 21094,
-  "countsByTier": {
-    "1": 1564,
-    "2": 1882,
-    "3": 2962,
-    "4": 5353,
-    "5": 9333
+  "review": {
+    "version": "wordtiles-game-review-20261013-v2",
+    "sha256": "12baad0fe26c165a7c2da6fbeb5588d52868d4e4fb3294ecdf1e36f459da6398",
+    "sourceCount": 21094,
+    "approvedSourceCount": 6135,
+    "originalPackageCount": 6791,
+    "originalPackageSha256": "01f0e935e537cb6883fd9587b32ccfdc282f8d7928dbf0ece30262216ed4d43f",
+    "approvedCount": 7618,
+    "scope": "原包五语言关卡全部开放；原包目标和额外词优先豁免禁用；中文释义独立审核",
+    "whitelistVersion": "wordtiles-common-base-20261010-v2"
   },
-  "targetDictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994",
-  "targetCandidates": 1470,
+  "version": "wordtiles-reviewed-9c5b22c2b994-12baad0fe26c",
+  "entries": 7618,
+  "countsByTier": {
+    "1": 1410,
+    "2": 1310,
+    "3": 1343,
+    "4": 1326,
+    "5": 746
+  },
+  "targetDictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c",
+  "targetCandidates": 2925,
   "fixtureSeed": 20261010,
   "targets": [
-    "FOR",
-    "LAP",
-    "PAL",
-    "CLAP",
-    "FORTY"
+    "ATE",
+    "END",
+    "SAT",
+    "SEEK",
+    "ASIDE"
   ]
 }

@@ -1,11 +1,11 @@
-import { createNeighbors, normalizeDictionary } from './rules.js?v=14';
+import { createNeighbors, normalizeBonusDictionary } from './rules.js?v=15';
 
 const dictionaryTries = new WeakMap();
 function dictionaryTrie(dictionary) {
   const cached = dictionaryTries.get(dictionary);
   if (cached) return cached;
   const root = { children: new Map() };
-  for (const word of normalizeDictionary(dictionary)) {
+  for (const word of normalizeBonusDictionary(dictionary)) {
     let node = root;
     for (const letter of word) {
       if (!node.children.has(letter)) node.children.set(letter, { children: new Map() });

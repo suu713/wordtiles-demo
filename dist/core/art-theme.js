@@ -1,4 +1,4 @@
-import manifest from '../art/paris/manifest.json?v=14' with {type:'json'};
+import manifest from '../art/paris/manifest.json?v=15' with {type:'json'};
 
 // Load both screens and their interactive states before the first playable frame.
 export async function preloadArt() {

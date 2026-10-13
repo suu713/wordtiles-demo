@@ -1,4 +1,4 @@
-import { calculateLevelSolutions } from './core/level-solutions.js?v=14';
+import { calculateLevelSolutions } from './core/level-solutions.js?v=15';
 self.onmessage = ({ data }) => {
   self.postMessage({ requestId:data.requestId, result:calculateLevelSolutions(data.level, data.dictionary, data.options) });
 };

@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>原包词汇处理规则与释义来源</title>
+<style>body{font:16px/1.8 system-ui,sans-serif;color:#253a31;background:#fcfaf4;max-width:1120px;margin:32px auto;padding:0 20px}h1{font-size:28px}h2{font-size:22px;margin-top:32px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px;border:1px solid #d8dfd1}th{background:#edf2e7}code{word-break:break-all}a{color:#a04c2f}.table{overflow:auto}details{padding:10px;border-bottom:1px solid #ddd}.note{padding:16px;background:#f2eddf}</style>
+<h1>原包词汇处理规则与释义来源</h1>
+<p>核查对象：你提供的 Word Tiles 1.4.0 XAPK，包名 <code>com.agavegames.wordtiles</code>。SHA-256：<code>{{packageHash}}</code>。本报告读取原始关卡、包内英文释义，并核对 Unity IL2CPP 的 ARM 代码；没有运行手机 APK。已确认的规则对应这份本地包，不把无法取得的远程配置或制作方意图当成事实。</p>
+<h2>1. BRA 保留；原包词不禁止</h2>
+<p>按你的最新要求，原包五语言关卡里的目标词和额外词全部保留，算法1的 {{enabledLevels}} 个不同关卡和原顺序完整恢复。英语原包有 {{originalEnglishWords}} 个不同目标／额外词，均可接收与收录，不受项目内容禁词表限制。算法2保留原包身份：原包目标词加入目标候选，原包额外词全部加入额外词库；仅因一个词在原包做额外词，不自动将其升级为目标。BRA 在原包是目标，因此算法2可以出题和收录。RATED 在原包仅为额外词，可以收录，仍不自动改成 RATE。</p>
+<p>这里“原包词”以实际关卡的 <code>target_words / extra_words</code> 为依据，不把仅在释义文件出现的词自动视为可接受答案。TIT 和 BOA 有释义，但这批英文关卡没有将它们列为目标或额外词。“有解释”和“能作为答案”是两件事。</p>
+<h2>2. 原包如何判词：先看本关列表</h2>
+<ol><li>路径必须四向相邻、格子仍可用、同一次连接不重复格子。可拐弯，回拖一步可撤销上个格子。</li><li>精确命中本关目标列表：未找到过才完成目标并消耗格子。</li><li>精确命中本关额外词列表：未找到过才收入本关额外词包，不扣格子次数、不推进目标完成。</li><li>两个列表都没有：无效词。包内有释义、另一关出现过或它是某词的复数，都不能使它在本关放行。不会自动还原词形。</li><li>同关同一拼写只收一次，换路径也不能重复赚额外词进度；目标与额外词共用已收拼写检查。</li></ol>
+<p>运行时不是穷举整棋盘所有词，也不是查询一般英语词典；每关事先保存了额外词列表。离线制作这些列表用了穷举、词典查询、人工编辑还是组合方法，现有包不足以确认。</p>
+<p>额外词本身不消耗格子，但先完成目标会让格子消失，有些额外词随后就连不出来。额外词不要求全部找到，过关只检查目标；原包没有保证所有额外词在任意目标完成顺序下仍可找到。</p>
+<h2>3. 频率：看固定关卡安排，没有查到成人词专用概率</h2>
+<p>下面分别统计 3,459 个不同英文关卡文件与主线 5,000 个位置。主线有重复关卡，数字会不同。比例的分母均为5,000，它表示本地关卡表覆盖率，不能当作随机抽词概率。</p>
+<div class="table"><table><tr><th>词</th><th>不同关目标</th><th>不同关额外列表</th><th>主线目标位置</th><th>主线额外位置</th><th>首次目标关号</th><th>首次额外关号</th></tr>{{frequencyTable}}</table></div>
+<p>BRA 所有相关条目标为 Normal（type=0）。主线目标关号：{{braPositions}}。第{{braFirst}}关就会作目标，不能说只安排在很后面的关。相邻两次目标的关号差在 {{braMinGap}}～{{braMaxGap}} 之间，不是固定每N关出现一次。</p>
+<p>词条类型是 Normal=0、Rare=1、Hard=2，既不是网页 TSV 的1～5档词频，也不是成人级别。SEX、ASS、BOOB 的相关额外条目全部是 Normal；COCK、PENIS、NUDE 有普通和 Hard 条目。同词在不同关可能有不同类型。没有找到成人义项导致额外降权、固定间隔或限制次数的规则；能确认表里出现了多少次，不能推测制作方为什么这样安排。</p>
+<h2>4. 原包释义从哪里来，显示哪些内容</h2>
+<p>英文解释在 <code>assets/Definitions/english/a.json</code> 至 <code>z.json</code>：26文件、16,618词条。资源只有拼写、词性和英文义项，没有逐词成人标签或可见性标记，与网页 words.tsv 的中文来源无关。</p>
+<p>原包词典入口使用<strong>本关已经找到的目标词</strong>。额外词进入额外词包，不会因此进入这个目标词释义列表。过关时也保存本关目标词与释义供完成后查看。BRA、NAKED 作目标时可查看释义；SEX、ASS、COCK、PENIS、NUDE、BOOB 在这批关卡中只作额外词，所以不会因找到它们就进入本关目标释义列表。这是目标／额外词分类的结果，不能叫成人语义审核开关。</p>
+<p>显示代码按 senses 保存顺序逐项拼接“编号＋可选词性＋解释”，换行展示全部已存义项，没有按敏感词、词频或最常用义过滤。每词最多3个义项是这批资源的实际数量，显示代码没有额外只取前3条的判断。词义找不到或 senses 为空返回空文本，判词仍由本关列表决定。</p>
+<p>BRA 只有正常衣物义：“女性用于支撑胸部的内衣”。GOOSE 有“鹅／愚笨无能的人／鹅肉”，没有 TSV 的成人动词义，但仍有贬义。NATURAL 有“必定成功的人／音乐还原记号／掷骰赌博中首轮获胜”，没有优先展示“自然的”。PRIVATE 有“军队最低等级士兵／私人的／涉及隐私的”，没有 TSV 的“阴部”。SEX 的资源仍有性行为、性别、性冲动三个义项，说明原包资源没有彻底清掉成人解释，只是它在这批关卡中仅为额外词。</p>
+<p>ASS、COCK、PENIS 没有英文释义条目，却能作为本关列出的额外词被接受。反过来 BOA 有释义，在主线第4关也能四向连出，但本关两份列表没有它，仍然无效。“缺释义”不等于禁词，“有释义”不等于收录。</p>
+{{definitionExamples}}
+<h2>5. 收录、奖励与反馈</h2>
+<ul><li>换关重建本关收词列表。保存进度会记录已收目标和额外词，恢复本关可读回。已确认的释义词典是本关目标查看器，不能等同于网页新增的跨关永久词典。</li><li>额外词奖励有独立跨关计数。门槛为正且计数未满时，每个新额外词加1；Normal、Rare、Hard 都是1。Rare／Hard 可以触发对应文字反馈，不增加奖励权重。</li><li>满额后仍可收入本关额外词包，奖励计数不再增加，不结转超额。领取后计数归零、已领取次数加1；本关已收词不清空，不能马上重复刷同词。</li><li>普通领取给该档 Reward 金币，激励广告领取给2倍。门槛与奖励取 RemoteConfig 的 ExtraWordCollectLevels；配置为空时1词／0币只是兜底值，不是已核实的正常奖励表。</li><li>词典有赞／踩按钮，会保存本次反馈及待上报数据。核查的即时判词流程没有按“踩”禁词、改释义或改本关词频的调用。运营之后是否据反馈改库，安装包不能证明。</li><li>词典可见性经过功能配置和开放条件。当前线上是否开启、从第几关开放可能依赖远程配置，不能只看本地文件就给出固定数值。</li></ul>
+<h2>6. 网页中文来源与本次修改</h2>
+<p><code>C:/Users/huyi/Downloads/words.tsv</code> 第2231行就是 <code>BRA\t3\tn. 奶罩</code>。该表共21,094词，文件头声明由 tools/build-wordlist.py 从 ECDICT（MIT）生成。此前网页直接打包第三列显示，没有调用 GPT 或在线翻译。“一般”来自第二列档位3，不能证明释义通过游戏审核。项目缺少该上游工具，不能补称已核实它的分级算法。</p>
+<p>原表完整保留，SHA-256：<code>{{sourceHash}}</code>。现在 BRA 显示“文胸；胸罩”；GOOSE 为“鹅”，NATURAL 为“自然的；天然的”，PRIVATE 为“私人的；私立的”，并纠正 KOALA、HEDGEHOG 等明显译义错误。</p>
+<p>词语准入与展示义分开：不便展示的释义暂不显示，词仍可连出并收录，不因此禁止原包词，不把单词替换成另一拼写。展示义只是所选的常用解释，不代表全部词义；比如 SEX 显示“性别”不会否认它还有成人义。</p>
+<p>当前英文运行库 {{approvedWords}} 词：源表启用 {{approvedSourceWords}} 词，另有 {{missingSource}} 个原包词没有 TSV 行，保留但不伪造中文释义或频率。词频模式只使用有来源的 TSV 档位；缺档位的原包目标可在算法2完整候选模式使用。非原包词仍按既有原形白名单和排除规则处理。中文校订{{correctionsCount}}条，暂不展示释义{{hiddenDefinitions}}条，逐词表保留处理原因。这是网页项目政策，不能说成 APK 自带规则，也不能说已由人工完整审查全部英语义项。</p>
+<p>五语言原包关卡完整恢复，合法原包旧收藏及先前归档记录恢复并保留首次日期。网页永久词典继续按你之前要求收目标和额外词，与 APK 的本关目标释义列表不同。</p>
+<div class="table"><table><tr><th>词</th><th>TSV原义</th><th>网页显示义</th></tr>{{corrections}}</table></div>
+<h2>7. 可复核文件与证据定位</h2>
+<p><a href="apk-word-policy.json">原包关号、频率、类型及释义原文</a> · <a href="game-word-review.tsv">21,094词逐条审计</a> · <a href="game-word-review.json">网页词库处理汇总</a> · <a href="policy.json">网页校订和准入规则</a> · <a href="words.tsv">原始词表</a></p>
+<p>代码定位：ObjectiveService.IsValidWord 0xf77904；TryCollect 0xf73ce0；ShowInGameDictionaryPopup 0xf82e54（调用 GetCollectedTargetWords）；GetDefinitionText 0xeaa394（逐项格式化）；TryGetDefinition 0xeaa2f0；CaptureCompletedLevelWords 0xeab4bc；MergeShard 0xeab6e4；ExtraWordService.RegisterExtraWordCollected 0xf76c90。仓库脚本 scripts/analyze-apk-word-policy.py 可重建统计与映射。</p>
+<p class="note">未确认：离线词表制作流程、制作方完整内容审核政策、成人词专用概率、某个义项为何保留或缺失、当前远程奖励值和词典开放关号。不能将这些未知项编造成规则。网页审核版本：{{policyVersion}}。</p></html>

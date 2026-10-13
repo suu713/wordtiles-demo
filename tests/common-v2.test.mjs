@@ -9,34 +9,38 @@ import {validateAlgorithmLevel,createAlgorithmSession} from '../dist/core/algori
 import {calculateLevelStatistics} from '../dist/core/level-statistics.js';
 import {findWordPaths} from '../dist/core/rules.js';
 import {checkV1Independently,permutations} from '../scripts/independent-v1-check.mjs';
+import {reviewWordlist,parseWordlist} from '../scripts/lib/review-wordlist.mjs';
 
 const json=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
 const dictionary=createBaseDictionary([3,3,3,4,5]), fixture=await json('../examples/tsv/seed_20261010.json');
 
-test('新TSV21094词逐字段打包，原档位与中文释义未修改，版本包含输入哈希',async()=>{
+test('21094条原TSV完整保留，运行库只发布审核通过词与有来源的释义',async()=>{
   const bytes=await readFile(new URL('../data/words.tsv',import.meta.url)), packaged=await json('../dist/wordlist.json');
-  assert.equal(WORD_ENTRIES.length,21094);assert.equal(BONUS_DICTIONARY.words.length,21094);
+  const policy=await json('../data/game-review/policy.json'),white=await json('../data/common-v2/dictionary.json');
+  assert.equal(parseWordlist(bytes).entries.length,21094);
+  assert.equal(WORD_ENTRIES.length,7618);assert.equal(BONUS_DICTIONARY.words.length,7618);
+  assert.deepEqual(packaged,reviewWordlist(bytes,white,policy,await json('../data/game-review/original-package.json')).library);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),packaged.source.sha256);
-  for(const line of bytes.toString('utf8').split(/\r?\n/)) {
-    if(!line||line.startsWith('#'))continue;
-    const [word,tier,definition]=line.split('\t');assert.deepEqual(wordEntryFor(word),{word,tier:Number(tier),definition});
-  }
+  assert.equal(packaged.source.sha256,'9c5b22c2b9949cb493f111d1ab5b1cc1da10f6b9ecb1fbf6e2546a019a1258c6');
+  for(const entry of parseWordlist(bytes).entries)if(wordEntryFor(entry.word))assert.equal(wordEntryFor(entry.word).tier,entry.tier);
   assert.equal(wordEntryFor('CAT').definition,'猫');assert.equal(wordEntryFor('HELLO').definition,'你好');
-  assert.equal(WORDLIST_VERSION,'wordtiles-tsv-20261010-9c5b22c2b994');
+  assert.match(WORDLIST_VERSION,/^wordtiles-reviewed-9c5b22c2b994-[a-f0-9]{12}$/);
 });
 
-test('原3333白名单完整保留，实际出题为新TSV交集2857词，当前候选1470',async()=>{
-  assert.equal(COMMON_DICTIONARY.words.length,3333);assert.equal(approvedWordCount,2857);assert.equal(dictionary.words.length,1470);
+test('原3333白名单保留，原包词豁免后5114个目标词，当前3至5字母候选2925',async()=>{
+  assert.equal(COMMON_DICTIONARY.words.length,3333);assert.equal(approvedWordCount,5114);assert.equal(dictionary.words.length,2925);
   assert.deepEqual(await readFile(new URL('../dist/common-v2/dictionary.json',import.meta.url)),await readFile(new URL('../data/common-v2/dictionary.json',import.meta.url)));
   assert.ok(wordGate.forLengths([9,10]).words.includes('STRAWBERRY'));
   assert.ok(createBaseDictionary([7]).words.includes('TEACHER'));
-  assert.equal(WORD_ENTRIES.every(entry=>entry.word.length>=3&&entry.word.length<=8),true);
+  assert.equal(WORD_ENTRIES.every(entry=>entry.word.length>=3&&entry.word.length<=10),true);
   assert.equal(Object.isFrozen(WORD_ENTRIES),true);
 });
 
-test('新词表里的NAT/DELL仍不能作目标；变形不自动还原，独立派生词不误删',()=>{
-  assert.equal(wordEntryFor('NAT').word,'NAT');assert.equal(wordEntryFor('DELL').word,'DELL');
-  for(const word of ['NAT','TEL','DELL','RATED','APPLES','CATS','WENT','RUNNING','WOMEN','FEET','HAPPIER','SAW','ROSE','LEFT','LAD','OAT']) assert.equal(isTargetAllowed(word),false,word);
+test('保持原包目标和额外词角色；不自动还原词形，派生词不误删',async()=>{
+  assert.equal(wordEntryFor('NAT'),null);assert.equal(wordEntryFor('DELL').definition,'n. 小谷；幽谷');
+  const original=await json('../data/game-review/original-package.json');
+  for(const word of ['NAT','TEL','DELL','RATED','APPLES','CATS','WENT','RUNNING','WOMEN','FEET','HAPPIER','SAW','ROSE','LEFT','LAD','OAT']) assert.equal(isTargetAllowed(word),original.targetWordsByLanguage.english.includes(word),word);
+  assert.equal(isTargetAllowed('BRA'),true);
   for(const word of ['AND','RATE','APPLE','CAT','RUN','WOMAN','FOOT','HAPPY','BUS','GLASS','KING','TEACHER','FLOWER','PUDDING','CEILING','CUT','PUT','HIT','READ']) assert.equal(isTargetAllowed(word),true,word);
 });
 
@@ -54,7 +58,7 @@ test('生成与导入共用当前完整对象，旧TSV/V2/1602词库、数组、
 
 test('当前TSV默认seed20261010逐字段等于新样例，原算法源码哈希不变',async()=>{
   const result=generateLevel({},dictionary,20261010);assert.equal(result.ok,true);assert.deepEqual(result.level,fixture);
-  assert.deepEqual(result.level.targets.map(t=>t.word),['FOR','LAP','PAL','CLAP','FORTY']);
+  assert.deepEqual(result.level.targets.map(t=>t.word),['ATE','END','SAT','SEEK','ASIDE']);
   assert.deepEqual(checkV1Independently(result.level,dictionary),{statesChecked:32});
   const source=await readFile(new URL('../src/wordtiles-algorithm.ts',import.meta.url));
   assert.equal(createHash('sha256').update(source).digest('hex'),'03d7725073a78b68c02dbf7176082f0b7e2b17ffcb788a7197322b80975d0650');
@@ -71,7 +75,7 @@ test('新关卡120种真实顺序都归零，重开和导出保持初始数据',
 });
 
 test('旧LAD/OAT/V2样例、违规目标、破损路径次数整关拒绝且不改输入',async()=>{
-  const levels=[await json('../dist/sample.json'),await json('../examples/seed_20261010.json'),await json('../examples/common-v2/seed_20261010.json')];
+  const levels=[await json('../examples/seed_20261010.json'),await json('../examples/common-v2/seed_20261010.json')];
   for(const change of [l=>l.targets[0].word='RATED',l=>l.initialCounts[0]++,l=>l.targets[0].canonicalPath=[0,4,8]]) {const level=structuredClone(fixture);change(level);levels.push(level);}
   for(const level of levels) {const before=structuredClone(level);assert.equal(validateAlgorithmLevel(level,dictionary).valid,false);assert.throws(()=>createAlgorithmSession(level,dictionary));assert.deepEqual(level,before);}
 });
@@ -97,12 +101,13 @@ test('档位只用新TSV原分类缩小白名单，未审核开关拒绝，不�
   assert.equal(wordEntryFor('CAT').tier,1);assert.ok(!('zipf' in wordEntryFor('CAT')));
 });
 
-test('完整新词表只扩展有效额外词，不放行目标；额外词不扣次数或完成目标',()=>{
+test('额外词也只用审核库，不扣次数或完成目标，不能绕过选定目标候选',()=>{
   const game=createAlgorithmSession(fixture,dictionary,{bonusDictionary:BONUS_DICTIONARY});
   const stats=calculateLevelStatistics(game.initial,BONUS_DICTIONARY);
-  const word=stats.extraWords.find(word=>!isTargetAllowed(word));assert.ok(word,'fixture needs a non-target whitelist bonus word');
+  const word=stats.extraWords[0];assert.ok(word,'fixture needs a reviewed extra word');
   const path=findWordPaths(game.initial.board.letters,word,null,null,game.initial.board)[0],before=game.snapshot();
   const result=game.submit(path);assert.equal(result.reason,'extra-word');assert.equal(result.word,word);assert.deepEqual(game.snapshot(),before);
   assert.equal(game.submit(path).isNew,false);assert.deepEqual(game.snapshot(),before);
-  assert.equal(validateAlgorithmLevel({...fixture,targets:[...fixture.targets.slice(1),{id:'bad',word,canonicalPath:path}]},dictionary).valid,false);
+  assert.ok(BONUS_DICTIONARY.words.includes('BRA'));assert.ok(BONUS_DICTIONARY.words.includes('RATED'));assert.equal(isTargetAllowed('RATED'),false);
+  assert.equal(game.completed.has(word),false);
 });

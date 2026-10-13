@@ -1,6 +1,7 @@
 import { validateLevel as validateV1 } from './wordtiles-algorithm.js';
-import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js?v=14';
-import { runtimeDictionaryError, checkTargetPolicy } from './target-policy.js?v=14';
+import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js?v=15';
+import { runtimeDictionaryError, checkTargetPolicy } from './target-policy.js?v=15';
+import {BONUS_DICTIONARY,sourceHasWord} from './word-source.js?v=15';
 
 // V1 files use flat arrays; the existing renderer and session use board/targets.path.
 // Keep the original file separately so exporting or restarting never changes its schema.
@@ -18,7 +19,7 @@ function toDemoLevel(level) {
 }
 export function validateAlgorithmLevel(level, dictionary) {
   const policy=checkTargetPolicy(level);
-  if(!policy.ok) return {valid:false,errors:[{code:policy.code,message:'目标词未通过常用原形词 V2 白名单：'+policy.rejectedWords.join('、')+'。整关拒绝，请重新生成。'}]};
+  if(!policy.ok) return {valid:false,errors:[{code:policy.code,message:'目标词未通过当前目标候选政策：'+policy.rejectedWords.join('、')+'。整关拒绝，请重新生成。'}]};
   const dictionaryError=runtimeDictionaryError(dictionary);
   if(dictionaryError) return {valid:false,errors:[dictionaryError]};
   if (!isV1Level(level)) return validateDemo(level, dictionary);
@@ -34,9 +35,10 @@ export function validateAlgorithmLevel(level, dictionary) {
   // This validator has its own DFS implementation, independent of the supplied generator.
   return { ...validateDemo(toDemoLevel(level), dictionary), algorithmValidation };
 }
-export function createAlgorithmSession(level, dictionary, {bonusDictionary=dictionary}={}) {
+export function createAlgorithmSession(level, dictionary, {bonusDictionary=BONUS_DICTIONARY}={}) {
   const report = validateAlgorithmLevel(level, dictionary);
   if (!report.valid) throw Object.assign(new Error('关卡未通过完整校验'), { report });
+  if(!Array.isArray(bonusDictionary?.words)||bonusDictionary.words.some(word=>!sourceHasWord(word)))throw Object.assign(new Error('额外词库包含未通过审核的词，已拒绝载入'),{code:'DICTIONARY_POLICY'});
   const normalized = isV1Level(level) ? toDemoLevel(level) : level;
   const session = new GameSession(normalized, dictionary, { validator: () => report,bonusDictionary });
   Object.defineProperty(session, 'dictionary', { value: dictionary });

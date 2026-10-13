@@ -1,4 +1,4 @@
-import { GameSession, clone, signature, findWordPaths, inspectPath } from './rules.js?v=14';
+import { GameSession, clone, signature, findWordPaths, inspectPath } from './rules.js?v=15';
 
 export const SOURCE_VERSION = 'xapk-levels-v1';
 export const LANGUAGE_NAMES = Object.freeze({ english:'英语', portuguese:'葡萄牙语', russian:'俄语', spanish:'西班牙语', turkish:'土耳其语' });
@@ -39,7 +39,7 @@ export function convertSourceLevel(raw, metadata={}) {
     source:{ packageName:'com.agavegames.wordtiles', version:'1.4.0', ...clone(metadata), original:clone(raw), consumptionPolicy:'reference-set' } };
 }
 
-export function validateSourceLevel(level) {
+export function validateSourceStructure(level) {
   const report = { valid:false, errors:[], checks:[], targets:[], demand:null, stateChecks:0, stateCount:0, validationMode:'source-invariant', enforceConsumption:true };
   const error = (code,message) => report.errors.push({ code,message });
   const check = (name,pass,detail) => report.checks.push({ name,pass,detail });
@@ -72,13 +72,14 @@ export function validateSourceLevel(level) {
 }
 
 export class SourceGameSession extends GameSession {
-  constructor(level) { super(level,null,{ validator:validateSourceLevel }); this.bonusCompleted=new Set(); }
-  submit(path) {
-    const result=super.submit(path);
-    if (result.reason==='not-target' && this.initial.source.original.extra_words?.some(t=>t.word===result.word)) {
-      const isNew=!this.bonusCompleted.has(result.word); this.bonusCompleted.add(result.word);
-      return { accepted:false, reason:'extra-word', word:result.word, isNew };
-    }
-    return result;
+  constructor(level) {
+    const originalExtras=Array.isArray(level?.source?.original?.extra_words)?level.source.original.extra_words:[];
+    super(level,null,{validator:validateSourceLevel,bonusDictionary:null});
+    // Packaged extras include non-ASCII spellings and words longer than the
+    // algorithm2 dictionary's 3–8 limit. Preserve their exact packaged spelling.
+    this.bonusWords=new Set(originalExtras.map(entry=>entry.word));
   }
+}
+export function validateSourceLevel(level) {
+  return validateSourceStructure(level);
 }

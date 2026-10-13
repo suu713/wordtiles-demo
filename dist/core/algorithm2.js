@@ -1,5 +1,5 @@
-import { generateLevel as generateRaw, GENERATOR_VERSION } from './wordtiles-algorithm.js?v=14';
-import { runtimeDictionaryError, checkTargetPolicy } from './target-policy.js?v=14';
+import { generateLevel as generateRaw, GENERATOR_VERSION } from './wordtiles-algorithm.js?v=15';
+import { runtimeDictionaryError, checkTargetPolicy } from './target-policy.js?v=15';
 export { GENERATOR_VERSION };
 
 // The supplied engine remains intact. Every live algorithm2 search goes through

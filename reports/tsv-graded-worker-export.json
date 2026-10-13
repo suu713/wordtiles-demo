@@ -2,77 +2,77 @@
   "schemaVersion": 1,
   "rulesVersion": "wordtiles-v1",
   "generatorVersion": "backtrack-v1.0.0",
-  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-t1_2_3",
+  "dictionaryVersion": "wordtiles-common-base-20261010-v2-len3to5-s9c5b22c2b994-g12baad0fe26c-t1_2_3",
   "seed": 0,
   "rows": 3,
   "cols": 3,
   "maxCellUses": 3,
   "letters": [
     "Y",
-    "L",
-    "F",
-    "E",
-    "P",
-    "E",
-    "R",
-    "I",
-    "C"
+    "D",
+    "A",
+    "O",
+    "D",
+    "M",
+    "B",
+    "U",
+    "P"
   ],
   "initialCounts": [
     2,
+    3,
     2,
     1,
     1,
     2,
+    3,
     2,
-    3,
-    3,
     2
   ],
   "targets": [
     {
       "id": "W0",
-      "word": "FLY",
+      "word": "BOY",
       "canonicalPath": [
-        2,
-        1,
+        6,
+        3,
         0
       ]
     },
     {
       "id": "W1",
-      "word": "ICE",
+      "word": "DAM",
       "canonicalPath": [
-        7,
-        8,
+        1,
+        2,
         5
       ]
     },
     {
       "id": "W2",
-      "word": "RIP",
+      "word": "PUB",
       "canonicalPath": [
-        6,
+        8,
         7,
-        4
+        6
       ]
     },
     {
       "id": "W3",
-      "word": "RICE",
+      "word": "DAMP",
       "canonicalPath": [
-        6,
-        7,
-        8,
-        5
+        1,
+        2,
+        5,
+        8
       ]
     },
     {
       "id": "W4",
-      "word": "REPLY",
+      "word": "BUDDY",
       "canonicalPath": [
         6,
-        3,
+        7,
         4,
         1,
         0

@@ -17,10 +17,11 @@ test('错误、取消、重复目标、错误消耗和状态异常不收录',()=
     {accepted:false,reason:'already-completed',word:'CAT'},{accepted:true,word:'CAT',status:'anomaly'},{accepted:true,word:'<script>'}]) assert.equal(collection.collect(result),false);
   assert.equal(collection.size,0);
 });
-test('五语言原包可收录，语言和单词共同去重，同形词不丢失',()=>{
+test('原包五语言词可收录；未审核非原包词和未知语言仍拒绝',()=>{
   const collection=createWordCollection(memory());
-  for(const [word,language] of [['CAT','english'],['CAT','turkish'],['ПОЛ','russian'],['AÑO','spanish'],['PÃO','portuguese']]) assert.equal(collection.collect({accepted:true,word},language),true);
-  assert.equal(collection.size,5);assert.equal(collection.collect({accepted:true,word:'CAT'},'unknown'),false);
+  for(const [word,language] of [['CAT','english'],['BRA','english'],['RATED','english'],['ПОЛ','russian'],['AÑO','spanish'],['PÃO','portuguese']])assert.equal(collection.collect({accepted:true,word},language),true,word);
+  for(const [word,language] of [['NAT','english'],['CAT','turkish'],['CAT','unknown']])assert.equal(collection.collect({accepted:true,word},language),false);
+  assert.equal(collection.size,6);
 });
 test('存储禁用或额度不足时继续本次收录，不影响游戏提交',()=>{
   const unavailable={getItem(){throw new Error('blocked');},setItem(){throw new Error('quota');}};

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:4173/?v=15",
+  "reviewVersion": "wordtiles-game-review-20261013-v2",
+  "passed": 7,
+  "pageErrors": [],
+  "cases": [
+    {
+      "name": "旧归档中的BRA、RATED和西语收藏恢复，释义与首次日期保留",
+      "passed": true
+    },
+    {
+      "name": "五语言13216原包关卡完整开放，7618词运行库包含所有原包英文词",
+      "passed": true
+    },
+    {
+      "name": "正常目标和额外词继续收录，额外词不扣次数，刷新保留收藏",
+      "passed": true
+    },
+    {
+      "name": "真实滑出BRA收入额外词包，计数去重、次数不变、无错误红格",
+      "passed": true
+    },
+    {
+      "name": "原包BRA目标关可正常提交；旧版本导入拒绝且保留当前进度",
+      "passed": true
+    },
+    {
+      "name": "真实俄语额外词可以连接和永久收录，不受ASCII词库限制",
+      "passed": true
+    },
+    {
+      "name": "真实Worker拒绝旧词库，未跳过路径、次数或版本校验",
+      "passed": true
+    }
+  ]
+}

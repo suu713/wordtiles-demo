@@ -7,8 +7,8 @@
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./art/paris/assets/svg/coin.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=14">
-  <link rel="stylesheet" href="./paris.css?v=14">
+  <link rel="stylesheet" href="./styles.css?v=15">
+  <link rel="stylesheet" href="./paris.css?v=15">
   <link rel="preload" as="image" href="./art/paris/assets/backgrounds/bg-paris-lobby.png">
 </head>
 <body>
@@ -35,7 +35,7 @@
         </div>
         <section id="source-controls" class="source-controls" aria-label="算法1关卡库">
           <div class="field-grid">
-            <label for="source-language" data-help="选择原安装包中的语言词库。">语言<select id="source-language"><option value="english">英语</option><option value="portuguese">葡萄牙语</option><option value="russian">俄语</option><option value="spanish">西班牙语</option><option value="turkish">土耳其语</option></select></label>
+            <label for="source-language" data-help="原包五种语言关卡完整开放，保持目标和额外词的原始列表。">语言<select id="source-language"><option value="english">英语</option></select></label>
             <label for="source-order" data-help="原始主线按安装包的关卡顺序排列；全部关卡包含包内其余关卡。">关卡列表<select id="source-order"><option value="main">原始主线</option><option value="all">全部关卡</option></select></label>
           </div>
           <label class="source-position-label" for="source-number">关卡 <span id="source-range">—</span></label>
@@ -44,7 +44,7 @@
           <p id="source-library-status" hidden>正在读取关卡目录…</p>
         </section>
         <div id="generation-section" class="generation-section" hidden>
-          <label class="dictionary-field" for="dictionary-source" data-help="使用你提供的 words.tsv。完整词表用于额外词和释义；目标词继续与原形白名单取交集，本关有1,470个候选。按档位可进一步筛选，不放宽内容规则。">生成词库<select id="dictionary-source"><option value="common">新词库 · 1,470 个原形词</option><option value="graded">新词库 · 按档位</option></select></label>
+          <label class="dictionary-field" for="dictionary-source" data-help="目标采用原形白名单加原包目标；原包额外词允许收录。按词频档位可缩小目标范围。">生成词库<select id="dictionary-source"><option value="common">基础词＋原包目标</option><option value="graded">按词频档位</option></select></label>
           <div class="seed-field"><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
@@ -113,8 +113,8 @@
       <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
       <div data-settings-pane="lexicon" hidden>
         <label class="stack-field" for="dictionary-tier" data-help="沿用 words.tsv 的原有1～5档：非常常用、常用、一般、罕见、非常罕见。不重新评分，不代表难度；失败不会自动扩档。">单词档位<select id="dictionary-tier"><option value="1">非常常用</option><option value="1,2">非常常用 + 常用</option><option value="1,2,3" selected>前 3 档 · 非常常用 / 常用 / 一般</option><option value="4">罕见</option><option value="5">非常罕见</option><option value="1,2,3,4,5">全部档位</option></select></label>
-        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">新词库 · 21,094 词</p>
-        <div class="lexicon-links"><a href="./wordlist.json" download data-help="用户提供词表的完整词条、档位和中文释义。">当前词表 ↗</a><a href="./common-v2/dictionary.json" download data-help="原形目标词内容白名单。实际候选同时需要存在于当前词表中。">原形白名单 ↗</a></div>
+        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">游戏词库 · 7,618 词</p>
+        <div class="lexicon-links"><a href="./wordlist.json?v=15" download data-help="实际启用词条、原包身份、源表档位与项目显示义。">游戏词表 ↗</a><a href="./review/index.html?v=15" target="_blank" rel="noopener" data-help="查看词条与释义来源、审核规则和全部逐词筛查结果。">来源与原包规则 ↗</a></div>
       </div>
       <div id="debug" data-settings-pane="debug" hidden><span class="validation-status" id="validation-badge" data-help-from="version-note" tabindex="0">正在检查</span><p class="debug-explanation" hidden></p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
         <fieldset id="budget-fields" class="budget-fields" hidden data-help="这三个参数控制搜索预算，不代表难度。预算耗尽会明确失败，并保留当前关卡。"><legend>搜索预算</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
@@ -139,6 +139,6 @@
   </dialog>
   <dialog id="activity-dialog" class="activity-dialog" aria-labelledby="activity-title"><div class="dialog-top"><div><h2 id="activity-title">收词日历</h2><p id="activity-summary"></p></div><button id="activity-close" class="icon-button" type="button" aria-label="关闭收词日历">×</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty">找到第一个词后，收词记录会显示在这里</p></dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=14"></script>
+  <script type="module" src="./app.js?v=15"></script>
 </body>
 </html>

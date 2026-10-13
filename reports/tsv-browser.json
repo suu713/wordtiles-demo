@@ -1,7 +1,7 @@
 {
-  "url": "http://127.0.0.1:4173/?v=14",
+  "url": "http://127.0.0.1:4173/?v=15",
   "contentPolicyVersion": "wordtiles-common-base-20261010-v2",
-  "wordlistVersion": "wordtiles-tsv-20261010-9c5b22c2b994",
+  "wordlistVersion": "wordtiles-reviewed-9c5b22c2b994-12baad0fe26c",
   "passed": 14,
   "pageErrors": [],
   "cases": [
@@ -10,11 +10,11 @@
       "passed": true
     },
     {
-      "name": "算法1原包对照仍正常载入，当前关卡不受英语目标白名单修改",
+      "name": "算法1载入已审原包关卡，反序提交仍可清空",
       "passed": true
     },
     {
-      "name": "算法2使用用户TSV的新样例及1470原形候选，不加载历史词库",
+      "name": "算法2使用原包豁免的新样例及2925目标候选，不加载历史词库",
       "passed": true
     },
     {
@@ -22,7 +22,7 @@
       "passed": true
     },
     {
-      "name": "拖动FORTY经过目标FOR不提交，松手完成FORTY，共享格次数只减一次",
+      "name": "拖动SIXTH经过目标SIX不提交，松手完成SIXTH，共享格次数只减一次",
       "passed": true
     },
     {
