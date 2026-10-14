@@ -9,6 +9,7 @@
   <link rel="icon" href="./art/paris/assets/svg/coin.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=15">
   <link rel="stylesheet" href="./paris.css?v=15">
+  <link rel="stylesheet" href="./travel-ui.css?v=16">
   <link rel="preload" as="image" href="./art/paris/assets/backgrounds/bg-paris-lobby.png">
 </head>
 <body>
@@ -92,7 +93,7 @@
             <div class="game-spacer" aria-hidden="true"></div>
             <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
             <div class="game-footer">
-              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 5h10l-3 6H14Z M13 11C6 16 4 24 7 27c3 3 15 3 18 0 3-3 1-11-6-16Z"/><path d="M11 11h10"/><text x="16" y="24" text-anchor="middle">A</text></svg><span id="bonus-count" class="bonus-count">0</span></button>
+              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 12V9a5 5 0 0 1 10 0v3 M8 11h16l3 16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/></svg><span id="bonus-count" class="bonus-count">0</span></button>
             </div>
             <div class="play-actions game-art-actions"><button id="new-level" class="art-disc" type="button" aria-label="换一关" data-help="载入一关新棋盘，保留收词记录。算法2生成并校验新关卡，算法1随机载入原包关卡。"><img src="./art/paris/assets/icons/shuffle.png" alt=""></button><button id="restart" class="art-restart" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button><button id="hint" class="art-disc" type="button" aria-label="提示" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。角标表示尚未完成的目标数量。"><img src="./art/paris/assets/icons/hint.png" alt=""><span id="hint-remaining" class="art-badge">5</span></button></div>
           </section>
@@ -123,7 +124,11 @@
       <div data-settings-pane="source" hidden><div id="source-metadata" data-help="额外词只记录，不扣次数。原包特殊障碍和其他字段完整保留在导出数据中；试玩沿用网页连词规则。" tabindex="0"><pre id="source-meta"></pre></div></div>
     </div>
   </section>
-  <dialog id="bonus-dialog" class="bonus-dialog" aria-labelledby="bonus-title"><div class="dialog-top"><h2 id="bonus-title">额外单词</h2><button id="bonus-close" class="icon-button" type="button" aria-label="关闭额外单词包">×</button></div><ul id="bonus-words" class="bonus-words"></ul><p id="bonus-empty">还没有找到额外单词</p></dialog>
+  <dialog id="bonus-dialog" class="bonus-dialog travel-dialog" aria-labelledby="bonus-title" aria-describedby="bonus-summary">
+    <div class="dialog-top"><div class="travel-heading"><svg class="travel-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 12V9a5 5 0 0 1 10 0v3 M8 11h16l3 16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/></svg><div><h2 id="bonus-title">额外单词包</h2><p id="bonus-summary" aria-live="polite">本关额外发现 0 个词</p></div></div><button id="bonus-close" class="travel-close" type="button" aria-label="关闭额外单词包" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
+    <ul id="bonus-words" class="bonus-words"></ul><p id="bonus-empty">还没有找到额外单词</p>
+    <p id="bonus-saved" class="bonus-saved" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#8c9d72"/><path d="m7 12 3 3 7-7" fill="none" stroke="#fff9ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="bonus-save-label">已自动收录至词典</span></p>
+  </dialog>
   <dialog id="solutions-dialog" class="solutions-dialog" aria-labelledby="solutions-title" aria-describedby="solutions-rule">
     <div class="dialog-top"><h2 id="solutions-title">本关解法</h2><div class="dialog-tools"><button id="solutions-help" class="solution-help" type="button" aria-label="查看解法统计口径">i</button><button id="solutions-close" class="icon-button" type="button" aria-label="关闭解法列表" autofocus>×</button></div></div>
     <p id="solutions-rule" class="sr-only">统计满足本关目标数量、词长分布和全部初始格子次数的不同词组。包含候选非目标词，试玩仍按当前目标词判定。同一组词的完成顺序或路径不同只算一次。</p>
@@ -132,13 +137,22 @@
     <nav id="solutions-pagination" class="solutions-pagination" aria-label="解法列表翻页" hidden><button id="solutions-prev" type="button" aria-label="上一页解法">←</button><span id="solutions-page"></span><button id="solutions-next" type="button" aria-label="下一页解法">→</button></nav>
     <button id="solutions-retry" class="secondary-button" type="button" hidden>重新完整统计</button>
   </dialog>
-  <dialog id="dictionary-dialog" class="dictionary-dialog" aria-labelledby="dictionary-title">
-    <div class="dialog-top"><div><h2 id="dictionary-title">我的词典</h2><p id="dictionary-summary">已收录 0 个词</p></div><button id="dictionary-close" class="icon-button" type="button" aria-label="关闭词典">×</button></div>
-    <label class="sr-only" for="dictionary-search">搜索单词或释义</label><input id="dictionary-search" type="search" placeholder="搜索单词或释义" autocomplete="off">
+  <dialog id="dictionary-dialog" class="dictionary-dialog travel-dialog" aria-labelledby="dictionary-title" aria-describedby="dictionary-summary">
+    <div class="dialog-top"><div class="travel-heading"><svg class="travel-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c-3-3-8-4-12-2v20c4-2 9-1 12 2 3-3 8-4 12-2V6c-4-2-9-1-12 2Z M16 8v20"/></svg><div><h2 id="dictionary-title">我的词典</h2><p id="dictionary-summary">累计收词 · 已收录 0 个词</p></div></div><button id="dictionary-close" class="travel-close" type="button" aria-label="关闭词典" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
+    <label class="sr-only" for="dictionary-search">搜索单词或释义</label><div class="dictionary-search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><input id="dictionary-search" type="search" placeholder="搜索单词或释义" autocomplete="off" spellcheck="false"></div>
+    <p class="dictionary-sort">按字母排序</p>
     <p id="dictionary-storage-note" hidden>当前浏览器无法保存记录，本次收录会保留到关闭页面。</p><p id="dictionary-empty">连接成功的单词会收录在这里</p><ul id="dictionary-list" class="dictionary-list"></ul><button id="dictionary-more" class="secondary-button" type="button" hidden>显示更多</button>
   </dialog>
-  <dialog id="activity-dialog" class="activity-dialog" aria-labelledby="activity-title"><div class="dialog-top"><div><h2 id="activity-title">收词日历</h2><p id="activity-summary"></p></div><button id="activity-close" class="icon-button" type="button" aria-label="关闭收词日历">×</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty">找到第一个词后，收词记录会显示在这里</p></dialog>
+  <dialog id="activity-dialog" class="activity-dialog travel-dialog" aria-labelledby="activity-title" aria-describedby="activity-summary">
+    <div class="dialog-top"><div class="travel-heading"><svg class="travel-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="22" rx="3"/><path d="M5 14h22 M11 3v8 M21 3v8"/><path d="M10 19h1 M16 19h1 M22 19h1 M10 24h1 M16 24h1 M22 24h1"/></svg><div><h2 id="activity-title">收词日历</h2><p id="activity-summary"></p></div></div><button id="activity-close" class="travel-close" type="button" aria-label="关闭收词日历" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
+    <section class="activity-calendar" aria-labelledby="activity-month-title">
+      <div class="activity-month-nav"><button id="activity-month-prev" type="button" aria-label="上个月"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></button><h3 id="activity-month-title" aria-live="polite"></h3><button id="activity-month-next" type="button" aria-label="下个月"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></button></div>
+      <div class="activity-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+      <div id="activity-calendar-grid" class="activity-calendar-grid" role="group" aria-label="收词日期"></div>
+    </section>
+    <div class="activity-history"><div class="activity-history-toolbar"><span id="activity-history-label">本月收词</span><button id="activity-show-month" type="button" hidden>查看整月</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty" role="status">找到第一个词后，收词记录会显示在这里</p></div>
+  </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=15"></script>
+  <script type="module" src="./app.js?v=16"></script>
 </body>
 </html>

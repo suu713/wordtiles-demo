@@ -1,0 +1,100 @@
+/* Live interfaces recreated from travel-additional-ui-v1's three concept images. */
+.travel-dialog {
+  --travel-scale: 1;
+  position: fixed;
+  inset: auto;
+  left: var(--travel-center-x, 50vw);
+  top: var(--travel-center-y, 50dvh);
+  transform: translate(-50%, -50%);
+  width: var(--travel-width, min(86vw, 370px));
+  max-width: calc(100vw - 24px);
+  max-height: var(--travel-height, calc(100dvh - 32px));
+  margin: 0;
+  padding: calc(22px * var(--travel-scale));
+  border: 1px solid #eee3d2;
+  border-radius: calc(20px * var(--travel-scale));
+  background: #fff9ef;
+  color: #353832;
+  box-shadow: 0 18px 60px #4d35252b;
+  overflow: hidden;
+  font-size: calc(13px * var(--travel-scale));
+}
+.travel-dialog:not([open]) { display: none; }
+.travel-dialog[open] { display: flex; flex-direction: column; }
+.travel-dialog::backdrop { background: #493a302b; backdrop-filter: blur(3px); }
+.travel-dialog .dialog-top { flex: none; align-items: flex-start; gap: 8px; margin: 0 0 calc(17px * var(--travel-scale)); }
+.travel-heading { display: flex; align-items: flex-start; gap: calc(12px * var(--travel-scale)); min-width: 0; }
+.travel-heading > div { min-width: 0; }
+.travel-icon { width: calc(29px * var(--travel-scale)); height: calc(29px * var(--travel-scale)); flex: none; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.travel-dialog h2 { margin: 0; font-size: calc(23px * var(--travel-scale)); font-weight: 900; line-height: 1.25; letter-spacing: -.02em; }
+.travel-dialog .dialog-top p { margin: calc(6px * var(--travel-scale)) 0 0; color: #887c6b; font-size: calc(12px * var(--travel-scale)); line-height: 1.45; }
+.travel-close { display: grid; place-items: center; width: calc(27px * var(--travel-scale)); height: calc(27px * var(--travel-scale)); flex: none; padding: 2px; border: 0; border-radius: 5px; background: none; color: #806e5b; }
+.travel-close:hover { background: #eee3d3; }
+.travel-close svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.travel-dialog button:focus-visible { outline: 2px solid #c76d4a; outline-offset: 2px; }
+.travel-dialog :is(.dictionary-list,.bonus-words,.activity-history) { scrollbar-width: thin; scrollbar-color: #cfc1b0 #f4eee4; overscroll-behavior: contain; }
+
+/* Bag: two columns, actual level discoveries and the existing automatic collection. */
+.bonus-button svg { fill: none; stroke: #be6745; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.bonus-dialog.travel-dialog { --travel-height: 65dvh; }
+.bonus-dialog .travel-icon { color: #be6745; }
+.bonus-dialog .dialog-top { margin-bottom: calc(18px * var(--travel-scale)); }
+.travel-dialog .bonus-words { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: calc(10px * var(--travel-scale)); min-height: 0; overflow-y: auto; list-style: none; margin: 0; padding: 2px; }
+.travel-dialog .bonus-words li { display: grid; place-items: center; min-height: calc(48px * var(--travel-scale)); padding: 8px 6px; border: 1px solid #c76d4a; border-radius: calc(8px * var(--travel-scale)); background: #fff7e9; color: #353832; font-size: calc(23px * var(--travel-scale)); font-weight: 900; line-height: 1.1; overflow-wrap: anywhere; }
+.bonus-saved { display: flex; flex: none; justify-content: center; align-items: center; gap: 7px; margin: calc(17px * var(--travel-scale)) 0 0; color: #8a8974; font-size: calc(12px * var(--travel-scale)); }
+.bonus-saved svg { width: calc(19px * var(--travel-scale)); height: calc(19px * var(--travel-scale)); flex: none; }
+#bonus-empty { text-align: center; color: #887c6b; margin: 20px 0; font-size: calc(13px * var(--travel-scale)); }
+
+/* Dictionary: understated rows, a dedicated search field and true frequency tags. */
+.dictionary-dialog.travel-dialog { height: var(--travel-height, 80dvh); }
+.dictionary-search-field { position: relative; flex: none; margin-bottom: calc(14px * var(--travel-scale)); }
+.dictionary-search-field svg { position: absolute; left: calc(12px * var(--travel-scale)); top: 50%; transform: translateY(-50%); width: calc(20px * var(--travel-scale)); height: calc(20px * var(--travel-scale)); pointer-events: none; fill: none; stroke: #837564; stroke-width: 1.6; stroke-linecap: round; }
+.travel-dialog #dictionary-search { display: block; width: 100%; height: calc(42px * var(--travel-scale)); margin: 0; padding: 0 calc(12px * var(--travel-scale)) 0 calc(40px * var(--travel-scale)); border: 1px solid #dacebd; border-radius: calc(8px * var(--travel-scale)); color: #353832; background: #f9f5ed; font-size: calc(13px * var(--travel-scale)); }
+.travel-dialog #dictionary-search::placeholder { color: #898275; opacity: 1; }
+.dictionary-sort { flex: none; margin: 0; padding: 0 2px calc(8px * var(--travel-scale)); font-size: calc(12px * var(--travel-scale)); color: #8c7962; border-bottom: 1px solid #e8ddcd; }
+.travel-dialog .dictionary-list { display: block; flex: 1; min-height: 0; padding: 0 6px 0 2px; margin: 0; overflow-y: auto; list-style: none; }
+.travel-dialog .dictionary-entry { border: 0; border-bottom: 1px solid #e8ddcd; border-radius: 0; padding: calc(12px * var(--travel-scale)) 0; background: none; }
+.travel-dialog .dictionary-entry:last-child { border-bottom: 0; }
+.travel-dialog .dictionary-word-row { align-items: center; gap: 8px; }
+.travel-dialog .dictionary-word-row strong { font-size: calc(21px * var(--travel-scale)); font-weight: 900; line-height: 1.2; color: #353832; }
+.travel-dialog .dictionary-word-row span { font-size: calc(10px * var(--travel-scale)); line-height: 1.5; color: #8a7255; background: #f0e3ce; border-radius: 99px; padding: calc(3px * var(--travel-scale)) calc(9px * var(--travel-scale)); white-space: nowrap; flex: none; }
+.travel-dialog .dictionary-word-row span[data-tier="1"] { color: #607956; background: #e4ead7; }
+.travel-dialog .dictionary-word-row span[data-tier="unrated"] { color: #8a8071; background: #eee8dd; }
+.travel-dialog .dictionary-entry p { margin: calc(5px * var(--travel-scale)) 0 0; font-size: calc(12px * var(--travel-scale)); line-height: 1.5; color: #898174; }
+.travel-dialog #dictionary-empty { margin: 24px 0; color: #887c6b; }
+.travel-dialog #dictionary-storage-note { font-size: 11px; margin: 0 0 8px; }
+.travel-dialog #dictionary-more { align-self: center; margin: 8px 0 0; padding: 7px 16px; border-radius: 99px; font-size: calc(11px * var(--travel-scale)); }
+
+/* Calendar: Monday first, real first-discovery dates, month and day navigation. */
+.activity-dialog.travel-dialog { height: var(--travel-height, 80dvh); }
+.activity-dialog .travel-icon { width: calc(33px * var(--travel-scale)); height: calc(33px * var(--travel-scale)); padding: 5px; box-sizing: content-box; margin-top: -2px; background: #f1eada; border-radius: 50%; }
+.activity-calendar { flex: none; }
+.activity-month-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 calc(10px * var(--travel-scale)); }
+.activity-month-nav h3 { margin: 0; font-size: calc(19px * var(--travel-scale)); font-weight: 900; }
+.activity-month-nav button { width: calc(28px * var(--travel-scale)); height: calc(28px * var(--travel-scale)); display: grid; place-items: center; padding: 3px; border: 0; border-radius: 50%; background: none; color: #54483b; }
+.activity-month-nav button:hover { background: #f0e6d7; }
+.activity-month-nav svg { width: 70%; height: 70%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.activity-weekdays,.activity-calendar-grid { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); text-align: center; }
+.activity-weekdays { margin-bottom: calc(6px * var(--travel-scale)); color: #8d8271; font-size: calc(12px * var(--travel-scale)); }
+.activity-weekdays span { padding: 3px 0; }
+.activity-calendar-grid { gap: calc(4px * var(--travel-scale)) 0; }
+.calendar-day,.calendar-blank { min-width: 0; height: calc(31px * var(--travel-scale)); }
+.calendar-day { position: relative; display: grid; place-items: center; border: 0; padding: 0; background: none; color: #353832; font-size: calc(14px * var(--travel-scale)); font-weight: 700; }
+.calendar-day > span { width: calc(27px * var(--travel-scale)); height: calc(27px * var(--travel-scale)); display: grid; place-items: center; border-radius: 50%; }
+.calendar-day:hover > span { background: #f1e3d0; }
+.calendar-day[aria-pressed="true"] > span { background: #c76d4a; color: #fff9ef; }
+.calendar-day.has-words::after { content: ""; position: absolute; left: 50%; bottom: -2px; transform: translateX(-50%); width: calc(4px * var(--travel-scale)); height: calc(4px * var(--travel-scale)); border-radius: 50%; background: #c76d4a; }
+.activity-history { flex: 1; min-height: 0; overflow-y: auto; margin-top: calc(15px * var(--travel-scale)); border-top: 1px solid #e6d5bc; padding: calc(10px * var(--travel-scale)) 3px 0; }
+.activity-history-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+#activity-history-label { font-size: calc(10px * var(--travel-scale)); color: #9b8e7e; }
+#activity-show-month { padding: 3px 0; border: 0; color: #ad6044; background: none; font-size: calc(11px * var(--travel-scale)); }
+.travel-dialog .activity-list { display: block; list-style: none; padding: 0; margin: 0; }
+.activity-day { padding: calc(12px * var(--travel-scale)) 0; border-bottom: 1px solid #e8ddcd; }
+.activity-day:last-child { border-bottom: 0; }
+.activity-day-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: calc(9px * var(--travel-scale)); }
+.travel-dialog .activity-day h3 { color: #353832; margin: 0; font-size: calc(15px * var(--travel-scale)); font-weight: 900; }
+.activity-day-heading small { font-size: calc(11px * var(--travel-scale)); color: #897b69; white-space: nowrap; }
+.travel-dialog .activity-words { display: flex; flex-wrap: wrap; gap: calc(5px * var(--travel-scale)); }
+.travel-dialog .activity-words span { padding: calc(6px * var(--travel-scale)) calc(8px * var(--travel-scale)); border: 1px solid #edddca; border-radius: calc(6px * var(--travel-scale)); background: #f6e6d3; color: #708568; font-size: calc(11px * var(--travel-scale)); line-height: 1.25; font-weight: 900; overflow-wrap: anywhere; max-width: 100%; }
+.travel-dialog #activity-empty { margin: 20px 0; color: #897b69; font-size: calc(12px * var(--travel-scale)); line-height: 1.7; }
+@media (prefers-reduced-motion:no-preference) { .travel-dialog[open] { animation: travel-appear .16s ease-out; } @keyframes travel-appear { from { opacity: 0; } to { opacity: 1; } } }

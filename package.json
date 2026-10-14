@@ -1,6 +1,6 @@
 {
   "name": "wordtiles-local-editor",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
     "test:source": "node scripts/verify-source-levels.mjs",
     "test:portrait": "node scripts/check-portrait.mjs",
     "test:art": "node scripts/check-paris-art.mjs",
+    "test:travel": "node scripts/check-travel-ui.mjs",
     "test:review:browser": "node scripts/check-game-review-browser.mjs",
     "test:batch": "node scripts/benchmark-v1.mjs 1000",
     "test:browser": "node scripts/browser-test.mjs"

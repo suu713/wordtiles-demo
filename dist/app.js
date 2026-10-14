@@ -7,6 +7,7 @@ import { COMMON_DICTIONARY, POLICY_VERSION, createBaseDictionary } from './core/
 import { WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, approvedWordCount, createFrequencyDictionary, wordEntryFor, TIER_LABELS } from './core/word-library.js?v=15';
 import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=15';
 import { preloadArt } from './core/art-theme.js?v=15';
+import { localCollectionDate, groupCollectionDays, shiftCollectionMonth, collectionMonthCells, collectionMonthGroups } from './core/collection-calendar.js?v=16';
 const $ = selector => document.querySelector(selector);
 const board = $('#board');
 let dictionary, sample, game, catalogue;
@@ -15,6 +16,7 @@ let selectedAlgorithm = 2, ready = false, busyKind = null;
 let browserStorage;
 try { browserStorage=window.localStorage; } catch {}
 let collection=createWordCollection(browserStorage), collectionLimit=100;
+let collectionMonth, collectionSelectedDate, collectionDateFilter = null;
 const banks = new Map(), savedSessions = new Map();
 let selection = [], hint = null, activePointer = null, worker = null, busy = false;
 let epoch = 0, requestId = 0, generationStats = null, lastRejection = null;
@@ -420,9 +422,11 @@ function renderBonusWords() {
   $('#bonus-count').textContent = String(words.length);
   $('#bonus-button').disabled = !game;
   $('#bonus-button').setAttribute('aria-label', `额外单词包，已收集 ${words.length} 个单词`);
-  $('#bonus-title').textContent = `额外单词 · ${words.length}`;
+  $('#bonus-summary').textContent = `本关额外发现 ${words.length} 个词`;
   $('#bonus-words').replaceChildren(...words.map(word => { const item = document.createElement('li'); item.textContent = word; return item; }));
   $('#bonus-empty').hidden = words.length > 0;
+  $('#bonus-saved').hidden = words.length === 0;
+  $('#bonus-save-label').textContent = collection.persistent ? '已自动收录至词典' : '已收录，本次记录仅保存在当前页面';
 }
 function closeGameDialogs() {
   for (const id of ['#bonus-dialog', '#solutions-dialog', '#dictionary-dialog', '#activity-dialog']) if ($(id).open) $(id).close();
@@ -784,27 +788,57 @@ $('#hint').addEventListener('click', () => {
 $('#bonus-button').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); hideHelp(); renderBonusWords();
-  $('#bonus-dialog').showModal(); $('#bonus-button').setAttribute('aria-expanded', 'true');
+  showTravelDialog('#bonus-dialog'); $('#bonus-button').setAttribute('aria-expanded', 'true');
 });
 $('#bonus-close').addEventListener('click', () => $('#bonus-dialog').close());
 $('#bonus-dialog').addEventListener('close', () => $('#bonus-button').setAttribute('aria-expanded', 'false'));
+
+function positionTravelDialog(dialog) {
+  const stage = $($('#lobby').hidden ? '#game-viewport' : '.lobby-panel').getBoundingClientRect();
+  const viewport = window.visualViewport;
+  const visibleWidth = viewport?.width || innerWidth;
+  const visibleHeight = viewport?.height || innerHeight;
+  const visibleLeft = viewport?.offsetLeft || 0, visibleTop = viewport?.offsetTop || 0;
+  const width = Math.min(stage.width * .86, visibleWidth - 24);
+  const height = Math.min(stage.height * (dialog.id === 'bonus-dialog' ? .65 : .82), visibleHeight - 24);
+  const centerX = Math.max(visibleLeft + width / 2 + 12,
+    Math.min(visibleLeft + visibleWidth - width / 2 - 12, stage.left + stage.width / 2));
+  const centerY = Math.max(visibleTop + height / 2 + 12,
+    Math.min(visibleTop + visibleHeight - height / 2 - 12, stage.top + stage.height / 2));
+  dialog.style.setProperty('--travel-width', `${width}px`);
+  dialog.style.setProperty('--travel-height', `${height}px`);
+  dialog.style.setProperty('--travel-center-x', `${centerX}px`);
+  dialog.style.setProperty('--travel-center-y', `${centerY}px`);
+  dialog.style.setProperty('--travel-scale', String(Math.max(.8, Math.min(1.2, stage.width / 405))));
+}
+function positionTravelDialogs() {
+  document.querySelectorAll('.travel-dialog[open]').forEach(positionTravelDialog);
+}
+function showTravelDialog(selector) {
+  closeSettings(false); hideHelp();
+  const dialog = $(selector); positionTravelDialog(dialog); dialog.showModal();
+}
+window.addEventListener('resize', () => requestAnimationFrame(positionTravelDialogs));
+window.visualViewport?.addEventListener('resize', positionTravelDialogs);
+window.visualViewport?.addEventListener('scroll', positionTravelDialogs);
 
 function renderCollection() {
   $('#dictionary-count').textContent=String(collection.size);
   $('#game-collection-count').textContent=String(collection.size);
   $('#dictionary-button').setAttribute('aria-label',`我的词典，已收录 ${collection.size} 个词`);
-  $('#dictionary-summary').textContent=`已收录 ${collection.size} 个词`;
+  $('#dictionary-summary').textContent=`累计收词 · 已收录 ${collection.size} 个词`;
   $('#dictionary-storage-note').hidden=collection.persistent;
   const query=$('#dictionary-search').value.trim().toUpperCase();
   const matches=collection.entries().filter(entry=>entry.word.includes(query)||(entry.language==='english'&&wordEntryFor(entry.word)?.definition.toUpperCase().includes(query)));
   $('#dictionary-empty').hidden=matches.length>0;
   $('#dictionary-empty').textContent=collection.size?'没有找到匹配的单词':'连接成功的单词会收录在这里';
   const rows=matches.slice(0,collectionLimit).map(entry=>{
-    const item=document.createElement('li');item.className='dictionary-entry';
+    const item=document.createElement('li');item.className='dictionary-entry';item.dataset.word=entry.word;item.dataset.language=entry.language;
     const heading=document.createElement('div');heading.className='dictionary-word-row';
     const word=document.createElement('strong');word.textContent=entry.word;heading.append(word);
     const info=entry.language==='english'?wordEntryFor(entry.word):null;
-    const tag=document.createElement('span');tag.textContent=info?.tier?TIER_LABELS[info.tier]:LANGUAGE_NAMES[entry.language]||'';heading.append(tag);
+    const tag=document.createElement('span');tag.dataset.tier=String(info?.tier||'unrated');
+    tag.textContent=info?.tier?TIER_LABELS[info.tier]:(entry.language==='english'?'未评级':LANGUAGE_NAMES[entry.language]||'');heading.append(tag);
     const definition=document.createElement('p');definition.textContent=info?.definition||'暂无释义';
     item.append(heading,definition);return item;
   });
@@ -812,12 +846,12 @@ function renderCollection() {
   $('#dictionary-more').hidden=matches.length<=collectionLimit;
 }
 $('#dictionary-button').addEventListener('click',()=>{
-  collectionLimit=100;$('#dictionary-search').value='';renderCollection();$('#dictionary-dialog').showModal();
+  collectionLimit=100;$('#dictionary-search').value='';renderCollection();showTravelDialog('#dictionary-dialog');$('#dictionary-list').scrollTop=0;
 });
 $('#dictionary-close').addEventListener('click',()=>$('#dictionary-dialog').close());
 $('#dictionary-search').addEventListener('input',()=>{collectionLimit=100;renderCollection();});
 $('#dictionary-more').addEventListener('click',()=>{collectionLimit+=100;renderCollection();});
-window.addEventListener('storage',event=>{if(event.key===COLLECTION_KEY){collection=createWordCollection(browserStorage);renderCollection();}});
+window.addEventListener('storage',event=>{if(event.key===COLLECTION_KEY){collection=createWordCollection(browserStorage);renderCollection();if($('#activity-dialog').open)renderActivity();}});
 
 function updateLobbyProgress() {
   if(!game)return;
@@ -829,23 +863,57 @@ function updateLobbyProgress() {
   $('#lobby-progress-dots').replaceChildren(...dots);
 }
 function renderActivity() {
-  const entries=collection.entries(),days=new Map();
-  for(const entry of entries){
-    const date=new Date(entry.firstFoundAt);if(!Number.isFinite(date.getTime()))continue;
-    const key=[date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-');
-    if(!days.has(key))days.set(key,[]);days.get(key).push(entry);
-  }
-  $('#activity-summary').textContent=`${days.size} 个收词日 · ${collection.size} 个词`;
-  $('#activity-empty').hidden=days.size>0;
-  const groups=[...days.entries()].sort(([a],[b])=>b.localeCompare(a)).map(([date,words])=>{
-    const row=document.createElement('li'),title=document.createElement('h3'),list=document.createElement('div');
-    row.className='activity-day';title.textContent=date;list.className='activity-words';
+  const days=groupCollectionDays(collection.entries()),today=localCollectionDate();
+  if(!collectionMonth) resetCollectionMonth();
+  const total=[...days.values()].reduce((sum,words)=>sum+words.length,0);
+  $('#activity-summary').textContent=`${days.size} 个收词日 · ${total} 个词`;
+  $('#activity-month-title').textContent=`${collectionMonth.year} 年 ${collectionMonth.month+1} 月`;
+  $('#activity-month-prev').disabled=!shiftCollectionMonth(collectionMonth,-1);
+  $('#activity-month-next').disabled=!shiftCollectionMonth(collectionMonth,1);
+  const cells=collectionMonthCells(collectionMonth,days).map(cell=>{
+    if(!cell){const blank=document.createElement('span');blank.className='calendar-blank';blank.setAttribute('aria-hidden','true');return blank;}
+    const button=document.createElement('button');button.type='button';button.className='calendar-day'+(cell.count?' has-words':'');
+    button.dataset.date=cell.date;button.dataset.wordCount=String(cell.count);
+    button.setAttribute('aria-pressed',String(cell.date===collectionSelectedDate));
+    button.setAttribute('aria-label',`${collectionMonth.year}年${collectionMonth.month+1}月${cell.day}日，收录 ${cell.count} 个词`);
+    if(cell.date===today)button.setAttribute('aria-current','date');
+    const number=document.createElement('span');number.textContent=String(cell.day);button.append(number);return button;
+  });
+  $('#activity-calendar-grid').replaceChildren(...cells);
+  $('#activity-calendar-grid').setAttribute('aria-label',`${collectionMonth.year}年${collectionMonth.month+1}月收词日期`);
+  const monthGroups=collectionMonthGroups(days,collectionMonth,collectionDateFilter);
+  $('#activity-history-label').textContent=collectionDateFilter?'当天收词':'本月收词';
+  $('#activity-show-month').hidden=!collectionDateFilter;
+  $('#activity-empty').hidden=monthGroups.length>0;
+  $('#activity-empty').textContent=collectionDateFilter?'这一天还没有收词记录':(days.size?'这个月还没有收词记录':'找到第一个词后，收词记录会显示在这里');
+  const groups=monthGroups.map(([date,words])=>{
+    const row=document.createElement('li'),heading=document.createElement('div'),title=document.createElement('h3'),count=document.createElement('small'),list=document.createElement('div');
+    row.className='activity-day';row.dataset.date=date;heading.className='activity-day-heading';
+    title.textContent=`${Number(date.slice(5,7))} 月 ${Number(date.slice(8))} 日`;count.textContent=`${words.length} 个词`;
+    heading.append(title,count);list.className='activity-words';
     for(const entry of words){const word=document.createElement('span');word.textContent=entry.word;list.append(word);}
-    row.append(title,list);return row;
+    row.append(heading,list);return row;
   });
   $('#activity-list').replaceChildren(...groups);
 }
-$('#activity-button').addEventListener('click',()=>{closeSettings(false);hideHelp();renderActivity();$('#activity-dialog').showModal();});
+function resetCollectionMonth() {
+  const now=new Date();collectionMonth={year:now.getFullYear(),month:now.getMonth()};
+  collectionSelectedDate=localCollectionDate(now);collectionDateFilter=null;
+}
+function changeCollectionMonth(amount) {
+  const next=shiftCollectionMonth(collectionMonth,amount);if(!next)return;
+  collectionMonth=next;collectionSelectedDate=null;collectionDateFilter=null;renderActivity();$('.activity-history').scrollTop=0;
+}
+$('#activity-month-prev').addEventListener('click',()=>changeCollectionMonth(-1));
+$('#activity-month-next').addEventListener('click',()=>changeCollectionMonth(1));
+$('#activity-calendar-grid').addEventListener('click',event=>{
+  const day=event.target.closest('.calendar-day');if(!day)return;
+  collectionSelectedDate=day.dataset.date;collectionDateFilter=collectionDateFilter===day.dataset.date?null:day.dataset.date;
+  renderActivity();$('.activity-history').scrollTop=0;
+  $('#activity-calendar-grid').querySelector(`[data-date="${collectionSelectedDate}"]`)?.focus({preventScroll:true});
+});
+$('#activity-show-month').addEventListener('click',()=>{collectionDateFilter=null;renderActivity();$('.activity-history').scrollTop=0;});
+$('#activity-button').addEventListener('click',()=>{resetCollectionMonth();renderActivity();showTravelDialog('#activity-dialog');$('.activity-history').scrollTop=0;});
 $('#activity-close').addEventListener('click',()=>$('#activity-dialog').close());
 
 function showLobby() {
