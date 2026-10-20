@@ -1,6 +1,8 @@
 import input from '../common-v2/dictionary.json?v=15' with { type:'json' };
 import blocks from '../common-v2/blocked-words.json?v=15' with { type:'json' };
 import { createWordGate } from './whitelist.js?v=15';
+import { zenDictionaryError, zenTargetPolicy } from './zen-dictionary.js?v=21';
+import {bankDictionaryError,bankTargetPolicy} from './dictionary-banks.js?v=21';
 import { WORDLIST_HASH, WORDLIST_VERSION, WORDLIST_REVIEW_HASH, GAME_POLICY_VERSION, sourceHasWord, packageHasWord, ORIGINAL_ENGLISH_TARGETS } from './word-source.js?v=15';
 
 export const COMMON_DICTIONARY=Object.freeze({version:input.version,words:Object.freeze([...input.words])});
@@ -16,6 +18,8 @@ export function createBaseDictionary(lengths) {
     metadata:{contentPolicyVersion:POLICY_VERSION,wordlistVersion:WORDLIST_VERSION,gameReviewVersion:GAME_POLICY_VERSION,gameReviewSha256:WORDLIST_REVIEW_HASH,whitelistCount:COMMON_DICTIONARY.words.length,projectReviewVersion:blocks.version,projectReviewSha256:blocks.sha256}};
 }
 export function runtimeDictionaryError(dictionary) {
+  if(['web-supplied','wt-package'].includes(dictionary?.metadata?.origin))return bankDictionaryError(dictionary);
+  if(dictionary?.metadata?.origin==='zen')return zenDictionaryError(dictionary);
   if(!dictionary||Array.isArray(dictionary)||typeof dictionary.version!=='string'||!dictionary.version.startsWith(POLICY_VERSION+'-')||
       !dictionary.version.includes('-s'+WORDLIST_HASH.slice(0,12))||!dictionary.version.includes('-g'+WORDLIST_REVIEW_HASH.slice(0,12))||dictionary.metadata?.wordlistVersion!==WORDLIST_VERSION||dictionary.metadata?.gameReviewVersion!==GAME_POLICY_VERSION||dictionary.metadata?.gameReviewSha256!==WORDLIST_REVIEW_HASH||!Array.isArray(dictionary.words))
     return {code:'DICTIONARY_POLICY',message:'算法2需要当前审核词库的完整 { version, words, metadata } 对象；旧词库不能用于正式关卡。'};
@@ -26,7 +30,9 @@ export function runtimeDictionaryError(dictionary) {
     return {code:'DICTIONARY_POLICY',message:'候选词库包含白名单外、明确禁用或重复词，已拒绝；不能回退或合并旧词库。',rejectedWords:rejected};
   return null;
 }
-export function checkTargetPolicy(level) {
+export function checkTargetPolicy(level,dictionary) {
+  if(['web-supplied','wt-package'].includes(dictionary?.metadata?.origin))return bankTargetPolicy(level,dictionary);
+  if(dictionary?.metadata?.origin==='zen')return zenTargetPolicy(level,dictionary);
   const checked=wordGate.checkLevelTargets(level);
   if(!checked.ok) return checked;
   const rejectedWords=level.targets.filter(target=>!isTargetAllowed(target.word)).map(target=>target.word);

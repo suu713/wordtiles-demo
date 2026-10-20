@@ -1,0 +1,1470 @@
+{
+  "schema": "wordtile-alps-light-glass-v1",
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "origin": "top-left",
+    "units": "design-pixels",
+    "scaleMode": "uniform-fit",
+    "safeInsets": {
+      "top": 32,
+      "right": 24,
+      "bottom": 36,
+      "left": 24
+    }
+  },
+  "sourceCanvas": {
+    "width": 941,
+    "height": 1672
+  },
+  "fontFamily": "Nunito Sans",
+  "screens": {
+    "lobby": {
+      "background": "assets/backgrounds/bg-alps-lobby.png",
+      "blurredBackground": "assets/backgrounds/bg-alps-lobby-blurred.png",
+      "icons": [
+        {
+          "name": "calendar",
+          "rect": {
+            "x": 60,
+            "y": 65,
+            "width": 60,
+            "height": 57
+          }
+        },
+        {
+          "name": "settings",
+          "rect": {
+            "x": 972,
+            "y": 64,
+            "width": 53,
+            "height": 55
+          }
+        },
+        {
+          "name": "coin",
+          "rect": {
+            "x": 761,
+            "y": 63,
+            "width": 64,
+            "height": 64
+          }
+        },
+        {
+          "name": "arrow-right",
+          "rect": {
+            "x": 902,
+            "y": 1540,
+            "width": 39,
+            "height": 53
+          }
+        },
+        {
+          "name": "book",
+          "rect": {
+            "x": 505,
+            "y": 1724,
+            "width": 71,
+            "height": 70
+          },
+          "variant": "light"
+        }
+      ],
+      "glasses": [
+        {
+          "id": "continue",
+          "skin": "glass-primary",
+          "rect": {
+            "x": 91,
+            "y": 1479,
+            "width": 900,
+            "height": 171
+          },
+          "radius": 33,
+          "blur": 23,
+          "fixedPatch": "assets/fixed-layout-glass/lobby/continue.png",
+          "alphaMask": "assets/masks/instances/lobby-continue.png"
+        },
+        {
+          "id": "coin-pill",
+          "skin": "coin-pill",
+          "rect": {
+            "x": 743,
+            "y": 54,
+            "width": 205,
+            "height": 83
+          },
+          "radius": 41,
+          "blur": 12,
+          "fixedPatch": "assets/fixed-layout-glass/lobby/coin-pill.png",
+          "alphaMask": "assets/masks/instances/lobby-coin-pill.png"
+        }
+      ],
+      "labels": [
+        {
+          "id": "brand",
+          "value": "WordTile",
+          "center": {
+            "x": 540,
+            "y": 246.89
+          },
+          "fontSize": 61.98,
+          "fontWeight": 500,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "chapter",
+          "value": "ITALY · CHAPTER 1",
+          "center": {
+            "x": 540,
+            "y": 404.21
+          },
+          "fontSize": 42.47,
+          "fontWeight": 400,
+          "color": "#485C70",
+          "letterSpacing": 4.017003188097768,
+          "align": "center"
+        },
+        {
+          "id": "destination",
+          "value": "Alps",
+          "center": {
+            "x": 540,
+            "y": 509.86
+          },
+          "fontSize": 121.66,
+          "fontWeight": 600,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "chapter-progress",
+          "value": "8 of 20 levels",
+          "center": {
+            "x": 540,
+            "y": 656.84
+          },
+          "fontSize": 49.35,
+          "fontWeight": 400,
+          "color": "#485C70",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "coins",
+          "value": "240",
+          "center": {
+            "x": 880.3,
+            "y": 95.31
+          },
+          "fontSize": 50.5,
+          "fontWeight": 500,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "continue-title",
+          "value": "Continue",
+          "center": {
+            "x": 144.61,
+            "y": 1538.76
+          },
+          "fontSize": 58.53,
+          "fontWeight": 500,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "left"
+        },
+        {
+          "id": "continue-level",
+          "value": "Level 8",
+          "center": {
+            "x": 144.61,
+            "y": 1598.47
+          },
+          "fontSize": 51.65,
+          "fontWeight": 400,
+          "color": "#485C70",
+          "letterSpacing": 0,
+          "align": "left"
+        },
+        {
+          "id": "dictionary",
+          "value": "Dictionary",
+          "center": {
+            "x": 540,
+            "y": 1818.95
+          },
+          "fontSize": 41.32,
+          "fontWeight": 400,
+          "color": "#FFFFFF",
+          "letterSpacing": 0,
+          "align": "center"
+        }
+      ],
+      "divider": {
+        "rect": {
+          "x": 499,
+          "y": 596,
+          "width": 77,
+          "height": 3
+        },
+        "color": "#485C70"
+      },
+      "actions": [
+        {
+          "id": "play",
+          "rect": {
+            "x": 91,
+            "y": 1479,
+            "width": 900,
+            "height": 171
+          },
+          "label": "Continue"
+        },
+        {
+          "id": "calendar",
+          "rect": {
+            "x": 40,
+            "y": 44,
+            "width": 99,
+            "height": 101
+          },
+          "label": "Calendar"
+        },
+        {
+          "id": "settings",
+          "rect": {
+            "x": 951,
+            "y": 44,
+            "width": 96,
+            "height": 101
+          },
+          "label": "Settings"
+        },
+        {
+          "id": "dictionary",
+          "rect": {
+            "x": 402,
+            "y": 1704,
+            "width": 278,
+            "height": 155
+          },
+          "label": "Dictionary"
+        }
+      ]
+    },
+    "level": {
+      "background": "assets/backgrounds/bg-alps-level.png",
+      "blurredBackground": "assets/backgrounds/bg-alps-level-blurred.png",
+      "icons": [
+        {
+          "name": "back",
+          "rect": {
+            "x": 52,
+            "y": 54,
+            "width": 45,
+            "height": 63
+          }
+        },
+        {
+          "name": "coin",
+          "rect": {
+            "x": 860,
+            "y": 52,
+            "width": 68,
+            "height": 67
+          }
+        },
+        {
+          "name": "shuffle",
+          "rect": {
+            "x": 242,
+            "y": 1046,
+            "width": 81,
+            "height": 70
+          }
+        },
+        {
+          "name": "hint",
+          "rect": {
+            "x": 776,
+            "y": 1045,
+            "width": 68,
+            "height": 80
+          }
+        },
+        {
+          "name": "bag",
+          "rect": {
+            "x": 83,
+            "y": 1680,
+            "width": 72,
+            "height": 77
+          }
+        }
+      ],
+      "glasses": [
+        {
+          "id": "shuffle",
+          "skin": "glass-utility",
+          "rect": {
+            "x": 165,
+            "y": 1023,
+            "width": 239,
+            "height": 153
+          },
+          "radius": 75,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/shuffle.png",
+          "alphaMask": "assets/masks/instances/level-shuffle.png"
+        },
+        {
+          "id": "hint",
+          "skin": "glass-utility",
+          "rect": {
+            "x": 697,
+            "y": 1023,
+            "width": 222,
+            "height": 153
+          },
+          "radius": 75,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/hint.png",
+          "alphaMask": "assets/masks/instances/level-hint.png"
+        },
+        {
+          "id": "bonus",
+          "skin": "glass-utility",
+          "rect": {
+            "x": 36,
+            "y": 1657,
+            "width": 166,
+            "height": 155
+          },
+          "radius": 62,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/bonus.png",
+          "alphaMask": "assets/masks/instances/level-bonus.png"
+        },
+        {
+          "id": "board-0",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 256,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-0.png",
+          "alphaMask": "assets/masks/instances/level-board-0.png"
+        },
+        {
+          "id": "board-1",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 449,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-1.png",
+          "alphaMask": "assets/masks/instances/level-board-1.png"
+        },
+        {
+          "id": "board-2",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 642,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-2.png",
+          "alphaMask": "assets/masks/instances/level-board-2.png"
+        },
+        {
+          "id": "board-3",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 256,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-3.png",
+          "alphaMask": "assets/masks/instances/level-board-3.png"
+        },
+        {
+          "id": "board-4",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 449,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-4.png",
+          "alphaMask": "assets/masks/instances/level-board-4.png"
+        },
+        {
+          "id": "board-5",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 642,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-5.png",
+          "alphaMask": "assets/masks/instances/level-board-5.png"
+        },
+        {
+          "id": "board-6",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 256,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-6.png",
+          "alphaMask": "assets/masks/instances/level-board-6.png"
+        },
+        {
+          "id": "board-7",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 449,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-7.png",
+          "alphaMask": "assets/masks/instances/level-board-7.png"
+        },
+        {
+          "id": "board-8",
+          "skin": "glass-tile",
+          "rect": {
+            "x": 642,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          },
+          "radius": 20,
+          "blur": 21,
+          "fixedPatch": "assets/fixed-layout-glass/level/board-8.png",
+          "alphaMask": "assets/masks/instances/level-board-8.png"
+        },
+        {
+          "id": "answer-roam-0-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 337,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "roam",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-0-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-0-filled.png"
+        },
+        {
+          "id": "answer-roam-0-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 337,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "roam",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-0-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-0-empty.png"
+        },
+        {
+          "id": "answer-roam-1-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 443,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "roam",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-1-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-1-filled.png"
+        },
+        {
+          "id": "answer-roam-1-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 443,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "roam",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-1-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-1-empty.png"
+        },
+        {
+          "id": "answer-roam-2-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 549,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "roam",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-2-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-2-filled.png"
+        },
+        {
+          "id": "answer-roam-2-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 549,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "roam",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-2-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-2-empty.png"
+        },
+        {
+          "id": "answer-roam-3-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 654,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "roam",
+          "slotIndex": 3,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-3-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-3-filled.png"
+        },
+        {
+          "id": "answer-roam-3-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 654,
+            "y": 327,
+            "width": 92,
+            "height": 92
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "roam",
+          "slotIndex": 3,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-roam-3-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-roam-3-empty.png"
+        },
+        {
+          "id": "answer-arm-0-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 241,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "arm",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-0-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-0-filled.png"
+        },
+        {
+          "id": "answer-arm-0-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 241,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "arm",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-0-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-0-empty.png"
+        },
+        {
+          "id": "answer-arm-1-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 339,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "arm",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-1-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-1-filled.png"
+        },
+        {
+          "id": "answer-arm-1-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 339,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "arm",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-1-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-1-empty.png"
+        },
+        {
+          "id": "answer-arm-2-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 436,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "arm",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-2-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-2-filled.png"
+        },
+        {
+          "id": "answer-arm-2-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 436,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "arm",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-arm-2-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-arm-2-empty.png"
+        },
+        {
+          "id": "answer-oar-0-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 566,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "oar",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-0-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-0-filled.png"
+        },
+        {
+          "id": "answer-oar-0-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 566,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "oar",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-0-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-0-empty.png"
+        },
+        {
+          "id": "answer-oar-1-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 663,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "oar",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-1-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-1-filled.png"
+        },
+        {
+          "id": "answer-oar-1-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 663,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "oar",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-1-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-1-empty.png"
+        },
+        {
+          "id": "answer-oar-2-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 761,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "oar",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-2-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-2-filled.png"
+        },
+        {
+          "id": "answer-oar-2-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 761,
+            "y": 447,
+            "width": 90,
+            "height": 91
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "oar",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-oar-2-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-oar-2-empty.png"
+        },
+        {
+          "id": "answer-rat-0-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 254,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "rat",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-0-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-0-filled.png"
+        },
+        {
+          "id": "answer-rat-0-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 254,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "rat",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-0-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-0-empty.png"
+        },
+        {
+          "id": "answer-rat-1-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 343,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "rat",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-1-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-1-filled.png"
+        },
+        {
+          "id": "answer-rat-1-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 343,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "rat",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-1-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-1-empty.png"
+        },
+        {
+          "id": "answer-rat-2-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 433,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "rat",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-2-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-2-filled.png"
+        },
+        {
+          "id": "answer-rat-2-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 433,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "rat",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-rat-2-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-rat-2-empty.png"
+        },
+        {
+          "id": "answer-tea-0-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 565,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "tea",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-0-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-0-filled.png"
+        },
+        {
+          "id": "answer-tea-0-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 565,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "tea",
+          "slotIndex": 0,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-0-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-0-empty.png"
+        },
+        {
+          "id": "answer-tea-1-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 654,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "tea",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-1-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-1-filled.png"
+        },
+        {
+          "id": "answer-tea-1-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 654,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "tea",
+          "slotIndex": 1,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-1-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-1-empty.png"
+        },
+        {
+          "id": "answer-tea-2-filled",
+          "skin": "answer-filled",
+          "rect": {
+            "x": 744,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "filled",
+          "answerId": "tea",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-2-filled.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-2-filled.png"
+        },
+        {
+          "id": "answer-tea-2-empty",
+          "skin": "answer-empty",
+          "rect": {
+            "x": 744,
+            "y": 567,
+            "width": 83,
+            "height": 80
+          },
+          "radius": 16,
+          "blur": 15,
+          "state": "empty",
+          "answerId": "tea",
+          "slotIndex": 2,
+          "fixedPatch": "assets/fixed-layout-glass/level/answer-tea-2-empty.png",
+          "alphaMask": "assets/masks/instances/level-answer-tea-2-empty.png"
+        }
+      ],
+      "badges": [
+        {
+          "id": "hint-badge",
+          "rect": {
+            "x": 856,
+            "y": 1007,
+            "width": 67,
+            "height": 67
+          },
+          "value": "3",
+          "textSize": 49.35175345377258
+        },
+        {
+          "id": "bonus-badge",
+          "rect": {
+            "x": 137,
+            "y": 1639,
+            "width": 69,
+            "height": 69
+          },
+          "value": "4",
+          "textSize": 50.499468650371945
+        }
+      ],
+      "labels": [
+        {
+          "id": "level",
+          "value": "LEVEL 08",
+          "center": {
+            "x": 540,
+            "y": 84.98
+          },
+          "fontSize": 50.5,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 1.377258235919235,
+          "align": "center"
+        },
+        {
+          "id": "place",
+          "value": "Alps · Italy",
+          "center": {
+            "x": 540,
+            "y": 195.22
+          },
+          "fontSize": 47.06,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 2.75451647183847,
+          "align": "center"
+        },
+        {
+          "id": "word-progress",
+          "value": "3 of 5 words",
+          "center": {
+            "x": 540,
+            "y": 268.71
+          },
+          "fontSize": 61.98,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "coins",
+          "value": "240",
+          "center": {
+            "x": 993.92,
+            "y": 84.98
+          },
+          "fontSize": 55.09,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "shuffle-label",
+          "value": "Shuffle",
+          "center": {
+            "x": 284.63,
+            "y": 1142.58
+          },
+          "fontSize": 45.91,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "hint-label",
+          "value": "Hint",
+          "center": {
+            "x": 807.99,
+            "y": 1142.58
+          },
+          "fontSize": 45.91,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        },
+        {
+          "id": "bonus-label",
+          "value": "Bonus",
+          "center": {
+            "x": 118.79,
+            "y": 1770.72
+          },
+          "fontSize": 45.91,
+          "fontWeight": 400,
+          "color": "#263842",
+          "letterSpacing": 0,
+          "align": "center"
+        }
+      ],
+      "answerStyle": {
+        "fontSize": 59.681190223166844,
+        "fontWeight": 500,
+        "color": "#263842"
+      },
+      "answers": [
+        {
+          "id": "roam",
+          "word": "ROAM",
+          "solved": true,
+          "slots": [
+            {
+              "x": 337,
+              "y": 327,
+              "width": 92,
+              "height": 92
+            },
+            {
+              "x": 443,
+              "y": 327,
+              "width": 92,
+              "height": 92
+            },
+            {
+              "x": 549,
+              "y": 327,
+              "width": 92,
+              "height": 92
+            },
+            {
+              "x": 654,
+              "y": 327,
+              "width": 92,
+              "height": 92
+            }
+          ],
+          "glassIds": [
+            "roam-0",
+            "roam-1",
+            "roam-2",
+            "roam-3"
+          ]
+        },
+        {
+          "id": "arm",
+          "word": "ARM",
+          "solved": true,
+          "slots": [
+            {
+              "x": 241,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            },
+            {
+              "x": 339,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            },
+            {
+              "x": 436,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            }
+          ],
+          "glassIds": [
+            "arm-0",
+            "arm-1",
+            "arm-2"
+          ]
+        },
+        {
+          "id": "oar",
+          "word": "OAR",
+          "solved": true,
+          "slots": [
+            {
+              "x": 566,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            },
+            {
+              "x": 663,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            },
+            {
+              "x": 761,
+              "y": 447,
+              "width": 90,
+              "height": 91
+            }
+          ],
+          "glassIds": [
+            "oar-0",
+            "oar-1",
+            "oar-2"
+          ]
+        },
+        {
+          "id": "rat",
+          "word": "RAT",
+          "solved": false,
+          "slots": [
+            {
+              "x": 254,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            },
+            {
+              "x": 343,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            },
+            {
+              "x": 433,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            }
+          ],
+          "glassIds": [
+            "rat-0",
+            "rat-1",
+            "rat-2"
+          ]
+        },
+        {
+          "id": "tea",
+          "word": "TEA",
+          "solved": false,
+          "slots": [
+            {
+              "x": 565,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            },
+            {
+              "x": 654,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            },
+            {
+              "x": 744,
+              "y": 567,
+              "width": 83,
+              "height": 80
+            }
+          ],
+          "glassIds": [
+            "tea-0",
+            "tea-1",
+            "tea-2"
+          ]
+        }
+      ],
+      "board": [
+        {
+          "index": 0,
+          "letter": "R",
+          "count": 1,
+          "rect": {
+            "x": 256,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 1,
+          "letter": "O",
+          "count": 2,
+          "rect": {
+            "x": 449,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 2,
+          "letter": "T",
+          "count": 2,
+          "rect": {
+            "x": 642,
+            "y": 1217,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 3,
+          "letter": "M",
+          "count": 2,
+          "rect": {
+            "x": 256,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 4,
+          "letter": "A",
+          "count": 2,
+          "rect": {
+            "x": 449,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 5,
+          "letter": "E",
+          "count": 2,
+          "rect": {
+            "x": 642,
+            "y": 1409,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 6,
+          "letter": "R",
+          "count": 2,
+          "rect": {
+            "x": 256,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 7,
+          "letter": "S",
+          "count": 1,
+          "rect": {
+            "x": 449,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          }
+        },
+        {
+          "index": 8,
+          "letter": "A",
+          "count": 2,
+          "rect": {
+            "x": 642,
+            "y": 1601,
+            "width": 181,
+            "height": 181
+          }
+        }
+      ],
+      "letterStyle": {
+        "fontSize": 107.88522848034006,
+        "fontWeight": 600,
+        "color": "#203540"
+      },
+      "counterStyle": {
+        "fontSize": 47.05632306057386,
+        "fontWeight": 500,
+        "color": "#435F71"
+      },
+      "actions": [
+        {
+          "id": "back",
+          "rect": {
+            "x": 32,
+            "y": 34,
+            "width": 94,
+            "height": 103
+          },
+          "label": "Back"
+        },
+        {
+          "id": "shuffle",
+          "rect": {
+            "x": 165,
+            "y": 1023,
+            "width": 239,
+            "height": 153
+          },
+          "label": "Shuffle"
+        },
+        {
+          "id": "hint",
+          "rect": {
+            "x": 697,
+            "y": 1023,
+            "width": 222,
+            "height": 153
+          },
+          "label": "Hint"
+        },
+        {
+          "id": "bonus",
+          "rect": {
+            "x": 36,
+            "y": 1657,
+            "width": 166,
+            "height": 155
+          },
+          "label": "Bonus words"
+        }
+      ]
+    }
+  },
+  "runtimeText": {
+    "bakedIntoAssets": false,
+    "lettersAndCountersSeparate": true,
+    "fontWeights": [
+      400,
+      500,
+      600
+    ]
+  }
+}

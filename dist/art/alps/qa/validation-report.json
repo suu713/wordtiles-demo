@@ -1,0 +1,1142 @@
+{
+  "validatedAt": "2026-10-16T07:46:06.846Z",
+  "assetCount": 68,
+  "assets": [
+    {
+      "id": "bg-lobby",
+      "width": 1080,
+      "height": 1920,
+      "valid": true
+    },
+    {
+      "id": "bg-lobby-blurred",
+      "width": 1080,
+      "height": 1920,
+      "valid": true
+    },
+    {
+      "id": "bg-level",
+      "width": 1080,
+      "height": 1920,
+      "valid": true
+    },
+    {
+      "id": "bg-level-blurred",
+      "width": 1080,
+      "height": 1920,
+      "valid": true
+    },
+    {
+      "id": "glass-primary",
+      "width": 900,
+      "height": 180,
+      "alpha": {
+        "min": 0,
+        "max": 224
+      },
+      "valid": true
+    },
+    {
+      "id": "glass-tile",
+      "width": 256,
+      "height": 256,
+      "alpha": {
+        "min": 0,
+        "max": 229
+      },
+      "valid": true
+    },
+    {
+      "id": "glass-utility",
+      "width": 320,
+      "height": 200,
+      "alpha": {
+        "min": 0,
+        "max": 232
+      },
+      "valid": true
+    },
+    {
+      "id": "answer-filled",
+      "width": 160,
+      "height": 160,
+      "alpha": {
+        "min": 0,
+        "max": 227
+      },
+      "valid": true
+    },
+    {
+      "id": "answer-empty",
+      "width": 160,
+      "height": 160,
+      "alpha": {
+        "min": 0,
+        "max": 224
+      },
+      "valid": true
+    },
+    {
+      "id": "coin-pill",
+      "width": 240,
+      "height": 100,
+      "alpha": {
+        "min": 0,
+        "max": 56
+      },
+      "valid": true
+    },
+    {
+      "id": "sage-badge",
+      "width": 96,
+      "height": 96,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "tile-selection",
+      "width": 256,
+      "height": 256,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "calendar",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "back",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "arrow-right",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "settings",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "coin",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "shuffle",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "hint",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "bag",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "book",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "book-light",
+      "width": 128,
+      "height": 128,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "lobby-continue",
+      "width": 900,
+      "height": 171,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "lobby-coin-pill",
+      "width": 205,
+      "height": 83,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-shuffle",
+      "width": 239,
+      "height": 153,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-hint",
+      "width": 222,
+      "height": 153,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-bonus",
+      "width": 166,
+      "height": 155,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-0",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-1",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-2",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-3",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-4",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-5",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-6",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-7",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-board-8",
+      "width": 181,
+      "height": 181,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-0-filled",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-0-empty",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-1-filled",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-1-empty",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-2-filled",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-2-empty",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-3-filled",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-roam-3-empty",
+      "width": 92,
+      "height": 92,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-0-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-0-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-1-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-1-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-2-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-arm-2-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-0-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-0-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-1-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-1-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-2-filled",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-oar-2-empty",
+      "width": 90,
+      "height": 91,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-0-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-0-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-1-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-1-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-2-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-rat-2-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-0-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-0-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-1-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-1-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-2-filled",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    },
+    {
+      "id": "level-answer-tea-2-empty",
+      "width": 83,
+      "height": 80,
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "valid": true
+    }
+  ],
+  "atlasFrames": 18,
+  "desktopLobby": {
+    "screen": {
+      "width": 390,
+      "height": 693.328125
+    },
+    "labels": [
+      {
+        "id": "brand",
+        "within": true
+      },
+      {
+        "id": "chapter",
+        "within": true
+      },
+      {
+        "id": "destination",
+        "within": true
+      },
+      {
+        "id": "chapter-progress",
+        "within": true
+      },
+      {
+        "id": "coins",
+        "within": true
+      },
+      {
+        "id": "continue-title",
+        "within": true
+      },
+      {
+        "id": "continue-level",
+        "within": true
+      },
+      {
+        "id": "dictionary",
+        "within": true
+      }
+    ],
+    "cells": [],
+    "fonts": [
+      true,
+      true,
+      true
+    ],
+    "imagesLoaded": true,
+    "noHorizontalOverflow": true
+  },
+  "desktopLevel": {
+    "screen": {
+      "width": 390,
+      "height": 693.328125
+    },
+    "labels": [
+      {
+        "id": "level",
+        "within": true
+      },
+      {
+        "id": "place",
+        "within": true
+      },
+      {
+        "id": "word-progress",
+        "within": true
+      },
+      {
+        "id": "coins",
+        "within": true
+      },
+      {
+        "id": "shuffle-label",
+        "within": true
+      },
+      {
+        "id": "hint-label",
+        "within": true
+      },
+      {
+        "id": "bonus-label",
+        "within": true
+      },
+      {
+        "id": "answer-roam-0",
+        "within": true
+      },
+      {
+        "id": "answer-roam-1",
+        "within": true
+      },
+      {
+        "id": "answer-roam-2",
+        "within": true
+      },
+      {
+        "id": "answer-roam-3",
+        "within": true
+      },
+      {
+        "id": "answer-arm-0",
+        "within": true
+      },
+      {
+        "id": "answer-arm-1",
+        "within": true
+      },
+      {
+        "id": "answer-arm-2",
+        "within": true
+      },
+      {
+        "id": "answer-oar-0",
+        "within": true
+      },
+      {
+        "id": "answer-oar-1",
+        "within": true
+      },
+      {
+        "id": "answer-oar-2",
+        "within": true
+      },
+      {
+        "id": "letter-0",
+        "within": true
+      },
+      {
+        "id": "count-0",
+        "within": true
+      },
+      {
+        "id": "letter-1",
+        "within": true
+      },
+      {
+        "id": "count-1",
+        "within": true
+      },
+      {
+        "id": "letter-2",
+        "within": true
+      },
+      {
+        "id": "count-2",
+        "within": true
+      },
+      {
+        "id": "letter-3",
+        "within": true
+      },
+      {
+        "id": "count-3",
+        "within": true
+      },
+      {
+        "id": "letter-4",
+        "within": true
+      },
+      {
+        "id": "count-4",
+        "within": true
+      },
+      {
+        "id": "letter-5",
+        "within": true
+      },
+      {
+        "id": "count-5",
+        "within": true
+      },
+      {
+        "id": "letter-6",
+        "within": true
+      },
+      {
+        "id": "count-6",
+        "within": true
+      },
+      {
+        "id": "letter-7",
+        "within": true
+      },
+      {
+        "id": "count-7",
+        "within": true
+      },
+      {
+        "id": "letter-8",
+        "within": true
+      },
+      {
+        "id": "count-8",
+        "within": true
+      },
+      {
+        "id": "hint-badge",
+        "within": true
+      },
+      {
+        "id": "bonus-badge",
+        "within": true
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "centered": true
+      },
+      {
+        "index": 1,
+        "centered": true
+      },
+      {
+        "index": 2,
+        "centered": true
+      },
+      {
+        "index": 3,
+        "centered": true
+      },
+      {
+        "index": 4,
+        "centered": true
+      },
+      {
+        "index": 5,
+        "centered": true
+      },
+      {
+        "index": 6,
+        "centered": true
+      },
+      {
+        "index": 7,
+        "centered": true
+      },
+      {
+        "index": 8,
+        "centered": true
+      }
+    ],
+    "fonts": [
+      true,
+      true,
+      true
+    ],
+    "imagesLoaded": true,
+    "noHorizontalOverflow": true
+  },
+  "liveLevel": {
+    "screen": {
+      "width": 390,
+      "height": 693.328125
+    },
+    "labels": [
+      {
+        "id": "level",
+        "within": true
+      },
+      {
+        "id": "place",
+        "within": true
+      },
+      {
+        "id": "word-progress",
+        "within": true
+      },
+      {
+        "id": "coins",
+        "within": true
+      },
+      {
+        "id": "shuffle-label",
+        "within": true
+      },
+      {
+        "id": "hint-label",
+        "within": true
+      },
+      {
+        "id": "bonus-label",
+        "within": true
+      },
+      {
+        "id": "answer-roam-0",
+        "within": true
+      },
+      {
+        "id": "answer-roam-1",
+        "within": true
+      },
+      {
+        "id": "answer-roam-2",
+        "within": true
+      },
+      {
+        "id": "answer-roam-3",
+        "within": true
+      },
+      {
+        "id": "answer-arm-0",
+        "within": true
+      },
+      {
+        "id": "answer-arm-1",
+        "within": true
+      },
+      {
+        "id": "answer-arm-2",
+        "within": true
+      },
+      {
+        "id": "answer-oar-0",
+        "within": true
+      },
+      {
+        "id": "answer-oar-1",
+        "within": true
+      },
+      {
+        "id": "answer-oar-2",
+        "within": true
+      },
+      {
+        "id": "letter-0",
+        "within": true
+      },
+      {
+        "id": "count-0",
+        "within": true
+      },
+      {
+        "id": "letter-1",
+        "within": true
+      },
+      {
+        "id": "count-1",
+        "within": true
+      },
+      {
+        "id": "letter-2",
+        "within": true
+      },
+      {
+        "id": "count-2",
+        "within": true
+      },
+      {
+        "id": "letter-3",
+        "within": true
+      },
+      {
+        "id": "count-3",
+        "within": true
+      },
+      {
+        "id": "letter-4",
+        "within": true
+      },
+      {
+        "id": "count-4",
+        "within": true
+      },
+      {
+        "id": "letter-5",
+        "within": true
+      },
+      {
+        "id": "count-5",
+        "within": true
+      },
+      {
+        "id": "letter-6",
+        "within": true
+      },
+      {
+        "id": "count-6",
+        "within": true
+      },
+      {
+        "id": "letter-7",
+        "within": true
+      },
+      {
+        "id": "count-7",
+        "within": true
+      },
+      {
+        "id": "letter-8",
+        "within": true
+      },
+      {
+        "id": "count-8",
+        "within": true
+      },
+      {
+        "id": "hint-badge",
+        "within": true
+      },
+      {
+        "id": "bonus-badge",
+        "within": true
+      }
+    ],
+    "cells": [
+      {
+        "index": 0,
+        "centered": true
+      },
+      {
+        "index": 1,
+        "centered": true
+      },
+      {
+        "index": 2,
+        "centered": true
+      },
+      {
+        "index": 3,
+        "centered": true
+      },
+      {
+        "index": 4,
+        "centered": true
+      },
+      {
+        "index": 5,
+        "centered": true
+      },
+      {
+        "index": 6,
+        "centered": true
+      },
+      {
+        "index": 7,
+        "centered": true
+      },
+      {
+        "index": 8,
+        "centered": true
+      }
+    ],
+    "fonts": [
+      true,
+      true,
+      true
+    ],
+    "imagesLoaded": true,
+    "noHorizontalOverflow": true
+  },
+  "mobileChecks": [
+    {
+      "imagesLoaded": true,
+      "noHorizontalOverflow": true,
+      "screen": "lobby"
+    },
+    {
+      "imagesLoaded": true,
+      "noHorizontalOverflow": true,
+      "screen": "level"
+    }
+  ],
+  "interactions": {
+    "enterLevel": true,
+    "ratSolves": true,
+    "hintSolves": true,
+    "shufflePreservesLetterCounts": true,
+    "reset": true
+  },
+  "runtimeErrors": [],
+  "missingFiles": []
+}

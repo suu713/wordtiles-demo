@@ -1,0 +1,53 @@
+{
+  "sourceScreens": {
+    "lobby": "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-01-lobby.png",
+    "level": "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-02-level.png"
+  },
+  "specs": [
+    {
+      "key": "bg_lobby",
+      "label": "大厅纯背景",
+      "transparent": false,
+      "refs": [
+        "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-01-lobby.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: clean reusable full-screen background texture for a mobile word game.\nThe provided image is the edit target. Remove EVERY UI overlay and reconstruct ONLY the photograph underneath, preserving the exact photo, camera perspective, crop, mountain silhouettes, natural rock and fog details, cloud layers, natural light and foreground depth of field.\nOutput one edge-to-edge portrait 9:16 natural travel photograph, full resolution. No phone frame, no outer canvas.\nRemove all typography including WordTile, Alps, chapter and progress text, levels, location, numbers, coin count, captions. Remove ALL icons, answer slots, game tiles, outlined empty cells, rounded buttons, badges, chevrons, divider marks, panels, and every milky or frosted blur patch caused by those controls. Reconstruct sharp photographic texture at the original depth of field beneath them. There must be NO residual letters, shadows shaped like UI, rectangular holes or ghost buttons.\nThe actual landscape must remain the same real photographic Italian Alpine scene. Do not turn it into painting or watercolor, do not add a new mountain, change time of day, add people or a lake. Fill the former overlay regions from their exact surrounding sky, rock, grass and clouds.\nThis target is the LOBBY image. Carefully remove the central title group, top HUD, lower Continue action and bottom Dictionary action, filling all of them with matching original photographic content."
+    },
+    {
+      "key": "bg_level",
+      "label": "关卡纯背景",
+      "transparent": false,
+      "refs": [
+        "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-02-level.png"
+      ],
+      "prompt": "Use case: precise-object-edit.\nAsset type: clean reusable full-screen background texture for a mobile word game.\nThe provided image is the edit target. Remove EVERY UI overlay and reconstruct ONLY the photograph underneath, preserving the exact photo, camera perspective, crop, mountain silhouettes, natural rock and fog details, cloud layers, natural light and foreground depth of field.\nOutput one edge-to-edge portrait 9:16 natural travel photograph, full resolution. No phone frame, no outer canvas.\nRemove all typography including WordTile, Alps, chapter and progress text, levels, location, numbers, coin count, captions. Remove ALL icons, answer slots, game tiles, outlined empty cells, rounded buttons, badges, chevrons, divider marks, panels, and every milky or frosted blur patch caused by those controls. Reconstruct sharp photographic texture at the original depth of field beneath them. There must be NO residual letters, shadows shaped like UI, rectangular holes or ghost buttons.\nThe actual landscape must remain the same real photographic Italian Alpine scene. Do not turn it into painting or watercolor, do not add a new mountain, change time of day, add people or a lake. Fill the former overlay regions from their exact surrounding sky, rock, grass and clouds.\nThis target is the GAMEPLAY image. Carefully remove top HUD, answer cells and progress, shuffle/hint buttons, all nine lower letter tiles and lower-left Bonus control. Reconstruct their full underlying fog, mountains and foreground."
+    },
+    {
+      "key": "glass_primary",
+      "label": "主按钮透明底图",
+      "transparent": true,
+      "refs": [
+        "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-01-lobby.png"
+      ],
+      "prompt": "Use case: background-extraction.\nAsset type: a single reusable TRANSPARENT RGBA 2D game UI skin, not a screenshot.\nUse the provided game screen ONLY to match the selected control's shape and very restrained frosted-glass edge language. Isolate ONE EMPTY flat UI surface. All letters, numerals, icons, badges, captions, controls other than the requested surface, scenery and original photographic colors must be removed.\nThe output must have a genuinely transparent background. This is a shader OVERLAY texture: the interior should be softly translucent neutral near-white with meaningful alpha around 40–60%, so a separately supplied background can be seen through it. Fine translucent white edge highlight and a tiny soft neutral shadow only. Do not bake any mountain, sky, grass, landscape texture, colored reflection or blur patch into this reusable skin. Do NOT make it opaque solid white, a checkerboard image, glossy 3D physical glass, beveled toy plastic or a glass window in a scene.\nNo text, no numbers, no logos, no icons anywhere. One object only, orthographic front view, centered with modest transparent padding. Soft neutral color, exceptionally light visual weight.\nSelected surface: the wide horizontal Continue button near the bottom of the lobby. One empty low rounded rectangle, approximately 5.2:1 width-to-height ratio, restrained corner radius about 0.2 of its height. Empty interior across its full width. Preserve this simple silhouette, not a capsule with semicircular ends. No surrounding screenshot."
+    },
+    {
+      "key": "glass_tile",
+      "label": "棋盘格透明底图",
+      "transparent": true,
+      "refs": [
+        "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-02-level.png"
+      ],
+      "prompt": "Use case: background-extraction.\nAsset type: a single reusable TRANSPARENT RGBA 2D game UI skin, not a screenshot.\nUse the provided game screen ONLY to match the selected control's shape and very restrained frosted-glass edge language. Isolate ONE EMPTY flat UI surface. All letters, numerals, icons, badges, captions, controls other than the requested surface, scenery and original photographic colors must be removed.\nThe output must have a genuinely transparent background. This is a shader OVERLAY texture: the interior should be softly translucent neutral near-white with meaningful alpha around 40–60%, so a separately supplied background can be seen through it. Fine translucent white edge highlight and a tiny soft neutral shadow only. Do not bake any mountain, sky, grass, landscape texture, colored reflection or blur patch into this reusable skin. Do NOT make it opaque solid white, a checkerboard image, glossy 3D physical glass, beveled toy plastic or a glass window in a scene.\nNo text, no numbers, no logos, no icons anywhere. One object only, orthographic front view, centered with modest transparent padding. Soft neutral color, exceptionally light visual weight.\nSelected surface: ONE of the large square input letter tiles in the lower 3×3 board. Output exactly one empty square, 1:1 aspect, softly rounded corners about 10% of the side length, very fine translucent edge, consistent straight edges. Remove the large letter AND the upper-right use counter. It must be a flat reusable empty glass tile, not a 3D cube or a multi-tile board."
+    },
+    {
+      "key": "glass_utility",
+      "label": "功能按钮透明底图",
+      "transparent": true,
+      "refs": [
+        "C:/Users/huyi/Documents/Codex/2026-10-12/yo/outputs/wordtile-natural-photo-ui-light-glass-v3/A-02-level.png"
+      ],
+      "prompt": "Use case: background-extraction.\nAsset type: a single reusable TRANSPARENT RGBA 2D game UI skin, not a screenshot.\nUse the provided game screen ONLY to match the selected control's shape and very restrained frosted-glass edge language. Isolate ONE EMPTY flat UI surface. All letters, numerals, icons, badges, captions, controls other than the requested surface, scenery and original photographic colors must be removed.\nThe output must have a genuinely transparent background. This is a shader OVERLAY texture: the interior should be softly translucent neutral near-white with meaningful alpha around 40–60%, so a separately supplied background can be seen through it. Fine translucent white edge highlight and a tiny soft neutral shadow only. Do not bake any mountain, sky, grass, landscape texture, colored reflection or blur patch into this reusable skin. Do NOT make it opaque solid white, a checkerboard image, glossy 3D physical glass, beveled toy plastic or a glass window in a scene.\nNo text, no numbers, no logos, no icons anywhere. One object only, orthographic front view, centered with modest transparent padding. Soft neutral color, exceptionally light visual weight.\nSelected surface: the softly rounded translucent Shuffle/Hint utility button above the board. Output one empty compact horizontal pill-like rounded rectangle, width-to-height about 1.6:1, rounded ends/corners, lightly frosted neutral-white surface. Remove icon, Shuffle/Hint lettering and number badge. Empty surface only; do not output a separate circle or include a second button."
+    }
+  ]
+}

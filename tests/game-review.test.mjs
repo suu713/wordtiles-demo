@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {WEB_BANK_VERSION} from '../dist/core/dictionary-banks.js';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -44,7 +45,7 @@ test('旧收藏和旧归档里的原包词恢复，五语言及首次日期保�
  const storage=memory(),date='2026-10-10T12:00:00.000Z';storage.setItem('unrelated','keep');
  storage.setItem(COLLECTION_KEY,JSON.stringify({version:2,policyVersion:'old',entries:['CAT','GOOSE','NATURAL'].map(word=>({word,language:'english',firstFoundAt:date})),archivedEntries:[...['BRA','RATED','NAT'].map(word=>({word,language:'english',firstFoundAt:date})),{word:'AÑO',language:'spanish',firstFoundAt:date}]}));
  const c=createWordCollection(storage);assert.equal(c.size,6);assert.ok(c.entries().every(e=>e.firstFoundAt===date));assert.ok(c.entries().some(e=>e.word==='BRA'));assert.ok(c.entries().some(e=>e.word==='RATED'));
- const saved=JSON.parse(storage.getItem(COLLECTION_KEY));assert.equal(saved.policyVersion,GAME_POLICY_VERSION);assert.deepEqual(saved.archivedEntries.map(e=>e.word),['NAT']);assert.equal(storage.getItem('unrelated'),'keep');assert.equal(createWordCollection(storage).size,6);
+ const saved=JSON.parse(storage.getItem(COLLECTION_KEY));assert.equal(saved.policyVersion,WEB_BANK_VERSION);assert.deepEqual(saved.archivedEntries.map(e=>e.word),['NAT']);assert.equal(storage.getItem('unrelated'),'keep');assert.equal(createWordCollection(storage).size,6);
 });
 
 test('BRA可连时按本关额外词接收，不扣次数、重复不新增，并显示统计',()=>{

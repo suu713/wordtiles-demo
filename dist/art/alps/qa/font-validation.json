@@ -1,0 +1,20 @@
+[
+  {
+    "file": "NunitoSans-Regular.ttf",
+    "weight": 400,
+    "static": true,
+    "bytes": 113564
+  },
+  {
+    "file": "NunitoSans-Medium.ttf",
+    "weight": 500,
+    "static": true,
+    "bytes": 113604
+  },
+  {
+    "file": "NunitoSans-Semibold.ttf",
+    "weight": 600,
+    "static": true,
+    "bytes": 113672
+  }
+]

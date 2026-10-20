@@ -1,0 +1,32 @@
+{
+  "name": "WordTile / Alps / Light Glass",
+  "colors": {
+    "ink": "#263842",
+    "secondary": "#485C70",
+    "counter": "#435F71",
+    "sage": "#637E71",
+    "white": "#FFFFFF"
+  },
+  "fonts": {
+    "family": "Nunito Sans",
+    "regular": "fonts/NunitoSans-Regular.ttf",
+    "medium": "fonts/NunitoSans-Medium.ttf",
+    "semibold": "fonts/NunitoSans-Semibold.ttf"
+  },
+  "states": {
+    "pressScale": 0.97,
+    "disabledOpacity": 0.48,
+    "selection": "assets/ui/tile-selection.png"
+  },
+  "glass": {
+    "fixedLayout": "Use fixedPatch at its exact rect for immediate visual reproduction.",
+    "reusable": "Blur the scene behind the control using the instance radius and blur sigma, then draw the matching RGBA skin. The skin itself cannot blur the background.",
+    "blurSigmaDesignPixels": 21
+  },
+  "spriteRendering": {
+    "alphaMode": "straight",
+    "filter": "linear",
+    "wrap": "clamp",
+    "mipmaps": false
+  }
+}

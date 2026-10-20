@@ -1,0 +1,79 @@
+{
+  "assets/ui/glass-primary.png": {
+    "width": 900,
+    "height": 180,
+    "insets": {
+      "left": 38,
+      "right": 38,
+      "top": 38,
+      "bottom": 38
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/glass-tile.png": {
+    "width": 256,
+    "height": 256,
+    "insets": {
+      "left": 32,
+      "right": 32,
+      "top": 32,
+      "bottom": 32
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/glass-utility.png": {
+    "width": 320,
+    "height": 200,
+    "insets": {
+      "left": 98,
+      "right": 98,
+      "top": 98,
+      "bottom": 98
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/answer-filled.png": {
+    "width": 160,
+    "height": 160,
+    "insets": {
+      "left": 23,
+      "right": 23,
+      "top": 23,
+      "bottom": 23
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/answer-empty.png": {
+    "width": 160,
+    "height": 160,
+    "insets": {
+      "left": 28,
+      "right": 28,
+      "top": 28,
+      "bottom": 28
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/coin-pill.png": {
+    "width": 240,
+    "height": 100,
+    "insets": {
+      "left": 51,
+      "right": 51,
+      "top": 42,
+      "bottom": 42
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  },
+  "assets/ui/tile-selection.png": {
+    "width": 256,
+    "height": 256,
+    "insets": {
+      "left": 34,
+      "right": 34,
+      "top": 34,
+      "bottom": 34
+    },
+    "applyTo": "reusable skin only; do not nine-slice fixed background patches"
+  }
+}

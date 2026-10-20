@@ -1,0 +1,26 @@
+.word-fireworks-layer{position:fixed;inset:0;z-index:24;overflow:hidden;pointer-events:none;contain:strict}
+.word-fireworks-flight{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.word-fireworks-trail{fill:none;stroke:#f3dda8;stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 4px #e4c983);transition:opacity .4s ease}
+.word-fireworks-layer.landed .word-fireworks-trail{opacity:0}
+.fireworks-halo{fill:#f5db9d;opacity:.5;filter:blur(3px)}
+.fireworks-core{fill:#fffbe5;filter:drop-shadow(0 0 5px #f7ce72)}
+.word-fireworks-ring,.word-fireworks-spark{position:absolute;display:block;pointer-events:none;border-radius:50%;animation:fireworks-ring .6s ease-out both}
+.word-fireworks-ring{width:22px;height:22px;margin:-11px;border:1px solid #f7e1ad;box-shadow:0 0 6px #f6e6bfa6}
+.word-fireworks-spark{width:3px;height:3px;margin:-1.5px;background:#fff1c8;box-shadow:0 0 4px #e9d294;animation:fireworks-spark .6s ease-out both}
+.word-fireworks-spark:nth-of-type(3n){background:#c6dfcd;box-shadow:0 0 4px #98ba9f}
+.target.fireworks-word-lit .target-letter{border-color:#c4af77;transition:border-color .2s,background-color .2s}
+.target-letter.fireworks-letter-lit{animation:fireworks-letter .7s cubic-bezier(.16,.8,.3,1) both}
+.game-art-actions .fireworks-launch:disabled{opacity:.9}
+.fireworks-launch .fireworks-icon{animation:fireworks-launch .4s ease-out}
+@keyframes fireworks-launch{0%{transform:scale(1)}35%{transform:scale(.78) rotate(-10deg)}75%{transform:scale(1.16) rotate(6deg)}100%{transform:scale(1)}}
+@keyframes fireworks-ring{0%{opacity:.85;transform:scale(.25)}100%{opacity:0;transform:scale(2.3)}}
+@keyframes fireworks-spark{0%{opacity:1;transform:translate(0,0) scale(.7)}65%{opacity:.8}100%{opacity:0;transform:translate(var(--spark-x),var(--spark-y)) scale(.15)}}
+@keyframes fireworks-letter{0%{transform:translateY(5px) scale(.82);color:#385c48;background:#fff3c9;box-shadow:0 0 0 1px #ead59d,0 0 15px #ffe1a9}40%{transform:translateY(-2px) scale(1.13);color:#385c48;box-shadow:0 0 0 3px #efda9d66,0 0 17px #fbe7bc9c}100%{transform:none;color:#385c48;background:#eff5e8f2;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.word-fireworks-layer{display:none}.target-letter.fireworks-letter-lit,.fireworks-launch .fireworks-icon{animation:none}}
+.tile.fireworks-path-lit:not(.selected)::before{inset:3%;border:2px solid #9caf83;background:#d8e9bc55;border-radius:10%;box-shadow:0 0 9px #d9e8b973}
+.tile.fireworks-path-start::after{content:'';position:absolute;left:11%;bottom:11%;width:9%;aspect-ratio:1;border-radius:50%;background:#6b8658;box-shadow:0 0 0 2px #f1f5df;pointer-events:none;z-index:2}
+.tile.fireworks-path-head .tile-letter{animation:fireworks-board-letter .35s ease-out}
+.connections .fireworks-board-line,.connections .fireworks-board-arrow{fill:none;stroke:#a57c32;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.95;pointer-events:none}
+.connections .fireworks-board-arrow{stroke-width:3.3}
+@keyframes fireworks-board-letter{0%{color:#a57c32;transform:translateY(1px) scale(.84)}55%{color:#426348;transform:translateY(1px) scale(1.16)}100%{color:#203540;transform:translateY(1px) scale(1)}}
+@media(prefers-reduced-motion:reduce){.tile.fireworks-path-head .tile-letter{animation:none}}

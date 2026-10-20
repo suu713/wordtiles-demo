@@ -1,21 +1,26 @@
 {
   "name": "wordtiles-local-editor",
-  "version": "7.3.0",
+  "version": "8.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
     "build:algorithm": "node scripts/build-algorithm.mjs",
     "test": "node --test tests/*.test.mjs",
-    "package:words": "node scripts/package-wordlist.mjs",
+    "package:words": "python scripts/build-union-word-bank.py",
     "test:whitelist": "node data/common-v2/tests/test-gate.mjs",
     "test:lexicon": "node scripts/benchmark-lexicon.mjs 100",
     "test:source": "node scripts/verify-source-levels.mjs",
     "test:portrait": "node scripts/check-portrait.mjs",
-    "test:art": "node scripts/check-paris-art.mjs",
-    "test:travel": "node scripts/check-travel-ui.mjs",
+    "test:art": "node scripts/check-alps-art.mjs",
+    "test:travel": "node scripts/check-collection-browser.mjs",
+    "test:collection": "node scripts/check-collection-browser.mjs",
+    "test:data": "node scripts/check-data-settings-browser.mjs",
     "test:review:browser": "node scripts/check-game-review-browser.mjs",
     "test:batch": "node scripts/benchmark-v1.mjs 1000",
-    "test:browser": "node scripts/browser-test.mjs"
+    "test:browser": "node scripts/browser-test.mjs",
+    "test:playtest": "node scripts/check-playtest-browser.mjs",
+    "package:zen": "python scripts/extract-zen-levels.py",
+    "package:playtest": "python scripts/build-playtest-data.py"
   }
 }

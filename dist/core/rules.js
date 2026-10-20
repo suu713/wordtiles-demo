@@ -1,6 +1,6 @@
 export const RULES_VERSION = 'wordtiles-v2.0.0';
 export const LENGTHS = [3, 3, 3, 4, 5];
-export const LIMITS = Object.freeze({ minSize: 2, maxSize: 6, minTargets: 1, maxTargets: 10, minLength: 3, maxLength: 8, maxUses: 3 });
+export const LIMITS = Object.freeze({ minSize: 2, maxSize: 6, minTargets: 1, maxTargets: 16, minLength: 2, maxLength: 10, maxUses: 9 });
 export const DEFAULT_CONFIG = Object.freeze({ rows: 3, cols: 3, wordLengths: Object.freeze([...LENGTHS]) });
 const neighborCache = new Map();
 export function createNeighbors(rows = 3, cols = 3) {
@@ -17,17 +17,17 @@ export function freeze(value) {
   if (value && typeof value === 'object') { Object.freeze(value); Object.values(value).forEach(freeze); }
   return value;
 }
-export function normalizeDictionary(input) {
+export function normalizeDictionary(input,{minLength=3,maxLength=8}={}) {
   const words = Array.isArray(input) ? input : input?.words;
   return [...new Set((Array.isArray(words) ? words : []).filter(x => typeof x === 'string')
-    .map(x => x.toUpperCase()).filter(x => /^[A-Z]{3,8}$/.test(x)))].sort();
+    .map(x => x.toUpperCase()).filter(x => /^[A-Z]+$/.test(x)&&x.length>=minLength&&x.length<=maxLength))].sort();
 }
 // Target generation still uses the configured 3–8 letter limit. Bonus words
 // have their own exact spelling list, including longer packaged words.
 export function normalizeBonusDictionary(input) {
   const words=Array.isArray(input)?input:input?.words;
   return [...new Set((Array.isArray(words)?words:[]).filter(w=>typeof w==='string')
-    .map(w=>w.toUpperCase()).filter(w=>/^\p{L}{3,45}$/u.test(w)))].sort();
+    .map(w=>w.toUpperCase()).filter(w=>/^\p{L}{2,45}$/u.test(w)))].sort();
 }
 export function configForLevel(level) {
   return level.schemaVersion === 2 ? clone(level.config) : {
@@ -42,16 +42,17 @@ export function checkConfiguration(config, dictionary = null) {
     error('SIZE', `棋盘行列必须为 ${LIMITS.minSize}～${LIMITS.maxSize} 的整数`);
   }
   if (!Array.isArray(config?.wordLengths) || config.wordLengths.length < LIMITS.minTargets || config.wordLengths.length > LIMITS.maxTargets ||
-      !config.wordLengths.every(n => Number.isInteger(n) && n >= LIMITS.minLength && n <= LIMITS.maxLength)) error('LENGTHS', '目标数量必须为 1～10，每个目标长度为 3～8 的整数');
+      !config.wordLengths.every(n => Number.isInteger(n) && n >= LIMITS.minLength && n <= LIMITS.maxLength)) error('LENGTHS', '目标数量必须为 1～16，每个目标长度为 2～10 的整数');
+  if (!Number.isInteger(config?.maxUses ?? 3) || (config?.maxUses ?? 3) < 1 || (config?.maxUses ?? 3) > LIMITS.maxUses) error('USES', '每格最多使用次数必须为1～9的整数');
   if (errors.length) return { valid: false, errors, cells: 0, totalLetters: 0, stateCount: 0 };
   const cells = config.rows * config.cols;
   const totalLetters = config.wordLengths.reduce((a,b) => a+b, 0);
   if (config.wordLengths.some(n => n > cells)) error('WORD_TOO_LONG', '目标词长度不能超过棋盘格子数');
   if (totalLetters < cells) error('COVERAGE', `总字母数 ${totalLetters} 小于 ${cells} 个格子，无法覆盖整块棋盘`);
-  const capacity = cells * Math.min(LIMITS.maxUses, config.wordLengths.length);
+  const capacity = cells * Math.min(config.maxUses ?? 3, config.wordLengths.length);
   if (totalLetters > capacity) error('CAPACITY', `总字母数 ${totalLetters} 超过棋盘可用次数 ${capacity}，请减少目标或缩短单词`);
   if (dictionary) {
-    const words = normalizeDictionary(dictionary), needed = new Map();
+    const words = normalizeDictionary(dictionary,{minLength:2,maxLength:10}), needed = new Map();
     config.wordLengths.forEach(n => needed.set(n, (needed.get(n) || 0) + 1));
     for (const [length, count] of needed) if (words.filter(w => w.length === length).length < count) error('DICTIONARY', `词库中 ${length} 字母词不足 ${count} 个`);
   }
@@ -92,8 +93,8 @@ export function validateLevel(level, dictionary, { onVisit = null } = {}) {
   if (![1,2].includes(level.schemaVersion)) error('VERSION', 'schemaVersion 必须为 1 或 2');
   const board = level.board, targets = level.targets;
   const dimensionsValid = board && Number.isInteger(board.rows) && Number.isInteger(board.cols) && board.rows >= 2 && board.rows <= 6 && board.cols >= 2 && board.cols <= 6;
-  if (!dimensionsValid || !Array.isArray(board.letters) || board.letters.length !== board.rows*board.cols || !board.letters.every(x => typeof x === 'string' && /^[A-Z]$/.test(x)) || !Array.isArray(board.counts) || board.counts.length !== board.rows*board.cols || !board.counts.every(x => Number.isInteger(x) && x >= 1 && x <= LIMITS.maxUses)) error('BOARD', '棋盘行列必须为 2～6，字母与次数数组必须对应全部格子，每格 1～3 次');
-  if (!Array.isArray(targets) || targets.length < 1 || targets.length > 10 || !targets.every(t => t && typeof t.word === 'string' && /^[A-Z]{3,8}$/.test(t.word))) error('TARGETS', '必须提供 1～10 个长度为 3～8 的大写目标词');
+  if (!dimensionsValid || !Array.isArray(board.letters) || board.letters.length !== board.rows*board.cols || !board.letters.every(x => typeof x === 'string' && /^[A-Z]$/.test(x)) || !Array.isArray(board.counts) || board.counts.length !== board.rows*board.cols || !board.counts.every(x => Number.isInteger(x) && x >= 1 && x <= LIMITS.maxUses)) error('BOARD', '棋盘行列必须为 2～6，字母与次数数组必须对应全部格子，每格 1～9 次');
+  if (!Array.isArray(targets) || targets.length < 1 || targets.length > LIMITS.maxTargets || !targets.every(t => t && typeof t.word === 'string' && /^[A-Z]{2,10}$/.test(t.word))) error('TARGETS', '必须提供 1～16 个长度为 2～10 的大写目标词');
   if (report.errors.length) { check('数据结构', false, '尺寸、格式或范围错误'); return report; }
   let config;
   if (level.schemaVersion === 1) {
@@ -103,13 +104,14 @@ export function validateLevel(level, dictionary, { onVisit = null } = {}) {
   const configuration = checkConfiguration(config, dictionary);
   if (!configuration.valid) { configuration.errors.forEach(e => error(e.code,e.message)); return report; }
   report.config = clone(config); report.stateCount = configuration.stateCount;
+  if (board.counts.some(n => n > (config.maxUses ?? 3))) error('USES', '棋盘实际使用次数超过配置的每格上限');
   if (board.rows !== config.rows || board.cols !== config.cols) error('CONFIG_SIZE', '配置行列与棋盘尺寸不一致');
   const actualLengths = targets.map(t => t.word.length);
   const lengthsMatch = level.schemaVersion === 1
     ? [...actualLengths].sort((a,b)=>a-b).join(',') === [...config.wordLengths].sort((a,b)=>a-b).join(',')
     : actualLengths.every((length, index) => length === config.wordLengths[index]);
   if (targets.length !== config.wordLengths.length || !lengthsMatch) error('LENGTHS', '实际目标数量或逐词长度不符合配置');
-  const whitelist = new Set(normalizeDictionary(dictionary));
+  const whitelist = new Set(normalizeDictionary(dictionary,{minLength:2,maxLength:10}));
   if (new Set(targets.map(t=>t.word)).size !== targets.length) error('DUPLICATE', '目标词不能重复');
   for (const target of targets) if (!whitelist.has(target.word)) error('DICTIONARY', `${target.word} 不在本地白名单中`);
   if (board.counts.reduce((a,b)=>a+b,0) !== configuration.totalLetters) error('TOTAL', `初始次数总和必须为 ${configuration.totalLetters}`);

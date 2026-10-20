@@ -1,4 +1,4 @@
-import { findWordPaths, signature } from './rules.js?v=15';
+import { findWordPaths, signature } from './rules.js?v=21';
 import { reachableDictionaryWords } from './level-statistics.js?v=15';
 
 // Count word sets, not play orders or alternative paths for the same words.

@@ -1,4 +1,4 @@
-import {createBaseDictionary, isTargetAllowed} from './target-policy.js?v=15';
+import {createBaseDictionary, isTargetAllowed} from './target-policy.js?v=17';
 import {WORD_ENTRIES, WORDLIST_VERSION, wordEntryFor} from './word-source.js?v=15';
 export {WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, wordEntryFor} from './word-source.js?v=15';
 export const TIER_LABELS=Object.freeze({1:'非常常用',2:'常用',3:'一般',4:'罕见',5:'非常罕见'});

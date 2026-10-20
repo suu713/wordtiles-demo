@@ -1,0 +1,146 @@
+@font-face{font-family:"Nunito Sans";src:url("./art/alps/fonts/NunitoSans-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"Nunito Sans";src:url("./art/alps/fonts/NunitoSans-Medium.ttf") format("truetype");font-weight:500;font-display:swap}
+@font-face{font-family:"Nunito Sans";src:url("./art/alps/fonts/NunitoSans-Semibold.ttf") format("truetype");font-weight:600 900;font-display:swap}
+:root{--page:#edf1f2;--paper:#f5f8f8;--ink:#263842;--green:#637e71;--line:#cfdade;--error:#b04444;--accent:#637e71;font-family:"Nunito Sans","Segoe UI","Microsoft YaHei",sans-serif;background:var(--page);color:var(--ink)}
+button:active:not(:disabled){transform:scale(.97)}
+button:disabled{opacity:.48}
+button:focus-visible{outline-color:#637e71;outline-offset:3px}
+.lobby,.play-panel{color:#263842;font-family:"Nunito Sans","Segoe UI","Microsoft YaHei",sans-serif}
+/* Supplied transparent skins over a real backdrop blur. No fixed-scene patches. */
+.art-disc{position:relative;display:grid;place-items:center;width:44px;height:44px;flex:none;padding:0;border:0;color:#263842;background:transparent}
+.art-disc img{width:62%;height:62%;object-fit:contain;pointer-events:none}
+.art-label{font:400 3.8cqw/1.2 "Nunito Sans","Microsoft YaHei",sans-serif;white-space:nowrap;pointer-events:none}
+.art-badge,.bonus-count{position:absolute;display:grid;place-items:center;background:transparent url("./art/alps/assets/ui/sage-badge.png") center/100% 100% no-repeat;color:white;border:0;border-radius:0;padding:0;font:500 3.6cqw/1 "Nunito Sans",sans-serif;z-index:5}
+.art-coin{position:absolute;display:flex;align-items:center;justify-content:center;gap:1.1cqw;color:#263842;font-weight:500;white-space:nowrap}
+.art-coin img{width:5.9cqw;height:5.9cqw;object-fit:contain;pointer-events:none}
+.art-coin span,.art-coin .dictionary-count{position:static;display:block;min-width:0;height:auto;background:none;color:#263842;font:500 4.67cqw/1 "Nunito Sans",sans-serif;padding:0;border-radius:0}
+.lobby{padding:0}
+.lobby-panel{width:min(100vw,calc(100dvh * 9/16),520px);aspect-ratio:9/16;position:relative;display:block;padding:0;border:0;border-radius:0;background:url("./art/alps/assets/backgrounds/bg-alps-lobby.png") center/cover no-repeat;box-shadow:0 12px 42px #26384220;container-type:inline-size;overflow:hidden}
+.lobby-calendar{position:absolute;left:3.7%;top:2.4%;width:8.7%;height:auto;aspect-ratio:1}
+.lobby-calendar img{width:64%;height:64%}
+.lobby-settings{position:absolute;right:3.4%;top:2.4%;width:8.7%;height:auto;aspect-ratio:1;z-index:2}
+.lobby-settings img{width:57%;height:57%}
+.lobby-coin{top:2.81%;right:12.2%;width:19%;height:4.32%;padding:0 1.2cqw;background:url("./art/alps/assets/ui/coin-pill.png") center/100% 100% no-repeat;border-radius:999px;backdrop-filter:blur(1.1cqw);-webkit-backdrop-filter:blur(1.1cqw)}
+.dictionary-button{position:absolute;top:89.5%;left:44%;right:auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:.9cqw;width:12%;height:8%;padding:0;border:0;border-radius:0;background:none;color:#fff;text-shadow:0 1px 4px #253e46}
+.dictionary-button:hover{background:none}
+.dictionary-button img{width:6.6cqw;height:6.6cqw;object-fit:contain;pointer-events:none}
+.dictionary-button .art-label{font-size:3.8cqw}
+.lobby-center{position:absolute;inset:0;pointer-events:none;margin:0;text-align:center}
+.lobby-center h1{position:absolute;top:10.9%;left:8%;width:84%;margin:0;font-size:5.74cqw;line-height:1.2;font-weight:500;letter-spacing:0;color:#263842}
+.lobby-eyebrow{position:absolute;top:19.8%;left:8%;width:84%;margin:0;color:#485c70;font-size:3.93cqw;line-height:1.2;letter-spacing:.37cqw;font-weight:400}
+.lobby-destination{position:absolute;top:23.4%;left:8%;width:84%;margin:0;font:600 11.26cqw/1 "Nunito Sans",sans-serif;color:#263842}
+.lobby-center::after{content:"";position:absolute;top:31.04%;left:46.2%;width:7.13%;height:.28cqw;background:#485c70}
+.lobby-progress{position:absolute;top:33.1%;left:12%;width:76%;text-align:center;color:#485c70}
+.lobby-progress p{margin:0;font-size:4.57cqw;font-weight:400;line-height:1.2}
+.lobby-progress p::before{content:"本关目标 · ";font-size:3.9cqw}
+.progress-dots{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.progress-dot{display:inline-block;width:4px;height:4px;background:#d9e3e6}
+.progress-dot.active{background:#637e71}
+.lobby-actions{position:absolute;top:77.03%;left:8.43%;width:83.33%;margin:0}
+.lobby-start,.lobby-start:hover{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.5cqw;width:100%;height:15.83cqw;padding:1cqw 12cqw 1cqw 5cqw;border:0;border-radius:3.1cqw;background:transparent url("./art/alps/assets/ui/glass-primary.png") center/100% 100% no-repeat;box-shadow:none;color:#263842;backdrop-filter:blur(2.13cqw);-webkit-backdrop-filter:blur(2.13cqw);text-align:left}
+.lobby-start:hover{filter:brightness(1.04)}
+.lobby-start>span{font:500 5.42cqw/1.2 "Nunito Sans","Microsoft YaHei",sans-serif;letter-spacing:0}
+.lobby-start>small{font:400 3.7cqw/1.3 "Nunito Sans","Microsoft YaHei",sans-serif;color:#485c70}
+.lobby-start>img{position:absolute;right:4.6cqw;top:50%;transform:translateY(-50%);width:3.6cqw;height:4.9cqw;object-fit:contain;pointer-events:none}
+.lobby-actions p{margin:1.3cqw 0 0;padding:0 2cqw;font-size:2.7cqw;color:#334c58;line-height:1.4;text-shadow:0 1px 2px #ffffffa0}
+/* Play area remains responsive to the actual level dimensions and target count. */
+.game-viewport{box-shadow:0 12px 42px #26384220}
+.play-panel,.compact-device.play-panel,.small-viewport.play-panel{position:relative;display:block;padding:0;background:url("./art/alps/assets/backgrounds/bg-alps-level.png") center/cover no-repeat;container-type:inline-size}
+.game-back{position:absolute;top:1.8%;left:3%;width:8.7%;height:auto;aspect-ratio:1;z-index:3}
+.game-back img{width:48%;height:67%}
+.game-coin{top:2.7%;right:13.3%;width:18.5%;height:4.32%;padding:0;z-index:3}
+#editor-toggle.art-disc{position:absolute;display:grid;top:2.1%;right:3.2%;width:8.7%;height:auto;aspect-ratio:1;padding:0;border:0;border-radius:0;background:none;z-index:3}
+#editor-toggle img{width:57%;height:57%}
+.game-title-row,.compact-device .game-title-row,.small-viewport .game-title-row,.dense-targets .game-title-row{position:absolute;top:3.3%;left:28%;width:44%;display:block;padding:0;margin:0;text-align:center}
+.game-title-row h2,.compact-device .game-title-row h2,.small-viewport .game-title-row h2{font:400 4.67cqw/1.2 "Nunito Sans",sans-serif;letter-spacing:.13cqw;margin:0;padding:0;color:#263842}
+.game-art-meta{position:absolute;top:8.55%;left:10%;width:80%;text-align:center;pointer-events:none;color:#263842}
+.game-art-meta p{font-size:4.35cqw;line-height:1.3;letter-spacing:.25cqw;margin:0}
+.game-word-progress{margin-top:1.1cqw;font-size:5.3cqw;line-height:1.2;font-weight:400}
+.game-word-progress>span:last-child{font-size:4cqw}
+.targets,.compact-device .targets,.small-viewport .targets,.dense-targets .targets{position:absolute;top:17.03%;left:11.5%;width:77%;height:22.5%;max-height:none;display:flex;flex-wrap:wrap;align-content:flex-start;justify-content:center;align-items:flex-start;gap:2cqw 3cqw;margin:0;padding:0 2px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#819ba7 transparent;--answer-size:8.5cqw}
+.targets .target{display:flex;flex:none;flex-direction:column;align-items:center;gap:0;padding:0;border:0;background:none;min-width:0;max-width:100%}
+.target-slots,.dense-targets .target-slots{display:flex;gap:.65cqw}
+.target-letter,.compact-device .target-letter,.small-viewport .target-letter,.dense-targets .target-letter,.compact-device.dense-targets .target-letter,.small-viewport.dense-targets .target-letter{display:grid;place-items:center;width:var(--answer-size);min-width:var(--answer-size);height:var(--answer-size);padding:0;border:0;border-radius:17%;background:transparent url("./art/alps/assets/ui/answer-empty.png") center/100% 100% no-repeat;backdrop-filter:blur(1.4cqw);-webkit-backdrop-filter:blur(1.4cqw);font:500 calc(var(--answer-size)*.64)/1 "Nunito Sans",sans-serif;color:#263842}
+.target.completed .target-letter{background-image:url("./art/alps/assets/ui/answer-filled.png");border:0;color:#263842}
+.target.hinted .target-letter{background:transparent url("./art/alps/assets/ui/answer-empty.png") center/100% 100% no-repeat;border:0;filter:drop-shadow(0 0 2px #637e71)}
+.game-board-area,.compact-device .game-board-area,.small-viewport .game-board-area,.dense-targets .game-board-area{position:absolute;top:63.38%;bottom:7.18%;left:23.7%;right:23.8%;padding:0;display:flex;align-items:center;justify-content:center;min-height:0}
+.board-surround{width:100%}
+.board-top{position:absolute;width:1px;height:0;overflow:hidden;margin:0;padding:0;opacity:0;pointer-events:none}
+.board{padding:0;border:0;border-radius:0;background:none;box-shadow:none;isolation:isolate}
+.tile,.tile:hover:not(.empty):not(.selected),.tile.hinted:not(.selected),.tile.selected{border:0;border-radius:11%;box-shadow:none;background:transparent url("./art/alps/assets/ui/glass-tile.png") center/100% 100% no-repeat;backdrop-filter:blur(1.94cqw);-webkit-backdrop-filter:blur(1.94cqw);color:#203540;overflow:visible;transform:none}
+.tile::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:transparent;border-radius:inherit}
+.tile.selected::before{background:url("./art/alps/assets/ui/tile-selection.png") center/100% 100% no-repeat}
+.tile.hinted:not(.selected){filter:drop-shadow(0 0 2px #637e71)}
+.tile-letter,.tile.many-uses .tile-letter,.tile.hinted .tile-letter{font:600 var(--tile-font)/1 "Nunito Sans",sans-serif;transform:translateY(1px);color:#203540;z-index:2}
+.board[data-compact-cells="true"] .tile-letter{font-size:var(--tile-font);transform:translateY(1px)}
+.tile-pips.count-badge,.board[data-compact-cells="true"] .count-badge{top:5%;right:9%;min-width:10px;height:var(--count-height);padding:0;border:0;border-radius:0;background:none;color:#435f71;font:500 var(--count-font)/1 "Nunito Sans",sans-serif;z-index:3}
+.tile.selected .count-badge{background:none;color:#435f71}
+.tile.empty{background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.tile.empty .tile-letter{visibility:hidden}
+.tile.empty::before{display:none}
+.tile.invalid-word,.tile.invalid-word:hover:not(.empty):not(.selected){background:transparent url("./art/alps/assets/ui/glass-tile.png") center/100% 100% no-repeat;border:0;box-shadow:none;color:#9d2929}
+.tile.invalid-word::before{inset:3%;background:#df6b6270;border-radius:10%;outline:2px solid #b84942}
+.tile.invalid-word .tile-letter,.tile.invalid-word .count-badge{color:#9d2929;background:none}
+.connections{z-index:4}
+.connections polyline{stroke:#637e71;stroke-width:3;opacity:.75}
+.connections polyline.hint-line{stroke:#435f71;stroke-width:2.5;opacity:.9}
+.connections .hint-arrow{stroke:#435f71;stroke-width:3}
+.game-art-actions.play-actions{position:absolute;top:53.28%;left:15.28%;width:69.81%;height:7.97%;display:flex;align-items:center;justify-content:space-between;gap:0;margin:0}
+.game-art-actions .art-disc{display:flex;flex-direction:column;justify-content:center;gap:.3cqw;width:31.7%;height:100%;border-radius:8cqw;background:transparent url("./art/alps/assets/ui/glass-utility.png") center/100% 100% no-repeat;backdrop-filter:blur(1.94cqw);-webkit-backdrop-filter:blur(1.94cqw)}
+.game-art-actions .art-disc img{width:7.2cqw;height:7.2cqw}
+.game-art-actions .art-disc .art-label{font-size:3.8cqw}
+.game-art-actions .art-badge{width:6.2cqw;height:6.2cqw;right:-.3cqw;top:-1.3cqw;font-size:4.1cqw}
+.art-restart{position:absolute;left:40%;top:37%;width:20%;padding:1cqw 0;border:0;border-radius:99px;background:#f3f8f866;color:#314c57;font-size:2.7cqw;line-height:1.4;font-weight:500;white-space:nowrap}
+.game-footer,.small-viewport .game-footer{position:absolute;bottom:5.6%;left:3.33%;width:15.37%;height:8.07%;display:block;margin:0;padding:0}
+.bonus-button,.small-viewport .bonus-button,.bonus-button:hover{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3cqw;width:100%;height:100%;padding:0;border:0;border-radius:32%;background:transparent url("./art/alps/assets/ui/glass-utility.png") center/100% 100% no-repeat;backdrop-filter:blur(1.94cqw);-webkit-backdrop-filter:blur(1.94cqw);color:#263842}
+.bonus-button>img{width:6.7cqw;height:7.1cqw;object-fit:contain;pointer-events:none}
+.bonus-button .art-label{font-size:3.6cqw}
+.bonus-count{top:-1.4cqw;right:-.4cqw;width:6.4cqw;height:6.4cqw;min-width:0;font-size:4.1cqw}
+.game-spacer,.compact-device .game-spacer,.small-viewport .game-spacer{display:none}
+.dense-targets .targets,.play-panel[data-large-board="true"] .targets{top:17%;height:25%;--answer-size:5.8cqw;gap:1.5cqw 2cqw}
+.dense-targets .game-art-actions,.play-panel[data-large-board="true"] .game-art-actions{top:45.5%}
+.dense-targets .game-board-area,.play-panel[data-large-board="true"] .game-board-area{top:55%;left:10%;right:10%;bottom:7.2%}
+.long-words .targets{--answer-size:5cqw}
+/* Existing live collection dialogs receive the matching cool glass palette. */
+.travel-dialog,.settings-popover,.level-complete-dialog{background:#f2f7f8ed;border-color:#cfdbdf;color:#263842;box-shadow:0 16px 60px #26384230;backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+.travel-dialog::backdrop,dialog::backdrop{background:#20354040;backdrop-filter:blur(4px)}
+.travel-dialog h2,.travel-dialog .activity-day h3{font-weight:600;color:#263842}
+.travel-dialog .dialog-top p,.travel-dialog .dictionary-entry p,.travel-dialog #dictionary-empty,.travel-dialog #activity-empty,.dictionary-sort,.activity-day-heading small,#activity-history-label{color:#596f7a}
+.travel-close,.activity-month-nav button,#activity-show-month{color:#435f71}
+.travel-close:hover,.activity-month-nav button:hover,.calendar-day:hover>span{background:#dce8eb}
+.travel-dialog button:focus-visible{outline-color:#637e71}
+.travel-dialog .travel-icon,.bonus-dialog .travel-icon{color:#435f71}
+#dictionary-dialog .travel-icon{stroke:transparent;background:url("./art/alps/assets/icons/book.png") center/contain no-repeat}
+.travel-dialog .bonus-words li{border-color:#b6c8cb;background:#ffffff70;color:#263842;font-weight:600}
+.travel-dialog #dictionary-search,.dictionary-search-field{background:#ffffff75;border-color:#cbdade;color:#263842}
+.travel-dialog .dictionary-entry,.activity-day,.activity-history{border-color:#d1dfe1}
+.dictionary-word-row strong{color:#263842;font-weight:600}
+.dictionary-word-row span{color:#5b776b;background:#e2ece7}
+.calendar-day{color:#263842}
+.calendar-day[aria-pressed="true"]>span{background:#637e71;color:#fff}
+.calendar-day.has-words::after{background:#637e71}
+.activity-dialog .travel-icon{background:#dfe9ec}
+.travel-dialog .activity-words span{background:#e2ece7;border-color:#c5d7ce;color:#466154;font-weight:600}
+.activity-weekdays,.bonus-saved{color:#637e71}
+.settings-popover select,.settings-popover input{background:#ffffff95;border-color:#cbdade;color:#263842}
+.level-complete-dialog h2,.level-complete-dialog p{color:#263842}
+.level-complete-dialog #complete-next{background:#637e71;border-color:#637e71;color:white}
+.level-complete-dialog #complete-review{color:#435f71}
+@media(max-width:760px){#editor-toggle.art-disc{display:grid}}
+@media(prefers-reduced-motion:reduce){button:active:not(:disabled){transform:none}}
+/* Readable target slots and two letter-reveal props. */
+.targets,.compact-device .targets,.small-viewport .targets,.dense-targets .targets,.play-panel[data-large-board="true"] .targets{top:10.5%;left:6%;width:88%;height:34.8%;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:var(--target-row-gap,1.2cqw)}
+.target-row{display:flex;flex:none;align-items:center;justify-content:center;gap:var(--target-word-gap,3cqw);width:100%;min-height:var(--answer-size)}
+.target-row .target-slots{gap:var(--target-letter-gap,.5cqw)}
+.game-board-area,.compact-device .game-board-area,.small-viewport .game-board-area,.dense-targets .game-board-area,.play-panel[data-large-board="true"] .game-board-area{top:48%;bottom:17%;left:18%;right:18%}
+.dense-targets .game-board-area,.play-panel[data-large-board="true"] .game-board-area{left:10%;right:10%}
+.game-art-actions.play-actions,.dense-targets .game-art-actions,.play-panel[data-large-board="true"] .game-art-actions{top:auto;bottom:3%;left:27%;width:68%;height:8.5%}
+.game-footer,.small-viewport .game-footer{bottom:3%}
+.target-letter,.compact-device .target-letter,.small-viewport .target-letter,.dense-targets .target-letter,.compact-device.dense-targets .target-letter,.small-viewport.dense-targets .target-letter,.target.hinted .target-letter{background:rgba(237,246,249,.91);border:1px solid rgba(108,138,153,.75);box-shadow:inset 0 1px 1px #ffffffd9,0 1px 3px #314d5f1a;backdrop-filter:none;-webkit-backdrop-filter:none}
+.target-letter.revealed{background:#eff5e8f2;color:#385c48;border-color:#89a28c}
+.target.completed .target-letter{background:#e2ece5ed;border:1px solid #a2b7a8;color:#345348}
+.game-art-actions .fireworks-icon{width:7.2cqw;height:7.2cqw;fill:none;stroke:#46645d;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.target-letter.hint-flash{animation:letter-prop-reveal .7s ease}
+.game-art-actions .prop-burst::after{content:'';position:absolute;inset:-20%;background:#91ad80aa;clip-path:polygon(50% 0%,56% 37%,86% 14%,63% 44%,100% 50%,63% 56%,86% 86%,56% 63%,50% 100%,44% 63%,14% 86%,37% 56%,0% 50%,37% 44%,14% 14%,44% 37%);pointer-events:none;animation:prop-fireworks .75s ease forwards}
+@keyframes letter-prop-reveal{0%{transform:scale(.8);box-shadow:0 0 0 0 #b5c88700}45%{transform:scale(1.1);box-shadow:0 0 0 6px #c5d6a74d}100%{transform:scale(1);box-shadow:0 0 0 10px #c5d6a700}}
+@keyframes prop-fireworks{0%{opacity:0;transform:scale(.3) rotate(0)}30%{opacity:.9}100%{opacity:0;transform:scale(1.3) rotate(35deg)}}

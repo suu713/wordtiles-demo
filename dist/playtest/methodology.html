@@ -1,0 +1,28 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>英语模拟试玩：依据与校准</title>
+<style>body{max-width:880px;margin:40px auto;padding:0 22px;font:15px/1.85 "Segoe UI","Microsoft YaHei",sans-serif;color:#29473c;background:#fafbf6}h1{font-size:28px}h2{font-size:20px;margin-top:30px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{border-bottom:1px solid #dce3d3;text-align:left;padding:12px}th{background:#edf2e6}a{color:#24604a}code{background:#eef1e7;padding:2px 5px}.note{background:#edf2e6;border-left:3px solid #618754;padding:14px 18px}</style>
+<h1>英语模拟试玩：依据与校准</h1><p>ordinary-english-spatial-v2 / dynamic-exposure-monte-carlo-v2</p>
+<p class="note">每局认识 80% 的目标词是产品设定。空间识别权重通过工程对照拟合；尚未用海外真人数据验证，不能视为真实通关率。此发布版用仓库已有词表的频次档位作近似词频，不附独立词频文件。</p>
+<h2>认识与识别分开</h2><ol>
+<li>每局随机认识关内约 80% 的目标词。目标数不能整除时随机取整，多局平均接近 80%。</li>
+<li>搜索只使用可见字母、剩余次数、词汇候选和目标槽长度，不读取隐藏答案路径。默认每轮最多扫描 160 个节点；已揭字母另有至多 80 节点的检索预算。</li>
+<li>已认识的候选词仍需空间识别：右／下阅读步、直线、外圈更容易；左／上步、多拐弯、较长词和同字邻格会降低识别概率。候选以相同消耗集合中最容易识别的路径描述。</li>
+<li>识别失败后，玩家可能观察、滑动部分前缀或探索相邻路径。所有滑动均经过实际游戏规则；未知词可通过低概率猜读或提示后检索命中。</li>
+<li>每次提示只揭一个字母，优先前字位，不扣格子次数，不自动完成目标。完整揭字后仍须从可见棋盘搜索并真实提交。</li>
+<li>完成或持续无进展后放弃，无手填时间上限。耗时累计观察、思考、滑动与提示的虚拟时间。内部步骤保护防止异常计算，不是玩家时间限制。</li></ol>
+<h2>空间校准与推进校正</h2><p><code>scripts/calibrate-spatial-model.mjs</code>使用同词、同长度的直线／拐弯、顺向／倒向、外圈／内圈对照拟合权重。拟合目标是工程设定，只检查模型是否响应预期难易顺序。校准数值、锚点与误差可查看<a href="./spatial-calibration.json?v=29">空间校准文件</a>。</p>
+<p>编辑器保留原识别估计分，并另算校正后识别估计分。校正分使用128次推进模拟：每次随机选出约80%目标词作为已认识词；玩家每次只提交识别到的一个词，清除后按格子剩余次数扣减。共享格只有最后一次使用被扣完才会空；未认识的外围词仍作阻挡。</p>
+<p>每轮从棋盘边缘连通的空格判断真实外露，内部封闭空洞不算外露。目标路径越多格子接到外缘，动态外圈加成越高；格子归零后重新计算同字邻格歧义。该校正仅用于比较关卡，不参与或固定关卡生成，也未经过玩家实验验证。</p>
+<h2>量化口径</h2><table><tr><th>指标</th><th>定义</th></tr>
+<tr><td>试探滑动</td><td>探索性提交，包含碰巧完成目标的探索；不等于全部提交。</td></tr>
+<tr><td>错误提交</td><td>真实规则判定无效；额外词与重复已完成词不算错误。</td></tr>
+<tr><td>未命中目标</td><td>所有未完成目标的提交，包含额外词和重复词。</td></tr>
+<tr><td>认识但漏看</td><td>已知词经扫描检出却至少一次未能空间识别，每局按词去重。</td></tr>
+<tr><td>累计漏识别</td><td>上述识别失败的累计次数。没有进入有限扫描的词不算已观察到的漏识别。</td></tr>
+<tr><td>顺读／倒向</td><td>顺读无左或上步；倒向的左／上步占比超过 50%。部分逆向另计混合方向。</td></tr>
+<tr><td>多拐／外圈</td><td>多拐为至少 2 次转向；外圈为路径中至少 80% 格子位于棋盘边缘。</td></tr>
+<tr><td>低识别词</td><td>已认识、尚无提示或学习时，一轮模型识别估计小于 55%。</td></tr></table>
+<p>逐词明细保留反向步比例、外圈格比例、拐弯、识别估计、认识局数、漏看局数和针对该词的试探次数。随机探索且没有可归因候选词的滑动只计逐局总数，不强行归到某个目标词。</p>
+<h2>真人记录与外部依据</h2><p>本人计时点击“开始试玩”后启动，隐藏页面和切换浏览器时暂停。可用至少 10 位普通英语玩家、30 局有效记录，按测试者等权校准基础思考时间与错误率。此校准不改变 80% 设定，也不宣称已校准空间权重或海外总体表现。</p>
+<p><a href="https://apps.apple.com/gb/app/word-tiles-relaxing-puzzle/id6783815362?see-all=reviews">Word Tiles 英国 App Store 评论</a>与<a href="https://doi.org/10.3389/fpsyg.2014.01018">Thanasuan 与 Mueller（2014）</a>仅作为检索、视觉搜索与试错机制的背景，不把评论换算为系数或平均通关率。</p>
+<h2>本次发布的数据范围</h2><p>本版本保留游戏代码与界面资源，并使用仓库原有的 Word Tiles 和审核词表运行。新增 Zen 原包关卡库和合并词库未包含在此版本中；机器反跑支持仓库已有的 Word Tiles 关卡与网页生成关卡。完整词长按 2～10 字统计，实际目标词占比按该词长目标数除以本关总目标数。</p>
+</html>

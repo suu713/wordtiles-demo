@@ -1,4 +1,4 @@
-import { createNeighbors, normalizeBonusDictionary } from './rules.js?v=15';
+import { createNeighbors, normalizeBonusDictionary } from './rules.js?v=21';
 
 const dictionaryTries = new WeakMap();
 function dictionaryTrie(dictionary) {

@@ -1,29 +1,35 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-art-theme="alps-light-glass">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f6eedd">
+  <meta name="theme-color" content="#edf1f2">
   <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
   <title>WordTiles · 单词消消</title>
-  <link rel="icon" href="./art/paris/assets/svg/coin.svg" type="image/svg+xml">
+  <link rel="icon" href="./art/alps/assets/svg/coin.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=15">
-  <link rel="stylesheet" href="./paris.css?v=15">
   <link rel="stylesheet" href="./travel-ui.css?v=16">
-  <link rel="preload" as="image" href="./art/paris/assets/backgrounds/bg-paris-lobby.png">
+  <link rel="stylesheet" href="./workbench.css?v=32">
+  <link rel="stylesheet" href="./batch-generation.css?v=21">
+  <link rel="stylesheet" href="./alps.css?v=30">
+  <link rel="stylesheet" href="./fireworks.css?v=34">
+  <link rel="stylesheet" href="./collection-ui.css?v=25">
+  <link rel="stylesheet" href="./event-ui.css?v=27">
+  <link rel="preload" as="image" href="./art/alps/assets/backgrounds/bg-alps-lobby.png">
 </head>
 <body>
   <main id="lobby" class="lobby" aria-label="游戏大厅">
     <section class="lobby-panel">
-      <button id="activity-button" class="art-disc lobby-calendar" type="button" aria-label="收词日历" aria-haspopup="dialog" aria-controls="activity-dialog" data-help="按日期查看已收录的单词。"><img src="./art/paris/assets/icons/calendar.png" alt=""></button>
-      <div class="art-coin lobby-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/paris/assets/icons/coin.png" alt=""><span id="dictionary-count" class="dictionary-count">0</span></div>
-      <button id="dictionary-button" class="dictionary-button" type="button" aria-label="我的词典" aria-haspopup="dialog" aria-controls="dictionary-dialog" data-help="查看连接成功后收录的单词和释义。">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c-3-3-8-4-12-2v20c4-2 9-1 12 2 3-3 8-4 12-2V6c-4-2-9-1-12 2Z M16 8v20 M8 11l4 1 M8 16l4 1 M20 12l4-1 M20 17l4-1"/></svg>
+      <button id="activity-button" class="art-disc lobby-calendar" type="button" aria-label="收词日历" aria-haspopup="dialog" aria-controls="activity-dialog" data-help="按日期查看已收录的单词。"><img src="./art/alps/assets/icons/calendar.png" alt=""></button>
+      <div class="art-coin lobby-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/alps/assets/icons/coin.png" alt=""><span id="dictionary-count" class="dictionary-count">0</span></div>
+      <button id="dictionary-button" class="dictionary-button" type="button" aria-label="词汇收藏册" aria-haspopup="dialog" aria-controls="dictionary-dialog" data-help="按主题翻阅已经收录的单词。">
+        <img src="./art/alps/assets/icons/book-light.png" alt=""><span class="art-label">收藏册</span>
       </button>
-      <button id="lobby-settings" class="art-disc lobby-settings" type="button" aria-label="画面设置" data-help="调整竖屏画面尺寸和缩放。"><img src="./art/paris/assets/icons/settings.png" alt=""></button>
-      <div class="lobby-center"><h1>Word Tile</h1><p class="lobby-destination">Paris</p><p class="lobby-eyebrow">FRANCE</p></div>
+      <button id="weekly-button" class="lobby-weekly" type="button" aria-label="本周回顾" aria-haspopup="dialog" aria-controls="weekly-dialog"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m2 27 10-19 7 11 4-7 7 15H2Zm6-12 4 2 3-3M20 17l3 2 3-2M23 3v4m-2-2h4"/></svg><span class="art-label">本周回顾</span></button>
+      <button id="lobby-settings" class="art-disc lobby-settings" type="button" aria-label="设置" data-help="画面与数据设置。"><img src="./art/alps/assets/icons/settings.png" alt=""></button>
+      <div class="lobby-center"><h1>WordTile</h1><p class="lobby-destination">Alps</p><p class="lobby-eyebrow">ITALY · ALPS</p></div>
       <div class="lobby-progress"><div id="lobby-progress-dots" class="progress-dots" aria-hidden="true"></div><p id="lobby-progress-label" aria-live="polite">0 / 5</p></div>
-      <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled><span>开始游戏</span></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
+      <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled><span id="lobby-start-label">开始游戏</span><small id="lobby-continue-detail">正在准备关卡</small><img src="./art/alps/assets/icons/arrow-right.png" alt=""></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
     </section>
   </main>
   <div id="game-screen" class="app-shell" hidden>
@@ -45,13 +51,14 @@
           <p id="source-library-status" hidden>正在读取关卡目录…</p>
         </section>
         <div id="generation-section" class="generation-section" hidden>
-          <label class="dictionary-field" for="dictionary-source" data-help="目标采用原形白名单加原包目标；原包额外词允许收录。按词频档位可缩小目标范围。">生成词库<select id="dictionary-source"><option value="common">基础词＋原包目标</option><option value="graded">按词频档位</option></select></label>
-          <div class="seed-field"><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="20261010" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
+          <label class="dictionary-field" for="dictionary-source">生成词库来源<select id="dictionary-source"><option value="web">审核词库</option><option value="wordtiles">WT 原包英语目标词库</option></select></label>
+          <label id="zen-dictionary-field" class="dictionary-field" for="zen-dictionary-bank" hidden>Zen 词库未随代码版发布<select id="zen-dictionary-bank"><option value="all">不可用</option></select></label>
+          <div class="seed-field" hidden><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
         </div>
         <div class="editor-menus">
-          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘参数、画面尺寸、词库、校验报告和原包数据。"><option value="">更多设置…</option><option value="board">棋盘与目标</option><option value="view">画面尺寸</option><option value="lexicon" disabled>词库与频率档位</option><option value="debug">校验与预算</option><option value="source">原包数据</option></select>
+          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘与目标、当前词库信息。"><option value="">更多设置…</option><option value="board">棋盘与目标</option><option value="lexicon" disabled>词库信息</option></select>
           <label for="file-action" class="sr-only">关卡文件</label><select id="file-action" aria-label="关卡文件" data-help="导入或导出完整初始关卡 JSON。导入前会使用当前算法的词库和规则进行校验。"><option value="">关卡文件…</option><option value="import">导入 JSON</option><option value="export">导出 JSON</option><option value="sample" hidden>固定样例</option></select>
         </div>
         <section id="level-statistics" class="level-statistics" aria-label="关卡初始统计">
@@ -82,20 +89,21 @@
       <section class="preview-column" aria-label="竖屏游戏">
         <div class="viewport-sizer"><div id="game-viewport" class="game-viewport">
           <section class="play-panel" aria-label="单词棋盘">
-            <button id="back-lobby" class="art-disc game-back" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><img src="./art/paris/assets/icons/back.png" alt=""></button>
-            <div class="art-coin game-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/paris/assets/icons/coin.png" alt=""><span id="game-collection-count">0</span></div>
-            <button id="editor-toggle" class="art-disc game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false" data-help="查看关卡编辑器和统计。"><img src="./art/paris/assets/icons/settings.png" alt=""></button>
-            <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交，经过短词时不会提前提交。找到目标后格子数字减 1，归零后留空。提示箭头指向下一格。词库内的非目标词收进额外单词包，只收集一次且不扣次数。完成顺序不限。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
-            <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="completion">0 <span>/ 3</span></span><span id="readout-label"></span><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
+            <button id="back-lobby" class="art-disc game-back" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><img src="./art/alps/assets/icons/back.png" alt=""></button>
+            <div class="art-coin game-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/alps/assets/icons/coin.png" alt=""><span id="game-collection-count">0</span></div>
+            <button id="editor-toggle" class="art-disc game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false" data-help="查看关卡编辑器和统计。"><img src="./art/alps/assets/icons/settings.png" alt=""></button>
+            <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交。找到目标后格子数字减 1，归零后留空。提示揭开 1 个目标字母；烟花从首字母开始显示最短未完成词的箭头路径，同字数优先前面的词。道具不消耗格子次数。词库内的非目标词收进额外单词包。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
+            <div class="game-art-meta" hidden><div class="game-word-progress"><span id="completion">0 <span>/ 3</span></span></div></div>
+            <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="readout-label"></span><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
             <div id="targets" class="targets" aria-label="目标词"></div>
             <span id="targets-note" class="sr-only" hidden aria-label="上下滑动查看其余目标"></span>
             <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining" data-help="每格右上角的数字表示剩余次数。次数归零后格子留空，棋盘不移动。" tabindex="0">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
             <div class="game-spacer" aria-hidden="true"></div>
             <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
             <div class="game-footer">
-              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M11 12V9a5 5 0 0 1 10 0v3 M8 11h16l3 16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/></svg><span id="bonus-count" class="bonus-count">0</span></button>
+              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><img src="./art/alps/assets/icons/bag.png" alt=""><span class="art-label">词袋</span><span id="bonus-count" class="bonus-count">0</span></button>
             </div>
-            <div class="play-actions game-art-actions"><button id="new-level" class="art-disc" type="button" aria-label="换一关" data-help="载入一关新棋盘，保留收词记录。算法2生成并校验新关卡，算法1随机载入原包关卡。"><img src="./art/paris/assets/icons/shuffle.png" alt=""></button><button id="restart" class="art-restart" type="button" data-help="重开当前关卡，恢复全部初始字母和次数，清空本关额外单词包。">↻ 重开</button><button id="hint" class="art-disc" type="button" aria-label="提示" data-help="标出一个尚未完成目标的可用路径，沿箭头方向连接。角标表示尚未完成的目标数量。"><img src="./art/paris/assets/icons/hint.png" alt=""><span id="hint-remaining" class="art-badge">5</span></button></div>
+            <div class="play-actions game-art-actions"><button id="hint" class="art-disc" type="button" aria-label="提示" data-help="随机揭开 1 个尚未显示的目标字母，优先靠前字位，不消耗格子次数。"><img src="./art/alps/assets/icons/hint.png" alt=""><span class="art-label">提示</span><span id="hint-remaining" hidden></span></button><button id="fireworks" class="art-disc" type="button" aria-label="烟花" data-help="从首字母开始显示最短未完成词的完整路径，箭头标明连接方向。同字数优先前面的词，不消耗格子次数。"><svg class="fireworks-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4v7m0 8v3M4 15h7m10 0h7M7 6l5 5m8 8 4 4M25 6l-5 5m-8 8-5 5m9-11 2 2-2 2-2-2 2-2Zm0 9v7M4 4l1 2m23 1-1 2M4 27l2-1m21 3-1-3"/></svg><span class="art-label">烟花</span></button></div>
           </section>
         </div></div>
       </section>
@@ -105,7 +113,7 @@
     <div class="settings-heading"><h2 id="settings-title">更多设置</h2><button id="settings-close" class="icon-button" type="button" aria-label="关闭设置">×</button></div>
     <div class="settings-body">
       <div data-settings-pane="board" hidden>
-        <div class="field-grid"><label for="board-cols" data-help-from="cols-note">棋盘宽度<select id="board-cols" disabled><option value="2">2 列</option><option value="3" selected>3 列</option><option value="4">4 列</option><option value="5">5 列</option><option value="6">6 列</option></select></label><label for="board-rows" data-help-from="rows-note">棋盘高度<select id="board-rows" disabled><option value="2">2 行</option><option value="3" selected>3 行</option><option value="4">4 行</option><option value="5">5 行</option><option value="6">6 行</option></select></label></div>
+        <div class="field-grid"><label for="board-cols" data-help-from="cols-note">棋盘宽度<input id="board-cols" type="number" min="2" max="6" value="3"></label><label for="board-rows" data-help-from="rows-note">棋盘高度<input id="board-rows" type="number" min="2" max="6" value="3"></label></div>
         <label class="stack-field" for="word-count" data-help-from="count-note">单词数量<select id="word-count" disabled></select></label>
         <label class="stack-field" for="target-length-list" data-help-from="length-note">目标词长度</label><div id="word-lengths"></div>
         <div class="draft-summary" data-help-from="uses-note" tabindex="0"><div><strong id="summary-cells">9</strong><span>格子</span></div><div><strong id="summary-targets">3</strong><span>单词</span></div><div><strong id="summary-letters">9</strong><span>字母</span></div></div>
@@ -113,15 +121,15 @@
       </div>
       <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
       <div data-settings-pane="lexicon" hidden>
-        <label class="stack-field" for="dictionary-tier" data-help="沿用 words.tsv 的原有1～5档：非常常用、常用、一般、罕见、非常罕见。不重新评分，不代表难度；失败不会自动扩档。">单词档位<select id="dictionary-tier"><option value="1">非常常用</option><option value="1,2">非常常用 + 常用</option><option value="1,2,3" selected>前 3 档 · 非常常用 / 常用 / 一般</option><option value="4">罕见</option><option value="5">非常罕见</option><option value="1,2,3,4,5">全部档位</option></select></label>
-        <p id="lexicon-status" class="lexicon-status" role="status" data-help="正在读取词库信息。" tabindex="0">游戏词库 · 7,618 词</p>
-        <div class="lexicon-links"><a href="./wordlist.json?v=15" download data-help="实际启用词条、原包身份、源表档位与项目显示义。">游戏词表 ↗</a><a href="./review/index.html?v=15" target="_blank" rel="noopener" data-help="查看词条与释义来源、审核规则和全部逐词筛查结果。">来源与原包规则 ↗</a></div>
+        <label class="stack-field" for="dictionary-tier" hidden>词库范围<select id="dictionary-tier" disabled><option value="all" selected>完整原包词库，不使用旧网页档位</option></select></label>
+        <p id="lexicon-status" class="lexicon-status" role="status" data-help="使用仓库现有审核词库；本次发布不新增词库文件。" tabindex="0">审核词库</p>
       </div>
       <div id="debug" data-settings-pane="debug" hidden><span class="validation-status" id="validation-badge" data-help-from="version-note" tabindex="0">正在检查</span><p class="debug-explanation" hidden></p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
         <fieldset id="budget-fields" class="budget-fields" hidden data-help="这三个参数控制搜索预算，不代表难度。预算耗尽会明确失败，并保留当前关卡。"><legend>搜索预算</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
         <pre id="debug-generation" hidden>尚未进行自动生成。</pre><pre id="debug-rejection" hidden></pre><p id="version-note" hidden></p>
       </div>
       <div data-settings-pane="source" hidden><div id="source-metadata" data-help="额外词只记录，不扣次数。原包特殊障碍和其他字段完整保留在导出数据中；试玩沿用网页连词规则。" tabindex="0"><pre id="source-meta"></pre></div></div>
+      <section class="settings-data" aria-labelledby="settings-data-title"><h3 id="settings-data-title">数据</h3><button id="preview-collection" type="button">补足到 300 词</button><button id="clear-all-data" type="button" aria-describedby="clear-data-note">清除所有数据</button><p id="clear-data-note">收词、活动、回顾、试玩记录和自建关卡</p><p id="data-status" role="status" aria-live="polite"></p></section>
     </div>
   </section>
   <dialog id="bonus-dialog" class="bonus-dialog travel-dialog" aria-labelledby="bonus-title" aria-describedby="bonus-summary">
@@ -137,11 +145,10 @@
     <nav id="solutions-pagination" class="solutions-pagination" aria-label="解法列表翻页" hidden><button id="solutions-prev" type="button" aria-label="上一页解法">←</button><span id="solutions-page"></span><button id="solutions-next" type="button" aria-label="下一页解法">→</button></nav>
     <button id="solutions-retry" class="secondary-button" type="button" hidden>重新完整统计</button>
   </dialog>
-  <dialog id="dictionary-dialog" class="dictionary-dialog travel-dialog" aria-labelledby="dictionary-title" aria-describedby="dictionary-summary">
-    <div class="dialog-top"><div class="travel-heading"><svg class="travel-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 8c-3-3-8-4-12-2v20c4-2 9-1 12 2 3-3 8-4 12-2V6c-4-2-9-1-12 2Z M16 8v20"/></svg><div><h2 id="dictionary-title">我的词典</h2><p id="dictionary-summary">累计收词 · 已收录 0 个词</p></div></div><button id="dictionary-close" class="travel-close" type="button" aria-label="关闭词典" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
+  <dialog id="dictionary-dialog" class="dictionary-dialog travel-dialog collection-dialog" aria-labelledby="dictionary-title" aria-describedby="dictionary-summary">
+    <div class="dialog-top collection-dialog-top"><div class="travel-heading"><div><h2 id="dictionary-title">收藏册</h2><p id="dictionary-summary">0 个单词 · 0 个主题</p></div></div><button id="dictionary-close" class="travel-close" type="button" aria-label="关闭收藏册" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
     <label class="sr-only" for="dictionary-search">搜索单词或释义</label><div class="dictionary-search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/></svg><input id="dictionary-search" type="search" placeholder="搜索单词或释义" autocomplete="off" spellcheck="false"></div>
-    <p class="dictionary-sort">按字母排序</p>
-    <p id="dictionary-storage-note" hidden>当前浏览器无法保存记录，本次收录会保留到关闭页面。</p><p id="dictionary-empty">连接成功的单词会收录在这里</p><ul id="dictionary-list" class="dictionary-list"></ul><button id="dictionary-more" class="secondary-button" type="button" hidden>显示更多</button>
+    <div id="collection-scroll" class="collection-scroll"><div class="collection-theme-toolbar"><button id="collection-all" type="button" aria-pressed="true">全部收藏 0</button></div><div id="collection-themes" class="collection-themes" role="group" aria-label="收藏主题"></div><div id="collection-list-heading" class="collection-list-heading"><h3 id="collection-list-title">全部单词</h3><span id="collection-match-count" aria-live="polite">0 个词</span></div><p id="dictionary-empty">暂无收藏</p><button id="collection-reset" class="collection-reset" type="button" hidden>全部收藏</button><ul id="dictionary-list" class="dictionary-list"></ul><button id="dictionary-more" class="secondary-button" type="button" hidden>更多</button><p id="dictionary-storage-note" hidden>当前记录无法保存。</p></div>
   </dialog>
   <dialog id="activity-dialog" class="activity-dialog travel-dialog" aria-labelledby="activity-title" aria-describedby="activity-summary">
     <div class="dialog-top"><div class="travel-heading"><svg class="travel-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="7" width="22" height="22" rx="3"/><path d="M5 14h22 M11 3v8 M21 3v8"/><path d="M10 19h1 M16 19h1 M22 19h1 M10 24h1 M16 24h1 M22 24h1"/></svg><div><h2 id="activity-title">收词日历</h2><p id="activity-summary"></p></div></div><button id="activity-close" class="travel-close" type="button" aria-label="关闭收词日历" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
@@ -150,9 +157,15 @@
       <div class="activity-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
       <div id="activity-calendar-grid" class="activity-calendar-grid" role="group" aria-label="收词日期"></div>
     </section>
-    <div class="activity-history"><div class="activity-history-toolbar"><span id="activity-history-label">本月收词</span><button id="activity-show-month" type="button" hidden>查看整月</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty" role="status">找到第一个词后，收词记录会显示在这里</p></div>
+    <div class="activity-history"><div class="activity-history-toolbar"><span id="activity-history-label">本月收词</span><button id="activity-show-month" type="button" hidden>查看整月</button></div><ol id="activity-list" class="activity-list"></ol><p id="activity-empty" role="status">暂无收词记录</p></div><button id="activity-weekly" class="activity-weekly" type="button">本周回顾 <span aria-hidden="true">↗</span></button>
+  </dialog>
+  <dialog id="weekly-dialog" class="weekly-dialog travel-dialog" aria-labelledby="weekly-title" aria-describedby="weekly-range">
+    <div class="dialog-top collection-dialog-top"><h2 id="weekly-title">本周回顾</h2><button id="weekly-close" class="travel-close" type="button" aria-label="关闭本周回顾" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 5 14 14 M19 5 5 19"/></svg></button></div>
+    <div class="weekly-week-nav"><button id="weekly-prev" type="button" aria-label="上一周">‹</button><p id="weekly-range" aria-live="polite"></p><button id="weekly-next" type="button" aria-label="下一周" disabled>›</button></div>
+    <div id="weekly-scroll" class="weekly-scroll"><div id="weekly-metrics" class="weekly-metrics"></div><section class="weekly-activity"><div class="collection-list-heading"><h3>每日收词</h3><span id="weekly-day-summary"></span></div><div id="weekly-days" class="weekly-days" role="group" aria-label="周一至周日的新增收藏"></div></section><section class="weekly-highlights-section"><div class="collection-list-heading"><h3>本周记录</h3></div><ul id="weekly-highlights" class="weekly-highlights"></ul><p id="weekly-empty" class="weekly-empty">暂无记录</p></section><p id="weekly-record-note" class="weekly-record-note"></p><p id="weekly-storage-note" class="weekly-record-note" hidden>当前记录无法保存。</p></div>
+    <div class="weekly-footer"><button id="weekly-continue" type="button">继续游戏 <span aria-hidden="true">↗</span></button></div>
   </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=16"></script>
+  <script type="module" src="./app.js?v=34"></script>
 </body>
 </html>
