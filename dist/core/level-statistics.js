@@ -1,4 +1,5 @@
 import { createNeighbors, normalizeBonusDictionary } from './rules.js?v=21';
+import {isWTLevel} from './wt-source-session.js?v=40';
 
 const dictionaryTries = new WeakMap();
 function dictionaryTrie(dictionary) {
@@ -55,6 +56,7 @@ export function calculateLevelStatistics(level, dictionary) {
     }
     return { word: target.word, startCell, endCell, startColumn, endColumn, reverse, turns };
   });
+  if(isWTLevel(level))tileUses.splice(0,tileUses.length,...board.counts);
   const usageHistogram = {};
   for (const uses of tileUses) usageHistogram[uses] = (usageHistogram[uses] || 0) + 1;
   const reverseWords = targetPaths.filter(target => target.reverse).map(target => target.word);

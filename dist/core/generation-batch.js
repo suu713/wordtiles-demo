@@ -1,4 +1,5 @@
-import {generateLevel} from './algorithm2.js?v=21';
+import {generateWithQuality} from './quality-generation.js?v=39';
+import {matchesQualityTemplate} from './quality-config.js?v=39';
 import {createAlgorithmSession} from './algorithm-v1-adapter.js?v=21';
 import {checkConfiguration,DEFAULT_CONFIG} from './rules.js?v=21';
 import {runtimeDictionaryError} from './target-policy.js?v=21';
@@ -12,6 +13,7 @@ export async function generateLevelBatch(job,{onLevel=()=>{},onProgress=()=>{},i
   const error=runtimeDictionaryError(job.dictionary);if(error)throw new Error(error.message);
   const plan=job.plan?normalizeBatchPlan(job.plan,job.count):null,planned=!!plan?.curve.enabled;
   const config=job.engine==='supplied-v1'?DEFAULT_CONFIG:job.config;
+  if(job.quality&&job.quality.mode!=='REPORT'&&(planned||!matchesQualityTemplate(config)))throw new Error('RANK／FILTER 批量生成请使用固定 V3 模板并关闭旧难度曲线');
   if(!planned){const check=checkConfiguration(config,job.dictionary);if(!check.valid)throw new Error(check.errors.map(e=>e.message).join('；'));}
   if(planned&&!job.frequency?.zipf)throw new Error('英语词频尚未加载，暂时不能按难度编排');
   const levels=[],seen=new Set(job.existingFingerprints||[]),recent=(job.beforeTargets||[]).slice(-(plan?.repeatWindow||0));let attempts=0,failures=0,duplicates=0,totalNodes=0,lastError='';
@@ -32,7 +34,7 @@ export async function generateLevelBatch(job,{onLevel=()=>{},onProgress=()=>{},i
       const candidates=job.dictionary.words.filter(w=>!avoid.has(w)&&(!planned||(w.length>=plan.minLength&&w.length<=plan.maxLength&&(job.frequency.zipf[w]??0)>=spec.minimumZipf)));
       const rareWords=planned?candidates.filter(w=>(job.frequency.zipf[w]??0)<3.5):[];
       attempts++;
-      const result=generateLevel(job.budget,job.dictionary,freshRandomSeed(),{engine:job.engine,levelConfig:spec.config,
+      const result=generateWithQuality(job.budget,job.dictionary,freshRandomSeed(),{engine:job.engine,levelConfig:spec.config,quality:job.quality,
         candidateWords:plan?candidates:undefined,constraints:planned?{maxTurns:spec.maxTurns??undefined,rareWords,maxRareTargets:spec.maxRareTargets}:undefined});
       totalNodes+=result.stats?.nodes||0;
       if(result.ok){
@@ -49,10 +51,10 @@ export async function generateLevelBatch(job,{onLevel=()=>{},onProgress=()=>{},i
               validationStates:session.report.stateChecks||session.report.stateCount};}
             levels.push(result.level);completed=true;
             if(window){recent.push(result.level.targets.map(t=>t.word));while(recent.length>window)recent.shift();}
-            onLevel({level:result.level,index:levels.length,requested:job.count,attempts,failures,duplicates,totalNodes});
+            onLevel({level:result.level,qualityReport:result.qualityReport,qualitySearch:result.qualitySearch,index:levels.length,requested:job.count,attempts,failures,duplicates,totalNodes});
           }
         }
-      }else{failures++;lastError=result.message||result.code;}
+      }else{failures++;lastError=result.message||result.code;if(String(result.code).startsWith('QUALITY_'))break;}
       onProgress({generated:levels.length,requested:job.count,attempts,failures,duplicates,totalNodes,degree:spec.degree});
       await new Promise(resolve=>setTimeout(resolve,0));
       if(completed)break;

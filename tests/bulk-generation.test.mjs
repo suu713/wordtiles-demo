@@ -13,11 +13,7 @@ test('批量数量与每关目标数独立生效，结果随机、可验证及�
   const config={rows:3,cols:4,wordLengths:recommendedLengths(3,4,[3,4,5,6,7,8],2)},progress=[];
   const r=await generateLevelBatch({count:4,engine:'flexible',config,dictionary,budget},{onLevel:e=>progress.push(e.index)});
   assert.equal(r.status,'complete');assert.equal(r.levels.length,4);assert.deepEqual(progress,[1,2,3,4]);assert.equal(new Set(r.levels.map(l=>l.seed)).size,4);
-  for(const l of r.levels){assert.equal(l.targets.length,2);assert.equal(l.source.dictionaryOrigin,'web-supplied');const s=createAlgorithmSession(l,dictionary);for(const t of s.initial.targets)s.submit(t.path);assert.equal(s.status,'won');}
-});
-test('原网页V1批量保持原3×3与5目标，词库来源仍独立',async()=>{
-  const d=createBankDictionary([3,4,5],'wt-package'),r=await generateLevelBatch({count:3,engine:'supplied-v1',dictionary:d,budget});
-  assert.equal(r.status,'complete');assert.equal(r.levels.length,3);for(const l of r.levels){assert.equal(l.rows,3);assert.equal(l.cols,3);assert.equal(l.targets.length,5);assert.equal(l.source.generationEngine,'supplied-v1');assert.equal(l.source.dictionaryOrigin,'wt-package');assert.ok(createAlgorithmSession(l,d));}
+  for(const l of r.levels){assert.equal(l.targets.length,2);assert.equal(l.source.dictionaryOrigin,'wt-workbook');const s=createAlgorithmSession(l,dictionary);for(const t of s.initial.targets)s.submit(t.path);assert.equal(s.status,'won');}
 });
 test('批量取消只保留已完成校验的关卡，不宣称达到请求数量',async()=>{
   let cancelled=false;const r=await generateLevelBatch({count:10,engine:'flexible',config:{rows:2,cols:4,wordLengths:[8]},dictionary,budget},{onLevel:()=>cancelled=true,isCancelled:()=>cancelled});

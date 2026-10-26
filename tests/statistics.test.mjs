@@ -7,9 +7,9 @@ import { convertSourceLevel, SourceGameSession, validateSourceLevel } from '../d
 import { findWordPaths } from '../dist/core/rules.js';
 
 const json = async path => JSON.parse(await readFile(new URL(path, import.meta.url), 'utf8'));
-const dictionary = await json('../dist/dictionary-v1.json');
+const dictionary = await json('../tests/fixtures/retired-runtime-data/dictionary-v1.json');
 const fixture = await json('../examples/seed_20261010.json');
-const bank = await json('../dist/source-levels/english.json');
+const bank = await json('../tests/fixtures/retired-runtime-data/source-levels/english.json');
 
 test('倒序只比较画面中起点和终点，拐数和目标格子使用数保持原口径', () => {
   const game = createAlgorithmSession(fixture, dictionary);

@@ -1,6 +1,7 @@
-import {createEventProgress,EVENTS_KEY,WEEKLY_STAGES,eventDate,dailyLevelIndex} from './core/event-progress.js?v=27';
-import {SourceGameSession,convertSourceLevel} from './core/source-levels.js?v=15';
+import {createEventProgress,EVENTS_KEY,WEEKLY_STAGES,eventDate} from './core/event-progress.js?v=27';
 import {SessionMetrics} from './core/playtest-metrics.js?v=15';
+import {WORD_BANK_ORIGIN} from './core/dictionary-banks.js?v=1';
+import {dailyPuzzleRecordId,createDailyPuzzle} from './core/daily-puzzle.js?v=1';
 
 const paths={
   wheel:'M16 3a13 13 0 1 0 13 13A13 13 0 0 0 16 3Zm0 0v9m0 8v9M3 16h9m8 0h9M6.8 6.8l6.4 6.4m5.6 5.6 6.4 6.4M6.8 25.2l6.4-6.4m5.6-5.6 6.4-6.4M16 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z',
@@ -24,7 +25,7 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
   const progress=createEventProgress(storage),$=id=>document.getElementById(id);
   let spinning=false,spinTimer=null,rotation=0,stopped=false,expandedRewards=false,displayedDay=eventDate();
   let month=new Date(),selectedDay=eventDate(),dailySession=null,dailyMetrics=null,dailyRecordSession=null,dailyKey='',dailyRawId=null;
-  let gemCells=[],pickedGems=new Set(),dailyPaths=[],selection=[],pointerId=null,highlight=[],dailyPlaying=false,loading=false,loadRequest=0,levelsPromise;
+  let gemCells=[],pickedGems=new Set(),dailyPaths=[],selection=[],pointerId=null,highlight=[],dailyPlaying=false,loading=false,loadRequest=0,dailySeed=null;
   const observed=new WeakMap();
   const root=document.createElement('div');root.id='event-views';
   root.innerHTML=panel('fortune-dialog','幸运转盘','每日 1 次免费',`
@@ -50,7 +51,7 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
     <div id="daily-play" class="daily-play" hidden><div class="daily-play-top"><button id="daily-back-calendar" type="button">‹ 日历</button><span id="daily-play-progress"></span><span id="daily-play-gems"></span></div><div id="daily-play-targets" class="daily-play-targets" aria-label="每日谜题目标词"></div><p id="daily-play-word" class="daily-play-word" aria-live="polite"></p><div id="daily-board" class="daily-board" role="group" aria-label="每日谜题字母棋盘"></div><div id="daily-play-tools" class="daily-play-tools"><button id="daily-cancel-path" type="button">清除连线</button><button id="daily-hint" type="button">${icon('hint')}提示</button></div><div id="daily-complete" class="daily-complete" hidden>${icon('check')}<h3>今日谜题已完成</h3><p id="daily-complete-caption"></p></div></div>
     <div class="daily-gem-progress">${icon('gem')}<div class="daily-gem-details"><div><span>宝石收集</span><strong id="daily-gem-count">0 / 50</strong></div><div id="daily-gem-progress" class="event-progress-track" role="progressbar" aria-label="宝石奖励进度" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0"><span class="event-progress-fill"></span></div></div><button id="daily-claim-gems" class="daily-gem-reward" type="button" disabled aria-label="收集50枚宝石领取40金币">${icon('coin')}<span id="daily-gem-reward-label">+40</span></button></div>
     <p id="daily-status" class="event-status" role="status" aria-live="polite"></p><details id="daily-rules" class="event-rules"><summary>玩法说明</summary><p>连接上下左右相邻的字母组成目标词，同次连线不能重复经过同一格。可拖动连词，也可逐格点击后提交。成功连线经过宝石格即可收集宝石，累计 50 枚领取 40 金币。</p></details><p class="event-storage" data-event-storage hidden>当前进度无法保存</p>`,
-    `<button id="daily-action" class="event-primary" type="button">开始今日谜题 ${icon('arrow')}</button><p id="daily-footer-note">WT 原包英语日题</p>`);
+    `<button id="daily-action" class="event-primary" type="button">开始今日谜题 ${icon('arrow')}</button><p id="daily-footer-note">由 WT词库.xlsx 生成</p>`);
   document.body.append(root);
   const nav=document.createElement('nav');nav.className='lobby-events';nav.setAttribute('aria-label','活动玩法');
   nav.innerHTML=[['fortune','wheel','幸运转盘','每日免费'],['collect-event','pine','每周活动','收集松果'],['daily-puzzle','gem','每日谜题','今日待完成']].map(([id,mark,title,note])=>`<button class="lobby-event" id="${id}-button" type="button" aria-haspopup="dialog" aria-controls="${id}-dialog">${icon(mark)}<strong>${title}</strong><small data-event-note>${note}</small>${id==='fortune'?'<i class="event-dot" aria-hidden="true"></i>':''}</button>`).join('');
@@ -96,11 +97,11 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
   function renderCalendar(){
     const now=new Date(),today=eventDate(now),state=progress.snapshot(),year=month.getFullYear(),m=month.getMonth(),prefix=`${year}-${String(m+1).padStart(2,'0')}`;
     $('daily-today-label').textContent=`${now.getMonth()+1} 月 ${now.getDate()} 日 · 周${'日一二三四五六'[now.getDay()]}`;
-    $('daily-month-total').textContent=`本月完成 ${Object.entries(state.daily).filter(([key,value])=>key.startsWith(prefix)&&value.finished).length} 天`;
+    $('daily-month-total').textContent=`本月完成 ${Object.entries(state.daily).filter(([key,value])=>key.startsWith(prefix)&&value.levelId===dailyPuzzleRecordId(key)&&value.finished).length} 天`;
     $('daily-month-title').textContent=`${year} 年 ${m+1} 月`;$('daily-month-next').disabled=year===now.getFullYear()&&m===now.getMonth();
     const gap=(new Date(year,m,1).getDay()+6)%7,days=new Date(year,m+1,0).getDate();
     $('daily-calendar-grid').innerHTML='<span aria-hidden="true"></span>'.repeat(gap)+Array.from({length:days},(_,i)=>{const key=`${prefix}-${String(i+1).padStart(2,'0')}`;return `<button type="button" data-day="${key}" data-today="${key===today}" data-complete="${!!state.daily[key]?.finished}" aria-pressed="${selectedDay===key}" aria-label="${m+1}月${i+1}日${state.daily[key]?.finished?'，已完成':key===today?'，今日谜题':''}" ${key>today?'disabled':''}>${i+1}</button>`;}).join('');
-    if(!dailyPlaying){const entry=state.daily[selectedDay];$('daily-hero-title').textContent=selectedDay===today?(entry?.finished?'今日已完成':'今日谜题'):`${Number(selectedDay.slice(5,7))} 月 ${Number(selectedDay.slice(8))} 日`;$('daily-hero-caption').textContent=entry?.finished?'这一日，已经点亮':selectedDay!==today?'当日未完成':'连出单词，点亮今天';$('daily-action').disabled=selectedDay!==today||loading||!!entry?.finished;$('daily-action').innerHTML=loading?'正在准备谜题…':entry?.finished?'已完成':selectedDay!==today?'仅今日谜题开放':`${entry?.paths?.length?'继续今日谜题':'开始今日谜题'} ${icon('arrow')}`;$('daily-footer-note').textContent=entry?.finished?'明天再来解锁新谜题':'WT 原包英语日题';}
+    if(!dailyPlaying){const saved=state.daily[selectedDay],entry=saved?.levelId===dailyPuzzleRecordId(selectedDay)?saved:null;$('daily-hero-title').textContent=selectedDay===today?(entry?.finished?'今日已完成':'今日谜题'):`${Number(selectedDay.slice(5,7))} 月 ${Number(selectedDay.slice(8))} 日`;$('daily-hero-caption').textContent=entry?.finished?'这一日，已经点亮':selectedDay!==today?'当日未完成':'连出单词，点亮今天';$('daily-action').disabled=selectedDay!==today||loading||!!entry?.finished;$('daily-action').innerHTML=loading?'正在准备谜题…':entry?.finished?'已完成':selectedDay!==today?'仅今日谜题开放':`${entry?.paths?.length?'继续今日谜题':'开始今日谜题'} ${icon('arrow')}`;$('daily-footer-note').textContent=entry?.finished?'明天再来解锁新谜题':'由 WT词库.xlsx 生成';}
   }
   function renderGems(){const {gems}=progress.snapshot();$('daily-gem-count').textContent=`${gems} / 50`;$('daily-gem-progress').setAttribute('aria-valuenow',Math.min(gems,50));$('daily-gem-progress').style.setProperty('--event-progress',`${Math.min(100,gems/50*100)}%`);$('daily-claim-gems').disabled=gems<50;$('daily-gem-reward-label').textContent=gems>=50?'领取 +40':'+40';}
   $('daily-claim-gems').addEventListener('click',()=>{if(progress.claimGems()){$('daily-status').textContent='已领取 40 金币';refresh();}});
@@ -114,18 +115,16 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
   async function startDaily(){
     if(loading||stopped)return;loading=true;const request=++loadRequest,day=eventDate();renderCalendar();$('daily-status').textContent='';
     try{
-      levelsPromise??=fetch('./source-levels/english.json?v=15').then(response=>{if(!response.ok)throw Error('谜题暂时无法载入');return response.json();}).catch(error=>{levelsPromise=null;throw error;});
-      const data=await levelsPromise;if(request!==loadRequest||stopped||!$('daily-puzzle-dialog').open)return;
-      const date=new Date(),ids=data.levelLists.daily_puzzle_level_list.split(',').map(Number),raw=data.levels[ids[dailyLevelIndex(date,ids.length)]];
-      if(day!==eventDate(date))throw Error('新一天已开始，请重新打开今日谜题');
-      const saved=progress.daily(day);if(saved?.finished){loading=false;showDailyHome();return;}
+      if(request!==loadRequest||stopped||!$('daily-puzzle-dialog').open)return;
+      const date=new Date();if(day!==eventDate(date))throw Error('新一天已开始，请重新打开今日谜题');
+      const savedValue=progress.daily(day),saved=savedValue?.levelId===dailyPuzzleRecordId(day)?savedValue:null;if(saved?.finished){loading=false;showDailyHome();return;}
       if(!dailySession||dailyKey!==day){
-        dailyKey=day;dailyRawId=raw.id;dailySession=new SourceGameSession(convertSourceLevel(raw,{language:'english',daily:true}));
+        const daily=createDailyPuzzle(day,saved?.seed);dailyKey=day;dailyRawId=daily.levelId;dailySeed=daily.seed;dailySession=daily.session;
         dailyPaths=[];for(const path of saved?.paths||[]){const result=dailySession.submit(path);if(result.accepted)dailyPaths.push(path);}
         const candidates=Array.from({length:dailySession.counts.length},(_,i)=>i);
         if(saved)gemCells=saved.gemCells;else{for(let i=candidates.length-1;i>0;i--){const value=new Uint32Array(1);crypto.getRandomValues(value);const j=value[0]%(i+1);[candidates[i],candidates[j]]=[candidates[j],candidates[i]];}gemCells=candidates.slice(0,3);}
         pickedGems=new Set(dailyPaths.flat().filter(cell=>gemCells.includes(cell)));dailyMetrics=new SessionMetrics(dailySession);dailyRecordSession={completed:new Set(),status:'playing'};
-        progress.saveDaily({levelId:dailyRawId,gemCells,paths:dailyPaths,gemCount:pickedGems.size,finished:false});
+        progress.saveDaily({levelId:dailyRawId,seed:dailySeed,gemCells,paths:dailyPaths,gemCount:pickedGems.size,finished:false});
       }
       if(!dailyMetrics.started)dailyMetrics.start();else dailyMetrics.resume();recordDaily();dailyPlaying=true;selection=[];highlight=[];$('daily-puzzle-dialog').dataset.playing='true';$('daily-home').hidden=true;$('daily-play').hidden=false;$('daily-rules').hidden=true;$('daily-footer-note').textContent='拖动连词，或点选字母后提交';renderDailyPlay();renderGems();$('daily-puzzle-dialog').querySelector('.event-scroll').scrollTop=0;
     }catch(error){$('daily-status').textContent=`${error.message}，点击重试。`;}
@@ -154,8 +153,8 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
     if(stopped||!dailySession||dailySession.status==='won'||!selection.length)return;
     if(dailyKey!==eventDate()){showDailyHome();refresh();$('daily-status').textContent='新一天已开始，请载入今日谜题';return;}
     const path=[...selection],result=dailySession.submit(path);if(result.accepted){dailyRecordSession.completed.add(result.word);dailyRecordSession.status=dailySession.status;}dailyMetrics.submit(path,result);recordDaily();
-    if(result.accepted){for(const cell of path)if(gemCells.includes(cell))pickedGems.add(cell);dailyPaths.push(path);onCollect?.(result,'english','wt-package');progress.saveDaily({levelId:dailyRawId,gemCells,paths:dailyPaths,gemCount:pickedGems.size,finished:dailySession.status==='won'});$('daily-status').textContent=dailySession.status==='won'?'':`找到 ${result.word}`;}
-    else if(result.reason==='extra-word'){onCollect?.(result,'english','wt-package');$('daily-status').textContent=`额外发现 ${result.word}，已收录`;}
+    if(result.accepted){for(const cell of path)if(gemCells.includes(cell))pickedGems.add(cell);dailyPaths.push(path);onCollect?.(result,'english',WORD_BANK_ORIGIN);progress.saveDaily({levelId:dailyRawId,seed:dailySeed,gemCells,paths:dailyPaths,gemCount:pickedGems.size,finished:dailySession.status==='won'});$('daily-status').textContent=dailySession.status==='won'?'':`找到 ${result.word}`;}
+    else if(result.reason==='extra-word'){onCollect?.(result,'english',WORD_BANK_ORIGIN);$('daily-status').textContent=`额外发现 ${result.word}，已收录`;}
     else $('daily-status').textContent=result.reason==='already-completed'?'这个词已经找到了':result.reason==='different-consumption'?'换一条路径试试，可点提示查看':'再试一个单词';
     selection=[];highlight=[];renderDailyPlay();renderGems();refresh();
   }

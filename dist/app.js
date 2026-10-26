@@ -1,12 +1,16 @@
 import { DEFAULT_CONFIG, LIMITS, checkConfiguration, configForLevel, normalizeDictionary, clone } from './core/rules.js?v=21';
 import { SourceGameSession, convertSourceLevel, validateSourceLevel, LANGUAGE_NAMES, SOURCE_VERSION } from './core/source-levels.js?v=15';
+import {isWTLevel,validateWTLevel,WT_RUNTIME} from './core/wt-source-session.js?v=40';
+import {wtSourceCatalogue,wtSourceBank,wtSourceLevel,originalOrder} from './core/wt-source-library.js?v=40';
+import {createPlaySession} from './core/play-session.js?v=40';
 import { createAlgorithmSession, validateAlgorithmLevel,isV1Level,migrateLegacyLevel } from './core/algorithm-v1-adapter.js?v=21';
 import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
 import { calculateLevelStatistics } from './core/level-statistics.js?v=15';
 import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=25';
 import { preloadArt } from './core/art-theme.js?v=22';
 import { localCollectionDate, groupCollectionDays, shiftCollectionMonth, collectionMonthCells, collectionMonthGroups } from './core/collection-calendar.js?v=16';
-import { mountPlaytestLab } from './workbench-ui.js?v=33';
+import { mountPlaytestLab } from './workbench-ui.js?v=48&sim=range-1';
+import {QUALITY_TEMPLATE,matchesQualityTemplate} from './core/quality-config.js?v=39';
 import {mountCollectionViews} from './collection-ui.js?v=25';
 import {mountEventViews} from './event-ui.js?v=29';
 import {planTargetLengths,normalizeComposition} from './core/target-composition.js?v=28';
@@ -17,7 +21,7 @@ import {playBoardFireworks,drawBoardFireworks} from './board-fireworks.js?v=34';
 import {planTargetRows} from './core/target-rows.js?v=30';
 import {createPersonalProgress,PERSONAL_PROGRESS_KEY} from './core/personal-progress.js?v=25';
 import {clearAppData,dataEpoch,DATA_RESET_KEY,DATA_NOTICE_KEY,PREVIEW_COLLECTION_KEY} from './core/app-data.js?v=25';
-import {createBankDictionary,BANK_NAMES,WEB_BANK_STATISTICS,bankLengthRange} from './core/dictionary-banks.js?v=23';
+import {createBankDictionary,BANK_NAMES,WEB_BANK_STATISTICS,bankLengthRange,WORD_BANK_ORIGIN} from './core/dictionary-banks.js?v=1';
 const $ = selector => document.querySelector(selector);
 const previewAtOpen=takePreviewRequest();
 function takePreviewRequest(){
@@ -25,7 +29,7 @@ function takePreviewRequest(){
   url.searchParams.delete('preview');history.replaceState(history.state,'',url.href);return true;
 }
 const board = $('#board');
-let dictionary, game, catalogue;
+let dictionary, game, catalogue, sourceLoadRequest=0;
 let playtestLab;
 let baseDictionary, dictionaryLoading = false, dictionaryLoadError = null;
 let selectedAlgorithm = 2, ready = false, busyKind = null;
@@ -50,7 +54,7 @@ const solutionCache = new WeakMap(), SOLUTIONS_PER_PAGE = 12;
 let solutionWorker = null, solutionLevel = null, solutionRequest = 0, solutionPage = 0;
 let draftLengths = [...DEFAULT_CONFIG.wordLengths], editorValid = false;
 let webConfigDraft=clone(DEFAULT_CONFIG);
-let compositionError='';
+let compositionError='',qualityFixedTemplate=false;
 let activeFirework=null,boardFirework=null;
 const fireworksVariant=new URL(location.href).searchParams.get('fireworks')==='word'?'word':'path';
 $('#fireworks').dataset.variant=fireworksVariant;
@@ -67,7 +71,7 @@ function targetLabel(word,done=false){
 }
 function cancelFireworks(redraw=false){const effect=activeFirework;if(!effect)return;activeFirework=null;effect.animation?.cancel();if(effect.kind==='path')boardFirework=null;if(redraw&&game===effect.session){render();feedback(effect.kind==='path'?'路径提示已收起，格子次数不变':`已显示 ${effect.word}，格子次数不变`);}}
 function readComposition(){return normalizeComposition({three:$('#generation-three-percent').value,four:$('#generation-four-percent').value});}
-function compositionLengths(random=()=>.5){return planTargetLengths({rows:Number($('#board-rows').value),cols:Number($('#board-cols').value),targetCount:Number($('#generation-target-count').value),composition:readComposition(),maxUses:webConfigDraft.maxUses??3},dictionary?[...new Set(dictionary.words.map(word=>word.length))]:bankLengthRange(),random);}
+function compositionLengths(random=()=>.5){if(qualityFixedTemplate)return [...QUALITY_TEMPLATE.wordLengths];return planTargetLengths({rows:Number($('#board-rows').value),cols:Number($('#board-cols').value),targetCount:Number($('#generation-target-count').value),composition:readComposition(),maxUses:webConfigDraft.maxUses??3},dictionary?[...new Set(dictionary.words.map(word=>word.length))]:bankLengthRange(),random);}
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const connections = document.createElementNS(SVG_NS, 'svg');
 connections.classList.add('connections');
@@ -126,7 +130,7 @@ function checkEditor() {
     return { config, report: { valid, errors: valid ? [] : [{ message:'请选择并载入原包关卡' }], stateCount:game?.report.stateCount || 0 } };
   }
   if(compositionError)return {config,report:{valid:false,errors:[{message:compositionError}],stateCount:0}};
-  if (dictionaryLoading || !dictionary) return { config, report: { valid: false, errors: [{ message: dictionaryLoading ? '正在读取母词库' : dictionaryLoadError || '运行时词库不可用' }], stateCount: 32 } };
+  if (dictionaryLoading || !dictionary) return { config, report: { valid: false, errors: [{ message: dictionaryLoading ? '正在读取 WT词库.xlsx' : dictionaryLoadError || 'WT词库.xlsx 不可用' }], stateCount: 32 } };
   const report = checkConfiguration(config, dictionary);
   return { config, report };
 }
@@ -135,7 +139,7 @@ function sourceInfo() {
 }
 function sourceLimit() {
   const info = sourceInfo();
-  return info ? ($('#source-order').value === 'main' ? info.mainCount : info.count) : 0;
+  return info?.lists?.find(list=>list.key===originalOrder($('#source-order').value))?.count||0;
 }
 function validSourcePosition() {
   const position = Number($('#source-number').value);
@@ -172,14 +176,14 @@ function updateEditor() {
   const sourceDirty = isSource && source && (source.language !== $('#source-language').value || (source.order && source.order !== $('#source-order').value) || (source.position && source.position !== Number($('#source-number').value)));
   const dirty = !game || !report.valid || (isSource ? sourceDirty : JSON.stringify(config) !== JSON.stringify(configForLevel(game.initial)) || game.dictionary?.version !== dictionary?.version);
   $('#config-status').textContent = isSource
-    ? (!validSourcePosition() ? '序号必须为 1～' + sourceLimit() + ' 的整数。' : dirty ? '已选新关卡，点击“载入”应用。' : '原包参数已锁定 · 固定消耗集合保证任意完成顺序。')
+    ? (!validSourcePosition() ? '序号必须为 1～' + sourceLimit() + ' 的整数。' : dirty ? '已选新关卡，点击“载入”应用。' : '原包参数已锁定 · 帘子按累计目标开启，合法替代路径可用。')
     : report.valid ? `${config.cols}×${config.rows} · ${config.wordLengths.length} 个目标 · 词长 ${config.wordLengths.join('/')} · 校验 ${report.stateCount} 种完成状态。` : report.errors.map(error => error.message).join('；') + '。';
   if($('#shape-status')){
     const three=config.wordLengths.filter(n=>n===3).length,four=config.wordLengths.filter(n=>n===4).length,total=config.wordLengths.length,other=total-three-four;
     $('#shape-status').textContent=isSource?'按原包规格展示':!report.valid?report.errors.map(error=>error.message).join('；'):`${total} 个目标：三字 ${three}（${Math.round(three/total*100)}%）· 四字 ${four}（${Math.round(four/total*100)}%）· 其他 ${other}`;
     $('#shape-status').classList.toggle('error',!isSource&&!report.valid);
     $('#composition-note').hidden=isSource;
-    try{const c=readComposition();$('#composition-note').textContent=`其余 ${Math.max(0,100-c.three-c.four)}% 随机生成 2、5～10 字词`; }catch{$('#composition-note').textContent='占比按目标词数量计算';}
+    try{const c=readComposition();$('#composition-note').textContent=qualityFixedTemplate?'V3 固定词长：3、3、3、4、5；手改配置后退出固定模板。':`其余 ${Math.max(0,100-c.three-c.four)}% 从词库现有的5～8字词中随机补齐`; }catch{$('#composition-note').textContent='占比按目标词数量计算';}
   }
   $('#config-status').classList.toggle('error', isSource ? !validSourcePosition() : !report.valid);
   $('#draft-tag').textContent = dirty ? '待应用' : '已应用';
@@ -218,15 +222,18 @@ function showMode() {
   $('#cols-note').textContent = isSource ? '原关卡列数' : '2～6 列';
   $('#rows-note').textContent = isSource ? '原关卡行数' : '2～6 行';
   $('#count-note').textContent = isSource ? '原关卡目标数量' : '按目标词长配置数量';
-  $('#length-note').textContent = isSource ? '原始目标词长度' : '支持2～10字，候选严格来自所选词库';
+  $('#length-note').textContent = isSource ? '原始目标词长度' : '目标词来自 WT词库.xlsx，支持3～8个字母';
   $('#uniform-note').textContent = isSource ? '按原关卡显示' : '按配置显示';
-  $('#preview-note').textContent = fireworksVariant==='path'?'拖动连词，松手提交。烟花从首字母开始显示最短词的箭头路径。':'拖动连词，松手提交。提示揭开 1 个字母，烟花揭开最短的整个词。';
-  $('.debug-explanation').textContent = isSource ? '路径数与消耗集合数分开统计。仅接受参考消耗集合。' : '路径数与消耗集合数分开统计，每个词的集合必须唯一。';
+  $('#preview-note').textContent = isSource?'原包试玩：提示揭1个字母，烟花揭最多5个；帘子显示解锁所需累计词数。':fireworksVariant==='path'?'拖动连词，松手提交。烟花从首字母开始显示最短词的箭头路径。':'拖动连词，松手提交。提示揭开 1 个字母，烟花揭开最短的整个词。';
+  $('#hint').dataset.help=isSource?'揭开 1 个字母，优先尚未显示的最靠前字位。整词揭完自动收词并结算格子。':'随机揭开 1 个尚未显示的目标字母，优先靠前字位，不消耗格子次数。';
+  $('#fireworks').dataset.help=isSource?'揭开最多 5 个目标字母；整词揭完自动收词，累计收词数可打开帘子。':fireworksVariant==='word'?'揭开最短的未完成整词，格子次数不变。':'从首字母显示最短未完成词的箭头路径。';
+  $('#rules-button').dataset.help=isSource?'上下左右连词；帘子格暂不可连，完成指定数量的目标后打开。识别目标按全部候选路径的格子并集扣次，并清理冗余格。额外词按本关原包名单判定，不扣次数。收齐目标或棋盘次数耗尽即过关。':'上下左右相邻连词，同次不能重复经过同一格。目标词扣除对应路径次数；次数归零留空。';
+  $('.debug-explanation').textContent = isSource ? '每词全部候选路线取格子并集计次；收词后清理冗余格并保护剩余路径。' : '路径数与消耗集合数分开统计，每个词的集合必须唯一。';
 }
 function syncSourceControls(level) {
   const source = level.source;
   if (source?.language in LANGUAGE_NAMES) $('#source-language').value = source.language;
-  if (source?.order === 'main' || source?.order === 'all') $('#source-order').value = source.order;
+  if (catalogue?.languages[0].lists.some(list=>list.key===originalOrder(source?.order))) $('#source-order').value = originalOrder(source.order);
   populateSourceOptions();
   if (Number.isInteger(source?.position)) $('#source-number').value = String(source.position);
   $('#source-number').setAttribute('max', String(sourceLimit() || 1));
@@ -234,6 +241,7 @@ function syncSourceControls(level) {
 }
 function syncEditor(level) {
   const config = configForLevel(level);
+  if(level.algorithm!==1)qualityFixedTemplate=qualityFixedTemplate&&matchesQualityTemplate(config);
   $('#board-cols').value = String(config.cols); $('#board-rows').value = String(config.rows);
   $('#word-count').value = String(config.wordLengths.length);
   if (level.algorithm === 1) syncSourceControls(level);
@@ -257,7 +265,7 @@ function applyLevelInfo(kind) {
   $('#active-seed-label').textContent = isSource ? '原关卡 ID' : '生成方式';
   const id = String(isSource ? source.original.id : '随机新关');
   $('#active-seed').textContent = id; $('#active-seed').title = id;
-  $('#game-level-label').textContent = isSource ? '算法1' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : '算法2 · 自由找词';
+  $('#game-level-label').textContent = isSource ? 'WT 1.4.0' + (source.position ? ' · 第' + source.position + '关' : ' · 原包关卡') : '算法2 · 自由找词';
   if (isSource) {
     const info = catalogue?.languages.find(item => item.language === source.language);
     $('#source-library-status').textContent = (LANGUAGE_NAMES[source.language] || '原包') + ' · ID ' + source.original.id + (info ? ' · ' + info.count.toLocaleString() + ' 个不同关卡' : '');
@@ -279,17 +287,19 @@ function renderLevelStatistics() {
   for (let uses = 2; uses <= 5; uses++) {
     const cells = stats.tileUses.flatMap((count, cell) => count === uses ? [cell] : []);
     $(`#tile-used-${uses}`).textContent = String(cells.length);
-    $(`#tile-use-stat-${uses}`).dataset.help = `恰好被 ${uses} 个目标词共用的格子有 ${cells.length} 格。按各目标词的参考路径统计，每个目标对同一格只算一次，非目标词不计入。` + (cells.length ? ' 格子编号：' + cells.join('、') + '。' : ' 本关没有此类格子。');
+    $(`#tile-use-stat-${uses}`).dataset.help = `恰好被 ${uses} 个目标词共用的格子有 ${cells.length} 格。${isWTLevel(game.initial)?'原包按每个词全部路径取并集':'按各目标词参考路径'}统计，每个目标对同一格只算一次，非目标词不计入。` + (cells.length ? ' 格子编号：' + cells.join('、') + '。' : ' 本关没有此类格子。');
   }
-  $('#tile-usage-heading').dataset.help = '格子就是棋盘上的字母方块。这里统计有多少格子被多个目标词共用，例如“被 2 个目标词使用：3 格”表示有 3 个格子各被 2 个目标词使用。只按初始关卡的目标参考路径统计，非目标词不计入，试玩消除不会改变统计。全部分布：' + Object.entries(stats.usageHistogram).map(([uses, count]) => `${uses} 次 ${count} 格`).join('；') + '。';
+  $('#tile-usage-heading').dataset.help = '格子就是棋盘上的字母方块。这里统计有多少格子被多个目标词共用，例如“被 2 个目标词使用：3 格”表示有 3 个格子各被 2 个目标词使用。按初始目标路径统计（原包每词全部路径取并集），非目标词不计入，试玩消除不会改变统计。全部分布：' + Object.entries(stats.usageHistogram).map(([uses, count]) => `${uses} 次 ${count} 格`).join('；') + '。';
   for (const [id, matches] of [['straight', target => target.turns === 0], ['one-turn', target => target.turns === 1], ['multi-turn', target => target.turns >= 2]]) {
     const words = stats.targetPaths.filter(matches).map(target => target.word);
     $(`#${id}-word-count`).textContent = String(words.length);
     $(`#${id}-word-stat`).dataset.help = '只统计目标词，每个词按保存的参考路径计算一次。相邻两段的行进方向改变算 1 次转弯；直线为 0 拐，1 拐为恰好 1 次，多拐为 2 次及以上。' + (words.length ? ' 单词：' + words.join('、') + '。' : ' 本关没有此类目标词。');
   }
 }
-function switchAlgorithm(next) {
-  if (next === selectedAlgorithm || !ready) return;
+async function switchAlgorithm(next) {
+  if (!ready) return false;
+  if (next === selectedAlgorithm) return true;
+  sourceLoadRequest++;
   playtestLab?.gameChanging();
   cancelFireworks();cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection(); rememberSession();
   selectedAlgorithm = next; showMode(); epoch++;
@@ -308,21 +318,22 @@ function switchAlgorithm(next) {
     applyLevelInfo(saved.kind); render(); playtestLab?.gameChanged();
     feedback(game.status === 'won' ? '全部目标已完成。' : '');
     notice('已恢复算法' + next + '的关卡与试玩进度。', 'success');
-  } else if (next === 2) generate(randomSeed());
-  else loadSource();
+    return true;
+  } else if (next === 2) {restoreWebDraft();return generate(randomSeed());}
+  else return loadSource();
 }
 $('#algorithm').addEventListener('change', () => switchAlgorithm(Number($('#algorithm').value)));
 
 function updateDictionaryUI() {
-  const origin=$('#dictionary-source').value==='wordtiles'?'wt-package':'web-supplied';
+  const origin=WORD_BANK_ORIGIN;$('#dictionary-source').value=WORD_BANK_ORIGIN;
   $('#zen-dictionary-field').hidden=true;$('#dictionary-tier').disabled=true;
-  const status=$('#lexicon-status');status.textContent=(BANK_NAMES[origin]||origin)+' · '+(dictionary?.words.length.toLocaleString()||'0')+' 个目标候选 / '+WEB_BANK_STATISTICS.totalWords.toLocaleString()+' 个词条';
-  status.dataset.help='当前目标和额外词均严格来自 '+(dictionary?.metadata?.sourceFile||BANK_NAMES[origin])+'；版本：'+(dictionary?.version||'读取失败')+'。不同来源中的相同拼写各自保留。';
+  const status=$('#lexicon-status');status.textContent=(BANK_NAMES[origin]||origin)+' · '+WEB_BANK_STATISTICS.targetWords.toLocaleString()+' 必答词 / '+WEB_BANK_STATISTICS.extraWords.toLocaleString()+' 额外词';
+  status.dataset.help='目标词只从工作簿“必答词”生成。能连出的非目标词，只要属于“必答词”或“额外词”就可计入额外词，不扣次数；“额外词”表中的词不会成为目标。关卡词长为3～8个字母。版本：'+(dictionary?.version||'读取失败');
 }
 async function refreshDictionary(announce=true){
   cancelGeneration(true);epoch++;dictionaryLoadError=null;dictionaryLoading=false;
-  try{const lengths=[2,3,4,5,6,7,8,9,10],source=$('#dictionary-source').value;
-    dictionary=createBankDictionary(lengths,source==='wordtiles'?'wt-package':'web-supplied');
+  try{const lengths=bankLengthRange(WORD_BANK_ORIGIN);
+    dictionary=createBankDictionary(lengths,WORD_BANK_ORIGIN);
   }catch(error){dictionaryLoadError=error.message;dictionary=null;}
   updateDictionaryUI();if(selectedAlgorithm===2)editorChanged();else updateEditor();renderDebug();playtestLab?.dictionaryChanged();
   if(announce)notice(dictionary?'词库来源已切换为 '+BANK_NAMES[dictionary.metadata.origin]+'，生成后应用。':'词库读取失败：'+dictionaryLoadError,dictionary?'success':'error');
@@ -330,6 +341,7 @@ async function refreshDictionary(announce=true){
 for (const id of ['#dictionary-source', '#dictionary-tier']) $(id).addEventListener('change', () => refreshDictionary());
 
 function editorChanged(event) {
+  if(event)qualityFixedTemplate=false;
   const wasBusy=busy;cancelGeneration(true);
   if(wasBusy){generationStats={...generationStats,result:'cancelled',reason:'config-edited'};notice('参数已修改，旧参数的生成已取消。');renderDebug();}
   if(selectedAlgorithm===2){
@@ -579,23 +591,24 @@ function renderDebug() {
   $('#debug-rejection').hidden = !lastRejection && !game.debug;
   $('#debug-rejection').textContent = JSON.stringify(lastRejection || game.debug, null, 2);
   $('#version-note').textContent = game.initial.algorithm === 1
-    ? '算法1 · ' + SOURCE_VERSION + ' · Word Tiles 1.4.0 · 原包从左下角起按行编号，画面与 APK 一致。需求不变量校验，未逐项枚举完成状态。'
+    ? 'WT 1.4.0 · ' + WT_RUNTIME + ' · 从左下角起按行编号；多路径并集计数、帘子、剩余路径保护与清盘判胜。网页重建，不运行APK。'
     : '算法2 · ' + GENERATOR_VERSION + ' · 词库 ' + game.dictionary.version + ' · ' + normalizeDictionary(game.dictionary).length + ' 个候选词。';
 }
 function render(consumed = []) {
   if (!game) return;
   if(activeFirework&&(activeFirework.session!==game||game.status!=='playing'||game.completed.has(activeFirework.word)))cancelFireworks();
   tileElements.forEach((tile, cell) => {
-    const count = game.counts[cell];
-    tile.querySelector('.tile-letter').textContent = count ? game.initial.board.letters[cell] : '·';
+    const count = game.counts[cell],blocked=game.blockedCells?.includes(cell)===true;
+    tile.classList.toggle('curtain-locked',blocked);tile.dataset.unlock=blocked?String(game.model.gates[cell]):'';
+    tile.querySelector('.tile-letter').textContent = blocked?'':count ? game.initial.board.letters[cell] : '·';
     const pips = tile.querySelector('.tile-pips');
-    pips.classList.add('count-badge'); pips.textContent = String(count); pips.hidden = count === 0;
+    pips.classList.add('count-badge'); pips.textContent = String(count); pips.hidden = count === 0||blocked;
     tile.dataset.remaining = String(count);
     tile.classList.toggle('many-uses', count > 3);
     tile.classList.toggle('empty', count === 0);
     tile.classList.toggle('consumed', consumed.includes(cell));
-    tile.setAttribute('aria-disabled', String(count === 0 || game.status !== 'playing' || (playtestLab&&!playtestLab.canPlay)));
-    tile.setAttribute('aria-label', count ? `格子 ${cell}，字母 ${game.initial.board.letters[cell]}，剩余 ${count} 次` : `格子 ${cell}，空位`);
+    tile.setAttribute('aria-disabled', String(blocked||count === 0 || game.status !== 'playing' || (playtestLab&&!playtestLab.canPlay)));
+    tile.setAttribute('aria-label',blocked?`格子 ${cell}，帘子锁定，累计找到 ${game.model.gates[cell]} 个目标词后开启`:count ? `格子 ${cell}，字母 ${game.initial.board.letters[cell]}，剩余 ${count} 次` : `格子 ${cell}，空位`);
   });
   $('#targets').replaceChildren();
   [...game.initial.targets].sort((a,b)=>[...a.word].length-[...b.word].length).forEach(target => {
@@ -611,7 +624,7 @@ function render(consumed = []) {
   const tail = document.createElement('span'); tail.textContent = `/ ${game.initial.targets.length}`; $('#completion').append(tail);
   $('#targets').setAttribute('aria-label', `共 ${game.initial.targets.length} 个目标词`);
   $('#board-size').textContent = `${game.initial.board.cols} × ${game.initial.board.rows} 棋盘`;
-  $('#win-summary').textContent = `${game.initial.targets.length} 个目标全部完成，剩余次数归零。`;
+  $('#win-summary').textContent = game.victoryReason==='empty-grid'?`清盘通关，已收集 ${game.completed.size}/${game.initial.targets.length} 个目标。`:`${game.initial.targets.length} 个目标全部完成。`;
   $('.play-panel').classList.toggle('dense-targets', game.initial.targets.length > 6);
   $('.play-panel').classList.toggle('long-words', game.initial.targets.some(t => t.word.length > 8));
   $('#remaining').textContent = `剩余次数 ${game.total}`;
@@ -621,13 +634,14 @@ function render(consumed = []) {
   $('.play-panel').classList.toggle('has-won', game.status === 'won');
   const propsLocked=!!activeFirework||game.status!=='playing'||(playtestLab&&!playtestLab.canPlay);
   $('#hint').disabled=propsLocked||hiddenLetters===0;
-  $('#fireworks').disabled=propsLocked||(fireworksVariant==='word'?hiddenLetters===0:!shortestTargetPath(game));
-  $('#validation-badge').textContent = game.status === 'anomaly' ? '关卡状态异常' : game.initial.algorithm === 1 ? '原包对照 · 需求不变量通过' : `${game.report.stateChecks} / ${game.report.stateCount} 通过`;
+  $('#fireworks').disabled=propsLocked||((isWTLevel(game.initial)||fireworksVariant==='word')?hiddenLetters===0:!shortestTargetPath(game));
+  $('#validation-badge').textContent = game.status === 'anomaly' ? '关卡状态异常' : game.initial.algorithm === 1 ? 'WT原包规则 · '+game.blockedCells.length+'格待开帘' : `${game.report.stateChecks} / ${game.report.stateCount} 通过`;
   if (game.status === 'anomaly') { feedback('关卡状态异常，请查看调试信息。', 'error'); console.error('WordTiles invariant violation', game.debug); }
   renderSelection(); renderBonusWords(); renderDebug(); scheduleFit(); setBusy(busy, busyKind); playtestLab?.gameUpdated();
 }
 function setBusy(value, kind = null) {
   busy = value; busyKind = value ? kind : null;
+  playtestLab?.setQualityBusy(value||!!playtestLab?.bulkRunning);
   const isSource = selectedAlgorithm === 1, validPosition = validSourcePosition();
   for (const id of ['#generate','#generate-seed']) $(id).disabled = value || !ready || isSource || !editorValid || playtestLab?.bulkRunning;
   for (const id of ['#source-load','#source-random']) $(id).disabled = value || !ready || !sourceLimit() || (id === '#source-load' && !validPosition);
@@ -635,7 +649,7 @@ function setBusy(value, kind = null) {
   $('#source-next').disabled = value || !ready || !validPosition || Number($('#source-number').value) >= sourceLimit();
   const source = game?.initial.source;
   const gameInfo = catalogue?.languages.find(item => item.language === source?.language);
-  const gameLimit = gameInfo ? (source.order === 'all' ? gameInfo.count : gameInfo.mainCount) : sourceLimit();
+  const gameLimit = gameInfo?.lists.find(list=>list.key===originalOrder(source.order))?.count||sourceLimit();
   const lastSource = isSource && source?.position >= gameLimit;
   $('#win-next').disabled = value || !ready || (isSource ? lastSource : !editorValid);
   $('#win-next').textContent = lastSource ? '最后一关' : '下一关 ↗';
@@ -654,7 +668,7 @@ function cancelGeneration(silent = false) {
 }
 function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictionaryOverride = dictionary } = {}) {
   let next;
-  try { next = level?.schemaVersion === 3 ? new SourceGameSession(level) : createAlgorithmSession(level,dictionaryOverride); }
+  try { next=createPlaySession(level,dictionaryOverride); }
   catch (error) {
     lastRejection = error.report || { message:error.message };
     notice('关卡未通过校验，当前关卡保留。详见调试面板。','error'); renderDebug(); return false;
@@ -669,44 +683,32 @@ function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictio
   updateDictionaryUI();
   applyLevelInfo(kind);
   feedback('');
-  notice(nextMode === 1 ? '原包对照与需求不变量校验通过，任意找词顺序都能完成。' : '完整校验通过：' + game.report.stateCount + ' 种完成状态均可继续找词。','success');
+  notice(nextMode === 1 ? 'WT 1.4.0 原包关卡已载入：按累计收词开帘，支持合法替代路径。' : '完整校验通过：' + game.report.stateCount + ' 种完成状态均可继续找词。','success');
   render(); playtestLab?.gameChanged(); closeSettings(false); if (dismissEditor) closeEditor(); return true;
 }
 async function loadSource({ language = $('#source-language').value, order = $('#source-order').value, position = Number($('#source-number').value), dismissEditor = true } = {}) {
-  if (selectedAlgorithm !== 1 || !ready) return false;
-  const info = catalogue.languages.find(item => item.language === language), limit = info && (order === 'main' ? info.mainCount : info.count);
-  if (!info || !['main','all'].includes(order) || !Number.isInteger(position) || position < 1 || position > limit) {
-    updateEditor(); notice('请选择有效语言、列表与关卡序号。','error'); return false;
-  }
-  cancelGeneration(true); clearSelection();
-  const id = ++requestId;
-  setBusy(true,'source'); notice('正在载入' + LANGUAGE_NAMES[language] + '第 ' + position + ' 关…');
-  try {
-    if (!banks.has(language)) {
-      const pending = fetch('./source-levels/' + info.file+'?v=15').then(async response => {
-        if (!response.ok) throw new Error('关卡库读取失败');
-        return response.json();
-      }).catch(error => { banks.delete(language); throw error; });
-      banks.set(language,pending);
-    }
-    const bank = await banks.get(language);
-    if (id !== requestId || selectedAlgorithm !== 1) return false;
-    const rawId = bank.orders[order][position-1], raw = bank.levels[String(rawId)];
-    if (!raw) throw new Error('原序号对应的关卡不存在');
-    const level = convertSourceLevel(raw,{ language,order,position });
-    const loaded=loadLevel(level,'原包 · ' + LANGUAGE_NAMES[language] + '第 ' + position + ' 关', { dismissEditor });
-    if (!loaded) setBusy(false); return loaded;
-  } catch (error) {
-    if (id !== requestId || selectedAlgorithm !== 1) return false;
-    setBusy(false); notice('载入失败：' + error.message + '。当前关卡保留。','error'); return false;
-  }
+  const request=++sourceLoadRequest;cancelGeneration(true);setBusy(true,'source');
+  try{
+    if(language!=='english')throw Error('本次接入的是英文原包关卡');
+    catalogue=await wtSourceCatalogue();
+    const wanted=originalOrder(order||catalogue.defaultOrder),select=$('#source-order');
+    if(!select.dataset.originalLists){select.replaceChildren(...catalogue.languages[0].lists.map(list=>{const option=document.createElement('option');option.value=list.key;option.textContent=`${list.label}（${list.count}关）`;return option;}));select.dataset.originalLists='true';}
+    const level=await wtSourceLevel(position,wanted);
+    if(request!==sourceLoadRequest||dataResetting)return false;
+    return loadLevel(level,'WT 1.4.0 英文原包',{dismissEditor});
+  }catch(error){if(request===sourceLoadRequest){
+    notice('原包载入失败：'+error.message,'error');
+    if(game?.initial.algorithm===1)syncSourceControls(game.initial);
+    $('#source-library-status').textContent='载入失败：'+error.message+'。当前棋盘保留。';
+  }return false;}
+  finally{if(request===sourceLoadRequest)setBusy(false);}
 }
-function advanceSource() {
+async function advanceSource() {
   if (game?.initial.algorithm !== 1) return;
   syncSourceControls(game.initial);
   const position = Number($('#source-number').value);
   if (position < sourceLimit()) {
-    $('#source-number').value = String(position+1); updateSourceRange(); loadSource();
+    $('#source-number').value = String(position+1); updateSourceRange(); return loadSource({dismissEditor:false});
   }
 }
 for (const id of ['#source-language','#source-order']) $(id).addEventListener('change', () => {
@@ -724,7 +726,7 @@ $('#source-random').addEventListener('click', () => {
 
 function addCell(cell) {
   if (playtestLab&&!playtestLab.canPlay) return;
-  if (!game || game.status !== 'playing' || !game.counts[cell]) return;
+  if (!game || game.status !== 'playing' || !(game.playableCounts||game.counts)[cell]) return;
   clearWordError();
   if (selection.length > 1 && selection.at(-2) === cell) selection.pop();
   else if (!selection.includes(cell) && (!selection.length || game.neighbors[selection.at(-1)].includes(cell))) selection.push(cell);
@@ -737,7 +739,7 @@ function commitSelection() {
   playtestLab?.recordSubmit(path,result);
   if(collection.collect(result,game.initial.source?.language||'english',game.initial.algorithm===1?'wt-package':game.dictionary?.metadata?.origin)) renderCollection();
   render(result.accepted ? path : []);
-  if (result.accepted && result.status === 'won') feedback('全部目标完成，所有次数恰好归零。', 'success');
+  if (result.accepted && result.status === 'won') feedback(result.victoryReason==='empty-grid'?'棋盘次数已耗尽，触发清盘兜底。':'全部目标完成。', 'success');
   else if (result.accepted && result.status !== 'anomaly') feedback(`找到了 ${result.word}！继续找下一个。`, 'success');
   else if (result.reason === 'already-completed') feedback(`${result.word} 已经找过了，次数保持不变。`);
   else if (result.reason === 'extra-word') feedback(result.isNew ? `额外词 ${result.word} 已记录，次数保持不变。` : `额外词 ${result.word} 已经记过，次数保持不变。`, 'success');
@@ -754,7 +756,7 @@ function tileAt(event) {
 board.addEventListener('pointerdown', event => {
   if (!event.isPrimary || event.button !== 0 || !game || game.status !== 'playing') return;
   const cell = tileAt(event);
-  if (cell === null || !game.counts[cell] || activePointer !== null) return;
+  if (cell === null || !(game.playableCounts||game.counts)[cell] || activePointer !== null) return;
   event.preventDefault(); clearSelection(); activePointer = event.pointerId;
   board.setPointerCapture(event.pointerId); addCell(cell); tileElements[cell].focus({ preventScroll: true });
 });
@@ -800,8 +802,8 @@ function generate(seed) {
   try{draftLengths=compositionLengths(()=>randomSeed()/4294967296);compositionError='';$('#generation-lengths').value=draftLengths.join(',');$('#word-count').value=String(draftLengths.length);renderWordRows();webConfigDraft=readEditorConfig();}catch(error){compositionError=error.message;}
   const { report } = checkEditor();
   if (!report.valid) { updateEditor(); notice(report.errors[0].message + '。', 'error'); return false; }
-  let budget;
-  try { budget = readBudget(); } catch (error) { notice(error.message, 'error'); return false; }
+  let budget,quality;
+  try { budget = readBudget();quality=playtestLab?.getQualitySettings(); } catch (error) { notice(error.message, 'error'); return false; }
   const seedText = String(seed).trim();
   seed = Number(seedText);
   if (!/^\d+$/.test(seedText) || !Number.isInteger(seed) || seed < 0 || seed > 0xffffffff) {
@@ -809,13 +811,14 @@ function generate(seed) {
   }
   cancelGeneration(true); clearSelection();
   const id = ++requestId, initialEpoch = epoch, generationDictionary = dictionary;
-  const instance = new Worker(new URL('./generator.worker.js?v=28', import.meta.url), { type: 'module' });
+  const instance = new Worker(new URL('./generator.worker.js?v=39', import.meta.url), { type: 'module' });
   const finished=new Promise(resolve=>{instance.finishRequest=resolve;});
   worker = instance; setBusy(true, 'generate'); $('#seed').value = String(seed);
   generationStats = { seed, config: budget, dictionaryVersion: dictionary.version, result: 'searching' }; renderDebug();
   notice('正在搜索合格关卡，当前关卡仍可试玩。');
   instance.onmessage = ({ data }) => {
     if (worker !== instance || data.requestId !== id || epoch !== initialEpoch) return;
+    if(data.type==='quality-progress'){generationStats={...generationStats,qualityCandidates:data.stats.requests};notice(`质量候选 ${data.stats.requests}，已通过硬性校验 ${data.stats.hardCandidates} 个。`);return;}
     if (data.type === 'progress') {
       generationStats = { ...generationStats, ...data.stats };
       notice(`搜索中：尝试 ${data.stats.attempts}/${budget.maxAttempts}，已展开 ${data.stats.nodes} 个节点。`); renderDebug(); return;
@@ -826,6 +829,7 @@ function generate(seed) {
       notice(`生成器错误：${data.message}。当前关卡保留。`, 'error'); renderDebug(); instance.finishRequest(false); return;
     }
     const result = data.result;
+    playtestLab?.qualityGenerated(result,generationDictionary);
     generationStats = { seed, config: budget, ...result.stats, result: result.ok ? 'success' : result.code,
       code: result.ok ? undefined : result.code, message: result.ok ? undefined : result.message,
       dictionaryReport: result.dictionaryReport, validation: result.validation };
@@ -843,7 +847,7 @@ function generate(seed) {
     generationStats = { ...generationStats, result: 'worker-error', message: event.message };
     notice('生成线程未能启动，当前关卡保留。请通过 HTTP 服务打开本 Demo。', 'error'); renderDebug();
   };
-  instance.postMessage({ requestId: id, dictionary: generationDictionary, seed, config: budget,levelConfig:readEditorConfig(),engine:'flexible',composition:readComposition() });
+  instance.postMessage({ requestId: id, dictionary: generationDictionary, seed, config: budget,levelConfig:readEditorConfig(),engine:'flexible',composition:readComposition(),quality });
   return finished;
 }
 function randomSeed() { return crypto.getRandomValues(new Uint32Array(1))[0]; }
@@ -852,13 +856,34 @@ $('#win-next').addEventListener('click', () => selectedAlgorithm === 1 ? advance
 $('#generate-seed').addEventListener('click', () => generate(randomSeed()));
 $('#cancel-generation').addEventListener('click', () => cancelGeneration());
 $('#load-sample').addEventListener('click', () => generate(randomSeed()));
+function collectFullyRevealedTargets(revealed){
+  if(!isWTLevel(game.initial))return [];
+  const completed=[];
+  for(const word of new Set(revealed.map(item=>item.word))){
+    if([...word].every((_,index)=>playerHints().has(word,index))){
+      const result=game.collectRevealedTarget(word);
+      if(result.accepted){completed.push(word);if(collection.collect(result,'english','wt-package'))renderCollection();}
+    }
+  }
+  return completed;
+}
 function useLetterProp(){
   if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
   boardFirework=null;
   clearSelection();const revealed=playerHints().reveal(1,game.completed);if(!revealed.length)return;
+  const completed=collectFullyRevealedTargets(revealed);
   playtestLab?.recordHint({word:revealed[0].word,kind:'letter',letters:revealed.length});render();
   for(const item of $('#targets').querySelectorAll('.target'))for(const slot of item.querySelectorAll('.target-letter'))if(revealed.some(letter=>letter.word===item.dataset.word&&letter.index===Number(slot.dataset.position)))slot.classList.add('hint-flash');
-  feedback(`已提示 ${revealed.length} 个字母，格子次数不变`);
+  feedback(completed.length?`已揭完并收取 ${completed.join('、')}`:`已提示 ${revealed.length} 个字母，格子次数不变`);
+}
+function useOriginalFireworks(){
+  if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
+  clearSelection();boardFirework=null;
+  const revealed=playerHints().reveal(5,game.completed);if(!revealed.length)return;
+  const completed=collectFullyRevealedTargets(revealed);
+  playtestLab?.recordHint({kind:'fireworks',letters:revealed.length});render();
+  for(const item of $('#targets').querySelectorAll('.target'))for(const slot of item.querySelectorAll('.target-letter'))if(revealed.some(letter=>letter.word===item.dataset.word&&letter.index===Number(slot.dataset.position)))slot.classList.add('hint-flash');
+  feedback(`烟花揭开 ${revealed.length} 个字母`+(completed.length?`，已收取 ${completed.join('、')}`:'，格子次数不变'));
 }
 function useWordFireworks(){
   if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
@@ -887,7 +912,7 @@ function useBoardFireworks(){
     onFinish(){if(activeFirework!==effect)return;activeFirework=null;if(guide.count<guide.path.length)boardFirework=null;if(game===session){render();feedback(boardFirework?`${target.word} 路径已显示，请沿箭头连词，格子次数不变`:'路径提示已收起，格子次数不变');}}
   });
 }
-$('#hint').addEventListener('click',useLetterProp);$('#fireworks').addEventListener('click',fireworksVariant==='word'?useWordFireworks:useBoardFireworks);
+$('#hint').addEventListener('click',useLetterProp);$('#fireworks').addEventListener('click',()=>isWTLevel(game?.initial)?useOriginalFireworks():fireworksVariant==='word'?useWordFireworks():useBoardFireworks());
 document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelFireworks(true);});
 window.addEventListener('resize',()=>{if(activeFirework?.kind==='word')cancelFireworks(true);else renderSelection();});
 $('#bonus-button').addEventListener('click', () => {
@@ -1046,9 +1071,18 @@ $('#import-file').addEventListener('change', async event => {
     const text = await file.text();
     if (epoch !== importEpoch || requestId !== importId) return;
     let level = JSON.parse(text);
+    if(level?.schemaVersion===3||level?.algorithm===1){
+      const check=validateWTLevel(level);if(!check.valid)throw new Error(check.errors[0].message);
+      const bank=await wtSourceBank(),raw=level.source.original;
+      if(JSON.stringify(bank.levels[String(raw.id)])!==JSON.stringify(raw))throw new Error('该关卡与随包原始配置不一致');
+      if(epoch!==importEpoch||requestId!==importId)return;
+      const order=originalOrder(level.source.order||'all'),ids=bank.orders[order];
+      if(!ids)throw new Error('找不到原包关卡列表');
+      return await loadSource({order,position:ids.indexOf(raw.id)+1});
+    }
+    if(dictionaryLoading||!dictionary)throw new Error('当前 WT词库.xlsx 不可用');
     if(isV1Level(level)&&!level.source?.dictionaryOrigin&&dictionary?.metadata?.origin)level=migrateLegacyLevel(level,dictionary);
-    if (level?.schemaVersion !== 3 && (dictionaryLoading || !dictionary)) throw new Error('当前运行时词库不可用，请先选择并载入词库');
-    const report = level?.schemaVersion === 3 ? validateSourceLevel(level) : validateAlgorithmLevel(level, dictionary);
+    const report=validateAlgorithmLevel(level,dictionary);
     if (!report.valid) {
       lastRejection = report;
       notice(`导入被拒绝：${report.errors[0].message}。当前关卡保留。`, 'error'); renderDebug(); return;
@@ -1180,28 +1214,28 @@ playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,
   recordPersonalProgress:(session,snapshot,flush=false)=>{personalProgress.observe(session,snapshot);eventViews.observe(session,snapshot);if(flush)personalProgress.flush();},
   resetCurrent:()=>{if(game)loadLevel(game.exportInitial||game.initial,$('#level-kind').textContent,{syncDraft:false,dismissEditor:false,dictionaryOverride:game.dictionary});},
   getDictionary:()=>dictionary,
-  generationSettings:()=>({dictionary,budget:readBudget(),config:selectedAlgorithm===2?readEditorConfig():clone(webConfigDraft),engine:'flexible',composition:readComposition()}),
+  generationSettings:()=>({dictionary,budget:readBudget(),config:selectedAlgorithm===2?readEditorConfig():clone(webConfigDraft),engine:'flexible',composition:readComposition(),quality:playtestLab?.getQualitySettings(),qualityTemplate:qualityFixedTemplate}),
+  applyQualityTemplate:()=>{qualityFixedTemplate=true;webConfigDraft=clone(QUALITY_TEMPLATE);$('#board-cols').value='3';$('#board-rows').value='3';$('#generation-target-count').value='5';$('#generation-three-percent').value='60';$('#generation-four-percent').value='20';editorChanged();$('#composition-note').textContent='V3 固定词长：3、3、3、4、5；手改宽高、词数或比例后退出固定模板。';},
   refreshGenerationControls:showMode,
   changeGenerationDictionary:refreshDictionary,
   checkGenerationConfig:(config,input)=>{const check=checkConfiguration(config,input);if(!check.valid)throw new Error(check.errors.map(e=>e.message).join('；'));},
   collectWord:(result,language,origin)=>{if(collection.collect(result,language,origin))renderCollection();},
-  loadWeb:entry=>{dictionary=entry.dictionary;$('#generation-engine').value='flexible';const m=dictionary.metadata;$('#dictionary-source').value=m?.origin==='wt-package'?'wordtiles':'web';$('#dictionary-tier').value='all';return loadLevel(entry.level,'网页生成 · '+(BANK_NAMES[m?.origin]||'历史词库'),{dictionaryOverride:entry.dictionary,dismissEditor:false});},
-  useGenerated:async()=>{if(selectedAlgorithm!==2){rememberSession();selectedAlgorithm=2;showMode();restoreWebDraft();}const loaded=await generate(randomSeed());if(!loaded&&selectedAlgorithm===2&&game?.initial.algorithm===1){selectedAlgorithm=1;showMode();syncEditor(game.initial);}return loaded;},
-  useWordTiles:async(position,order='main',language='english')=>{if(selectedAlgorithm!==1){rememberSession();selectedAlgorithm=1;showMode();}const loaded=await loadSource({language,order,position,dismissEditor:false});if(!loaded&&selectedAlgorithm===1&&game?.initial.algorithm!==1){selectedAlgorithm=2;showMode();}return loaded;},
-  nextWordTiles:()=>{const s=game.initial.source,info=catalogue.languages.find(g=>g.language===s.language),limit=s.order==='all'?info.count:info.mainCount;return loadSource({language:s.language,order:s.order,position:s.position<limit?s.position+1:1,dismissEditor:false});}});
+  loadWeb:entry=>{dictionary=entry.dictionary;$('#generation-engine').value='flexible';$('#dictionary-source').value=WORD_BANK_ORIGIN;$('#dictionary-tier').value='all';return loadLevel(entry.level,'WT词库生成关卡',{dictionaryOverride:entry.dictionary,dismissEditor:false});},
+  useGenerated:async()=>selectedAlgorithm===1?switchAlgorithm(2):generate(randomSeed()),
+  useWordTiles:async(position,order,language)=>loadSource({position,order,language,dismissEditor:false}),
+  nextWordTiles:advanceSource});
 for(const id of ['#generation-target-count','#generation-three-percent','#generation-four-percent'])$(id).addEventListener('input',editorChanged);
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#fireworks','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  const [responses] = await Promise.all([Promise.all([fetch('./source-levels/catalogue.json?v=15')]),preloadArt()]);
-  if (responses.some(response => !response.ok)) throw new Error('原包关卡目录无法读取');
-  [catalogue] = await Promise.all(responses.map(response => response.json()));
-  $('#source-language').replaceChildren(...catalogue.languages.map(item=>{const option=document.createElement('option');option.value=item.language;option.textContent=LANGUAGE_NAMES[item.language];return option;}));
-  dictionary=createBankDictionary([2,3,4,5,6,7,8,9,10]);baseDictionary=dictionary;editorChanged();
+  await preloadArt();
+  dictionary=createBankDictionary(bankLengthRange(WORD_BANK_ORIGIN),WORD_BANK_ORIGIN);baseDictionary=dictionary;editorChanged();
   ready = true;
   for (const id of ['#algorithm','#source-language','#source-order','#load-sample','#import','#export']) $(id).disabled = false;
-  updateSourceRange();
-  if(!await generate(randomSeed()))throw new Error('随机关卡生成失败，请刷新重试');
+  const startup=new URL(location.href).searchParams;
+  if(startup.get('source')==='wordtiles'){
+    if(!await loadSource({order:startup.get('list')||'level_list_0',position:Number(startup.get('level')||1),dismissEditor:false}))throw new Error('原包关卡加载失败');
+  }else if(!await generate(randomSeed()))throw new Error('随机关卡生成失败，请刷新重试');
   renderCollection();let previewResult=null,previewError='';
   if(previewAtOpen)try{previewResult=await fillPreviewCollection();}catch(error){previewError=error.message;}
   $('#start-game').disabled=false;

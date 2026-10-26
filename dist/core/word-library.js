@@ -1,12 +1,12 @@
-import {createBaseDictionary, isTargetAllowed} from './target-policy.js?v=17';
-import {WORD_ENTRIES, WORDLIST_VERSION, wordEntryFor} from './word-source.js?v=15';
-export {WORD_ENTRIES, WORDLIST_VERSION, BONUS_DICTIONARY, wordEntryFor} from './word-source.js?v=15';
-export const TIER_LABELS=Object.freeze({1:'非常常用',2:'常用',3:'一般',4:'罕见',5:'非常罕见'});
-export const approvedWordCount=WORD_ENTRIES.filter(entry=>isTargetAllowed(entry.word)).length;
-export function createFrequencyDictionary({wordLengths,tiers=[1,2,3],allowUnreviewed=false}) {
-  if(allowUnreviewed!==false) throw new Error('不能放行原形白名单外的目标词。');
-  if(!Array.isArray(tiers)||!tiers.length||!tiers.every(t=>Number.isInteger(t)&&t>=1&&t<=5)) throw new Error('新词表的档位必须为1～5。');
-  const base=createBaseDictionary(wordLengths), selected=[...new Set(tiers)].sort((a,b)=>a-b);
-  const words=base.words.filter(word=>selected.includes(wordEntryFor(word).tier));
-  return {...base,version:base.version+'-t'+selected.join('_'),words,metadata:{...base.metadata,runtimeSelection:{lengths:[...new Set(wordLengths)],tiers:selected,allowUnreviewed:false}}};
+import {createBaseDictionary,isTargetAllowed} from './target-policy.js?v=1';
+import {WORD_ENTRIES,WORDLIST_VERSION,wordEntryFor} from './word-source.js?v=1';
+export {WORD_ENTRIES,WORDLIST_VERSION,BONUS_DICTIONARY,wordEntryFor} from './word-source.js?v=1';
+export const TIER_LABELS=Object.freeze({1:'范围库1级',2:'范围库2级',3:'范围库3级',4:'范围库4级'});
+export const approvedWordCount=WORD_ENTRIES.filter(entry=>entry.role==='required'&&isTargetAllowed(entry.word)).length;
+export function createFrequencyDictionary({wordLengths,tiers=[1,2,3,4],allowUnreviewed=false}){
+  if(allowUnreviewed!==false)throw new Error('词库来源固定为 WT词库.xlsx。');
+  if(!Array.isArray(tiers)||!tiers.length||!tiers.every(t=>Number.isInteger(t)&&t>=1&&t<=4))throw new Error('范围库档位必须为1～4。');
+  const base=createBaseDictionary(wordLengths),selected=[...new Set(tiers)].sort((a,b)=>a-b);
+  const words=base.words.filter(word=>selected.includes(wordEntryFor(word).rangeTier));
+  return {...base,version:base.version+'-range'+selected.join('_'),words,metadata:{...base.metadata,tiers:selected}};
 }

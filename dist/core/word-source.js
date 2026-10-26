@@ -1,16 +1,19 @@
-import input from '../wordlist.json?v=15' with {type:'json'};
-import original from '../original-word-policy.json?v=15' with {type:'json'};
+import bank from '../wt-word-bank.json?v=a0565e5f4482' with {type:'json'};
 
-export const WORDLIST_VERSION=input.version;
-export const WORDLIST_HASH=input.source.sha256;
-export const GAME_POLICY_VERSION=input.review.version;
-export const WORDLIST_REVIEW_HASH=input.review.sha256;
-export const WORD_ENTRIES=Object.freeze(input.entries.map(entry=>Object.freeze({...entry})));
+export const WORDLIST_VERSION=bank.version;
+export const WORDLIST_HASH=bank.source.sha256;
+export const GAME_POLICY_VERSION=bank.version;
+export const WORDLIST_REVIEW_HASH=bank.source.sha256;
+const normalizeEntry=entry=>Object.freeze({...entry,tier:entry.rangeTier,definition:entry.definitionZh,englishDefinition:entry.definitionEn});
+const requiredEntries=bank.required.map(normalizeEntry),extraEntries=bank.extra.map(normalizeEntry);
+export const WORD_ENTRIES=Object.freeze([...requiredEntries,...extraEntries]);
 const entries=new Map(WORD_ENTRIES.map(entry=>[entry.word,entry]));
-const originalWords=new Map(Object.entries(original.languages).map(([language,words])=>[language,new Set(words)]));
-export const ORIGINAL_ENGLISH_WORDS=Object.freeze([...original.languages.english]);
-export const ORIGINAL_ENGLISH_TARGETS=Object.freeze([...original.targetWordsByLanguage.english]);
-export const packageHasWord=(word,language='english')=>typeof word==='string'&&originalWords.get(language)?.has(word.toUpperCase())===true;
-export const sourceHasWord=word=>typeof word==='string'&&entries.has(word.toUpperCase());
+export const ORIGINAL_ENGLISH_WORDS=Object.freeze(WORD_ENTRIES.map(entry=>entry.word));
+export const ORIGINAL_ENGLISH_TARGETS=Object.freeze(requiredEntries.map(entry=>entry.word));
+const wordSet=new Set(ORIGINAL_ENGLISH_WORDS);
+export const packageHasWord=(word,language='english')=>language==='english'&&typeof word==='string'&&wordSet.has(word.toUpperCase());
+export const sourceHasWord=packageHasWord;
 export const wordEntryFor=word=>typeof word==='string'?entries.get(word.toUpperCase())||null:null;
-export const BONUS_DICTIONARY=Object.freeze({version:WORDLIST_VERSION,metadata:Object.freeze({gameReviewVersion:GAME_POLICY_VERSION,gameReviewSha256:WORDLIST_REVIEW_HASH}),words:Object.freeze(WORD_ENTRIES.map(entry=>entry.word))});
+// A required word not selected for this level is still collectable. Sessions
+// check final targets first, so this union never rewards a target as a bonus.
+export const BONUS_DICTIONARY=Object.freeze({version:WORDLIST_VERSION+'-bonus-union-v1',metadata:Object.freeze({source:'必答词＋额外词'}),words:ORIGINAL_ENGLISH_WORDS});

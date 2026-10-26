@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { generateLevel, DEFAULT_BUDGET } from '../dist/core/generator.js';
 import { validateLevel, GameSession } from '../dist/core/rules.js';
-const dictionary = JSON.parse(await readFile(new URL('../dist/dictionary.json', import.meta.url), 'utf8'));
+const dictionary = JSON.parse(await readFile(new URL('../tests/fixtures/retired-runtime-data/dictionary.json', import.meta.url), 'utf8'));
 
 test('真实生成、固定种子复现、独立完整校验和实际提交', () => {
   const first = generateLevel(dictionary, 'acceptance-0');

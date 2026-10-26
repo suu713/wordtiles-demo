@@ -18,6 +18,7 @@ for(const line of (await readFile(new URL('checksums.sha256',pack),'utf8')).trim
 assert.equal(RUNTIME_ART.length,20);
 assert.ok(RUNTIME_ART.every(a=>!a.path.includes('fixed-layout-glass')));
 pass('完整资源包159项校验，动态界面仅预载20张背景、底图与图标');
+if(process.argv.includes('--assets-only'))process.exit(0);
 const {chromium}=createRequire(import.meta.url)('C:/Users/huyi/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const browser=await chromium.launch({headless:true,channel:'chrome'});
 const url=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=22';

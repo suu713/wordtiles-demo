@@ -66,14 +66,13 @@ test('真实规划批量遵守词频、固定词数、多尺寸、邻关避重�
   }
   assert.ok(!r.levels.at(-1).targets.some(t=>t.word==='AND'));
 });
-test('关序前后插入和编号真实生效，来源分别保存，序列化只保存一次词库',async()=>{
-  const generated=await generateLevelBatch({count:3,engine:'flexible',config:{rows:2,cols:4,wordLengths:[8]},dictionary,budget}),wt=createBankDictionary([3,4,5],'wt-package');
-  const native=await generateLevelBatch({count:1,engine:'supplied-v1',dictionary:wt,budget}),seq=new LevelSequence();
+test('关序前后插入和编号真实生效，所有关卡共用工作簿词库',async()=>{
+  const generated=await generateLevelBatch({count:3,engine:'flexible',config:{rows:2,cols:4,wordLengths:[8]},dictionary,budget}),seq=new LevelSequence();
   const a=seq.insert({level:generated.levels[0],dictionary});const c=seq.insert({level:generated.levels[2],dictionary});
-  const b=seq.insert({level:generated.levels[1],dictionary},{index:1,number:2});seq.insert({level:native.levels[0],dictionary:wt});
-  assert.deepEqual(seq.list('web-supplied').map(e=>e.number),[1,2,3]);assert.deepEqual(seq.list('web-supplied'),[a,b,c]);assert.equal(seq.list('wt-package').length,1);
-  assert.equal(seq.serialize('web-supplied').dictionaries.length,1);assert.equal(seq.serialize().dictionaries.length,2);
+  const b=seq.insert({level:generated.levels[1],dictionary},{index:1,number:2});
+  assert.deepEqual(seq.list('wt-workbook').map(e=>e.number),[1,2,3]);assert.deepEqual(seq.list('wt-workbook'),[a,b,c]);
+  assert.equal(seq.serialize('wt-workbook').dictionaries.length,1);assert.equal(seq.serialize().dictionaries.length,1);
   const collision=new LevelSequence(),sameIdentity={...generated.levels[1],id:generated.levels[0].id,seed:generated.levels[0].seed};collision.insert({level:generated.levels[0],dictionary});const other=collision.insert({level:sameIdentity,dictionary});assert.equal(collision.find(sameIdentity,dictionary),other);
   assert.throws(()=>seq.insert({level:{...generated.levels[1],board:{...generated.levels[1].board,letters:[...generated.levels[1].board.letters].reverse()}},dictionary},{index:2,number:1}),/前一关/);
-  const restored=new LevelSequence(),state=JSON.parse(JSON.stringify(seq.serialize()));assert.equal(restored.restore(state,createAlgorithmSession).rejected,0);assert.deepEqual(restored.list('web-supplied').map(e=>e.number),[1,2,3]);assert.equal(restored.list('web-supplied')[0].dictionary,restored.list('web-supplied')[2].dictionary);
+  const restored=new LevelSequence(),state=JSON.parse(JSON.stringify(seq.serialize()));assert.equal(restored.restore(state,createAlgorithmSession).rejected,0);assert.deepEqual(restored.list('wt-workbook').map(e=>e.number),[1,2,3]);assert.equal(restored.list('wt-workbook')[0].dictionary,restored.list('wt-workbook')[2].dictionary);
 });

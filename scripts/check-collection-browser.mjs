@@ -13,17 +13,17 @@ const browser=await chromium.launch({headless:true,channel:'chrome'}),checks=[],
 const url=process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=24&theme=alps',now=new Date('2026-10-16T12:00:00+08:00');
 const pass=name=>{checks.push(name);console.log('PASS '+name);};
 const candidateWords=createBankDictionary([3,4,5,6,7,8,9,10]).words,themePools=new Map(COLLECTION_THEMES.map(theme=>[theme.id,[]]));
-for(const word of candidateWords)themePools.get(collectionTheme(word,bankWordEntry(word)?.definition)).push(word);
+for(const word of candidateWords)themePools.get(collectionTheme(word,bankWordEntry(word))).push(word);
 const seeds=['APPLE','BREAD'],usedSeeds=new Set([...seeds,'BIRD','SPICE']);while(seeds.length<21)for(const pool of themePools.values())if(pool.length&&seeds.length<21){const next=pool.shift();if(!usedSeeds.has(next)){usedSeeds.add(next);seeds.push(next);}}
-assert.ok(seeds.every(word=>bankContainsWord(word,'web-supplied')));
-const entries=seeds.map((word,index)=>({word,language:'english',origin:'web-supplied',firstFoundAt:`2026-10-${[12,14,15,16][index%4]}T02:00:00.000Z`}));
-entries.push({word:seeds[0],language:'english',firstFoundAt:'2026-10-13T02:00:00.000Z'},...['BIRD','SPICE'].map(word=>({word,language:'english',origin:'web-supplied',firstFoundAt:'2026-10-07T02:00:00.000Z'})));
+assert.ok(seeds.every(word=>bankContainsWord(word,'wt-workbook')));
+const entries=seeds.map((word,index)=>({word,language:'english',origin:'wt-workbook',firstFoundAt:`2026-10-${[12,14,15,16][index%4]}T02:00:00.000Z`}));
+entries.push({word:seeds[0],language:'english',firstFoundAt:'2026-10-13T02:00:00.000Z'},...['BIRD','SPICE'].map(word=>({word,language:'english',origin:'wt-workbook',firstFoundAt:'2026-10-07T02:00:00.000Z'})));
 const day=(seconds,levels,hints,targets,starts)=>({seconds,completedLevels:levels,hints,targets,starts,mistakes:0});
 const sessions=[{id:'qa-manual-history',mode:'manual',startedAt:'2026-10-07T02:00:00.000Z',updatedAt:'2026-10-16T02:00:00.000Z',days:{'2026-10-07':day(224,2,4,8,2),'2026-10-12':day(130,2,2,9,2),'2026-10-14':day(45,1,0,4,1),'2026-10-16':day(97,1,1,4,1)}}];
 const expected=summarizeWeek(collectedWords(entries,bankWordEntry),sessions,now);
 async function createPage(seed=false,viewport={width:1440,height:1000}){
   const context=await browser.newContext({viewport,timezoneId:'Asia/Shanghai',reducedMotion:'reduce'});
-  await context.addInitScript(()=>{let first=true;const random=crypto.getRandomValues.bind(crypto);crypto.getRandomValues=array=>{if(first&&array instanceof Uint32Array&&array.length===1){first=false;array[0]=0;return array;}return random(array);};});
+  await context.addInitScript(()=>{let state=Number(sessionStorage.getItem('qa-rng-state')||'0')>>>0;const random=crypto.getRandomValues.bind(crypto);crypto.getRandomValues=array=>{if(array instanceof Uint32Array&&array.length===1){state=(state+1)>>>0;sessionStorage.setItem('qa-rng-state',String(state));array[0]=state;return array;}return random(array);};});
   if(seed)await context.addInitScript(({entries,sessions,version,key})=>{
     if(sessionStorage.getItem('collection-qa-seeded'))return;
     localStorage.setItem('wordtiles.collection.v1',JSON.stringify({version:2,policyVersion:version,entries}));
@@ -61,9 +61,9 @@ try{
   await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'1');assert.equal(await page.locator('[data-metric="hints"] .weekly-metric-value').innerText(),'1');assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),String(new Set(level.targets.map(t=>t.word)).size));await page.locator('#weekly-close').click();
   pass('等待开始与停留大厅均不计时，真实连词通关和提示即时进入周回顾');
 
-  await page.locator('#start-game').click();await page.locator('[data-lab-tab="simulate"]').click();await page.locator('#sim-start').click();
-  await page.waitForFunction(()=>document.getElementById('current-attempt-source').textContent==='最近一次机器试玩');
-  if(await page.locator('#level-complete-dialog').isVisible())await page.locator('#complete-review').click();await page.locator('#back-lobby').click();
+  await page.locator('#start-game').click();await page.locator('[data-lab-tab="simulate"]').click();await page.locator('#sim-repeats').fill('10');await page.locator('#sim-batch-start').click();
+  await page.waitForFunction(()=>document.getElementById('sim-status').textContent.includes('批量试玩完成'));
+  assert.equal(await page.locator('#level-complete-dialog').isVisible(),false);await page.locator('#back-lobby').click();
   assert.deepEqual(totals(await ledger(page)),manual);
   await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'1');await page.locator('#weekly-close').click();await empty.context.close();
   pass('机器试玩不计个人成绩，个人历史保留已完成的真人关卡');
@@ -77,7 +77,7 @@ try{
   await page.locator('#dictionary-search').fill('ZZZQQQ');assert.equal(await page.locator('.dictionary-entry').count(),0);await page.locator('#collection-reset').click();assert.equal(await page.locator('.dictionary-entry').count(),23);await page.locator('#dictionary-close').click();
   pass('已收藏词按八类整理且同词去重，主题与搜索共同筛选，重置恢复全部收藏');
 
-  await page.locator('#activity-button').click();assert.equal(await page.locator('.calendar-day').count(),31);assert.equal(await page.locator('.activity-words span').count(),24);
+  await page.locator('#activity-button').click();assert.equal(await page.locator('.calendar-day').count(),31);assert.equal(await page.locator('.activity-words span').count(),23);
   await page.locator('.calendar-day[data-date="2026-10-07"]').click();assert.deepEqual(await page.locator('.activity-words span').allTextContents(),['BIRD','SPICE']);await page.locator('#activity-show-month').click();await shot(page,'calendar-preserved','#activity-dialog');
   await page.locator('#activity-weekly').click();assert.equal(await page.locator('#activity-dialog').isVisible(),false);assert.equal(await page.locator('#weekly-dialog').isVisible(),true);
   assert.equal(await page.locator('#weekly-range').innerText(),'10.12 — 10.18');assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),String(expected.words));assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'4');assert.equal(await page.locator('[data-metric="seconds"] .weekly-metric-value').innerText(),'4:32');assert.equal(await page.locator('[data-metric="hints"] .weekly-metric-value').innerText(),'3');

@@ -2,6 +2,7 @@ import {createBankDictionary,BANK_NAMES} from './core/dictionary-banks.js?v=23';
 import {BATCH_SIZES,normalizeBatchPlan,previewBatchPlan} from './core/batch-plan.js?v=28';
 import {planTargetLengths} from './core/target-composition.js?v=28';
 import {clone} from './core/rules.js?v=21';
+import {QUALITY_TEMPLATE} from './core/quality-config.js?v=39';
 
 export function mountBatchGenerationDialog({getSettings,getSequenceContext,onStart,onCancel}) {
   const dialog=document.createElement('dialog');dialog.id='bulk-generation-dialog';dialog.className='batch-generation-dialog';
@@ -12,7 +13,7 @@ export function mountBatchGenerationDialog({getSettings,getSequenceContext,onSta
     <label>起始关号<input id="bulk-start-number" type="number" min="1" max="1000000" value="2"></label>
     <label>生成多少关<input id="bulk-generation-count" type="number" min="1" max="10000" value="50"></label>
     <label>放在哪里<select id="bulk-placement"><option value="after">插在当前关后面</option><option value="before">插在当前关前面</option><option value="end">追加到当前词库末尾</option></select></label>
-    <label>生成词库<select id="bulk-dictionary-source"><option value="web">审核词库</option><option value="wordtiles">WT 原包英语词库</option></select></label>
+    <label>关卡词库<select id="bulk-dictionary-source"><option value="wt-workbook" selected>WT词库.xlsx</option></select></label>
     <label hidden>生成算法<select id="bulk-generation-engine"><option value="flexible">可调棋盘回溯</option></select></label>
     <label id="bulk-zen-field" hidden>Zen 词库范围<select id="bulk-zen-bank"><option value="all">主线 T1 + T3</option><option value="main-en-us_t1">主线 T1</option><option value="main-en-us_t3">主线 T3</option></select></label>
   </div><p id="bulk-origin-note" class="bulk-note"></p>
@@ -32,23 +33,22 @@ export function mountBatchGenerationDialog({getSettings,getSequenceContext,onSta
   </div>
   <fieldset class="bulk-size-field"><legend>允许的棋盘尺寸 <span>可多选</span></legend><div id="bulk-size-options" class="bulk-size-options"></div></fieldset>
   <section class="bulk-curve-preview"><div class="bulk-curve-label"><strong id="bulk-curve-title">难度曲线预览</strong><span>峰值后回落，再逐步爬升</span></div><svg id="bulk-curve" viewBox="0 0 800 122" role="img" aria-label="计划难度曲线"></svg><p id="bulk-plan-summary"></p></section>
-  <details class="bulk-advanced"><summary>词长、词频与相邻关避重</summary><div class="bulk-config-grid">
-    <label>最短目标词长<input id="bulk-min-length" type="number" min="2" max="10" value="2"></label>
-    <label>最长目标词长<input id="bulk-max-length" type="number" min="2" max="10" value="10"></label>
+  <details class="bulk-advanced"><summary>词长、熟悉度近似与相邻关避重</summary><div class="bulk-config-grid">
+    <label>最短目标词长<input id="bulk-min-length" type="number" min="3" max="8" value="3"></label>
+    <label>最长目标词长<input id="bulk-max-length" type="number" min="3" max="8" value="8"></label>
     <label>相邻多少关不重复目标词<input id="bulk-repeat-window" type="number" min="0" max="100" value="10"></label>
-    <label>简单关最低英语 Zipf<input id="bulk-zipf-easy" type="number" min="0" max="8" step="0.1" value="4.4"></label>
-    <label>难关最低英语 Zipf<input id="bulk-zipf-hard" type="number" min="0" max="8" step="0.1" value="2.8"></label>
+    <label>简单关最低熟悉度近似分<input id="bulk-zipf-easy" type="number" min="0" max="8" step="0.1" value="4.4"></label>
+    <label>难关最低熟悉度近似分<input id="bulk-zipf-hard" type="number" min="0" max="8" step="0.1" value="2.8"></label>
     <label>每关最多低频目标词<input id="bulk-rare-limit" type="number" min="0" max="16" value="1"></label>
-  </div><p class="bulk-note">Zipf 越高越常见，低频词按 Zipf &lt; 3.5 计数。词频只在所选词库内筛选，不会混入另一来源的词。</p></details>
-  <p id="bulk-model-note" class="bulk-note">难度值控制目标数量、词长、词频门槛和路径拐弯。预览显示计划配置，每关的实际结构与试玩数据可在生成后查看。</p>
+  </div><p class="bulk-note">分数由工作簿“生僻程度”1～5 映射，仅作熟悉度近似，不是外部词频；每关低于 3.5 的词数受上限约束。</p></details>
+  <p id="bulk-model-note" class="bulk-note">难度值控制目标数量、词长、熟悉度近似门槛和路径拐弯。预览显示计划配置，每关的实际结构与试玩数据可在生成后查看。</p>
   <p id="bulk-validation" class="bulk-validation" role="status"></p><progress id="bulk-modal-progress" value="0" max="1" aria-label="批量生成进度"></progress><p id="bulk-modal-status" class="bulk-note" role="status"></p>
   </div><div class="bulk-dialog-footer"><div class="bulk-footer-feedback"><span id="bulk-random-note">每关独立随机生成</span><progress id="bulk-pinned-progress" max="1" value="0" hidden aria-label="生成完成关数"></progress></div><button id="bulk-cancel" type="button" disabled>中止</button><button id="bulk-close-footer" type="button">关闭</button><button id="bulk-generate" type="button" class="bulk-primary">开始生成</button></div>`;
   document.body.append(dialog);
   const $=id=>document.getElementById(id),num=id=>Number($(id).value);
   let busy=false,initialized=false,autoNumber=true;
   function dictionaryForSettings(){
-    const source=$('bulk-dictionary-source').value,lengths=[2,3,4,5,6,7,8,9,10];
-    return createBankDictionary(lengths,source==='wordtiles'?'wt-package':'web-supplied');
+    return createBankDictionary([3,4,5,6,7,8],'wt-workbook');
   }
   function read(){
     const settings=getSettings(),engine='flexible',dictionary=dictionaryForSettings(),count=num('bulk-generation-count');
@@ -60,10 +60,11 @@ export function mountBatchGenerationDialog({getSettings,getSequenceContext,onSta
       maxUses:num('bulk-max-uses'),sizes,minLength:num('bulk-min-length'),maxLength:num('bulk-max-length'),repeatWindow:num('bulk-repeat-window'),
       minZipfEasy:num('bulk-zipf-easy'),minZipfHard:num('bulk-zipf-hard'),maxRareTargets:num('bulk-rare-limit'),composition:{three:$('bulk-three-percent').value,four:$('bulk-four-percent').value}},count);
     const config={...clone(settings.config),maxUses:plan.maxUses};
-    if(!enabled)config.wordLengths=planTargetLengths({...config,targetCount:plan.fixedTargets,composition:plan.composition},[...new Set(dictionary.words.map(w=>w.length))].filter(n=>n>=plan.minLength&&n<=plan.maxLength),()=>.5);
+    if(!enabled&&settings.qualityTemplate&&plan.fixedTargets===5&&plan.maxUses===3&&plan.composition?.three===60&&plan.composition?.four===20){Object.assign(config,clone(QUALITY_TEMPLATE));delete plan.composition;}
+    else if(!enabled)config.wordLengths=planTargetLengths({...config,targetCount:plan.fixedTargets,composition:plan.composition},[...new Set(dictionary.words.map(w=>w.length))].filter(n=>n>=plan.minLength&&n<=plan.maxLength),()=>.5);
     const context=getSequenceContext(dictionary.metadata.origin,plan.placement);
     if(context.previousNumber!==null&&plan.startNumber<=context.previousNumber)throw new Error(`起始关号须大于前一关 #${context.previousNumber}`);
-    return {count,engine,dictionary,config,budget:settings.budget,plan,context};
+    return {count,engine,dictionary,config,budget:settings.budget,plan,context,quality:settings.quality};
   }
   function renderSizes(settings){
     const choices=[...BATCH_SIZES];if(!choices.some(([c,r])=>c===settings.config.cols&&r===settings.config.rows))choices.push([settings.config.cols,settings.config.rows]);
@@ -87,8 +88,8 @@ export function mountBatchGenerationDialog({getSettings,getSequenceContext,onSta
     for(const id of ['bulk-difficulty-start','bulk-difficulty-end','bulk-ramp-levels','bulk-peak-every','bulk-peak-drop','bulk-min-length','bulk-max-length','bulk-zipf-easy','bulk-zipf-hard','bulk-rare-limit'])$(id).disabled=busy||!curve;
     for(const id of ['bulk-target-mode','bulk-target-count','bulk-target-end','bulk-max-uses'])$(id).disabled=busy||(id==='bulk-target-mode'&&!curve);
     for(const i of $('bulk-size-options').querySelectorAll('input'))i.disabled=busy||!curve;
-    $('bulk-zen-field').hidden=$('bulk-dictionary-source').value!=='zen';$('bulk-curve').hidden=!curve;
-    $('bulk-model-note').textContent='目标词数按你选择的策略生成，三字／四字比例按目标词总数计算，其余词长随机补齐。';
+    $('bulk-zen-field').hidden=true;$('bulk-curve').hidden=!curve;
+    $('bulk-model-note').textContent='目标词从 WT词库.xlsx 必答词中选取。三字、四字比例按目标词总数计算，其余从本词库可用词长中随机补齐。';
     try{
       const job=read();$('bulk-origin-note').textContent=`${BANK_NAMES[job.dictionary.metadata.origin]} · ${job.dictionary.words.length.toLocaleString()} 个候选词 · 只使用这一来源`;
       if(curve){const p=previewBatchPlan(job.plan,job.count,job.dictionary,job.engine);drawCurve(p.points);const a=p.first,b=p.last;const describe=s=>`${s.targetCount} 个目标，最长 ${Math.max(...s.config.wordLengths)} 字`; $('bulk-plan-summary').textContent=`第 ${job.plan.startNumber}～${job.plan.startNumber+job.count-1} 关：起点 ${describe(a)}；本批终点 ${describe(b)}。${job.plan.curve.peakEvery?`每 ${job.plan.curve.peakEvery} 关一个峰值，峰后回落 ${job.plan.curve.drop}。`:'不设周期峰值。'}`;}
@@ -102,7 +103,7 @@ export function mountBatchGenerationDialog({getSettings,getSequenceContext,onSta
   $('bulk-cancel').onclick=onCancel;
   $('bulk-generate').onclick=()=>{try{onStart(read());}catch(e){$('bulk-validation').textContent=e.message;}};
   return {
-    open(override={}){if(!initialized){const s=getSettings(),m=s.dictionary.metadata||{};$('bulk-dictionary-source').value=m.origin==='wt-package'?'wordtiles':'web';$('bulk-zen-bank').value='all';$('bulk-target-count').value=s.config.wordLengths.length;$('bulk-three-percent').value=s.composition?.three??30;$('bulk-four-percent').value=s.composition?.four??30;renderSizes(s);initialized=true;}if(override.origin)$('bulk-dictionary-source').value=override.origin==='wt-package'?'wordtiles':'web';updateNumber();update();if(!dialog.open)dialog.showModal();},
+    open(){if(!initialized){const s=getSettings();$('bulk-dictionary-source').value='wt-workbook';$('bulk-zen-bank').value='all';$('bulk-target-count').value=s.config.wordLengths.length;$('bulk-three-percent').value=s.composition?.three??30;$('bulk-four-percent').value=s.composition?.four??30;renderSizes(s);initialized=true;}$('bulk-dictionary-source').value='wt-workbook';updateNumber();update();if(!dialog.open)dialog.showModal();},
     setBusy(value){busy=value;for(const el of dialog.querySelectorAll('input,select'))el.disabled=value;$('bulk-cancel').disabled=!value;update();},
     progress(generated,requested,message){$('bulk-modal-progress').max=requested;$('bulk-modal-progress').value=generated;$('bulk-modal-status').textContent=message;$('bulk-random-note').textContent=`已生成 ${generated} / ${requested} 关`;$('bulk-pinned-progress').max=requested;$('bulk-pinned-progress').value=generated;$('bulk-pinned-progress').hidden=false;},
     close(){dialog.close();},get isOpen(){return dialog.open;},refresh:update

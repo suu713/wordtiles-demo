@@ -2,8 +2,21 @@ import { validateLevel as validateV1 } from './wordtiles-algorithm.js';
 import { GameSession, validateLevel as validateDemo, clone, freeze } from './rules.js?v=21';
 import { runtimeDictionaryError, checkTargetPolicy } from './target-policy.js?v=21';
 import {BONUS_DICTIONARY,sourceHasWord} from './word-source.js?v=15';
-import {zenBonusDictionary} from './zen-dictionary.js?v=21';
-import {bankBonusDictionary} from './dictionary-banks.js?v=21';
+import {bankBonusDictionary,WORD_BANK_ORIGIN,createBankDictionary,bankDictionaryError} from './dictionary-banks.js?v=1';
+
+// Rebind a saved workbook level to the current annotations without regenerating
+// its letters, counts, paths, identity or generation settings.
+export function refreshWorkbookEntry({level,dictionary}){
+  if(dictionary?.metadata?.origin!==WORD_BANK_ORIGIN||!bankDictionaryError(dictionary))return {level,dictionary};
+  if(level?.source?.dictionaryOrigin!==WORD_BANK_ORIGIN)throw new Error('历史关卡词库来源不一致');
+  const nextDictionary=createBankDictionary(dictionary.metadata.lengths,WORD_BANK_ORIGIN,dictionary.metadata.tiers);
+  const nextLevel={...clone(level),dictionaryVersion:nextDictionary.version,source:{...clone(level.source),
+    dictionaryOrigin:WORD_BANK_ORIGIN,dictionaryVersion:nextDictionary.version,
+    dictionaryMetadata:clone(nextDictionary.metadata),sourceSha256:nextDictionary.metadata.sourceSha256}};
+  const checked=validateAlgorithmLevel(nextLevel,nextDictionary);
+  if(!checked.valid)throw new Error('历史关卡无法接入当前词库：'+checked.errors.map(error=>error.message).join('；'));
+  return {level:nextLevel,dictionary:nextDictionary};
+}
 
 // V1 files use flat arrays; the existing renderer and session use board/targets.path.
 // Keep the original file separately so exporting or restarting never changes its schema.
@@ -23,7 +36,7 @@ function toDemoLevel(level) {
 // Older supplied V1 files did not record a bank. Revalidate their words and
 // geometry against one explicitly selected bank, preserving the original file.
 export function migrateLegacyLevel(level,dictionary){
-  if(!isV1Level(level)||level.source?.dictionaryOrigin||!['web-supplied','wt-package','zen'].includes(dictionary?.metadata?.origin))throw new Error('这份关卡不能按旧网页格式迁移');
+  if(!isV1Level(level)||level.source?.dictionaryOrigin||dictionary?.metadata?.origin!==WORD_BANK_ORIGIN)throw new Error('只支持迁入 WT词库.xlsx 的兼容网页关卡');
   const error=runtimeDictionaryError(dictionary);if(error)throw new Error(error.message);
   const policy=checkTargetPolicy(level,dictionary);if(!policy.ok)throw new Error('旧关卡目标不属于当前所选单一词库：'+policy.rejectedWords.join('、'));
   const originalCheck=validateV1(level,{...dictionary,version:level.dictionaryVersion});if(!originalCheck.ok)throw new Error(originalCheck.errors.join('；'));
@@ -41,8 +54,8 @@ export function validateAlgorithmLevel(level, dictionary) {
   if(level.source?.dictionaryOrigin&&dictionary.metadata?.origin&&level.source.dictionaryOrigin!==dictionary.metadata.origin)
     return {valid:false,errors:[{code:'DICTIONARY_SOURCE',message:'关卡与所选词库来源不一致。'}]};
   if (!isV1Level(level)) {
-    if(['web-supplied','wt-package','zen'].includes(dictionary?.metadata?.origin)&&(level.dictionaryVersion!==dictionary.version||level.source?.dictionaryOrigin!==dictionary.metadata.origin))
-      return {valid:false,errors:[{code:'DICTIONARY_SOURCE',message:'关卡与所选词库来源或版本不一致，拒绝跨来源载入。'}]};
+    if(dictionary?.metadata?.origin===WORD_BANK_ORIGIN&&(level.dictionaryVersion!==dictionary.version||level.source?.dictionaryOrigin!==dictionary.metadata.origin))
+      return {valid:false,errors:[{code:'DICTIONARY_SOURCE',message:'关卡与 WT词库.xlsx 版本不一致，拒绝载入。'}]};
     return validateDemo(level, dictionary);
   }
   if (level.dictionaryVersion !== dictionary?.version) return {
@@ -60,9 +73,8 @@ export function validateAlgorithmLevel(level, dictionary) {
 export function createAlgorithmSession(level, dictionary, {bonusDictionary=BONUS_DICTIONARY}={}) {
   const report = validateAlgorithmLevel(level, dictionary);
   if (!report.valid) throw Object.assign(new Error('关卡未通过完整校验'), { report });
-  if(['web-supplied','wt-package'].includes(dictionary.metadata?.origin))bonusDictionary=bankBonusDictionary(dictionary);
-  else if(dictionary.metadata?.origin==='zen')bonusDictionary=zenBonusDictionary(dictionary);
-  else if(!Array.isArray(bonusDictionary?.words)||bonusDictionary.words.some(word=>!sourceHasWord(word)))throw Object.assign(new Error('额外词库包含未通过审核的词，已拒绝载入'),{code:'DICTIONARY_POLICY'});
+  if(dictionary.metadata?.origin===WORD_BANK_ORIGIN)bonusDictionary=bankBonusDictionary(dictionary);
+  else throw Object.assign(new Error('关卡必须使用 WT词库.xlsx 词库'),{code:'DICTIONARY_POLICY'});
   const normalized = isV1Level(level) ? toDemoLevel(level) : level;
   const session = new GameSession(normalized, dictionary, { validator: () => report,bonusDictionary });
   Object.defineProperty(session, 'dictionary', { value: dictionary });

@@ -1,40 +1,17 @@
-import input from '../common-v2/dictionary.json?v=15' with { type:'json' };
-import blocks from '../common-v2/blocked-words.json?v=15' with { type:'json' };
-import { createWordGate } from './whitelist.js?v=15';
-import { zenDictionaryError, zenTargetPolicy } from './zen-dictionary.js?v=21';
-import {bankDictionaryError,bankTargetPolicy} from './dictionary-banks.js?v=21';
-import { WORDLIST_HASH, WORDLIST_VERSION, WORDLIST_REVIEW_HASH, GAME_POLICY_VERSION, sourceHasWord, packageHasWord, ORIGINAL_ENGLISH_TARGETS } from './word-source.js?v=15';
+import {createWordGate} from './whitelist.js?v=1';
+import {createBankDictionary,bankDictionaryError,bankTargetPolicy} from './dictionary-banks.js?v=1';
+import {WORDLIST_VERSION,ORIGINAL_ENGLISH_TARGETS,wordEntryFor} from './word-source.js?v=1';
 
-export const COMMON_DICTIONARY=Object.freeze({version:input.version,words:Object.freeze([...input.words])});
-export const POLICY_VERSION=COMMON_DICTIONARY.version;
-// Keep packaged roles: an extra-only spelling is collectable, but its presence
-// in the package alone does not promote it to a generated target.
-export const wordGate=createWordGate({version:POLICY_VERSION,words:[...new Set([...input.words,...ORIGINAL_ENGLISH_TARGETS])].sort()});
-const blocked=new Set(blocks.words);
-export const isTargetAllowed=word=>wordGate.isAllowed(word)&&sourceHasWord(word)&&(packageHasWord(word)||!blocked.has(word.toUpperCase()));
-export function createBaseDictionary(lengths) {
-  const view=wordGate.forLengths(lengths), words=view.words.filter(isTargetAllowed);
-  return {version:view.version+`-s${WORDLIST_HASH.slice(0,12)}-g${WORDLIST_REVIEW_HASH.slice(0,12)}`+(blocked.size?`-r${blocks.sha256.slice(0,12)}`:''),words,
-    metadata:{contentPolicyVersion:POLICY_VERSION,wordlistVersion:WORDLIST_VERSION,gameReviewVersion:GAME_POLICY_VERSION,gameReviewSha256:WORDLIST_REVIEW_HASH,whitelistCount:COMMON_DICTIONARY.words.length,projectReviewVersion:blocks.version,projectReviewSha256:blocks.sha256}};
+export const COMMON_DICTIONARY=Object.freeze({version:WORDLIST_VERSION,words:Object.freeze([...ORIGINAL_ENGLISH_TARGETS])});
+export const POLICY_VERSION=WORDLIST_VERSION;
+export const wordGate=createWordGate(COMMON_DICTIONARY);
+export const isTargetAllowed=word=>wordGate.isAllowed(word)&&wordEntryFor(word)?.role==='required';
+export function createBaseDictionary(lengths){return createBankDictionary(lengths);}
+export function runtimeDictionaryError(dictionary){
+  if(dictionary?.metadata?.origin!=='wt-workbook')return {code:'DICTIONARY_POLICY',message:'关卡仅允许使用 WT词库.xlsx。'};
+  return bankDictionaryError(dictionary);
 }
-export function runtimeDictionaryError(dictionary) {
-  if(['web-supplied','wt-package'].includes(dictionary?.metadata?.origin))return bankDictionaryError(dictionary);
-  if(dictionary?.metadata?.origin==='zen')return zenDictionaryError(dictionary);
-  if(!dictionary||Array.isArray(dictionary)||typeof dictionary.version!=='string'||!dictionary.version.startsWith(POLICY_VERSION+'-')||
-      !dictionary.version.includes('-s'+WORDLIST_HASH.slice(0,12))||!dictionary.version.includes('-g'+WORDLIST_REVIEW_HASH.slice(0,12))||dictionary.metadata?.wordlistVersion!==WORDLIST_VERSION||dictionary.metadata?.gameReviewVersion!==GAME_POLICY_VERSION||dictionary.metadata?.gameReviewSha256!==WORDLIST_REVIEW_HASH||!Array.isArray(dictionary.words))
-    return {code:'DICTIONARY_POLICY',message:'算法2需要当前审核词库的完整 { version, words, metadata } 对象；旧词库不能用于正式关卡。'};
-  if(dictionary.metadata?.runtimeSelection?.allowUnreviewed===true)
-    return {code:'DICTIONARY_POLICY',message:'常用原形词 V2 不允许未审核词出题旁路。'};
-  const rejected=dictionary.words.filter(word=>typeof word!=='string'||!/^[A-Z]+$/.test(word)||!isTargetAllowed(word));
-  if(rejected.length||new Set(dictionary.words).size!==dictionary.words.length)
-    return {code:'DICTIONARY_POLICY',message:'候选词库包含白名单外、明确禁用或重复词，已拒绝；不能回退或合并旧词库。',rejectedWords:rejected};
-  return null;
-}
-export function checkTargetPolicy(level,dictionary) {
-  if(['web-supplied','wt-package'].includes(dictionary?.metadata?.origin))return bankTargetPolicy(level,dictionary);
-  if(dictionary?.metadata?.origin==='zen')return zenTargetPolicy(level,dictionary);
-  const checked=wordGate.checkLevelTargets(level);
-  if(!checked.ok) return checked;
-  const rejectedWords=level.targets.filter(target=>!isTargetAllowed(target.word)).map(target=>target.word);
-  return {ok:!rejectedWords.length,code:rejectedWords.length?'WORD_NOT_APPROVED':'OK',rejectedWords};
+export function checkTargetPolicy(level,dictionary){
+  if(dictionary?.metadata?.origin!=='wt-workbook')return {ok:false,code:'DICTIONARY_POLICY',rejectedWords:[]};
+  return bankTargetPolicy(level,dictionary);
 }

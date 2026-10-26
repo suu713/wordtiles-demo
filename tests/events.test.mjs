@@ -1,8 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
-import {createEventProgress,EVENTS_KEY,WHEEL_REWARDS,WEEKLY_STAGES,eventDate,eventWeek,dailyLevelIndex} from '../dist/core/event-progress.js';
-import {SourceGameSession,convertSourceLevel} from '../dist/core/source-levels.js';
+import {createEventProgress,EVENTS_KEY,WHEEL_REWARDS,WEEKLY_STAGES,eventDate,eventWeek} from '../dist/core/event-progress.js';
+import {createDailyPuzzle} from '../dist/core/daily-puzzle.js';
 import {clearAppData} from '../dist/core/app-data.js';
 
 function storage(){const values=new Map();return {get length(){return values.size;},key:i=>[...values.keys()][i]??null,getItem:key=>values.get(key)||null,setItem:(key,value)=>values.set(key,value),removeItem:key=>values.delete(key)};}
@@ -41,9 +40,7 @@ test('清空数据同时清除活动，旧活动对象不能把奖励或进度�
   assert.equal(local.getItem(EVENTS_KEY),null);assert.equal(events.spin(),null);assert.equal(events.addWeeklyItems(3),false);assert.equal(local.getItem(EVENTS_KEY),null);
 });
 
-test('日题按本地日期轮换原包366题，规格和目标可还原且全词均可通关',async()=>{
+test('日题由工作簿按本地日期生成，规格和目标可还原且全词均可通关',()=>{
   assert.equal(eventDate(new Date(2026,9,19)),'2026-10-19');assert.equal(eventWeek(new Date(2026,9,25,23)).key,'2026-10-19');assert.equal(eventWeek(new Date(2026,9,26)).key,'2026-10-26');
-  assert.equal(dailyLevelIndex(new Date(2026,7,1),366),0);assert.equal(dailyLevelIndex(new Date(2027,7,2),366),0);
-  const raw=JSON.parse(await readFile(new URL('../dist/source-levels/english.json',import.meta.url),'utf8')),ids=raw.levelLists.daily_puzzle_level_list.split(',').map(Number);assert.equal(ids.length,366);
-  for(const index of [0,79,180,365]){const level=convertSourceLevel(raw.levels[ids[index]],{language:'english',daily:true}),session=new SourceGameSession(level);for(const target of level.targets)assert.equal(session.submit(target.path).accepted,true);assert.equal(session.status,'won');assert.equal(session.total,0);}
+  for(const day of ['2026-10-19','2026-10-20','2027-02-28']){const {session}=createDailyPuzzle(day);assert.equal(session.initial.schemaVersion,2);assert.equal(session.dictionary.metadata.origin,'wt-workbook');for(const target of session.initial.targets)assert.equal(session.submit(target.path).accepted,true);assert.equal(session.status,'won');assert.ok(session.counts.every(count=>count===0));}
 });

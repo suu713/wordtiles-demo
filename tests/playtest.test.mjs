@@ -4,11 +4,11 @@ import test from 'node:test';
 import {SourceGameSession,convertSourceLevel} from '../dist/core/source-levels.js';
 import {SimulationRun,DEFAULT_PROFILE,summarizeRuns,familiarity,scanVisibleBoard,seededRandom} from '../dist/core/playtest.js';
 import {HumanRecorder,mergeHumanRecords,calibrateEnglish} from '../dist/core/playtest-records.js';
-import {exportAnalysisXlsx,analysisSheets} from '../dist/core/playtest-export.js';
+import {exportAnalysisXlsx,exportAnalysisJson,analysisSheets} from '../dist/core/playtest-export.js';
 import {createZenDictionary,zenDictionaryError} from '../dist/core/zen-dictionary.js';
 import {ENGLISH_FREQUENCY} from '../dist/core/playtest-frequency.js';
 const load=async file=>JSON.parse(await readFile(new URL('../dist/'+file,import.meta.url),'utf8'));
-const bank=await load('source-levels/english.json'),frequency=ENGLISH_FREQUENCY;
+const bank=await load('../tests/fixtures/retired-runtime-data/source-levels/english.json'),frequency=ENGLISH_FREQUENCY;
 const level=position=>convertSourceLevel(bank.levels[bank.orders.main[position-1]],{language:'english',order:'main',position});
 
 test('英语模拟同种子可复现，初始关卡不变，所有提交经过真实规则',()=>{
@@ -55,4 +55,31 @@ test('Excel是真实ZIP/OOXML，文本不会执行为公式，逐关与逐局数
   const bytes=exportAnalysisXlsx(report);assert.equal(new DataView(bytes.buffer).getUint32(0,true),0x04034b50);
   const text=new TextDecoder().decode(bytes);assert.ok(text.includes('inlineStr'));assert.ok(text.includes('=1+1'));assert.ok(!text.includes('<f>'));assert.ok(text.includes('cancelled'));
   assert.equal(analysisSheets(report)[1].rows.length,2);assert.equal(analysisSheets(report)[2].rows.length,2);
+});
+
+test('常规导出移除提示、通过率和未解认识词，保留真实错误、用时和原始报告',()=>{
+  const report={job:{mode:'ordinary',profile:{...DEFAULT_PROFILE,maxHints:18,hintAfter:1}},
+    levels:[{id:'sample',meanMistakes:3,meanSeconds:20,winRate:.5,ciLow:.2,ciHigh:.8,meanKnownUnsolvedTargets:1,meanHints:2}],
+    runs:[{mode:'ordinary',outcome:'gave-up',elapsedSeconds:20,mistakes:3,attempts:5,hints:2,knownUnsolvedTargets:1}],
+    words:[{word:'CAT',samples:1,trialSwipes:2,hintLetters:2,hinted:1}]};
+  const before=structuredClone(report),exported=JSON.parse(exportAnalysisJson(report));
+  assert.equal(exported.levels[0].meanMistakes,3);assert.equal(exported.runs[0].completionSeconds,null);assert.equal(Object.hasOwn(exported.runs[0],'elapsedSeconds'),false);assert.equal(exported.words[0].trialSwipes,2);
+  assert.doesNotMatch(JSON.stringify(exported),/"(?:maxHints|hintAfter|hints|meanHints|hintLetters|hinted|winRate|ciLow|ciHigh|knownUnsolvedTargets|meanKnownUnsolvedTargets)":/);
+  const sheets=analysisSheets(report),labels=[...sheets[0].rows.map(row=>row[0]),...sheets.slice(1).flatMap(sheet=>sheet.rows[0])];
+  assert.ok(labels.every(label=>!/(?:提示|通关率|通过率|95%|未解)/.test(label)));
+  assert.equal(sheets[0].rows.find(row=>row[0]==='平均错误数')[1],3);
+  assert.equal(sheets[0].rows.find(row=>row[0]==='通关耗时（秒）')[1],null);
+  assert.deepEqual(report,before);
+});
+test('逐局明细可选，关闭不影响均值和逐关数据；3456比值固定顺序且不约分',()=>{
+  const report={job:{mode:'ordinary',includeRuns:false},levels:[{wordLengths:{3:4,4:2,5:2,6:2,7:3},targetCount:13,meanSeconds:20}],
+    runs:[{mode:'ordinary',outcome:'won',elapsedSeconds:10,mistakes:2},{mode:'ordinary',outcome:'gave-up',elapsedSeconds:30,mistakes:4}],words:[]},before=structuredClone(report);
+  const sheets=analysisSheets(report);assert.deepEqual(sheets.map(sheet=>sheet.name),['分析总览','逐关分析']);const header=sheets[1].rows[0];assert.equal(sheets[1].rows[1][header.indexOf('目标词长分布（3：4：5：6）')],'4：2：2：2');assert.ok(header.includes('7字目标词数'));
+  const brief=JSON.parse(exportAnalysisJson(report));assert.equal(Object.hasOwn(brief,'runs'),false);assert.equal(brief.summary.completionSeconds,10);assert.equal(brief.summary.meanMistakes,3);assert.equal(brief.levels[0].wordLengthRatio,'4：2：2：2');assert.deepEqual(brief.levels[0].wordLengthRatioOrder,[3,4,5,6]);
+  const included={...report,job:{...report.job,includeRuns:true}},detailed=JSON.parse(exportAnalysisJson(included));assert.equal(detailed.runs.length,2);assert.equal(detailed.summary.completionSeconds,brief.summary.completionSeconds);assert.ok(analysisSheets(included).some(sheet=>sheet.name==='逐局明细'));assert.deepEqual(report,before);
+});
+test('界面导出口径只保留通关耗时，未完成局用时不进入通关统计，原数据不变',()=>{
+  const runs=[{outcome:'won',elapsedSeconds:10},{outcome:'won',elapsedSeconds:30},{outcome:'won',elapsedSeconds:20},{outcome:'gave-up',elapsedSeconds:500},{outcome:'error',elapsedSeconds:999}],summary=summarizeRuns(runs),report={job:{includeRuns:true},levels:[{...summary}],runs,words:[]},before=structuredClone(report);
+  const exported=JSON.parse(exportAnalysisJson(report));assert.equal(exported.summary.completionSeconds,20);assert.equal(exported.levels[0].completionSeconds,20);assert.deepEqual(exported.runs.map(run=>run.completionSeconds),[10,30,20,null,null]);assert.doesNotMatch(JSON.stringify(exported),/"(?:meanSeconds|medianSeconds|p90Seconds|medianWinSeconds|elapsedSeconds)":/);
+  const sheets=analysisSheets(report),labels=[...sheets[0].rows.map(row=>row[0]),...sheets.slice(1).flatMap(sheet=>sheet.rows[0])];assert.ok(labels.filter(label=>/耗时/.test(label)).every(label=>label==='通关耗时（秒）'));assert.deepEqual(report,before);
 });

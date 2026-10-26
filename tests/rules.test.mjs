@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { GameSession, validateLevel, findWordPaths, inspectPath, normalizeDictionary, clone } from '../dist/core/rules.js';
 
-const sample = JSON.parse(await readFile(new URL('../dist/sample.json', import.meta.url), 'utf8'));
-const dictionary = JSON.parse(await readFile(new URL('../dist/dictionary.json', import.meta.url), 'utf8'));
+const sample = JSON.parse(await readFile(new URL('../tests/fixtures/retired-runtime-data/sample.json', import.meta.url), 'utf8'));
+const dictionary = JSON.parse(await readFile(new URL('../tests/fixtures/retired-runtime-data/dictionary.json', import.meta.url), 'utf8'));
 function* permutations(items) {
   if (!items.length) { yield []; return; }
   for (let i = 0; i < items.length; i++) for (const rest of permutations(items.filter((_, j) => i !== j))) yield [items[i], ...rest];

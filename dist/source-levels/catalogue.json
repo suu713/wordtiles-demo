@@ -1,81 +1,50 @@
 {
-  "schemaVersion": 1,
-  "algorithm": 1,
+  "schemaVersion": 2,
   "packageName": "com.agavegames.wordtiles",
   "version": "1.4.0",
   "sourceFile": "Word+Tiles+-+Relaxing+Puzzle_1.4.0_APKPure.xapk",
   "sha256": "01f0e935e537cb6883fd9587b32ccfdc282f8d7928dbf0ece30262216ed4d43f",
+  "defaultOrder": "level_list_0",
+  "total": 3459,
   "languages": [
     {
       "language": "english",
       "file": "english.json",
       "count": 3459,
-      "mainCount": 5000,
-      "missingMainCount": 0,
-      "shapes": {
-        "4x3": 1410,
-        "5x3": 1017,
-        "3x3": 1005,
-        "4x2": 23,
-        "3x2": 4
-      }
-    },
-    {
-      "language": "portuguese",
-      "file": "portuguese.json",
-      "count": 1863,
       "mainCount": 1500,
-      "missingMainCount": 0,
-      "shapes": {
-        "3x2": 1,
-        "3x3": 333,
-        "4x2": 18,
-        "4x3": 857,
-        "5x3": 654
-      }
-    },
-    {
-      "language": "russian",
-      "file": "russian.json",
-      "count": 2744,
-      "mainCount": 4000,
-      "missingMainCount": 0,
-      "shapes": {
-        "3x3": 818,
-        "4x2": 28,
-        "5x3": 652,
-        "4x3": 1242,
-        "3x2": 4
-      }
-    },
-    {
-      "language": "spanish",
-      "file": "spanish.json",
-      "count": 1865,
-      "mainCount": 1500,
-      "missingMainCount": 0,
-      "shapes": {
-        "4x2": 20,
-        "3x3": 579,
-        "4x3": 955,
-        "5x3": 310,
-        "3x2": 1
-      }
-    },
-    {
-      "language": "turkish",
-      "file": "turkish.json",
-      "count": 3285,
-      "mainCount": 5000,
-      "missingMainCount": 0,
-      "shapes": {
-        "3x3": 1017,
-        "4x3": 1384,
-        "5x3": 842,
-        "4x2": 38,
-        "3x2": 4
-      }
+      "lists": [
+        {
+          "key": "level_list_0",
+          "label": "主线表0",
+          "count": 1500
+        },
+        {
+          "key": "level_list_1",
+          "label": "主线表1",
+          "count": 1500
+        },
+        {
+          "key": "level_list_2",
+          "label": "主线表2",
+          "count": 1000
+        },
+        {
+          "key": "level_list_3",
+          "label": "主线表3",
+          "count": 1000
+        },
+        {
+          "key": "daily_puzzle_level_list",
+          "label": "每日谜题",
+          "count": 366
+        },
+        {
+          "key": "all",
+          "label": "全部独立关卡",
+          "count": 3459
+        }
+      ],
+      "sha256": "cfcbf8efc389fb626f5117657ef9b1cc669f1342f0d2bf1c9dc5330cf8dfd7b0"
     }
-  ],
-  "total": 13216
+  ]
 }

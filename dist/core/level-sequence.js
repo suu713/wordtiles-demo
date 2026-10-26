@@ -28,10 +28,10 @@ export class LevelSequence {
     this.keys.delete(item.key);this.keys.add(key);item.key=key;item.level=clone(level);item.level.source={...item.level.source,editorNumber:item.number};
   }
   serialize(origin){const entries=origin?this.list(origin):[...this.groups.values()].flat(),versions=new Set(entries.map(e=>e.dictionary.version));return {schemaVersion:1,dictionaries:[...this.dictionaries.values()].filter(d=>versions.has(d.version)),levels:entries.map(e=>({level:e.level,dictionaryVersion:e.dictionary.version,number:e.number}))};}
-  restore(snapshot,validate){
+  restore(snapshot,validate,{migrateEntry=entry=>entry}={}){
     if(snapshot?.schemaVersion!==1||!Array.isArray(snapshot.dictionaries)||!Array.isArray(snapshot.levels))throw new Error('保存的关序格式无效');
     const dictionaries=new Map(snapshot.dictionaries.map(d=>[d.version,d]));let rejected=0;
-    for(const e of snapshot.levels){try{const dictionary=dictionaries.get(e.dictionaryVersion);if(!dictionary)throw new Error('缺少词库');validate(e.level,dictionary);this.insert({level:e.level,dictionary},{number:e.number});}catch{rejected++;}}
+    for(const e of snapshot.levels){try{const dictionary=dictionaries.get(e.dictionaryVersion);if(!dictionary)throw new Error('缺少词库');const entry=migrateEntry({level:e.level,dictionary});validate(entry.level,entry.dictionary);this.insert(entry,{number:e.number});}catch{rejected++;}}
     return {restored:[...this.groups.values()].reduce((n,g)=>n+g.length,0),rejected};
   }
 }

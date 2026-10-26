@@ -1,5 +1,6 @@
 import { findWordPaths, signature } from './rules.js?v=21';
 import { reachableDictionaryWords } from './level-statistics.js?v=15';
+import {isWTLevel,validateWTLevel} from './wt-source-session.js?v=40';
 
 // Count word sets, not play orders or alternative paths for the same words.
 // The input is the validated initial board; this does not change play rules.
@@ -14,6 +15,10 @@ export function calculateLevelSolutions(level, dictionary, {
       fail('SEARCH_BUDGET_EXCEEDED', '解法搜索超出预算，尚未完成完整统计。');
   };
   try {
+    if(isWTLevel(level)){
+      const report=validateWTLevel(level);if(!report.valid)fail('INVALID_LEVEL',report.errors[0].message);
+      return {ok:true,count:1,solutions:[{words:level.targets.map(t=>t.word),paths:level.targets.map(t=>({word:t.word,path:[...t.path]})),isTargetSet:true}],candidateCount:level.targets.length,nodes:0,elapsedMs:0,dictionaryVersion:'wt-original-1.4.0',mode:'fixed-original-targets'};
+    }
     const { board, targets } = level;
     if (!board || !Array.isArray(board.counts) || !Array.isArray(targets) || !targets.length ||
         board.counts.reduce((sum, count) => sum + count, 0) !== targets.reduce((sum, target) => sum + target.word.length, 0))

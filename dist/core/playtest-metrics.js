@@ -1,5 +1,5 @@
 import { calculateLevelStatistics } from './level-statistics.js?v=15';
-import {spatialLevelMetrics} from './spatial-perception.js?v=29';
+import {spatialLevelMetrics} from './spatial-perception.js?v=46';
 
 export function pathMetrics(path,board,bottomUp=false) {
   if(!Array.isArray(path)||!board)return {turns:null,reverse:null};
@@ -10,18 +10,21 @@ export function pathMetrics(path,board,bottomUp=false) {
   return {turns,reverse};
 }
 const gcd=(a,b)=>b?gcd(b,a%b):a;
+export const TARGET_LENGTH_RATIO_ORDER=Object.freeze([3,4,5,6]);
+export const TARGET_LENGTH_RATIO_TITLE='目标词长分布（3：4：5：6）';
+export const targetLengthRatio=lengths=>lengths?TARGET_LENGTH_RATIO_ORDER.map(length=>lengths[length]||0).join('：'):null;
 export function levelMetrics(level,dictionary=null) {
   const zen=level.kind==='zen',words=zen?level.targets:level.targets.map(t=>t.word),lengths={};
   for(const word of words){const length=[...word].length;lengths[length]=(lengths[length]||0)+1;}
   const counts=[3,4,5].map(n=>lengths[n]||0),divisor=counts.reduce(gcd,0)||1;
-  const ratioDivisor=Object.values(lengths).reduce(gcd,0)||1,wordLengthRatio=Object.entries(lengths).sort((a,b)=>Number(a[0])-Number(b[0])).map(([n,count])=>`${n}字:${count/ratioDivisor}`).join(' / ');
+  const wordLengthRatio=targetLengthRatio(lengths);
   const stats=zen?null:calculateLevelStatistics(level,dictionary||{words:words,version:'metrics-target-only'});
   const extraWords=zen?[...new Set([...(level.wordRoles.extra||[]),...(level.wordRoles.onlyExtra||[]),...(level.wordRoles.bonus||[])].filter(w=>!words.includes(w)))]:stats.extraWords;
   const extras=extraWords.length,extraWordLengths={},wordLengthShares={};
   for(const word of extraWords){const length=[...word].length;extraWordLengths[length]=(extraWordLengths[length]||0)+1;}
   for(const [length,count] of Object.entries(lengths))wordLengthShares[length]=words.length?count/words.length:0;
   const {words:spatialWords,applicable:spatialApplicable,...spatial}=spatialLevelMetrics(level);
-  return {targetCount:words.length,wordCount:words.length+extras,extras,wordLengths:lengths,extraWordLengths,wordLengthShares,wordLengthRatio,
+  return {targetCount:words.length,wordCount:words.length+extras,extras,wordLengths:lengths,extraWordLengths,wordLengthShares,wordLengthRatio,wordLengthRatioOrder:[...TARGET_LENGTH_RATIO_ORDER],
     spatialApplicable,...spatial,
     length2:lengths[2]||0,length3:lengths[3]||0,length4:lengths[4]||0,length5:lengths[5]||0,
     share3:words.length?(lengths[3]||0)/words.length:0,share4:words.length?(lengths[4]||0)/words.length:0,share5:words.length?(lengths[5]||0)/words.length:0,

@@ -6,8 +6,8 @@ import { SourceGameSession, convertSourceLevel } from '../dist/core/source-level
 import { findWordPaths } from '../dist/core/rules.js';
 
 const json=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
-const dictionary=await json('../dist/dictionary-v1.json'), fixture=await json('../examples/seed_20261010.json');
-const bank=await json('../dist/source-levels/english.json');
+const dictionary=await json('../tests/fixtures/retired-runtime-data/dictionary-v1.json'), fixture=await json('../examples/seed_20261010.json');
+const bank=await json('../tests/fixtures/retired-runtime-data/source-levels/english.json');
 
 test('算法2字典内非目标词收进单词包，重复不新增、不扣次数也不完成目标', () => {
   const game=createAlgorithmSession(fixture,dictionary), before=game.snapshot();

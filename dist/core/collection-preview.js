@@ -12,7 +12,7 @@ export function previewCollectionWords(existing,count=300){
   const candidates=createBankDictionary([2,3,4,5,6,7,8,9,10]).words.filter(word=>!owned.has(word));
   if(candidates.length<count)throw new Error('未收录单词不足');
   const pools=new Map(COLLECTION_THEMES.map(theme=>[theme.id,[]]));
-  for(const word of candidates)pools.get(collectionTheme(word,bankWordEntry(word)?.definition)).push(word);
+  for(const word of candidates)pools.get(collectionTheme(word,bankWordEntry(word))).push(word);
   const result=[];
   // Stratified random sampling keeps a 300-word preview useful in every theme.
   while(result.length<count)for(const pool of pools.values()){

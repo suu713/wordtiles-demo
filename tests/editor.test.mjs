@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { GameSession, validateLevel, findWordPaths, inspectPath, createNeighbors, checkConfiguration, clone } from '../dist/core/rules.js';
 import { generateLevel } from '../dist/core/generator.js';
-const dictionary = JSON.parse(await readFile(new URL('../dist/dictionary.json', import.meta.url),'utf8'));
+const dictionary = JSON.parse(await readFile(new URL('../tests/fixtures/retired-runtime-data/dictionary.json', import.meta.url),'utf8'));
 const sample4 = {
   schemaVersion:2, seed:'four-square', config:{ rows:4, cols:4, wordLengths:[5,3,3,5] },
   board:{ rows:4, cols:4, letters:[...'APPLSUNEDOGTNIAR'], counts:Array(16).fill(1) },

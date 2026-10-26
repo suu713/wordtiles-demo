@@ -9,7 +9,7 @@ import {createZenDictionary} from '../dist/core/zen-dictionary.js';
 import {MachinePlaytestResults} from '../dist/core/machine-playtest-results.js';
 import {ENGLISH_FREQUENCY} from '../dist/core/playtest-frequency.js';
 const load=async name=>JSON.parse(await readFile(new URL('../dist/'+name,import.meta.url),'utf8'));
-const [bank]=await Promise.all([load('source-levels/english.json')]);
+const [bank]=await Promise.all([load('../tests/fixtures/retired-runtime-data/source-levels/english.json')]);
 const frequency=ENGLISH_FREQUENCY;
 
 test('全部实际词长独立统计，6、7、9字不合并，目标与额外分开',()=>{
@@ -17,13 +17,13 @@ test('全部实际词长独立统计，6、7、9字不合并，目标与额外�
   assert.deepEqual(m.wordLengths,{2:2,6:1,7:1,9:1});assert.deepEqual(m.extraWordLengths,{3:1,10:1});
   assert.equal(m.wordCount,7);assert.equal(m.wordLengthShares[2],.4);assert.equal(m.wordLengthShares[9],.2);assert.equal(m.totalTurns,null);
 });
-test('Excel按本批所有词长生成数字列及占比，不包含种子或每步操作表',()=>{
+test('Excel按本批目标词长生成数量和占比，省略各词长额外词数量',()=>{
   const level=levelMetrics({kind:'zen',targets:['AB','ABCDEF','ABCDEFG','ABCDEFGHI'],wordRoles:{extra:['ABCDEFGHIJ'],onlyExtra:[]}});
   const sheets=analysisSheets({job:{game:'zen'},levels:[level],runs:[{outcome:'won',elapsedSeconds:9,events:[{type:'submit'}]}]});
   assert.deepEqual(sheets.map(s=>s.name),['分析总览','逐关分析','逐局明细']);
   const sheet=sheets[1],header=sheet.rows[0],row=sheet.rows[1];
-  for(const n of [2,6,7,9,10])assert.ok(header.includes(n+'字目标词数'));
-  assert.equal(row[header.indexOf('7字目标词数')],1);assert.equal(row[header.indexOf('10字额外词数')],1);
+  for(const n of [2,6,7,9])assert.ok(header.includes(n+'字目标词数'));
+  assert.equal(row[header.indexOf('7字目标词数')],1);assert.ok(header.every(label=>!/\d+字额外词数/.test(label)));assert.equal(header.includes('10字目标词数'),false);
   assert.equal(row[header.indexOf('9字目标占比')],.25);assert.ok(sheet.percentColumns.includes(header.indexOf('9字目标占比')));
   assert.ok(!JSON.stringify(sheets).includes('派生种子'));assert.ok(!JSON.stringify(sheets).includes('6 字及以上'));
 });

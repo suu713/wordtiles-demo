@@ -6,7 +6,7 @@ import {assignTargetKnowledge,seededRandom,SimulationRun,normalizeProfile,summar
 import {spatialPathFeatures,recognitionProbability,spatialLevelMetrics,SPATIAL_CALIBRATION} from '../dist/core/spatial-perception.js';
 import {createLetterHints} from '../dist/core/letter-hints.js';
 import {wordAnalysis,analyzePlayedLevel} from '../dist/core/playtest-analysis.js';
-import {analysisSheets} from '../dist/core/playtest-export.js';
+import {analysisSheets,exportAnalysisJson} from '../dist/core/playtest-export.js';
 
 const dictionary={version:'matched-layout-fixture',words:['PLANET','BRICKS']},frequency={version:'fixture',zipf:{PLANET:5,BRICKS:5}};
 function matchedLevel(reverse=false){
@@ -33,6 +33,26 @@ test('每局5词认识4词，小关随机取整后平均80%，不依赖排布',(
   assert.ok(Math.abs(total/30000-.8)<.01);
   const a=new SimulationRun(new GameSession(matchedLevel(),dictionary),{frequency,seed:71}),b=new SimulationRun(new GameSession(matchedLevel(true),dictionary),{frequency,seed:71});
   assert.deepEqual(a.knownTargets,b.knownTargets);
+});
+test('认识比例支持0至100%，小关按设定随机取整，实际模拟与摘要保留同一参数',()=>{
+  const words=['A','B','C','D','E'],rng=seededRandom(211);let known=0;
+  for(let i=0;i<10000;i++)known+=assignTargetKnowledge(words.slice(0,3),rng,.5).size;
+  assert.ok(Math.abs(known/30000-.5)<.01);assert.equal(assignTargetKnowledge(words,rng,0).size,0);assert.equal(assignTargetKnowledge(words,rng,1).size,5);
+  for(const rate of [0,.5,1]){const run=new SimulationRun(new GameSession(matchedLevel(),dictionary),{frequency,seed:71,profile:{knowledgeRate:rate}}).run();assert.equal(run.profile.knowledgeRate,rate);assert.equal(run.knowledgeAssumption,rate);assert.equal(run.knownCount,rate*2);}
+  for(const rate of [-.1,1.1,NaN])assert.throws(()=>normalizeProfile({knowledgeRate:rate}));
+});
+test('认识比例只改变推进校正，原分不变，缓存隔离；0%校正留空',()=>{
+  const level=progressionLevel(),half=spatialLevelMetrics(level,{knowledgeRate:.5}),all=spatialLevelMetrics(level,{knowledgeRate:1}),none=spatialLevelMetrics(level,{knowledgeRate:0});
+  assert.equal(half.meanKnownRecognition,all.meanKnownRecognition);assert.equal(none.meanKnownRecognition,all.meanKnownRecognition);assert.equal(none.meanCorrectedRecognition,null);assert.ok(all.meanCorrectedRecognition>half.meanCorrectedRecognition);
+  assert.equal(spatialLevelMetrics(level,{knowledgeRate:.5}),half);
+});
+test('导出增加原识别与校正分，删去指定杂项，保留参数和有效均值且不修改原报告',()=>{
+  const level=matchedLevel(),runs=[new SimulationRun(new GameSession(level,dictionary),{frequency,seed:71,profile:{knowledgeRate:.5}}).run()],row=analyzePlayedLevel(level,runs,frequency,dictionary),words=wordAnalysis(level,runs,frequency,dictionary);
+  const report={job:{mode:'ordinary',profile:{knowledgeRate:.5}},levels:[{...row,error:'private debug'}],runs,words},before=structuredClone(report),sheets=analysisSheets(report),headers=sheets[1].rows[0];
+  for(const key of ['原识别估计分','校正后识别估计分']){const index=headers.indexOf(key);assert.ok(index>=0);assert.ok(sheets[1].percentColumns.includes(index));assert.ok(Number.isFinite(sheets[1].rows[1][index]));assert.ok(sheets[3].rows[0].includes(key));}
+  assert.equal(sheets[0].rows.find(row=>row[0]==='目标认识率设定')[1],.5);assert.equal(row.recognitionKnowledgeRate,.5);
+  const labels=[...sheets[0].rows.map(row=>row[0]),...sheets.slice(1).flatMap(sheet=>sheet.rows[0])];assert.ok(labels.every(label=>!/(?:\d+字额外词数|有效(?:模拟)?局数|通关局数|平均完成目标数|错误原因|错误局数|错误或异常局数)/.test(label)));
+  const json=JSON.parse(exportAnalysisJson(report));for(const key of ['samples','wins','meanCompleted','errors','error','extraWordLengths'])assert.equal(Object.hasOwn(json.levels[0],key),false);assert.equal(json.levels[0].meanCorrectedRecognition,row.meanCorrectedRecognition);assert.equal(json.job.profile.knowledgeRate,.5);assert.deepEqual(report,before);
 });
 test('同词同长度工程锚点满足顺向、外圈、少拐更容易，仍允许已知词漏识别',()=>{
   const anchors=SPATIAL_CALIBRATION.anchors,p=label=>anchors.find(a=>a.label===label).fittedProbability;
@@ -73,13 +93,22 @@ test('真实合法的匹配棋盘中，倒向排列使已知词漏看与试探�
   assert.ok(b.meanMissedRecognitions>a.meanMissedRecognitions);assert.ok(b.meanTrialSwipes>a.meanTrialSwipes);
   assert.equal(spatialLevelMetrics(easy).readingForwardTargets,2);assert.equal(spatialLevelMetrics(hard).reverseMajorityTargets,2);
 });
-test('普通模型不调用答案提示，试探和全部提交按真实规则验证',()=>{
+test('普通模型不使用免费提示，旧提示配置不影响试玩，所有提交按真实规则验证',()=>{
   const level=matchedLevel(true),session=new GameSession(level,dictionary),run=new SimulationRun(session,{frequency,lexicon:dictionary.words,seed:2,profile:{hintAfter:1,maxHints:4}});
   session.hint=()=>{throw new Error('ordinary policy read an answer path');};const result=run.run(),replay=new GameSession(level,dictionary);
   for(const event of result.events)if(event.type==='submit')assert.deepEqual(replay.submit(event.value),event.result);
   assert.equal(result.attempts,result.events.filter(e=>e.type==='submit').length);assert.equal(result.trialSwipes,result.events.filter(e=>e.type==='submit'&&e.trial).length);
-  assert.ok(result.trialSwipes<=result.attempts);assert.ok(result.mistakes<=result.failedSwipes);assert.ok(result.events.some(e=>e.type==='hint'));
-  assert.ok(result.events.filter(e=>e.type==='hint').every(e=>e.revealed.length===1));
+  assert.ok(result.trialSwipes<=result.attempts);assert.ok(result.mistakes<=result.failedSwipes);
+  assert.equal(result.hints,0);assert.ok(result.events.every(e=>e.type!=='hint'&&!e.hinted));
+  assert.ok(result.wordStats.every(word=>word.hintLetters===0&&word.completedBy!=='hint-assisted'));
+  assert.equal('maxHints' in result.profile,false);assert.equal('hintAfter' in result.profile,false);
+  const baseline=new SimulationRun(new GameSession(level,dictionary),{frequency,lexicon:dictionary.words,seed:2}).run();
+  assert.deepEqual(result,baseline);
+});
+test('已认识的非目标且非额外词被拒收时，同时计错误与试探，每次提交只计一次',()=>{
+  const session=new GameSession(matchedLevel(),dictionary),run=new SimulationRun(session,{frequency,seed:7,profile:{knowledgeRate:1,mistakeRate:0,maxSteps:1}});
+  run.observeCandidates=()=>({recognized:[{word:'PLAN',value:[0,1,2,3],known:true,probability:1}],missed:[],scanNodes:0});
+  const result=run.run();assert.equal(result.attempts,1);assert.equal(result.mistakes,1);assert.equal(result.trialSwipes,1);assert.equal(result.events[0].result.reason,'not-target');assert.equal(result.events[0].trial,true);
 });
 test('单字母提示和整词烟花不扣格子、不完成目标，之后正常连词',()=>{
   const session=new GameSession(matchedLevel(),dictionary),state=createLetterHints(session.initial.targets,{random:seededRandom(1)}),before=session.snapshot();
@@ -105,5 +134,5 @@ test('逐关、逐词与Excel量化同一批真实结果，非目标与Zen空间
 test('可见模拟界面不提供时间上限，主界面采用共享的纯揭字状态',async()=>{
   const ui=await readFile(new URL('../dist/workbench-ui.js',import.meta.url),'utf8'),app=await readFile(new URL('../dist/app.js',import.meta.url),'utf8');
   assert.ok(!ui.includes('sim-time-limit'));assert.ok(app.includes('letterHintsForSession(game)'));assert.ok(app.includes('格子次数不变'));
-  assert.ok(ui.includes('校正后识别估计分'));assert.ok(ui.includes('原识别估计分'));assert.ok(ui.includes('半数外露回合'));assert.match(ui,/spatial-perception\.js\?v=30/);
+  assert.ok(ui.includes('校正后识别估计分'));assert.ok(ui.includes('原识别估计分'));assert.ok(ui.includes('半数外露回合'));assert.match(ui,/spatial-perception\.js\?v=\d+/);
 });

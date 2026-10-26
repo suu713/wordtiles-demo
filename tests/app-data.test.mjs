@@ -12,7 +12,7 @@ function storage(){const data=new Map();let writes=0;return {get length(){return
 test('300词预览由系统随机抽取，去重、排除已收词并覆盖有词条的主题',()=>{
   const existing=[{word:'DOG',language:'english'},{word:'BREAD',language:'english'}],words=previewCollectionWords(existing,300);
   assert.equal(words.length,300);assert.equal(new Set(words).size,300);assert.ok(!words.includes('DOG')&&!words.includes('BREAD'));
-  const counts=new Map();for(const word of words){assert.equal(bankContainsWord(word,'web-supplied'),true);const theme=collectionTheme(word,bankWordEntry(word)?.definition);counts.set(theme,(counts.get(theme)||0)+1);}
+  const counts=new Map();for(const word of words){assert.equal(bankContainsWord(word,'wt-workbook'),true);const theme=collectionTheme(word,bankWordEntry(word,'wt-workbook'));counts.set(theme,(counts.get(theme)||0)+1);}
   assert.equal(counts.size,8);assert.ok([...counts.values()].every(count=>count>0));
   assert.notDeepEqual(previewCollectionWords(existing,300),words);assert.throws(()=>previewCollectionWords([],0));
 });

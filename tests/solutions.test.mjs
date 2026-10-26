@@ -4,12 +4,10 @@ import { readFile } from 'node:fs/promises';
 import { calculateLevelSolutions } from '../dist/core/level-solutions.js';
 import { convertSourceLevel, SourceGameSession } from '../dist/core/source-levels.js';
 import { createAlgorithmSession } from './support/historical-adapter.mjs';
-import { createLexiconAdapter } from './support/historical-lexicon-adapter.mjs';
-import { generateLevel } from '../dist/core/wordtiles-algorithm.js';
 
 const json = async path => JSON.parse(await readFile(new URL(path, import.meta.url), 'utf8'));
-const bank = await json('../dist/source-levels/english.json');
-const dictionary = await json('../dist/dictionary-v1.json');
+const bank = await json('../tests/fixtures/retired-runtime-data/source-levels/english.json');
+const dictionary = await json('../tests/fixtures/retired-runtime-data/dictionary-v1.json');
 const fixture = await json('../examples/seed_20261010.json');
 const wordKey = words => [...words].sort().join('|');
 
@@ -90,19 +88,6 @@ test('原seed验收保留词库和词长数量，完整棋盘只有1种可清空
   const game=createAlgorithmSession(fixture,dictionary), result=calculateLevelSolutions(game.initial,game.dictionary);
   assert.equal(result.count,1); verifyWitnesses(game.initial,result);
   assert.equal(result.dictionaryVersion,'demo-test-20261010-v1');
-});
-
-test('新分级词库seed0有8种词组，与独立枚举一致；使用会话绑定的完整词库', async () => {
-  const adapter=await createLexiconAdapter(await json('../dist/lexicon/dictionary.index.json'),await json('../dist/lexicon/review-overlay.json'));
-  const graded=adapter.createRuntimeDictionary({wordLengths:[3,3,3,4,5],tiers:[1,2,3],allowUnreviewed:true});
-  const generated=generateLevel({},graded,0); assert.equal(generated.ok,true);
-  const game=createAlgorithmSession(generated.level,graded), result=calculateLevelSolutions(game.initial,game.dictionary);
-  assert.equal(result.count,8); verifyWitnesses(game.initial,result);
-  // Restrict the oracle's expensive combination loop using its own path matcher.
-  const letters=new Set(game.initial.board.letters);
-  const possible=graded.words.filter(word=>[...word].every(letter=>letters.has(letter)));
-  assert.deepEqual(result.solutions.map(solution=>wordKey(solution.words)).sort(),oracle(game.initial,possible));
-  assert.equal(result.dictionaryVersion,graded.version);
 });
 
 test('搜索和路径预算耗尽明确未完成，不返回部分计数作为精确答案', () => {

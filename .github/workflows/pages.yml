@@ -26,18 +26,10 @@ jobs:
         run: npm run build:algorithm
       - name: Run rules and integration tests
         run: npm test
-      - name: Verify original art and font checksums
-        run: node scripts/check-paris-art.mjs --assets-only
-      - name: Run lexicon classifier boundary tests
-        run: python3 -m unittest discover -s wordtiles_lexicon_builder -p test_classifier.py -v
-      - name: Verify supplied V2 whitelist and master application
-        run: |
-          npm run test:whitelist
-          python3 data/common-v2/tests/test_apply.py
-      - name: Validate 100 seeds with the supplied TSV tiers and target policy
-        run: npm run test:lexicon
-      - name: Validate 1000 generated levels and all completion orders
-        run: npm run test:batch
+      - name: Verify current Alps art and font checksums
+        run: node scripts/check-alps-art.mjs --assets-only
+      - name: Smoke-test every original English level with the current player model
+        run: node scripts/check-wt-original-batch.mjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
       - name: Upload static site

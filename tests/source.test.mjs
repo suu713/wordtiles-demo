@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { clone, findWordPaths, signature } from '../dist/core/rules.js';
 import { convertSourceLevel, validateSourceLevel, SourceGameSession } from '../dist/core/source-levels.js';
 
-const root = new URL('../dist/source-levels/', import.meta.url);
+const root = new URL('../tests/fixtures/retired-runtime-data/source-levels/', import.meta.url);
 const catalogue = JSON.parse(await readFile(new URL('catalogue.json',root),'utf8'));
 const banks = Object.fromEntries(await Promise.all(catalogue.languages.map(async info => [info.language,JSON.parse(await readFile(new URL(info.file,root),'utf8'))])));
 const english = banks.english;

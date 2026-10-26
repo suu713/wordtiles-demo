@@ -1,4 +1,4 @@
-import { completedCount, targetCount, DEFAULT_PROFILE, percentile, normalizeProfile } from './playtest.js?v=29';
+import { completedCount, targetCount, DEFAULT_PROFILE, percentile, normalizeProfile } from './playtest.js?v=46';
 
 export const RECORD_KEY='wordtiles.playtests.v1';
 export const PROFILE_KEY='wordtiles.playtest.profile.v1';
@@ -48,6 +48,6 @@ export function calibrateEnglish(records,base=DEFAULT_PROFILE) {
     mistakeRate:Math.min(.7,errorRate),thinkSeconds:Math.max(.5,Math.min(60,perAttempt)),
     calibration:{sessions:eligible.length,participants:participants.size,createdAt:new Date().toISOString(),
       fitted:['thinkSeconds','mistakeRate'],
-      unfitted:['spatialRecognition','scanBudget','hintAfter','fatigue'],basis:'Equal weight per self-reported ordinary English player. Target vocabulary is fixed at the user-specified 80%; spatial parameters retain engineering calibration, without population validation.'}});
+      unfitted:['spatialRecognition','scanBudget','fatigue'],basis:`Equal weight per self-reported ordinary English player. Target vocabulary uses the user-specified ${(base.knowledgeRate??.8)*100}%; spatial parameters retain engineering calibration, without population validation.`}});
   return {ok:true,profile,message:`已用 ${participants.size} 人、${eligible.length} 局校准思考时间与试错率。词汇和观察参数仍为先验，需留出真人样本验证。`};
 }

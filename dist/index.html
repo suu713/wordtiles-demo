@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#edf1f2">
-  <meta name="description" content="WordTiles：原包关卡与自动生成，竖屏连词试玩，无需登录。">
+  <meta name="description" content="WordTiles：使用 WT 词库生成关卡，竖屏连词试玩与关卡分析。">
   <title>WordTiles · 单词消消</title>
   <link rel="icon" href="./art/alps/assets/svg/coin.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css?v=15">
   <link rel="stylesheet" href="./travel-ui.css?v=16">
-  <link rel="stylesheet" href="./workbench.css?v=32">
+  <link rel="stylesheet" href="./workbench.css?v=47&sim=range-1">
   <link rel="stylesheet" href="./batch-generation.css?v=21">
   <link rel="stylesheet" href="./alps.css?v=30">
   <link rel="stylesheet" href="./fireworks.css?v=34">
@@ -37,21 +37,21 @@
       <aside id="editor-panel" class="editor-panel" aria-label="关卡编辑器">
         <div class="editor-heading">
           <div class="editor-title"><div class="editor-kicker"><span class="eyebrow">WORDTILES</span><span id="draft-tag" class="draft-tag" data-help-from="config-status" tabindex="0">已应用</span><button id="editor-status" class="editor-status" type="button" data-help-from="notice" aria-label="正在加载">●</button></div><h1>关卡编辑器</h1></div>
-          <label class="algorithm-field" for="algorithm" data-help="算法1读取原安装包关卡；算法2使用 V1 回溯生成器。切换时保留各自的试玩进度。">关卡算法<select id="algorithm"><option value="1">算法1 · 原包关卡</option><option value="2">算法2 · 回溯生成 V1</option></select></label>
+          <label class="algorithm-field" for="algorithm" data-help="可选择工作簿生成关卡或 WT 1.4.0 英文原包。">关卡算法<select id="algorithm"><option value="2" selected>WT词库自动生成</option><option value="1">WT 1.4.0 英文原包</option></select></label>
           <button id="editor-close" class="icon-button" type="button" aria-label="收起关卡编辑器">×</button>
         </div>
-        <section id="source-controls" class="source-controls" aria-label="算法1关卡库">
+        <section id="source-controls" class="source-controls" aria-label="原包关卡库" hidden>
           <div class="field-grid">
-            <label for="source-language" data-help="原包五种语言关卡完整开放，保持目标和额外词的原始列表。">语言<select id="source-language"><option value="english">英语</option></select></label>
-            <label for="source-order" data-help="原始主线按安装包的关卡顺序排列；全部关卡包含包内其余关卡。">关卡列表<select id="source-order"><option value="main">原始主线</option><option value="all">全部关卡</option></select></label>
+            <label for="source-language" data-help="英文原包 3,459 个独立关卡；保留原始目标词、额外词和帘子。">语言<select id="source-language"><option value="english">英语</option></select></label>
+            <label for="source-order" data-help="原始主线按安装包的关卡顺序排列；全部关卡包含包内其余关卡。">关卡列表<select id="source-order"><option value="level_list_0">主线顺序表 0</option></select></label>
           </div>
           <label class="source-position-label" for="source-number">关卡 <span id="source-range">—</span></label>
           <div class="source-navigation"><button id="source-prev" type="button" aria-label="上一关" data-help="载入上一关。">←</button><select id="source-number" aria-label="原包关卡序号" data-help="选择关卡序号，点击载入开始试玩。"><option value="1">第 1 关</option></select><button id="source-next" type="button" aria-label="下一关" data-help="载入下一关。">→</button></div>
           <div class="source-actions"><button id="source-load" class="primary-button" type="button">载入关卡</button><button id="source-random" type="button" data-help="从当前语言和列表中随机载入一关。">随机</button></div>
-          <p id="source-library-status" hidden>正在读取关卡目录…</p>
+          <p id="source-library-status" class="metric-note">正在读取关卡目录…</p><p class="metric-note">4 张主线表分别保留；每日 366 关，全部独立关卡 3,459 关。表 0 是默认试玩顺序，不代表所有线上账号。玩法按 1.4.0 静态分析还原，未连接在线配置。</p>
         </section>
         <div id="generation-section" class="generation-section" hidden>
-          <label class="dictionary-field" for="dictionary-source">生成词库来源<select id="dictionary-source"><option value="web">审核词库</option><option value="wordtiles">WT 原包英语目标词库</option></select></label>
+          <label class="dictionary-field" for="dictionary-source">关卡词库<select id="dictionary-source"><option value="wt-workbook" selected>WT词库.xlsx</option></select></label>
           <label id="zen-dictionary-field" class="dictionary-field" for="zen-dictionary-bank" hidden>Zen 词库未随代码版发布<select id="zen-dictionary-bank"><option value="all">不可用</option></select></label>
           <div class="seed-field" hidden><label for="seed" data-help="相同种子、算法、搜索预算和词库会生成相同关卡。种子范围为 0～4294967295。">随机种子</label><div class="seed-row"><input id="seed" value="" inputmode="numeric" maxlength="10" autocomplete="off" spellcheck="false" aria-label="关卡随机种子"><button id="generate-seed" type="button" data-help="使用输入的种子生成关卡。">生成</button></div></div>
           <button id="generate" class="primary-button" type="button" data-help="使用随机种子生成新关卡。只有通过全部校验后才会载入；生成失败保留当前关卡。"><span id="generate-label">生成并试玩</span><span aria-hidden="true">↗</span></button>
@@ -121,8 +121,8 @@
       </div>
       <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
       <div data-settings-pane="lexicon" hidden>
-        <label class="stack-field" for="dictionary-tier" hidden>词库范围<select id="dictionary-tier" disabled><option value="all" selected>完整原包词库，不使用旧网页档位</option></select></label>
-        <p id="lexicon-status" class="lexicon-status" role="status" data-help="使用仓库现有审核词库；本次发布不新增词库文件。" tabindex="0">审核词库</p>
+        <label class="stack-field" for="dictionary-tier" hidden>范围库<select id="dictionary-tier" disabled><option value="all" selected>工作簿必答词 1～4级</option><option value="1">1级</option><option value="2">2级</option><option value="3">3级</option><option value="4">4级</option></select></label>
+        <p id="lexicon-status" class="lexicon-status" role="status" data-help="只使用 WT词库.xlsx。必答词用于生成关卡，额外词仅用于额外词识别。" tabindex="0">WT词库.xlsx</p>
       </div>
       <div id="debug" data-settings-pane="debug" hidden><span class="validation-status" id="validation-badge" data-help-from="version-note" tabindex="0">正在检查</span><p class="debug-explanation" hidden></p><div class="debug-scroll"><table><thead><tr><th>目标</th><th>路径数</th><th>集合数</th><th>消耗格子</th><th>参考路径</th></tr></thead><tbody id="debug-targets"></tbody></table></div><div id="debug-counts" class="debug-counts"></div><div id="debug-checks" class="debug-checks"></div>
         <fieldset id="budget-fields" class="budget-fields" hidden data-help="这三个参数控制搜索预算，不代表难度。预算耗尽会明确失败，并保留当前关卡。"><legend>搜索预算</legend><label>每次节点<input id="budget-attempt" type="number" min="1" max="1000000" value="10000"></label><label>最多尝试<input id="budget-tries" type="number" min="1" max="1000" value="30"></label><label>总节点<input id="budget-total" type="number" min="1" max="10000000" value="300000"></label></fieldset>
@@ -166,6 +166,6 @@
     <div class="weekly-footer"><button id="weekly-continue" type="button">继续游戏 <span aria-hidden="true">↗</span></button></div>
   </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=34"></script>
+  <script type="module" src="./app.js?v=48&sim=range-1"></script>
 </body>
 </html>

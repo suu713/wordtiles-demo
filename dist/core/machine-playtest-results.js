@@ -1,3 +1,5 @@
+import {summarizeRuns} from './playtest.js?v=40';
+
 function stableJson(value) {
   if (Array.isArray(value)) return value.map(stableJson);
   if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort().map(key => [key, stableJson(value[key])]));
@@ -6,7 +8,7 @@ function stableJson(value) {
 
 // Results follow the immutable level and its dictionary, never a live human session.
 export class MachinePlaytestResults {
-  constructor() { this.results = new Map(); this.keys = new WeakMap(); }
+  constructor() { this.results = new Map(); this.displays = new Map(); this.keys = new WeakMap(); }
   key(session) {
     const level = session?.exportInitial || session?.initial;
     if (!level) return null;
@@ -19,6 +21,7 @@ export class MachinePlaytestResults {
     return this.keys.get(session);
   }
   get(session) { return this.results.get(this.key(session)) ?? null; }
+  getDisplay(session) { return this.displays.get(this.key(session)) ?? null; }
   set(session, summary) {
     if (summary?.mode !== 'ordinary' || !['won', 'gave-up'].includes(summary.outcome) ||
         !Number.isSafeInteger(summary.mistakes) || summary.mistakes < 0) return false;
@@ -28,5 +31,14 @@ export class MachinePlaytestResults {
     this.results.set(key, result);
     return true;
   }
-  clear() { this.results.clear(); this.keys = new WeakMap(); }
+  setBatch(session,{requested,runs,status}) {
+    const key=this.key(session);
+    if(key===null||!Number.isSafeInteger(requested)||requested<1||requested>1000||
+       !Array.isArray(runs)||runs.length>requested||runs.some(run=>run.mode!=='ordinary')||
+       !['running','complete','cancelled','failed'].includes(status)||
+       (status==='complete'&&runs.length!==requested))return false;
+    this.displays.set(key,{kind:'batch',requested,status,summary:summarizeRuns(runs)});
+    return true;
+  }
+  clear() { this.results.clear(); this.displays.clear(); this.keys = new WeakMap(); }
 }

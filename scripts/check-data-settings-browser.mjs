@@ -19,7 +19,7 @@ try{
   await page.locator('#lobby-settings').click();assert.equal(await page.locator('#clear-all-data').isVisible(),true);await page.locator('#preview-collection').click();await page.locator('#dictionary-dialog').waitFor({state:'visible'});
   assert.equal(await page.locator('#dictionary-count').innerText(),'300');assert.equal(await page.locator('.theme-card').count(),8);assert.equal(await page.locator('.collection-banner,.collection-eyebrow,.theme-preview').count(),0);
   const collection=await page.evaluate(()=>JSON.parse(localStorage.getItem('wordtiles.collection.v1')));
-  assert.equal(collection.entries.length,300);assert.equal(new Set(collection.entries.map(e=>e.word)).size,300);assert.ok(collection.entries.every(e=>bankContainsWord(e.word,'web-supplied')));
+  assert.equal(collection.entries.length,300);assert.equal(new Set(collection.entries.map(e=>e.word)).size,300);assert.ok(collection.entries.every(e=>bankContainsWord(e.word,'wt-workbook')));
   await page.screenshot({path:output+'preview-collection.png'});await page.locator('#dictionary-close').click();await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),'300');assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'—');assert.equal(await page.locator('.weekly-hero,.collection-eyebrow').count(),0);await page.screenshot({path:output+'preview-weekly.png'});await page.locator('#weekly-close').click();
   pass('设置内随机收录300个当前词库新词，八类覆盖，回顾更新且没有虚构试玩数据');
 
@@ -51,7 +51,7 @@ try{
   await external.addInitScript(pinInitialGameSeed);
   await external.addInitScript(seedWords=>{
     if(sessionStorage.getItem('qa-eight-seeded'))return;sessionStorage.setItem('qa-eight-seeded','1');
-    localStorage.setItem('wordtiles.collection.v1',JSON.stringify({version:2,policyVersion:'old-local-profile',entries:seedWords.map(word=>({word,language:'english',origin:'web-supplied',firstFoundAt:'2026-10-14T04:00:00.000Z'}))}));
+    localStorage.setItem('wordtiles.collection.v1',JSON.stringify({version:2,policyVersion:'old-local-profile',entries:seedWords.map(word=>({word,language:'english',origin:'wt-workbook',firstFoundAt:'2026-10-14T04:00:00.000Z'}))}));
   },createBankDictionary([3,4,5,6,7,8,9,10]).words.slice(0,8));
   const externalPage=await external.newPage();watch(externalPage);await externalPage.goto(url);await ready(externalPage);assert.equal(await externalPage.locator('#dictionary-count').innerText(),'8');
   const before=await externalPage.evaluate(()=>JSON.parse(localStorage.getItem('wordtiles.collection.v1')).entries);
