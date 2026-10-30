@@ -32,7 +32,7 @@ try{
   assert.equal(requests.some(url=>url.includes('/source-levels/')),false);
   pass('每日谜题通过 WT 工作簿生成，不请求任何原包关卡文件');
   await page.locator('#daily-back-calendar').click();await page.locator('#daily-puzzle-dialog [data-event-close]').click();
-  await page.locator('#start-game').click();
+  await page.locator('#lobby-editor').click();
   assert.deepEqual(await page.locator('#play-source option').evaluateAll(options=>options.map(option=>option.value)),['web','wordtiles']);
   assert.deepEqual(await page.locator('#batch-game option').evaluateAll(options=>options.map(option=>option.value)),['web','wordtiles','uploaded']);
   assert.equal(await page.locator('#batch-bank').count(),0);

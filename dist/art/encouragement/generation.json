@@ -1,0 +1,27 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-30",
+  "transparent_background": true,
+  "assets": [
+    {
+      "key": "banner-p1",
+      "source": "codex-clipboard-23f1bc1e-573b-4340-b447-be2f32c96d97.jpg",
+      "output": "great-streak.png",
+      "size": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: background-extraction. Edit target is the supplied green GREAT ribbon. Remove only the cream/white background and cast shadow on that background. Preserve the entire emerald/teal ribbon, folded tails, gold trim, small diamond ornaments and exact word GREAT unchanged. Do not recolor, redesign, relabel or add details. Return a clean transparent PNG cutout with genuine alpha, crisp natural edges and a little transparent padding around the full ribbon. No opaque background, no extra text. This asset will pop up above a game board."
+    },
+    {
+      "key": "banner-p2",
+      "source": "codex-clipboard-db3972af-f70f-4bae-ba8f-8185b1566350.jpg",
+      "output": "great-complete.png",
+      "size": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: background-extraction. Edit target is the supplied burgundy/red GREAT ribbon. Remove only the cream/white background and cast shadow on that background. Preserve the entire burgundy ribbon, folded tails, gold trim, gold diamond/laurel ornaments and exact word GREAT unchanged. Do not recolor, redesign, relabel or add details. Return a clean transparent PNG cutout with genuine alpha, crisp natural edges and a little transparent padding around the full ribbon. No opaque background, no extra text. This asset will appear before completed target tiles shatter."
+    }
+  ]
+}

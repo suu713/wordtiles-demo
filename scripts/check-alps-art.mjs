@@ -26,7 +26,23 @@ function watch(page){page.on('pageerror',e=>errors.push(e.message));page.on('res
 const background=(page,selector,pseudo=null)=>page.locator(selector).first().evaluate((e,p)=>getComputedStyle(e,p).backgroundImage,pseudo);
 const counts=page=>page.locator('.tile').evaluateAll(es=>es.map(e=>Number(e.dataset.remaining)));
 const capture=async(page,selector,name)=>{await page.mouse.move(0,0);await page.locator(selector).screenshot({path:fileURLToPath(new URL(name+'.png',qa))});};
-async function hintPath(page){await page.locator('#fireworks').click();await page.locator('.fireworks-board-arrow').first().waitFor({state:'attached'});const arrows=await page.locator('.fireworks-board-arrow').evaluateAll(es=>es.map(e=>({from:Number(e.dataset.from),to:Number(e.dataset.to)})));assert.ok(arrows.length);return [arrows[0].from,...arrows.map(e=>e.to)];}
+async function nextTargetPath(page){
+  const path=await page.evaluate(()=>{
+    const board=document.querySelector('#board'),cols=Number(board.style.getPropertyValue('--cols'));
+    const cells=[...board.querySelectorAll('.tile')].sort((a,b)=>Number(a.dataset.cell)-Number(b.dataset.cell));
+    const target=document.querySelector('.target:not(.completed)');if(!target)return null;
+    const word=target.dataset.word;
+    function search(cell,path){
+      const tile=cells[cell];if(!tile||path.includes(cell)||Number(tile.dataset.remaining)<=0||tile.classList.contains('curtain-locked')||tile.querySelector('.tile-letter').textContent!==word[path.length])return null;
+      const next=[...path,cell];if(next.length===word.length)return next;
+      for(const n of [cell-cols,cell+cols,...(cell%cols?[cell-1]:[]),...(cell%cols<cols-1?[cell+1]:[])]){const found=search(n,next);if(found)return found;}
+      return null;
+    }
+    for(let cell=0;cell<cells.length;cell++){const found=search(cell,[]);if(found)return found;}
+    return null;
+  });
+  assert.ok(path,'An unfinished target has a playable path');return path;
+}
 async function points(page,path){return Promise.all(path.map(cell=>page.locator(`[data-cell="${cell}"]`).boundingBox().then(r=>({x:r.x+r.width/2,y:r.y+r.height/2}))));}
 async function drag(page,path){const ps=await points(page,path);await page.mouse.move(ps[0].x,ps[0].y);await page.mouse.down();for(const p of ps.slice(1))await page.mouse.move(p.x,p.y,{steps:3});await page.mouse.up();}
 async function fits(page){
@@ -43,22 +59,22 @@ try{
   await page.locator('#activity-button').click();assert.equal(await page.locator('#activity-dialog').isVisible(),true);await capture(page,'#activity-dialog','calendar');await page.locator('#activity-close').click();
   await page.locator('#dictionary-button').click();assert.equal(await page.locator('#dictionary-dialog').isVisible(),true);await capture(page,'#dictionary-dialog','dictionary');await page.locator('#dictionary-close').click();
   await page.locator('#lobby-settings').click();assert.equal(await page.locator('#settings-popover').isVisible(),true);await page.locator('#settings-close').click();pass('词典、日历和画面设置保持原功能，弹窗使用冷色玻璃配色');
-  await page.locator('#start-game').click();await page.locator('#manual-play-start').click();await fits(page);
-  assert.match(await background(page,'.play-panel'),/bg-alps-level\.png/);assert.match(await background(page,'.tile'),/glass-tile\.png/);
-  const answerStyle=await page.locator('.target-letter').first().evaluate(e=>({image:getComputedStyle(e).backgroundImage,color:getComputedStyle(e).backgroundColor}));assert.equal(answerStyle.image,'none');assert.match(answerStyle.color,/rgba\(237, 246, 249, 0\.91\)/);
-  assert.notEqual(await page.locator('.tile').first().evaluate(e=>getComputedStyle(e).backdropFilter),'none');
+  await page.locator('#start-game').click();assert.equal(await page.locator('.workbench-header').isVisible(),false);await fits(page);
+  assert.match(await background(page,'.play-panel'),/\/art\/yanqi\/bg@2x\.png/);assert.match(await background(page,'.tile'),/dancikuai_2@2x\.png/);
+  const answerStyle=await page.locator('.target-letter').first().evaluate(e=>({image:getComputedStyle(e).backgroundImage,color:getComputedStyle(e).backgroundColor}));assert.match(answerStyle.image,/dancikuai_2@2x\.png/);assert.equal(await page.locator('#targets').evaluate(e=>getComputedStyle(e).backgroundColor),'rgba(0, 0, 0, 0)');assert.equal(await page.locator('#fireworks').count(),0);
+  assert.equal(await page.locator('.tile').first().evaluate(e=>getComputedStyle(e).backdropFilter),'none');
   await capture(page,'#game-viewport','level-empty');
-  const initial=await counts(page);await drag(page,[0]);assert.ok(await page.locator('.tile.invalid-word').count());assert.deepEqual(await counts(page),initial);await capture(page,'#game-viewport','level-error');
-  const path=await hintPath(page),ps=await points(page,path);await page.mouse.move(ps[0].x,ps[0].y);await page.mouse.down();await page.mouse.move(ps[1].x,ps[1].y,{steps:3});
-  assert.match(await background(page,'.tile.selected','::before'),/tile-selection\.png/);await page.locator('#game-viewport').screenshot({path:fileURLToPath(new URL('level-selected.png',qa))});
+  const initial=await counts(page);await drag(page,[0]);assert.equal(await page.locator('.tile.invalid-word').count(),0);assert.equal(await page.locator('#current-word.rejected-word').count(),1);assert.deepEqual(await counts(page),initial);await capture(page,'#game-viewport','level-error');
+  const path=await nextTargetPath(page),ps=await points(page,path);await page.mouse.move(ps[0].x,ps[0].y);await page.mouse.down();await page.mouse.move(ps[1].x,ps[1].y,{steps:3});
+  assert.match(await background(page,'.tile.selected'),/dancikuai_1@2x\.png/);await page.locator('#game-viewport').screenshot({path:fileURLToPath(new URL('level-selected.png',qa))});
   for(const p of ps.slice(2))await page.mouse.move(p.x,p.y,{steps:3});await page.mouse.up();
-  assert.equal(await page.locator('.target.completed').count(),1);const completedStyle=await page.locator('.target.completed .target-letter').first().evaluate(e=>({image:getComputedStyle(e).backgroundImage,color:getComputedStyle(e).backgroundColor}));assert.equal(completedStyle.image,'none');assert.match(completedStyle.color,/rgba\(226, 236, 229/);assert.equal(initial.reduce((a,b)=>a+b,0)-(await counts(page)).reduce((a,b)=>a+b,0),path.length);
-  await capture(page,'#game-viewport','level-desktop');await capture(page,'body','editor-desktop');pass('真实连线、玻璃选中态、错误态、完成答案和剩余次数均正确');
+  assert.equal(await page.locator('.target.completed').count(),1);const completedStyle=await page.locator('.target.completed .target-letter').first().evaluate(e=>({image:getComputedStyle(e).backgroundImage,color:getComputedStyle(e).backgroundColor}));assert.match(completedStyle.image,/dancikuai_1@2x\.png/);assert.equal(completedStyle.color,'rgba(0, 0, 0, 0)');assert.equal(initial.reduce((a,b)=>a+b,0)-(await counts(page)).reduce((a,b)=>a+b,0),path.length);
+  await capture(page,'#game-viewport','level-desktop');await capture(page,'body','editor-desktop');pass('真实连线、奶油色目标瓷砖、紫色完成态、红色单词气泡和剩余次数均正确');
   await page.locator('#bonus-button').click();assert.equal(await page.locator('#bonus-dialog').isVisible(),true);await capture(page,'#bonus-dialog','bonus');await page.locator('#bonus-close').click();
   const targetTotal=await page.locator('.target').count();
-  for(let i=1;i<targetTotal;i++)await drag(page,await hintPath(page));
+  for(let i=1;i<targetTotal;i++)await drag(page,await nextTargetPath(page));
   await page.locator('#level-complete-dialog').waitFor({state:'visible'});
-  assert.ok((await counts(page)).every(n=>n===0));await capture(page,'#level-complete-dialog','completion');await page.locator('#complete-next').click();await page.waitForFunction(()=>document.querySelector('#manual-play-start')&&!document.querySelector('#manual-play-start').disabled);pass('通关后棋盘清空并进入真实下一关');
+  assert.ok((await counts(page)).every(n=>n===0));await capture(page,'#level-complete-dialog','completion');await page.locator('#complete-next').click();await page.waitForFunction(()=>document.querySelector('#hint')&&!document.querySelector('#hint').disabled);pass('通关后棋盘清空并进入真实下一关');
   await page.locator('#back-lobby').click();await page.locator('#dictionary-button').click();assert.ok(await page.locator('.dictionary-entry').count());await capture(page,'#dictionary-dialog','dictionary-filled');await page.locator('#dictionary-close').click();
   await page.locator('#start-game').click();
   for(const [width,height]of [[390,844],[360,640],[844,390]]){await page.setViewportSize({width,height});await page.waitForTimeout(120);await fits(page);await capture(page,'#game-viewport',`level-${width}x${height}`);}
@@ -67,6 +83,6 @@ try{
   assert.deepEqual(errors,[]);assert.deepEqual(missing,[]);assert.deepEqual(legacyRequests,[]);pass('零页面错误、零缺图、零旧巴黎资源及固定坐标贴片请求');
   const old=JSON.parse(await readFile(new URL('../dist/art/paris/manifest.json',import.meta.url),'utf8'));
   let oldBytes=0,newBytes=0;for(const a of old.assets)oldBytes+=(await stat(new URL('../dist/art/paris/'+a.path,import.meta.url))).size;for(const a of RUNTIME_ART)newBytes+=(await stat(new URL(a.path,pack))).size;
-  await writeFile(new URL('results.json',qa),JSON.stringify({url,verifiedPackageFiles:verified,runtimeAssets:RUNTIME_ART.length,cases,errors,missing,legacyRequests,oldImageBytes:oldBytes,newImageBytes:newBytes,glassMode:'live backdrop filter + supplied RGBA skins'},null,2)+'\n');
+  await writeFile(new URL('results.json',qa),JSON.stringify({url,verifiedPackageFiles:verified,runtimeAssets:RUNTIME_ART.length,cases,errors,missing,legacyRequests,oldImageBytes:oldBytes,newImageBytes:newBytes,glassMode:'Alps lobby + original Yanqi level slices'},null,2)+'\n');
   console.log(`TOTAL ${cases.length}/${cases.length}`);
 }catch(error){console.error(error);throw error;}finally{await browser.close();}

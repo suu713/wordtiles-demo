@@ -25,7 +25,7 @@ try{
 
   await page.reload();await ready(page);assert.equal(await page.locator('#dictionary-count').innerText(),'300');
   const other=await context.newPage();watch(other);await other.goto(url);await ready(other);assert.equal(await other.locator('#dictionary-count').innerText(),'300');
-  await other.locator('#start-game').click();await other.locator('[data-lab-tab="simulate"]').click();await other.locator('.human-settings summary').click();await other.locator('#human-start').click();await other.locator('#hint').click();await other.locator('#human-finish').click();await other.locator('#human-start').click();
+  await other.locator('#lobby-editor').click();await other.locator('[data-lab-tab="simulate"]').click();await other.locator('.human-settings summary').click();await other.locator('#human-start').click();await other.locator('#hint').click();await other.locator('#human-finish').click();await other.locator('#human-start').click();
   await page.waitForFunction(()=>localStorage.getItem('wordtiles.playtests.v1')&&localStorage.getItem('wordtiles.personal-progress.v1'));
   await page.evaluate(()=>{localStorage.setItem('wordtiles.playtest.profile.v1',JSON.stringify({test:'reset'}));});
   const oldSeeds=new Set((await stored(page)).levels.map(e=>e.level.seed));assert.ok(oldSeeds.size>0);

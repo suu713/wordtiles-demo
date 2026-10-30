@@ -52,16 +52,16 @@ try{
   await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),'0');assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'—');assert.equal(await page.locator('#weekly-highlights li').count(),0);await fits(page,'#weekly-dialog');await shot(page,'weekly-empty','#weekly-dialog');await page.locator('#weekly-close').click();
   pass('空收藏册仅显示空态，空周回顾不捏造试玩成绩，Escape恢复焦点');
 
-  await page.locator('#start-game').click();const level=await exportLevel(page);await page.clock.fastForward(10000);assert.equal((await ledger(page)).length,0);
+  await page.locator('#lobby-editor').click();const level=await exportLevel(page);await page.clock.fastForward(10000);assert.equal((await ledger(page)).length,0);
   await page.locator('#manual-play-start').click();await page.clock.fastForward(3500);await page.locator('#hint').click();
   for(const target of level.targets)await drag(page,target.path||target.canonicalPath);
-  await page.locator('#level-complete-dialog').waitFor({state:'visible'});await page.locator('#complete-review').click();await page.locator('#back-lobby').click();
+  await page.locator('#level-complete-dialog').waitFor({state:'visible'});await page.locator('#level-complete-dialog').press('Escape');await page.locator('#back-lobby').click();
   const manual=totals(await ledger(page));assert.equal(manual.levels,1);assert.equal(manual.hints,1);assert.ok(manual.seconds>=3.5);
   await page.clock.fastForward(60000);assert.equal(totals(await ledger(page)).seconds,manual.seconds);
   await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'1');assert.equal(await page.locator('[data-metric="hints"] .weekly-metric-value').innerText(),'1');assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),String(new Set(level.targets.map(t=>t.word)).size));await page.locator('#weekly-close').click();
   pass('等待开始与停留大厅均不计时，真实连词通关和提示即时进入周回顾');
 
-  await page.locator('#start-game').click();await page.locator('[data-lab-tab="simulate"]').click();await page.locator('#sim-repeats').fill('10');await page.locator('#sim-batch-start').click();
+  await page.locator('#lobby-editor').click();await page.locator('[data-lab-tab="simulate"]').click();await page.locator('#sim-repeats').fill('10');await page.locator('#sim-batch-start').click();
   await page.waitForFunction(()=>document.getElementById('sim-status').textContent.includes('批量试玩完成'));
   assert.equal(await page.locator('#level-complete-dialog').isVisible(),false);await page.locator('#back-lobby').click();
   assert.deepEqual(totals(await ledger(page)),manual);

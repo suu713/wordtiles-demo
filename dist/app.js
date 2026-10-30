@@ -8,17 +8,20 @@ import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
 import { calculateLevelStatistics } from './core/level-statistics.js?v=15';
 import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=25';
 import { preloadArt } from './core/art-theme.js?v=22';
+import { preloadPlayerArt } from './core/player-art.js?v=6';
+import {mountBackgroundThemes} from './background-themes.js?v=1';
 import { localCollectionDate, groupCollectionDays, shiftCollectionMonth, collectionMonthCells, collectionMonthGroups } from './core/collection-calendar.js?v=16';
-import { mountPlaytestLab } from './workbench-ui.js?v=48&sim=range-1';
+import { mountPlaytestLab } from './workbench-ui.js?v=56&settlement=7';
 import {QUALITY_TEMPLATE,matchesQualityTemplate} from './core/quality-config.js?v=39';
 import {mountCollectionViews} from './collection-ui.js?v=25';
-import {mountEventViews} from './event-ui.js?v=29';
+import {mountEventViews} from './event-ui.js?v=30';
 import {planTargetLengths,normalizeComposition} from './core/target-composition.js?v=28';
 import {letterHintsForSession} from './core/letter-hints.js?v=33';
-import {launchWordFireworks} from './fireworks-effects.js?v=33';
-import {shortestTargetPath} from './core/prop-paths.js?v=34';
-import {playBoardFireworks,drawBoardFireworks} from './board-fireworks.js?v=34';
 import {planTargetRows} from './core/target-rows.js?v=30';
+import {TargetEffects} from './target-effects.js?v=3';
+import {TargetShatter} from './target-shatter.js?v=1';
+import {EncouragementBanners} from './encouragement-banners.js?v=2';
+import {LevelEntrance} from './level-entrance.js?v=1';
 import {createPersonalProgress,PERSONAL_PROGRESS_KEY} from './core/personal-progress.js?v=25';
 import {clearAppData,dataEpoch,DATA_RESET_KEY,DATA_NOTICE_KEY,PREVIEW_COLLECTION_KEY} from './core/app-data.js?v=25';
 import {createBankDictionary,BANK_NAMES,WEB_BANK_STATISTICS,bankLengthRange,WORD_BANK_ORIGIN} from './core/dictionary-banks.js?v=1';
@@ -35,6 +38,7 @@ let baseDictionary, dictionaryLoading = false, dictionaryLoadError = null;
 let selectedAlgorithm = 2, ready = false, busyKind = null;
 let browserStorage;
 try { browserStorage=window.localStorage; } catch {}
+const backgroundThemes=mountBackgroundThemes({storage:browserStorage});
 const initialDataEpoch=dataEpoch(browserStorage);let dataResetting=false;
 let collection=createWordCollection(browserStorage);
 const personalProgress=createPersonalProgress(browserStorage);
@@ -46,30 +50,83 @@ const eventViews=mountEventViews({storage:browserStorage,
 });
 let collectionMonth, collectionSelectedDate, collectionDateFilter = null;
 const banks = new Map(), savedSessions = new Map();
-let selection = [], hint = null, activePointer = null, worker = null, busy = false;
+let selection = [], activePointer = null, worker = null, busy = false;
 let epoch = 0, requestId = 0, generationStats = null, lastRejection = null;
 const tileElements = [];
-let rejectedTiles = [], rejectionTimer = null;
+let rejectedWord = '', rejectionTimer = null;
+let answerPreviewOpen=false,answerPreviewGame=null;
+let targetElementsSession=null;
+const levelEntrance=new LevelEntrance({
+  isVisible:()=>$('#lobby').hidden&&$('#game-screen').dataset.mode==='play'&&!document.hidden&&!playtestLab?.machineRunning,
+  prepare:()=>{applyViewport();fitBoard();},
+  onDone:session=>{
+    if(game!==session||!$('#lobby').hidden||document.hidden)return;
+    render();
+    if(document.activeElement===document.body||document.activeElement===$('#start-game'))tileElements.find(tile=>tile.getAttribute('aria-disabled')==='false')?.focus({preventScroll:true});
+  },
+});
+const targetEffects=new TargetEffects({
+  board,
+  isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
+  onIdle:session=>{if(game===session){scheduleFit();syncCompletionEffect();if($('#lobby').hidden&&!document.hidden)playtestLab?.gameUpdated();}},
+});
+const targetShatter=new TargetShatter({
+  isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
+  onDone:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden)playtestLab?.gameUpdated();},
+});
+const encouragementHost=$('#encouragement-banner');
+const encouragement=new EncouragementBanners({
+  isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
+  show:(kind,duration)=>{
+    encouragementHost.classList.remove('banner-active');
+    encouragementHost.dataset.kind=kind;encouragementHost.style.setProperty('--banner-duration',duration+'ms');
+    encouragementHost.hidden=false;$('.play-panel').classList.add('banner-showing');
+    $('#encouragement-announcement').textContent=kind==='streak'?'连续找到三个目标词，太棒了！':'所有目标已完成，太棒了！';
+    void encouragementHost.offsetWidth;encouragementHost.classList.add('banner-active');
+  },
+  hide:()=>{encouragementHost.hidden=true;encouragementHost.classList.remove('banner-active');$('.play-panel').classList.remove('banner-showing');$('#encouragement-announcement').textContent='';},
+  onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
+});
+function syncCompletionEffect(){
+  if(game?.status!=='won'||levelEntrance.isRunning(game)||targetEffects.isRunning(game))return;
+  encouragement.complete(game);
+  if(!encouragement.isRunning(game))targetShatter.play(game,$('#targets'),$('.play-panel'));
+}
 const solutionCache = new WeakMap(), SOLUTIONS_PER_PAGE = 12;
 let solutionWorker = null, solutionLevel = null, solutionRequest = 0, solutionPage = 0;
 let draftLengths = [...DEFAULT_CONFIG.wordLengths], editorValid = false;
 let webConfigDraft=clone(DEFAULT_CONFIG);
 let compositionError='',qualityFixedTemplate=false;
-let activeFirework=null,boardFirework=null;
-const fireworksVariant=new URL(location.href).searchParams.get('fireworks')==='word'?'word':'path';
-$('#fireworks').dataset.variant=fireworksVariant;
-if(fireworksVariant==='word'){
-  $('#fireworks').dataset.help='揭开最短的未完成整词；同字数优先前面的词，跳过已全部揭示的词。字母从左到右依次点亮，不消耗格子次数。';
-  $('#rules-button').dataset.help=$('#rules-button').dataset.help.replace('烟花从首字母开始显示最短未完成词的箭头路径，同字数优先前面的词。','烟花揭开最短的未完成整词，同字数优先前面的词，跳过已全部揭示的词。');
-}
 function playerHints(){return letterHintsForSession(game);}
-function visibleHint(word,index){return playerHints().has(word,index)&&!(activeFirework?.kind==='word'&&activeFirework.session===game&&activeFirework.word===word&&activeFirework.pending.has(index));}
+function visibleHint(word,index){return (answerPreviewOpen&&answerPreviewGame===game)||playerHints().has(word,index);}
+function renderAnswerPreview(animate=false){
+  // Display-only letters: never write to the hint state or submit a target.
+  if(answerPreviewGame!==game){answerPreviewGame=game;answerPreviewOpen=false;}
+  const open=!!game&&answerPreviewOpen,button=$('#answer-toggle');
+  button.disabled=!game;button.setAttribute('aria-pressed',String(open));
+  button.querySelector('span').textContent=open?'隐藏答案':'显示答案';
+  if(!game)return;
+  for(const target of $('#targets').querySelectorAll('.target')){
+    const word=target.dataset.word,done=game.completed.has(word);
+    target.setAttribute('aria-label',targetLabel(word,done));
+    for(const slot of target.querySelectorAll('.target-letter')){
+      const glyph=slot.querySelector('.target-glyph');
+      const index=Number(slot.dataset.position),wasVisible=!!glyph.textContent;
+      const revealed=!done&&visibleHint(word,index);
+      glyph.textContent=done||revealed?[...word][index]:'';
+      slot.classList.toggle('revealed',revealed);
+      slot.classList.toggle('hint-flash',animate&&open&&!done&&!wasVisible);
+    }
+  }
+}
+$('#answer-toggle').addEventListener('click',()=>{if(!game)return;answerPreviewOpen=!answerPreviewOpen;hideHelp();renderAnswerPreview(true);});
 function targetLabel(word,done=false){
   if(done)return `${word} 已完成`;
+  if(answerPreviewOpen&&answerPreviewGame===game)return `${word}，答案预览，未完成`;
   const letters=[...word],clue=letters.map((letter,index)=>visibleHint(word,index)?letter:'·').join('');
   return `${letters.length} 字母目标，未完成${clue!=='·'.repeat(letters.length)?'，已提示 '+clue:''}`;
 }
-function cancelFireworks(redraw=false){const effect=activeFirework;if(!effect)return;activeFirework=null;effect.animation?.cancel();if(effect.kind==='path')boardFirework=null;if(redraw&&game===effect.session){render();feedback(effect.kind==='path'?'路径提示已收起，格子次数不变':`已显示 ${effect.word}，格子次数不变`);}}
+
 function readComposition(){return normalizeComposition({three:$('#generation-three-percent').value,four:$('#generation-four-percent').value});}
 function compositionLengths(random=()=>.5){if(qualityFixedTemplate)return [...QUALITY_TEMPLATE.wordLengths];return planTargetLengths({rows:Number($('#board-rows').value),cols:Number($('#board-cols').value),targetCount:Number($('#generation-target-count').value),composition:readComposition(),maxUses:webConfigDraft.maxUses??3},dictionary?[...new Set(dictionary.words.map(word=>word.length))]:bankLengthRange(),random);}
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -224,9 +281,8 @@ function showMode() {
   $('#count-note').textContent = isSource ? '原关卡目标数量' : '按目标词长配置数量';
   $('#length-note').textContent = isSource ? '原始目标词长度' : '目标词来自 WT词库.xlsx，支持3～8个字母';
   $('#uniform-note').textContent = isSource ? '按原关卡显示' : '按配置显示';
-  $('#preview-note').textContent = isSource?'原包试玩：提示揭1个字母，烟花揭最多5个；帘子显示解锁所需累计词数。':fireworksVariant==='path'?'拖动连词，松手提交。烟花从首字母开始显示最短词的箭头路径。':'拖动连词，松手提交。提示揭开 1 个字母，烟花揭开最短的整个词。';
-  $('#hint').dataset.help=isSource?'揭开 1 个字母，优先尚未显示的最靠前字位。整词揭完自动收词并结算格子。':'随机揭开 1 个尚未显示的目标字母，优先靠前字位，不消耗格子次数。';
-  $('#fireworks').dataset.help=isSource?'揭开最多 5 个目标字母；整词揭完自动收词，累计收词数可打开帘子。':fireworksVariant==='word'?'揭开最短的未完成整词，格子次数不变。':'从首字母显示最短未完成词的箭头路径。';
+  $('#preview-note').textContent = isSource?'原包试玩：提示揭开1个字母；帘子显示解锁所需累计词数。':'拖动连词，松手提交。提示揭开1个目标字母。';
+  $('#hint').setAttribute('aria-label',isSource?'提示一个字母，整词揭完后自动收词':'提示一个字母');
   $('#rules-button').dataset.help=isSource?'上下左右连词；帘子格暂不可连，完成指定数量的目标后打开。识别目标按全部候选路径的格子并集扣次，并清理冗余格。额外词按本关原包名单判定，不扣次数。收齐目标或棋盘次数耗尽即过关。':'上下左右相邻连词，同次不能重复经过同一格。目标词扣除对应路径次数；次数归零留空。';
   $('.debug-explanation').textContent = isSource ? '每词全部候选路线取格子并集计次；收词后清理冗余格并保护剩余路径。' : '路径数与消耗集合数分开统计，每个词的集合必须唯一。';
 }
@@ -301,7 +357,7 @@ async function switchAlgorithm(next) {
   if (next === selectedAlgorithm) return true;
   sourceLoadRequest++;
   playtestLab?.gameChanging();
-  cancelFireworks();cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection(); rememberSession();
+  cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection(); rememberSession();
   selectedAlgorithm = next; showMode(); epoch++;
   let saved = savedSessions.get(next);
   if(next===2&&saved&&!validateAlgorithmLevel(saved.game.exportInitial||saved.game.initial,saved.game.dictionary).valid) {
@@ -358,6 +414,17 @@ $('#word-count').addEventListener('input', () => {
 
 function applyViewport() {
   const column = $('.preview-column');
+  if ($('#game-screen').dataset.mode === 'play') {
+    // Identical sizing to .lobby-panel; editor zoom only affects its preview.
+    const width = Math.min(520, window.innerWidth, window.innerHeight * 9 / 16);
+    column.style.setProperty('--device-width', 'min(100vw, calc(100dvh * 9 / 16), 520px)');
+    column.style.setProperty('--device-height', 'calc(var(--device-width) * 16 / 9)');
+    column.style.setProperty('--preview-scale', '1');
+    $('.play-panel').classList.toggle('compact-device', width * 16 / 9 < 700);
+    $('.play-panel').classList.toggle('small-viewport', width * 16 / 9 < 650);
+    scheduleFit();
+    return;
+  }
   const style=getComputedStyle(column),availableWidth=column.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight),availableHeight=Math.max(1,column.clientHeight-(document.querySelector('.playtest-start-bar')?.offsetHeight||0)-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom)-12);
   let width, height;
   if ($('#preview-device').value === 'auto') {
@@ -406,13 +473,15 @@ function fitTargetRows() {
   const lengths=new Map(items.map(item=>[item,item.querySelectorAll('.target-letter').length]));
   const footprint=row=>({letters:row.reduce((sum,item)=>sum+lengths.get(item),0),gaps:row.reduce((sum,item)=>sum+lengths.get(item)-1,0)*letterGap+(row.length-1)*wordGap});
   const rows=planTargetRows(items.map(item=>lengths.get(item)),{width,minSlot,letterGap,wordGap}).map(indices=>indices.map(i=>items[i]));
-  const visibleRows=Math.min(rows.length,7),heightLimit=(container.clientHeight-(visibleRows-1)*rowGap)/visibleRows;
+  const visibleRows=Math.min(rows.length,7),heightLimit=(container.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom)-(visibleRows-1)*rowGap)/visibleRows;
   const widthLimit=Math.min(...rows.map(row=>{const size=footprint(row);return (width-size.gaps)/size.letters;}));
   const slot=Math.max(1,Math.min(panelWidth*.085,heightLimit,widthLimit)),scrollTop=container.scrollTop;
   container.style.setProperty('--answer-size',slot+'px');container.style.setProperty('--target-row-gap',rowGap+'px');
   container.style.setProperty('--target-letter-gap',letterGap+'px');container.style.setProperty('--target-word-gap',wordGap+'px');
   container.dataset.layout=items.length<=7?'single':'packed';container.dataset.rows=String(rows.length);
-  container.replaceChildren(...rows.map(items=>{const row=document.createElement('div');row.className='target-row';row.append(...items);return row;}));
+  const currentRows=[...container.children];
+  const sameRows=currentRows.length===rows.length&&currentRows.every((row,index)=>row.classList.contains('target-row')&&row.children.length===rows[index].length&&[...row.children].every((item,column)=>item===rows[index][column]));
+  if(!sameRows&&!targetEffects.isRunning(game))container.replaceChildren(...rows.map(items=>{const row=document.createElement('div');row.className='target-row';row.append(...items);return row;}));
   container.scrollTop=scrollTop;
 }
 for (const id of ['#preview-device','#preview-zoom']) $(id).addEventListener('change', applyViewport);
@@ -433,70 +502,45 @@ function notice(message, tone = '') {
 function clearSelection() {
   clearWordError();
   const oldPointer = activePointer;
-  activePointer = null; selection = []; hint = null;
+  activePointer = null; selection = [];
   if (oldPointer !== null && board.hasPointerCapture(oldPointer)) board.releasePointerCapture(oldPointer);
   renderSelection();
 }
 function renderSelection() {
-  if(boardFirework&&(boardFirework.session!==game||game.status!=='playing'||game.completed.has(boardFirework.word)))boardFirework=null;
-  const guide=boardFirework,litPath=guide?.path.slice(0,guide.count)||[];
-  tileElements.forEach((tile, cell) => {
-    tile.classList.toggle('selected', selection.includes(cell));
-    tile.classList.toggle('hinted', !!hint?.path.includes(cell));
-    tile.classList.toggle('fireworks-path-lit',litPath.includes(cell));
-    tile.classList.toggle('fireworks-path-start',guide?.count>0&&guide.path[0]===cell);
-    tile.classList.toggle('fireworks-path-head',litPath.at(-1)===cell);
-  });
-  const readout=selection.length&&game?selection.map(i=>game.initial.board.letters[i]).join(''):(guide?litPath.map(i=>game.initial.board.letters[i]).join(''):hint?.word||'—');
-  $('#readout-label').textContent = (hint||guide)&&!selection.length?'提示单词':'正在连接';
+  tileElements.forEach((tile, cell) => tile.classList.toggle('selected', selection.includes(cell)));
+  const readout=selection.length&&game?selection.map(i=>game.initial.board.letters[i]).join(''):rejectedWord;
+  $('#readout-label').textContent = rejectedWord&&!selection.length?'连接未匹配':'正在连接';
   if($('#current-word').textContent!==readout)$('#current-word').textContent=readout;
   connections.replaceChildren();
-  const path = selection.length ? selection : hint?.path;
-  if (path?.length>1||guide?.count>0) {
-    const area = board.getBoundingClientRect();
-    const width = board.offsetWidth, height = board.offsetHeight;
-    if(!area.width||!area.height)return;
-    connections.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    const pointForCell=cell=>{
-      const rect = tileElements[cell].getBoundingClientRect();
-      return {x:(rect.left+rect.width/2-area.left)/area.width*width,y:(rect.top+rect.height/2-area.top)/area.height*height,size:Math.min(rect.width/area.width*width,rect.height/area.height*height)};
-    };
-    if(guide?.count>0)drawBoardFireworks(connections,guide,pointForCell);
-    if(path?.length>1){
-    const points=path.map(pointForCell);
-    const polyline = document.createElementNS(SVG_NS, 'polyline');
-    polyline.setAttribute('points', points.map(point => `${point.x},${point.y}`).join(' '));
-    if (!selection.length) polyline.classList.add('hint-line');
-    connections.append(polyline);
-    if (!selection.length) for (let index = 1; index < points.length; index++) {
-      const from = points[index - 1], to = points[index];
-      const dx = to.x - from.x, dy = to.y - from.y, distance = Math.hypot(dx, dy);
-      const ux = dx / distance, uy = dy / distance, size = Math.max(5, Math.min(11, distance * .12));
-      const tip = { x:from.x + dx * .62, y:from.y + dy * .62 };
-      const base = { x:tip.x - ux * size, y:tip.y - uy * size };
-      const arrow = document.createElementNS(SVG_NS, 'path');
-      arrow.classList.add('hint-arrow'); arrow.dataset.from = String(path[index - 1]); arrow.dataset.to = String(path[index]);
-      arrow.setAttribute('d', `M ${base.x - uy * size * .65} ${base.y + ux * size * .65} L ${tip.x} ${tip.y} L ${base.x + uy * size * .65} ${base.y - ux * size * .65}`);
-      connections.append(arrow);
-    }
-    }
-  }
-  $('#targets').querySelectorAll('.target').forEach(target => target.classList.toggle('hinted',target.dataset.word===(guide?.word||hint?.word)));
+  if(selection.length<2)return;
+  const area=board.getBoundingClientRect(),width=board.offsetWidth,height=board.offsetHeight;
+  if(!area.width||!area.height)return;
+  connections.setAttribute('viewBox',`0 0 ${width} ${height}`);
+  const points=selection.map(cell=>{
+    const rect=tileElements[cell].getBoundingClientRect();
+    return `${(rect.left+rect.width/2-area.left)/area.width*width},${(rect.top+rect.height/2-area.top)/area.height*height}`;
+  });
+  const polyline=document.createElementNS(SVG_NS,'polyline');
+  polyline.setAttribute('points',points.join(' '));connections.append(polyline);
 }
 function clearWordError() {
-  clearTimeout(rejectionTimer); rejectionTimer = null;
-  rejectedTiles.forEach(tile => tile.classList.remove('invalid-word')); rejectedTiles = [];
+  clearTimeout(rejectionTimer);rejectionTimer=null;rejectedWord='';
+  $('#current-word').classList.remove('rejected-word');
+  if(!selection.length)$('#current-word').textContent='';
+  if($('#feedback').classList.contains('error'))feedback('');
 }
 function showWordError(path) {
-  clearWordError(); rejectedTiles = path.map(cell => tileElements[cell]).filter(Boolean);
-  rejectedTiles.forEach(tile => tile.classList.add('invalid-word'));
-  rejectionTimer = setTimeout(clearWordError, 850);
+  clearWordError();
+  rejectedWord=path.map(cell=>game.initial.board.letters[cell]).join('');
+  $('#current-word').classList.add('rejected-word');
+  renderSelection();
+  rejectionTimer=setTimeout(()=>{clearWordError();renderSelection();},900);
 }
 function renderBonusWords() {
   const words = [...(game?.bonusCompleted || [])].sort((a, b) => a.localeCompare(b));
   $('#bonus-count').textContent = String(words.length);
   $('#bonus-button').disabled = !game;
-  $('#bonus-button').setAttribute('aria-label', `额外单词包，已收集 ${words.length} 个单词`);
+  $('#bonus-button').setAttribute('aria-label', `词袋，已收集 ${words.length} 个额外单词`);
   $('#bonus-summary').textContent = `本关额外发现 ${words.length} 个词`;
   $('#bonus-words').replaceChildren(...words.map(word => { const item = document.createElement('li'); item.textContent = word; return item; }));
   $('#bonus-empty').hidden = words.length > 0;
@@ -596,7 +640,6 @@ function renderDebug() {
 }
 function render(consumed = []) {
   if (!game) return;
-  if(activeFirework&&(activeFirework.session!==game||game.status!=='playing'||game.completed.has(activeFirework.word)))cancelFireworks();
   tileElements.forEach((tile, cell) => {
     const count = game.counts[cell],blocked=game.blockedCells?.includes(cell)===true;
     tile.classList.toggle('curtain-locked',blocked);tile.dataset.unlock=blocked?String(game.model.gates[cell]):'';
@@ -610,16 +653,35 @@ function render(consumed = []) {
     tile.setAttribute('aria-disabled', String(blocked||count === 0 || game.status !== 'playing' || (playtestLab&&!playtestLab.canPlay)));
     tile.setAttribute('aria-label',blocked?`格子 ${cell}，帘子锁定，累计找到 ${game.model.gates[cell]} 个目标词后开启`:count ? `格子 ${cell}，字母 ${game.initial.board.letters[cell]}，剩余 ${count} 次` : `格子 ${cell}，空位`);
   });
-  $('#targets').replaceChildren();
+  if(targetElementsSession!==game){
+    levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();$('#targets').replaceChildren();targetElementsSession=game;
+  }
+  encouragement.sync(game);
+  const targetNodes=new Map([...$('#targets').querySelectorAll('.target')].map(item=>[item.dataset.word,item]));
+  const pending=game.initial.targets.filter(target=>!game.completed.has(target.word));
   [...game.initial.targets].sort((a,b)=>[...a.word].length-[...b.word].length).forEach(target => {
     const done = game.completed.has(target.word);
-    const item = document.createElement('div'); item.className = `target${done ? ' completed' : ''}`; item.dataset.word = target.word;
+    let item=targetNodes.get(target.word);
+    if(!item){
+      item=document.createElement('div');item.className='target';item.dataset.word=target.word;
+      const slots=document.createElement('div');slots.className='target-slots';slots.setAttribute('aria-hidden','true');
+      [...target.word].forEach((letter,index)=>{
+        const slot=document.createElement('span');slot.className='target-letter';slot.dataset.position=String(index);slot.style.setProperty('--target-index',String(index));
+        const glyph=document.createElement('span');glyph.className='target-glyph';slot.append(glyph);slots.append(slot);
+      });
+      item.append(slots);$('#targets').append(item);targetNodes.set(target.word,item);
+    }
+    item.classList.toggle('completed',done);
+    item.classList.toggle('target-last',game.status==='playing'&&pending.length===1&&!done);
     item.setAttribute('aria-label',targetLabel(target.word,done));
-    if(activeFirework?.session===game&&activeFirework.word===target.word&&activeFirework.landed)item.classList.add('fireworks-word-lit');
-    const slots = document.createElement('div'); slots.className = 'target-slots'; slots.setAttribute('aria-hidden', 'true');
-    [...target.word].forEach((letter,index) => { const revealed=!done&&visibleHint(target.word,index),slot = document.createElement('span'); slot.className = 'target-letter'+(revealed?' revealed':''); slot.dataset.position=String(index);slot.textContent = done||revealed ? letter : ''; slots.append(slot); });
-    item.append(slots); $('#targets').append(item);
+    [...target.word].forEach((letter,index)=>{
+      const slot=item.querySelectorAll('.target-letter')[index],revealed=!done&&visibleHint(target.word,index);
+      slot.classList.toggle('revealed',revealed);slot.classList.remove('hint-flash');
+      slot.querySelector('.target-glyph').textContent=done||revealed?letter:'';
+    });
   });
+  targetEffects.sync(game,targetNodes);
+  syncCompletionEffect();
   $('#completion').replaceChildren(document.createTextNode(`${game.completed.size} `));
   const tail = document.createElement('span'); tail.textContent = `/ ${game.initial.targets.length}`; $('#completion').append(tail);
   $('#targets').setAttribute('aria-label', `共 ${game.initial.targets.length} 个目标词`);
@@ -632,12 +694,13 @@ function render(consumed = []) {
   updateLobbyProgress();
   $('#win-banner').hidden = true;
   $('.play-panel').classList.toggle('has-won', game.status === 'won');
-  const propsLocked=!!activeFirework||game.status!=='playing'||(playtestLab&&!playtestLab.canPlay);
+  const propsLocked=game.status!=='playing'||(playtestLab&&!playtestLab.canPlay);
   $('#hint').disabled=propsLocked||hiddenLetters===0;
-  $('#fireworks').disabled=propsLocked||((isWTLevel(game.initial)||fireworksVariant==='word')?hiddenLetters===0:!shortestTargetPath(game));
   $('#validation-badge').textContent = game.status === 'anomaly' ? '关卡状态异常' : game.initial.algorithm === 1 ? 'WT原包规则 · '+game.blockedCells.length+'格待开帘' : `${game.report.stateChecks} / ${game.report.stateCount} 通过`;
   if (game.status === 'anomaly') { feedback('关卡状态异常，请查看调试信息。', 'error'); console.error('WordTiles invariant violation', game.debug); }
-  renderSelection(); renderBonusWords(); renderDebug(); scheduleFit(); setBusy(busy, busyKind); playtestLab?.gameUpdated();
+  renderSelection(); renderBonusWords(); renderAnswerPreview(); renderDebug(); scheduleFit(); setBusy(busy, busyKind);
+  levelEntrance.play(game,{targets:$('#targets'),tiles:tileElements,panel:$('.play-panel'),locks:[board,$('#hint')]});
+  playtestLab?.gameUpdated();
 }
 function setBusy(value, kind = null) {
   busy = value; busyKind = value ? kind : null;
@@ -673,7 +736,7 @@ function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictio
     lastRejection = error.report || { message:error.message };
     notice('关卡未通过校验，当前关卡保留。详见调试面板。','error'); renderDebug(); return false;
   }
-  cancelFireworks();cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection();
+  cancelGeneration(true); cancelSolutionAnalysis(); closeGameDialogs(); clearSelection();
   const nextMode = next.initial.algorithm === 1 ? 1 : 2;
   if (nextMode !== selectedAlgorithm) { rememberSession(); selectedAlgorithm = nextMode; showMode(); }
   playtestLab?.gameChanging();
@@ -725,8 +788,9 @@ $('#source-random').addEventListener('click', () => {
 });
 
 function addCell(cell) {
-  if (playtestLab&&!playtestLab.canPlay) return;
+  if (levelEntrance.isRunning(game)||(playtestLab&&!playtestLab.canPlay)) return;
   if (!game || game.status !== 'playing' || !(game.playableCounts||game.counts)[cell]) return;
+  if(!selection.length)encouragement.dismissStreak();
   clearWordError();
   if (selection.length > 1 && selection.at(-2) === cell) selection.pop();
   else if (!selection.includes(cell) && (!selection.length || game.neighbors[selection.at(-1)].includes(cell))) selection.push(cell);
@@ -736,6 +800,7 @@ function commitSelection() {
   if (!selection.length || !game || (playtestLab&&!playtestLab.canPlay)) return;
   const path = [...selection]; clearSelection();
   const result = game.submit(path);
+  encouragement.record(game,result);
   playtestLab?.recordSubmit(path,result);
   if(collection.collect(result,game.initial.source?.language||'english',game.initial.algorithm===1?'wt-package':game.dictionary?.metadata?.origin)) renderCollection();
   render(result.accepted ? path : []);
@@ -784,10 +849,10 @@ board.addEventListener('keydown', event => {
   if (delta) {
     event.preventDefault(); const next = cell + delta;
     if (game.neighbors[cell].includes(next)) tileElements[next].focus({ preventScroll: true });
-  } else if (event.key === ' ') { event.preventDefault(); hint = null; addCell(cell); }
+  } else if (event.key === ' ') { event.preventDefault(); addCell(cell); }
   else if (event.key === 'Enter') { event.preventDefault(); if (activePointer === null) commitSelection(); }
   else if (event.key === 'Backspace') { event.preventDefault(); selection.pop(); renderSelection(); }
-  else if (event.key === 'Escape') { event.preventDefault(); cancelFireworks();boardFirework=null;clearSelection();render(); }
+  else if (event.key === 'Escape') { event.preventDefault(); clearSelection();render(); }
 });
 new ResizeObserver(() => renderSelection()).observe(board);
 
@@ -868,53 +933,15 @@ function collectFullyRevealedTargets(revealed){
   return completed;
 }
 function useLetterProp(){
-  if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
-  boardFirework=null;
+  if(!game||game.status!=='playing'||levelEntrance.isRunning(game)||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
+
   clearSelection();const revealed=playerHints().reveal(1,game.completed);if(!revealed.length)return;
   const completed=collectFullyRevealedTargets(revealed);
   playtestLab?.recordHint({word:revealed[0].word,kind:'letter',letters:revealed.length});render();
   for(const item of $('#targets').querySelectorAll('.target'))for(const slot of item.querySelectorAll('.target-letter'))if(revealed.some(letter=>letter.word===item.dataset.word&&letter.index===Number(slot.dataset.position)))slot.classList.add('hint-flash');
   feedback(completed.length?`已揭完并收取 ${completed.join('、')}`:`已提示 ${revealed.length} 个字母，格子次数不变`);
 }
-function useOriginalFireworks(){
-  if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
-  clearSelection();boardFirework=null;
-  const revealed=playerHints().reveal(5,game.completed);if(!revealed.length)return;
-  const completed=collectFullyRevealedTargets(revealed);
-  playtestLab?.recordHint({kind:'fireworks',letters:revealed.length});render();
-  for(const item of $('#targets').querySelectorAll('.target'))for(const slot of item.querySelectorAll('.target-letter'))if(revealed.some(letter=>letter.word===item.dataset.word&&letter.index===Number(slot.dataset.position)))slot.classList.add('hint-flash');
-  feedback(`烟花揭开 ${revealed.length} 个字母`+(completed.length?`，已收取 ${completed.join('、')}`:'，格子次数不变'));
-}
-function useWordFireworks(){
-  if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
-  clearSelection();const revealed=playerHints().revealShortestWord(game.completed);if(!revealed.length)return;
-  const session=game,word=revealed[0].word,effect={kind:'word',session,word,pending:new Set(revealed.map(letter=>letter.index)),animation:null};activeFirework=effect;
-  playtestLab?.recordHint({word,kind:'fireworks',letters:revealed.length});render();feedback('烟花正在点亮目标词…');
-  const getTarget=()=>[...$('#targets').querySelectorAll('.target')].find(item=>item.dataset.word===word);
-  effect.animation=launchWordFireworks({source:$('#fireworks'),getTarget,
-    isCurrent:()=>activeFirework===effect&&game===session&&!document.hidden&&$('#lobby').hidden&&!$('.preview-column .viewport-sizer').hidden,
-    onLetter(index){
-      effect.landed=true;effect.pending.delete(index);const target=getTarget(),slot=target?.querySelectorAll('.target-letter')[index];
-      if(slot){slot.textContent=[...word][index];slot.classList.add('revealed');target.setAttribute('aria-label',targetLabel(word));}
-    },
-    onFinish(){if(activeFirework!==effect)return;activeFirework=null;if(game===session){render();feedback(`已显示 ${word}，格子次数不变`);}}
-  });
-}
-function useBoardFireworks(){
-  if(!game||activeFirework||game.status!=='playing'||playtestLab?.machineRunning||(playtestLab&&!playtestLab.canPlay))return;
-  const target=shortestTargetPath(game);if(!target){feedback('当前目标暂无可用路径，格子次数不变');return;}
-  clearSelection();const session=game,effect={kind:'path',session,word:target.word,animation:null};
-  const guide={session,...target,count:0,progress:0};boardFirework=guide;activeFirework=effect;
-  playtestLab?.recordHint({word:target.word,kind:'fireworks-path',letters:target.path.length});render();feedback('正在从首字母显示箭头路径…');
-  effect.animation=playBoardFireworks({source:$('#fireworks'),length:target.path.length,
-    isCurrent:()=>activeFirework===effect&&boardFirework===guide&&game===session&&!session.completed.has(target.word)&&!document.hidden&&$('#lobby').hidden&&!$('.preview-column .viewport-sizer').hidden,
-    onProgress(count,progress){guide.count=count;guide.progress=progress;renderSelection();},
-    onFinish(){if(activeFirework!==effect)return;activeFirework=null;if(guide.count<guide.path.length)boardFirework=null;if(game===session){render();feedback(boardFirework?`${target.word} 路径已显示，请沿箭头连词，格子次数不变`:'路径提示已收起，格子次数不变');}}
-  });
-}
-$('#hint').addEventListener('click',useLetterProp);$('#fireworks').addEventListener('click',()=>isWTLevel(game?.initial)?useOriginalFireworks():fireworksVariant==='word'?useWordFireworks():useBoardFireworks());
-document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelFireworks(true);});
-window.addEventListener('resize',()=>{if(activeFirework?.kind==='word')cancelFireworks(true);else renderSelection();});
+$('#hint').addEventListener('click',useLetterProp);
 $('#bonus-button').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); hideHelp(); renderBonusWords();
@@ -1033,16 +1060,32 @@ $('#activity-button').addEventListener('click',()=>{resetCollectionMonth();rende
 $('#activity-close').addEventListener('click',()=>$('#activity-dialog').close());
 
 function showLobby() {
-  boardFirework=null;
-  cancelFireworks(true);cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
-  $('#game-screen').hidden=true;$('#lobby').hidden=false;renderCollection();$('#start-game').focus({preventScroll:true});
+  levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();
+  answerPreviewOpen=false;renderAnswerPreview();
+  cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
+  $('#game-screen').classList.remove('information-open');
+  const fromEditor=$('#game-screen').dataset.mode==='editor';
+  $('#game-screen').hidden=true;$('#lobby').hidden=false;renderCollection();$(fromEditor?'#lobby-editor':'#start-game').focus({preventScroll:true});
 }
 $('#back-lobby').addEventListener('click',showLobby);
-$('#start-game').addEventListener('click',()=>{
+function openGameScreen(mode) {
   if(!ready)return;
+  clearSelection();closeSettings(false);closeEditor();hideHelp();
+  $('#game-screen').classList.remove('information-open');
+  $('#game-screen').dataset.mode=mode;
   $('#lobby').hidden=true;$('#game-screen').hidden=false;
-  applyViewport();fitBoard();renderSelection();startSolutionAnalysis();tileElements.find(tile=>tile.dataset.remaining!=='0')?.focus({preventScroll:true});
+  if(mode==='play')playtestLab?.startPlayer();
+  else {playtestLab?.changeTab('edit');if(matchMedia('(max-width: 980px)').matches)document.body.classList.add('editor-open');}
+  applyViewport();fitBoard();renderSelection();
+  if(mode==='editor') {startSolutionAnalysis();$('.lab-tabs button')?.focus({preventScroll:true});}
+  else tileElements.find(tile=>tile.dataset.remaining!=='0')?.focus({preventScroll:true});
+}
+$('#start-game').addEventListener('click',async()=>{
+  if(!ready||$('#start-game').disabled)return;
+  try{if(game?.status==='won')await playtestLab?.continueJourney();openGameScreen('play');}
+  catch(error){$('#lobby-status').textContent='关卡载入失败：'+error.message;}
 });
+$('#lobby-editor').addEventListener('click',()=>openGameScreen('editor'));
 $('#solutions-stat').addEventListener('click', () => {
   if (!game) return;
   clearSelection(); closeSettings(false); hideHelp(); solutionPage = 0;
@@ -1147,8 +1190,9 @@ $('#preview-collection').addEventListener('click',async()=>{
   finally{if(!dataResetting)$('#preview-collection').disabled=false;}
 });
 function prepareDataReset(){
+  levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();
   if(dataResetting)return;dataResetting=true;ready=false;
-  cancelFireworks();cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();
+  cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();
   $('#preview-collection').disabled=true;$('#clear-all-data').disabled=true;$('#data-status').textContent='正在清除…';
 }
 $('#clear-all-data').addEventListener('click',async()=>{
@@ -1209,8 +1253,9 @@ for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
 }
 $('#word-count').value = '3';
-window.addEventListener('pagehide', () => { cancelFireworks();cancelGeneration(true); cancelSolutionAnalysis(); });
-playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,
+window.addEventListener('pagehide', () => { levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
+document.addEventListener('visibilitychange',()=>{if(document.hidden){levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();}else if($('#lobby').hidden){scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
+playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game)||targetShatter.isRunning(game),
   recordPersonalProgress:(session,snapshot,flush=false)=>{personalProgress.observe(session,snapshot);eventViews.observe(session,snapshot);if(flush)personalProgress.flush();},
   resetCurrent:()=>{if(game)loadLevel(game.exportInitial||game.initial,$('#level-kind').textContent,{syncDraft:false,dismissEditor:false,dictionaryOverride:game.dictionary});},
   getDictionary:()=>dictionary,
@@ -1226,9 +1271,9 @@ playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,
   nextWordTiles:advanceSource});
 for(const id of ['#generation-target-count','#generation-three-percent','#generation-four-percent'])$(id).addEventListener('input',editorChanged);
 showMode(); renderWordRows(); updateEditor(); applyViewport();
-for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#fireworks','#load-sample','#import','#export']) $(id).disabled = true;
+for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  await preloadArt();
+  await Promise.all([preloadArt(),preloadPlayerArt(),backgroundThemes.ready]);
   dictionary=createBankDictionary(bankLengthRange(WORD_BANK_ORIGIN),WORD_BANK_ORIGIN);baseDictionary=dictionary;editorChanged();
   ready = true;
   for (const id of ['#algorithm','#source-language','#source-order','#load-sample','#import','#export']) $(id).disabled = false;
@@ -1239,6 +1284,7 @@ try {
   renderCollection();let previewResult=null,previewError='';
   if(previewAtOpen)try{previewResult=await fillPreviewCollection();}catch(error){previewError=error.message;}
   $('#start-game').disabled=false;
+  $('#lobby-editor').disabled=false;
   let dataNotice='';try{dataNotice=sessionStorage.getItem(DATA_NOTICE_KEY)||'';sessionStorage.removeItem(DATA_NOTICE_KEY);}catch{}
   $('#lobby-status').textContent=dataNotice||previewError||(previewResult?`已收录 ${previewResult.total} 词`:'');
   if(previewResult)$('#dictionary-button').click();

@@ -1,0 +1,14 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-30",
+  "input": "reference.png",
+  "output": "foreground.png",
+  "runtimeUse": [
+    "encouragement title",
+    "two-line slogan"
+  ],
+  "prompts": [
+    "Use case: background-extraction. Asset type: transparent UI foreground sprite for a mobile game. Input image is the EDIT TARGET. Extract exactly these existing foreground elements IN THEIR EXACT ORIGINAL POSITIONS, SIZES, COLORS AND TYPOGRAPHY on the same full 941 x 1672 portrait canvas: the upper-right gold coin + dark pill with 568 and green plus; the white 'Wonderful!' title including its three stars and golden underline glow; the two-line slogan 'You solved 16 puzzles today, ahead of 84% of players.' with yellow 16 and 84%; the complete rounded frosted Chapter Progress panel with its 'Chapter Progress' heading, turquoise 4/5 progress bar, gold coin pile and +50 badge. Keep the entire interior of the Chapter Progress panel as original foreground artwork, preserving all its original colors and details. Make EVERYTHING ELSE genuinely transparent: remove the landscape/sky/flowers, top-left back arrow, WORD logo and LOGIC PUZZLE caption, yellow Next Chapter button, Share text/icon, and any background pixels outside the retained UI. Do not invent, redraw, relabel, recenter, rearrange or resize any retained element. Preserve original text verbatim, proportions and alignment. Preserve soft foreground shadows/glows with alpha, but no blue/purple background rectangles. Output is ONLY the extracted foreground with real transparency, full original canvas and original positions, suitable for overlaying on four different backgrounds.",
+    "Edit target: the transparent UI extraction just supplied. Make ONE targeted cleanup only: remove the residual blue/purple/gray background haze surrounding and between the white Wonderful! title letters and the two-line slogan. Those broad colored blobs are remnants of the old landscape, not UI. All spaces outside and between these glyphs must be truly transparent. Preserve the white letters, yellow numbers, exact typography and wording, three golden stars, gold underline and its yellow glow. Retain at most a very small neutral dark drop shadow within 4 pixels of the white letter edges; no blue/purple cloud or broad halo around text. Keep the upper-right coin/568 pill and the entire Chapter Progress panel exactly unchanged. Keep the full canvas size, pixel positions, element sizes and alignment unchanged. Do not add anything or shift any element. Output a genuine transparent PNG."
+  ]
+}

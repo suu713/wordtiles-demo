@@ -53,18 +53,11 @@ export function mountEventViews({storage,onMainPlay,onCollect,onPersonalProgress
     <p id="daily-status" class="event-status" role="status" aria-live="polite"></p><details id="daily-rules" class="event-rules"><summary>玩法说明</summary><p>连接上下左右相邻的字母组成目标词，同次连线不能重复经过同一格。可拖动连词，也可逐格点击后提交。成功连线经过宝石格即可收集宝石，累计 50 枚领取 40 金币。</p></details><p class="event-storage" data-event-storage hidden>当前进度无法保存</p>`,
     `<button id="daily-action" class="event-primary" type="button">开始今日谜题 ${icon('arrow')}</button><p id="daily-footer-note">由 WT词库.xlsx 生成</p>`);
   document.body.append(root);
-  const nav=document.createElement('nav');nav.className='lobby-events';nav.setAttribute('aria-label','活动玩法');
-  nav.innerHTML=[['fortune','wheel','幸运转盘','每日免费'],['collect-event','pine','每周活动','收集松果'],['daily-puzzle','gem','每日谜题','今日待完成']].map(([id,mark,title,note])=>`<button class="lobby-event" id="${id}-button" type="button" aria-haspopup="dialog" aria-controls="${id}-dialog">${icon(mark)}<strong>${title}</strong><small data-event-note>${note}</small>${id==='fortune'?'<i class="event-dot" aria-hidden="true"></i>':''}</button>`).join('');
-  document.querySelector('.lobby-panel').append(nav);
   for(const dialog of root.querySelectorAll('dialog')){
     dialog.querySelector('[data-event-close]').addEventListener('click',()=>dialog.close());
     dialog.addEventListener('close',()=>{if(dialog.id==='daily-puzzle-dialog')pauseDaily();});
   }
-  function open(id){if(stopped)return;refresh();if(!$(id).open)$(id).showModal();$(id).querySelector('.event-scroll').scrollTop=0;}
-  $('fortune-button').addEventListener('click',()=>open('fortune-dialog'));
-  $('collect-event-button').addEventListener('click',()=>open('collect-event-dialog'));
-  $('daily-puzzle-button').addEventListener('click',()=>{month=new Date();selectedDay=eventDate();showDailyHome();open('daily-puzzle-dialog');});
-  function refresh(){if(stopped)return;const state=progress.snapshot();root.querySelectorAll('[data-event-wallet]').forEach(node=>node.textContent=state.coins.toLocaleString());root.querySelectorAll('[data-event-storage]').forEach(node=>node.hidden=progress.persistent);$('fortune-button').querySelector('[data-event-note]').textContent=state.wheel.spins===0?'每日免费':state.wheel.spins<6?'还可加转':'明日再来';$('fortune-button').querySelector('.event-dot').hidden=state.wheel.spins>0;$('daily-puzzle-button').querySelector('[data-event-note]').textContent=state.daily[state.date]?.finished?'今日已完成':'今日待完成';renderWheel();renderWeekly();renderCalendar();renderGems();}
+  function refresh(){if(stopped)return;const state=progress.snapshot();root.querySelectorAll('[data-event-wallet]').forEach(node=>node.textContent=state.coins.toLocaleString());root.querySelectorAll('[data-event-storage]').forEach(node=>node.hidden=progress.persistent);renderWheel();renderWeekly();renderCalendar();renderGems();}
   function renderWheel(){
     if(spinning)return;const {wheel}=progress.snapshot(),colors=['#d9e6dd','#f6f0df','#dbe8eb','#f6f0df','#c1d4c6','#f6f0df'];
     $('fortune-wheel').innerHTML=wheel.rewards.map((coins,i)=>{const a=(i*60-120)*Math.PI/180,b=a+Math.PI/3,x1=150+147*Math.cos(a),y1=150+147*Math.sin(a),x2=150+147*Math.cos(b),y2=150+147*Math.sin(b);return `<g><path class="wheel-slice" d="M150 150L${x1} ${y1}A147 147 0 0 1 ${x2} ${y2}Z" fill="${colors[i]}"/><g transform="rotate(${i*60} 150 150)"><circle class="wheel-coin" cx="150" cy="44" r="9"/><path class="wheel-coin" d="M150 38v12m3-10h-4a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-4"/><text x="150" y="82" font-size="22">${coins}</text></g></g>`;}).join('');

@@ -1,0 +1,7 @@
+#game-screen .encouragement-banner{position:absolute;left:14%;top:34.9%;width:72%;height:7.4%;display:grid;place-items:center;z-index:8;pointer-events:none;transform-origin:center;filter:drop-shadow(0 2px 3px #241b3e33)}
+#game-screen .encouragement-banner svg{display:none;width:100%;height:100%;overflow:visible;pointer-events:none}
+#game-screen .encouragement-banner[data-kind="streak"] [data-banner-art="streak"],#game-screen .encouragement-banner[data-kind="complete"] [data-banner-art="complete"]{display:block}
+#game-screen .encouragement-banner.banner-active{animation:encouragement-pop var(--banner-duration,1100ms) ease-out both}
+#game-screen .play-panel.banner-showing .level-readout{visibility:hidden}
+@keyframes encouragement-pop{0%{opacity:0;transform:translateY(8px) scale(.88)}12%{opacity:1;transform:translateY(0) scale(1.035)}25%{transform:translateY(0) scale(1)}76%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-5px) scale(.98)}}
+@media(prefers-reduced-motion:reduce){#game-screen .encouragement-banner{display:none}}

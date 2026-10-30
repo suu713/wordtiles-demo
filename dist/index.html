@@ -12,10 +12,16 @@
   <link rel="stylesheet" href="./workbench.css?v=47&sim=range-1">
   <link rel="stylesheet" href="./batch-generation.css?v=21">
   <link rel="stylesheet" href="./alps.css?v=30">
-  <link rel="stylesheet" href="./fireworks.css?v=34">
   <link rel="stylesheet" href="./collection-ui.css?v=25">
-  <link rel="stylesheet" href="./event-ui.css?v=27">
-  <link rel="preload" as="image" href="./art/alps/assets/backgrounds/bg-alps-lobby.png">
+  <link rel="stylesheet" href="./event-ui.css?v=29">
+  <link rel="stylesheet" href="./game-screen.css?v=10">
+  <link rel="stylesheet" href="./completion.css?v=7">
+  <link rel="stylesheet" href="./encouragement.css?v=2">
+  <link rel="stylesheet" href="./background-themes.css?v=1">
+  <link rel="preload" as="image" href="./art/themes/desert.png">
+  <link rel="preload" as="image" href="./art/settlement/reference.png">
+  <link rel="preload" as="image" href="./art/settlement/foreground.png">
+  <link rel="preload" as="image" href="./art/settlement/abc-wreath.png">
 </head>
 <body>
   <main id="lobby" class="lobby" aria-label="游戏大厅">
@@ -27,12 +33,13 @@
       </button>
       <button id="weekly-button" class="lobby-weekly" type="button" aria-label="本周回顾" aria-haspopup="dialog" aria-controls="weekly-dialog"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m2 27 10-19 7 11 4-7 7 15H2Zm6-12 4 2 3-3M20 17l3 2 3-2M23 3v4m-2-2h4"/></svg><span class="art-label">本周回顾</span></button>
       <button id="lobby-settings" class="art-disc lobby-settings" type="button" aria-label="设置" data-help="画面与数据设置。"><img src="./art/alps/assets/icons/settings.png" alt=""></button>
+      <button id="lobby-editor" class="lobby-editor" type="button" disabled aria-controls="game-screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14v6Z"/></svg><span>关卡编辑器</span></button>
       <div class="lobby-center"><h1>WordTile</h1><p class="lobby-destination">Alps</p><p class="lobby-eyebrow">ITALY · ALPS</p></div>
       <div class="lobby-progress"><div id="lobby-progress-dots" class="progress-dots" aria-hidden="true"></div><p id="lobby-progress-label" aria-live="polite">0 / 5</p></div>
       <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled><span id="lobby-start-label">开始游戏</span><small id="lobby-continue-detail">正在准备关卡</small><img src="./art/alps/assets/icons/arrow-right.png" alt=""></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
     </section>
   </main>
-  <div id="game-screen" class="app-shell" hidden>
+  <div id="game-screen" class="app-shell" data-mode="play" hidden>
     <main class="workspace">
       <aside id="editor-panel" class="editor-panel" aria-label="关卡编辑器">
         <div class="editor-heading">
@@ -89,21 +96,28 @@
       <section class="preview-column" aria-label="竖屏游戏">
         <div class="viewport-sizer"><div id="game-viewport" class="game-viewport">
           <section class="play-panel" aria-label="单词棋盘">
-            <button id="back-lobby" class="art-disc game-back" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><img src="./art/alps/assets/icons/back.png" alt=""></button>
-            <div class="art-coin game-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/alps/assets/icons/coin.png" alt=""><span id="game-collection-count">0</span></div>
+            <button id="back-lobby" class="art-disc game-back" type="button" aria-label="返回大厅" data-help="返回大厅，保留当前关卡进度。"><img src="./art/yanqi/btn_fanhui@2x.png" alt=""></button>
+            <div class="art-coin game-coin" data-help="累计收录的单词数量。" tabindex="0"><img src="./art/yanqi/jinbi@2x.png" alt=""><span id="game-collection-count">0</span></div>
             <button id="editor-toggle" class="art-disc game-tool" type="button" aria-label="打开关卡编辑器" aria-controls="editor-panel" aria-expanded="false" data-help="查看关卡编辑器和统计。"><img src="./art/alps/assets/icons/settings.png" alt=""></button>
-            <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交。找到目标后格子数字减 1，归零后留空。提示揭开 1 个目标字母；烟花从首字母开始显示最短未完成词的箭头路径，同字数优先前面的词。道具不消耗格子次数。词库内的非目标词收进额外单词包。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
-            <div class="game-art-meta" hidden><div class="game-word-progress"><span id="completion">0 <span>/ 3</span></span></div></div>
-            <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="readout-label"></span><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
+            <div class="game-title-row"><h2 id="rules-button" tabindex="0" data-help="按住字母，连接上下左右相邻的格子，可以转弯。同一次不能重复经过同一格。松手提交。找到目标后格子数字减 1，归零后留空。提示揭开 1 个目标字母。道具不消耗格子次数。词库内的非目标词收进额外单词包。键盘：方向键移动，空格选格，Backspace 撤回，Enter 提交，Esc 取消。">Word Tile</h2></div>
+            <div class="game-art-meta"><div class="game-word-progress"><span>本关目标</span><span id="completion">0 <span>/ 3</span></span></div></div>
+            <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="readout-label"></span></div>
+            <div class="level-readout"><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
+            <div id="encouragement-banner" class="encouragement-banner" role="status" aria-live="polite" aria-atomic="true" hidden>
+              <svg data-banner-art="streak" viewBox="19 152 2134 424" aria-hidden="true"><image href="./art/encouragement/great-streak.png" width="2172" height="724"/></svg>
+              <svg data-banner-art="complete" viewBox="62 116 2051 471" aria-hidden="true"><image href="./art/encouragement/great-complete.png" width="2172" height="724"/></svg>
+              <span id="encouragement-announcement" class="sr-only"></span>
+            </div>
             <div id="targets" class="targets" aria-label="目标词"></div>
             <span id="targets-note" class="sr-only" hidden aria-label="上下滑动查看其余目标"></span>
             <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining" data-help="每格右上角的数字表示剩余次数。次数归零后格子留空，棋盘不移动。" tabindex="0">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
             <div class="game-spacer" aria-hidden="true"></div>
             <div id="win-banner" class="win-banner" hidden><span aria-hidden="true">✳</span><div><strong>棋盘清空！</strong><p id="win-summary">全部目标都找到了。</p></div><button id="win-next" type="button">下一关 ↗</button></div>
             <div class="game-footer">
-              <button id="bonus-button" class="bonus-button" type="button" aria-label="额外单词包，已收集 0 个单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false" data-help="词库中的非目标词收进这里，重复只收一次，不扣格子次数。点击查看已找到的额外单词。"><img src="./art/alps/assets/icons/bag.png" alt=""><span class="art-label">词袋</span><span id="bonus-count" class="bonus-count">0</span></button>
+              <button id="bonus-button" class="bonus-button" type="button" aria-label="词袋，已收集 0 个额外单词" aria-haspopup="dialog" aria-controls="bonus-dialog" aria-expanded="false"><img src="./art/alps/assets/icons/bag.png" alt=""><span id="bonus-count" class="bonus-count">0</span></button>
             </div>
-            <div class="play-actions game-art-actions"><button id="hint" class="art-disc" type="button" aria-label="提示" data-help="随机揭开 1 个尚未显示的目标字母，优先靠前字位，不消耗格子次数。"><img src="./art/alps/assets/icons/hint.png" alt=""><span class="art-label">提示</span><span id="hint-remaining" hidden></span></button><button id="fireworks" class="art-disc" type="button" aria-label="烟花" data-help="从首字母开始显示最短未完成词的完整路径，箭头标明连接方向。同字数优先前面的词，不消耗格子次数。"><svg class="fireworks-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4v7m0 8v3M4 15h7m10 0h7M7 6l5 5m8 8 4 4M25 6l-5 5m-8 8-5 5m9-11 2 2-2 2-2-2 2-2Zm0 9v7M4 4l1 2m23 1-1 2M4 27l2-1m21 3-1-3"/></svg><span class="art-label">烟花</span></button></div>
+            <div class="play-actions game-art-actions"><button id="hint" class="art-disc" type="button" aria-label="提示一个字母"><img src="./art/yanqi/icon_tishi@2x.png" alt=""><span id="hint-remaining" hidden></span></button></div>
+            <button id="answer-toggle" class="answer-toggle" type="button" aria-controls="targets" aria-pressed="false" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>显示答案</span></button>
           </section>
         </div></div>
       </section>
@@ -119,7 +133,10 @@
         <div class="draft-summary" data-help-from="uses-note" tabindex="0"><div><strong id="summary-cells">9</strong><span>格子</span></div><div><strong id="summary-targets">3</strong><span>单词</span></div><div><strong id="summary-letters">9</strong><span>字母</span></div></div>
         <div hidden><select id="uniform-length"><option value="">按原关卡显示</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><span id="uses-note"></span><span id="cols-note"></span><span id="rows-note"></span><span id="count-note"></span><span id="length-note"></span><span id="uniform-note"></span></div>
       </div>
-      <div data-settings-pane="view" hidden><label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label></div>
+      <div data-settings-pane="view" hidden>
+        <fieldset class="background-theme-settings"><legend>主题背景</legend><p class="background-theme-note">大厅、关卡和结算同步切换</p><div id="background-theme-options" class="background-theme-options"></div><p id="background-theme-status" role="status" aria-live="polite"></p></fieldset>
+        <label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label>
+      </div>
       <div data-settings-pane="lexicon" hidden>
         <label class="stack-field" for="dictionary-tier" hidden>范围库<select id="dictionary-tier" disabled><option value="all" selected>工作簿必答词 1～4级</option><option value="1">1级</option><option value="2">2级</option><option value="3">3级</option><option value="4">4级</option></select></label>
         <p id="lexicon-status" class="lexicon-status" role="status" data-help="只使用 WT词库.xlsx。必答词用于生成关卡，额外词仅用于额外词识别。" tabindex="0">WT词库.xlsx</p>
@@ -166,6 +183,6 @@
     <div class="weekly-footer"><button id="weekly-continue" type="button">继续游戏 <span aria-hidden="true">↗</span></button></div>
   </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=48&sim=range-1"></script>
+  <script type="module" src="./app.js?v=64&settlement=7"></script>
 </body>
 </html>

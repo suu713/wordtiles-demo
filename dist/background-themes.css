@@ -1,0 +1,17 @@
+:root{--scene-background:url("./art/themes/desert.png");--primary-action-fill:linear-gradient(180deg,#59d42c 0%,#3bbb18 48%,#249d13 100%);--primary-action-border:#83dc4c;--primary-action-shadow:inset 0 2px 2px #caff9c99,0 3px 0 #197910,0 7px 14px #244c2533}
+.lobby-panel,#game-screen .play-panel,.level-complete-dialog .settlement-background{background-image:var(--scene-background);background-position:center;background-size:cover;background-repeat:no-repeat}
+.lobby-start,.lobby-start:hover{background:var(--primary-action-fill);border:1px solid var(--primary-action-border);box-shadow:var(--primary-action-shadow);color:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;text-shadow:0 1px 2px #196d2270}
+.lobby-start>small{color:#f2ffe7}
+.lobby-start>img{filter:brightness(0) invert(1)}
+.background-theme-settings{border:0;margin:0 0 20px;padding:0;min-width:0}
+.background-theme-settings legend{padding:0;font-size:13px;font-weight:700;color:#263842}
+.background-theme-note{margin:6px 0 11px;font-size:11px;line-height:1.5;color:#65777a}
+.background-theme-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.background-theme-choice{position:relative;display:block;overflow:hidden;border:2px solid #d4dedc;border-radius:9px;background:#fff;cursor:pointer;transition:border-color 150ms ease,box-shadow 150ms ease}
+.background-theme-choice.selected{border-color:#2d9d25;box-shadow:0 0 0 1px #2d9d2526}
+.background-theme-choice:focus-within{outline:2px solid #2d9d25;outline-offset:2px}
+.background-theme-choice img{display:block;width:100%;height:66px;object-fit:cover;object-position:center 72%;pointer-events:none}
+.settings-popover .background-theme-choice input{position:absolute;left:8px;bottom:8px;width:14px;height:14px;padding:0;margin:0;accent-color:#2d9d25}
+.background-theme-choice span{display:block;padding:7px 6px 7px 28px;font-size:12px;line-height:1.3;color:#263842}
+.background-theme-choice.selected span{font-weight:700;color:#217d21}
+#background-theme-status{font-size:11px;line-height:1.5;color:#65777a;min-height:16px;margin:8px 0 0}

@@ -1,0 +1,42 @@
+#game-screen .targets.targets-cleared{visibility:hidden}
+.target-shatter-layer{position:absolute;inset:0;z-index:12;overflow:hidden;pointer-events:none;contain:strict}
+.tile-shard,.tile-shatter-dust{position:absolute;display:grid;place-items:center;background-size:100% 100%;background-repeat:no-repeat;animation:tile-shard-flight var(--shard-duration,880ms) cubic-bezier(.24,.48,.52,1) var(--shard-delay,0ms) both;will-change:transform,opacity;pointer-events:none}
+.tile-shard{padding-bottom:1px;filter:drop-shadow(0 0 .4px #fff9)}
+.tile-shatter-dust{width:3px;height:4px;background:#fff6ff;clip-path:polygon(50% 0,100% 35%,65% 100%,0 60%);box-shadow:0 0 4px #e8d3ff}
+@keyframes tile-shard-flight{0%{transform:translate(0,0) rotate(0) scale(1);opacity:1}14%{transform:translate(calc(var(--shard-x)*.08),var(--shard-lift)) rotate(calc(var(--shard-turn)*.1)) scale(1.05);opacity:1}40%{transform:translate(calc(var(--shard-x)*.4),calc(var(--shard-y)*.1)) rotate(calc(var(--shard-turn)*.4)) scale(.94);opacity:1}75%{transform:translate(calc(var(--shard-x)*.8),calc(var(--shard-y)*.6)) rotate(calc(var(--shard-turn)*.8)) scale(.8);opacity:.85}100%{transform:translate(var(--shard-x),var(--shard-y)) rotate(var(--shard-turn)) scale(.55);opacity:0}}
+
+/* The supplied settlement artwork is shown at the same size as the game. */
+.level-complete-dialog{position:fixed;inset:0;width:min(100vw,calc(100dvh * 9/16),520px);height:auto;aspect-ratio:9/16;max-width:none;max-height:none;padding:0;margin:auto;border:0;border-radius:0;background:#7d8ee0;box-shadow:0 12px 42px #26384230;overflow:hidden;container-type:inline-size;--settlement-step:130ms;--settlement-enter:1200ms;--settlement-buttons-delay:calc(var(--settlement-step) * 4);--settlement-rest:calc(var(--settlement-buttons-delay) + var(--settlement-enter))}
+.level-complete-dialog::backdrop{background:#23374545;backdrop-filter:blur(4px)}
+.level-complete-dialog:focus{outline:none}
+.settlement-background,.settlement-layers{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
+.settlement-entry{opacity:0;transform:translateY(var(--settlement-float,26px))}
+.settlement-icon{--entry-delay:0ms}
+.settlement-icon-wreath,.settlement-icon-tiles,.settlement-icon-original{opacity:0}
+.level-complete-dialog[open] .settlement-icon-wreath{animation:settlement-part-reveal 850ms ease-out both,settlement-icon-retire 1ms linear 1580ms forwards}
+.level-complete-dialog[open] .settlement-icon-tiles{animation:settlement-part-reveal 1000ms ease-in-out 320ms both,settlement-icon-retire 1ms linear 1580ms forwards}
+.level-complete-dialog[open] .settlement-icon-original{animation:settlement-part-reveal 260ms ease-in-out 1320ms both}
+.settlement-title{--entry-delay:var(--settlement-step)}
+.settlement-slogan{--entry-delay:calc(var(--settlement-step) * 2)}
+.settlement-progress{--entry-delay:calc(var(--settlement-step) * 3)}
+.settlement-buttons{position:absolute;top:63.6%;left:11%;width:78%;display:flex;flex-direction:column;gap:3cqw;z-index:2;pointer-events:none;--entry-delay:var(--settlement-buttons-delay);--settlement-float:2.763cqw}
+/* Drift a short distance while opacity rises across the whole entrance. */
+.level-complete-dialog[open] .settlement-entry{animation:settlement-part-float var(--settlement-enter) cubic-bezier(.22,.61,.36,1) var(--entry-delay) both,settlement-part-reveal var(--settlement-enter) ease-in-out var(--entry-delay) both}
+.level-complete-dialog.settlement-ready .settlement-buttons{pointer-events:auto}
+.level-complete-dialog .settlement-action{display:flex;align-items:center;justify-content:center;gap:2.3cqw;width:100%;height:14cqw;margin:0;padding:0 5cqw;border:1px solid var(--primary-action-border);border-radius:99px;background:var(--primary-action-fill);box-shadow:var(--primary-action-shadow);color:#fff;text-shadow:0 1px 2px #196d2270;font:750 4.1cqw/1.1 "Nunito Sans","Segoe UI",sans-serif;white-space:nowrap;cursor:pointer;transition:filter 160ms ease,transform 160ms ease}
+.level-complete-dialog .settlement-action:hover{filter:brightness(1.06)}
+.level-complete-dialog .settlement-action:active{transform:translateY(2px);box-shadow:inset 0 1px 2px #caff9c99,0 1px 0 #197910}
+.level-complete-dialog .settlement-action:focus-visible{outline:3px solid #fff8bd;outline-offset:3px}
+.level-complete-dialog .settlement-action:disabled{cursor:wait;opacity:.65}
+.settlement-video-icon{width:5.2cqw;height:5.2cqw;flex:none}
+.settlement-reward-amount{display:flex;align-items:center;gap:1.7cqw;margin-left:2.4cqw}
+.settlement-reward-amount img{width:6cqw;height:6cqw;object-fit:contain}
+.level-complete-dialog #complete-next{border-color:var(--primary-action-border);background:var(--primary-action-fill);color:#fff;font-size:5.3cqw;gap:8cqw}
+.settlement-next svg{width:5cqw;height:5cqw;flex:none}
+.level-complete-dialog #complete-status{position:absolute;top:84%;left:8%;width:84%;padding:2cqw;border-radius:2cqw;background:#ffffffdf;color:#59435f;font-size:3.2cqw;line-height:1.5;margin:0;white-space:normal}
+.level-complete-dialog #complete-status:empty{display:none}
+@keyframes settlement-part-float{from{transform:translateY(var(--settlement-float,26px))}to{transform:translateY(0)}}
+@keyframes settlement-part-reveal{from{opacity:0}to{opacity:1}}
+@keyframes settlement-icon-retire{to{opacity:0}}
+@media(prefers-reduced-motion:reduce){.target-shatter-layer{display:none}.level-complete-dialog[open] .settlement-entry{opacity:1;transform:none;animation:none}.level-complete-dialog[open] .settlement-buttons{pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.settlement-icon-wreath,.settlement-icon-tiles{display:none}.level-complete-dialog[open] .settlement-icon-original{opacity:1;animation:none}}

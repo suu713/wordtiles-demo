@@ -30,7 +30,7 @@ async function run(order,numbers,repeats){
 }
 async function selectBank(key){await page.locator('#sim-bank').selectOption(key);await waitSource('wordtiles',key);}
 try{
-  await page.goto('http://127.0.0.1:4173/?source=wordtiles&list=level_list_0&level=1');await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);await page.locator('#start-game').click();await page.locator('[data-lab-tab="simulate"]').click();await waitSource('wordtiles','level_list_0');
+  await page.goto('http://127.0.0.1:4173/?source=wordtiles&list=level_list_0&level=1');await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);await page.locator('#lobby-editor').click();await page.locator('[data-lab-tab="simulate"]').click();await waitSource('wordtiles','level_list_0');
   assert.equal(await page.locator('#sim-source').inputValue(),'wordtiles');assert.equal(await page.locator('#sim-bank option').count(),6);assert.equal(await page.locator('#sim-range-fields').isVisible(),true);assert.equal(await page.locator('#sim-scope').inputValue(),'current');
   assert.equal(await page.locator('#sim-range-end').getAttribute('max'),'1500');pass('模拟试玩内直接显示原包来源、6个列表及可手填的起止关号');
   await page.locator('#sim-knowledge-percent').fill('75');await page.locator('#sim-knowledge-percent').press('Tab');await range(2,4,5);assert.equal(await page.locator('#sim-scope').inputValue(),'range');assert.match(await page.locator('#sim-selection-summary').textContent(),/共 3 关.*每关 5 次 = 15 局/);

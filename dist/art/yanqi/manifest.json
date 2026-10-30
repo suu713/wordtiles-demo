@@ -1,0 +1,86 @@
+{
+  "source": "Word tiles（闫祺）_slices",
+  "description": "Original user-supplied game screen slices; bytes, resolution and transparency preserved.",
+  "assets": [
+    {
+      "path": "bg@2x.png",
+      "bytes": 6002377,
+      "sha256": "aeb8ee88ac70a671622d564ba3e3d2745bcdbca4ae247172b49ce55d18e08bca"
+    },
+    {
+      "path": "btn_cidian@2x.png",
+      "bytes": 18583,
+      "sha256": "9aa731a3cd3330dcc9e22906de5a8d6d2713c67bf247bec745a91a63505d8944"
+    },
+    {
+      "path": "btn_fanhui@2x.png",
+      "bytes": 16132,
+      "sha256": "683313c7123deadf5e2d0de9d27f99159793579101a8de719416defcaec65a83"
+    },
+    {
+      "path": "dancikuai_1@2x.png",
+      "bytes": 16408,
+      "sha256": "7d45fd4c4417230bb9e306d02d877284ff06442650ef0b96c3bc3bfe168a52ea"
+    },
+    {
+      "path": "dancikuai_2@2x.png",
+      "bytes": 14390,
+      "sha256": "a6e1ef9bb5040a2e3b8549b17530f4c2497eb2d7c4caac652c488a889954d77c"
+    },
+    {
+      "path": "frame_1@2x.png",
+      "bytes": 8815,
+      "sha256": "902096b52c6b2cd30466500ebaf88557b8b958192cf25689c2fa370e9bce14c3"
+    },
+    {
+      "path": "frame_2@2x.png",
+      "bytes": 4224,
+      "sha256": "5ed7f429379435b5af6984d0c855d0126842e455a504ddd38f334a6a44658a0e"
+    },
+    {
+      "path": "frame_3@2x.png",
+      "bytes": 10484,
+      "sha256": "00f567f4078bad401b8d04c36084923af0effed0f8c592830f0216928629956c"
+    },
+    {
+      "path": "frame_4@2x.png",
+      "bytes": 9793,
+      "sha256": "e8a4670040aa4ec5cfa7d6242bef7c9f3bf3bbc961c9ca86dc32e34f279b8c65"
+    },
+    {
+      "path": "frame_5@2x.png",
+      "bytes": 41938,
+      "sha256": "4d0463ac346fad686e19335c1d6d4ba4f4b2ecb839b7d261ac40256ce2f6c830"
+    },
+    {
+      "path": "icon_tishi@2x.png",
+      "bytes": 39742,
+      "sha256": "c333307a31b53cfdb4347d58fc6fa0010cc5b310d6acfb498142a9c982ce4007"
+    },
+    {
+      "path": "icon_xingxing@2x.png",
+      "bytes": 35035,
+      "sha256": "dad393dfb4e731a9618c8b8fd30c6ef0a4f259b8d95935be2bf3ef9cde235cc2"
+    },
+    {
+      "path": "jinbi@2x.png",
+      "bytes": 18106,
+      "sha256": "f16ae11e8a429ba33218b7bcdc34410beac46815bbbd709c2751856fb45c39d0"
+    },
+    {
+      "path": "jindutiao_1@2x.png",
+      "bytes": 17349,
+      "sha256": "9994b8ea03d1eb9e365c9da5466a7d8070334b9647daf6f2ece71f868ed1e5e4"
+    },
+    {
+      "path": "jindutiao_2@2x.png",
+      "bytes": 9958,
+      "sha256": "b00ff8530fdd73705f494ba1d225fef72b6bb04b8203c272178ff921938726f6"
+    },
+    {
+      "path": "line_块下面@2x.png",
+      "bytes": 292,
+      "sha256": "c03c955dc3b377f5800445c17f39fefd518bc56dff32d7dccf3f424cceed9a3b"
+    }
+  ]
+}

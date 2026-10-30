@@ -27,7 +27,7 @@ const run=async(start,end,repeats=2)=>{
 };
 try{
   await page.goto(process.env.WORDTILES_URL||'http://127.0.0.1:4173/?v=47');
-  await page.waitForFunction(()=>!document.getElementById('start-game').disabled);await page.locator('#start-game').click();await page.locator('[data-lab-tab="batch"]').click();
+  await page.waitForFunction(()=>!document.getElementById('start-game').disabled);await page.locator('#lobby-editor').click();await page.locator('[data-lab-tab="batch"]').click();
   assert.equal(await page.locator('#batch-bank').count(),0);
   assert.doesNotMatch(await page.locator('#batch-form').innerText(),/已保存关序|新生成关卡|关卡范围/);
   assert.equal(await page.locator('#batch-upload').isVisible(),true);

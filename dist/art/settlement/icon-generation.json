@@ -1,0 +1,27 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-10-30",
+  "transparent_background": true,
+  "assets": [
+    {
+      "key": "icon-wreath",
+      "source": "abc-wreath.png",
+      "output": "abc-wreath-back.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target is the transparent ABC tile and gold/green wreath icon. Create the BACK layer only: remove all three cream A, B, C letter tiles, leaving only the same gold circular vine, green/gold leaves and gold sparkle stars. Restore the tiny hidden vine/leaf sections behind the removed tiles naturally. Preserve the original wreath's exact size, shape, leaf arrangement, colors and position. Keep the FULL ORIGINAL SQUARE CANVAS and do not crop, enlarge, recenter or shift the wreath. Preserve transparency; all empty space including the center must be transparent. No letters, no tiles, no new objects. This layer must align precisely with the original icon when overlaid."
+    },
+    {
+      "key": "icon-tiles",
+      "source": "abc-wreath.png",
+      "output": "abc-tiles-front.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: background-extraction. Edit target is the transparent ABC tile and gold/green wreath icon. Create the FRONT layer only: retain exactly the three cream letter tiles A, B and C, including their existing bevels, gold lettering, slight rotations, overlap, subtle shadows and exact positions. Remove every leaf, vine, circular wreath and gold sparkle star. Keep the FULL ORIGINAL SQUARE CANVAS and do not crop, enlarge, recenter or shift the tiles. All surrounding space must have genuine transparency. Do not redesign or change any letter. This front layer must align precisely with the original icon when overlaid."
+    }
+  ]
+}

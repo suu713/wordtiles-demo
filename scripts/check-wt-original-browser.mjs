@@ -9,7 +9,7 @@ const browser=await chromium.launch({headless:true,channel:'chrome'}),page=await
 const bank=JSON.parse(await readFile(new URL('../dist/source-levels/english.json',import.meta.url),'utf8'));
 page.on('pageerror',e=>errors.push(e.stack));page.on('response',r=>{if(r.status()>=400&&!r.url().endsWith('favicon.ico'))failed.push([r.status(),r.url()]);});
 const pass=name=>{checks.push(name);console.log('PASS '+name);};
-async function start(){await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);await page.locator('#start-game').click();}
+async function start(){await page.waitForFunction(()=>!document.querySelector('#start-game').disabled);await page.locator('#lobby-editor').click();}
 async function selectLevel(order,position){
   await page.locator('[data-lab-tab="edit"]').click();
   if(!await page.locator('#source-order').isVisible())await page.locator('#controls-open').click();
@@ -46,10 +46,9 @@ try{
   const lock=page.locator('.curtain-locked').first();await lock.focus();await page.keyboard.press('Space');await page.keyboard.press('Enter');assert.equal(await page.locator('#targets .completed').count(),0);
   for(const word of ['DAD','OLD','COLD','HOLD']){await swipe(word);assert.equal(await page.locator('.curtain-locked').count(),lockedCount);}
   await swipe('LOCK');assert.equal(await page.locator('.curtain-locked').count(),0);assert.equal(await page.locator('#targets .completed').count(),5);assert.equal(await page.locator('#level-complete-dialog').isVisible(),false);
-  for(const word of ['DUE','KEY','HOCKEY'])await swipe(word);assert.match(await page.locator('#level-complete-summary').textContent(),/8 个目标全部完成/);await page.locator('#complete-review').click();pass('113778 帘子阻断鼠标与键盘，5词开帘、8词才完成');
+  for(const word of ['DUE','KEY','HOCKEY'])await swipe(word);assert.match(await page.locator('#level-complete-summary').textContent(),/8 个目标全部完成/);await page.locator('#level-complete-dialog').press('Escape');pass('113778 帘子阻断鼠标与键盘，5词开帘、8词才完成');
   await selectLevel('level_list_0',1);await page.locator('#manual-play-start').click();
-  await page.locator('#fireworks').click();assert.equal(await page.locator('#targets .revealed').count(),5);
-  await page.locator('#fireworks').click();assert.equal(await page.locator('#targets .completed').count(),3);assert.equal(await page.locator('#level-complete-dialog').isVisible(),true);await page.locator('#complete-review').click();pass('原包烟花每次揭最多5字母，整词揭完自动收词');
+  assert.equal(await page.locator('#fireworks').count(),0);await page.locator('#hint').click();assert.equal(await page.locator('#targets .revealed').count(),1);for(let i=1;i<9;i++)await page.locator('#hint').click();assert.equal(await page.locator('#targets .completed').count(),3);assert.equal(await page.locator('#level-complete-dialog').isVisible(),true);await page.locator('#level-complete-dialog').press('Escape');pass('原包提示每次揭1字母，整词揭完自动收词；烟花入口已移除');
   for(const key of ['level_list_1','level_list_2','level_list_3','daily_puzzle_level_list','all']){await selectLevel(key,bank.orders[key].length);assert.equal(await page.locator('#source-next').isDisabled(),true);assert.equal(await page.locator('#active-seed').textContent(),String(bank.orders[key].at(-1)));}
   pass('全部6个列表首尾边界，原始ID准确');
   await selectLevel('level_list_0',1);const exported=await exportLevel();assert.deepEqual(exported.source.original,bank.levels[191596]);
@@ -75,7 +74,7 @@ try{
   await page.locator('[data-lab-tab="edit"]').click();
   const failurePage=await browser.newPage(),failureErrors=[];failurePage.on('pageerror',e=>failureErrors.push(e.message));
   await failurePage.route('**/source-levels/english.json',route=>route.fulfill({status:503,body:'Injected unavailable package'}));
-  await failurePage.goto(base);await failurePage.waitForFunction(()=>!document.querySelector('#start-game').disabled);await failurePage.locator('#start-game').click();const retained=await exportLevel(failurePage);
+  await failurePage.goto(base);await failurePage.waitForFunction(()=>!document.querySelector('#start-game').disabled);await failurePage.locator('#lobby-editor').click();const retained=await exportLevel(failurePage);
   await failurePage.locator('#play-source').selectOption('wordtiles');await failurePage.waitForFunction(()=>!document.querySelector('#play-source').disabled&&document.querySelector('#source-change-status').textContent.length>0);
   assert.equal(await failurePage.locator('#play-source').inputValue(),'web');assert.deepEqual(await exportLevel(failurePage),retained);
   await failurePage.unroute('**/source-levels/english.json');await failurePage.locator('#play-source').selectOption('wordtiles');await failurePage.waitForFunction(()=>document.querySelector('#algorithm').value==='1'&&!document.querySelector('#play-source').disabled);

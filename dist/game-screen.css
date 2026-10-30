@@ -1,0 +1,110 @@
+/* Player and editor share one session; only the editor shows the workbench. */
+#game-screen[data-mode="play"]{max-width:none;width:100%;height:100dvh;padding:0;margin:0;background:transparent;display:grid;place-items:center;overflow:hidden}
+#game-screen[data-mode="play"] .workbench-header,
+#game-screen[data-mode="play"] .editor-panel,
+#game-screen[data-mode="play"] .level-info-panel,
+#game-screen[data-mode="play"] .playtest-start-bar{display:none!important}
+#game-screen[data-mode="play"] .workspace{display:grid;grid-template-columns:1fr;width:100%;height:100%;gap:0;padding:0}
+#game-screen[data-mode="play"] .preview-column{grid-column:1;grid-row:1;width:100%;height:100%;padding:0;border:0;border-radius:0;background:transparent;overflow:visible}
+#game-screen .game-viewport{border-radius:0;box-shadow:0 12px 42px #26384220}
+.lobby-editor{position:absolute;top:42.2%;left:31%;width:38%;display:flex;align-items:center;justify-content:center;gap:1.5cqw;padding:2.2cqw 1cqw;border:1px solid #ffffffa6;border-radius:99px;background:#eef5f4c9;backdrop-filter:blur(12px);color:#2a424b;font-size:3.5cqw;box-shadow:0 2px 10px #26384216}
+.lobby-editor svg{width:4cqw;height:4cqw;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.lobby-editor:hover{background:#f6fafbef}
+.workbench-home{flex:none;border:1px solid #526777;border-radius:9px;padding:10px 13px;color:#e8f0f5;background:#263c4c;font-size:12px;white-space:nowrap}
+.workbench-home:hover{background:#375569}
+@media(max-width:980px){.workbench-header{grid-template-columns:1fr auto}.workbench-home{grid-column:2;grid-row:1;padding:8px 10px}.workbench-header .lab-tabs{grid-row:2;grid-column:1/-1;justify-self:start}.workbench-header .workbench-source{grid-row:3}.workbench-header{height:150px}.workspace{height:calc(100% - 150px)}}
+
+/* Original supplied PNG slices, with live letters, counts and connections. */
+#game-screen .play-panel{background:url("./art/yanqi/bg@2x.png") center/cover no-repeat;color:#fff;container-type:inline-size}
+#game-screen .play-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(#24304c33,transparent 27%,transparent 70%,#25304735)}
+#game-screen #editor-toggle{display:none}
+#game-screen .game-back{top:3.3%;left:5%;width:11%;aspect-ratio:156/162;background:none;backdrop-filter:none;padding:0;border:0;border-radius:50%}
+#game-screen .game-back img{width:100%;height:100%;object-fit:contain}
+#game-screen .game-coin{top:3.9%;right:5%;width:24%;height:6%;gap:1.2cqw;padding:0 2cqw;background:url("./art/yanqi/frame_1@2x.png") center/100% 100% no-repeat;color:#fff}
+#game-screen .game-coin img{width:6.5cqw;height:6.5cqw}
+#game-screen .game-coin span{font-size:4.7cqw;font-weight:700;color:#fff;text-shadow:0 1px 2px #0004}
+#game-screen .game-title-row{top:4.1%;left:21%;width:47%;margin:0;padding:0}
+#game-screen .game-title-row h2{font-size:5.4cqw;font-weight:750;color:#fff;letter-spacing:0;text-shadow:0 2px 4px #31365080}
+#game-screen .game-art-meta{top:8.3%;left:21%;width:47%;color:#fff}
+#game-screen .game-word-progress{display:flex;align-items:center;justify-content:center;gap:2cqw;margin:0;font-size:3.2cqw;text-shadow:0 1px 3px #253047}
+#game-screen .game-word-progress #completion{font-size:3.7cqw;font-weight:700}
+#game-screen .targets{top:14%;left:8%;width:84%;height:20.5%;padding:1.2cqw 2cqw;margin:0;border-radius:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;scrollbar-color:#f4d2ff66 transparent;gap:var(--target-row-gap)}
+#game-screen .target-letter,#game-screen .target.hinted .target-letter{background:transparent url("./art/yanqi/dancikuai_2@2x.png") center/100% 100% no-repeat;border:0;border-radius:15%;box-shadow:none;backdrop-filter:none;color:#574741;font-weight:800;text-shadow:0 1px 0 #fff6;padding-bottom:calc(var(--answer-size)*.04)}
+#game-screen .target-letter.revealed{color:#574741;background-image:url("./art/yanqi/dancikuai_2@2x.png")}
+#game-screen .target.completed .target-letter{background:transparent url("./art/yanqi/dancikuai_1@2x.png") center/100% 100% no-repeat;color:#fff;text-shadow:0 1px 2px #73359f44}
+#game-screen .level-readout{position:absolute;top:35.5%;left:8%;width:84%;height:7%;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+#game-screen #current-word{display:block;max-width:100%;padding:1.3cqw 3cqw 2cqw;min-width:16cqw;min-height:0;color:#fff;text-align:center;font-size:5.2cqw;line-height:1.15;letter-spacing:.15cqw;font-weight:800;background:url("./art/yanqi/frame_3@2x.png") center/100% 100% no-repeat;text-shadow:0 1px 2px #68306a;transform-origin:center}
+#game-screen #current-word:empty{display:none}
+#game-screen #feedback{margin:0;padding:1.3cqw 3.5cqw;color:#fff;font-size:2.9cqw;line-height:1.4;max-width:100%;min-height:0;text-shadow:0 1px 3px #1c233b}
+#game-screen #feedback:empty,#game-screen #current-word:not(:empty)+#feedback:not(.error){display:none}
+#game-screen #current-word.rejected-word{background-image:url("./art/yanqi/frame_4@2x.png");text-shadow:0 1px 2px #9a3333;animation:rejected-word-shake 360ms ease-out}
+#game-screen #feedback.error{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;background:none;border:0}
+@keyframes rejected-word-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-1.1cqw)}40%{transform:translateX(1cqw)}60%{transform:translateX(-.7cqw)}80%{transform:translateX(.4cqw)}}
+#game-screen .game-board-area{top:43%;bottom:16%;left:10%;right:10%;padding:0}
+#game-screen .board{padding:2.5cqw;gap:1.3cqw;border:0;border-radius:4cqw;background:url("./art/yanqi/frame_5@2x.png") center/100% 100% no-repeat;box-shadow:0 4px 14px #24233f26}
+#game-screen .tile,#game-screen .tile:hover:not(.empty):not(.selected),#game-screen .tile.hinted:not(.selected){background:transparent url("./art/yanqi/dancikuai_2@2x.png") center/100% 100% no-repeat;backdrop-filter:none;border:0;box-shadow:none;border-radius:15%;filter:none}
+#game-screen .tile.selected{background-image:url("./art/yanqi/dancikuai_1@2x.png")}
+#game-screen .tile.selected::before{background:none}
+#game-screen .tile-letter{color:#574741;font-weight:800;transform:translateY(-3%);text-shadow:0 1px 0 #fff9}
+#game-screen .tile.selected .tile-letter{color:white;text-shadow:0 2px 2px #73359f44}
+#game-screen .tile-pips.count-badge{color:#987554;font-weight:750;top:8%;right:10%}
+#game-screen .tile.selected .count-badge{color:#fff2ff}
+#game-screen .tile.empty{background:none;box-shadow:none;backdrop-filter:none}
+#game-screen .tile.curtain-locked{background:repeating-linear-gradient(90deg,#6a597d 0,#6a597d 8px,#4b3a5e 9px,#4b3a5e 16px);box-shadow:inset 0 0 0 2px #edd09b}
+#game-screen .connections polyline{stroke:#e357f3;stroke-width:5;opacity:.9}
+#game-screen .game-footer{bottom:5%;left:9%;width:17%;height:auto;aspect-ratio:1}
+#game-screen .bonus-button{background:#5f6b76b8;backdrop-filter:blur(4px);gap:0;justify-content:center;border-radius:50%;border:1px solid #f6f9f9cc;box-shadow:0 2px 4px #14243850,inset 0 1px 1px #fff8;color:#fff}
+#game-screen .bonus-button>img{width:11cqw;height:12cqw;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 2px 2px #25344280)}
+#game-screen .bonus-count{top:-.4cqw;right:-1cqw;width:6cqw;height:6cqw;background:url("./art/yanqi/frame_2@2x.png") center/contain no-repeat;font-size:3.3cqw;color:#fff}
+#game-screen .game-art-actions.play-actions{top:auto;bottom:5%;left:41.5%;width:17%;height:auto;aspect-ratio:1;justify-content:center}
+#game-screen .game-art-actions .art-disc{position:relative;width:17cqw;height:100%;justify-content:center;background:none;backdrop-filter:none;border:0;border-radius:50%;gap:0;color:#fff;padding:0}
+#game-screen .game-art-actions .art-disc img{width:17cqw;height:17cqw;object-fit:contain;z-index:1}
+#game-screen .game-art-actions button:disabled{opacity:.55}
+#game-screen .answer-toggle{position:absolute;right:9%;bottom:5%;width:17%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8cqw;padding:0;border:1px solid #f6f9f9cc;border-radius:50%;background:#5f6b76b8;backdrop-filter:blur(4px);box-shadow:0 2px 4px #14243850,inset 0 1px 1px #fff8;color:#fff;z-index:3}
+#game-screen .answer-toggle svg{width:6.5cqw;height:6.5cqw;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+#game-screen .answer-toggle span{font-size:3.2cqw;line-height:1.2;font-weight:650;white-space:nowrap;text-shadow:0 1px 2px #25344280}
+#game-screen .answer-toggle[aria-pressed="true"]{background:#8750b0d9;border-color:#f3d9ff}
+
+/* A short downward cascade introduces every target and board tile together. */
+#game-screen .play-panel .target-letter.level-entry-tile,#game-screen .play-panel .tile.level-entry-tile{animation:level-tile-enter var(--entry-duration,560ms) cubic-bezier(.2,.65,.26,1) var(--entry-delay,0ms) both;transform-origin:50% 80%;will-change:transform,opacity;transition:none;pointer-events:none}
+#game-screen .level-entering .targets{overflow-y:hidden;scrollbar-width:none}
+@keyframes level-tile-enter{0%{opacity:0;transform:translateY(-145%) scale(.96)}18%{opacity:1}78%{opacity:1;transform:translateY(4%) scale(1.015,.985)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){#game-screen .play-panel .target-letter.level-entry-tile,#game-screen .play-panel .tile.level-entry-tile{animation:none;opacity:1;transform:none;will-change:auto}}
+
+/* Land each purple tile first, then stamp its letter from large to small. */
+#game-screen .target.completed{animation:none}
+#game-screen .target-glyph{display:block;line-height:1;transform-origin:50% 65%;pointer-events:none}
+#game-screen .target.target-collecting{position:relative;z-index:4}
+#game-screen .target.completed.target-collecting .target-letter{position:relative;overflow:visible;background-image:url("./art/yanqi/dancikuai_2@2x.png");color:#fff}
+#game-screen .target.completed.target-collecting .target-letter.target-landed{background-image:url("./art/yanqi/dancikuai_1@2x.png")}
+#game-screen .target-collecting .target-glyph{opacity:0;animation:target-letter-drop var(--letter-duration,340ms) cubic-bezier(.18,.7,.28,1) var(--letter-delay,75ms) both;will-change:transform,opacity}
+@keyframes target-letter-drop{0%{opacity:0;transform:translateY(-115%) scale(1.95)}35%{opacity:1;transform:translateY(-42%) scale(1.45)}82%{opacity:1;transform:translateY(3%) scale(.96)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+/* The penultimate word sends one quiet wave along its existing purple tiles. */
+#game-screen .targets.target-motion-overflow{overflow:visible}
+#game-screen .target-collecting.target-wave .target-letter{animation:target-word-wave var(--motion-duration,520ms) ease-in-out var(--motion-delay,0ms) both;will-change:transform}
+#game-screen .target-collecting.target-wave .target-glyph{animation:target-wave-letter 240ms ease-out var(--letter-delay,75ms) both}
+@keyframes target-word-wave{0%,100%{transform:translateY(0)}42%{transform:translateY(-30%)}78%{transform:translateY(3%)}}
+@keyframes target-wave-letter{from{opacity:0;transform:none}to{opacity:1;transform:none}}
+
+/* Only the final word's first tile dips, turns over and returns to its slot. */
+#game-screen .target-collecting.target-finale .target-letter:first-child{z-index:5;transform-origin:center;animation:target-finale-hop var(--motion-duration,620ms) ease-in-out var(--motion-delay,450ms) both;will-change:transform}
+@keyframes target-finale-hop{0%{transform:translateY(0) rotate(0deg)}46%{transform:translateY(85%) rotate(170deg)}58%{transform:translateY(82%) rotate(218deg)}88%{transform:translateY(-5%) rotate(350deg)}100%{transform:translateY(0) rotate(360deg)}}
+
+/* A warm board rim answers the connection; each tile lights after landing. */
+#game-screen .board.word-accepted::before,#game-screen .board.word-accepted::after{content:"";position:absolute;pointer-events:none;z-index:5;opacity:0}
+#game-screen .board.word-accepted::before{inset:1px;border:1px solid #fff4d8;border-radius:inherit;box-shadow:0 0 2px #fff9,0 0 8px 1px #ffe4b780,0 0 14px 2px #ffce8b40,inset 0 0 5px #ffe5b466;animation:board-success-rim 760ms ease-out both}
+#game-screen .board.word-accepted::after{inset:-2.3cqw;background:url("./art/effects/board-sparkles.svg") center/100% 100% no-repeat;filter:drop-shadow(0 0 1.5px #fff3ca80);animation:board-success-sparkles 760ms ease-out both}
+#game-screen .target-collecting .target-letter::before,#game-screen .target-collecting .target-letter::after{content:"";position:absolute;pointer-events:none;z-index:2;opacity:0;animation-duration:var(--glow-duration,360ms);animation-delay:var(--glow-delay,415ms);animation-timing-function:ease-out;animation-fill-mode:both}
+#game-screen .target-collecting .target-letter::before{inset:1%;border:1px solid #fffbe1;border-radius:inherit;box-shadow:0 0 3px #fff,0 0 8px 2px #fff0c6b3,inset 0 0 7px #fff8df99;animation-name:target-landing-glow}
+#game-screen .target-collecting .target-letter::after{inset:-29%;background:url("./art/effects/target-sparkles.svg") center/100% 100% no-repeat;filter:drop-shadow(0 0 2px #fff6d9);animation-name:target-landing-sparkles}
+@keyframes board-success-rim{0%{opacity:0}13%{opacity:.6}40%{opacity:.48}100%{opacity:0}}
+@keyframes board-success-sparkles{0%{opacity:0;transform:scale(.99)}18%{opacity:.5;transform:scale(1)}65%{opacity:.28}100%{opacity:0;transform:scale(1.015)}}
+@keyframes target-landing-glow{0%{opacity:0}18%{opacity:1}52%{opacity:.85}100%{opacity:0}}
+@keyframes target-landing-sparkles{0%{opacity:0;transform:scale(.82)}23%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.16)}}
+
+/* All tiles in the last word breathe in place, together. */
+#game-screen .target-last .target-slots{transform:none;animation:none}
+#game-screen .target-last .target-letter{transform-origin:center;animation:last-target-breathe 1.9s ease-in-out infinite;animation-delay:0ms}
+@keyframes last-target-breathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 #f3ceff00)}50%{transform:scale(1.045);filter:drop-shadow(0 0 4px #f3ceff8c)}}
+@media(prefers-reduced-motion:reduce){#game-screen .target-last .target-slots,#game-screen .target-last .target-letter{animation:none}#game-screen .target-glyph{will-change:auto}#game-screen .target-collecting .target-glyph{opacity:1;animation:none}#game-screen .board.word-accepted::before,#game-screen .board.word-accepted::after,#game-screen .target-collecting .target-letter::before,#game-screen .target-collecting .target-letter::after{display:none}}

@@ -1,11 +1,4 @@
 /* Activity interfaces share the lobby's snow, glass and sage palette. */
-.lobby-events{position:absolute;top:59.5%;left:8.4%;width:83.2%;display:grid;grid-template-columns:repeat(3,1fr);gap:2.1cqw}
-.lobby-event{position:relative;display:flex;flex-direction:column;align-items:center;gap:1.1cqw;min-width:0;padding:2.7cqw 1cqw 2.4cqw;border:1px solid #ffffff8a;border-radius:3.6cqw;background:linear-gradient(150deg,#ffffffaa,#edf4f47a);box-shadow:0 4px 16px #1d3b4520,inset 0 1px 0 #fff9;backdrop-filter:blur(14px);color:#294550}
-.lobby-event:hover{background:#f6fafbcd;transform:translateY(-2px)}
-.lobby-event .event-icon{width:7.3cqw;height:7.3cqw;stroke-width:1.35;color:#59786d}
-.lobby-event>strong{font-size:3.3cqw;font-weight:600;white-space:nowrap}
-.lobby-event>small{font-size:2.6cqw;color:#607981;white-space:nowrap}
-.event-dot{position:absolute;top:2.1cqw;right:2.1cqw;width:1.5cqw;height:1.5cqw;border-radius:50%;background:#9e764b;box-shadow:0 0 0 3px #fff7}
 .event-icon{display:inline-block;width:24px;height:24px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.6;flex:none;vertical-align:middle}
 .event-dialog{--ev-sage:#627f70;--ev-ink:#29434d;--ev-muted:#6a8187;--ev-line:#d5e1e2;position:fixed;inset:0;width:min(440px,calc(100vw - 24px));max-width:none;height:min(760px,calc(100dvh - 24px));max-height:none;margin:auto;padding:0;border:1px solid #ffffffe0;border-radius:26px;background:linear-gradient(155deg,#f7fbfcfa,#e8f0f0fa);box-shadow:0 28px 100px #20394559;color:var(--ev-ink);overflow:hidden;font-family:"Nunito Sans","Microsoft YaHei",sans-serif}
 .event-dialog[open]{display:flex;flex-direction:column}
@@ -139,4 +132,4 @@
 .daily-error{margin:20px 0;text-align:center;color:#966c58;font-size:13px}
 @media(max-width:380px),(max-height:690px){.event-dialog{border-radius:20px}.event-header{padding:17px 19px 13px}.event-header h2{font-size:21px}.event-scroll{padding:0 19px 14px}.event-footer{padding:11px 19px 14px}.wheel-stage{max-width:275px;margin-top:17px}.wheel-note{margin-top:15px}.weekly-banner{min-height:130px;padding-top:65px}.daily-gem-hero{min-height:75px}.daily-gem-hero>.event-icon{width:55px;height:55px}.daily-hero-caption{margin-bottom:13px}.daily-calendar{padding:12px 11px 10px}.daily-calendar-grid>button{height:27px}.daily-month-nav{margin-bottom:9px}.daily-gem-progress{margin-top:12px}}
 @media(max-height:690px){.daily-gem-hero,.daily-hero-title,.daily-hero-caption{display:none}.daily-home{padding-top:3px}.daily-heading-line{margin-bottom:14px}.daily-calendar-grid>button{height:25px}.weekly-banner{min-height:110px;padding-top:52px}.weekly-banner h3{font-size:21px}.event-primary{min-height:46px}.event-header p{font-size:11px}.wheel-stage{max-width:240px;margin-top:16px}.wheel-note{margin:14px 0 9px}.wheel-prize{min-height:47px}.wheel-chances{margin-top:10px}.event-footer{padding-bottom:13px}}
-@media(prefers-reduced-motion:reduce){.wheel-disc,.event-progress-fill{transition:none}.lobby-event:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.wheel-disc,.event-progress-fill{transition:none}}
