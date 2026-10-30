@@ -17,10 +17,10 @@ import {mountCollectionViews} from './collection-ui.js?v=25';
 import {mountEventViews} from './event-ui.js?v=30';
 import {planTargetLengths,normalizeComposition} from './core/target-composition.js?v=28';
 import {letterHintsForSession} from './core/letter-hints.js?v=33';
-import {planTargetRows} from './core/target-rows.js?v=30';
+import {planTargetLayout} from './core/target-rows.js?v=31';
 import {TargetEffects} from './target-effects.js?v=3';
-import {TargetShatter} from './target-shatter.js?v=1';
-import {EncouragementBanners} from './encouragement-banners.js?v=2';
+import {BoardShatter} from './board-shatter.js?v=2';
+import {EncouragementBanners} from './encouragement-banners.js?v=3';
 import {LevelEntrance} from './level-entrance.js?v=1';
 import {createPersonalProgress,PERSONAL_PROGRESS_KEY} from './core/personal-progress.js?v=25';
 import {clearAppData,dataEpoch,DATA_RESET_KEY,DATA_NOTICE_KEY,PREVIEW_COLLECTION_KEY} from './core/app-data.js?v=25';
@@ -70,9 +70,8 @@ const targetEffects=new TargetEffects({
   isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
   onIdle:session=>{if(game===session){scheduleFit();syncCompletionEffect();if($('#lobby').hidden&&!document.hidden)playtestLab?.gameUpdated();}},
 });
-const targetShatter=new TargetShatter({
+const boardShatter=new BoardShatter({
   isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
-  onDone:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden)playtestLab?.gameUpdated();},
 });
 const encouragementHost=$('#encouragement-banner');
 const encouragement=new EncouragementBanners({
@@ -90,7 +89,7 @@ const encouragement=new EncouragementBanners({
 function syncCompletionEffect(){
   if(game?.status!=='won'||levelEntrance.isRunning(game)||targetEffects.isRunning(game))return;
   encouragement.complete(game);
-  if(!encouragement.isRunning(game))targetShatter.play(game,$('#targets'),$('.play-panel'));
+  if(!encouragement.isRunning(game))boardShatter.cancel();
 }
 const solutionCache = new WeakMap(), SOLUTIONS_PER_PAGE = 12;
 let solutionWorker = null, solutionLevel = null, solutionRequest = 0, solutionPage = 0;
@@ -459,7 +458,7 @@ function fitBoard() {
   const width = Math.max(padding + (cols-1)*gap + cols, Math.min(area.clientWidth, fromHeight));
   board.style.width = width + 'px';
   const cellSize = (width - padding - (cols-1)*gap) / cols;
-  board.style.setProperty('--tile-font', Math.min(40, Math.max(16, cellSize*.48)) + 'px');
+  board.style.setProperty('--tile-font', Math.min(60, Math.max(16, cellSize*.62)) + 'px');
   board.dataset.compactCells = String(cellSize < 90);
   board.style.setProperty('--count-font', Math.min(17, Math.max(11, cellSize * .17)) + 'px');
   board.style.setProperty('--count-height', Math.min(23, Math.max(13, cellSize * .23)) + 'px');
@@ -467,18 +466,20 @@ function fitBoard() {
 function fitTargetRows() {
   const container=$('#targets'),items=[...container.querySelectorAll('.target')];
   if(!items.length||!container.clientWidth||!container.clientHeight)return;
+  const order=new Map([...game.initial.targets].sort((a,b)=>[...a.word].length-[...b.word].length).map((target,index)=>[target.word,index]));
+  items.sort((a,b)=>order.get(a.dataset.word)-order.get(b.dataset.word));
   const panelWidth=$('.play-panel').clientWidth,style=getComputedStyle(container);
   const width=container.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
-  const rowGap=panelWidth*.012,letterGap=panelWidth*.005,wordGap=panelWidth*.03,minSlot=panelWidth*.07;
+  const rowGap=panelWidth*.014,letterGap=panelWidth*.004,wordGap=panelWidth*.04,minSlot=panelWidth*.075;
   const lengths=new Map(items.map(item=>[item,item.querySelectorAll('.target-letter').length]));
-  const footprint=row=>({letters:row.reduce((sum,item)=>sum+lengths.get(item),0),gaps:row.reduce((sum,item)=>sum+lengths.get(item)-1,0)*letterGap+(row.length-1)*wordGap});
-  const rows=planTargetRows(items.map(item=>lengths.get(item)),{width,minSlot,letterGap,wordGap}).map(indices=>indices.map(i=>items[i]));
-  const visibleRows=Math.min(rows.length,7),heightLimit=(container.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom)-(visibleRows-1)*rowGap)/visibleRows;
-  const widthLimit=Math.min(...rows.map(row=>{const size=footprint(row);return (width-size.gaps)/size.letters;}));
-  const slot=Math.max(1,Math.min(panelWidth*.085,heightLimit,widthLimit)),scrollTop=container.scrollTop;
+  const height=container.clientHeight-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom);
+  const layout=planTargetLayout(items.map(item=>lengths.get(item)),{width,height,minSlot,maxSlot:panelWidth*.11,letterGap,wordGap,rowGap});
+  const rows=layout.rows.map(indices=>indices.map(i=>items[i])),slot=layout.slot,scrollTop=container.scrollTop;
   container.style.setProperty('--answer-size',slot+'px');container.style.setProperty('--target-row-gap',rowGap+'px');
   container.style.setProperty('--target-letter-gap',letterGap+'px');container.style.setProperty('--target-word-gap',wordGap+'px');
-  container.dataset.layout=items.length<=7?'single':'packed';container.dataset.rows=String(rows.length);
+  container.dataset.layout=layout.columns?'columns':rows.some(row=>row.length>1)?'packed':'single';container.dataset.rows=String(rows.length);container.dataset.scroll=String(layout.scroll);
+  if(layout.columns)container.style.setProperty('--target-columns',layout.columns.map(length=>(length*slot+(length-1)*letterGap)+'px').join(' '));
+  else container.style.removeProperty('--target-columns');
   const currentRows=[...container.children];
   const sameRows=currentRows.length===rows.length&&currentRows.every((row,index)=>row.classList.contains('target-row')&&row.children.length===rows[index].length&&[...row.children].every((item,column)=>item===rows[index][column]));
   if(!sameRows&&!targetEffects.isRunning(game))container.replaceChildren(...rows.map(items=>{const row=document.createElement('div');row.className='target-row';row.append(...items);return row;}));
@@ -640,6 +641,7 @@ function renderDebug() {
 }
 function render(consumed = []) {
   if (!game) return;
+  boardShatter.sync(game,tileElements,$('.play-panel'));
   tileElements.forEach((tile, cell) => {
     const count = game.counts[cell],blocked=game.blockedCells?.includes(cell)===true;
     tile.classList.toggle('curtain-locked',blocked);tile.dataset.unlock=blocked?String(game.model.gates[cell]):'';
@@ -654,7 +656,7 @@ function render(consumed = []) {
     tile.setAttribute('aria-label',blocked?`格子 ${cell}，帘子锁定，累计找到 ${game.model.gates[cell]} 个目标词后开启`:count ? `格子 ${cell}，字母 ${game.initial.board.letters[cell]}，剩余 ${count} 次` : `格子 ${cell}，空位`);
   });
   if(targetElementsSession!==game){
-    levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();$('#targets').replaceChildren();targetElementsSession=game;
+    levelEntrance.cancel();targetEffects.cancel();$('#targets').replaceChildren();targetElementsSession=game;
   }
   encouragement.sync(game);
   const targetNodes=new Map([...$('#targets').querySelectorAll('.target')].map(item=>[item.dataset.word,item]));
@@ -1060,7 +1062,7 @@ $('#activity-button').addEventListener('click',()=>{resetCollectionMonth();rende
 $('#activity-close').addEventListener('click',()=>$('#activity-dialog').close());
 
 function showLobby() {
-  levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();
+  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();
   answerPreviewOpen=false;renderAnswerPreview();
   cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
   $('#game-screen').classList.remove('information-open');
@@ -1190,7 +1192,7 @@ $('#preview-collection').addEventListener('click',async()=>{
   finally{if(!dataResetting)$('#preview-collection').disabled=false;}
 });
 function prepareDataReset(){
-  levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();
+  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();
   if(dataResetting)return;dataResetting=true;ready=false;
   cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();
   $('#preview-collection').disabled=true;$('#clear-all-data').disabled=true;$('#data-status').textContent='正在清除…';
@@ -1253,9 +1255,9 @@ for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
 }
 $('#word-count').value = '3';
-window.addEventListener('pagehide', () => { levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
-document.addEventListener('visibilitychange',()=>{if(document.hidden){levelEntrance.cancel();targetEffects.cancel();targetShatter.cancel();encouragement.cancel();}else if($('#lobby').hidden){scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
-playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game)||targetShatter.isRunning(game),
+window.addEventListener('pagehide', () => { levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
+document.addEventListener('visibilitychange',()=>{if(document.hidden){levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();}else if($('#lobby').hidden){scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
+playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game),
   recordPersonalProgress:(session,snapshot,flush=false)=>{personalProgress.observe(session,snapshot);eventViews.observe(session,snapshot);if(flush)personalProgress.flush();},
   resetCurrent:()=>{if(game)loadLevel(game.exportInitial||game.initial,$('#level-kind').textContent,{syncDraft:false,dismissEditor:false,dictionaryOverride:game.dictionary});},
   getDictionary:()=>dictionary,

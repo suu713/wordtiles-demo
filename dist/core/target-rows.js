@@ -20,3 +20,23 @@ export function planTargetRows(lengths,{width,minSlot,letterGap,wordGap,maxRows=
   while(rows>0){const start=previous[rows][end];result.unshift(Array.from({length:end-start},(_,i)=>start+i));end=start;rows--;}
   return result;
 }
+
+// Prefer a readable layout that fits: single words, packed rows, or two columns.
+export function planTargetLayout(lengths,{width,height,minSlot,maxSlot,letterGap,wordGap,rowGap,maxRows=6}){
+  if(!lengths.length)return {rows:[],slot:maxSlot,columns:null,scroll:false};
+  const candidates=[];
+  function add(rows,columns=null){
+    const footprint=indices=>({letters:indices.reduce((sum,i)=>sum+lengths[i],0),gaps:indices.reduce((sum,i)=>sum+lengths[i]-1,0)*letterGap+(indices.length-1)*wordGap});
+    const widthLimit=columns?(width-(columns[0]+columns[1]-2)*letterGap-wordGap)/(columns[0]+columns[1]):Math.min(...rows.map(indices=>{const size=footprint(indices);return (width-size.gaps)/size.letters;}));
+    const visibleRows=Math.min(rows.length,maxRows),heightLimit=(height-(visibleRows-1)*rowGap)/visibleRows;
+    candidates.push({rows,slot:Math.max(1,Math.min(maxSlot,widthLimit,heightLimit)),columns,scroll:rows.length>maxRows});
+  }
+  add(lengths.map((_,index)=>[index]));
+  if(lengths.length>5)for(let limit=3;limit<=maxRows;limit++)add(planTargetRows(lengths,{width,minSlot,letterGap,wordGap,maxRows:limit}));
+  if(lengths.length>=6){
+    const split=Math.ceil(lengths.length/2);
+    add(Array.from({length:split},(_,index)=>index+split<lengths.length?[index,index+split]:[index]),[Math.max(...lengths.slice(0,split)),Math.max(...lengths.slice(split))]);
+  }
+  const fitted=candidates.filter(choice=>!choice.scroll&&choice.slot>=minSlot),pool=fitted.length?fitted:candidates;
+  return pool.sort((a,b)=>Math.abs(a.slot-b.slot)>.2?b.slot-a.slot:a.rows.length-b.rows.length||Number(!!b.columns)-Number(!!a.columns))[0];
+}

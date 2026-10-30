@@ -33,27 +33,28 @@ test('第三次正确后先等目标开始落字，180ms 后才显示连对横�
   f.advance(1);assert.equal(f.banners.isRunning(session),false);assert.equal(f.pending,0);
 });
 
-test('第三次正确同时通关时，绿色横幅后排入红色横幅，播完才释放碎裂',()=>{
+test('第三次正确同时通关时只显示红色横幅，不连续排入两个横幅',()=>{
   const f=fixture(),session={status:'playing'};
-  for(let i=0;i<3;i++)f.banners.record(session,correct);
-  session.status='won';f.advance(995);assert.equal(f.banners.complete(session),true);
+  f.banners.record(session,correct);f.banners.record(session,correct);
+  session.status='won';f.banners.record(session,correct);f.advance(995);
+  assert.deepEqual(f.shown,[]);assert.equal(f.banners.complete(session),true);
   assert.equal(f.banners.complete(session),false);
-  const streakEnd=ENCOURAGEMENT_TIMING.streakDelay+ENCOURAGEMENT_TIMING.streak;
-  f.advance(streakEnd-996);assert.equal(f.shown.length,1);assert.equal(f.idle.length,0);
-  f.advance(1);assert.deepEqual(f.shown,[{kind:'streak',at:ENCOURAGEMENT_TIMING.streakDelay},{kind:'complete',at:streakEnd}]);
+  assert.deepEqual(f.shown,[{kind:'complete',at:995}]);
   f.advance(ENCOURAGEMENT_TIMING.complete-1);assert.equal(f.banners.isRunning(session),true);assert.equal(f.idle.length,0);
   f.advance(1);assert.equal(f.banners.isRunning(session),false);assert.deepEqual(f.idle,[session]);assert.equal(f.pending,0);
 });
 
 test('通关横幅只播一次，切回已完成会话也不重复',()=>{
   const f=fixture(),session={status:'playing'};
-  assert.equal(f.banners.complete(session),false);session.status='won';assert.equal(f.banners.complete(session),true);
+  assert.equal(f.banners.complete(session),false);
+  f.banners.record(session,correct);f.banners.record(session,correct);session.status='won';f.banners.record(session,correct);
+  assert.equal(f.banners.complete(session),true);
   f.advance(ENCOURAGEMENT_TIMING.complete);assert.equal(f.banners.complete(session),false);
   f.banners.sync({status:'playing'});f.banners.sync(session);
   assert.equal(f.banners.complete(session),false);assert.equal(f.shown.length,1);
 });
 
-test('切关取消队列和延迟，旧会话不会推动新关结算',()=>{
+test('切关取消延迟，旧会话不会推动新关结算',()=>{
   const f=fixture(),first={status:'playing'};
   for(let i=0;i<3;i++)f.banners.record(first,correct);
   first.status='won';f.banners.complete(first);
@@ -67,7 +68,30 @@ test('开始下一次连接可收起连对横幅，但不能提前结束通关�
   for(let i=0;i<3;i++)f.banners.record(session,correct);
   f.banners.dismissStreak();assert.equal(f.banners.isRunning(session),false);assert.equal(f.banners.streak,3);
   f.advance(ENCOURAGEMENT_TIMING.streakDelay);assert.equal(f.shown.length,0);assert.equal(f.pending,0);
-  session.status='won';f.banners.complete(session);f.banners.dismissStreak();assert.equal(f.banners.isRunning(session),true);
+  session.status='won';assert.equal(f.banners.complete(session),true);f.banners.dismissStreak();assert.equal(f.banners.isRunning(session),true);
+});
+
+test('连对横幅后不足三个新正确词时跳过通关横幅，达到三个时才允许',()=>{
+  for(const total of [4,5,6]){
+    const f=fixture(),session={status:'playing'};
+    for(let i=0;i<3;i++)f.banners.record(session,correct);
+    f.advance(ENCOURAGEMENT_TIMING.streakDelay+ENCOURAGEMENT_TIMING.streak);
+    for(let i=4;i<=total;i++){if(i===total)session.status='won';f.banners.record(session,correct);}
+    assert.equal(f.banners.complete(session),total===6);
+    f.advance(5000);assert.deepEqual(f.shown.map(item=>item.kind),total===6?['streak','complete']:['streak']);
+    assert.equal(f.banners.isRunning(session),false);assert.equal(f.pending,0);
+  }
+});
+
+test('短关不足三个正确词不显示横幅；活动横幅期间不积压新的横幅',()=>{
+  const short=fixture(),shortSession={status:'playing'};
+  short.banners.record(shortSession,correct);shortSession.status='won';short.banners.record(shortSession,correct);
+  assert.equal(short.banners.complete(shortSession),false);assert.equal(short.shown.length,0);
+  const f=fixture(),session={status:'playing'};
+  for(let i=0;i<3;i++)f.banners.record(session,correct);f.advance(ENCOURAGEMENT_TIMING.streakDelay);
+  for(let i=0;i<3;i++)f.banners.record(session,correct);
+  session.status='won';assert.equal(f.banners.complete(session),false);f.advance(5000);
+  assert.deepEqual(f.shown.map(item=>item.kind),['streak']);assert.equal(f.pending,0);
 });
 
 test('减弱动态或页面不可见时不阻塞完成流程；隐藏时取消后不回放旧横幅',()=>{
@@ -77,6 +101,8 @@ test('减弱动态或页面不可见时不阻塞完成流程；隐藏时取消�
     session.status='won';assert.equal(f.banners.complete(session),false);
     assert.equal(f.banners.isRunning(session),false);assert.equal(f.shown.length,0);assert.equal(f.pending,0);
   }
-  const f=fixture(),session={status:'won'};f.banners.complete(session);f.banners.cancel();f.advance(5000);
+  const f=fixture(),session={status:'playing'};
+  f.banners.record(session,correct);f.banners.record(session,correct);session.status='won';f.banners.record(session,correct);
+  f.banners.complete(session);f.banners.cancel();f.advance(5000);
   assert.equal(f.banners.complete(session),false);assert.deepEqual(f.idle,[]);assert.equal(f.pending,0);
 });

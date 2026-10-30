@@ -1,21 +1,23 @@
 export const ENCOURAGEMENT_TIMING=Object.freeze({streakDelay:180,streak:1100,complete:1350});
+export const BANNER_WORD_INTERVAL=3;
 
 // Presentation-only milestones; the game session remains the scoring authority.
 export class EncouragementBanners {
   constructor({show=()=>{},hide=()=>{},onIdle=()=>{},isVisible=()=>true,reducedMotion=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true,setTimer=(fn,delay)=>globalThis.setTimeout(fn,delay),clearTimer=id=>globalThis.clearTimeout(id)}={}){
     this.show=show;this.hide=hide;this.onIdle=onIdle;this.isVisible=isVisible;this.reducedMotion=reducedMotion;this.setTimer=setTimer;this.clearTimer=clearTimer;
-    this.session=null;this.streak=0;this.queue=[];this.active=null;this.completed=new WeakSet();
+    this.session=null;this.streak=0;this.wordCount=0;this.lastBannerAt=0;this.active=null;this.completed=new WeakSet();
   }
   sync(session){
     if(this.session===session)return;
-    this.cancel();this.session=session;this.streak=0;
+    this.cancel();this.session=session;this.streak=0;this.wordCount=0;this.lastBannerAt=0;
   }
   record(session,result){
     if(!session||!result)return;
     this.sync(session);
     if(result.accepted&&session.status!=='anomaly'){
-      this.streak++;
-      if(this.streak%3===0)this.enqueue('streak');
+      this.streak++;this.wordCount++;
+      // A winning word reserves this milestone for the completion ribbon.
+      if(session.status!=='won'&&this.streak%BANNER_WORD_INTERVAL===0)this.enqueue('streak');
     }else if(!['extra-word','already-completed'].includes(result.reason)){
       this.streak=0;this.dismissStreak();
     }
@@ -28,22 +30,17 @@ export class EncouragementBanners {
     return this.enqueue('complete');
   }
   enqueue(kind){
-    if(!this.isVisible()||this.reducedMotion())return false;
-    this.queue.push({kind,session:this.session,timer:null});this.next();return true;
-  }
-  next(){
-    if(this.active||!this.queue.length)return;
-    if(!this.isVisible()||this.reducedMotion()){
-      this.queue=[];this.hide();this.onIdle(this.session);return;
-    }
-    const record=this.queue.shift();this.active=record;
+    if(this.active||this.wordCount-this.lastBannerAt<BANNER_WORD_INTERVAL||!this.isVisible()||this.reducedMotion())return false;
+    const record={kind,session:this.session,wordCount:this.wordCount,timer:null};this.active=record;
     // Let the first target letter begin falling before the combo ribbon enters.
     if(record.kind==='streak')record.timer=this.setTimer(()=>this.start(record),ENCOURAGEMENT_TIMING.streakDelay);
     else this.start(record);
+    return true;
   }
   start(record){
     if(this.active!==record)return;
     if(!this.isVisible()||this.reducedMotion()){this.finish(record);return;}
+    this.lastBannerAt=record.wordCount;
     const duration=ENCOURAGEMENT_TIMING[record.kind];
     this.show(record.kind,duration);
     record.timer=this.setTimer(()=>this.finish(record),duration);
@@ -51,16 +48,14 @@ export class EncouragementBanners {
   finish(record){
     if(this.active!==record)return;
     this.clearTimer(record.timer);this.active=null;this.hide();
-    if(this.queue.length)this.next();
-    else if(this.session===record.session)this.onIdle(record.session);
+    if(this.session===record.session)this.onIdle(record.session);
   }
-  isRunning(session){return this.session===session&&!!(this.active||this.queue.length);}
+  isRunning(session){return this.session===session&&!!this.active;}
   dismissStreak(){
-    this.queue=this.queue.filter(record=>record.kind!=='streak');
     if(this.active?.kind==='streak')this.finish(this.active);
   }
   cancel(){
     if(this.active)this.clearTimer(this.active.timer);
-    this.active=null;this.queue=[];this.hide();
+    this.active=null;this.hide();
   }
 }

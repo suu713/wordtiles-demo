@@ -1,9 +1,7 @@
-#game-screen .targets.targets-cleared{visibility:hidden}
-.target-shatter-layer{position:absolute;inset:0;z-index:12;overflow:hidden;pointer-events:none;contain:strict}
-.tile-shard,.tile-shatter-dust{position:absolute;display:grid;place-items:center;background-size:100% 100%;background-repeat:no-repeat;animation:tile-shard-flight var(--shard-duration,880ms) cubic-bezier(.24,.48,.52,1) var(--shard-delay,0ms) both;will-change:transform,opacity;pointer-events:none}
+.board-shatter-layer{position:absolute;inset:0;z-index:12;overflow:hidden;pointer-events:none;contain:strict}
+.tile-shard,.tile-shatter-dust{position:absolute;display:grid;place-items:center;background-size:100% 100%;background-repeat:no-repeat;will-change:transform,opacity;pointer-events:none}
 .tile-shard{padding-bottom:1px;filter:drop-shadow(0 0 .4px #fff9)}
 .tile-shatter-dust{width:3px;height:4px;background:#fff6ff;clip-path:polygon(50% 0,100% 35%,65% 100%,0 60%);box-shadow:0 0 4px #e8d3ff}
-@keyframes tile-shard-flight{0%{transform:translate(0,0) rotate(0) scale(1);opacity:1}14%{transform:translate(calc(var(--shard-x)*.08),var(--shard-lift)) rotate(calc(var(--shard-turn)*.1)) scale(1.05);opacity:1}40%{transform:translate(calc(var(--shard-x)*.4),calc(var(--shard-y)*.1)) rotate(calc(var(--shard-turn)*.4)) scale(.94);opacity:1}75%{transform:translate(calc(var(--shard-x)*.8),calc(var(--shard-y)*.6)) rotate(calc(var(--shard-turn)*.8)) scale(.8);opacity:.85}100%{transform:translate(var(--shard-x),var(--shard-y)) rotate(var(--shard-turn)) scale(.55);opacity:0}}
 
 /* The supplied settlement artwork is shown at the same size as the game. */
 .level-complete-dialog{position:fixed;inset:0;width:min(100vw,calc(100dvh * 9/16),520px);height:auto;aspect-ratio:9/16;max-width:none;max-height:none;padding:0;margin:auto;border:0;border-radius:0;background:#7d8ee0;box-shadow:0 12px 42px #26384230;overflow:hidden;container-type:inline-size;--settlement-step:130ms;--settlement-enter:1200ms;--settlement-buttons-delay:calc(var(--settlement-step) * 4);--settlement-rest:calc(var(--settlement-buttons-delay) + var(--settlement-enter))}
@@ -38,5 +36,5 @@
 @keyframes settlement-part-float{from{transform:translateY(var(--settlement-float,26px))}to{transform:translateY(0)}}
 @keyframes settlement-part-reveal{from{opacity:0}to{opacity:1}}
 @keyframes settlement-icon-retire{to{opacity:0}}
-@media(prefers-reduced-motion:reduce){.target-shatter-layer{display:none}.level-complete-dialog[open] .settlement-entry{opacity:1;transform:none;animation:none}.level-complete-dialog[open] .settlement-buttons{pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.board-shatter-layer{display:none}.level-complete-dialog[open] .settlement-entry{opacity:1;transform:none;animation:none}.level-complete-dialog[open] .settlement-buttons{pointer-events:auto}}
 @media(prefers-reduced-motion:reduce){.settlement-icon-wreath,.settlement-icon-tiles{display:none}.level-complete-dialog[open] .settlement-icon-original{opacity:1;animation:none}}
