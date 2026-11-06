@@ -1,0 +1,35 @@
+.tile-material-settings{padding:0;margin:0 0 17px;border:0;min-width:0}
+.tile-material-settings legend{padding:0;font-size:13px;font-weight:700;color:#263842}
+.tile-material-heading{display:flex;align-items:center;justify-content:flex-end;margin-top:-21px;margin-bottom:9px;min-height:25px}
+.tile-material-heading button{padding:4px 9px;border:1px solid #b7ccc3;border-radius:7px;background:#f1f7f3;color:#315b45;font-size:11px;line-height:1.4;cursor:pointer}
+.tile-material-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile-material-controls label{display:grid;gap:4px;font-size:11px;color:#65777a}
+.settings-popover .tile-material-controls select{width:100%;min-width:0;height:30px;margin:0;padding:3px 7px;font-size:12px;color:#263842;background:#fff;border:1px solid #d4dedc;border-radius:6px}
+.tile-material-samples{display:flex;align-items:center;justify-content:space-around;gap:10px;padding-top:9px}
+.tile-material-sample{display:grid;justify-items:center;gap:1px;color:#65777a;font-size:10px}
+.tile-material-face{position:relative;display:grid;place-items:center;width:43px;height:44px;background:var(--tile-material-normal) center/100% 100% no-repeat;font:900 21px/1 "WordTiles Tile",sans-serif;color:var(--tile-material-ink);padding-bottom:4px}
+.tile-material-face small{position:absolute;right:7px;bottom:9px;font:900 9px/1 "WordTiles Tile",sans-serif}
+.tile-material-face[data-state="selected"]{background-image:var(--tile-material-selected);color:var(--tile-material-selected-ink)}
+.tile-material-face[data-state="collected"]{background-image:var(--tile-material-collected);color:var(--tile-material-selected-ink)}
+#tile-material-status{margin:0;font-size:11px;line-height:1.5;color:#65777a}
+#tile-material-status:empty{display:none}
+/* Selection is the complete live path, including keyboard input and backtracking.
+   :active only describes the initial pointer target and must not own this state. */
+:root[data-tile-material]:not([data-tile-material="original"]) #game-screen .tile.selected:not(.empty):not(.curtain-locked){background-image:var(--tile-material-pressed)}
+:root[data-tile-material]:not([data-tile-material="original"]) #game-screen .tile.selected .tile-letter{transform:translateY(2%);text-shadow:none}
+:root[data-tile-material]:not([data-tile-material="original"]) #game-screen .tile.selected .count-badge{transform:translateY(1px)}
+
+/* A quiet white outline follows every selected material face, without changing
+   cell size or hit testing. Insets account for the supplied PNGs' alpha padding. */
+:root{--selection-frame-inset:.32% 4.55% 9.94% 4.87%;--selection-frame-radius:17%}
+:root[data-tile-material]:not([data-tile-material="original"]){--selection-frame-inset:.65% 5.2% 10.3% 4%;--selection-frame-radius:20% / 21%}
+:root[data-tile-material]:not([data-tile-material="original"])[data-tile-press="short"]{--selection-frame-inset:3.85% 5.8% 10.3% 4%;--selection-frame-radius:20% / 22%}
+#game-screen .tile{appearance:none;-webkit-appearance:none;transition:transform 100ms ease-out}
+/* Textured necks sit below tile faces. The separate SVG above the tiles remains
+   available to hint guides; manual links never pass over letters or badges. */
+#game-screen .board>.tile{z-index:2}
+.selection-bridges{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible}
+.selection-bridge{position:absolute;display:block;transform-origin:50% 0;background-image:var(--tile-material-bridge);background-size:var(--tile-bridge-background-size);background-position:center;background-repeat:no-repeat;pointer-events:none}
+#game-screen .tile.selected:not(.empty):not(.curtain-locked)::before{content:"";position:absolute;inset:var(--selection-frame-inset);z-index:3;border:clamp(1px,.45cqw,2.2px) solid #fffffff2;border-radius:var(--selection-frame-radius);background:none;box-shadow:0 0 1px #fff8;pointer-events:none;transform-origin:center;animation:tile-selection-frame-in 120ms cubic-bezier(.22,.7,.35,1) both}
+@keyframes tile-selection-frame-in{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){#game-screen .tile.selected:not(.empty):not(.curtain-locked)::before{animation:none;opacity:1;transform:none}}

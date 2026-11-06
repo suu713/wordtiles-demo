@@ -1,0 +1,6721 @@
+{
+  "scope": {
+    "date": "2026-10-13",
+    "sources": {},
+    "wordTiles": "Main progression native code and all managed declarations inspected. No client-side performance-driven level substitution/add/remove branch found in inspected loading and completion chain.",
+    "zenWord": "Validated custom 76-byte type, 30-byte method, 10-byte field/parameter metadata layout against all previously extracted focus declarations; 10,497 types. Native gameplay ABI is missing, so declarations/configuration are not claimed as executed rules."
+  },
+  "wordTiles": {
+    "verdict": "预制关卡＋按选定顺序表取关；已确认动态提示辅助，未见客户端按表现改题的主线分支。",
+    "progression": {
+      "lists": {
+        "level_list_0": 1500,
+        "level_list_1": 1500,
+        "level_list_2": 1000,
+        "level_list_3": 1000
+      },
+      "nextLevel": "currentLevel + 1",
+      "indexing": "selected list at resolved ordinal - 1",
+      "overflowStart": 101,
+      "smallListOverflowStart": 1,
+      "overflowMode": "modulo cycle"
+    },
+    "freeWrongMoveHint": {
+      "eligibleMainLevels": [
+        1,
+        10
+      ],
+      "wrongSubmittedMoves": 8,
+      "resetsOnShown": true,
+      "resetsOnSuccessfulTarget": true,
+      "effect": "full target path hand demonstration",
+      "consumesHintInventory": false,
+      "requiresAdvertisement": false
+    },
+    "rewardedHint": {
+      "configurationFields": [
+        "IsActive",
+        "WrongMoveCount",
+        "StartLevel"
+      ],
+      "requiresPositiveWrongMoveThreshold": true,
+      "requiresConfiguredStartLevel": true,
+      "requiresAdAvailability": true,
+      "blocksOtherActiveTutorials": true,
+      "effectOnCompletedAd": "HintBooster.RevealLetter",
+      "thresholdValues": "remote-controlled; no uniform live value verified"
+    },
+    "nativeMethods": [
+      {
+        "name": "Agave.LevelManager.LoadCurrentLevel",
+        "address": "0xe8fd24",
+        "bytes": 120,
+        "calls": [
+          {
+            "at": "0xe8fd70",
+            "instruction": "bl",
+            "target": "0x254e6dc",
+            "names": [
+              "System.Object..ctor"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe8fd38 cmp r0, #0",
+          "0xe8fd4c mov r0, #1",
+          "0xe8fd64 mov r1, #0",
+          "0xe8fd6c mov r6, #0",
+          "0xe8fd90 addeq r7, r1, #0x6700"
+        ]
+      },
+      {
+        "name": "Agave.LevelManager.AdvanceToNextLevel",
+        "address": "0xe8fdc0",
+        "bytes": 124,
+        "calls": [
+          {
+            "at": "0xe8fdcc",
+            "instruction": "bl",
+            "target": "0xeb0ed0",
+            "names": [
+              "Agave.AgaveManager.get_DataScope"
+            ]
+          },
+          {
+            "at": "0xe8fde8",
+            "instruction": "bl",
+            "target": "0xf35f54",
+            "names": [
+              "Data.DataScope.ClearLevelProgress"
+            ]
+          },
+          {
+            "at": "0xe8fdf4",
+            "instruction": "bl",
+            "target": "0xeb0ed0",
+            "names": [
+              "Agave.AgaveManager.get_DataScope"
+            ]
+          },
+          {
+            "at": "0xe8fe04",
+            "instruction": "bl",
+            "target": "0xeb0ed0",
+            "names": [
+              "Agave.AgaveManager.get_DataScope"
+            ]
+          },
+          {
+            "at": "0xe8fe38",
+            "instruction": "b",
+            "target": "0xf34db8",
+            "names": [
+              "Data.DataScope.SetCurrentLevel"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe8fdc4 mov r1, #0",
+          "0xe8fdd4 cmp r0, #0",
+          "0xe8fde4 mov r1, #0",
+          "0xe8fdf0 mov r1, #0",
+          "0xe8fe00 mov r1, #0",
+          "0xe8fe0c cmp r0, #0",
+          "0xe8fe1c cmp r5, #0",
+          "0xe8fe28 add r1, r4, #1",
+          "0xe8fe30 mov r2, #0"
+        ]
+      },
+      {
+        "name": "Agave.LevelManager.HandleLevelCompleted",
+        "address": "0xe8fe3c",
+        "bytes": 144,
+        "calls": [
+          {
+            "at": "0xe8fe48",
+            "instruction": "bl",
+            "target": "0xea0594",
+            "names": [
+              "Agave.AgaveManager.get_ResourcesScope"
+            ]
+          },
+          {
+            "at": "0xe8fe64",
+            "instruction": "bl",
+            "target": "0xecf6a0",
+            "names": [
+              "AgaveResources.ResourcesScope.WasLastLevelLoadedFromDownloaded"
+            ]
+          },
+          {
+            "at": "0xe8fe78",
+            "instruction": "bl",
+            "target": "0xea0594",
+            "names": [
+              "Agave.AgaveManager.get_ResourcesScope"
+            ]
+          },
+          {
+            "at": "0xe8fe88",
+            "instruction": "bl",
+            "target": "0xea0594",
+            "names": [
+              "Agave.AgaveManager.get_ResourcesScope"
+            ]
+          },
+          {
+            "at": "0xe8fea4",
+            "instruction": "bl",
+            "target": "0xecf6bc",
+            "names": [
+              "AgaveResources.ResourcesScope.GetLastLoadedLevelId"
+            ]
+          },
+          {
+            "at": "0xe8fec8",
+            "instruction": "b",
+            "target": "0xecf6d8",
+            "names": [
+              "AgaveResources.ResourcesScope.DeleteDownloadedLevel"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe8fe40 mov r1, #0",
+          "0xe8fe50 cmp r0, #0",
+          "0xe8fe60 mov r1, #0",
+          "0xe8fe68 cmp r0, #0",
+          "0xe8fe74 mov r1, #0",
+          "0xe8fe84 mov r1, #0",
+          "0xe8fe90 cmp r0, #0",
+          "0xe8fea0 mov r1, #0",
+          "0xe8feac cmp r5, #0",
+          "0xe8fec0 mov r2, #0"
+        ]
+      },
+      {
+        "name": "AgaveResources.LevelResourcesManager.LoadLevelData",
+        "address": "0xec9c04",
+        "bytes": 148,
+        "calls": [
+          {
+            "at": "0xec9c58",
+            "instruction": "bl",
+            "target": "0x254e6dc",
+            "names": [
+              "System.Object..ctor"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xec9c20 cmp r0, #0",
+          "0xec9c34 mov r0, #1",
+          "0xec9c4c mov r1, #0",
+          "0xec9c54 mov r5, #0"
+        ]
+      },
+      {
+        "name": "AgaveResources.LevelResourcesManager.GetLevelIdByIndex",
+        "address": "0xeca324",
+        "bytes": 156,
+        "calls": [
+          {
+            "at": "0xeca35c",
+            "instruction": "bl",
+            "target": "0xe83a58",
+            "names": [
+              "Agave.LevelConstants.ResolveLevelListIndex"
+            ]
+          },
+          {
+            "at": "0xeca398",
+            "instruction": "bl",
+            "target": "0x2337b98",
+            "names": [
+              "System.String.IsNullOrEmpty"
+            ]
+          },
+          {
+            "at": "0xeca3bc",
+            "instruction": "b",
+            "target": "0xe85fe4",
+            "names": [
+              "Agave.StringExtensions.ValidateInteger"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xeca330 cmp r1, #1",
+          "0xeca33c cmp r2, #0",
+          "0xeca348 cmp r2, #1",
+          "0xeca358 mov r2, #0",
+          "0xeca368 cmp r4, #0",
+          "0xeca378 sub r5, r5, #1",
+          "0xeca388 add r0, r4, r5, lsl #2",
+          "0xeca38c mov r1, #0",
+          "0xeca3a0 mov r0, #1",
+          "0xeca3a4 cmp r1, #0",
+          "0xeca3b4 mov r1, #0"
+        ]
+      },
+      {
+        "name": "AgaveResources.LevelResourcesManager.OnLevelFunnelIdsLoaded",
+        "address": "0xec966c",
+        "bytes": 176,
+        "calls": [
+          {
+            "at": "0xec96f8",
+            "instruction": "bl",
+            "target": "0x233a38c",
+            "names": [
+              "System.String.Split"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xec9684 cmp r0, #0",
+          "0xec9698 mov r0, #1",
+          "0xec96a4 mov r1, #1",
+          "0xec96b8 cmp r0, #0",
+          "0xec96c8 cmp r0, #0",
+          "0xec96d4 mov r0, #0x2c",
+          "0xec96d8 cmp r5, #0",
+          "0xec96f0 mov r2, #1",
+          "0xec96f4 mov r3, #0"
+        ]
+      },
+      {
+        "name": "<ReadLevelFunnelIdsCoroutine>d__25.MoveNext",
+        "address": "0xecb540",
+        "bytes": 1180,
+        "calls": [
+          {
+            "at": "0xecb620",
+            "instruction": "bl",
+            "target": "0x254e6dc",
+            "names": [
+              "System.Object..ctor"
+            ]
+          },
+          {
+            "at": "0xecb65c",
+            "instruction": "bl",
+            "target": "0xec923c",
+            "names": [
+              "AgaveResources.LevelResourcesManager.GetCurrentLanguageFolder"
+            ]
+          },
+          {
+            "at": "0xecb698",
+            "instruction": "bl",
+            "target": "0xe83234",
+            "names": [
+              "Agave.LevelConstants.GetLevelListFilePath"
+            ]
+          },
+          {
+            "at": "0xecb6f4",
+            "instruction": "bl",
+            "target": "0xf10f2c",
+            "names": [
+              "AssetSystem.AgaveFileService.ReadText"
+            ]
+          },
+          {
+            "at": "0xecb850",
+            "instruction": "bl",
+            "target": "0x2338078",
+            "names": [
+              "System.String.Format"
+            ]
+          },
+          {
+            "at": "0xecb888",
+            "instruction": "bl",
+            "target": "0xe56434",
+            "names": [
+              "AtibaSDK.Core.AtibaLog.WarningLog"
+            ]
+          },
+          {
+            "at": "0xecb898",
+            "instruction": "bl",
+            "target": "0xe83234",
+            "names": [
+              "Agave.LevelConstants.GetLevelListFilePath"
+            ]
+          },
+          {
+            "at": "0xecb8f4",
+            "instruction": "bl",
+            "target": "0xf10f2c",
+            "names": [
+              "AssetSystem.AgaveFileService.ReadText"
+            ]
+          },
+          {
+            "at": "0xecb930",
+            "instruction": "bl",
+            "target": "0x23285c4",
+            "names": [
+              "System.String.Concat"
+            ]
+          },
+          {
+            "at": "0xecb968",
+            "instruction": "bl",
+            "target": "0xe56358",
+            "names": [
+              "AtibaSDK.Core.AtibaLog.ErrorLog"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xecb544 sub sp, sp, #0x10",
+          "0xecb558 cmp r0, #0",
+          "0xecb5d8 mov r0, #1",
+          "0xecb5e4 mov r5, #0",
+          "0xecb5e8 cmp r0, #2",
+          "0xecb5f0 cmp r0, #1",
+          "0xecb5f8 cmp r0, #0",
+          "0xecb618 mov r1, #0",
+          "0xecb640 cmp r6, #0",
+          "0xecb678 cmp r5, #0",
+          "0xecb688 mov r2, #0",
+          "0xecb694 mov r2, #0",
+          "0xecb6d4 mov r3, #0",
+          "0xecb6f0 mov r2, #0",
+          "0xecb708 mov r5, #1",
+          "0xecb720 cmp r6, #0",
+          "0xecb730 cmp r0, #0",
+          "0xecb754 cmp r7, #0",
+          "0xecb768 cmp r0, #0",
+          "0xecb780 cmp r0, #0",
+          "0xecb79c tst r1, #1",
+          "0xecb7ac cmp r1, #0",
+          "0xecb7c4 tst r1, #1",
+          "0xecb7d4 cmp r6, #0",
+          "0xecb7f8 cmp r1, #0",
+          "0xecb80c add r1, sp, #0xc",
+          "0xecb820 add r1, sp, #8",
+          "0xecb824 mov r7, #0",
+          "0xecb868 cmp r1, #0",
+          "0xecb878 mov r2, #0",
+          "0xecb890 mov r1, #0",
+          "0xecb894 mov r2, #0",
+          "0xecb8d4 mov r3, #0",
+          "0xecb8f0 mov r2, #0",
+          "0xecb908 mov r0, #2",
+          "0xecb90c mov r5, #1",
+          "0xecb928 mov r2, #0",
+          "0xecb92c mov r5, #0",
+          "0xecb948 cmp r1, #0",
+          "0xecb958 mov r2, #0",
+          "0xecb970 add sp, sp, #0x10"
+        ]
+      },
+      {
+        "name": "Agave.RemoteValues.Initialize",
+        "address": "0xeae16c",
+        "bytes": 4644,
+        "calls": [
+          {
+            "at": "0xeae604",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae618",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeae638",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae660",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae684",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae6ac",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae6d4",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae6f8",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae720",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae748",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae76c",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae780",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeae7ac",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae7cc",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae7ec",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae810",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae87c",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae8a4",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeae910",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae938",
+            "instruction": "bl",
+            "target": "0xeaf390",
+            "names": [
+              "Agave.RemoteConfigService.GetInt"
+            ]
+          },
+          {
+            "at": "0xeae968",
+            "instruction": "bl",
+            "target": "0xeafca8",
+            "names": [
+              "Agave.RemoteConfigService.GetIntArray"
+            ]
+          },
+          {
+            "at": "0xeae9a8",
+            "instruction": "bl",
+            "target": "0xeafca8",
+            "names": [
+              "Agave.RemoteConfigService.GetIntArray"
+            ]
+          },
+          {
+            "at": "0xeae9d8",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaea00",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaec84",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaec98",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeaed00",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeaedc4",
+            "instruction": "bl",
+            "target": "0xeb0070",
+            "names": [
+              "Agave.RemoteConfigService.GetInterstitialLevelIntervalData"
+            ]
+          },
+          {
+            "at": "0xeaee68",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeaeed0",
+            "instruction": "bl",
+            "target": "0xe582e4",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsIOS"
+            ]
+          },
+          {
+            "at": "0xeaef44",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaef6c",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaef90",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaefb8",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaefe0",
+            "instruction": "bl",
+            "target": "0xeaf81c",
+            "names": [
+              "Agave.RemoteConfigService.GetBool"
+            ]
+          },
+          {
+            "at": "0xeaf00c",
+            "instruction": "bl",
+            "target": "0xeb0164",
+            "names": [
+              "Agave.RemoteConfigService.GetString"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xeae180 cmp r0, #0",
+          "0xeae584 mov r0, #1",
+          "0xeae58c cmp r4, #0",
+          "0xeae5e8 cmp r4, #0",
+          "0xeae5f8 mov r2, #0",
+          "0xeae614 mov r0, #0",
+          "0xeae620 cmp r4, #0",
+          "0xeae678 mov r2, #1",
+          "0xeae68c cmp r4, #0",
+          "0xeae6a0 mov r2, #1",
+          "0xeae6c8 mov r2, #1",
+          "0xeae6ec mov r2, #5",
+          "0xeae700 cmp r4, #0",
+          "0xeae714 mov r2, #1",
+          "0xeae73c mov r2, #1",
+          "0xeae760 mov r2, #0",
+          "0xeae77c mov r0, #0",
+          "0xeae788 mov r5, #0x20",
+          "0xeae78c cmp r0, #0",
+          "0xeae790 movwne r5, #1",
+          "0xeae794 cmp r4, #0",
+          "0xeae7c4 mov r2, #1",
+          "0xeae804 mov r2, #1",
+          "0xeae864 cmp r4, #0",
+          "0xeae870 mov r2, #1",
+          "0xeae898 mov r2, #1",
+          "0xeae8f8 cmp r4, #0",
+          "0xeae904 mov r2, #0x1e",
+          "0xeae92c mov r2, #0x1e",
+          "0xeae980 cmp r4, #0",
+          "0xeae9c0 cmp r4, #0",
+          "0xeae9cc mov r2, #1",
+          "0xeae9f4 mov r2, #1",
+          "0xeaea54 cmp r4, #0",
+          "0xeaeaa0 cmp r4, #0",
+          "0xeaeaec cmp r4, #0",
+          "0xeaeb38 cmp r4, #0",
+          "0xeaeb84 cmp r4, #0",
+          "0xeaebd0 cmp r4, #0",
+          "0xeaec1c cmp r4, #0",
+          "0xeaec68 cmp r4, #0",
+          "0xeaec78 mov r2, #1",
+          "0xeaec94 mov r0, #0",
+          "0xeaeca0 cmp r4, #0",
+          "0xeaecb0 cmp r5, #0",
+          "0xeaecfc mov r0, #0",
+          "0xeaed04 cmp r4, #0",
+          "0xeaed50 cmp r4, #0",
+          "0xeaed9c cmp r4, #0",
+          "0xeaeddc cmp r4, #0",
+          "0xeaee28 cmp r4, #0",
+          "0xeaee64 mov r0, #0",
+          "0xeaee70 cmp r4, #0",
+          "0xeaee80 cmp r5, #0",
+          "0xeaeecc mov r0, #0",
+          "0xeaeed8 cmp r4, #0",
+          "0xeaeee8 cmp r5, #0",
+          "0xeaef2c cmp r4, #0",
+          "0xeaef38 mov r2, #0",
+          "0xeaef60 mov r2, #0",
+          "0xeaef84 mov r2, #0",
+          "0xeaef98 cmp r4, #0",
+          "0xeaefac mov r2, #0",
+          "0xeaefd4 mov r2, #0",
+          "0xeaf024 cmp r4, #0",
+          "0xeaf070 cmp r4, #0"
+        ]
+      },
+      {
+        "name": "Agave.PlayerStatisticsService.CompleteLevel",
+        "address": "0xea9950",
+        "bytes": 524,
+        "calls": [
+          {
+            "at": "0xea9ac8",
+            "instruction": "bl",
+            "target": "0xf34ce4",
+            "names": [
+              "Data.DataScope.SaveLastLevelStatistics"
+            ]
+          },
+          {
+            "at": "0xea9ad0",
+            "instruction": "bl",
+            "target": "0xea94d4",
+            "names": [
+              "Agave.PlayerStatisticsService.EnsureDailyStatisticsReset"
+            ]
+          },
+          {
+            "at": "0xea9b00",
+            "instruction": "bl",
+            "target": "0xf34d44",
+            "names": [
+              "Data.DataScope.GetDailyStatistics"
+            ]
+          },
+          {
+            "at": "0xea9b34",
+            "instruction": "bl",
+            "target": "0xf34d98",
+            "names": [
+              "Data.DataScope.SetDailyLevelsPlayed"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xea9958 sub sp, sp, #0x10",
+          "0xea9968 cmp r0, #0",
+          "0xea9970 mov r0, #0",
+          "0xea9974 mov r5, #0",
+          "0xea99a0 cmp r0, #0",
+          "0xea99b4 mov r0, #1",
+          "0xea99cc cmp r1, #0",
+          "0xea99dc add r2, sp, #8",
+          "0xea9a38 tst r0, #1",
+          "0xea9a7c moveq r6, #0x80000000",
+          "0xea9a80 cmp r5, #0",
+          "0xea9a9c cmp r5, #0",
+          "0xea9aac mov r0, #0",
+          "0xea9ad8 cmp r5, #0",
+          "0xea9ae8 cmp r5, #0",
+          "0xea9af4 add r0, sp, #8",
+          "0xea9afc mov r2, #0",
+          "0xea9b0c cmp r4, #0",
+          "0xea9b1c cmp r4, #0",
+          "0xea9b28 add r1, r5, #1",
+          "0xea9b30 mov r2, #0",
+          "0xea9b38 add sp, sp, #0x10"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.ShouldShow",
+        "address": "0xf7a69c",
+        "bytes": 140,
+        "calls": [
+          {
+            "at": "0xf7a6d0",
+            "instruction": "bl",
+            "target": "0xf7a878",
+            "names": [
+              "Gameplay.RewardedHintService.IsFeatureAvailable"
+            ]
+          },
+          {
+            "at": "0xf7a718",
+            "instruction": "b",
+            "target": "0xf7a9b0",
+            "names": [
+              "Gameplay.RewardedHintService.IsRewardedReadyOrSkipped"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7a6b0 cmp r0, #0",
+          "0xf7a6c4 mov r0, #1",
+          "0xf7a6d4 cmp r0, #0",
+          "0xf7a6f4 cmp r5, #0",
+          "0xf7a70c mov r0, #0",
+          "0xf7a720 subseq sl, sl, #184, #30",
+          "0xf7a724 subseq sl, sl, #148, #30"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.IsFeatureAvailable",
+        "address": "0xf7a878",
+        "bytes": 312,
+        "calls": [
+          {
+            "at": "0xf7a8fc",
+            "instruction": "bl",
+            "target": "0xea81bc",
+            "names": [
+              "Agave.AgaveService.get_DataScope"
+            ]
+          },
+          {
+            "at": "0xf7a944",
+            "instruction": "bl",
+            "target": "0xf177dc",
+            "names": [
+              "AdvertisementSystem.AdvertisementManager.IsRewardedAdAvailable"
+            ]
+          },
+          {
+            "at": "0xf7a96c",
+            "instruction": "bl",
+            "target": "0xe98508",
+            "names": [
+              "Agave.TutorialManager.get_IsAnyTutorialActive"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7a88c cmp r0, #0",
+          "0xf7a8ac mov r0, #1",
+          "0xf7a8c8 cmp r7, #0",
+          "0xf7a8d8 mov r5, #0",
+          "0xf7a8dc cmp r0, #0",
+          "0xf7a8e8 cmp r0, #1",
+          "0xf7a8f4 mov r1, #0",
+          "0xf7a8f8 mov r5, #0",
+          "0xf7a904 cmp r0, #0",
+          "0xf7a930 cmp r1, #0",
+          "0xf7a93c mov r0, #0",
+          "0xf7a940 mov r5, #0",
+          "0xf7a948 cmp r0, #0",
+          "0xf7a954 cmp r6, #0",
+          "0xf7a964 mov r1, #0",
+          "0xf7a968 mov r5, #0",
+          "0xf7a970 cmp r0, #0",
+          "0xf7a97c cmp r4, #0",
+          "0xf7a9a0 subseq sl, sl, #180, #26",
+          "0xf7a9a4 subseq sl, sl, #208, #26",
+          "0xf7a9a8 subseq sl, sl, #188, #26",
+          "0xf7a9ac subseq sl, sl, #40, #26"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.RegisterWrongMove",
+        "address": "0xf7a4cc",
+        "bytes": 16,
+        "calls": [
+          {
+            "at": "0xf7a4d8",
+            "instruction": "b",
+            "target": "0xf73a3c",
+            "names": [
+              "Gameplay.RewardedHintService.RefreshPlacement"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7a4d0 add r1, r1, #1"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.Reset",
+        "address": "0xf7a1b0",
+        "bytes": 200,
+        "calls": [
+          {
+            "at": "0xf7a1f0",
+            "instruction": "bl",
+            "target": "0xf7a278",
+            "names": [
+              "Gameplay.RewardedHintService.UnsubscribeFromRewardedLoaded"
+            ]
+          },
+          {
+            "at": "0xf7a240",
+            "instruction": "bl",
+            "target": "0xf76fa0",
+            "names": [
+              "Gameplay.ObjectiveService.remove_OnTargetWordCollected"
+            ]
+          },
+          {
+            "at": "0xf7a24c",
+            "instruction": "bl",
+            "target": "0xf7a3c0",
+            "names": [
+              "Gameplay.RewardedHintService.HideView"
+            ]
+          },
+          {
+            "at": "0xf7a260",
+            "instruction": "b",
+            "target": "0xea7d84",
+            "names": [
+              "Agave.AgaveService.Reset"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7a1c4 cmp r0, #0",
+          "0xf7a1e4 mov r0, #1",
+          "0xf7a214 mov r3, #0",
+          "0xf7a218 mov r7, #0",
+          "0xf7a22c cmp r5, #0",
+          "0xf7a258 mov r1, #0",
+          "0xf7a268 subseq sl, sl, #188, #24",
+          "0xf7a26c subseq pc, sl, #192, #14",
+          "0xf7a270 subseq sl, sl, #144, #24",
+          "0xf7a274 subseq pc, sl, #128, #14"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.OnRewardedAdCompleted",
+        "address": "0xf7adac",
+        "bytes": 304,
+        "calls": [
+          {
+            "at": "0xf7adf0",
+            "instruction": "bl",
+            "target": "0xf7aedc",
+            "names": [
+              "Gameplay.RewardedHintService.DecreaseInputLocks"
+            ]
+          },
+          {
+            "at": "0xf7ae04",
+            "instruction": "bl",
+            "target": "0xf7a3c0",
+            "names": [
+              "Gameplay.RewardedHintService.HideView"
+            ]
+          },
+          {
+            "at": "0xf7aec8",
+            "instruction": "b",
+            "target": "0xf448d0",
+            "names": [
+              "Gameplay.HintBooster.RevealLetter"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7adc0 cmp r0, #0",
+          "0xf7add4 mov r0, #1",
+          "0xf7ade0 cmp r0, #0",
+          "0xf7ade8 mov r7, #0",
+          "0xf7ae18 cmp r1, #0",
+          "0xf7ae28 mov r1, #0",
+          "0xf7ae30 cmp r0, #0",
+          "0xf7ae38 cmp r5, #0",
+          "0xf7ae48 cmp r0, #0",
+          "0xf7ae58 cmp r1, #0",
+          "0xf7ae68 mov r1, #0",
+          "0xf7ae70 cmp r0, #0",
+          "0xf7ae7c cmp r7, #0",
+          "0xf7ae8c cmp r0, #0",
+          "0xf7ae98 cmp r4, #0",
+          "0xf7aea8 cmp r4, #0",
+          "0xf7aec0 mov r3, #0",
+          "0xf7aed4 subseq sl, sl, #0xa4",
+          "0xf7aed8 subseq sl, sl, #0x64"
+        ]
+      },
+      {
+        "name": "Gameplay.RewardedHintService.OnTargetWordCollected",
+        "address": "0xf7acbc",
+        "bytes": 236,
+        "calls": [
+          {
+            "at": "0xf7ad78",
+            "instruction": "bl",
+            "target": "0x2337160",
+            "names": [
+              "System.String.op_Inequality"
+            ]
+          },
+          {
+            "at": "0xf7ad8c",
+            "instruction": "b",
+            "target": "0xf73a3c",
+            "names": [
+              "Gameplay.RewardedHintService.RefreshPlacement"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xf7acd4 cmp r0, #0",
+          "0xf7ace8 mov r0, #1",
+          "0xf7acf4 cmp r0, #0",
+          "0xf7ad10 cmp r1, #0",
+          "0xf7ad20 mov r1, #0",
+          "0xf7ad28 cmp r0, #0",
+          "0xf7ad3c cmp r1, #0",
+          "0xf7ad4c mov r1, #0",
+          "0xf7ad54 cmp r0, #0",
+          "0xf7ad60 cmp r6, #0",
+          "0xf7ad74 mov r2, #0",
+          "0xf7ad7c cmp r0, #0",
+          "0xf7ad90 mov r0, #1",
+          "0xf7ada0 subseq sl, sl, #144, #2",
+          "0xf7ada4 subseq sl, sl, #112, #2"
+        ]
+      },
+      {
+        "name": "Agave.TutorialManager.CanShowWrongMoveHint",
+        "address": "0xe9c3b0",
+        "bytes": 108,
+        "calls": [
+          {
+            "at": "0xe9c3b8",
+            "instruction": "bl",
+            "target": "0xe98508",
+            "names": [
+              "Agave.TutorialManager.get_IsAnyTutorialActive"
+            ]
+          },
+          {
+            "at": "0xe9c3f4",
+            "instruction": "bl",
+            "target": "0xeb0ed0",
+            "names": [
+              "Agave.AgaveManager.get_DataScope"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe9c3bc cmp r0, #0",
+          "0xe9c3c8 cmp r5, #0",
+          "0xe9c3d8 cmp r0, #0",
+          "0xe9c3e0 mov r0, #0",
+          "0xe9c3ec mov r1, #0",
+          "0xe9c3f0 mov r5, #0",
+          "0xe9c3fc cmp r0, #0",
+          "0xe9c40c cmp r0, #0xb",
+          "0xe9c410 movwlt r5, #1"
+        ]
+      },
+      {
+        "name": "Agave.TutorialManager.TryShowWrongMoveHint",
+        "address": "0xe9c7ec",
+        "bytes": 316,
+        "calls": [
+          {
+            "at": "0xe9c848",
+            "instruction": "bl",
+            "target": "0xe9c3b0",
+            "names": [
+              "Agave.TutorialManager.CanShowWrongMoveHint"
+            ]
+          },
+          {
+            "at": "0xe9c8ac",
+            "instruction": "bl",
+            "target": "0xf6e034",
+            "names": [
+              "Gameplay.GridManager.TryGetTopmostUnrevealedTargetWordFirstLetter"
+            ]
+          },
+          {
+            "at": "0xe9c8e0",
+            "instruction": "bl",
+            "target": "0xe9c6e8",
+            "names": [
+              "Agave.TutorialManager.ShowWrongMoveHintPath"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe9c7f0 sub sp, sp, #8",
+          "0xe9c804 cmp r0, #0",
+          "0xe9c818 mov r0, #1",
+          "0xe9c824 mov r0, #0",
+          "0xe9c82c cmp r1, #0",
+          "0xe9c83c cmp r0, #8",
+          "0xe9c84c cmp r0, #0",
+          "0xe9c868 cmp r1, #0",
+          "0xe9c878 mov r1, #0",
+          "0xe9c87c mov r2, #0",
+          "0xe9c884 cmp r0, #0",
+          "0xe9c890 cmp r5, #0",
+          "0xe9c89c add r2, sp, #4",
+          "0xe9c8a8 mov r3, #0",
+          "0xe9c8b0 cmp r0, #0",
+          "0xe9c8bc cmp r5, #0",
+          "0xe9c8e4 cmp r0, #0",
+          "0xe9c8ec mov r0, #0",
+          "0xe9c8f4 mov r0, #1",
+          "0xe9c900 mov r0, #0",
+          "0xe9c904 mov r1, #0",
+          "0xe9c914 add sp, sp, #8",
+          "0xe9c91c addeq fp, r0, #0x50000001"
+        ]
+      },
+      {
+        "name": "<LoadLevelData>d__31.MoveNext",
+        "address": "0xecaae4",
+        "bytes": 196,
+        "calls": [
+          {
+            "at": "0xecab28",
+            "instruction": "bl",
+            "target": "0xeca324",
+            "names": [
+              "AgaveResources.LevelResourcesManager.GetLevelIdByIndex"
+            ]
+          },
+          {
+            "at": "0xecab54",
+            "instruction": "bl",
+            "target": "0xec9de4",
+            "names": [
+              "AgaveResources.LevelResourcesManager.ReadLevelCoroutine"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xecaaf0 mov r5, #0",
+          "0xecaaf4 cmp r0, #1",
+          "0xecaafc cmp r0, #0",
+          "0xecab10 cmp r6, #0",
+          "0xecab30 cmn r0, #1",
+          "0xecab3c cmp r6, #0",
+          "0xecab68 mov r5, #1",
+          "0xecab80 cmp r8, #0",
+          "0xecab8c mov r1, #0",
+          "0xecab94 mov r5, #0"
+        ]
+      },
+      {
+        "name": "<LoadCurrentLevel>d__12.MoveNext",
+        "address": "0xe90af4",
+        "bytes": 920,
+        "calls": [
+          {
+            "at": "0xe90bb8",
+            "instruction": "bl",
+            "target": "0xe582fc",
+            "names": [
+              "AtibaSDK.Core.DefineSymbolUtility.IsDevelopmentMode"
+            ]
+          },
+          {
+            "at": "0xe90c0c",
+            "instruction": "bl",
+            "target": "0xe90824",
+            "names": [
+              "Agave.LevelManager.LoadTestLevel"
+            ]
+          },
+          {
+            "at": "0xe90c40",
+            "instruction": "bl",
+            "target": "0xea0594",
+            "names": [
+              "Agave.AgaveManager.get_ResourcesScope"
+            ]
+          },
+          {
+            "at": "0xe90c64",
+            "instruction": "bl",
+            "target": "0xecf4bc",
+            "names": [
+              "AgaveResources.ResourcesScope.GetLevelIdByIndex"
+            ]
+          },
+          {
+            "at": "0xe90cd0",
+            "instruction": "bl",
+            "target": "0x2338028",
+            "names": [
+              "System.String.Format"
+            ]
+          },
+          {
+            "at": "0xe90d0c",
+            "instruction": "bl",
+            "target": "0xe55cd4",
+            "names": [
+              "AtibaSDK.Core.AtibaLog.Log"
+            ]
+          },
+          {
+            "at": "0xe90d18",
+            "instruction": "bl",
+            "target": "0xe8fecc",
+            "names": [
+              "Agave.LevelManager.StartUpcomingLevelsPrefetch"
+            ]
+          },
+          {
+            "at": "0xe90d28",
+            "instruction": "bl",
+            "target": "0xeb0ed0",
+            "names": [
+              "Agave.AgaveManager.get_DataScope"
+            ]
+          },
+          {
+            "at": "0xe90d4c",
+            "instruction": "bl",
+            "target": "0xea0594",
+            "names": [
+              "Agave.AgaveManager.get_ResourcesScope"
+            ]
+          },
+          {
+            "at": "0xe90d9c",
+            "instruction": "bl",
+            "target": "0xece5b8",
+            "names": [
+              "AgaveResources.ResourcesScope.LoadCurrentLevelData"
+            ]
+          },
+          {
+            "at": "0xe90df0",
+            "instruction": "bl",
+            "target": "0x232482c",
+            "names": [
+              "System.String.Format"
+            ]
+          },
+          {
+            "at": "0xe90e28",
+            "instruction": "bl",
+            "target": "0xe56358",
+            "names": [
+              "AtibaSDK.Core.AtibaLog.ErrorLog"
+            ]
+          }
+        ],
+        "immediates": [
+          "0xe90af8 sub sp, sp, #0x10",
+          "0xe90b0c cmp r0, #0",
+          "0xe90b68 mov r0, #1",
+          "0xe90b78 cmp r0, #1",
+          "0xe90b80 mov r6, #0",
+          "0xe90b84 cmp r0, #0",
+          "0xe90b90 cmp r5, #0",
+          "0xe90ba0 mov r1, #0",
+          "0xe90bac mov r1, #0",
+          "0xe90bb4 mov r0, #0",
+          "0xe90bbc cmp r0, #0",
+          "0xe90bd0 cmp r0, #0",
+          "0xe90be4 mov r0, #1",
+          "0xe90c00 cmp r0, #0",
+          "0xe90c10 mov r6, #0",
+          "0xe90c1c cmp r5, #0",
+          "0xe90c30 cmp r7, #0",
+          "0xe90c3c mov r1, #0",
+          "0xe90c4c cmp r0, #0",
+          "0xe90c60 mov r2, #0",
+          "0xe90c78 add r1, sp, #8",
+          "0xe90c94 cmp r6, #0",
+          "0xe90cac add r1, sp, #4",
+          "0xe90cc0 mov r3, #0",
+          "0xe90cc4 mov r6, #0",
+          "0xe90ce8 cmp r1, #0",
+          "0xe90cf8 mov r2, #0",
+          "0xe90cfc mov r3, #0",
+          "0xe90d24 mov r1, #0",
+          "0xe90d30 cmp r0, #0",
+          "0xe90d40 mov r1, #0",
+          "0xe90d70 mov r3, #0",
+          "0xe90d84 cmp r6, #0",
+          "0xe90d98 mov r2, #0",
+          "0xe90db0 mov r6, #1",
+          "0xe90dcc add r1, sp, #0xc",
+          "0xe90de0 mov r2, #0",
+          "0xe90de4 mov r6, #0",
+          "0xe90e08 cmp r1, #0",
+          "0xe90e18 mov r2, #0",
+          "0xe90e30 add sp, sp, #0x10",
+          "0xe90e38 addeq r6, r1, #0x990",
+          "0xe90e58 addeq r6, r1, #0x5a0"
+        ]
+      }
+    ],
+    "types": [
+      {
+        "index": 4577,
+        "name": "Agave.LevelManager",
+        "fields": [
+          "<TestLevelId>k__BackingField",
+          "<IsTestLevelMode>k__BackingField",
+          "_currentLevelData"
+        ],
+        "methods": [
+          {
+            "name": "get_TestLevelId",
+            "params": []
+          },
+          {
+            "name": "set_TestLevelId",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_IsTestLevelMode",
+            "params": []
+          },
+          {
+            "name": "set_IsTestLevelMode",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "CreateMembers",
+            "params": [
+              "scope"
+            ]
+          },
+          {
+            "name": "Initialize",
+            "params": []
+          },
+          {
+            "name": "Reset",
+            "params": []
+          },
+          {
+            "name": "LoadCurrentLevel",
+            "params": []
+          },
+          {
+            "name": "CurrentLevelData",
+            "params": []
+          },
+          {
+            "name": "AdvanceToNextLevel",
+            "params": []
+          },
+          {
+            "name": "HandleLevelCompleted",
+            "params": []
+          },
+          {
+            "name": "StartUpcomingLevelsPrefetch",
+            "params": [
+              "currentLevelIndex"
+            ]
+          },
+          {
+            "name": "PrefetchUpcomingLevelsRoutine",
+            "params": [
+              "currentLevelIndex"
+            ]
+          },
+          {
+            "name": "LoadLevelProgress",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "SaveLevelProgress",
+            "params": [
+              "saveData"
+            ]
+          },
+          {
+            "name": "ClearLevelProgress",
+            "params": []
+          },
+          {
+            "name": "SaveBonusLevelRemainingSeconds",
+            "params": [
+              "levelIndex",
+              "remainingSeconds"
+            ]
+          },
+          {
+            "name": "GetBonusLevelRemainingSeconds",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "SaveBonusLevelLanguage",
+            "params": [
+              "language"
+            ]
+          },
+          {
+            "name": "GetBonusLevelLanguage",
+            "params": []
+          },
+          {
+            "name": "SaveLevelStartedReport",
+            "params": [
+              "levelIndex",
+              "isDailyPuzzle",
+              "language"
+            ]
+          },
+          {
+            "name": "HasReportedLevelStartInAnotherLanguage",
+            "params": [
+              "levelIndex",
+              "isDailyPuzzle",
+              "language"
+            ]
+          },
+          {
+            "name": "SaveBonusLevelCurrencyIntroPlayed",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "GetBonusLevelCurrencyIntroPlayed",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "ClearBonusLevelProgress",
+            "params": []
+          },
+          {
+            "name": "IsSaveDataValid",
+            "params": [
+              "saveData",
+              "levelIndex",
+              "levelData"
+            ]
+          },
+          {
+            "name": "IsSaveDataCompatibleWithLevel",
+            "params": [
+              "saveData",
+              "levelData"
+            ]
+          },
+          {
+            "name": "LoadTestLevel",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          },
+          {
+            "name": "<LoadCurrentLevel>b__12_0",
+            "params": [
+              "levelData"
+            ]
+          },
+          {
+            "name": "<LoadTestLevel>b__32_0",
+            "params": [
+              "levelData"
+            ]
+          }
+        ]
+      },
+      {
+        "index": 3930,
+        "name": "AgaveResources.LevelResourcesManager",
+        "fields": [
+          "_bonusLevelDurationsByLevelIndex",
+          "_levelListIds",
+          "_dailyLevelListIds",
+          "_levelFileReadTask",
+          "_dailyLevelFileReadTask",
+          "_bonusLevelFileReadTask",
+          "_activeLevelListId",
+          "_activeBonusLevelListId",
+          "_levelDownloadService",
+          "_lastLoadedFromDownloaded",
+          "_lastLoadedLevelId"
+        ],
+        "methods": [
+          {
+            "name": "Initialize",
+            "params": []
+          },
+          {
+            "name": "SetLevelDownloadService",
+            "params": [
+              "levelDownloadService"
+            ]
+          },
+          {
+            "name": "WasLastLevelLoadedFromDownloaded",
+            "params": []
+          },
+          {
+            "name": "GetLastLoadedLevelId",
+            "params": []
+          },
+          {
+            "name": "GetLevelListLength",
+            "params": []
+          },
+          {
+            "name": "GetDailyLevelListLength",
+            "params": []
+          },
+          {
+            "name": "WaitForFileReadCompletion",
+            "params": []
+          },
+          {
+            "name": "WaitForDailyFileReadCompletion",
+            "params": []
+          },
+          {
+            "name": "CreateLevelFunnelIds",
+            "params": []
+          },
+          {
+            "name": "CreateLevelFunnelIds",
+            "params": [
+              "levelListId"
+            ]
+          },
+          {
+            "name": "CreateDailyLevelFunnelIds",
+            "params": []
+          },
+          {
+            "name": "CreateBonusLevelDurations",
+            "params": []
+          },
+          {
+            "name": "CreateBonusLevelDurations",
+            "params": [
+              "bonusLevelListId"
+            ]
+          },
+          {
+            "name": "ReloadLevelLists",
+            "params": []
+          },
+          {
+            "name": "ReadLevelFunnelIdsCoroutine",
+            "params": [
+              "levelListId"
+            ]
+          },
+          {
+            "name": "ReadDailyLevelFunnelIdsCoroutine",
+            "params": [
+              "dailyLevelFunnelIdsFilePath"
+            ]
+          },
+          {
+            "name": "ReadBonusLevelDurationsCoroutine",
+            "params": [
+              "bonusLevelListId"
+            ]
+          },
+          {
+            "name": "OnLevelFunnelIdsLoaded",
+            "params": [
+              "fileText"
+            ]
+          },
+          {
+            "name": "OnBonusLevelDurationsLoaded",
+            "params": [
+              "fileText"
+            ]
+          },
+          {
+            "name": "OnDailyLevelFunnelIdsLoaded",
+            "params": [
+              "fileText"
+            ]
+          },
+          {
+            "name": "LoadLevelData",
+            "params": [
+              "index",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "LoadLevelDataById",
+            "params": [
+              "levelId",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "ReadLevelCoroutine",
+            "params": [
+              "levelId",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "ResolveLevelFilePath",
+            "params": [
+              "levelId",
+              "onResolved"
+            ]
+          },
+          {
+            "name": "LoadTestLevelDataById",
+            "params": [
+              "levelId",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "TestLevelReadCoroutine",
+            "params": [
+              "levelId",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "OnLevelFileLoaded",
+            "params": [
+              "levelDataBytes",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "GetLevelIdByIndex",
+            "params": [
+              "index"
+            ]
+          },
+          {
+            "name": "GetDailyLevelIdByListIndex",
+            "params": [
+              "listIndex"
+            ]
+          },
+          {
+            "name": "LoadDailyLevelDataByListIndex",
+            "params": [
+              "listIndex",
+              "onCompleted"
+            ]
+          },
+          {
+            "name": "GetDownloadedLevelPath",
+            "params": [
+              "levelId"
+            ]
+          },
+          {
+            "name": "GetEmbeddedLevelPath",
+            "params": [
+              "levelId"
+            ]
+          },
+          {
+            "name": "GetCurrentLanguageFolder",
+            "params": []
+          },
+          {
+            "name": "DoesLevelExist",
+            "params": [
+              "levelIndex",
+              "isEmbedded"
+            ]
+          },
+          {
+            "name": "LoadRemoteConfigLevelList",
+            "params": [
+              "levelListId"
+            ]
+          },
+          {
+            "name": "LoadRemoteConfigBonusLevelList",
+            "params": [
+              "bonusLevelListId"
+            ]
+          },
+          {
+            "name": "IsBonusLevel",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "GetBonusLevelDurationSeconds",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      {
+        "index": 4404,
+        "name": "Gameplay.RewardedHintService",
+        "fields": [
+          "_gridManager",
+          "_inGameBoosterManager",
+          "_objectiveService",
+          "_tutorialManager",
+          "_gameManager",
+          "REWARDED_SOURCE",
+          "INPUT_LOCK_KEY",
+          "_view",
+          "_attachedLetter",
+          "_attachedTargetWord",
+          "_wrongMoveCount",
+          "_isShowingAd",
+          "_isWaitingForFirstLetterHit",
+          "_isSubscribedToRewardedLoaded"
+        ],
+        "methods": [
+          {
+            "name": "Initialize",
+            "params": []
+          },
+          {
+            "name": "Reset",
+            "params": []
+          },
+          {
+            "name": "CancelPendingAd",
+            "params": []
+          },
+          {
+            "name": "RegisterWrongMove",
+            "params": []
+          },
+          {
+            "name": "RefreshPlacement",
+            "params": []
+          },
+          {
+            "name": "TryHandleClick",
+            "params": [
+              "worldPoint"
+            ]
+          },
+          {
+            "name": "PlayFadeAnimation",
+            "params": [
+              "isFadeOut"
+            ]
+          },
+          {
+            "name": "OnFirstTargetWordLetterHit",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "OnTargetWordCollected",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "OnRewardedLoaded",
+            "params": []
+          },
+          {
+            "name": "OnRewardedAdCompleted",
+            "params": []
+          },
+          {
+            "name": "OnRewardedAdFailed",
+            "params": []
+          },
+          {
+            "name": "HideAndReappearOnNextTarget",
+            "params": []
+          },
+          {
+            "name": "ShowOnLetter",
+            "params": [
+              "letter",
+              "targetWord",
+              "playSpawnAnimation"
+            ]
+          },
+          {
+            "name": "HideView",
+            "params": []
+          },
+          {
+            "name": "ShouldShow",
+            "params": []
+          },
+          {
+            "name": "IsFeatureAvailable",
+            "params": []
+          },
+          {
+            "name": "IsRewardedReadyOrSkipped",
+            "params": []
+          },
+          {
+            "name": "TryGetPlacementTarget",
+            "params": [
+              "letter",
+              "targetWord"
+            ]
+          },
+          {
+            "name": "SubscribeToRewardedLoaded",
+            "params": []
+          },
+          {
+            "name": "UnsubscribeFromRewardedLoaded",
+            "params": []
+          },
+          {
+            "name": "IncreaseInputLocks",
+            "params": []
+          },
+          {
+            "name": "DecreaseInputLocks",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      {
+        "index": 4648,
+        "name": "Agave.RewardedHintData",
+        "fields": [
+          "IsActive",
+          "WrongMoveCount",
+          "StartLevel"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      {
+        "index": 4619,
+        "name": "Agave.PlayerStatisticsService",
+        "fields": [
+          "_timeManager",
+          "_levelTimerStartTime",
+          "_accumulatedLevelSeconds",
+          "_isLevelTimerRunning",
+          "_sessionTargetWordsCollected",
+          "_sessionBonusWordsCollected",
+          "_sessionHadInvalidSelection",
+          "_sessionTimeToFirstHardWordSeconds"
+        ],
+        "methods": [
+          {
+            "name": "Initialize",
+            "params": []
+          },
+          {
+            "name": "Reset",
+            "params": []
+          },
+          {
+            "name": "BeginLevel",
+            "params": []
+          },
+          {
+            "name": "RestoreLevelProgress",
+            "params": [
+              "targetWordsAlreadyCollected",
+              "bonusWordsAlreadyCollected",
+              "elapsedSeconds",
+              "timeToFirstHardWordSeconds"
+            ]
+          },
+          {
+            "name": "PauseLevelTimer",
+            "params": []
+          },
+          {
+            "name": "ResumeLevelTimer",
+            "params": []
+          },
+          {
+            "name": "GetElapsedLevelSeconds",
+            "params": []
+          },
+          {
+            "name": "RegisterTargetWordCollected",
+            "params": []
+          },
+          {
+            "name": "RegisterHardTargetWordCollected",
+            "params": []
+          },
+          {
+            "name": "GetTimeToFirstHardWordSeconds",
+            "params": []
+          },
+          {
+            "name": "RegisterBonusWordCollected",
+            "params": []
+          },
+          {
+            "name": "RegisterInvalidSelection",
+            "params": []
+          },
+          {
+            "name": "CompleteLevel",
+            "params": []
+          },
+          {
+            "name": "GetLastLevelStatistics",
+            "params": []
+          },
+          {
+            "name": "GetDailyStatistics",
+            "params": []
+          },
+          {
+            "name": "EnsureDailyStatisticsReset",
+            "params": []
+          },
+          {
+            "name": "GetRewardedBoxDailyWatchCount",
+            "params": []
+          },
+          {
+            "name": "RegisterRewardedBoxWatch",
+            "params": []
+          },
+          {
+            "name": "GetTodayDateKey",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      {
+        "index": 4645,
+        "name": "Agave.RemoteValues",
+        "fields": [
+          "GameEconomyData",
+          "ActiveLevelListId",
+          "HapticActive",
+          "IsRateUsActive",
+          "RateUsSendStore",
+          "RateUsStarCount",
+          "RemoveAdsActive",
+          "DynamicFpsActive",
+          "LODLimitScore",
+          "ShadowActive",
+          "StarterPackData",
+          "UpdateRewardEnabled",
+          "ExtraWordCollectLevels",
+          "LevelEndProgressBarReward",
+          "LevelEndProgressBarObjectives",
+          "BackgroundList",
+          "LevelEndRewardedButtonActive",
+          "RewardedBoxData",
+          "RewardedHintData",
+          "BoosterData",
+          "ComboData",
+          "DailyPuzzleData",
+          "LetterVisualData",
+          "FortuneWheelData",
+          "DictionaryData",
+          "HardWordCurrencyEventActive",
+          "InterstitialLevelIntervals",
+          "InterstitialAdData",
+          "RewardedAdData",
+          "BannerAdData",
+          "InterstitialAdFloorLogicData",
+          "RewardedAdFloorLogicData",
+          "InterstitialIncrementalAdUnitData",
+          "RewardedIncrementalAdUnitData",
+          "FirstAttemptNoRewardedLogicActive",
+          "ForceUpdateAllActive",
+          "ForceUpdateCrownJourneyActive",
+          "ForceUpdateVersionNumber",
+          "BonusLevelData",
+          "CollectRushEventData"
+        ],
+        "methods": [
+          {
+            "name": "Initialize",
+            "params": [
+              "remoteConfigService"
+            ]
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "服务器是否按用户表现分发不同ActiveLevelListId无法仅凭客户端确定。",
+      "统计耗时或错误不等于这些字段被用于改题；本轮未见这种调用链。"
+    ]
+  },
+  "zenWord": {
+    "verdict": "存在动态增删目标、Warmth重排／删词、半关揭字母减难、卡关辅助与能力估计体系；具体线上开关和完整触发公式未能确认。",
+    "types": {
+      "MainPlayHandler": {
+        "index": 1758,
+        "name": "Logic.Handler.MainPlayHandler",
+        "fields": [
+          "CheatForceChainAllLevels",
+          "_isEnding",
+          "_lastLevelStartedInSession",
+          "_enterMainFrom",
+          "_lastCheckTime",
+          "_isShowDefineTip",
+          "_behavior",
+          "_autoHideCoroutine",
+          "_showHideSequence",
+          "_pfxInfo",
+          "_oldDefineTipPfxInfo",
+          "_randomBox",
+          "_goldenRandomBox",
+          "_randomElementBox",
+          "_isEnterShopFromHintFireworkShortage",
+          "_isJudgingFireworkAd",
+          "_isStainedDeleteWord"
+        ],
+        "methods": [
+          {
+            "name": "IsCanShowChaimGuide",
+            "params": []
+          },
+          {
+            "name": "ShowChaimGuide",
+            "params": [
+              "isAuto"
+            ]
+          },
+          {
+            "name": "IsCurrentChainLevel",
+            "params": []
+          },
+          {
+            "name": "IsCanChainPlayMode",
+            "params": []
+          },
+          {
+            "name": "IsChainCampaign",
+            "params": []
+          },
+          {
+            "name": "IsChainTest02TargetUser",
+            "params": []
+          },
+          {
+            "name": "IsChainTest02LevelIndex",
+            "params": []
+          },
+          {
+            "name": "IsChainTest02NewLevel",
+            "params": []
+          },
+          {
+            "name": "IsChainPlayMode",
+            "params": []
+          },
+          {
+            "name": "CheckMatchChainWordIndex",
+            "params": []
+          },
+          {
+            "name": "DoUpdateNeedRefreshView",
+            "params": [
+              "need"
+            ]
+          },
+          {
+            "name": "DoUpdateNeedRefreshActivityView",
+            "params": [
+              "need"
+            ]
+          },
+          {
+            "name": "get_IsEnding",
+            "params": []
+          },
+          {
+            "name": "StartGameMode",
+            "params": []
+          },
+          {
+            "name": "EndGameMode",
+            "params": [
+              "toUIType"
+            ]
+          },
+          {
+            "name": "CheckGameEnd",
+            "params": []
+          },
+          {
+            "name": "StartGame",
+            "params": []
+          },
+          {
+            "name": "ShowInterstitial",
+            "params": [
+              "onAdResult",
+              "position"
+            ]
+          },
+          {
+            "name": "EndGame",
+            "params": []
+          },
+          {
+            "name": "GetEnterMainFrom",
+            "params": []
+          },
+          {
+            "name": "TryStartGameMode",
+            "params": [
+              "from"
+            ]
+          },
+          {
+            "name": "SendGameScrEvent",
+            "params": []
+          },
+          {
+            "name": "StartMain",
+            "params": []
+          },
+          {
+            "name": "OnBack",
+            "params": []
+          },
+          {
+            "name": "ShowBackInterstitial",
+            "params": [
+              "action"
+            ]
+          },
+          {
+            "name": "BackInterCallback",
+            "params": [
+              "adShowType"
+            ]
+          },
+          {
+            "name": "BackToHome",
+            "params": []
+          },
+          {
+            "name": "DoDealSelectData",
+            "params": [
+              "letterData"
+            ]
+          },
+          {
+            "name": "DoSelectFinish",
+            "params": []
+          },
+          {
+            "name": "CheckShowErrorToast",
+            "params": [
+              "wordLength"
+            ]
+          },
+          {
+            "name": "DoEndModeUIDealWith",
+            "params": []
+          },
+          {
+            "name": "CloseInterCallBack",
+            "params": [
+              "adShowType"
+            ]
+          },
+          {
+            "name": "GameEndInterFinish",
+            "params": [
+              "adShowClose",
+              "playHideSound"
+            ]
+          },
+          {
+            "name": "HideMainPlay",
+            "params": [
+              "playHideSound"
+            ]
+          },
+          {
+            "name": "ToMainPlayFinish",
+            "params": []
+          },
+          {
+            "name": "UpdateGameTime",
+            "params": [
+              "interval",
+              "isPlaying"
+            ]
+          },
+          {
+            "name": "UpdateStuckTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "UpdateGameRealTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "CheckShowHardWordTip",
+            "params": []
+          },
+          {
+            "name": "CheckShowHardWordTipAssist",
+            "params": []
+          },
+          {
+            "name": "CheckShowHardWordTip217",
+            "params": []
+          },
+          {
+            "name": "CheckAndShowDefineFreeHint",
+            "params": []
+          },
+          {
+            "name": "ShowDefineTip",
+            "params": [
+              "tipWord",
+              "define",
+              "isClick"
+            ]
+          },
+          {
+            "name": "AutoHideTipCoroutine",
+            "params": []
+          },
+          {
+            "name": "CancelAutoHide",
+            "params": []
+          },
+          {
+            "name": "HideDefineTipWithAnimation",
+            "params": []
+          },
+          {
+            "name": "HideDefineTipsNoAnim",
+            "params": []
+          },
+          {
+            "name": "FindTipWord",
+            "params": [
+              "mainPlayData",
+              "words"
+            ]
+          },
+          {
+            "name": "ChooseWord",
+            "params": [
+              "words"
+            ]
+          },
+          {
+            "name": "ChooseWordByTest217_1",
+            "params": [
+              "words"
+            ]
+          },
+          {
+            "name": "ChooseWordByTest217_2",
+            "params": [
+              "words"
+            ]
+          },
+          {
+            "name": "TryShowDefineTip",
+            "params": [
+              "boxData"
+            ]
+          },
+          {
+            "name": "TryShowBoxAnimGuide",
+            "params": []
+          },
+          {
+            "name": "CanNotShowFinishPageBanner",
+            "params": [
+              "canShowActivityUnlockPreview"
+            ]
+          },
+          {
+            "name": "CanShowBottomEntranceFromFinish",
+            "params": [
+              "canShowActivityUnlockPreview"
+            ]
+          },
+          {
+            "name": "JudgeActivityOpen",
+            "params": []
+          },
+          {
+            "name": "InitActivityItem",
+            "params": []
+          },
+          {
+            "name": "CleanupActivity",
+            "params": [
+              "isRestore"
+            ]
+          },
+          {
+            "name": "SettleActivity",
+            "params": []
+          },
+          {
+            "name": "InitButterflyActivity",
+            "params": []
+          },
+          {
+            "name": "ClearButterflyActivity",
+            "params": [
+              "isRestore"
+            ]
+          },
+          {
+            "name": "CloseButterflyActivity",
+            "params": []
+          },
+          {
+            "name": "InitActiveActivity",
+            "params": []
+          },
+          {
+            "name": "ClearActiveActivity",
+            "params": [
+              "isRestore"
+            ]
+          },
+          {
+            "name": "CloseActiveActivity",
+            "params": []
+          },
+          {
+            "name": "DoUpdatePurchaseFrequency",
+            "params": []
+          },
+          {
+            "name": "SetEnterShopFromHintFireworkShortage",
+            "params": [
+              "flag"
+            ]
+          },
+          {
+            "name": "GetAndResetEnterShopFromHintFireworkShortage",
+            "params": []
+          },
+          {
+            "name": "TryAddHintAdFromShopReturn",
+            "params": []
+          },
+          {
+            "name": "TryAddHintAd",
+            "params": [
+              "fromNewTiming"
+            ]
+          },
+          {
+            "name": "TryJumpHintAd",
+            "params": [
+              "presetTarget"
+            ]
+          },
+          {
+            "name": "TryAddFireworkAd",
+            "params": [
+              "needTime"
+            ]
+          },
+          {
+            "name": "LevelFeedback",
+            "params": [
+              "comboPos"
+            ]
+          },
+          {
+            "name": "UpdateSpecialBonusTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "WarmthMatchingFirstThreeLevel",
+            "params": []
+          },
+          {
+            "name": "WarmthMatchingFirstReduceLevel",
+            "params": []
+          },
+          {
+            "name": "WarmthMatchingLevelOrder",
+            "params": [
+              "beginLevelIndex",
+              "oldWarmLevelBeginIndex",
+              "warmLevelRange"
+            ]
+          },
+          {
+            "name": "TryShowAlphabetGuideTest",
+            "params": []
+          },
+          {
+            "name": "CompleteAlphabetGuideTest",
+            "params": []
+          },
+          {
+            "name": "TryShowSpecialBonusTip",
+            "params": []
+          },
+          {
+            "name": "GetCurrentDifficultTag",
+            "params": []
+          },
+          {
+            "name": "GetPreDifficultTag",
+            "params": []
+          },
+          {
+            "name": "GetLevelHardCoinNum",
+            "params": [
+              "tag"
+            ]
+          },
+          {
+            "name": "GetClickVideo",
+            "params": []
+          },
+          {
+            "name": "GetChapterClickVideo",
+            "params": []
+          },
+          {
+            "name": "UpdateClickVideo",
+            "params": []
+          },
+          {
+            "name": "UpdateClickChapterVideo",
+            "params": []
+          },
+          {
+            "name": "DoUpdateAlreadyShowFadeAnim",
+            "params": []
+          },
+          {
+            "name": "TryShowFadeGuide",
+            "params": []
+          },
+          {
+            "name": "GetBtnType",
+            "params": [
+              "coinNum",
+              "wordPropensive",
+              "isFree"
+            ]
+          },
+          {
+            "name": "CheckGridWords",
+            "params": [
+              "play"
+            ]
+          },
+          {
+            "name": "ShowFadeLetterPfx",
+            "params": []
+          },
+          {
+            "name": "ShouldShowFadeGuide",
+            "params": [
+              "play"
+            ]
+          },
+          {
+            "name": "TryStainFadeGuide",
+            "params": []
+          },
+          {
+            "name": "get__dataMgr",
+            "params": []
+          },
+          {
+            "name": "GetHalfLevelEasierTimeThreshold",
+            "params": []
+          },
+          {
+            "name": "TryApplyHalfLevelEasier",
+            "params": [
+              "play"
+            ]
+          },
+          {
+            "name": "ShouldTriggerHalfLevelEasierByChurnProb",
+            "params": []
+          },
+          {
+            "name": "CheckHalfLevelEasierTest2Group1",
+            "params": []
+          },
+          {
+            "name": "CheckHalfLevelEasierTest2Group2",
+            "params": []
+          },
+          {
+            "name": "GetHalfLevelEasierTest2DecayProbGroup1",
+            "params": [
+              "days"
+            ]
+          },
+          {
+            "name": "GetHalfLevelEasierTest2DecayProbGroup2",
+            "params": [
+              "days"
+            ]
+          },
+          {
+            "name": "GetHalfLevelEasierTest2DaysSinceFirstTrigger",
+            "params": []
+          },
+          {
+            "name": "TryAccumulateCh2WrongCount",
+            "params": [
+              "levelIndex",
+              "wrongCount"
+            ]
+          },
+          {
+            "name": ".cctor",
+            "params": []
+          }
+        ]
+      },
+      "MainPlayDataMgr": {
+        "index": 2449,
+        "name": "Data.GamePlay.MainPlay.MainPlayDataMgr",
+        "fields": [
+          "_wholeChainConfig",
+          "Extras",
+          "GridData",
+          "<WrongEncourageInCooldown>k__BackingField",
+          "<ConfigName>k__BackingField",
+          "RootPath",
+          "RootPathRemote",
+          "LevelConfigDefaultFileName",
+          "_mainPlayFileData",
+          "_levelWarmthInfos",
+          "_configSuffix",
+          "NewIsRestore",
+          "DebugViewShow",
+          "<IsLastComboNewDailyRecord>k__BackingField",
+          "<IsFirstComboSpectacular>k__BackingField",
+          "IsFliedPaperPlane",
+          "<IsInAlphabetGuide>k__BackingField",
+          "AllMainPlayLevelHardTag",
+          "AlphabetGuidePrimaryMaxCount",
+          "AlphabetGuideSecondaryMaxCount",
+          "AlphabetGuideMinClusterCount",
+          "<IsAlphabeticalGuideTestReady>k__BackingField",
+          "_mustWords",
+          "GameEndRealTime",
+          "GameEndSpecialTime",
+          "<MainStuckNoAnswerTime>k__BackingField",
+          "<LastSelectDefineTipTime>k__BackingField",
+          "<ContinuousAnswerWrongNum>k__BackingField",
+          "RecentErrorSelectLength",
+          "IsCurLevelShowDefineTip",
+          "<CurLevelStainAndSendEvent>k__BackingField",
+          "CurLevelDefineTipWord",
+          "<CheckDefineFreeHint>k__BackingField",
+          "<IsCanCheckDefineFreeHint>k__BackingField"
+        ],
+        "methods": [
+          {
+            "name": "get_AlreadyShowChaimGuide",
+            "params": []
+          },
+          {
+            "name": "set_AlreadyShowChaimGuide",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AlreadyShowChainThemeGuide",
+            "params": []
+          },
+          {
+            "name": "set_AlreadyShowChainThemeGuide",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AlreadyShowChainLockGuide",
+            "params": []
+          },
+          {
+            "name": "set_AlreadyShowChainLockGuide",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "ShowChaimGuide",
+            "params": []
+          },
+          {
+            "name": "InitChainConfig",
+            "params": []
+          },
+          {
+            "name": "ReleaseChainConfig",
+            "params": []
+          },
+          {
+            "name": "LoadChainConfig",
+            "params": []
+          },
+          {
+            "name": "GetChainConfigId",
+            "params": []
+          },
+          {
+            "name": "GetChainConfigFromLevelIndex",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "NewChainPlayGame",
+            "params": []
+          },
+          {
+            "name": "GetChainConfig",
+            "params": []
+          },
+          {
+            "name": "InitPlayChain",
+            "params": []
+          },
+          {
+            "name": "StatisticsAnswerStateChain",
+            "params": []
+          },
+          {
+            "name": "StatisticsFirstLongWordChain",
+            "params": [
+              "selectResult",
+              "word"
+            ]
+          },
+          {
+            "name": "SetChainOpeningInfo",
+            "params": []
+          },
+          {
+            "name": "UpdateChainFirstBoxData",
+            "params": [
+              "boxData"
+            ]
+          },
+          {
+            "name": "MatchChainWordIndex",
+            "params": []
+          },
+          {
+            "name": "GetWaitFinishAnswer",
+            "params": []
+          },
+          {
+            "name": "GetCurLetter",
+            "params": []
+          },
+          {
+            "name": "UpdateChainLetter",
+            "params": []
+          },
+          {
+            "name": "IsChainPlayMode",
+            "params": []
+          },
+          {
+            "name": "IsChainLockMode",
+            "params": []
+          },
+          {
+            "name": "IsWaitFinishAnswer",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "get_ChainTest02LevelIndex",
+            "params": []
+          },
+          {
+            "name": "set_ChainTest02LevelIndex",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "AddChainLevelIndex",
+            "params": []
+          },
+          {
+            "name": "GetRandomChainWordBox",
+            "params": [
+              "count"
+            ]
+          },
+          {
+            "name": "Init",
+            "params": []
+          },
+          {
+            "name": "Release",
+            "params": []
+          },
+          {
+            "name": "DelayInitPlayData",
+            "params": []
+          },
+          {
+            "name": "get_RestoreData",
+            "params": []
+          },
+          {
+            "name": "get_WrongEncourageInCooldown",
+            "params": []
+          },
+          {
+            "name": "set_WrongEncourageInCooldown",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ConfigName",
+            "params": []
+          },
+          {
+            "name": "set_ConfigName",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LevelBankName",
+            "params": []
+          },
+          {
+            "name": "InitConfigData",
+            "params": []
+          },
+          {
+            "name": "CheckReplaceCampaignLevelConfig",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "InitConfig",
+            "params": []
+          },
+          {
+            "name": "TryReplace243",
+            "params": []
+          },
+          {
+            "name": "TryStainDuserLevelDeleteTest",
+            "params": []
+          },
+          {
+            "name": "NeedDownloadLevelConfig",
+            "params": []
+          },
+          {
+            "name": "GetCurLevelIndex",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "GetRealIndexFromConfig",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "GetNewLevelConfig",
+            "params": []
+          },
+          {
+            "name": "GetBaseConfig",
+            "params": []
+          },
+          {
+            "name": "GetConfig",
+            "params": []
+          },
+          {
+            "name": "NewGame",
+            "params": []
+          },
+          {
+            "name": "CurRemainAnswers",
+            "params": []
+          },
+          {
+            "name": "CurAnswers",
+            "params": []
+          },
+          {
+            "name": "InitPlay",
+            "params": [
+              "restore"
+            ]
+          },
+          {
+            "name": "InitPlayUncross",
+            "params": [
+              "restore"
+            ]
+          },
+          {
+            "name": "GetCurLevelWordCount",
+            "params": []
+          },
+          {
+            "name": "StatisticsAnswerState",
+            "params": []
+          },
+          {
+            "name": "StatisticsAnswerStateUncross",
+            "params": []
+          },
+          {
+            "name": "StatisticsFirstLongWordUncross",
+            "params": [
+              "selectResult",
+              "word"
+            ]
+          },
+          {
+            "name": "SetBoxFind",
+            "params": [
+              "boxDataList"
+            ]
+          },
+          {
+            "name": "SetBoxFind",
+            "params": [
+              "word",
+              "boxDataList"
+            ]
+          },
+          {
+            "name": "AddAnswerFinishWord",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "Cleanup",
+            "params": [
+              "isNew"
+            ]
+          },
+          {
+            "name": "IsStrategyEaShared",
+            "params": []
+          },
+          {
+            "name": "IsCanEaShared",
+            "params": []
+          },
+          {
+            "name": "CheckAdjustAnswerRules",
+            "params": [
+              "answer"
+            ]
+          },
+          {
+            "name": "CheckExtraWordRules",
+            "params": [
+              "extra"
+            ]
+          },
+          {
+            "name": "CheckExtraReplaceableAnswer",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "CheckAdjustAnswerOrder",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "ReplaceAdjustAnswer",
+            "params": [
+              "wordAnswer",
+              "replacedAnswer"
+            ]
+          },
+          {
+            "name": "ReplaceExtraAnswer",
+            "params": [
+              "extra",
+              "replacedAnswer"
+            ]
+          },
+          {
+            "name": "DoSelectFinish",
+            "params": []
+          },
+          {
+            "name": "ResolveAnswerWithAdjustAndExtraForUncross",
+            "params": [
+              "word",
+              "extra",
+              "answer"
+            ]
+          },
+          {
+            "name": "NewbieCheckSelectResult",
+            "params": [
+              "word",
+              "answers",
+              "extra"
+            ]
+          },
+          {
+            "name": "CheckSelectResult",
+            "params": [
+              "word",
+              "answers",
+              "extra"
+            ]
+          },
+          {
+            "name": "IsAllAnswerFind",
+            "params": []
+          },
+          {
+            "name": "TryGetAnswerBoxesForWord",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "GetAnswerByWord",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "ComputeSelectResult",
+            "params": [
+              "sb",
+              "answer",
+              "extra"
+            ]
+          },
+          {
+            "name": "ComputeSelectResult",
+            "params": [
+              "wordStr"
+            ]
+          },
+          {
+            "name": "InitExtras",
+            "params": [
+              "extras",
+              "onlyExtras"
+            ]
+          },
+          {
+            "name": "ClearExtras",
+            "params": []
+          },
+          {
+            "name": "GetExtraByWord",
+            "params": [
+              "word"
+            ]
+          },
+          {
+            "name": "UpdateHintBoxData",
+            "params": []
+          },
+          {
+            "name": "UpdateHintBoxData",
+            "params": [
+              "boxIndex"
+            ]
+          },
+          {
+            "name": "UpdateFireworkAdBoxData",
+            "params": [
+              "boxIndex"
+            ]
+          },
+          {
+            "name": "RevealHalfLevelEasierLetter",
+            "params": []
+          },
+          {
+            "name": "SelectBackUserRevealBox",
+            "params": []
+          },
+          {
+            "name": "GetEmptyBoxCount",
+            "params": []
+          },
+          {
+            "name": "CheatAddAllFinishWord",
+            "params": []
+          },
+          {
+            "name": "GetFinishWords",
+            "params": []
+          },
+          {
+            "name": "UpdateHintBoxData",
+            "params": [
+              "x",
+              "y"
+            ]
+          },
+          {
+            "name": "UpdateFireworkWord",
+            "params": []
+          },
+          {
+            "name": "UpdatePropsRecord",
+            "params": [
+              "propsType"
+            ]
+          },
+          {
+            "name": "CheckFindWord",
+            "params": [
+              "boxData",
+              "isRestore"
+            ]
+          },
+          {
+            "name": "CheckCanBeInferWords",
+            "params": []
+          },
+          {
+            "name": "get_IsLastComboNewDailyRecord",
+            "params": []
+          },
+          {
+            "name": "set_IsLastComboNewDailyRecord",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_IsFirstComboSpectacular",
+            "params": []
+          },
+          {
+            "name": "set_IsFirstComboSpectacular",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "UpdateCombo",
+            "params": [
+              "selectBoxResult"
+            ]
+          },
+          {
+            "name": "ClearStore",
+            "params": []
+          },
+          {
+            "name": "CheckSameConfig",
+            "params": []
+          },
+          {
+            "name": "RestoreGame",
+            "params": []
+          },
+          {
+            "name": "CheckRestore",
+            "params": []
+          },
+          {
+            "name": "CheckGetRestore",
+            "params": []
+          },
+          {
+            "name": "CheckHasPlayedGame",
+            "params": []
+          },
+          {
+            "name": "GameRestore",
+            "params": []
+          },
+          {
+            "name": "FailRestartGame",
+            "params": []
+          },
+          {
+            "name": "GetNewbieGuideIndex",
+            "params": []
+          },
+          {
+            "name": "InitPlaneBoxData",
+            "params": [
+              "planeCount",
+              "otherItemCount"
+            ]
+          },
+          {
+            "name": "InitFreePaperPlane",
+            "params": []
+          },
+          {
+            "name": "InitUnlimitedPlaneBoxData",
+            "params": [
+              "otherItemCount"
+            ]
+          },
+          {
+            "name": "TryGetInitPlaneBoxData",
+            "params": [
+              "boxDataList",
+              "wordOrder",
+              "count",
+              "maxCount"
+            ]
+          },
+          {
+            "name": "SelectPlaneSpecialBoxData",
+            "params": []
+          },
+          {
+            "name": "SelectPlaneBoxData",
+            "params": []
+          },
+          {
+            "name": "InitExchangePlaneBoxData",
+            "params": []
+          },
+          {
+            "name": "TryGetBaseCell",
+            "params": [
+              "key",
+              "cell"
+            ]
+          },
+          {
+            "name": "GetRandomList",
+            "params": [
+              "needItemCount"
+            ]
+          },
+          {
+            "name": "get_IsInAlphabetGuide",
+            "params": []
+          },
+          {
+            "name": "set_IsInAlphabetGuide",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "UpdateIsInAlphabetGuide",
+            "params": [
+              "isGuiding"
+            ]
+          },
+          {
+            "name": "IsCanShowAlphabetGuide",
+            "params": []
+          },
+          {
+            "name": "SetCurrentLevelDifficulty",
+            "params": []
+          },
+          {
+            "name": "GetLevelDifficultyBySummary",
+            "params": [
+              "levelIndex",
+              "chapter"
+            ]
+          },
+          {
+            "name": "GetChapterStartLevel",
+            "params": [
+              "chapter"
+            ]
+          },
+          {
+            "name": "GetChapterDifficultyScores",
+            "params": [
+              "chapterStart",
+              "chapterSize",
+              "sheetName"
+            ]
+          },
+          {
+            "name": "ApplySummaryFrequencyControl",
+            "params": [
+              "chapter",
+              "rawDifficulty"
+            ]
+          },
+          {
+            "name": "UpdateSummaryFrequencyState",
+            "params": [
+              "chapter",
+              "difficulty"
+            ]
+          },
+          {
+            "name": "CancelHardLevelSummary",
+            "params": []
+          },
+          {
+            "name": "GetFirstEmptyBox",
+            "params": []
+          },
+          {
+            "name": "GetFirstEmptyBaseData",
+            "params": []
+          },
+          {
+            "name": "get_CurrentHardState",
+            "params": []
+          },
+          {
+            "name": "set_CurrentHardState",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "GetWarmLevelRemoveAnswerCount",
+            "params": [
+              "config",
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "DynamicAdjustmentWord",
+            "params": []
+          },
+          {
+            "name": "WarmLevelReduceWord",
+            "params": [
+              "config",
+              "currentRemoveAnswerCount"
+            ]
+          },
+          {
+            "name": "get_WarmLevelOrder",
+            "params": []
+          },
+          {
+            "name": "set_WarmLevelOrder",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_WarmBeginLevelIndex",
+            "params": []
+          },
+          {
+            "name": "set_WarmBeginLevelIndex",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_WarmBeginDay",
+            "params": []
+          },
+          {
+            "name": "set_WarmBeginDay",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_WarmBeginReduceLevelIndex",
+            "params": []
+          },
+          {
+            "name": "set_WarmBeginReduceLevelIndex",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "UpdateWarmBeginLevelIndex",
+            "params": [
+              "index"
+            ]
+          },
+          {
+            "name": "UpdateWarmBeginDay",
+            "params": [
+              "day"
+            ]
+          },
+          {
+            "name": "UpdateWarmBeginReduceLevelIndex",
+            "params": [
+              "index"
+            ]
+          },
+          {
+            "name": "InitWarmthConfig",
+            "params": []
+          },
+          {
+            "name": "GetAfterLevelTime",
+            "params": []
+          },
+          {
+            "name": "GetLevelAnswerCountByConfig",
+            "params": []
+          },
+          {
+            "name": "get_IsAlphabeticalGuideTestReady",
+            "params": []
+          },
+          {
+            "name": "set_IsAlphabeticalGuideTestReady",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "InitAlphabeticalGuideTest",
+            "params": []
+          },
+          {
+            "name": "RefreshAlphabetGuideData",
+            "params": []
+          },
+          {
+            "name": "ClearAlphabeticalGuideTest",
+            "params": []
+          },
+          {
+            "name": "CheckNeedAlphabeticalGuideTest",
+            "params": []
+          },
+          {
+            "name": "PickAlphabetGuideWords",
+            "params": [
+              "primaryWords",
+              "secondaryWords"
+            ]
+          },
+          {
+            "name": "GroupRenderedWordsByLength",
+            "params": []
+          },
+          {
+            "name": "PickPrimaryLength",
+            "params": [
+              "groups"
+            ]
+          },
+          {
+            "name": "GetWordOrder",
+            "params": []
+          },
+          {
+            "name": "GetWords",
+            "params": []
+          },
+          {
+            "name": "CheckLevelConfigWithBonusWord",
+            "params": [
+              "config",
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "InitSpecialBonusLevel",
+            "params": []
+          },
+          {
+            "name": "ReviveSpecialBonusLevelStep",
+            "params": [
+              "step"
+            ]
+          },
+          {
+            "name": "ReviveSpecialBonusLevel",
+            "params": [
+              "flyPaperPlane"
+            ]
+          },
+          {
+            "name": "InitSpecialBonusPlaneBoxData",
+            "params": []
+          },
+          {
+            "name": "ClearSpecialBonusLevel",
+            "params": []
+          },
+          {
+            "name": "InitMustWordConfig",
+            "params": []
+          },
+          {
+            "name": "ReleaseMustWordConfig",
+            "params": []
+          },
+          {
+            "name": "GetLevelMustWords",
+            "params": [
+              "levelIndex"
+            ]
+          },
+          {
+            "name": "InitLevelMustWords",
+            "params": []
+          },
+          {
+            "name": "GetGridWords",
+            "params": []
+          },
+          {
+            "name": "get_DynamicAdjustUserLevel",
+            "params": []
+          },
+          {
+            "name": "set_DynamicAdjustUserLevel",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "TryUpdateDynamicAdjustUserLevel",
+            "params": []
+          },
+          {
+            "name": "get_EarlyLevelDifficulty",
+            "params": []
+          },
+          {
+            "name": "set_EarlyLevelDifficulty",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LevelTestHistory",
+            "params": []
+          },
+          {
+            "name": "set_LevelTestHistory",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "AddLevelTestHistory",
+            "params": []
+          },
+          {
+            "name": "GetReviewLevelConfig",
+            "params": []
+          },
+          {
+            "name": "get_LastBeginNewLevelTime",
+            "params": []
+          },
+          {
+            "name": "set_LastBeginNewLevelTime",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "UpdateLastBeginNewLevelTime",
+            "params": []
+          },
+          {
+            "name": "get_ReviewLevelConfig",
+            "params": []
+          },
+          {
+            "name": "set_ReviewLevelConfig",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LastLevelMaxCombo",
+            "params": []
+          },
+          {
+            "name": "set_LastLevelMaxCombo",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LastLevelWrongCount",
+            "params": []
+          },
+          {
+            "name": "set_LastLevelWrongCount",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AdaptiveDifficultyCh2WrongCountSum",
+            "params": []
+          },
+          {
+            "name": "set_AdaptiveDifficultyCh2WrongCountSum",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "AccumulateAdaptiveDifficultyCh2WrongCount",
+            "params": [
+              "wrongCount"
+            ]
+          },
+          {
+            "name": "UpdateLastLevelClearRelatedInfo",
+            "params": []
+          },
+          {
+            "name": "RestoreLevelOpeningCoinsBoxData",
+            "params": []
+          },
+          {
+            "name": "get_LastLevelDuration",
+            "params": []
+          },
+          {
+            "name": "set_LastLevelDuration",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_SpecialBonusTime",
+            "params": []
+          },
+          {
+            "name": "set_SpecialBonusTime",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LastSettleSpecialBonusTimeLevel",
+            "params": []
+          },
+          {
+            "name": "set_LastSettleSpecialBonusTimeLevel",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ShowSpecialBeginTipLevel",
+            "params": []
+          },
+          {
+            "name": "set_ShowSpecialBeginTipLevel",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_SpecialBonusReviveCnt",
+            "params": []
+          },
+          {
+            "name": "set_SpecialBonusReviveCnt",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "UpdateShowSpecialBeginTipLevel",
+            "params": []
+          },
+          {
+            "name": "UpdateSpecialBonusTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "SettleSpecialBonusTime",
+            "params": [
+              "isSpecial"
+            ]
+          },
+          {
+            "name": "GetSpecialBonusTimeBgAnxiety",
+            "params": []
+          },
+          {
+            "name": "MapTotalToScore",
+            "params": [
+              "total"
+            ]
+          },
+          {
+            "name": "BaseCoefficient",
+            "params": []
+          },
+          {
+            "name": "AddGameFactors",
+            "params": [
+              "coefficient"
+            ]
+          },
+          {
+            "name": "GetRandomWordEmptyLetters",
+            "params": [
+              "count"
+            ]
+          },
+          {
+            "name": "get_MainStuckNoAnswerTime",
+            "params": []
+          },
+          {
+            "name": "set_MainStuckNoAnswerTime",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LastSelectDefineTipTime",
+            "params": []
+          },
+          {
+            "name": "set_LastSelectDefineTipTime",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ContinuousAnswerWrongNum",
+            "params": []
+          },
+          {
+            "name": "set_ContinuousAnswerWrongNum",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_CurLevelStainAndSendEvent",
+            "params": []
+          },
+          {
+            "name": "set_CurLevelStainAndSendEvent",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_CheckDefineFreeHint",
+            "params": []
+          },
+          {
+            "name": "set_CheckDefineFreeHint",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_IsCanCheckDefineFreeHint",
+            "params": []
+          },
+          {
+            "name": "set_IsCanCheckDefineFreeHint",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "BeginCountDownDefineFreeHint",
+            "params": []
+          },
+          {
+            "name": "SetIsCheckDefineFreeHint",
+            "params": [
+              "isCheckDefineFreeHint"
+            ]
+          },
+          {
+            "name": "UpdateDefineFreeHintTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "UpdateDefineWordTipTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "ResetDefineTipTime",
+            "params": []
+          },
+          {
+            "name": "RestoreBlindBoxBoxData",
+            "params": []
+          },
+          {
+            "name": "RemoveBlindBoxBoxData",
+            "params": [
+              "baseData"
+            ]
+          },
+          {
+            "name": "RestoreBottleBoxData",
+            "params": []
+          },
+          {
+            "name": "RemoveBottleBoxData",
+            "params": [
+              "baseData"
+            ]
+          },
+          {
+            "name": "GetSpreadCoinsBox",
+            "params": []
+          },
+          {
+            "name": "RestoreSpreadBoxBoxData",
+            "params": []
+          },
+          {
+            "name": "RestoreSpreadCoinsCoinsBoxData",
+            "params": []
+          },
+          {
+            "name": "RemoveSpreadBoxBoxData",
+            "params": [
+              "baseData"
+            ]
+          },
+          {
+            "name": "get_ClickVideo",
+            "params": []
+          },
+          {
+            "name": "set_ClickVideo",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ClickChapterVideo",
+            "params": []
+          },
+          {
+            "name": "set_ClickChapterVideo",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AlreadyShowFadeAnim",
+            "params": []
+          },
+          {
+            "name": "set_AlreadyShowFadeAnim",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_CheckFadeDayTime",
+            "params": []
+          },
+          {
+            "name": "set_CheckFadeDayTime",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LastShowFadeGuideIndex",
+            "params": []
+          },
+          {
+            "name": "set_LastShowFadeGuideIndex",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_FadeGuideDayShowCount",
+            "params": []
+          },
+          {
+            "name": "set_FadeGuideDayShowCount",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_IsUseFreeFadeLetter",
+            "params": []
+          },
+          {
+            "name": "set_IsUseFreeFadeLetter",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "FuncCheckFadeDayTime",
+            "params": []
+          },
+          {
+            "name": "UpdateLastShowFadeGuideIndex",
+            "params": []
+          },
+          {
+            "name": "UpdateAlreadyShowFadeAnim",
+            "params": []
+          },
+          {
+            "name": "get_HideLevelIntervalCnt",
+            "params": []
+          },
+          {
+            "name": "InitHideLevelLetters",
+            "params": []
+          },
+          {
+            "name": "RecordHideLetterInterval",
+            "params": []
+          },
+          {
+            "name": "IsPlayingHideLetterLevel",
+            "params": []
+          },
+          {
+            "name": "TryAdjustRuTrExtra",
+            "params": []
+          },
+          {
+            "name": "get_ExchangeChapter",
+            "params": []
+          },
+          {
+            "name": "get_ExchangeFile",
+            "params": []
+          },
+          {
+            "name": "set_ExchangeFile",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "OnChapterChange",
+            "params": [
+              "chapter",
+              "lastChapter"
+            ]
+          },
+          {
+            "name": "RestoreChapterChange",
+            "params": []
+          },
+          {
+            "name": "GetBaseRestoreData",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          },
+          {
+            "name": "<ReviveSpecialBonusLevel>b__204_0",
+            "params": []
+          }
+        ]
+      },
+      "MainPlayDefine": {
+        "index": 2450,
+        "name": "Data.GamePlay.MainPlay.MainPlayDefine",
+        "fields": [
+          "ToastWordLength",
+          "MaxWordLength",
+          "UnlockLevelPassRewardTvLevel",
+          "UnlockBannerLevel",
+          "UnlockInterstitialLevel",
+          "ShowRewardAdLevelIndex",
+          "ChapterReward",
+          "NewbieReward",
+          "NewbieLevelIndex",
+          "AlphabetLevel",
+          "ReplaceExtraAnswerMinLevel",
+          "SkipToHardBeginLevel",
+          "NotFindLetterPlaceholder",
+          "RecordHintUseRange",
+          "FirstSessionInterLimit",
+          "FirstSessionBannerLimit",
+          "ExtraTransform",
+          "LotusItem",
+          "HardReward",
+          "SuperHardReward",
+          "LegendaryReward",
+          "UnlockWarmthWordLevel",
+          "WarmthWordMaxLevel",
+          "WarmMatchingRange",
+          "WarmLevelRange1",
+          "LevelWarmthInfoConfigPath",
+          "WarmLevelReorderCountry",
+          "WarmLevelDeleteCountry",
+          "CampaignIdUsedChainTest",
+          "CampaignNameUsedChainTest",
+          "ChainLevelGuideWordNum",
+          "ChainLevelConfigPathFormat",
+          "ChainTest02LevelConfigPath",
+          "ChainGuideFirstWord",
+          "ChainGuideSecondWord",
+          "ChainGamePlayDistributionGroupRange",
+          "ChainGamePlayDistributionIndex",
+          "FragmentLevelCountEnT1LevelNew",
+          "DifficultyLevelGuideWordCount",
+          "DynamicAdjustLevelStartIndex",
+          "DynamicAdjustLevelRemove1Min",
+          "AlphabeticalGuideLetter",
+          "DifficultyExchangeChapter",
+          "ReplaceLevel243",
+          "ReplaceLevel243Hard",
+          "ReplaceLevel243Config",
+          "FadeLetterNeedWrong",
+          "FadeLetterNeedWrongTest1"
+        ],
+        "methods": [
+          {
+            "name": ".cctor",
+            "params": []
+          }
+        ]
+      },
+      "DynamicAdjustUserLevel": {
+        "index": 2453,
+        "name": "Data.GamePlay.MainPlay.DynamicAdjustUserLevel",
+        "fields": [
+          "value__",
+          "None",
+          "Remove2",
+          "Remove1",
+          "Add1"
+        ],
+        "methods": []
+      },
+      "DynamicAdjustData": {
+        "index": 2461,
+        "name": "Data.GamePlay.MainPlay.Config.DynamicAdjustData",
+        "fields": [
+          "RemoveWords",
+          "AddWords"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "SingleAppendData": {
+        "index": 2466,
+        "name": "Data.GamePlay.MainPlay.Config.SingleAppendData",
+        "fields": [
+          "LevelLabel",
+          "Time",
+          "CanDeleteWord",
+          "CanAddWord"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "MainPlayLevelWarmthInfo": {
+        "index": 2474,
+        "name": "Data.GamePlay.MainPlay.Config.MainPlayLevelWarmthInfo",
+        "fields": [
+          "WaitDeleteWordNum"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "HintStuckHandler": {
+        "index": 1733,
+        "name": "Logic.Handler.HintStuckHandler",
+        "fields": [
+          "_stuckTimer",
+          "_wrongCount",
+          "_hasEnteredPlayThisSession",
+          "_isGroup1WindowOpen",
+          "_stainCount"
+        ],
+        "methods": [
+          {
+            "name": "ResetAll",
+            "params": []
+          },
+          {
+            "name": "AccumulateTime",
+            "params": [
+              "deltaTime"
+            ]
+          },
+          {
+            "name": "AccumulateWrongCount",
+            "params": []
+          },
+          {
+            "name": "IsThresholdMet",
+            "params": [
+              "timerThreshold",
+              "wrongThreshold"
+            ]
+          },
+          {
+            "name": "IsFitBaseCondition",
+            "params": []
+          },
+          {
+            "name": "TryShowHintSale",
+            "params": []
+          },
+          {
+            "name": "EvaluateGroup1Window",
+            "params": [
+              "isFirstSessionOfToday",
+              "isFirstPlayEnter",
+              "isRestore"
+            ]
+          },
+          {
+            "name": "GetGroup2HalfOffProbability",
+            "params": [
+              "state",
+              "todayMainLevelCompleteCnt"
+            ]
+          },
+          {
+            "name": "GetCoinDiscountDecision",
+            "params": [
+              "coinNum"
+            ]
+          },
+          {
+            "name": "GetCoinDiscountProbability",
+            "params": [
+              "coinNum"
+            ]
+          },
+          {
+            "name": "GetCoinReplace80Probability",
+            "params": [
+              "coinNum"
+            ]
+          },
+          {
+            "name": "RewriteDiscountToHalf",
+            "params": [
+              "state"
+            ]
+          },
+          {
+            "name": "ClampProbability",
+            "params": [
+              "probability"
+            ]
+          },
+          {
+            "name": "OnPlayLevelStart",
+            "params": [
+              "isFirstSessionOfToday",
+              "isRestore"
+            ]
+          },
+          {
+            "name": "OnDiscountShown",
+            "params": []
+          },
+          {
+            "name": "OnPlayLevelStartInGame",
+            "params": [
+              "isRestore"
+            ]
+          },
+          {
+            "name": "TryRewriteExistingDiscountToHalf",
+            "params": []
+          },
+          {
+            "name": "TryAdjustHintOnSaleStateByCoin",
+            "params": []
+          },
+          {
+            "name": "TryAdjust8Or9To5Sale",
+            "params": []
+          },
+          {
+            "name": "CanShowDiscountByCoin",
+            "params": []
+          },
+          {
+            "name": "GetTodayMainLevelCompleteCnt",
+            "params": []
+          },
+          {
+            "name": "OnLevelComplete",
+            "params": []
+          },
+          {
+            "name": "RollHit",
+            "params": [
+              "probability"
+            ]
+          },
+          {
+            "name": "IsPlayerSelecting",
+            "params": []
+          },
+          {
+            "name": "TryStainHintDiscountTest2ByLevelEndPref",
+            "params": []
+          }
+        ]
+      },
+      "AssistStuckHandler": {
+        "index": 1652,
+        "name": "Logic.Handler.AssistStuckHandler",
+        "fields": [
+          "_stuckTimer",
+          "_wrongCount",
+          "_timerReachedLogged",
+          "_lastBlockReason",
+          "_lastHardTipBlockReason",
+          "_lastTargetLog",
+          "_lastGroup1Log",
+          "_lastHardTipLog"
+        ],
+        "methods": [
+          {
+            "name": "IsAssistTarget",
+            "params": [
+              "reason"
+            ]
+          },
+          {
+            "name": "IsGroup1InterUnlockEarly",
+            "params": []
+          },
+          {
+            "name": "IsHardTipAssistTarget",
+            "params": []
+          },
+          {
+            "name": "LogJudgeOnce",
+            "params": [
+              "lastLog",
+              "message"
+            ]
+          },
+          {
+            "name": "AccumulateTime",
+            "params": [
+              "interval"
+            ]
+          },
+          {
+            "name": "AccumulateWrongCount",
+            "params": [
+              "result",
+              "selectWord"
+            ]
+          },
+          {
+            "name": "ResetAll",
+            "params": []
+          },
+          {
+            "name": "get_AssistFireworkSaleActive",
+            "params": []
+          },
+          {
+            "name": "TryConsumeAssistFireworkSale",
+            "params": [
+              "propType"
+            ]
+          },
+          {
+            "name": "CheckHardWordTipTrigger",
+            "params": [
+              "stuckNoAnswerTime",
+              "lastSelectTipTime",
+              "curLevelTipWordCount",
+              "hasFullyUnfoundWord"
+            ]
+          },
+          {
+            "name": "LogHardTipBlockedOnce",
+            "params": [
+              "reason",
+              "stuckNoAnswerTime"
+            ]
+          },
+          {
+            "name": "FindHardTipWord",
+            "params": [
+              "restoreDefineTipWords",
+              "answerCount",
+              "words"
+            ]
+          },
+          {
+            "name": "HasUnfoundLetter",
+            "params": [
+              "wordBoxList"
+            ]
+          },
+          {
+            "name": "HasFullyUnfoundWord",
+            "params": [
+              "words"
+            ]
+          },
+          {
+            "name": "IsFullyUnfound",
+            "params": [
+              "wordBoxList"
+            ]
+          },
+          {
+            "name": "ChooseHardTipWord",
+            "params": [
+              "words"
+            ]
+          },
+          {
+            "name": "ApplyHardTip",
+            "params": [
+              "tipWord",
+              "defines",
+              "restoreDefineTipWords",
+              "curLevelTipWords",
+              "showTip"
+            ]
+          },
+          {
+            "name": "CheckTrigger",
+            "params": []
+          },
+          {
+            "name": "GetTriggerBlockReason",
+            "params": []
+          },
+          {
+            "name": "LogBlockedOnce",
+            "params": [
+              "reason"
+            ]
+          },
+          {
+            "name": "IsInPlayableState",
+            "params": []
+          },
+          {
+            "name": "IsPlayerSelecting",
+            "params": []
+          },
+          {
+            "name": "Trigger",
+            "params": []
+          }
+        ]
+      },
+      "UserAbilityHandler": {
+        "index": 1809,
+        "name": "Logic.Handler.UserAbilityHandler",
+        "fields": [],
+        "methods": [
+          {
+            "name": "TrySendAbilityEvent",
+            "params": []
+          },
+          {
+            "name": "TrySendBayesAbility",
+            "params": []
+          },
+          {
+            "name": "GetKCoefficient",
+            "params": [
+              "formulaIndex",
+              "score"
+            ]
+          },
+          {
+            "name": "GetCurLevelScoreL",
+            "params": []
+          },
+          {
+            "name": "GetCurLevelScoreW",
+            "params": []
+          },
+          {
+            "name": "GetQuantile",
+            "params": [
+              "quantile",
+              "curLevel"
+            ]
+          },
+          {
+            "name": "ConvertSecondsToMinutes",
+            "params": [
+              "seconds"
+            ]
+          },
+          {
+            "name": "ConvertMinutesToSeconds",
+            "params": [
+              "minutes"
+            ]
+          },
+          {
+            "name": "TrySendRollingMatchAdjustAbility",
+            "params": []
+          },
+          {
+            "name": "GetRollingLevelArray",
+            "params": [
+              "level"
+            ]
+          },
+          {
+            "name": "FindClosestIndex",
+            "params": [
+              "arr",
+              "target"
+            ]
+          },
+          {
+            "name": "CalculateWeights",
+            "params": [
+              "abilityList",
+              "minWeight",
+              "increment"
+            ]
+          },
+          {
+            "name": "GetAbility",
+            "params": [
+              "userAbility"
+            ]
+          }
+        ]
+      },
+      "UserAbilityDataMgr": {
+        "index": 2287,
+        "name": "Data.UserAbility.UserAbilityDataMgr",
+        "fields": [
+          "<AbilityExploreProbability>k__BackingField"
+        ],
+        "methods": [
+          {
+            "name": "Init",
+            "params": [
+              "level"
+            ]
+          },
+          {
+            "name": "Release",
+            "params": []
+          },
+          {
+            "name": "get_AbilityScore1",
+            "params": []
+          },
+          {
+            "name": "set_AbilityScore1",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AbilityScore2",
+            "params": []
+          },
+          {
+            "name": "set_AbilityScore2",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_CanParticipateBayesRecord",
+            "params": []
+          },
+          {
+            "name": "set_CanParticipateBayesRecord",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_LocatedAbilityData",
+            "params": []
+          },
+          {
+            "name": "get_RollingMatchAdjustLevelList",
+            "params": []
+          },
+          {
+            "name": "UpdateAbilityScore",
+            "params": [
+              "abilityScore",
+              "abilityScore2"
+            ]
+          },
+          {
+            "name": "IsCanParticipateBayesRecord",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "UserAbilityData": {
+        "index": 2244,
+        "name": "Store.UserAbilityData",
+        "fields": [
+          "AbilityScore",
+          "AbilityScore2",
+          "CanParticipateBayesRecord",
+          "LocatedAbilityData",
+          "RollingMatchAdjustLevelList",
+          "FixedAbility",
+          "AbilityLevelTestMode",
+          "AbilityLevelTestMode2",
+          "AbilityValueDebug"
+        ],
+        "methods": [
+          {
+            "name": "Reset",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "BayesAbilityData": {
+        "index": 2288,
+        "name": "Data.UserAbility.Config.BayesAbilityData",
+        "fields": [
+          "ScoreW",
+          "ScoreL"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "UserTagMgr": {
+        "index": 2724,
+        "name": "Platform.UserTag.UserTagMgr",
+        "fields": [
+          "_firstPurchaseItem",
+          "_firstPurchaseLivingDays",
+          "_networkState",
+          "_rewardWillingnessTag",
+          "_userRTag14",
+          "_adValueData",
+          "_payProb",
+          "_campaignName",
+          "_mediaSource",
+          "<CampaignId>k__BackingField",
+          "<UserPayerRTag7>k__BackingField",
+          "<ToleranceGroup>k__BackingField",
+          "<ChurnProb>k__BackingField",
+          "<WordPropensityValue>k__BackingField",
+          "<RewardPropensity>k__BackingField",
+          "<HasAssistTag>k__BackingField",
+          "<AssistTypeTag>k__BackingField",
+          "_isTriggerUpdateAdConfigFromSession",
+          "<Inst>k__BackingField",
+          "_luid",
+          "_onLuidCallback"
+        ],
+        "methods": [
+          {
+            "name": "InitLogic",
+            "params": []
+          },
+          {
+            "name": "get_OpenNetworkTestTag",
+            "params": []
+          },
+          {
+            "name": "get_UserRTag14",
+            "params": []
+          },
+          {
+            "name": "get_AdValueTag",
+            "params": []
+          },
+          {
+            "name": "get_CampaignName",
+            "params": []
+          },
+          {
+            "name": "get_MediaSource",
+            "params": []
+          },
+          {
+            "name": "get_CampaignId",
+            "params": []
+          },
+          {
+            "name": "set_CampaignId",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_UserPayerRTag7",
+            "params": []
+          },
+          {
+            "name": "set_UserPayerRTag7",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ToleranceGroup",
+            "params": []
+          },
+          {
+            "name": "set_ToleranceGroup",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_ChurnProb",
+            "params": []
+          },
+          {
+            "name": "set_ChurnProb",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "set_WordPropensityValue",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_RewardPropensity",
+            "params": []
+          },
+          {
+            "name": "set_RewardPropensity",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_HasAssistTag",
+            "params": []
+          },
+          {
+            "name": "set_HasAssistTag",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "get_AssistTypeTag",
+            "params": []
+          },
+          {
+            "name": "set_AssistTypeTag",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "InitLocalTagsAsync",
+            "params": []
+          },
+          {
+            "name": "InitLocalTagsData",
+            "params": []
+          },
+          {
+            "name": "InitInnerTagsAsync",
+            "params": []
+          },
+          {
+            "name": "UpdateAfDict",
+            "params": [
+              "afData"
+            ]
+          },
+          {
+            "name": "CheckUpdateAdConfig",
+            "params": [
+              "mediaSource"
+            ]
+          },
+          {
+            "name": "AddInnerTagUpdateListener",
+            "params": []
+          },
+          {
+            "name": "CampaignNameTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "PayProbTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "ToleranceGroupTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "ChurnProbTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "RewardPropensityTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "ReInstallTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "WordPropensityTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "HasAssistTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "AssistTypeTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "HasAssist",
+            "params": []
+          },
+          {
+            "name": "GetMediaSource",
+            "params": [
+              "allData"
+            ]
+          },
+          {
+            "name": "GetCampaignName",
+            "params": [
+              "allData"
+            ]
+          },
+          {
+            "name": "GetCampaignId",
+            "params": [
+              "allData"
+            ]
+          },
+          {
+            "name": "AddLocalTagUpdateListener",
+            "params": []
+          },
+          {
+            "name": "FirstPurchaseItemTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "FirstPurchaseLivingDaysTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "NetworkStateTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "GameLanguageTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "PurchaseStateTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "AdStateTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "TotalPurchaseNumberTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "AnxietyValueTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "CurrentCoinTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "TotalPurchaseAmountTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "AgrxStateTagUpdate",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "LocalTagUpdate",
+            "params": [
+              "userTagKey",
+              "userTagData"
+            ]
+          },
+          {
+            "name": "TryAddFirstPurchaseItemTag",
+            "params": [
+              "id"
+            ]
+          },
+          {
+            "name": "TryAddFirstPurchaseLivingDaysTag",
+            "params": [
+              "day"
+            ]
+          },
+          {
+            "name": "TryAddNetworkStateTag",
+            "params": [
+              "networkState"
+            ]
+          },
+          {
+            "name": "AddGameLanguageTag",
+            "params": [
+              "lanCode"
+            ]
+          },
+          {
+            "name": "AddPurchaseStateTag",
+            "params": [
+              "isPurchased"
+            ]
+          },
+          {
+            "name": "AddAdStateTag",
+            "params": [
+              "isRemoveAd"
+            ]
+          },
+          {
+            "name": "AddTotalPurchaseNumberTag",
+            "params": [
+              "number"
+            ]
+          },
+          {
+            "name": "AddTotalPurchaseAmountTag",
+            "params": [
+              "amount"
+            ]
+          },
+          {
+            "name": "AddAgrxStateTag",
+            "params": [
+              "isAgrx"
+            ]
+          },
+          {
+            "name": "AddAnxietyValueTag",
+            "params": [
+              "anxiety"
+            ]
+          },
+          {
+            "name": "AddCurrentCoinTag",
+            "params": [
+              "coinCnt"
+            ]
+          },
+          {
+            "name": "OnUserTagDataChanged",
+            "params": []
+          },
+          {
+            "name": "TryAddRewardWillingnessStateTag",
+            "params": [
+              "rewardWillingnessTag"
+            ]
+          },
+          {
+            "name": "TryAddUserRTag14",
+            "params": [
+              "tag"
+            ]
+          },
+          {
+            "name": "TryAddUserPayerRTag7",
+            "params": [
+              "tag"
+            ]
+          },
+          {
+            "name": "AddUserPayerMaxPrice7Tag",
+            "params": [
+              "maxSinglePayment"
+            ]
+          },
+          {
+            "name": "AddAvgPassState5Tag",
+            "params": [
+              "avgPassLevel"
+            ]
+          },
+          {
+            "name": "AddLevelState",
+            "params": [
+              "level"
+            ]
+          },
+          {
+            "name": "CheckPreinstallPlayMode",
+            "params": []
+          },
+          {
+            "name": "IsPreinstallUser",
+            "params": []
+          },
+          {
+            "name": "IsAssistExcludeChannelUser",
+            "params": []
+          },
+          {
+            "name": "get_Inst",
+            "params": []
+          },
+          {
+            "name": "set_Inst",
+            "params": [
+              "value"
+            ]
+          },
+          {
+            "name": "Create",
+            "params": []
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          },
+          {
+            "name": "Init",
+            "params": []
+          },
+          {
+            "name": "AfterInitLearningsKit",
+            "params": []
+          },
+          {
+            "name": "OnInitCallback",
+            "params": [
+              "userTagData"
+            ]
+          },
+          {
+            "name": "OnGetAfDictCallback",
+            "params": [
+              "afData"
+            ]
+          },
+          {
+            "name": "AddUserTagUpdateListener",
+            "params": [
+              "userTagKey",
+              "action"
+            ]
+          },
+          {
+            "name": "GetInnerTagData",
+            "params": []
+          },
+          {
+            "name": "IsMatch",
+            "params": [
+              "baseTagArray"
+            ]
+          },
+          {
+            "name": "GetLocalTagData",
+            "params": []
+          },
+          {
+            "name": "TryGetLocalTag",
+            "params": [
+              "key",
+              "defaultValue"
+            ]
+          },
+          {
+            "name": "AddLocalTag",
+            "params": [
+              "key",
+              "value"
+            ]
+          },
+          {
+            "name": "GetLuid",
+            "params": []
+          },
+          {
+            "name": "GetLuidAsync",
+            "params": [
+              "callback"
+            ]
+          },
+          {
+            "name": "OnGetLuidCallback",
+            "params": [
+              "luid"
+            ]
+          }
+        ]
+      },
+      "LevelStrategy": {
+        "index": 2746,
+        "name": "Platform.StrategyHub.Strategy.LevelStrategy.LevelStrategy",
+        "fields": [
+          "_strategyConfigDir",
+          "_strategyData",
+          "_defaultStrategyData",
+          "_scopeUserInfo",
+          "_strategyId",
+          "_strategyName"
+        ],
+        "methods": [
+          {
+            "name": "Init",
+            "params": [
+              "strategyName"
+            ]
+          },
+          {
+            "name": "AddStrategyConfig",
+            "params": [
+              "id",
+              "config"
+            ]
+          },
+          {
+            "name": "GetStrategyData",
+            "params": [
+              "userInfo"
+            ]
+          },
+          {
+            "name": "GetDefaultStrategyData",
+            "params": []
+          },
+          {
+            "name": "GetStrategyId",
+            "params": []
+          },
+          {
+            "name": "UpdateStrategy",
+            "params": [
+              "userInfo"
+            ]
+          },
+          {
+            "name": "CreateDefaultStrategyData",
+            "params": []
+          },
+          {
+            "name": "ParseConfig",
+            "params": [
+              "config"
+            ]
+          },
+          {
+            "name": "ParseSuffix",
+            "params": [
+              "data",
+              "suffix"
+            ]
+          },
+          {
+            "name": "ParseGameplay",
+            "params": [
+              "data",
+              "gameplay"
+            ]
+          },
+          {
+            "name": "ParseUseWarmLevelReorder",
+            "params": [
+              "data",
+              "useWarmLevelReorder"
+            ]
+          },
+          {
+            "name": "ParseUseWarmLevelDelete",
+            "params": [
+              "data",
+              "useWarmLevelDelete"
+            ]
+          },
+          {
+            "name": "ParseWarmLevelSuffix",
+            "params": [
+              "data",
+              "warmLevelSuffix"
+            ]
+          },
+          {
+            "name": "ParseUseDcUnlockTips",
+            "params": [
+              "data",
+              "useDcUnlockTips"
+            ]
+          },
+          {
+            "name": "ParseUseLetterOrderGuide",
+            "params": [
+              "data",
+              "useLetterOrderGuide"
+            ]
+          },
+          {
+            "name": "ParseEaUnlockLevel",
+            "params": [
+              "data",
+              "eaUnlockLevel"
+            ]
+          },
+          {
+            "name": "ParseEaRule",
+            "params": [
+              "data",
+              "eaRule"
+            ]
+          },
+          {
+            "name": "ParseDcUnlockLevel",
+            "params": [
+              "data",
+              "dcUnlockLevel"
+            ]
+          },
+          {
+            "name": "ParseDcSuffix",
+            "params": [
+              "data",
+              "dcSuffix"
+            ]
+          },
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "LevelStrategyConfig": {
+        "index": 2747,
+        "name": "Platform.StrategyHub.Strategy.LevelStrategy.Data.LevelStrategyConfig",
+        "fields": [
+          "Suffix",
+          "Gameplay",
+          "UseWarmLevelReorder",
+          "UseWarmLevelDelete",
+          "WarmLevelSuffix",
+          "UseDcUnlockTips",
+          "UseLetterOrderGuide",
+          "EaUnlockLevel",
+          "EaRule",
+          "DcUnlockLevel",
+          "DcSuffix"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "LevelStrategyData": {
+        "index": 2748,
+        "name": "Platform.StrategyHub.Strategy.LevelStrategy.Data.LevelStrategyData",
+        "fields": [
+          "Suffix",
+          "GamePlayMode",
+          "UseWarmLevelReorder",
+          "UseWarmLevelDelete",
+          "WarmLevelSuffix",
+          "UseDcUnlockTips",
+          "UseLetterOrderGuide",
+          "EAUnlockLevel",
+          "EaRule",
+          "DcUnlockLevel",
+          "DcSuffix"
+        ],
+        "methods": [
+          {
+            "name": ".ctor",
+            "params": []
+          }
+        ]
+      },
+      "ConfLevelStrategy": {
+        "index": 3192,
+        "name": "Config.ConfLevelStrategy",
+        "fields": [
+          "Data",
+          "ID",
+          "Suffix",
+          "Gameplay",
+          "UseWarmLevelReorder",
+          "UseWarmLevelDelete",
+          "WarmLevelSuffix",
+          "UseDcUnlockTips",
+          "UseLetterOrderGuide",
+          "EaUnlockLevel",
+          "EaRule",
+          "DcUnlockLevel",
+          "DcSuffix"
+        ],
+        "methods": [
+          {
+            "name": "Create",
+            "params": [
+              "loader"
+            ]
+          },
+          {
+            "name": ".ctor",
+            "params": [
+              "loader"
+            ]
+          }
+        ]
+      }
+    },
+    "storedPerformanceFields": [
+      "CurrentLevelDifficulty",
+      "SwitchingAbilityLevelIndex",
+      "HistoricalPassTime",
+      "WarmLevelOrder",
+      "WarmBeginLevelIndex",
+      "WarmBeginDay",
+      "WarmBeginReduceLevelIndex",
+      "DynamicAdjustUserLevel",
+      "EarlyLevelDifficulty",
+      "LastLevelMaxCombo",
+      "LastLevelWrongCount",
+      "AdaptiveDifficultyCh2WrongCountSum",
+      "LastLevelDuration",
+      "TrialAttemptsCntTimeRatio",
+      "PassTimeRecord",
+      "TrialAttemptsCntRecord",
+      "ExitStateRecord",
+      "HalfLevelEasierTest2FirstTriggerTime"
+    ],
+    "warmth": [
+      {
+        "source": "local_config_game_levelwarmthinfo_en-us_t1_f551816e92ef002d3eb5de8ea696e765_LevelWarmthInfo_en-US_T1.decoded.json",
+        "records": 1200,
+        "nonzeroRecords": 637,
+        "valueRange": [
+          0,
+          6
+        ],
+        "patternCounts": [
+          {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "records": 563
+          },
+          {
+            "values": [
+              1,
+              0,
+              0
+            ],
+            "records": 131
+          },
+          {
+            "values": [
+              1,
+              1,
+              0
+            ],
+            "records": 103
+          },
+          {
+            "values": [
+              2,
+              1,
+              1
+            ],
+            "records": 71
+          },
+          {
+            "values": [
+              1,
+              1,
+              1
+            ],
+            "records": 59
+          },
+          {
+            "values": [
+              2,
+              2,
+              1
+            ],
+            "records": 54
+          },
+          {
+            "values": [
+              3,
+              2,
+              2
+            ],
+            "records": 48
+          },
+          {
+            "values": [
+              3,
+              3,
+              2
+            ],
+            "records": 35
+          },
+          {
+            "values": [
+              4,
+              3,
+              3
+            ],
+            "records": 25
+          },
+          {
+            "values": [
+              3,
+              2,
+              1
+            ],
+            "records": 24
+          },
+          {
+            "values": [
+              4,
+              3,
+              2
+            ],
+            "records": 23
+          },
+          {
+            "values": [
+              2,
+              2,
+              2
+            ],
+            "records": 17
+          },
+          {
+            "values": [
+              2,
+              1,
+              0
+            ],
+            "records": 16
+          },
+          {
+            "values": [
+              4,
+              4,
+              3
+            ],
+            "records": 11
+          },
+          {
+            "values": [
+              5,
+              4,
+              3
+            ],
+            "records": 10
+          },
+          {
+            "values": [
+              5,
+              4,
+              2
+            ],
+            "records": 4
+          },
+          {
+            "values": [
+              5,
+              4,
+              4
+            ],
+            "records": 3
+          },
+          {
+            "values": [
+              6,
+              5,
+              3
+            ],
+            "records": 2
+          },
+          {
+            "values": [
+              6,
+              5,
+              4
+            ],
+            "records": 1
+          }
+        ],
+        "first30": [
+          {
+            "record": 1,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 2,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 3,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 4,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 5,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 6,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 7,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 8,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 9,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 10,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 11,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 12,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 13,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 14,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 15,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 16,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 17,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 18,
+            "WaitDeleteWordNum": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 19,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 20,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 21,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 22,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 23,
+            "WaitDeleteWordNum": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "record": 24,
+            "WaitDeleteWordNum": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "record": 25,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 26,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 27,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 28,
+            "WaitDeleteWordNum": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "record": 29,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 30,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      {
+        "source": "local_config_game_levelwarmthinfo_en-us_t1_wordtime_492bc7f3d5c3996c290560bd40026358_LevelWarmthInfo_en-US_T1_WordTime.decoded.json",
+        "records": 1200,
+        "nonzeroRecords": 637,
+        "valueRange": [
+          0,
+          6
+        ],
+        "patternCounts": [
+          {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "records": 563
+          },
+          {
+            "values": [
+              1,
+              0,
+              0
+            ],
+            "records": 131
+          },
+          {
+            "values": [
+              1,
+              1,
+              0
+            ],
+            "records": 103
+          },
+          {
+            "values": [
+              2,
+              1,
+              1
+            ],
+            "records": 71
+          },
+          {
+            "values": [
+              1,
+              1,
+              1
+            ],
+            "records": 59
+          },
+          {
+            "values": [
+              2,
+              2,
+              1
+            ],
+            "records": 54
+          },
+          {
+            "values": [
+              3,
+              2,
+              2
+            ],
+            "records": 48
+          },
+          {
+            "values": [
+              3,
+              3,
+              2
+            ],
+            "records": 35
+          },
+          {
+            "values": [
+              4,
+              3,
+              3
+            ],
+            "records": 25
+          },
+          {
+            "values": [
+              3,
+              2,
+              1
+            ],
+            "records": 24
+          },
+          {
+            "values": [
+              4,
+              3,
+              2
+            ],
+            "records": 23
+          },
+          {
+            "values": [
+              2,
+              2,
+              2
+            ],
+            "records": 17
+          },
+          {
+            "values": [
+              2,
+              1,
+              0
+            ],
+            "records": 16
+          },
+          {
+            "values": [
+              4,
+              4,
+              3
+            ],
+            "records": 11
+          },
+          {
+            "values": [
+              5,
+              4,
+              3
+            ],
+            "records": 10
+          },
+          {
+            "values": [
+              5,
+              4,
+              2
+            ],
+            "records": 4
+          },
+          {
+            "values": [
+              5,
+              4,
+              4
+            ],
+            "records": 3
+          },
+          {
+            "values": [
+              6,
+              5,
+              3
+            ],
+            "records": 2
+          },
+          {
+            "values": [
+              6,
+              5,
+              4
+            ],
+            "records": 1
+          }
+        ],
+        "first30": [
+          {
+            "record": 1,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 2,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 3,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 4,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 5,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 6,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 7,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 8,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 9,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 10,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 11,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 12,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 13,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 14,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 15,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 16,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 17,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 18,
+            "WaitDeleteWordNum": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 19,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 20,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 21,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 22,
+            "WaitDeleteWordNum": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "record": 23,
+            "WaitDeleteWordNum": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "record": 24,
+            "WaitDeleteWordNum": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "record": 25,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 26,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 27,
+            "WaitDeleteWordNum": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 28,
+            "WaitDeleteWordNum": [
+              2,
+              2,
+              2
+            ]
+          },
+          {
+            "record": 29,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "record": 30,
+            "WaitDeleteWordNum": [
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ],
+    "warmthVariantsIdentical": true,
+    "experiments": {
+      "v6_exp": [
+        {
+          "sourceIndex": 21,
+          "data": {
+            "id": "6a9e73de949b1a11de5431a2",
+            "layer_id": "6a9e7492c4281c220999832e",
+            "exp_condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002042000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "retain_experiment_hit": true,
+            "exp_tag": "A09N",
+            "is_empty_running_exp": false,
+            "exp_buckets": [
+              "A09N0|",
+              "A09N1|",
+              "A09N2|",
+              "A09N3|"
+            ],
+            "exp_tag_time": "",
+            "exp_group": [
+              {
+                "group_index": 0,
+                "group_tag": "A09N0|",
+                "group_data": {
+                  "hint_discount_test2": 0
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09N0|"
+                ]
+              },
+              {
+                "group_index": 1,
+                "group_tag": "A09N1|",
+                "group_data": {
+                  "hint_discount_test2": 1
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09N1|"
+                ]
+              },
+              {
+                "group_index": 2,
+                "group_tag": "A09N2|",
+                "group_data": {
+                  "hint_discount_test2": 2
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09N2|"
+                ]
+              },
+              {
+                "group_index": 3,
+                "group_tag": "A09N3|",
+                "group_data": {
+                  "hint_discount_test2": 3
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09N3|"
+                ]
+              }
+            ],
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 24,
+          "data": {
+            "id": "6aa8a65c6019e8f7e7a9bb31",
+            "layer_id": "6aa8a65c6019e8f7e7a9bb30",
+            "exp_condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002043000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "retain_experiment_hit": true,
+            "exp_tag": "A09a",
+            "is_empty_running_exp": false,
+            "exp_buckets": [
+              "A09a0|",
+              "A09a1|",
+              "A09a2|"
+            ],
+            "exp_tag_time": "",
+            "exp_group": [
+              {
+                "group_index": 0,
+                "group_tag": "A09a0|",
+                "group_data": {
+                  "memory_level_reduce_test": 0
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09a0|"
+                ]
+              },
+              {
+                "group_index": 1,
+                "group_tag": "A09a1|",
+                "group_data": {
+                  "memory_level_reduce_test": 1
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09a1|"
+                ]
+              },
+              {
+                "group_index": 2,
+                "group_tag": "A09a2|",
+                "group_data": {
+                  "memory_level_reduce_test": 2
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09a2|"
+                ]
+              }
+            ],
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 34,
+          "data": {
+            "id": "6a82f6e834cf0cdf3f747c50",
+            "layer_id": "6a82f752c1c1446715f53065",
+            "exp_condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002039000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "retain_experiment_hit": true,
+            "exp_tag": "A08u",
+            "is_empty_running_exp": false,
+            "exp_buckets": [
+              "A08u0|",
+              "A08u1|",
+              "A08u2|"
+            ],
+            "exp_tag_time": "",
+            "exp_group": [
+              {
+                "group_index": 0,
+                "group_tag": "A08u0|",
+                "group_data": {
+                  "half_level_easier_test3": 0
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A08u0|"
+                ]
+              },
+              {
+                "group_index": 1,
+                "group_tag": "A08u1|",
+                "group_data": {
+                  "half_level_easier_test3": 1
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A08u1|"
+                ]
+              },
+              {
+                "group_index": 2,
+                "group_tag": "A08u2|",
+                "group_data": {
+                  "half_level_easier_test3": 2
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A08u2|"
+                ]
+              }
+            ],
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 52,
+          "data": {
+            "id": "6aa7b01097e060d49b4024bd",
+            "layer_id": "6aa7b02d97e060d49b4024f1",
+            "exp_condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002043000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "retain_experiment_hit": true,
+            "exp_tag": "A09X",
+            "is_empty_running_exp": false,
+            "exp_buckets": [
+              "A09X0|",
+              "A09X1|"
+            ],
+            "exp_tag_time": "",
+            "exp_group": [
+              {
+                "group_index": 0,
+                "group_tag": "A09X0|",
+                "group_data": {
+                  "duser_level_delete_2": 0
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09X0|"
+                ]
+              },
+              {
+                "group_index": 1,
+                "group_tag": "A09X1|",
+                "group_data": {
+                  "duser_level_delete_2": 1
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09X1|"
+                ]
+              }
+            ],
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 54,
+          "data": {
+            "id": "6aaf9581d95bc632a5f3abbb",
+            "layer_id": "6aaf9b5897fa481f3e3bf6c0",
+            "exp_condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002045000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "retain_experiment_hit": true,
+            "exp_tag": "A09p",
+            "is_empty_running_exp": false,
+            "exp_buckets": [
+              "A09p0|",
+              "A09p1|",
+              "A09p2|"
+            ],
+            "exp_tag_time": "",
+            "exp_group": [
+              {
+                "group_index": 0,
+                "group_tag": "A09p0|",
+                "group_data": {
+                  "hard_start_hint_test": 0
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09p0|"
+                ]
+              },
+              {
+                "group_index": 1,
+                "group_tag": "A09p1|",
+                "group_data": {
+                  "hard_start_hint_test": 1
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09p1|"
+                ]
+              },
+              {
+                "group_index": 2,
+                "group_tag": "A09p2|",
+                "group_data": {
+                  "hard_start_hint_test": 2
+                },
+                "is_closed": false,
+                "history_tag_list": [
+                  "A09p2|"
+                ]
+              }
+            ],
+            "extra_info": {}
+          }
+        }
+      ],
+      "v6_strategy": [
+        {
+          "sourceIndex": 94,
+          "data": {
+            "strategy_tag": "yDONHZ-w3URkh|",
+            "flow_domain_id": "6809fdea5137e73906f53dd3",
+            "condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "001092000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "param_key": "stuck_free_hint_test",
+            "param_value": 2,
+            "priority": 1,
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 108,
+          "data": {
+            "strategy_tag": "yDONHZ-s8MySQ|",
+            "flow_domain_id": "6809fdea5137e73906f53dd2",
+            "condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "001092000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "param_key": "stuck_free_hint_test",
+            "param_value": 2,
+            "priority": 1,
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 142,
+          "data": {
+            "strategy_tag": "MPIDab-DAN9O7|",
+            "flow_domain_id": "6809fdea5137e73906f53dd2",
+            "condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002009000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "param_key": "hard_stuck_meaning_test2",
+            "param_value": 1,
+            "priority": 1,
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 151,
+          "data": {
+            "strategy_tag": "0Y7YMq-UubuO5|",
+            "flow_domain_id": "6809fdea5137e73906f53dd2",
+            "condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002016000000000",
+                        null
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "param_key": "half_level_easier_test",
+            "param_value": 1,
+            "priority": 1,
+            "extra_info": {}
+          }
+        },
+        {
+          "sourceIndex": 173,
+          "data": {
+            "strategy_tag": "HoqZFz-34JGy4|",
+            "flow_domain_id": "6809fdea5137e73906f53dd2",
+            "condition": {
+              "condition_group_type": "or",
+              "condition_groups": [
+                {
+                  "condition_type": "and",
+                  "condition_rules": [
+                    {
+                      "key": "app_version",
+                      "rule_type": "range",
+                      "op_type": "left",
+                      "value_type": "version",
+                      "value": [
+                        "002026000000000",
+                        null
+                      ]
+                    },
+                    {
+                      "key": "user_tags",
+                      "rule_type": "custom",
+                      "op_type": "custom",
+                      "value_type": "user_tag",
+                      "value": [
+                        {
+                          "is_full_match": false,
+                          "is_list": false,
+                          "op_type": "in",
+                          "rule_type": "list",
+                          "tag_id": "reward_propensity",
+                          "tag_values": [
+                            "level0_0-1",
+                            "level1_1-4"
+                          ],
+                          "value_type": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "param_key": "half_level_easier_test2",
+            "param_value": 2,
+            "priority": 1,
+            "extra_info": {}
+          }
+        }
+      ]
+    },
+    "limits": [
+      "缺少libil2cpp.so，无法确认方法体、调用先后、判断AND/OR、完整阈值和每项开启情况。",
+      "配置第N条不直接等于玩家第N关；三列待删数的玩家分组／天数／阶段映射未确认。",
+      "实验参数0/1/2是分组或模式取值，不能当作删词数、送提示数或概率。",
+      "能力评分与记录体系的存在，不单独证明每次取关都由能力分数决定。",
+      "策略载荷未解码、远程策略未获取；不猜测联网实际分流。"
+    ]
+  }
+}

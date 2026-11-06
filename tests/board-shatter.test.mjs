@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {BoardShatter,TILE_PIECES,SHATTER_DURATION,SHATTER_TIMING,createTilePieces,createShardMotion,sampleShardMotion} from '../dist/board-shatter.js';
+import {BoardShatter,TILE_PIECES,SHATTER_DURATION,SHATTER_TIMING,SHATTER_PROFILES,shatterProfile,createTilePieces,createMaterialPieces,createShardMotion,sampleShardMotion} from '../dist/board-shatter.js';
 
 function fixture(options={}){
   let now=0,key=0,removed=0;const timers=new Map(),frames=new Map(),captured=[];
@@ -8,7 +8,7 @@ function fixture(options={}){
   const shatter=new BoardShatter({reducedMotion:()=>false,createLayer:slots=>{captured.push(slots);return {layer:{remove:()=>removed++},particles:options.particles||[]};},setTimer:(fn,delay)=>{const id=++key;timers.set(id,{at:now+delay,fn});return id;},clearTimer:id=>timers.delete(id),requestFrame:fn=>{const id=++key;frames.set(id,fn);return id;},cancelFrame:id=>frames.delete(id),now:()=>now,...options});
   return {shatter,tiles,panel,captured,get removed(){return removed;},get pendingFrames(){return frames.size;},advance(ms){now+=ms;const callbacks=[...frames.values()];frames.clear();for(const callback of callbacks)callback(now);for(const [id,job] of [...timers])if(job.at<=now){timers.delete(id);job.fn();}}};
 }
-test('碎片多边形覆盖整个瓷砖，字母与底图一起分裂',()=>{
+test('材质碎片多边形覆盖整个瓷砖贴图',()=>{
   assert.equal(TILE_PIECES.length,32);
   let total=0;
   for(const polygon of TILE_PIECES){
@@ -17,6 +17,34 @@ test('碎片多边形覆盖整个瓷砖，字母与底图一起分裂',()=>{
     assert.ok(area>0);total+=area;
   }
   assert.equal(total,10000);
+});
+
+test('各材质使用不同的破碎网格，木纹细长、沙粒更细；分区完整覆盖贴图',()=>{
+  const counts=new Set();
+  for(const material of Object.keys(SHATTER_PROFILES)){
+    const pieces=createMaterialPieces(material);counts.add(pieces.length);
+    const total=pieces.reduce((sum,polygon)=>sum+Math.abs(polygon.reduce((area,p,i)=>{const next=polygon[(i+1)%polygon.length];return area+p[0]*next[1]-next[0]*p[1];},0))/2,0);
+    assert.ok(Math.abs(total-10000)<1e-8,material);
+    assert.ok(pieces.flat(2).every(value=>value>=0&&value<=100),material);
+  }
+  assert.ok(counts.size>=6);
+  assert.ok(createMaterialPieces('sand').length>createMaterialPieces('stone').length);
+  assert.ok(createMaterialPieces('wood').every(points=>{const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]);return Math.max(...xs)-Math.min(...xs)>(Math.max(...ys)-Math.min(...ys))*2;}));
+  assert.equal(shatterProfile('missing'),SHATTER_PROFILES.original);
+});
+
+test('石块沉重、沙粒有阻力、冰片旋转更快，果冻保持面积的弹性形变',()=>{
+  const motion=id=>createShardMotion(TILE_PIECES[0],390,694,()=>.5,id);
+  const stone=motion('stone'),sand=motion('sand'),ice=motion('ice'),wood=motion('wood'),jelly=motion('jelly');
+  assert.ok(stone.gravity>jelly.gravity*2);assert.ok(sand.drag>wood.drag);
+  assert.ok(Math.abs(ice.angularVelocity)>Math.abs(stone.angularVelocity)*3);
+  assert.ok(Math.abs(sampleShardMotion(sand,400).x)<Math.abs(sand.vx*.4));
+  const soft=sampleShardMotion(jelly,170);assert.notEqual(soft.scaleX,soft.scaleY);
+  assert.ok(soft.scaleX>0&&soft.scaleY>0);
+  for(const id of Object.keys(SHATTER_PROFILES)){
+    const m=motion(id),end=sampleShardMotion(m,m.lifetime);assert.equal(end.opacity,0);
+    assert.ok(Object.values(end).every(Number.isFinite),id);assert.ok(m.lifetime>=1000&&m.lifetime<=1500);
+  }
 });
 test('不同大小格子都细分成完整的小碎块，没有大片残留或缺口',()=>{
   for(const divisions of [2,3,4,5]){

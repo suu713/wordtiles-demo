@@ -1,0 +1,10 @@
+{
+  "source": "用户提供的紫色连接条",
+  "file": "purple.png",
+  "size": [
+    26,
+    46
+  ],
+  "processing": "Copied unchanged; used only for original purple tiles. Special materials use a runtime center crop of their own selected PNG.",
+  "sha256": "683fc406bdac4b3dedc224155eeea247107d1382997e7537f8b11cc6dee4f5de"
+}

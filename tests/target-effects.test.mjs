@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {TargetEffects,TARGET_LANDING,TARGET_MILESTONES} from '../dist/target-effects.js';
+import {TargetEffects,TARGET_LANDING,TARGET_MILESTONES,TARGET_RAINBOW} from '../dist/target-effects.js';
 
 function fakeClock(){
   let time=0,id=0;const jobs=new Map();
@@ -64,11 +64,11 @@ test('减弱动态或界面不可见时保留静态完成展示，不阻塞过�
   }
 });
 
-test('按收词顺序只给倒数第二词波动、最后一词首块翻转，并等回位光效后结算',()=>{
+test('按收词顺序给首词彩色波动、倒数第二词普通波动、最后一词首块翻转',()=>{
   const clock=fakeClock(),idle=[],effects=new TargetEffects({...clock,reducedMotion:()=>false,onIdle:s=>idle.push(s)});
   const words=['CAT','DOG','OWL'],session={completed:new Set(),initial:{targets:words.map(word=>({word}))}};
   const nodes=new Map(words.map(word=>[word,target(word)]));effects.sync(session,nodes);
-  session.completed.add('OWL');effects.sync(session,nodes);assert.equal(nodes.get('OWL').classList.contains('target-wave'),false);clock.advance(1000);
+  session.completed.add('OWL');effects.sync(session,nodes);assert.equal(nodes.get('OWL').classList.contains('target-rainbow'),true);assert.equal(nodes.get('OWL').classList.contains('target-wave'),false);clock.advance(2000);
   session.completed.add('CAT');effects.sync(session,nodes);assert.equal(nodes.get('CAT').classList.contains('target-wave'),true);
   clock.advance(50);session.completed.add('DOG');effects.sync(session,nodes);
   const finale=nodes.get('DOG');assert.equal(finale.classList.contains('target-finale'),true);
@@ -81,14 +81,34 @@ test('按收词顺序只给倒数第二词波动、最后一词首块翻转，�
   assert.ok(finale.slots.every(slot=>slot.style.getPropertyValue('--motion-delay')===''));
 });
 
-test('同一次更新收齐多个词也按次序区分末两词；退出清理全部附加动作',()=>{
+test('同一次更新收齐多个词仍只给首词彩色波动；退出清理全部附加动作',()=>{
   const clock=fakeClock(),effects=new TargetEffects({...clock,reducedMotion:()=>false});
   const session={completed:new Set(),initial:{targets:[{word:'CAT'},{word:'DOG'}]}},nodes=new Map([['CAT',target('CAT')],['DOG',target('DOG')]]);
   effects.sync(session,nodes);session.completed.add('DOG');session.completed.add('CAT');effects.sync(session,nodes);
-  assert.equal(nodes.get('DOG').classList.contains('target-wave'),true);assert.equal(nodes.get('CAT').classList.contains('target-finale'),true);
+  assert.equal(nodes.get('DOG').classList.contains('target-rainbow'),true);assert.equal(nodes.get('CAT').classList.contains('target-finale'),true);assert.equal(nodes.get('CAT').classList.contains('target-rainbow'),false);
   effects.cancel();clock.advance(5000);assert.equal(clock.pending,0);
   for(const item of nodes.values()){
     assert.equal(item.classList.contains('target-wave'),false);assert.equal(item.classList.contains('target-finale'),false);
+    assert.equal(item.classList.contains('target-rainbow'),false);
     assert.ok(item.slots.every(slot=>slot.style.getPropertyValue('--motion-duration')===''));
+    assert.ok(item.slots.every(slot=>slot.style.getPropertyValue('--rainbow-hue')===''));
   }
+});
+
+test('首词整词立即显示并依次变色跳动，更新和恢复进度不会重复触发',()=>{
+  const clock=fakeClock(),effects=new TargetEffects({...clock,reducedMotion:()=>false});
+  const words=['CAT','DOG','OWL','FOX'],session={completed:new Set(),initial:{targets:words.map(word=>({word}))}},nodes=new Map(words.map(word=>[word,target(word)]));
+  effects.sync(session,nodes);session.completed.add('DOG');effects.sync(session,nodes);
+  const first=nodes.get('DOG');
+  assert.equal(first.classList.contains('target-rainbow'),true);
+  assert.ok(first.slots.every(slot=>slot.classList.contains('target-landed')));
+  assert.ok(first.glyphs.every(glyph=>glyph.style.getPropertyValue('--letter-delay')===''));
+  first.slots.forEach((slot,index)=>assert.equal(slot.style.getPropertyValue('--motion-delay'),TARGET_RAINBOW.delay+index*TARGET_RAINBOW.step+'ms'));
+  const scheduled=clock.pending;effects.sync(session,nodes);assert.equal(clock.pending,scheduled);
+  clock.advance(TARGET_RAINBOW.delay+2*TARGET_RAINBOW.step+TARGET_RAINBOW.duration+TARGET_LANDING.glowDuration);
+  assert.equal(first.classList.contains('target-rainbow'),false);assert.equal(clock.pending,0);
+  session.completed.add('CAT');effects.sync(session,nodes);assert.equal(nodes.get('CAT').classList.contains('target-rainbow'),false);
+  effects.cancel();
+  const restored=new TargetEffects({...clock,reducedMotion:()=>false});restored.sync(session,nodes);
+  assert.equal(restored.isRunning(session),false);assert.equal(first.classList.contains('target-rainbow'),false);
 });

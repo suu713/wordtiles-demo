@@ -1,0 +1,251 @@
+{
+  "date": "2026-10-16",
+  "status": "complete",
+  "url": "http://127.0.0.1:4173/?v=22&theme=alps",
+  "mode": "single supplied resource package",
+  "packageSource": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\alps-light-glass-resource-pack-v1",
+  "installedPackage": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\dist\\art\\alps",
+  "sourceFilesVerified": 159,
+  "assetFilesUnmodified": true,
+  "scope": [
+    {
+      "path": "dist/art/alps/assets/backgrounds/bg-alps-lobby.png",
+      "usage": "bg-lobby",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "dist/art/alps/assets/backgrounds/bg-alps-level.png",
+      "usage": "bg-level",
+      "width": 1080,
+      "height": 1920
+    },
+    {
+      "path": "dist/art/alps/assets/ui/glass-primary.png",
+      "usage": "glass-primary",
+      "width": 900,
+      "height": 180
+    },
+    {
+      "path": "dist/art/alps/assets/ui/glass-tile.png",
+      "usage": "glass-tile",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "dist/art/alps/assets/ui/glass-utility.png",
+      "usage": "glass-utility",
+      "width": 320,
+      "height": 200
+    },
+    {
+      "path": "dist/art/alps/assets/ui/answer-filled.png",
+      "usage": "answer-filled",
+      "width": 160,
+      "height": 160
+    },
+    {
+      "path": "dist/art/alps/assets/ui/answer-empty.png",
+      "usage": "answer-empty",
+      "width": 160,
+      "height": 160
+    },
+    {
+      "path": "dist/art/alps/assets/ui/coin-pill.png",
+      "usage": "coin-pill",
+      "width": 240,
+      "height": 100
+    },
+    {
+      "path": "dist/art/alps/assets/ui/sage-badge.png",
+      "usage": "sage-badge",
+      "width": 96,
+      "height": 96
+    },
+    {
+      "path": "dist/art/alps/assets/ui/tile-selection.png",
+      "usage": "tile-selection",
+      "width": 256,
+      "height": 256
+    },
+    {
+      "path": "dist/art/alps/assets/icons/calendar.png",
+      "usage": "calendar",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/back.png",
+      "usage": "back",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/arrow-right.png",
+      "usage": "arrow-right",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/settings.png",
+      "usage": "settings",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/coin.png",
+      "usage": "coin",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/shuffle.png",
+      "usage": "shuffle",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/hint.png",
+      "usage": "hint",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/bag.png",
+      "usage": "bag",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/book.png",
+      "usage": "book",
+      "width": 128,
+      "height": 128
+    },
+    {
+      "path": "dist/art/alps/assets/icons/book-light.png",
+      "usage": "book-light",
+      "width": 128,
+      "height": 128
+    }
+  ],
+  "integrationFiles": [
+    {
+      "path": "dist/index.html",
+      "sha256": "d7efbc436876f3f6cdbc2997badc88151b5f487dc5d4a4bcdf71afaba1b8e7e1",
+      "bytes": 26834
+    },
+    {
+      "path": "dist/app.js",
+      "sha256": "e61a986b4e86337fa9549be438fe3b816579f7f81d1e153159e8566bcab8a080",
+      "bytes": 80939
+    },
+    {
+      "path": "dist/core/art-theme.js",
+      "sha256": "1dde737dc670b84fb87eefc53de94f51cb52d98a90ea8b0fa71e5a242bcbd13c",
+      "bytes": 724
+    },
+    {
+      "path": "dist/alps.css",
+      "sha256": "f37950a4ae4b5922c32c332f4363996d5344e5a9ffde025d8c2e71f5f3586937",
+      "bytes": 15488
+    },
+    {
+      "path": "package.json",
+      "sha256": "5549bd838ab29cb4339aa9cf798051b90d93c3b728fc213770a8d26417a04ff3",
+      "bytes": 1062
+    },
+    {
+      "path": "README.md",
+      "sha256": "e4c0ca7e0d1b556fdd43b6813218b46dd1c915c4abddcde3cb468210b5ec640b",
+      "bytes": 18905
+    },
+    {
+      "path": "scripts/check-alps-art.mjs",
+      "sha256": "9662d28777696509721f2b4e34ab3221d50b9821080dc0af75d413d7ea7ebd6e",
+      "bytes": 9138
+    }
+  ],
+  "backupRoot": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\originals",
+  "originals": [
+    {
+      "path": "dist/index.html",
+      "sha256": "1d4284b159c9135fede164fa934057110b76795d2482ee25044c4cf613abcd38",
+      "bytes": 26593
+    },
+    {
+      "path": "dist/app.js",
+      "sha256": "1d4738ac368b0fb811257fdfa80f659da1513f37762079d4cf6b0175cd05b3c7",
+      "bytes": 80587
+    },
+    {
+      "path": "dist/core/art-theme.js",
+      "sha256": "6977945518d5e410baaf30b8d52a2f3a6c7141b6e069336dca3def8c48c3f53c",
+      "bytes": 426
+    },
+    {
+      "path": "dist/paris.css",
+      "sha256": "5542c124a627b05d9bae2de0ac1269fceb7c847b3f865dbc392a20188ff1c6e1",
+      "bytes": 13822
+    },
+    {
+      "path": "README.md",
+      "sha256": "f8df826976c7a106139289b8c8f7736bcbf5f0406829989f678cfdf64e96b16d",
+      "bytes": 17721
+    },
+    {
+      "path": "package.json",
+      "sha256": "2cc55ae10f1d4e1f783344f13b5db084358324995d43c9c07a19479c4868acdb",
+      "bytes": 1063
+    }
+  ],
+  "qaRoot": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa",
+  "screenshots": [
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\lobby-mobile.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\level-desktop.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\level-selected.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\level-error.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\completion.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\dictionary-filled.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\level-360x640.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\level-844x390.png",
+    "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\art-swap\\alps-light-glass-20261016\\qa\\editor-desktop.png"
+  ],
+  "verification": {
+    "rules": {
+      "passed": 119,
+      "failed": 0
+    },
+    "workbenchBrowser": {
+      "passed": 27,
+      "failed": 0
+    },
+    "art": {
+      "passed": 7,
+      "failed": 0
+    },
+    "syntax": "pass",
+    "diffWhitespace": "pass",
+    "pageErrors": [],
+    "missingAssets": [],
+    "legacyAssetRequests": []
+  },
+  "payload": {
+    "fullPackageBytes": 26887224,
+    "previousActiveImageBytes": 7694669,
+    "activeImageBytes": 8135352
+  },
+  "generation": {
+    "required": false,
+    "prompts": "none; existing user-provided assets",
+    "subagents": [],
+    "reviewRounds": 0
+  },
+  "glass": {
+    "method": "live backdrop filter + supplied RGBA skins",
+    "reason": "variable board dimensions, changing target counts and responsive scaling",
+    "fixedScenePatches": "preserved in source package, not used for dynamic cells"
+  },
+  "runtimeData": "All letters, tile counts, progress, collection totals and level labels use current game state.",
+  "restore": "node art-swap/alps-light-glass-20261016/restore.mjs; checks current file hashes before restoring recorded originals."
+}

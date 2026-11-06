@@ -1,0 +1,182 @@
+{
+  "version": "2.44.0 / 189, supplied XAPK ARM64",
+  "classification": "Conditional dynamic easing of a restored level, plus separately configured daily warm-up; not a verified ELO-to-bank control loop.",
+  "entry": {
+    "method": "MainPlayHandler.StartGameMode",
+    "callAt": "0x1600ac0",
+    "lastEnterTimeWriteAfterCheck": "0x1600b00"
+  },
+  "preconditions": {
+    "restore": true,
+    "chainExcluded": true,
+    "levelMinimum": 100,
+    "playDaysMinimum": 3,
+    "half_level_easier_test": 1
+  },
+  "time": {
+    "clock": "DateTime.Now minus this level LastEnterGameTime",
+    "half_level_easier_test3_groups_1_2_seconds": 21600,
+    "other_groups_seconds": 86400,
+    "comparison": "elapsed >= threshold",
+    "reset": "last entry timestamp overwritten on each StartGameMode"
+  },
+  "attempts": {
+    "A": "AnswerProgress.Count; answer-completion records. SetBoxFind writes this list.",
+    "E": "ExtraProgress.Count; separately collected extra words. AddFindExtraWord writes this list and the separate in-memory _finishWords list.",
+    "T": "TrialAttemptsCount; increments only for LengthError (1) or Error (2), not RepeatAnswer (5) or RepeatExtra (6).",
+    "threshold": "2 if A-E==0, else ceil(1.5*(A-E+1))",
+    "pass": "E+T > threshold, strictly greater",
+    "noClampOnAminusE": true,
+    "veryShortInput": "Length<2 returns None, not a trial; length>=2 but below minimum answer length counts only when the length-error experiment returns LengthError.",
+    "examples": [
+      {
+        "A": 0,
+        "E": 0,
+        "minimumT": 3
+      },
+      {
+        "A": 1,
+        "E": 0,
+        "minimumT": 4
+      },
+      {
+        "A": 2,
+        "E": 0,
+        "minimumT": 6
+      },
+      {
+        "A": 2,
+        "E": 1,
+        "minimumT": 3
+      },
+      {
+        "A": 3,
+        "E": 2,
+        "minimumT": 2
+      }
+    ]
+  },
+  "experiment2": {
+    "group1": {
+      "churnAtMost03": 0,
+      "otherwise": {
+        "0-30": 1,
+        "31-40": 0.6,
+        "41-50": 0.5,
+        "51-60": 0.4,
+        "61+": 0.3
+      }
+    },
+    "group2": {
+      "churnAtMost03": 0,
+      "churnAbove05": 1,
+      "otherwise": {
+        "0-25": 1,
+        "26-35": 0.5,
+        "36-45": 0.3,
+        "46+": 0
+      }
+    },
+    "otherGroup": "churn function returns true; other eligibility checks remain",
+    "randomComparison": "UnityEngine.Random.value < probability",
+    "dateOrigin": "HalfLevelEasierTest2FirstTriggerTime initialized on first call of the decay-days helper; subsequent date-only calendar difference. High-churn group2 branch bypasses this helper.",
+    "tagOrigin": "Remote tag churn_prob; no local main-ELO-to-tag conversion found."
+  },
+  "extraAction": {
+    "change": "If onlyExtra nonempty, merge it into extra, clear onlyExtra, set AdjustExtraConfigRatio=1.",
+    "whatDoesNotChange": "This branch does not remove target slots or replace the letter wheel.",
+    "ratioMeaning": "Observed writer sets 1, CheckRestore reads >0 as a reason to preserve restored state. This is not evidence of a 100% unconditional replacement probability.",
+    "submission": "ResolveAnswerWithAdjustAndExtraForUncross -> CheckExtraWordRules -> CheckExtraReplaceableAnswer -> ReplaceExtraAnswer -> ComputeSelectResult",
+    "remainingConditions": [
+      "EA sharing must be enabled (preinstall rule or strategy; normal strategy has a configurable start level, fallback 16).",
+      "Extra word exists in this level extra data, is not already collected, length >=2 and within current answer length range, and is not in onlyExtra.",
+      "Replacement target has the same length, is not in MustWords, and matches all already revealed letters at their positions.",
+      "Target returned by selection must not be in DefineTipWord.",
+      "Orderly mode also preserves length/lexical ordering between adjacent answer entries; disorderly mode skips this neighbor-order check."
+    ],
+    "swap": "Extra spelling becomes an answer with existing slots; displaced answer moves into the extra representation/config; selection is then judged as Answer."
+  },
+  "letterAction": {
+    "experiment": "half_level_easier_test3 == 2, after all common and churn gates",
+    "android": "IsInAndroid returns constant true in this supplied native build; no additional 50% lottery here.",
+    "maximumPerCall": 1,
+    "selection": "Uniform random index over all eligible positions, not uniform over words.",
+    "wordEligibility": "Word not in AnswerProgress and has >1 remaining positions after excluding special cells and PropsFindWord.",
+    "cellExclusions": [
+      "PropsFindWord",
+      "LevelOpeningCoinsWord",
+      "BlindBox",
+      "SpreadBox",
+      "SpreadCoinsWord",
+      "BottleWord",
+      "ChrysalisAdWord",
+      "PlaneWord",
+      "HintAdWord",
+      "FireworkAdWord"
+    ],
+    "persistence": "Append position (wordIndex*100+letterIndex) to PropsFindWord, restored into grid by GameRestore.",
+    "cost": "No coin, item, ad debit or HintCount increment in this helper.",
+    "noCandidate": "Returns false; the caller continues to the extra-pool action.",
+    "otherPlatformBranch": "Unreachable on supplied Android build: churn>.5 direct; .3<churn<=.5 with 50%; <=.3 none. Not an iOS runtime verification."
+  },
+  "repeat": {
+    "perLevelOnceFlag": "None in this trigger chain.",
+    "extraPool": "Already moved words stay moved in the restored config; empty onlyExtra has nothing more to move.",
+    "letter": "Can reveal another eligible position after a later qualifying re-entry. No fixed count cap in this helper; eligibility stops before the last ordinary unrevealed letter of each unfinished word.",
+    "attemptReset": "Trigger does not clear AnswerProgress, ExtraProgress or TrialAttemptsCount.",
+    "scope": "Current restored level; changing/completing the level creates/clears per-level state. Decay date is in PlayData, separate from per-level restore data."
+  },
+  "warmup": {
+    "start": "ColdStartApp calls daily reorder and daily deletion setup; controlled by separate strategy switches and WarmBeginDay vs PlayDays.",
+    "reorder": "15-position upcoming window; select 3 lowest configured SinglePlayConfig.time values, move their positions to front. Existing restored level is skipped.",
+    "delete": "Main level indices 7..1000, per-level WaitDeleteWordNum indexed by offset from WarmBeginReduceLevelIndex. The supplied T1/T1_WordTime rows have 3 entries.",
+    "whichWords": "Listed timeOrder candidates; remove from answer and add to extra.",
+    "floor": "English retains at least 4 answers; other languages retain at least 3.",
+    "readsElo": false,
+    "caveat": "Both paths share WarmBeginDay, and reorder setup runs first; do not assume both effects stack for every strategy.",
+    "verifiedTables": [
+      {
+        "file": "local_config_game_levelwarmthinfo_en-us_t1_f551816e92ef002d3eb5de8ea696e765_LevelWarmthInfo_en-US_T1.decoded.json",
+        "rows": 1200,
+        "entriesPerRow": 3
+      },
+      {
+        "file": "local_config_game_levelwarmthinfo_en-us_t1_wordtime_492bc7f3d5c3996c290560bd40026358_LevelWarmthInfo_en-US_T1_WordTime.decoded.json",
+        "rows": 1200,
+        "entriesPerRow": 3
+      }
+    ]
+  },
+  "evidence": {
+    "trigger": "0x160100c",
+    "timeThreshold": "0x160f16c",
+    "churnGate": "0x160f218",
+    "group1": "0x160f364",
+    "group2": "0x160f48c",
+    "decayDate": "0x160f5ac",
+    "reveal": "0x17ab00c",
+    "extraRules": "0x17a87ec",
+    "replaceSelection": "0x17ba87c / 0x17bad4c",
+    "revealedLetterCompatibility": "0x17babf4",
+    "replace": "0x17a92a0 / 0x17bc3ac",
+    "answerRecordWrite": "0x17a81f8 / 0x17a82f0",
+    "extraRecordWrite": "0x179d08c",
+    "trialIncrement": "0x17a985c..0x17a98a0",
+    "warmReorder": "0x160da64",
+    "warmDelete": "0x17b15e4"
+  },
+  "verificationLimits": [
+    "Static native-code analysis; Android app not executed.",
+    "Account experiment assignment and backend churn model are unavailable.",
+    "No verified main-ELO-controlled increase/decrease of the five level banks."
+  ],
+  "source": {
+    "source": "C:\\Users\\huyi\\Documents\\MuMu共享文件夹\\Download\\ZenWord_2.44.0.xapk.xapk",
+    "version": "2.44.0",
+    "versionCode": "189",
+    "xapkSha256": "37fa8c5a2997fc50a722ec668f7014f196b6b49d9ad61c2efca8c723a4cb17a8",
+    "libraryBytes": 47860904,
+    "librarySha256": "e33b887b004ffd0496735621d295aa1bd5fda232fc66bfe81625a78b0757a0a7",
+    "metadataExactPrevious": true
+  }
+}

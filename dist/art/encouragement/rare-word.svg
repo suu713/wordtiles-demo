@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="220" viewBox="0 0 1100 220">
+  <defs>
+    <linearGradient id="ribbon" x2="0" y2="1">
+      <stop stop-color="#65d4ab"/>
+      <stop offset=".17" stop-color="#078e7c"/>
+      <stop offset=".52" stop-color="#03525b"/>
+      <stop offset=".86" stop-color="#087b70"/>
+      <stop offset="1" stop-color="#40b894"/>
+    </linearGradient>
+    <linearGradient id="gold" x2="0" y2="1">
+      <stop stop-color="#fff7cc"/>
+      <stop offset=".45" stop-color="#e9ad42"/>
+      <stop offset=".72" stop-color="#ffeca7"/>
+      <stop offset="1" stop-color="#b87824"/>
+    </linearGradient>
+    <linearGradient id="letter" x2="0" y2="1">
+      <stop stop-color="#fffef0"/>
+      <stop offset=".5" stop-color="#fff5d9"/>
+      <stop offset="1" stop-color="#f5cf76"/>
+    </linearGradient>
+    <linearGradient id="fold">
+      <stop stop-color="#a0e9b5"/>
+      <stop offset=".65" stop-color="#29a984"/>
+      <stop offset="1" stop-color="#03545a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="2" flood-color="#142b32" flood-opacity=".6"/>
+    </filter>
+  </defs>
+  <g stroke="url(#gold)" stroke-width="4" stroke-linejoin="round" filter="url(#shadow)">
+    <path d="M17 65Q102 51 203 73L219 185Q120 165 24 194L75 128Z" fill="url(#ribbon)"/>
+    <path d="M1083 65Q998 51 897 73L881 185Q980 165 1076 194L1025 128Z" fill="url(#ribbon)"/>
+    <path d="M166 53Q121 3 227 30L294 53L196 190Q165 224 182 164Z" fill="url(#fold)"/>
+    <path d="M934 53Q979 3 873 30L806 53L904 190Q935 224 918 164Z" fill="url(#fold)"/>
+    <path d="M166 53Q550 3 934 53L908 184Q550 150 192 184Z" fill="url(#ribbon)"/>
+  </g>
+  <path d="M176 60Q550 13 924 60M200 175Q550 143 900 175" fill="none" stroke="#d2f8c0" stroke-width="2" opacity=".8"/>
+  <g fill="#61dac1" stroke="url(#gold)" stroke-width="3">
+    <path d="M238 110l18-20 18 20-18 20Z"/>
+    <path d="M826 110l18-20 18 20-18 20Z"/>
+  </g>
+  <text x="550" y="143" text-anchor="middle" textLength="510" lengthAdjust="spacingAndGlyphs" font-family="Georgia,Times New Roman,serif" font-size="94" font-weight="700" fill="url(#letter)" stroke="#d49b36" stroke-width="1.6" paint-order="stroke" filter="url(#shadow)">Rare Word</text>
+</svg>

@@ -1,0 +1,42 @@
+{
+  "sourcePack": 8,
+  "processing": "Original supplied PNG files copied unchanged. Runtime SVG clipping separates decoration and plate layers.",
+  "assets": [
+    {
+      "file": "5@2x.png",
+      "size": [
+        1072,
+        358
+      ],
+      "mode": "RGBA",
+      "sha256": "01d56d43f55a5c378df86eaac4dc932ce5482086f0a5211377588e0d1292861c"
+    },
+    {
+      "file": "6@2x.png",
+      "size": [
+        1172,
+        368
+      ],
+      "mode": "RGBA",
+      "sha256": "853b0e31a2986ca121a289e3f05d1183e58258295c25959f488ab5bbdf81bed6"
+    },
+    {
+      "file": "7@2x.png",
+      "size": [
+        1062,
+        356
+      ],
+      "mode": "RGBA",
+      "sha256": "1248bb87c9bb7214f5ed928b9379a9c8df3e11066a9ecb3050838b3ae08a5df2"
+    },
+    {
+      "file": "8@2x.png",
+      "size": [
+        1048,
+        296
+      ],
+      "mode": "RGBA",
+      "sha256": "8817d8d16ffa689d30e681fb73db3347bd6e80b6eb78ef9a95db5d755f0182bd"
+    }
+  ]
+}

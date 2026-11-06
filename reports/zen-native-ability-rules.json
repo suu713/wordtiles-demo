@@ -1,0 +1,5447 @@
+{
+  "scope": {
+    "date": "2026-10-15",
+    "source": {
+      "source": "C:\\Users\\huyi\\Documents\\MuMu共享文件夹\\Download\\ZenWord_2.44.0.xapk.xapk",
+      "version": "2.44.0",
+      "versionCode": "189",
+      "xapkSha256": "37fa8c5a2997fc50a722ec668f7014f196b6b49d9ad61c2efca8c723a4cb17a8",
+      "libraryBytes": 47860904,
+      "librarySha256": "e33b887b004ffd0496735621d295aa1bd5fda232fc66bfe81625a78b0757a0a7",
+      "metadataExactPrevious": true
+    },
+    "basis": "ARM64 native method bodies, callers, field offsets, metadata and packaged configurations",
+    "runtimeAccountExperimentVerified": false,
+    "backendTagFormulaAvailable": false
+  },
+  "keyFindings": {
+    "mainAbility": {
+      "directConsumers": "Bayes computation/update and SendUserAbility analytics; no gameplay consumer found in the audited native paths",
+      "entry": "MainPlayHandler.EndGame and MainCrossHandler.EndGame call TrySendAbilityEvent",
+      "bayesEligibilityAtFirstInit": "current level <=991, stored once when flag is -1",
+      "bayesMaxLevel": 1000,
+      "initialSamples": 10,
+      "rollingMaxLevel": 1000,
+      "rollingWindow": 10,
+      "rollingReferenceIndexRange": [
+        1,
+        10
+      ],
+      "performanceW": {
+        "atOrFasterThanP50NoCheckedAssists": 1,
+        "atOrFasterThanP50WithCheckedAssist": 0.5,
+        "p50ToP60": 0.4,
+        "p60ToP70": 0.3,
+        "p70ToP80": 0.2,
+        "p80ToP90": 0.1,
+        "slowerThanP90": 0,
+        "checkedAssists": [
+          "HintCount",
+          "FireworkCount",
+          "PaperPlaneCount",
+          "WatchedHintAdCount",
+          "WatchedFireworksAdCount"
+        ]
+      },
+      "levelReferenceL": "Android p50 minutes * 60 * 4",
+      "K1": {
+        "oldScore1Below2000": 30,
+        "otherwise": 20
+      },
+      "K2": {
+        "oldScore1Below2000": 200,
+        "otherwise": 100
+      },
+      "limitCaveat": "Lower bound compares new value; upper 2400 check compares OLD stored value, not the new value.",
+      "rollingRule": "For n<=3, mean; for n>3 if last three equal, last value; otherwise weights 1..n from oldest to newest, normalized, then round.",
+      "noDirectWrongCountOrShuffleOrExtraInputInW": true
+    },
+    "beginnerActivity": {
+      "scoreScope": "current level <=5",
+      "tierBranch": "BeginnerBonus test2 group3, version gate; newer EventUI2/3 branches take precedence",
+      "tier3": "A>=40 AND A+W>=60",
+      "tier2": "otherwise A>=30 OR A+W>=50",
+      "tier1": "otherwise",
+      "targetLevelByTier": {
+        "1": 15,
+        "2": 25,
+        "3": 35
+      },
+      "popupCandidatesByTier": {
+        "1": [
+          4,
+          9,
+          12,
+          15,
+          20,
+          25,
+          30
+        ],
+        "2": [
+          4,
+          9,
+          14,
+          20,
+          25
+        ],
+        "3": [
+          4,
+          9,
+          12,
+          20,
+          25,
+          30,
+          35
+        ]
+      },
+      "abilityPoints": {
+        "eachAcceptedExtraWord": 10,
+        "levels2to5WrongCountAtMost2": 10,
+        "timeBonus10Points": {
+          "level2Seconds": 20,
+          "level3Seconds": 18,
+          "level4Seconds": 15,
+          "level5Seconds": 25
+        },
+        "level5ComboDisplayCountBonus": {
+          "1": 10,
+          "2": 20,
+          "3OrMore": 30
+        }
+      },
+      "willingPoints": {
+        "dictionaryEntry": 10,
+        "hintButton": 10,
+        "shuffle": 10,
+        "shuffleAwardLimit": 2,
+        "designatedRewardVideoButtons": 30,
+        "returnHome": 10,
+        "quitAndReenterMainInSession": 20,
+        "purchaseSuccess": 60,
+        "shopEntry": 10
+      },
+      "rewardScope": "GetReward does not read AbilityScore/WillingScore/UserPotentialType; rewards depend on success and activity/region/experiment branch."
+    },
+    "celebration": {
+      "selection": "high-country AND country-language match OR high-language -> High; else analogous low -> Low; else Medium",
+      "readsMainAbilityScores": false,
+      "groups": {
+        "highLanguages": [
+          {
+            "index": 19904,
+            "text": "it",
+            "xorKey": 102
+          },
+          {
+            "index": 19073,
+            "text": "fr",
+            "xorKey": 102
+          },
+          {
+            "index": 18521,
+            "text": "de",
+            "xorKey": 102
+          }
+        ],
+        "highCountries": [
+          {
+            "index": 15223,
+            "text": "US",
+            "xorKey": 0
+          },
+          {
+            "index": 6391,
+            "text": "GB",
+            "xorKey": 102
+          },
+          {
+            "index": 3371,
+            "unresolved": true
+          },
+          {
+            "index": 1763,
+            "unresolved": true
+          }
+        ],
+        "lowLanguages": [
+          {
+            "index": 21382,
+            "text": "pt",
+            "xorKey": 0
+          },
+          {
+            "index": 19677,
+            "text": "id",
+            "xorKey": 102
+          }
+        ],
+        "lowCountries": [
+          {
+            "index": 9653,
+            "text": "MX",
+            "xorKey": 102
+          },
+          {
+            "index": 3414,
+            "unresolved": true
+          },
+          {
+            "index": 3404,
+            "unresolved": true
+          },
+          {
+            "index": 10912,
+            "text": "PE",
+            "xorKey": 102
+          },
+          {
+            "index": 5503,
+            "text": "EC",
+            "xorKey": 102
+          },
+          {
+            "index": 15543,
+            "text": "VE",
+            "xorKey": 0
+          },
+          {
+            "index": 7164,
+            "text": "IN",
+            "xorKey": 102
+          },
+          {
+            "index": 10917,
+            "text": "PH",
+            "xorKey": 102
+          },
+          {
+            "index": 10921,
+            "text": "PK",
+            "xorKey": 102
+          },
+          {
+            "index": 16215,
+            "text": "ZA",
+            "xorKey": 102
+          },
+          {
+            "index": 10235,
+            "text": "NG",
+            "xorKey": 0
+          },
+          {
+            "index": 9655,
+            "text": "MY",
+            "xorKey": 102
+          }
+        ]
+      }
+    },
+    "dynamicStatistic": {
+      "point": "After completing level10, when next level index is11 and 10 historical times exist for current language",
+      "thresholdSeconds": 686,
+      "atOrAbove": "Remove2 enum value1",
+      "below": "None enum value0",
+      "auditedConsumer": "SendMainPlayLevelClearRecord; not a verified direct word-removal action"
+    },
+    "restoredLevelHelp": {
+      "version": "2.44.0 / 189, supplied XAPK ARM64",
+      "classification": "Conditional dynamic easing of a restored level, plus separately configured daily warm-up; not a verified ELO-to-bank control loop.",
+      "entry": {
+        "method": "MainPlayHandler.StartGameMode",
+        "callAt": "0x1600ac0",
+        "lastEnterTimeWriteAfterCheck": "0x1600b00"
+      },
+      "preconditions": {
+        "restore": true,
+        "chainExcluded": true,
+        "levelMinimum": 100,
+        "playDaysMinimum": 3,
+        "half_level_easier_test": 1
+      },
+      "time": {
+        "clock": "DateTime.Now minus this level LastEnterGameTime",
+        "half_level_easier_test3_groups_1_2_seconds": 21600,
+        "other_groups_seconds": 86400,
+        "comparison": "elapsed >= threshold",
+        "reset": "last entry timestamp overwritten on each StartGameMode"
+      },
+      "attempts": {
+        "A": "AnswerProgress.Count; answer-completion records. SetBoxFind writes this list.",
+        "E": "ExtraProgress.Count; separately collected extra words. AddFindExtraWord writes this list and the separate in-memory _finishWords list.",
+        "T": "TrialAttemptsCount; increments only for LengthError (1) or Error (2), not RepeatAnswer (5) or RepeatExtra (6).",
+        "threshold": "2 if A-E==0, else ceil(1.5*(A-E+1))",
+        "pass": "E+T > threshold, strictly greater",
+        "noClampOnAminusE": true,
+        "veryShortInput": "Length<2 returns None, not a trial; length>=2 but below minimum answer length counts only when the length-error experiment returns LengthError.",
+        "examples": [
+          {
+            "A": 0,
+            "E": 0,
+            "minimumT": 3
+          },
+          {
+            "A": 1,
+            "E": 0,
+            "minimumT": 4
+          },
+          {
+            "A": 2,
+            "E": 0,
+            "minimumT": 6
+          },
+          {
+            "A": 2,
+            "E": 1,
+            "minimumT": 3
+          },
+          {
+            "A": 3,
+            "E": 2,
+            "minimumT": 2
+          }
+        ]
+      },
+      "experiment2": {
+        "group1": {
+          "churnAtMost03": 0,
+          "otherwise": {
+            "0-30": 1,
+            "31-40": 0.6,
+            "41-50": 0.5,
+            "51-60": 0.4,
+            "61+": 0.3
+          }
+        },
+        "group2": {
+          "churnAtMost03": 0,
+          "churnAbove05": 1,
+          "otherwise": {
+            "0-25": 1,
+            "26-35": 0.5,
+            "36-45": 0.3,
+            "46+": 0
+          }
+        },
+        "otherGroup": "churn function returns true; other eligibility checks remain",
+        "randomComparison": "UnityEngine.Random.value < probability",
+        "dateOrigin": "HalfLevelEasierTest2FirstTriggerTime initialized on first call of the decay-days helper; subsequent date-only calendar difference. High-churn group2 branch bypasses this helper.",
+        "tagOrigin": "Remote tag churn_prob; no local main-ELO-to-tag conversion found."
+      },
+      "extraAction": {
+        "change": "If onlyExtra nonempty, merge it into extra, clear onlyExtra, set AdjustExtraConfigRatio=1.",
+        "whatDoesNotChange": "This branch does not remove target slots or replace the letter wheel.",
+        "ratioMeaning": "Observed writer sets 1, CheckRestore reads >0 as a reason to preserve restored state. This is not evidence of a 100% unconditional replacement probability.",
+        "submission": "ResolveAnswerWithAdjustAndExtraForUncross -> CheckExtraWordRules -> CheckExtraReplaceableAnswer -> ReplaceExtraAnswer -> ComputeSelectResult",
+        "remainingConditions": [
+          "EA sharing must be enabled (preinstall rule or strategy; normal strategy has a configurable start level, fallback 16).",
+          "Extra word exists in this level extra data, is not already collected, length >=2 and within current answer length range, and is not in onlyExtra.",
+          "Replacement target has the same length, is not in MustWords, and matches all already revealed letters at their positions.",
+          "Target returned by selection must not be in DefineTipWord.",
+          "Orderly mode also preserves length/lexical ordering between adjacent answer entries; disorderly mode skips this neighbor-order check."
+        ],
+        "swap": "Extra spelling becomes an answer with existing slots; displaced answer moves into the extra representation/config; selection is then judged as Answer."
+      },
+      "letterAction": {
+        "experiment": "half_level_easier_test3 == 2, after all common and churn gates",
+        "android": "IsInAndroid returns constant true in this supplied native build; no additional 50% lottery here.",
+        "maximumPerCall": 1,
+        "selection": "Uniform random index over all eligible positions, not uniform over words.",
+        "wordEligibility": "Word not in AnswerProgress and has >1 remaining positions after excluding special cells and PropsFindWord.",
+        "cellExclusions": [
+          "PropsFindWord",
+          "LevelOpeningCoinsWord",
+          "BlindBox",
+          "SpreadBox",
+          "SpreadCoinsWord",
+          "BottleWord",
+          "ChrysalisAdWord",
+          "PlaneWord",
+          "HintAdWord",
+          "FireworkAdWord"
+        ],
+        "persistence": "Append position (wordIndex*100+letterIndex) to PropsFindWord, restored into grid by GameRestore.",
+        "cost": "No coin, item, ad debit or HintCount increment in this helper.",
+        "noCandidate": "Returns false; the caller continues to the extra-pool action.",
+        "otherPlatformBranch": "Unreachable on supplied Android build: churn>.5 direct; .3<churn<=.5 with 50%; <=.3 none. Not an iOS runtime verification."
+      },
+      "repeat": {
+        "perLevelOnceFlag": "None in this trigger chain.",
+        "extraPool": "Already moved words stay moved in the restored config; empty onlyExtra has nothing more to move.",
+        "letter": "Can reveal another eligible position after a later qualifying re-entry. No fixed count cap in this helper; eligibility stops before the last ordinary unrevealed letter of each unfinished word.",
+        "attemptReset": "Trigger does not clear AnswerProgress, ExtraProgress or TrialAttemptsCount.",
+        "scope": "Current restored level; changing/completing the level creates/clears per-level state. Decay date is in PlayData, separate from per-level restore data."
+      },
+      "warmup": {
+        "start": "ColdStartApp calls daily reorder and daily deletion setup; controlled by separate strategy switches and WarmBeginDay vs PlayDays.",
+        "reorder": "15-position upcoming window; select 3 lowest configured SinglePlayConfig.time values, move their positions to front. Existing restored level is skipped.",
+        "delete": "Main level indices 7..1000, per-level WaitDeleteWordNum indexed by offset from WarmBeginReduceLevelIndex. The supplied T1/T1_WordTime rows have 3 entries.",
+        "whichWords": "Listed timeOrder candidates; remove from answer and add to extra.",
+        "floor": "English retains at least 4 answers; other languages retain at least 3.",
+        "readsElo": false,
+        "caveat": "Both paths share WarmBeginDay, and reorder setup runs first; do not assume both effects stack for every strategy.",
+        "verifiedTables": [
+          {
+            "file": "local_config_game_levelwarmthinfo_en-us_t1_f551816e92ef002d3eb5de8ea696e765_LevelWarmthInfo_en-US_T1.decoded.json",
+            "rows": 1200,
+            "entriesPerRow": 3
+          },
+          {
+            "file": "local_config_game_levelwarmthinfo_en-us_t1_wordtime_492bc7f3d5c3996c290560bd40026358_LevelWarmthInfo_en-US_T1_WordTime.decoded.json",
+            "rows": 1200,
+            "entriesPerRow": 3
+          }
+        ]
+      },
+      "evidence": {
+        "trigger": "0x160100c",
+        "timeThreshold": "0x160f16c",
+        "churnGate": "0x160f218",
+        "group1": "0x160f364",
+        "group2": "0x160f48c",
+        "decayDate": "0x160f5ac",
+        "reveal": "0x17ab00c",
+        "extraRules": "0x17a87ec",
+        "replaceSelection": "0x17ba87c / 0x17bad4c",
+        "revealedLetterCompatibility": "0x17babf4",
+        "replace": "0x17a92a0 / 0x17bc3ac",
+        "answerRecordWrite": "0x17a81f8 / 0x17a82f0",
+        "extraRecordWrite": "0x179d08c",
+        "trialIncrement": "0x17a985c..0x17a98a0",
+        "warmReorder": "0x160da64",
+        "warmDelete": "0x17b15e4"
+      },
+      "verificationLimits": [
+        "Static native-code analysis; Android app not executed.",
+        "Account experiment assignment and backend churn model are unavailable.",
+        "No verified main-ELO-controlled increase/decrease of the five level banks."
+      ],
+      "source": {
+        "source": "C:\\Users\\huyi\\Documents\\MuMu共享文件夹\\Download\\ZenWord_2.44.0.xapk.xapk",
+        "version": "2.44.0",
+        "versionCode": "189",
+        "xapkSha256": "37fa8c5a2997fc50a722ec668f7014f196b6b49d9ad61c2efca8c723a4cb17a8",
+        "libraryBytes": 47860904,
+        "librarySha256": "e33b887b004ffd0496735621d295aa1bd5fda232fc66bfe81625a78b0757a0a7",
+        "metadataExactPrevious": true
+      }
+    }
+  },
+  "callGraph": [
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.get__dataMgr",
+      "address": "0x1575d98",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22502904,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.CanShowEntrance"
+          ]
+        },
+        {
+          "at": 22502936,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.CanShowEntrance"
+          ]
+        },
+        {
+          "at": 22503484,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ]
+        },
+        {
+          "at": 22503700,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromEntrance"
+          ]
+        },
+        {
+          "at": 22503828,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromEntrance"
+          ]
+        },
+        {
+          "at": 22504244,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504292,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504324,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504344,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504484,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504504,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504544,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ]
+        },
+        {
+          "at": 22504924,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22504944,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22504988,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505012,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505032,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505064,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505084,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505104,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505124,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505144,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505524,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505596,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505652,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505684,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22506164,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1"
+          ]
+        },
+        {
+          "at": 22506896,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22506916,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22506936,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507000,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507020,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507060,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507080,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507104,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507476,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507508,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507540,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507568,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507588,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507624,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507648,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507664,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507712,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507736,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507752,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507832,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22507852,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22507872,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22507944,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22508008,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22508028,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22508112,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22508380,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScore"
+          ]
+        },
+        {
+          "at": 22508476,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScoreFromShuffle"
+          ]
+        },
+        {
+          "at": 22508512,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScoreFromShuffle"
+          ]
+        },
+        {
+          "at": 22508668,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore"
+          ]
+        },
+        {
+          "at": 22509056,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddScoreWhenGameEnd"
+          ]
+        },
+        {
+          "at": 22509232,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.OnComboShow"
+          ]
+        },
+        {
+          "at": 22509300,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetLimitTimeHours"
+          ]
+        },
+        {
+          "at": 22509328,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetLimitTimeHours"
+          ]
+        },
+        {
+          "at": 22509348,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetLimitTimeHours"
+          ]
+        },
+        {
+          "at": 22510512,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetEntranceProgress"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.CanShowEntrance",
+      "address": "0x1575df4",
+      "bytes": 60,
+      "calls": [
+        {
+          "at": "0x1575df8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1575e04",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusIconMgTest1"
+          ],
+          "address": "0x1829980"
+        },
+        {
+          "at": "0x1575e18",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1575e28",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Started"
+          ],
+          "address": "0x1828e0c"
+        }
+      ],
+      "callers": [
+        {
+          "at": 19831044,
+          "kind": "b",
+          "owner": [
+            "View.UI.MainPlayFinish.FinishEntranceInfo.Check"
+          ]
+        },
+        {
+          "at": 20853852,
+          "kind": "b",
+          "owner": [
+            "View.UI.Home.HomeEntranceInfo.Check"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromMg",
+      "address": "0x1575e30",
+      "bytes": 488,
+      "calls": [
+        {
+          "at": "0x1575ec8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        }
+      ],
+      "callers": [
+        {
+          "at": 21554736,
+          "kind": "b",
+          "owner": [
+            "View.UI.CommonPlay.Side.SideView.OnClickBeginnerBonusIconBtn"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromEntrance",
+      "address": "0x15760a0",
+      "bytes": 616,
+      "calls": [
+        {
+          "at": "0x1576114",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576128",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Started"
+          ],
+          "address": "0x1828e0c"
+        },
+        {
+          "at": "0x1576154",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x157617c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDefine.get_TargetLevelIndex"
+          ],
+          "address": "0x182a154"
+        },
+        {
+          "at": "0x157618c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ],
+          "address": "0x1576308"
+        },
+        {
+          "at": "0x1576194",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15761a8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.EndingActivity"
+          ],
+          "address": "0x1829e14"
+        },
+        {
+          "at": "0x15761d8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        }
+      ],
+      "callers": [
+        {
+          "at": 19806284,
+          "kind": "b",
+          "owner": [
+            "View.UI.MainPlayFinish.BeginnerBonusFinishEntrance.OnClickBtn"
+          ]
+        },
+        {
+          "at": 20837384,
+          "kind": "b",
+          "owner": [
+            "View.UI.Home.BeginnerBonusEntrance.OnClickBtn"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish",
+      "address": "0x15764c4",
+      "bytes": 1352,
+      "calls": [
+        {
+          "at": "0x15765d4",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x15765dc",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15765e8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest1"
+          ],
+          "address": "0x182a6bc"
+        },
+        {
+          "at": "0x15765f0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15765fc",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Ready"
+          ],
+          "address": "0x1828df4"
+        },
+        {
+          "at": "0x1576608",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1"
+          ],
+          "address": "0x1576a0c"
+        },
+        {
+          "at": "0x1576614",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries"
+          ],
+          "address": "0x1576c54"
+        },
+        {
+          "at": "0x157661c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576628",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUIContrast"
+          ],
+          "address": "0x182a6a4"
+        },
+        {
+          "at": "0x1576634",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576640",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_ForceNo5EyesActivityOn"
+          ],
+          "address": "0x1829450"
+        },
+        {
+          "at": "0x1576648",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576654",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Active"
+          ],
+          "address": "0x18298a4"
+        },
+        {
+          "at": "0x1576660",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ],
+          "address": "0x1576d20"
+        },
+        {
+          "at": "0x1576668",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576674",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Fail"
+          ],
+          "address": "0x1828e58"
+        },
+        {
+          "at": "0x157667c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576688",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Success"
+          ],
+          "address": "0x1828e40"
+        },
+        {
+          "at": "0x1576690",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157669c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test2"
+          ],
+          "address": "0x1829874"
+        },
+        {
+          "at": "0x15766a4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15766b0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Fail"
+          ],
+          "address": "0x1828e58"
+        },
+        {
+          "at": "0x15766b8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15766c4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_RewardCoins"
+          ],
+          "address": "0x18290bc"
+        },
+        {
+          "at": "0x15766e0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        },
+        {
+          "at": "0x1576834",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576840",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Started"
+          ],
+          "address": "0x1828e0c"
+        },
+        {
+          "at": "0x1576848",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ],
+          "address": "0x1577114"
+        },
+        {
+          "at": "0x1576870",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDefine.get_TargetLevelIndex"
+          ],
+          "address": "0x182a154"
+        },
+        {
+          "at": "0x157687c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576888",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusIconMgTest1"
+          ],
+          "address": "0x1829980"
+        },
+        {
+          "at": "0x15768b4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15768c0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.EndActivity"
+          ],
+          "address": "0x182a084"
+        },
+        {
+          "at": "0x15768cc",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ],
+          "address": "0x1576308"
+        },
+        {
+          "at": "0x15768d4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15768e8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.EndingActivity"
+          ],
+          "address": "0x1829e14"
+        },
+        {
+          "at": "0x1576900",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22911212,
+          "kind": "b",
+          "owner": [
+            "Logic.Handler.ExposureHandler.CheckExposureCanShow"
+          ]
+        },
+        {
+          "at": 22921812,
+          "kind": "b",
+          "owner": [
+            "Logic.Handler.ExposureHandler.CheckShowBeginnerBonus"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryStartActivity",
+      "address": "0x1576d20",
+      "bytes": 1012,
+      "calls": [
+        {
+          "at": "0x1576d90",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576d9c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_Ready"
+          ],
+          "address": "0x1828df4"
+        },
+        {
+          "at": "0x1576da4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576db0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest2"
+          ],
+          "address": "0x1829fac"
+        },
+        {
+          "at": "0x1576db8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576dc4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest3"
+          ],
+          "address": "0x182a514"
+        },
+        {
+          "at": "0x1576dcc",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ],
+          "address": "0x1577114"
+        },
+        {
+          "at": "0x1576df8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576e04",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test1"
+          ],
+          "address": "0x1829844"
+        },
+        {
+          "at": "0x1576e0c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576e18",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test2"
+          ],
+          "address": "0x1829874"
+        },
+        {
+          "at": "0x1576e2c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ],
+          "address": "0x1576308"
+        },
+        {
+          "at": "0x1576e34",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576e44",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.StartActivity"
+          ],
+          "address": "0x1829d44"
+        },
+        {
+          "at": "0x1576e48",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576e54",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_RecBeginnerBonusIconMgNum"
+          ],
+          "address": "0x18298c4"
+        },
+        {
+          "at": "0x1576e60",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576e70",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_RecBeginnerBonusIconMgNum"
+          ],
+          "address": "0x1829920"
+        },
+        {
+          "at": "0x1576e90",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        },
+        {
+          "at": "0x1576fd4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576fe0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group1"
+          ],
+          "address": "0x18294f8"
+        },
+        {
+          "at": "0x1576ff4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577000",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group2"
+          ],
+          "address": "0x18295cc"
+        },
+        {
+          "at": "0x1577014",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577020",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3"
+          ],
+          "address": "0x1829604"
+        },
+        {
+          "at": "0x1577030",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157703c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_WillingScore"
+          ],
+          "address": "0x1829998"
+        },
+        {
+          "at": "0x1577044",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577050",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AbilityScore"
+          ],
+          "address": "0x1829a54"
+        },
+        {
+          "at": "0x1577068",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577074",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AbilityScore"
+          ],
+          "address": "0x1829a54"
+        },
+        {
+          "at": "0x1577080",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577090",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157709c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group4"
+          ],
+          "address": "0x182963c"
+        },
+        {
+          "at": "0x15770c0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15770cc",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AbilityScore"
+          ],
+          "address": "0x1829a54"
+        },
+        {
+          "at": "0x15770d8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15770e8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15770f8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_UserPotentialType"
+          ],
+          "address": "0x1829c28"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22505056,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries",
+      "address": "0x1576c54",
+      "bytes": 204,
+      "calls": [
+        {
+          "at": "0x1576c98",
+          "names": [
+            "Utils.DefineSymbolsUtils.IsInEditor"
+          ],
+          "address": "0x1552f20"
+        },
+        {
+          "at": "0x1576cf4",
+          "names": [
+            "Locale.LocaleMgr.GetCountry"
+          ],
+          "address": "0x183b6b4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22504980,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22509432,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetNeedExposureLevel"
+          ]
+        },
+        {
+          "at": 25334692,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group1No5Eyes"
+          ]
+        },
+        {
+          "at": 25334740,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group2No5Eyes"
+          ]
+        },
+        {
+          "at": 25334788,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3No5Eyes"
+          ]
+        },
+        {
+          "at": 25334836,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group4No5Eyes"
+          ]
+        },
+        {
+          "at": 25334936,
+          "kind": "b",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group1Yes5Eyes"
+          ]
+        },
+        {
+          "at": 25334976,
+          "kind": "b",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group2Yes5Eyes"
+          ]
+        },
+        {
+          "at": 25335016,
+          "kind": "b",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3Yes5Eyes"
+          ]
+        },
+        {
+          "at": 25335068,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group1"
+          ]
+        },
+        {
+          "at": 25335280,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group2"
+          ]
+        },
+        {
+          "at": 25335336,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3"
+          ]
+        },
+        {
+          "at": 25335896,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test1"
+          ]
+        },
+        {
+          "at": 25335944,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test2"
+          ]
+        },
+        {
+          "at": 25617984,
+          "kind": "bl",
+          "owner": [
+            "Platform.AbTest.AbTestMgr.TryStainBeginnerBonusTest2"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryAddWillingScore",
+      "address": "0x15772f4",
+      "bytes": 164,
+      "calls": [
+        {
+          "at": "0x157734c",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x157735c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157736c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_WillingScore"
+          ],
+          "address": "0x1829998"
+        },
+        {
+          "at": "0x157737c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_WillingScore"
+          ],
+          "address": "0x18299f4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 19900384,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainPlayFinish.MainPlayFinishPage.OnClickDicBtn"
+          ]
+        },
+        {
+          "at": 20131800,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainPlay.MainPlayPage.OnClickHintBtn"
+          ]
+        },
+        {
+          "at": 20270328,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainCrossFinish.MainCrossFinishPage.OnClickDicBtn"
+          ]
+        },
+        {
+          "at": 20356420,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainCross.MainCrossPage.OnClickHintBtn"
+          ]
+        },
+        {
+          "at": 21773060,
+          "kind": "bl",
+          "owner": [
+            "View.UI.CloseShopReward.CloseShopRewardPage.OnClickWatchAds"
+          ]
+        },
+        {
+          "at": 21798696,
+          "kind": "bl",
+          "owner": [
+            "View.UI.ChapterReward.ChapterRewardPage.OnClickVideoBtn"
+          ]
+        },
+        {
+          "at": 22508504,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScoreFromShuffle"
+          ]
+        },
+        {
+          "at": 22978784,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.HomeHandler.OpenHomePage"
+          ]
+        },
+        {
+          "at": 23042352,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainCrossHandler.StartGameMode"
+          ]
+        },
+        {
+          "at": 23072576,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainPlayHandler.StartGameMode"
+          ]
+        },
+        {
+          "at": 23230080,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.ShopHandler.DoBuySuccess"
+          ]
+        },
+        {
+          "at": 26248740,
+          "kind": "bl",
+          "owner": [
+            "View.UI.Shop.ShopPage.Prepare"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryAddWillingScoreFromShuffle",
+      "address": "0x1577398",
+      "bytes": 128,
+      "calls": [
+        {
+          "at": "0x15773bc",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15773c8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AddScoreFromShuffleCont"
+          ],
+          "address": "0x1829b10"
+        },
+        {
+          "at": "0x15773d8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScore"
+          ],
+          "address": "0x15772f4"
+        },
+        {
+          "at": "0x15773e0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15773f0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AddScoreFromShuffleCont"
+          ],
+          "address": "0x1829b10"
+        },
+        {
+          "at": "0x1577408",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_AddScoreFromShuffleCont"
+          ],
+          "address": "0x1829b6c"
+        }
+      ],
+      "callers": [
+        {
+          "at": 20137944,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainPlay.MainPlayPage.OnClickShuffleBtn"
+          ]
+        },
+        {
+          "at": 20362476,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainCross.MainCrossPage.OnClickShuffleBtn"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore",
+      "address": "0x1577418",
+      "bytes": 164,
+      "calls": [
+        {
+          "at": "0x1577470",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x157747c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157748c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AbilityScore"
+          ],
+          "address": "0x1829a54"
+        },
+        {
+          "at": "0x15774a8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_AbilityScore"
+          ],
+          "address": "0x1829ab0"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22508932,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddScoreWhenGameEnd"
+          ]
+        },
+        {
+          "at": 22509012,
+          "kind": "b",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddScoreWhenGameEnd"
+          ]
+        },
+        {
+          "at": 22509040,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddScoreWhenGameEnd"
+          ]
+        },
+        {
+          "at": 25210320,
+          "kind": "b",
+          "owner": [
+            "Data.Common.CommonDataMgr.OnSelectFinish"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryAddScoreWhenGameEnd",
+      "address": "0x15774bc",
+      "bytes": 400,
+      "calls": [
+        {
+          "at": "0x1577564",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x1577584",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore"
+          ],
+          "address": "0x1577418"
+        },
+        {
+          "at": "0x15775d4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore"
+          ],
+          "address": "0x1577418"
+        },
+        {
+          "at": "0x15775f0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore"
+          ],
+          "address": "0x1577418"
+        },
+        {
+          "at": "0x1577600",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157760c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_ComboCount"
+          ],
+          "address": "0x1829c88"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23045240,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainCrossHandler.EndGame"
+          ]
+        },
+        {
+          "at": 23078468,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainPlayHandler.EndGame"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.PrintScore",
+      "address": "0x15772f0",
+      "bytes": 4,
+      "calls": [],
+      "callers": []
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.OnComboShow",
+      "address": "0x157764c",
+      "bytes": 164,
+      "calls": [
+        {
+          "at": "0x15776a0",
+          "names": [
+            "Data.Common.CommonDataMgr.GetLevelIndex"
+          ],
+          "address": "0x180c028"
+        },
+        {
+          "at": "0x15776b0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15776c0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_ComboCount"
+          ],
+          "address": "0x1829c88"
+        },
+        {
+          "at": "0x15776dc",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.set_ComboCount"
+          ],
+          "address": "0x1829ce4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22585616,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.CommonComboHandler.ShowNormalCombo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetLimitTimeHours",
+      "address": "0x15776f0",
+      "bytes": 88,
+      "calls": [
+        {
+          "at": "0x15776f4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577700",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest1"
+          ],
+          "address": "0x182a6bc"
+        },
+        {
+          "at": "0x1577710",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157771c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest2"
+          ],
+          "address": "0x1829fac"
+        },
+        {
+          "at": "0x1577724",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577730",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsHasFailed"
+          ],
+          "address": "0x1829fc4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 21997696,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusPage.ShowReward"
+          ]
+        },
+        {
+          "at": 21998300,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusPage.ShowChallenge"
+          ]
+        },
+        {
+          "at": 22007180,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusPage.OnBeginnerBonusChangeText"
+          ]
+        },
+        {
+          "at": 25337276,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.StartActivity"
+          ]
+        },
+        {
+          "at": 25337600,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.EndingActivity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetReward",
+      "address": "0x1576308",
+      "bytes": 444,
+      "calls": [
+        {
+          "at": "0x1576334",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576344",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest1"
+          ],
+          "address": "0x182a6bc"
+        },
+        {
+          "at": "0x157635c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test1"
+          ],
+          "address": "0x1829844"
+        },
+        {
+          "at": "0x1576364",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576370",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsNonT1CountryTierB"
+          ],
+          "address": "0x18297d4"
+        },
+        {
+          "at": "0x1576384",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576390",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest2"
+          ],
+          "address": "0x1829fac"
+        },
+        {
+          "at": "0x1576398",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15763a8",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsHasFailed"
+          ],
+          "address": "0x1829fc4"
+        },
+        {
+          "at": "0x15763d0",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest3"
+          ],
+          "address": "0x182a514"
+        },
+        {
+          "at": "0x1576424",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576430",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test1"
+          ],
+          "address": "0x1829844"
+        },
+        {
+          "at": "0x1576438",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576448",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsNonT1CountryTierB"
+          ],
+          "address": "0x18297d4"
+        },
+        {
+          "at": "0x1576458",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test2"
+          ],
+          "address": "0x1829874"
+        },
+        {
+          "at": "0x1576460",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157646c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsNonT1CountryTierB"
+          ],
+          "address": "0x18297d4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22503820,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromEntrance"
+          ]
+        },
+        {
+          "at": 22505676,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22506156,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1"
+          ]
+        },
+        {
+          "at": 22507052,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 25337712,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.EndingActivity"
+          ]
+        },
+        {
+          "at": 25339040,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.OnSecondUpdate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetNeedExposureLevel",
+      "address": "0x1577748",
+      "bytes": 128,
+      "calls": [
+        {
+          "at": "0x1577778",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries"
+          ],
+          "address": "0x1576c54"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22506112,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1"
+          ]
+        },
+        {
+          "at": 22507940,
+          "kind": "b",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList",
+      "address": "0x1577114",
+      "bytes": 476,
+      "calls": [
+        {
+          "at": "0x1577138",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577144",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUIContrast"
+          ],
+          "address": "0x182a6a4"
+        },
+        {
+          "at": "0x157714c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577158",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3"
+          ],
+          "address": "0x1829604"
+        },
+        {
+          "at": "0x1577160",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157716c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_UserPotentialType"
+          ],
+          "address": "0x1829bcc"
+        },
+        {
+          "at": "0x15771a4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetNeedExposureLevel"
+          ],
+          "address": "0x1577748"
+        },
+        {
+          "at": "0x15771a8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15771b4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_UserPotentialType"
+          ],
+          "address": "0x1829bcc"
+        },
+        {
+          "at": "0x15771e8",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x15771f4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test1"
+          ],
+          "address": "0x1829844"
+        },
+        {
+          "at": "0x15771fc",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157720c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsNonT1CountryTierB"
+          ],
+          "address": "0x18297d4"
+        },
+        {
+          "at": "0x1577248",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusNonT1Test2"
+          ],
+          "address": "0x1829874"
+        },
+        {
+          "at": "0x1577250",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x157725c",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsNonT1CountryTierB"
+          ],
+          "address": "0x18297d4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22505544,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22506956,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 25338340,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDefine.get_TargetLevelIndex"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType",
+      "address": "0x1576018",
+      "bytes": 136,
+      "calls": [
+        {
+          "at": "0x157603c",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576050",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUITest3"
+          ],
+          "address": "0x182a514"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22503112,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromMg"
+          ]
+        },
+        {
+          "at": 22503896,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.ShowBeginnerBonusFromEntrance"
+          ]
+        },
+        {
+          "at": 22505184,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22505728,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        },
+        {
+          "at": 22506212,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1"
+          ]
+        },
+        {
+          "at": 22507152,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.TryStartBeginnerBonusEventUITest1",
+      "address": "0x1576a0c",
+      "bytes": 584,
+      "calls": [
+        {
+          "at": "0x1576a80",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetNeedExposureLevel"
+          ],
+          "address": "0x1577748"
+        },
+        {
+          "at": "0x1576aac",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetReward"
+          ],
+          "address": "0x1576308"
+        },
+        {
+          "at": "0x1576ab4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1576ac4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.StartActivity"
+          ],
+          "address": "0x1829d44"
+        },
+        {
+          "at": "0x1576ae4",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetBeginnerBonusUIType"
+          ],
+          "address": "0x1576018"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22504968,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryShowBeginnerBonusFromFinish"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetStagedNeedLevel",
+      "address": "0x15777c8",
+      "bytes": 224,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22013248,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.Prepare"
+          ]
+        },
+        {
+          "at": 22014732,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        },
+        {
+          "at": 22016240,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.AddProgress"
+          ]
+        },
+        {
+          "at": 22510632,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetEntranceProgress"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetStagedReward",
+      "address": "0x15778a8",
+      "bytes": 148,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22014900,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetTargetLevel",
+      "address": "0x157793c",
+      "bytes": 148,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22014968,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetStageStartLevel",
+      "address": "0x15779d0",
+      "bytes": 164,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22013188,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.Prepare"
+          ]
+        },
+        {
+          "at": 22014748,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        },
+        {
+          "at": 22510688,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetEntranceProgress"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetNowStage",
+      "address": "0x1577a74",
+      "bytes": 252,
+      "calls": [
+        {
+          "at": "0x1577ac4",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x1577ad8",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        }
+      ],
+      "callers": [
+        {
+          "at": 22013048,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.Prepare"
+          ]
+        },
+        {
+          "at": 22015276,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        },
+        {
+          "at": 22015444,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.UpdateText"
+          ]
+        },
+        {
+          "at": 22016252,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.AddProgress"
+          ]
+        },
+        {
+          "at": 22019084,
+          "kind": "bl",
+          "owner": [
+            "View.UI.BeginnerBonus.BeginnerBonusStagedPage.CloseUI"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.BeginnerBonusHandler.GetEntranceProgress",
+      "address": "0x1577b70",
+      "bytes": 384,
+      "calls": [
+        {
+          "at": "0x1577bb0",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.get__dataMgr"
+          ],
+          "address": "0x1575d98"
+        },
+        {
+          "at": "0x1577bc4",
+          "names": [
+            "Data.BeginnerBonus.BeginnerBonusDataMgr.get_EventUITest3ClaimedStaged"
+          ],
+          "address": "0x182a5e8"
+        },
+        {
+          "at": "0x1577c28",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetStagedNeedLevel"
+          ],
+          "address": "0x15777c8"
+        },
+        {
+          "at": "0x1577c48",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x1577c54",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x1577c60",
+          "names": [
+            "Logic.Handler.BeginnerBonusHandler.GetStageStartLevel"
+          ],
+          "address": "0x15779d0"
+        }
+      ],
+      "callers": [
+        {
+          "at": 19804704,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainPlayFinish.BeginnerBonusFinishEntrance.Enter"
+          ]
+        },
+        {
+          "at": 19806088,
+          "kind": "bl",
+          "owner": [
+            "View.UI.MainPlayFinish.BeginnerBonusFinishEntrance.RefreshProgress"
+          ]
+        },
+        {
+          "at": 20836892,
+          "kind": "bl",
+          "owner": [
+            "View.UI.Home.BeginnerBonusEntrance.RefreshProgress"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.CelebrationEventHandler.GetCelebrationAbility",
+      "address": "0x157f62c",
+      "bytes": 440,
+      "calls": [
+        {
+          "at": "0x157f6a0",
+          "names": [
+            "Locale.LocaleMgr.GetCountry"
+          ],
+          "address": "0x183b6b4"
+        },
+        {
+          "at": "0x157f6ac",
+          "names": [
+            "Locale.LocaleMgr.IsCountryLanguageMatching"
+          ],
+          "address": "0x18303b4"
+        },
+        {
+          "at": "0x157f6cc",
+          "names": [
+            "Logic.GameMgr.get_SettingsDataMgr"
+          ],
+          "address": "0x15697e4"
+        },
+        {
+          "at": "0x157f6e0",
+          "names": [
+            "Data.Settings.SettingsDataMgr.get_CurLanguageCode"
+          ],
+          "address": "0x175cab4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 25306820,
+          "kind": "bl",
+          "owner": [
+            "Data.CelebrationEvent.CelebrationEventDataMgr.NewDaySetupData"
+          ]
+        },
+        {
+          "at": 25308080,
+          "kind": "bl",
+          "owner": [
+            "Data.CelebrationEvent.CelebrationEventDataMgr.RefreshCelebrationTask"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.TrySendAbilityEvent",
+      "address": "0x163e4a0",
+      "bytes": 16,
+      "calls": [
+        {
+          "at": "0x163e4a4",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "address": "0x163e4b0"
+        },
+        {
+          "at": "0x163e4ac",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ],
+          "address": "0x163ea88"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23046432,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainCrossHandler.EndGame"
+          ]
+        },
+        {
+          "at": 23079760,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainPlayHandler.EndGame"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.TrySendBayesAbility",
+      "address": "0x163e4b0",
+      "bytes": 1496,
+      "calls": [
+        {
+          "at": "0x163e5bc",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x163e5c8",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163e5e0",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.IsCanParticipateBayesRecord"
+          ],
+          "address": "0x172f390"
+        },
+        {
+          "at": "0x163e5f0",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData"
+          ],
+          "address": "0x172f270"
+        },
+        {
+          "at": "0x163e60c",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData"
+          ],
+          "address": "0x172f270"
+        },
+        {
+          "at": "0x163e630",
+          "names": [
+            "Data.UserAbility.Config.BayesAbilityData..ctor"
+          ],
+          "address": "0x172f3b0"
+        },
+        {
+          "at": "0x163e634",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreL"
+          ],
+          "address": "0x163ed48"
+        },
+        {
+          "at": "0x163e644",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ],
+          "address": "0x163edcc"
+        },
+        {
+          "at": "0x163e6c0",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData"
+          ],
+          "address": "0x172f270"
+        },
+        {
+          "at": "0x163e6dc",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1"
+          ],
+          "address": "0x172f0e8"
+        },
+        {
+          "at": "0x163e724",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData"
+          ],
+          "address": "0x172f270"
+        },
+        {
+          "at": "0x163e7d8",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData"
+          ],
+          "address": "0x172f270"
+        },
+        {
+          "at": "0x163e8a4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1"
+          ],
+          "address": "0x172f0e8"
+        },
+        {
+          "at": "0x163e8b4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2"
+          ],
+          "address": "0x172f1ac"
+        },
+        {
+          "at": "0x163e8bc",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreL"
+          ],
+          "address": "0x163ed48"
+        },
+        {
+          "at": "0x163e8c8",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreL"
+          ],
+          "address": "0x163ed48"
+        },
+        {
+          "at": "0x163e8d4",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ],
+          "address": "0x163edcc"
+        },
+        {
+          "at": "0x163e9b4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ],
+          "address": "0x172f328"
+        },
+        {
+          "at": "0x163e9e4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1"
+          ],
+          "address": "0x172f0e8"
+        },
+        {
+          "at": "0x163ea10",
+          "names": [
+            "Platform.Analyze.AnalyzeMgr.SendUserAbility"
+          ],
+          "address": "0x18ab024"
+        },
+        {
+          "at": "0x163ea28",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2"
+          ],
+          "address": "0x172f1ac"
+        },
+        {
+          "at": "0x163ea50",
+          "names": [
+            "Platform.Analyze.AnalyzeMgr.SendUserAbility"
+          ],
+          "address": "0x18ab024"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23323812,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendAbilityEvent"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetKCoefficient",
+      "address": "0x163f140",
+      "bytes": 48,
+      "calls": [],
+      "callers": []
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetCurLevelScoreL",
+      "address": "0x163ed48",
+      "bytes": 132,
+      "calls": [
+        {
+          "at": "0x163ed8c",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x163ed98",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163eda4",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetQuantile"
+          ],
+          "address": "0x163f170"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23324212,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324860,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324872,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW",
+      "address": "0x163edcc",
+      "bytes": 884,
+      "calls": [
+        {
+          "at": "0x163ee40",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.IsCrossGamePlay"
+          ],
+          "address": "0x15a8944"
+        },
+        {
+          "at": "0x163ee74",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163eea0",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163eeac",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetQuantile"
+          ],
+          "address": "0x163f170"
+        },
+        {
+          "at": "0x163eef4",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163ef00",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetQuantile"
+          ],
+          "address": "0x163f170"
+        },
+        {
+          "at": "0x163ef3c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163ef68",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163ef74",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetQuantile"
+          ],
+          "address": "0x163f170"
+        },
+        {
+          "at": "0x163efbc",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163efc8",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetQuantile"
+          ],
+          "address": "0x163f170"
+        },
+        {
+          "at": "0x163f024",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163f038",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163f04c",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163f06c",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163f088",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163f09c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163f0b0",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163f0c4",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163f0e4",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163f100",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23324228,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324884,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetQuantile",
+      "address": "0x163f170",
+      "bytes": 280,
+      "calls": [
+        {
+          "at": "0x163f21c",
+          "names": [
+            "Config.ConfAndroidPassTime.Get"
+          ],
+          "address": "0x18ebe24"
+        },
+        {
+          "at": "0x163f244",
+          "names": [
+            "Config.ConfAndroidPassTime.Get"
+          ],
+          "address": "0x18ebe24"
+        },
+        {
+          "at": "0x163f25c",
+          "names": [
+            "Config.ConfAndroidPassTime.Get"
+          ],
+          "address": "0x18ebe24"
+        },
+        {
+          "at": "0x163f274",
+          "names": [
+            "Config.ConfAndroidPassTime.Get"
+          ],
+          "address": "0x18ebe24"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23326116,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreL"
+          ]
+        },
+        {
+          "at": 23326380,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ]
+        },
+        {
+          "at": 23326464,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ]
+        },
+        {
+          "at": 23326580,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ]
+        },
+        {
+          "at": 23326664,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetCurLevelScoreW"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.ConvertSecondsToMinutes",
+      "address": "0x163f298",
+      "bytes": 16,
+      "calls": [],
+      "callers": []
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.ConvertMinutesToSeconds",
+      "address": "0x163f288",
+      "bytes": 16,
+      "calls": [],
+      "callers": []
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility",
+      "address": "0x163ea88",
+      "bytes": 704,
+      "calls": [
+        {
+          "at": "0x163eb20",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.IsCrossGamePlay"
+          ],
+          "address": "0x15a8944"
+        },
+        {
+          "at": "0x163eb4c",
+          "names": [
+            "Data.GamePlay.MainCross.MainCrossDataMgr.get_RestoreData"
+          ],
+          "address": "0x17bea70"
+        },
+        {
+          "at": "0x163eb70",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x163ebb0",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x163ebbc",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163ebd4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList"
+          ],
+          "address": "0x172f2cc"
+        },
+        {
+          "at": "0x163ebf0",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList"
+          ],
+          "address": "0x172f2cc"
+        },
+        {
+          "at": "0x163ec14",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList"
+          ],
+          "address": "0x172f2cc"
+        },
+        {
+          "at": "0x163ec34",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.GetGameStageData"
+          ],
+          "address": "0x15a86b8"
+        },
+        {
+          "at": "0x163ec40",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x163ec48",
+          "names": [
+            "Config.ConfRollingPassTime.Get"
+          ],
+          "address": "0x18edf34"
+        },
+        {
+          "at": "0x163ec60",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.FindClosestIndex"
+          ],
+          "address": "0x163f2c8"
+        },
+        {
+          "at": "0x163ecdc",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList"
+          ],
+          "address": "0x172f2cc"
+        },
+        {
+          "at": "0x163ece0",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.GetAbility"
+          ],
+          "address": "0x163f4c0"
+        },
+        {
+          "at": "0x163ed40",
+          "names": [
+            "Platform.Analyze.AnalyzeMgr.SendUserAbility"
+          ],
+          "address": "0x18ab024"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23323820,
+          "kind": "b",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendAbilityEvent"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetRollingLevelArray",
+      "address": "0x163f2a8",
+      "bytes": 32,
+      "calls": [
+        {
+          "at": "0x163f2b0",
+          "names": [
+            "Config.ConfRollingPassTime.Get"
+          ],
+          "address": "0x18edf34"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.FindClosestIndex",
+      "address": "0x163f2c8",
+      "bytes": 504,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23325792,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.CalculateWeights",
+      "address": "0x163f75c",
+      "bytes": 480,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23328236,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.GetAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Logic.Handler.UserAbilityHandler.GetAbility",
+      "address": "0x163f4c0",
+      "bytes": 660,
+      "calls": [
+        {
+          "at": "0x163f5ec",
+          "names": [
+            "Logic.Handler.UserAbilityHandler.CalculateWeights"
+          ],
+          "address": "0x163f75c"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23325920,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Store.UserAbilityData.Reset",
+      "address": "0x171b194",
+      "bytes": 160,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24197832,
+          "kind": "bl",
+          "owner": [
+            "Store.StoreRoot.Init"
+          ]
+        },
+        {
+          "at": 24231508,
+          "kind": "bl",
+          "owner": [
+            "Store.StoreRoot.Reset"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Store.UserAbilityData..ctor",
+      "address": "0x171b0a4",
+      "bytes": 240,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24197804,
+          "kind": "bl",
+          "owner": [
+            "Store.StoreRoot.Init"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.Init",
+      "address": "0x172efe4",
+      "bytes": 68,
+      "calls": [
+        {
+          "at": "0x172eff4",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_CanParticipateBayesRecord"
+          ],
+          "address": "0x172f028"
+        },
+        {
+          "at": "0x172f020",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.set_CanParticipateBayesRecord"
+          ],
+          "address": "0x172f084"
+        }
+      ],
+      "callers": [
+        {
+          "at": 24259528,
+          "kind": "bl",
+          "owner": [
+            "Data.DataMgr.Init"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.Release",
+      "address": "0x172f0e4",
+      "bytes": 4,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24263492,
+          "kind": "bl",
+          "owner": [
+            "Data.DataMgr.Release"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1",
+      "address": "0x172f0e8",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23324380,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324836,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23325156,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 24310608,
+          "kind": "bl",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore1",
+      "address": "0x172f144",
+      "bytes": 104,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24310624,
+          "kind": "bl",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2",
+      "address": "0x172f1ac",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23324852,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23325224,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 24310636,
+          "kind": "bl",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore2",
+      "address": "0x172f208",
+      "bytes": 104,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24310668,
+          "kind": "b",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_CanParticipateBayesRecord",
+      "address": "0x172f028",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24309748,
+          "kind": "bl",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.Init"
+          ]
+        },
+        {
+          "at": 24310676,
+          "kind": "bl",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.IsCanParticipateBayesRecord"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.set_CanParticipateBayesRecord",
+      "address": "0x172f084",
+      "bytes": 96,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24309792,
+          "kind": "b",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.Init"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData",
+      "address": "0x172f270",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23324144,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324172,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324352,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324452,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        },
+        {
+          "at": 23324632,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList",
+      "address": "0x172f2cc",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 23325652,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        },
+        {
+          "at": 23325680,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        },
+        {
+          "at": 23325716,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        },
+        {
+          "at": 23325916,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendRollingMatchAdjustAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore",
+      "address": "0x172f328",
+      "bytes": 104,
+      "calls": [
+        {
+          "at": "0x172f350",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1"
+          ],
+          "address": "0x172f0e8"
+        },
+        {
+          "at": "0x172f360",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore1"
+          ],
+          "address": "0x172f144"
+        },
+        {
+          "at": "0x172f36c",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2"
+          ],
+          "address": "0x172f1ac"
+        },
+        {
+          "at": "0x172f38c",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore2"
+          ],
+          "address": "0x172f208"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23325108,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr.IsCanParticipateBayesRecord",
+      "address": "0x172f390",
+      "bytes": 24,
+      "calls": [
+        {
+          "at": "0x172f394",
+          "names": [
+            "Data.UserAbility.UserAbilityDataMgr.get_CanParticipateBayesRecord"
+          ],
+          "address": "0x172f028"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23324128,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.UserAbility.UserAbilityDataMgr..ctor",
+      "address": "0x172f3a8",
+      "bytes": 8,
+      "calls": [],
+      "callers": [
+        {
+          "at": 24259460,
+          "kind": "bl",
+          "owner": [
+            "Data.DataMgr.Init"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.InitConfigData",
+      "address": "0x17a44a4",
+      "bytes": 696,
+      "calls": [
+        {
+          "at": "0x17a451c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a452c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a4544",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.IsChainPlayMode"
+          ],
+          "address": "0x17a4068"
+        },
+        {
+          "at": "0x17a454c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a4564",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a456c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a458c",
+          "names": [
+            "Data.GamePlay.MainPlay.RestoreData.UpdateShareWord"
+          ],
+          "address": "0x17b7dfc"
+        },
+        {
+          "at": "0x17a45a8",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a45d0",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17a45e4",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17a4608",
+          "names": [
+            "Data.GamePlay.MainPlay.RestoreData.UpdateConfig"
+          ],
+          "address": "0x17b7838"
+        },
+        {
+          "at": "0x17a460c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a4620",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a4634",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a465c",
+          "names": [
+            "Data.GamePlay.MainPlay.RestoreData.UpdateShareWord"
+          ],
+          "address": "0x17b7994"
+        },
+        {
+          "at": "0x17a46f8",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a471c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a4738",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.InitConfig",
+      "address": "0x17a4770",
+      "bytes": 4080,
+      "calls": [
+        {
+          "at": "0x17a4940",
+          "names": [
+            "Data.Settings.SettingsDataMgr.get_CurLanguageCode"
+          ],
+          "address": "0x175cab4"
+        },
+        {
+          "at": "0x17a4990",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a49a4",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a49c8",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4a68",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a4b30",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4b44",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4b68",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4c0c",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a4c30",
+          "names": [
+            "Logic.Handler.SettingsHandler.IsEnglish"
+          ],
+          "address": "0x16268c4"
+        },
+        {
+          "at": "0x17a4c60",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4ca4",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4cb8",
+          "names": [
+            "Utils.DefineSymbolsUtils.IsInIOS"
+          ],
+          "address": "0x1552f38"
+        },
+        {
+          "at": "0x17a4d5c",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a4d74",
+          "names": [
+            "Logic.Handler.SettingsHandler.IsEs"
+          ],
+          "address": "0x1621e3c"
+        },
+        {
+          "at": "0x17a4db0",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4de8",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4e0c",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a4e34",
+          "names": [
+            "Utils.DefineSymbolsUtils.IsInAndroid"
+          ],
+          "address": "0x1552f28"
+        },
+        {
+          "at": "0x17a4f08",
+          "names": [
+            "Logic.Handler.SettingsHandler.IsRo"
+          ],
+          "address": "0x1626f24"
+        },
+        {
+          "at": "0x17a4f14",
+          "names": [
+            "Utils.DefineSymbolsUtils.IsInAndroid"
+          ],
+          "address": "0x1552f28"
+        },
+        {
+          "at": "0x17a4f9c",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a5004",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a5094",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a5208",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a52d0",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a5360",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a536c",
+          "names": [
+            "Logic.Handler.FunctionBlockHandler.get_FunctionBlockData"
+          ],
+          "address": "0x15df43c"
+        },
+        {
+          "at": "0x17a537c",
+          "names": [
+            "Data.FunctionBlock.FunctionBlockDataMgr.UseWarmthLevelDelete"
+          ],
+          "address": "0x17f64b0"
+        },
+        {
+          "at": "0x17a5458",
+          "names": [
+            "Logic.Handler.SettingsHandler.IsEnglish"
+          ],
+          "address": "0x16268c4"
+        },
+        {
+          "at": "0x17a54e0",
+          "names": [
+            "AssetBundle.AssetBundleMgr.ExistAsset"
+          ],
+          "address": "0x164a558"
+        },
+        {
+          "at": "0x17a5638",
+          "names": [
+            "Data.GamePlay.CommonPlay.Config.MainPlayFileData..ctor"
+          ],
+          "address": "0x17f48cc"
+        },
+        {
+          "at": "0x17a5678",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.TryReplace243"
+          ],
+          "address": "0x17a5760"
+        },
+        {
+          "at": "0x17a5680",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.InitWarmthConfig"
+          ],
+          "address": "0x17a586c"
+        },
+        {
+          "at": "0x17a569c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.RestoreChapterChange"
+          ],
+          "address": "0x17a5bb4"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.GetNewLevelConfig",
+      "address": "0x17a5f4c",
+      "bytes": 96,
+      "calls": [
+        {
+          "at": "0x17a5f58",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17a5f6c",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17a5f98",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.set_ReviewLevelConfig"
+          ],
+          "address": "0x17a5fac"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.GetBaseConfig",
+      "address": "0x17a6010",
+      "bytes": 4,
+      "calls": [
+        {
+          "at": "0x17a6010",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.GetConfig"
+          ],
+          "address": "0x17a6014"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.SetCurrentLevelDifficulty",
+      "address": "0x17b0278",
+      "bytes": 652,
+      "calls": [
+        {
+          "at": "0x17b02f4",
+          "names": [
+            "Logic.Handler.MainPlayHandler.IsCurrentChainLevel"
+          ],
+          "address": "0x15ffe8c"
+        },
+        {
+          "at": "0x17b0358",
+          "names": [
+            "Platform.AbTest.AbTestMgr.get_IsHardLevelSummaryTest1"
+          ],
+          "address": "0x186b1f8"
+        },
+        {
+          "at": "0x17b0368",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17b0380",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17b0390",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17b03ac",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.GetLevelDifficultyBySummary"
+          ],
+          "address": "0x17b0504"
+        },
+        {
+          "at": "0x17b03c0",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.SetCurrentLevelDifficulty"
+          ],
+          "address": "0x17e60e8"
+        },
+        {
+          "at": "0x17b03c8",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.UpdateSummaryFrequencyState"
+          ],
+          "address": "0x17b08d0"
+        },
+        {
+          "at": "0x17b03e0",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17b03f0",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.GetGroupStartLevel"
+          ],
+          "address": "0x17e60ec"
+        },
+        {
+          "at": "0x17b0418",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17b042c",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17b0440",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.GetLevelDifficulty"
+          ],
+          "address": "0x17e61c0"
+        },
+        {
+          "at": "0x17b0450",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.SetCurrentLevelDifficulty"
+          ],
+          "address": "0x17e60e8"
+        },
+        {
+          "at": "0x17b04d0",
+          "names": [
+            "Platform.AbTest.AbTestMgr.StainHardLevelSummaryTest"
+          ],
+          "address": "0x186e9a0"
+        },
+        {
+          "at": "0x17b04fc",
+          "names": [
+            "Logic.Handler.CommonPlayHandler.ResolveMultiTypesConflict"
+          ],
+          "address": "0x15b7d7c"
+        }
+      ],
+      "callers": []
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.DynamicAdjustmentWord",
+      "address": "0x17a6324",
+      "bytes": 264,
+      "calls": [
+        {
+          "at": "0x17a635c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData"
+          ],
+          "address": "0x17a1454"
+        },
+        {
+          "at": "0x17a6370",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17a6384",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17a638c",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmLevelOrder"
+          ],
+          "address": "0x17a5e78"
+        },
+        {
+          "at": "0x17a63a0",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmBeginLevelIndex"
+          ],
+          "address": "0x17a5ed4"
+        },
+        {
+          "at": "0x17a63ac",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmLevelOrder"
+          ],
+          "address": "0x17a5e78"
+        },
+        {
+          "at": "0x17a63c0",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmLevelOrder"
+          ],
+          "address": "0x17a5e78"
+        },
+        {
+          "at": "0x17a63e4",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.GetConfig"
+          ],
+          "address": "0x17a6014"
+        },
+        {
+          "at": "0x17a63f8",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.GetWarmLevelRemoveAnswerCount"
+          ],
+          "address": "0x17b13cc"
+        },
+        {
+          "at": "0x17a6410",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.WarmLevelReduceWord"
+          ],
+          "address": "0x17b15e4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 24781860,
+          "kind": "bl",
+          "owner": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.NewGame"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.TryUpdateDynamicAdjustUserLevel",
+      "address": "0x17b3b24",
+      "bytes": 520,
+      "calls": [
+        {
+          "at": "0x17b3bc8",
+          "names": [
+            "Logic.GameMgr.get_SettingsDataMgr"
+          ],
+          "address": "0x15697e4"
+        },
+        {
+          "at": "0x17b3bd4",
+          "names": [
+            "Data.Settings.SettingsDataMgr.get_CurLanguageCode"
+          ],
+          "address": "0x175cab4"
+        },
+        {
+          "at": "0x17b3be4",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17b3bf8",
+          "names": [
+            "Data.GamePlay.MainPlay.StageData.get_LevelIndex"
+          ],
+          "address": "0x17b8250"
+        },
+        {
+          "at": "0x17b3c0c",
+          "names": [
+            "Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr"
+          ],
+          "address": "0x17e59e4"
+        },
+        {
+          "at": "0x17b3c18",
+          "names": [
+            "Data.GamePlay.CommonPlay.CommonPlayDataMgr.get_HistoricalPassTime"
+          ],
+          "address": "0x17e8ac0"
+        },
+        {
+          "at": "0x17b3cb8",
+          "names": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.set_DynamicAdjustUserLevel"
+          ],
+          "address": "0x17b3ac4"
+        }
+      ],
+      "callers": [
+        {
+          "at": 23081340,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.MainPlayHandler.EndGame"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.BeginnerBonus.BeginnerBonusDataMgr.get_WillingScore",
+      "address": "0x1829998",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22507580,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22508396,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddWillingScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.BeginnerBonus.BeginnerBonusDataMgr.get_AbilityScore",
+      "address": "0x1829a54",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22507600,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507636,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22507724,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryStartActivity"
+          ]
+        },
+        {
+          "at": 22508684,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.TryAddAbilityScore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Data.BeginnerBonus.BeginnerBonusDataMgr.get_UserPotentialType",
+      "address": "0x1829bcc",
+      "bytes": 92,
+      "calls": [],
+      "callers": [
+        {
+          "at": 22507884,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 22507956,
+          "kind": "bl",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ]
+        },
+        {
+          "at": 25338604,
+          "kind": "bl",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDefine.get_TargetLevelIndex"
+          ]
+        }
+      ]
+    }
+  ],
+  "consumerXrefs": {
+    "0x157f62c": {
+      "name": "Logic.Handler.CelebrationEventHandler.GetCelebrationAbility",
+      "callers": [
+        {
+          "at": "0x18226c4",
+          "owner": [
+            "Data.CelebrationEvent.CelebrationEventDataMgr.NewDaySetupData"
+          ],
+          "start": "0x182213c",
+          "kind": "bl"
+        },
+        {
+          "at": "0x1822bb0",
+          "owner": [
+            "Data.CelebrationEvent.CelebrationEventDataMgr.RefreshCelebrationTask"
+          ],
+          "start": "0x1822948",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x172f0e8": {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1",
+      "callers": [
+        {
+          "at": "0x163e6dc",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        },
+        {
+          "at": "0x163e8a4",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        },
+        {
+          "at": "0x163e9e4",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        },
+        {
+          "at": "0x172f350",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ],
+          "start": "0x172f328",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x172f1ac": {
+      "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2",
+      "callers": [
+        {
+          "at": "0x163e8b4",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        },
+        {
+          "at": "0x163ea28",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        },
+        {
+          "at": "0x172f36c",
+          "owner": [
+            "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore"
+          ],
+          "start": "0x172f328",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x172f328": {
+      "name": "Data.UserAbility.UserAbilityDataMgr.UpdateAbilityScore",
+      "callers": [
+        {
+          "at": "0x163e9b4",
+          "owner": [
+            "Logic.Handler.UserAbilityHandler.TrySendBayesAbility"
+          ],
+          "start": "0x163e4b0",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x17b3a68": {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.get_DynamicAdjustUserLevel",
+      "callers": [
+        {
+          "at": "0x189df2c",
+          "owner": [
+            "Platform.Analyze.AnalyzeMgr.SendMainPlayLevelClearRecord"
+          ],
+          "start": "0x189c8d8",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x17b3ac4": {
+      "name": "Data.GamePlay.MainPlay.MainPlayDataMgr.set_DynamicAdjustUserLevel",
+      "callers": [
+        {
+          "at": "0x17b3cb8",
+          "owner": [
+            "Data.GamePlay.MainPlay.MainPlayDataMgr.TryUpdateDynamicAdjustUserLevel"
+          ],
+          "start": "0x17b3b24",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x1829bcc": {
+      "name": "Data.BeginnerBonus.BeginnerBonusDataMgr.get_UserPotentialType",
+      "callers": [
+        {
+          "at": "0x157716c",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ],
+          "start": "0x1577114",
+          "kind": "bl"
+        },
+        {
+          "at": "0x15771b4",
+          "owner": [
+            "Logic.Handler.BeginnerBonusHandler.GetExposureLevelList"
+          ],
+          "start": "0x1577114",
+          "kind": "bl"
+        },
+        {
+          "at": "0x182a2ec",
+          "owner": [
+            "Data.BeginnerBonus.BeginnerBonusDefine.get_TargetLevelIndex"
+          ],
+          "start": "0x182a154",
+          "kind": "bl"
+        }
+      ]
+    },
+    "0x183e3d4": {
+      "name": "Platform.UserTag.UserTagMgr.get_ChurnProb",
+      "callers": []
+    },
+    "0x183e3e4": {
+      "name": "Platform.UserTag.UserTagMgr.set_WordPropensityValue",
+      "callers": []
+    },
+    "0x183e3ec": {
+      "name": "Platform.UserTag.UserTagMgr.get_RewardPropensity",
+      "callers": []
+    }
+  },
+  "constantAndInlineReadAudit": {
+    "celebrationGroups": {
+      "highLanguages": [
+        {
+          "index": 19904,
+          "text": "it",
+          "xorKey": 102
+        },
+        {
+          "index": 19073,
+          "text": "fr",
+          "xorKey": 102
+        },
+        {
+          "index": 18521,
+          "text": "de",
+          "xorKey": 102
+        }
+      ],
+      "highCountries": [
+        {
+          "index": 15223,
+          "text": "US",
+          "xorKey": 0
+        },
+        {
+          "index": 6391,
+          "text": "GB",
+          "xorKey": 102
+        },
+        {
+          "index": 3371,
+          "unresolved": true
+        },
+        {
+          "index": 1763,
+          "unresolved": true
+        }
+      ],
+      "lowLanguages": [
+        {
+          "index": 21382,
+          "text": "pt",
+          "xorKey": 0
+        },
+        {
+          "index": 19677,
+          "text": "id",
+          "xorKey": 102
+        }
+      ],
+      "lowCountries": [
+        {
+          "index": 9653,
+          "text": "MX",
+          "xorKey": 102
+        },
+        {
+          "index": 3414,
+          "unresolved": true
+        },
+        {
+          "index": 3404,
+          "unresolved": true
+        },
+        {
+          "index": 10912,
+          "text": "PE",
+          "xorKey": 102
+        },
+        {
+          "index": 5503,
+          "text": "EC",
+          "xorKey": 102
+        },
+        {
+          "index": 15543,
+          "text": "VE",
+          "xorKey": 0
+        },
+        {
+          "index": 7164,
+          "text": "IN",
+          "xorKey": 102
+        },
+        {
+          "index": 10917,
+          "text": "PH",
+          "xorKey": 102
+        },
+        {
+          "index": 10921,
+          "text": "PK",
+          "xorKey": 102
+        },
+        {
+          "index": 16215,
+          "text": "ZA",
+          "xorKey": 102
+        },
+        {
+          "index": 10235,
+          "text": "NG",
+          "xorKey": 0
+        },
+        {
+          "index": 9655,
+          "text": "MY",
+          "xorKey": 102
+        }
+      ]
+    },
+    "verifiedArrays": [
+      {
+        "field": "8164B551308994835730F3820D1624F6C547B312F347427C34E6840C2988D9F5",
+        "relIndex": 34,
+        "bytes": 16,
+        "metadataDataOffset": 11240,
+        "key": 102,
+        "hex": "cdcccc3e9a99993ecdcc4c3ecdcccc3d",
+        "int32": [
+          1053609165,
+          1050253722,
+          1045220557,
+          1036831949
+        ],
+        "float32": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.20000000298023224,
+          0.10000000149011612
+        ]
+      },
+      {
+        "field": "0615F9D0B3F954A49BA3EF07816E3C2692F50FEBAE020CF9A75119CFBD95752E",
+        "relIndex": 1,
+        "bytes": 12,
+        "metadataDataOffset": 10176,
+        "key": 102,
+        "hex": "320000005000000078000000",
+        "int32": [
+          50,
+          80,
+          120
+        ],
+        "float32": [
+          7.006492321624085e-44,
+          1.1210387714598537e-43,
+          1.6815581571897805e-43
+        ]
+      },
+      {
+        "field": "3F2A483B55796A345D18626D484718826EC41BBE52E4D43070A72493C90754EC",
+        "relIndex": 18,
+        "bytes": 12,
+        "metadataDataOffset": 10816,
+        "key": 102,
+        "hex": "6400000096000000fa000000",
+        "int32": [
+          100,
+          150,
+          250
+        ],
+        "float32": [
+          1.401298464324817e-43,
+          2.1019476964872256e-43,
+          3.5032461608120427e-43
+        ]
+      },
+      {
+        "field": "90D3D279B4341A625EF0C2304BB0CF4B19DB103EDD0776B571BD9E1B5F80436F",
+        "relIndex": 45,
+        "bytes": 12,
+        "metadataDataOffset": 11592,
+        "key": 102,
+        "hex": "080000000f0000001e000000",
+        "int32": [
+          8,
+          15,
+          30
+        ],
+        "float32": [
+          1.1210387714598537e-44,
+          2.1019476964872256e-44,
+          4.203895392974451e-44
+        ]
+      },
+      {
+        "field": "97CA1592048640A5368B4EC7C6934311567E09D50E7639918EC82C3D2A187CDA",
+        "relIndex": 47,
+        "bytes": 12,
+        "metadataDataOffset": 11640,
+        "key": 102,
+        "hex": "0a000000140000001e000000",
+        "int32": [
+          10,
+          20,
+          30
+        ],
+        "float32": [
+          1.401298464324817e-44,
+          2.802596928649634e-44,
+          4.203895392974451e-44
+        ]
+      },
+      {
+        "field": "DE8E647328C2C3B475B7E88A2CD7F9D94EC4DAEE6FB51DABBF1583B27A8FF0B9",
+        "relIndex": 69,
+        "bytes": 12,
+        "metadataDataOffset": 12288,
+        "key": 102,
+        "hex": "05000000080000000a000000",
+        "int32": [
+          5,
+          8,
+          10
+        ],
+        "float32": [
+          7.006492321624085e-45,
+          1.1210387714598537e-44,
+          1.401298464324817e-44
+        ]
+      },
+      {
+        "field": "F03BFD6C3BAF5F4AB22B26146DE10516E33CB027418A6357AD80B96CB5914325",
+        "relIndex": 76,
+        "bytes": 12,
+        "metadataDataOffset": 12464,
+        "key": 102,
+        "hex": "78000000b4000000c8000000",
+        "int32": [
+          120,
+          180,
+          200
+        ],
+        "float32": [
+          1.6815581571897805e-43,
+          2.5223372357846707e-43,
+          2.802596928649634e-43
+        ]
+      }
+    ],
+    "constructorLists": [
+      {
+        "storeAt": "0x182ab1c",
+        "staticOffset": "0",
+        "values": [
+          4,
+          9,
+          12,
+          15,
+          20,
+          25,
+          30
+        ]
+      },
+      {
+        "storeAt": "0x182ae00",
+        "staticOffset": "8",
+        "values": [
+          4,
+          9,
+          12,
+          20,
+          25,
+          30,
+          35
+        ]
+      },
+      {
+        "storeAt": "0x182b014",
+        "staticOffset": "0x10",
+        "values": [
+          4,
+          9,
+          14,
+          20,
+          25
+        ]
+      },
+      {
+        "storeAt": "0x182b228",
+        "staticOffset": "0x18",
+        "values": [
+          2,
+          4,
+          9,
+          12,
+          15
+        ]
+      },
+      {
+        "storeAt": "0x182b3d8",
+        "staticOffset": "0x20",
+        "values": [
+          2,
+          5,
+          8,
+          10
+        ]
+      },
+      {
+        "storeAt": "0x182b730",
+        "staticOffset": "0x28",
+        "values": [
+          2,
+          4,
+          8,
+          12,
+          15,
+          20,
+          25,
+          30
+        ]
+      },
+      {
+        "storeAt": "0x182b960",
+        "staticOffset": "0x40",
+        "values": [
+          2,
+          5,
+          8,
+          10
+        ]
+      },
+      {
+        "storeAt": "0x182bd60",
+        "staticOffset": "0x68",
+        "values": [
+          1,
+          4,
+          10,
+          12,
+          15,
+          20,
+          25,
+          30
+        ]
+      },
+      {
+        "storeAt": "0x182c048",
+        "staticOffset": "0x70",
+        "values": [
+          5,
+          10,
+          12,
+          15,
+          20,
+          25,
+          30
+        ]
+      }
+    ],
+    "storeAbilityCandidates": [
+      {
+        "name": "Logic.Handler.CommonPlayHandler.OnBlindBoxRewardGet",
+        "address": "0x15ba9bc",
+        "hits": [
+          "0x15baa38"
+        ],
+        "snippets": [
+          "15baa18: str xzr, [sp, #8]\n15baa1c: ldr x8, [x8, #0xb8]\n15baa20: ldr x8, [x8]\n15baa24: cbz x8, #0x15bab60\n15baa28: ldr x20, [x8, #0x110]\n15baa2c: cbz x20, #0x15bab60\n15baa30: adrp x21, #0x2b80000\n15baa34: ldr x21, [x21, #0x688] ; TYPE System.DateTime [load 0x2b80688]\n15baa38: ldr x19, [x20, #0x1a8]\n15baa3c: ldr x0, [x21] ; TYPE System.DateTime [load 0x2c791b8]\n15baa40: ldr w8, [x0, #0xe4]\n15baa44: cbnz w8, #0x15baa50\n15baa48: bl #0x1167a84\n15baa4c: ldr x0, [x21] ; TYPE System.DateTime [load 0x2c791b8]\n15baa50: ldr x8, [x0, #0xb8]\n15baa54: mov x0, x19"
+        ]
+      },
+      {
+        "name": "Logic.Handler.FunctionBlockHandler.UpdateFunctionBlockState",
+        "address": "0x15df49c",
+        "hits": [
+          "0x15df648",
+          "0x15df688",
+          "0x15df6a8",
+          "0x15df6ec"
+        ],
+        "snippets": [
+          "15df628: cmp w19, #0\n15df62c: mov x2, xzr\n15df630: cset w1, ne\n15df634: bl #0x17f6488 ; Data.FunctionBlock.FunctionBlockDataMgr.UseActiveActivityElement\n15df638: ldr x8, [x21] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n15df63c: ldr x8, [x8, #0xb8]\n15df640: ldr x8, [x8]\n15df644: cbz x8, #0x15df820\n15df648: ldr x9, [x8, #0x1a8]\n15df64c: cbz x9, #0x15df820\n15df650: ldr w9, [x9, #0x3c]\n15df654: cmp w9, #2\n15df658: b.lo #0x15df6a8\n15df65c: mov x0, xzr\n15df660: bl #0x16268c4 ; Logic.Handler.SettingsHandler.IsEnglish\n15df664: ldr x8, [x21] ; TYPE Store.StoreRoot [load 0x2c7d3e0]",
+          "15df668: ldr x8, [x8, #0xb8]\n15df66c: ldr x8, [x8]\n15df670: tbz w0, #0, #0x15df6a4\n15df674: cbz x8, #0x15df820\n15df678: ldr x9, [x8, #0x110]\n15df67c: cbz x9, #0x15df820\n15df680: ldr w10, [x9, #0x4c]\n15df684: cbnz w10, #0x15df6a8\n15df688: ldr x10, [x8, #0x1a8]\n15df68c: cbz x10, #0x15df820\n15df690: ldr w12, [x9, #0x10]\n15df694: mov w11, #1\n15df698: str w11, [x10, #0x3c]\n15df69c: str w12, [x9, #0x4c]\n15df6a0: b #0x15df6a8\n15df6a4: cbz x8, #0x15df820",
+          "15df688: ldr x10, [x8, #0x1a8]\n15df68c: cbz x10, #0x15df820\n15df690: ldr w12, [x9, #0x10]\n15df694: mov w11, #1\n15df698: str w11, [x10, #0x3c]\n15df69c: str w12, [x9, #0x4c]\n15df6a0: b #0x15df6a8\n15df6a4: cbz x8, #0x15df820\n15df6a8: ldr x9, [x8, #0x1a8]\n15df6ac: cbz x9, #0x15df820\n15df6b0: ldr w9, [x9, #0x40]\n15df6b4: sub w9, w9, #6\n15df6b8: cmp w9, #2\n15df6bc: b.hi #0x15df70c\n15df6c0: ldr x8, [x8, #0x110]\n15df6c4: cbz x8, #0x15df820",
+          "15df6cc: cbnz w8, #0x15df70c\n15df6d0: mov x0, xzr\n15df6d4: bl #0x16268c4 ; Logic.Handler.SettingsHandler.IsEnglish\n15df6d8: tbz w0, #0, #0x15df70c\n15df6dc: ldr x8, [x21] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n15df6e0: ldr x8, [x8, #0xb8]\n15df6e4: ldr x8, [x8]\n15df6e8: cbz x8, #0x15df820\n15df6ec: ldr x9, [x8, #0x1a8]\n15df6f0: cbz x9, #0x15df820\n15df6f4: ldr x8, [x8, #0x110]\n15df6f8: mov w10, #1\n15df6fc: str w10, [x9, #0x40]\n15df700: cbz x8, #0x15df820\n15df704: ldr w9, [x8, #0x10]\n15df708: str w9, [x8, #0x4c]"
+        ]
+      },
+      {
+        "name": "Data.DataMgr.Init",
+        "address": "0x1722880",
+        "hits": [
+          "0x17236b8"
+        ],
+        "snippets": [
+          "1723698: bl #0x1167ba0\n172369c: mov x1, xzr\n17236a0: mov x21, x0\n17236a4: bl #0x182c3a4 ; Data.Ad.AdDataMgr..ctor\n17236a8: add x0, x19, #0x1a8\n17236ac: mov x1, x21\n17236b0: str x21, [x19, #0x1a8]\n17236b4: bl #0x11678f8\n17236b8: ldr x0, [x19, #0x1a8]\n17236bc: cbz x0, #0x1723990\n17236c0: adrp x21, #0x2ba0000\n17236c4: mov x1, xzr\n17236c8: ldr x21, [x21, #0xeb0] ; TYPE Data.WeeklyReport.WeeklyReportDataMgr [load 0x2ba0eb0]\n17236cc: bl #0x182c060 ; Data.Ad.AdDataMgr.Init\n17236d0: ldr x0, [x21] ; TYPE Data.WeeklyReport.WeeklyReportDataMgr [load 0x2c7e418]\n17236d4: bl #0x1167ba0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore1",
+        "address": "0x172f0e8",
+        "hits": [
+          "0x172f128"
+        ],
+        "snippets": [
+          "172f108: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f10c: bl #0x116794c\n172f110: mov w8, #1\n172f114: strb w8, [x19, #0xa07]\n172f118: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f11c: ldr x8, [x8, #0xb8]\n172f120: ldr x8, [x8]\n172f124: cbz x8, #0x172f140\n172f128: ldr x8, [x8, #0x1a8]\n172f12c: cbz x8, #0x172f140\n172f130: ldp x20, x19, [sp, #0x10]\n172f134: ldr d0, [x8, #0x10]\n172f138: ldr x30, [sp], #0x20\n172f13c: ret \n172f140: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore1",
+        "address": "0x172f144",
+        "hits": [
+          "0x172f18c"
+        ],
+        "snippets": [
+          "172f16c: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f170: bl #0x116794c\n172f174: mov w8, #1\n172f178: strb w8, [x19, #0xa08]\n172f17c: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f180: ldr x8, [x8, #0xb8]\n172f184: ldr x8, [x8]\n172f188: cbz x8, #0x172f1a8\n172f18c: ldr x8, [x8, #0x1a8]\n172f190: cbz x8, #0x172f1a8\n172f194: ldp x20, x19, [sp, #0x10]\n172f198: ldr x30, [sp, #8]\n172f19c: str d8, [x8, #0x10]\n172f1a0: ldr d8, [sp], #0x20\n172f1a4: ret \n172f1a8: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.get_AbilityScore2",
+        "address": "0x172f1ac",
+        "hits": [
+          "0x172f1ec"
+        ],
+        "snippets": [
+          "172f1cc: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f1d0: bl #0x116794c\n172f1d4: mov w8, #1\n172f1d8: strb w8, [x19, #0xa09]\n172f1dc: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f1e0: ldr x8, [x8, #0xb8]\n172f1e4: ldr x8, [x8]\n172f1e8: cbz x8, #0x172f204\n172f1ec: ldr x8, [x8, #0x1a8]\n172f1f0: cbz x8, #0x172f204\n172f1f4: ldp x20, x19, [sp, #0x10]\n172f1f8: ldr d0, [x8, #0x18]\n172f1fc: ldr x30, [sp], #0x20\n172f200: ret \n172f204: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.set_AbilityScore2",
+        "address": "0x172f208",
+        "hits": [
+          "0x172f250"
+        ],
+        "snippets": [
+          "172f230: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f234: bl #0x116794c\n172f238: mov w8, #1\n172f23c: strb w8, [x19, #0xa0a]\n172f240: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f244: ldr x8, [x8, #0xb8]\n172f248: ldr x8, [x8]\n172f24c: cbz x8, #0x172f26c\n172f250: ldr x8, [x8, #0x1a8]\n172f254: cbz x8, #0x172f26c\n172f258: ldp x20, x19, [sp, #0x10]\n172f25c: ldr x30, [sp, #8]\n172f260: str d8, [x8, #0x18]\n172f264: ldr d8, [sp], #0x20\n172f268: ret \n172f26c: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.get_CanParticipateBayesRecord",
+        "address": "0x172f028",
+        "hits": [
+          "0x172f068"
+        ],
+        "snippets": [
+          "172f048: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f04c: bl #0x116794c\n172f050: mov w8, #1\n172f054: strb w8, [x19, #0xa0b]\n172f058: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f05c: ldr x8, [x8, #0xb8]\n172f060: ldr x8, [x8]\n172f064: cbz x8, #0x172f080\n172f068: ldr x8, [x8, #0x1a8]\n172f06c: cbz x8, #0x172f080\n172f070: ldp x20, x19, [sp, #0x10]\n172f074: ldr w0, [x8, #0x20]\n172f078: ldr x30, [sp], #0x20\n172f07c: ret \n172f080: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.set_CanParticipateBayesRecord",
+        "address": "0x172f084",
+        "hits": [
+          "0x172f0c8"
+        ],
+        "snippets": [
+          "172f0a8: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f0ac: bl #0x116794c\n172f0b0: mov w8, #1\n172f0b4: strb w8, [x20, #0xa0c]\n172f0b8: ldr x8, [x21] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f0bc: ldr x8, [x8, #0xb8]\n172f0c0: ldr x8, [x8]\n172f0c4: cbz x8, #0x172f0e0\n172f0c8: ldr x8, [x8, #0x1a8]\n172f0cc: cbz x8, #0x172f0e0\n172f0d0: str w19, [x8, #0x20]\n172f0d4: ldp x20, x19, [sp, #0x10]\n172f0d8: ldp x30, x21, [sp], #0x20\n172f0dc: ret \n172f0e0: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.get_LocatedAbilityData",
+        "address": "0x172f270",
+        "hits": [
+          "0x172f2b0"
+        ],
+        "snippets": [
+          "172f290: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f294: bl #0x116794c\n172f298: mov w8, #1\n172f29c: strb w8, [x19, #0xa0d]\n172f2a0: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f2a4: ldr x8, [x8, #0xb8]\n172f2a8: ldr x8, [x8]\n172f2ac: cbz x8, #0x172f2c8\n172f2b0: ldr x8, [x8, #0x1a8]\n172f2b4: cbz x8, #0x172f2c8\n172f2b8: ldp x20, x19, [sp, #0x10]\n172f2bc: ldr x0, [x8, #0x28]\n172f2c0: ldr x30, [sp], #0x20\n172f2c4: ret \n172f2c8: bl #0x1167bb0"
+        ]
+      },
+      {
+        "name": "Data.UserAbility.UserAbilityDataMgr.get_RollingMatchAdjustLevelList",
+        "address": "0x172f2cc",
+        "hits": [
+          "0x172f30c"
+        ],
+        "snippets": [
+          "172f2ec: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]\n172f2f0: bl #0x116794c\n172f2f4: mov w8, #1\n172f2f8: strb w8, [x19, #0xa0e]\n172f2fc: ldr x8, [x20] ; TYPE Store.StoreRoot [load 0x2c7d3e0]\n172f300: ldr x8, [x8, #0xb8]\n172f304: ldr x8, [x8]\n172f308: cbz x8, #0x172f324\n172f30c: ldr x8, [x8, #0x1a8]\n172f310: cbz x8, #0x172f324\n172f314: ldp x20, x19, [sp, #0x10]\n172f318: ldr x0, [x8, #0x30]\n172f31c: ldr x30, [sp], #0x20\n172f320: ret \n172f324: bl #0x1167bb0"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "tierTranslationCases": 14641,
+    "initialConstantArraysVerifiedBySha256": 7,
+    "sameMetadataAsPreviousBaseApk": true,
+    "androidAppInstalledOrExecuted": false
+  },
+  "limits": [
+    "No account runtime trace, so live experiment hit and server overrides are not asserted.",
+    "No backend formula connecting reported ability to remote tags is available.",
+    "Four country-name literal records remain protected; they are not guessed.",
+    "Some imported math symbol labels are inconsistent under binary protection; the middle-case initial-rating logarithm is not asserted as fully decoded."
+  ]
+}

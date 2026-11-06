@@ -11,11 +11,10 @@ export async function preloadPlayerArt() {
   const urls=PLAYER_ART.map(filename=>new URL('../art/yanqi/'+filename,import.meta.url).href);
   urls.push(new URL('../art/settlement/reference.png',import.meta.url).href);
   urls.push(new URL('../art/settlement/foreground.png',import.meta.url).href);
-  urls.push(new URL('../art/settlement/abc-wreath.png',import.meta.url).href);
-  urls.push(new URL('../art/settlement/abc-wreath-back.png',import.meta.url).href);
-  urls.push(new URL('../art/settlement/abc-tiles-front.png',import.meta.url).href);
+  urls.push(new URL('../art/settlement/golden-book/book@2x.png',import.meta.url).href);
   urls.push(new URL('../art/encouragement/great-streak.png',import.meta.url).href);
   urls.push(new URL('../art/encouragement/great-complete.png',import.meta.url).href);
+  for(const file of ['5@2x.png','6@2x.png','7@2x.png','8@2x.png'])urls.push(new URL('../art/floral-banners/'+file,import.meta.url).href);
   await Promise.all(urls.map(async url => {
     const image = new Image();
     image.src = url;

@@ -1,0 +1,270 @@
+{
+  "source": "用户提供：块/特殊材质",
+  "processing": "All 24 supplied PNG files copied unchanged. No resampling or alpha edits.",
+  "assets": [
+    {
+      "file": "stone/normal.png",
+      "source": "1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "2c454aa6b76148e02848d899f3c96308e767d5ce3951ae0ed1ccf087cbbeb713",
+      "bytes": 26352
+    },
+    {
+      "file": "stone/highlight.png",
+      "source": "1-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "a18566683038cc137ed1341ad7af280b2e7c889b99eea8bff129ac577c49adca",
+      "bytes": 30404
+    },
+    {
+      "file": "stone/pressed.png",
+      "source": "按压/1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "39ea4836ec5b826ee970ec88f049903a89456f779805039c0d6cf8c49c8e8e24",
+      "bytes": 27319
+    },
+    {
+      "file": "stone/pressed-short.png",
+      "source": "按压缩短/1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "4d0668f70d080c6422197ba3687bb5c7f9a255305e1ef9ca68eae874677d6aa4",
+      "bytes": 26210
+    },
+    {
+      "file": "sand/normal.png",
+      "source": "2.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "2391237a55d9c987cf75f1ace9b174dc18dc0fbf8c06bf695ecf5a4869da217e",
+      "bytes": 29417
+    },
+    {
+      "file": "sand/highlight.png",
+      "source": "2-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "4378977e957d98a04a7644a73a87ee6296af57d9227273763400dfc6dcac302c",
+      "bytes": 33524
+    },
+    {
+      "file": "sand/pressed.png",
+      "source": "按压/2.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "74305e81764d04632cab54016ad482208c9c9c879078168a48c1cc5b4bb02553",
+      "bytes": 30275
+    },
+    {
+      "file": "sand/pressed-short.png",
+      "source": "按压缩短/2.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "ac3b182618f65c0fb539db95cf03ecfd8eab61b24fa0e57177de48087bd4ffd6",
+      "bytes": 29643
+    },
+    {
+      "file": "ice/normal.png",
+      "source": "3.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "6ea72342f73678a35b2194a706be8d65ed7e89a461405763cec8c365dbb0d19e",
+      "bytes": 19372
+    },
+    {
+      "file": "ice/highlight.png",
+      "source": "3-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "fa225401870f0392e71bb20f40119bebcd48827881c8aa0d2c78f20e157a2cfb",
+      "bytes": 22766
+    },
+    {
+      "file": "ice/pressed.png",
+      "source": "按压/3.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "3eb06741c86a9b8a0e2b25faf461b9e4d3ef7e7ec97881d4f040769cc069d731",
+      "bytes": 19779
+    },
+    {
+      "file": "ice/pressed-short.png",
+      "source": "按压缩短/3.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "25cbbb90a5acc730fa75d480bc7b0c4820fa2b636a9c6043eae160462f7512ab",
+      "bytes": 18934
+    },
+    {
+      "file": "biscuit/normal.png",
+      "source": "4.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "30a10e36228eb51fc18e5b823a8fad24049ccc227ea06b2c96992860fe882d20",
+      "bytes": 41879
+    },
+    {
+      "file": "biscuit/highlight.png",
+      "source": "4-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "a1bc915dcb3704afa9833d16871bf9d1bea019e8472292255b88d93239f335d7",
+      "bytes": 39081
+    },
+    {
+      "file": "biscuit/pressed.png",
+      "source": "按压/4.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "968b6584cf09382b72556c758e50688699821429d2dbf115e393d17d28f5d552",
+      "bytes": 42028
+    },
+    {
+      "file": "biscuit/pressed-short.png",
+      "source": "按压缩短/4.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "2b0c38f41c68573df109df0b1bc3cfa2eb401090008a32b609e6bb8c281226d9",
+      "bytes": 40437
+    },
+    {
+      "file": "jelly/normal.png",
+      "source": "5.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "52e329cc38e529bd049a03e51fd66e9dcc180a20f44949d26d2c376af84f8e87",
+      "bytes": 20617
+    },
+    {
+      "file": "jelly/highlight.png",
+      "source": "5-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "f63ede4e8fe24c52d0f80e50502aa6c1325d7ffaf28a059f2e8eabac2b66147a",
+      "bytes": 18906
+    },
+    {
+      "file": "jelly/pressed.png",
+      "source": "按压/5.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "d9cb9c075b5c2160a1ca006e41475a3af168ca695b8011ef15ffafcc8480812a",
+      "bytes": 20674
+    },
+    {
+      "file": "jelly/pressed-short.png",
+      "source": "按压缩短/5.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "4a3573e9089ea0589ca11e6b6394ebba70ce947f9e8c0b8a2f3e1d3282ae78b7",
+      "bytes": 19861
+    },
+    {
+      "file": "wood/normal.png",
+      "source": "6.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "4e953ee44fb0428584c2c83c84c92696ea88365723f80631c8e11fdc646d4a5c",
+      "bytes": 28546
+    },
+    {
+      "file": "wood/highlight.png",
+      "source": "6-1.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "7e165cb05bb57b7ec97507ef755e40ef06641485f0e295cde4e171aee97e7b75",
+      "bytes": 30290
+    },
+    {
+      "file": "wood/pressed.png",
+      "source": "按压/6.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "d5ee40dce775132a2409956ed698ffec1b94d0a08b0fdfaf8a313f8cb20fdc64",
+      "bytes": 28634
+    },
+    {
+      "file": "wood/pressed-short.png",
+      "source": "按压缩短/6.png",
+      "size": [
+        154,
+        156
+      ],
+      "mode": "RGBA",
+      "sha256": "59f2f0f0e10b11e428d009a0b006f8f562ad48a49964b21a17ee5fa5a8760eb7",
+      "bytes": 28132
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+{
+  "kind": "historical-quality-calculation-example",
+  "historicalRegressionOnly": true,
+  "notes": [
+    "此棋盘仅用于历史回归示例，不会载入正式词库或自动作为正式关卡。",
+    "本示例未提供可靠Zipf、词根和完整审核词典，对应指标保持不可用。"
+  ],
+  "formulas": {
+    "totalTurnCount": "EYE:1 + FEE:0 + LAD:0 + FEED:1 + PEDAL:1 = 3",
+    "straightRatio": "2 / 5 = 0.4",
+    "sharedCellRate": "6 / 9 = 0.6666666667",
+    "spellingSimilarity": {
+      "pair": [
+        "FEED",
+        "FEE"
+      ],
+      "formula": "0.5 × (6/7) + 0.3 × (3/3) + 0.2 × (1-1/4)",
+      "a": "FEED",
+      "b": "FEE",
+      "dice": 0.8571428571428571,
+      "commonSubstring": 1,
+      "editSimilarity": 0.75,
+      "pairSimilarity": 0.8785714285714286
+    }
+  },
+  "report": {
+    "metadata": {
+      "metricsVersion": "quality-metrics-v3.1",
+      "configVersion": "quality-v3-initial-1",
+      "algorithmVersion": "wordtiles-v1.0.0",
+      "dictionaryVersion": "whitelist-v2",
+      "seed": "固定样例",
+      "frequencyVersion": null
+    },
+    "hardValid": true,
+    "templateMatched": true,
+    "values": {
+      "avgZipf": null,
+      "minZipf": null,
+      "maxZipf": null,
+      "veryCommonCount": null,
+      "lowFrequencyCount": null,
+      "freqCoverage": 0,
+      "avgZipfEstimate": null,
+      "avgPairSimilarity": 0.35643650793650794,
+      "relatedPairCount": 1,
+      "highSimilarityPairCount": 1,
+      "prefixPairCount": 1,
+      "suffixPairCount": 0,
+      "innerSubstringPairCount": 0,
+      "containmentPairCount": 1,
+      "uniqueStartRatio": 0.8,
+      "uniqueEndRatio": 0.6,
+      "lengthDiversity": 1,
+      "stemDiversity": null,
+      "wordFormDiversity": 0.7,
+      "totalTurnCount": 3,
+      "avgTurnCount": 0.6,
+      "maxTurnCount": 1,
+      "straightRatio": 0.4,
+      "avgPathSpan": 0.65,
+      "avgBranching": 0.6153846153846154,
+      "sharedCellRate": 0.6666666666666666,
+      "doubleUseCount": 3,
+      "tripleUseCount": 3,
+      "maxPairOverlap": 3,
+      "firstWordEase": null,
+      "easyStartCount": null,
+      "firstWordPathEase": 1,
+      "ignoredValidCount": null,
+      "ignoredCommonCount": null,
+      "rewardedExtraCount": null,
+      "distractorScore": null,
+      "distractorPerTarget": null
+    },
+    "words": [
+      {
+        "word": "EYE",
+        "length": 3,
+        "zipf": null,
+        "zipfEstimate": null,
+        "frequencyComplete": false,
+        "path": [
+          0,
+          3,
+          4
+        ],
+        "turns": 1,
+        "rowSpan": 1,
+        "colSpan": 1,
+        "pathSpan": 0.5,
+        "extraBranches": 1,
+        "branchNodes": 2,
+        "wordBranching": 0.5,
+        "wordTurnCount": 1,
+        "wordEase": null,
+        "pathEase": 0.8397435897435898,
+        "pathCount": 2,
+        "consumptionSetCount": 1,
+        "alternatives": [
+          {
+            "path": [
+              0,
+              3,
+              4
+            ],
+            "turns": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "pathSpan": 0.5,
+            "extraBranches": 1,
+            "branchNodes": 2,
+            "wordBranching": 0.5
+          },
+          {
+            "path": [
+              4,
+              3,
+              0
+            ],
+            "turns": 1,
+            "rowSpan": 1,
+            "colSpan": 1,
+            "pathSpan": 0.5,
+            "extraBranches": 3,
+            "branchNodes": 2,
+            "wordBranching": 1.5
+          }
+        ],
+        "minTurns": 1,
+        "maxTurns": 1,
+        "minBranching": 0.5,
+        "maxBranching": 1.5
+      },
+      {
+        "word": "FEE",
+        "length": 3,
+        "zipf": null,
+        "zipfEstimate": null,
+        "frequencyComplete": false,
+        "path": [
+          1,
+          4,
+          7
+        ],
+        "turns": 0,
+        "rowSpan": 2,
+        "colSpan": 0,
+        "pathSpan": 0.5,
+        "extraBranches": 3,
+        "branchNodes": 2,
+        "wordBranching": 1.5,
+        "wordTurnCount": 0,
+        "wordEase": null,
+        "pathEase": 0.8269230769230769,
+        "pathCount": 1,
+        "consumptionSetCount": 1,
+        "alternatives": [
+          {
+            "path": [
+              1,
+              4,
+              7
+            ],
+            "turns": 0,
+            "rowSpan": 2,
+            "colSpan": 0,
+            "pathSpan": 0.5,
+            "extraBranches": 3,
+            "branchNodes": 2,
+            "wordBranching": 1.5
+          }
+        ],
+        "minTurns": 0,
+        "maxTurns": 0,
+        "minBranching": 1.5,
+        "maxBranching": 1.5
+      },
+      {
+        "word": "LAD",
+        "length": 3,
+        "zipf": null,
+        "zipfEstimate": null,
+        "frequencyComplete": false,
+        "path": [
+          2,
+          5,
+          8
+        ],
+        "turns": 0,
+        "rowSpan": 2,
+        "colSpan": 0,
+        "pathSpan": 0.5,
+        "extraBranches": 0,
+        "branchNodes": 2,
+        "wordBranching": 0,
+        "wordTurnCount": 0,
+        "wordEase": null,
+        "pathEase": 1,
+        "pathCount": 1,
+        "consumptionSetCount": 1,
+        "alternatives": [
+          {
+            "path": [
+              2,
+              5,
+              8
+            ],
+            "turns": 0,
+            "rowSpan": 2,
+            "colSpan": 0,
+            "pathSpan": 0.5,
+            "extraBranches": 0,
+            "branchNodes": 2,
+            "wordBranching": 0
+          }
+        ],
+        "minTurns": 0,
+        "maxTurns": 0,
+        "minBranching": 0,
+        "maxBranching": 0
+      },
+      {
+        "word": "FEED",
+        "length": 4,
+        "zipf": null,
+        "zipfEstimate": null,
+        "frequencyComplete": false,
+        "path": [
+          1,
+          4,
+          7,
+          8
+        ],
+        "turns": 1,
+        "rowSpan": 2,
+        "colSpan": 1,
+        "pathSpan": 0.75,
+        "extraBranches": 3,
+        "branchNodes": 3,
+        "wordBranching": 1,
+        "wordTurnCount": 1,
+        "wordEase": null,
+        "pathEase": 0.6666666666666666,
+        "pathCount": 1,
+        "consumptionSetCount": 1,
+        "alternatives": [
+          {
+            "path": [
+              1,
+              4,
+              7,
+              8
+            ],
+            "turns": 1,
+            "rowSpan": 2,
+            "colSpan": 1,
+            "pathSpan": 0.75,
+            "extraBranches": 3,
+            "branchNodes": 3,
+            "wordBranching": 1
+          }
+        ],
+        "minTurns": 1,
+        "maxTurns": 1,
+        "minBranching": 1,
+        "maxBranching": 1
+      },
+      {
+        "word": "PEDAL",
+        "length": 5,
+        "zipf": null,
+        "zipfEstimate": null,
+        "frequencyComplete": false,
+        "path": [
+          6,
+          7,
+          8,
+          5,
+          2
+        ],
+        "turns": 1,
+        "rowSpan": 2,
+        "colSpan": 2,
+        "pathSpan": 1,
+        "extraBranches": 1,
+        "branchNodes": 4,
+        "wordBranching": 0.25,
+        "wordTurnCount": 1,
+        "wordEase": null,
+        "pathEase": 0.6378205128205128,
+        "pathCount": 1,
+        "consumptionSetCount": 1,
+        "alternatives": [
+          {
+            "path": [
+              6,
+              7,
+              8,
+              5,
+              2
+            ],
+            "turns": 1,
+            "rowSpan": 2,
+            "colSpan": 2,
+            "pathSpan": 1,
+            "extraBranches": 1,
+            "branchNodes": 4,
+            "wordBranching": 0.25
+          }
+        ],
+        "minTurns": 1,
+        "maxTurns": 1,
+        "minBranching": 0.25,
+        "maxBranching": 0.25
+      }
+    ],
+    "pairs": [
+      {
+        "a": "EYE",
+        "b": "FEE",
+        "dice": 0.6666666666666666,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.33333333333333337,
+        "pairSimilarity": 0.5,
+        "containment": null
+      },
+      {
+        "a": "EYE",
+        "b": "LAD",
+        "dice": 0,
+        "commonSubstring": 0,
+        "editSimilarity": 0,
+        "pairSimilarity": 0,
+        "containment": null
+      },
+      {
+        "a": "EYE",
+        "b": "FEED",
+        "dice": 0.5714285714285714,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.25,
+        "pairSimilarity": 0.43571428571428567,
+        "containment": null
+      },
+      {
+        "a": "EYE",
+        "b": "PEDAL",
+        "dice": 0.25,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.19999999999999996,
+        "pairSimilarity": 0.26499999999999996,
+        "containment": null
+      },
+      {
+        "a": "FEE",
+        "b": "LAD",
+        "dice": 0,
+        "commonSubstring": 0,
+        "editSimilarity": 0,
+        "pairSimilarity": 0,
+        "containment": null
+      },
+      {
+        "a": "FEE",
+        "b": "FEED",
+        "dice": 0.8571428571428571,
+        "commonSubstring": 1,
+        "editSimilarity": 0.75,
+        "pairSimilarity": 0.8785714285714286,
+        "containment": "prefix"
+      },
+      {
+        "a": "FEE",
+        "b": "PEDAL",
+        "dice": 0.25,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.19999999999999996,
+        "pairSimilarity": 0.26499999999999996,
+        "containment": null
+      },
+      {
+        "a": "LAD",
+        "b": "FEED",
+        "dice": 0.2857142857142857,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.25,
+        "pairSimilarity": 0.2928571428571428,
+        "containment": null
+      },
+      {
+        "a": "LAD",
+        "b": "PEDAL",
+        "dice": 0.75,
+        "commonSubstring": 0.3333333333333333,
+        "editSimilarity": 0.19999999999999996,
+        "pairSimilarity": 0.515,
+        "containment": null
+      },
+      {
+        "a": "FEED",
+        "b": "PEDAL",
+        "dice": 0.4444444444444444,
+        "commonSubstring": 0.5,
+        "editSimilarity": 0.19999999999999996,
+        "pairSimilarity": 0.4122222222222222,
+        "containment": null
+      }
+    ],
+    "categories": {
+      "targetWords": [
+        "EYE",
+        "FEE",
+        "LAD",
+        "FEED",
+        "PEDAL"
+      ],
+      "rewardedExtraWords": [],
+      "ignoredValidWords": [],
+      "blockedWords": []
+    },
+    "distractorDetails": [],
+    "warnings": [
+      "可靠 Zipf 覆盖不足 80%；词频门槛不执行。工作簿生僻档位仅作近似参考。",
+      "未提供可靠词元／词根标记，词根多样性不可用。",
+      "审核词典缺失或棋盘搜词预算耗尽，干扰统计不完整。",
+      "审核词典仅覆盖已提供的词库，可能低估词典以外的干扰词。",
+      "未提供完整的额外词集合，前缀分支干扰可能被低估。"
+    ],
+    "completeness": {
+      "frequency": 0,
+      "stem": false,
+      "paths": true,
+      "reviewSearch": false,
+      "reviewDictionary": false,
+      "distractors": false,
+      "prefixDictionary": false,
+      "completableBranching": false
+    },
+    "search": {
+      "nodes": 0,
+      "limit": 100000
+    },
+    "diversityWeights": {
+      "start": 0.5,
+      "end": 0.5,
+      "length": 0
+    }
+  }
+}

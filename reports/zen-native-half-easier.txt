@@ -1,0 +1,1153 @@
+
+FUNCTION Logic.Handler.MainPlayHandler.GetHalfLevelEasierTimeThreshold 0x160f16c
+160f16c: str x30, [sp, #-0x20]!
+160f170: stp x20, x19, [sp, #0x10]
+160f174: adrp x20, #0x2db2000
+160f178: adrp x19, #0x2b80000
+160f17c: ldrb w8, [x20, #0x327]
+160f180: ldr x19, [x19, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+160f184: tbnz w8, #0, #0x160f19c
+160f188: adrp x0, #0x2b80000
+160f18c: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+160f190: bl #0x116794c
+160f194: mov w8, #1
+160f198: strb w8, [x20, #0x327]
+160f19c: ldr x0, [x19] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+160f1a0: ldr w8, [x0, #0xe4]
+160f1a4: cbnz w8, #0x160f1ac
+160f1a8: bl #0x1167a84
+160f1ac: adrp x20, #0x2db0000
+160f1b0: ldrb w8, [x20, #0x3be]
+160f1b4: cbnz w8, #0x160f1cc
+160f1b8: adrp x0, #0x2b80000
+160f1bc: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+160f1c0: bl #0x116794c
+160f1c4: mov w8, #1
+160f1c8: strb w8, [x20, #0x3be]
+160f1cc: ldr x0, [x19] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+160f1d0: ldr w8, [x0, #0xe4]
+160f1d4: cbnz w8, #0x160f1e0
+160f1d8: bl #0x1167a84
+160f1dc: ldr x0, [x19] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+160f1e0: ldr x8, [x0, #0xb8]
+160f1e4: ldr x0, [x8]
+160f1e8: cbz x0, #0x160f214
+160f1ec: mov x1, xzr
+160f1f0: bl #0x186b518 ; Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest6Hours
+160f1f4: mov w8, #0x5180
+160f1f8: ldp x20, x19, [sp, #0x10]
+160f1fc: movk w8, #1, lsl #16
+160f200: tst w0, #1
+160f204: mov w9, #0x5460
+160f208: csel w0, w9, w8, ne
+160f20c: ldr x30, [sp], #0x20
+160f210: ret 
+160f214: bl #0x1167bb0
+
+FUNCTION Logic.Handler.MainPlayHandler.TryApplyHalfLevelEasier 0x160100c
+160100c: sub sp, sp, #0x90
+1601010: stp d9, d8, [sp, #0x20]
+1601014: stp x29, x30, [sp, #0x30]
+1601018: stp x28, x27, [sp, #0x40]
+160101c: stp x26, x25, [sp, #0x50]
+1601020: stp x24, x23, [sp, #0x60]
+1601024: stp x22, x21, [sp, #0x70]
+1601028: stp x20, x19, [sp, #0x80]
+160102c: adrp x20, #0x2db2000
+1601030: mov x19, x0
+1601034: ldrb w8, [x20, #0x328]
+1601038: tbnz w8, #0, #0x1601170
+160103c: adrp x0, #0x2b80000
+1601040: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1601044: bl #0x116794c
+1601048: adrp x0, #0x2b80000
+160104c: ldr x0, [x0, #0x680] ; TYPE Logic.Handler.CommonHandler [load 0x2b80680]
+1601050: bl #0x116794c
+1601054: adrp x0, #0x2b80000
+1601058: ldr x0, [x0, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+160105c: bl #0x116794c
+1601060: adrp x0, #0x2b94000
+1601064: ldr x0, [x0, #0x908] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 20) [load 0x2b94908]
+1601068: bl #0x116794c
+160106c: adrp x0, #0x2b94000
+1601070: ldr x0, [x0, #0x910] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 110) [load 0x2b94910]
+1601074: bl #0x116794c
+1601078: adrp x0, #0x2b87000
+160107c: ldr x0, [x0, #0x430] ; GENERIC System.Collections.Generic.List`1.Clear (35581, 110, -1) [load 0x2b87430]
+1601080: bl #0x116794c
+1601084: adrp x0, #0x2b81000
+1601088: ldr x0, [x0, #0x748] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2b81748]
+160108c: bl #0x116794c
+1601090: adrp x0, #0x2b80000
+1601094: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+1601098: bl #0x116794c
+160109c: adrp x0, #0x2b81000
+16010a0: ldr x0, [x0, #0x740] ; USAGE kind=1 idx=5972 [load 0x2b81740]
+16010a4: bl #0x116794c
+16010a8: adrp x0, #0x2b81000
+16010ac: ldr x0, [x0, #0x780] ; TYPE Logic.Handler.MainPlayHandler [load 0x2b81780]
+16010b0: bl #0x116794c
+16010b4: adrp x0, #0x2b81000
+16010b8: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]
+16010bc: bl #0x116794c
+16010c0: adrp x0, #0x2b80000
+16010c4: ldr x0, [x0, #0x138] ; TYPE System.Text.StringBuilder [load 0x2b80138]
+16010c8: bl #0x116794c
+16010cc: adrp x0, #0x2b80000
+16010d0: ldr x0, [x0, #0x6b8] ; TYPE System.TimeSpan [load 0x2b806b8]
+16010d4: bl #0x116794c
+16010d8: adrp x0, #0x2b94000
+16010dc: ldr x0, [x0, #0x918] ; STRING_LITERAL #309 [load 0x2b94918]
+16010e0: bl #0x116794c
+16010e4: adrp x0, #0x2b94000
+16010e8: ldr x0, [x0, #0x920] ; STRING_LITERAL #16505 [load 0x2b94920]
+16010ec: bl #0x116794c
+16010f0: adrp x0, #0x2b94000
+16010f4: ldr x0, [x0, #0x928] ; STRING_LITERAL #16504 [load 0x2b94928]
+16010f8: bl #0x116794c
+16010fc: adrp x0, #0x2b94000
+1601100: ldr x0, [x0, #0x930] ; STRING_LITERAL #16508 [load 0x2b94930]
+1601104: bl #0x116794c
+1601108: adrp x0, #0x2b94000
+160110c: ldr x0, [x0, #0x938] ; STRING_LITERAL #16506 [load 0x2b94938]
+1601110: bl #0x116794c
+1601114: adrp x0, #0x2b94000
+1601118: ldr x0, [x0, #0x940] ; STRING_LITERAL #282 [load 0x2b94940]
+160111c: bl #0x116794c
+1601120: adrp x0, #0x2b94000
+1601124: ldr x0, [x0, #0x948] ; STRING_LITERAL #16507 [load 0x2b94948]
+1601128: bl #0x116794c
+160112c: adrp x0, #0x2b94000
+1601130: ldr x0, [x0, #0x950] ; STRING_LITERAL #16502 [load 0x2b94950]
+1601134: bl #0x116794c
+1601138: adrp x0, #0x2b8e000
+160113c: ldr x0, [x0, #0xd78] ; STRING_LITERAL #700 [load 0x2b8ed78]
+1601140: bl #0x116794c
+1601144: adrp x0, #0x2b94000
+1601148: ldr x0, [x0, #0x958] ; STRING_LITERAL #16503 [load 0x2b94958]
+160114c: bl #0x116794c
+1601150: adrp x0, #0x2b94000
+1601154: ldr x0, [x0, #0x960] ; STRING_LITERAL #23053 [load 0x2b94960]
+1601158: bl #0x116794c
+160115c: adrp x0, #0x2b94000
+1601160: ldr x0, [x0, #0x968] ; STRING_LITERAL #152 [load 0x2b94968]
+1601164: bl #0x116794c
+1601168: mov w8, #1
+160116c: strb w8, [x20, #0x328]
+1601170: stp xzr, xzr, [sp, #0x10]
+1601174: str wzr, [sp, #0xc]
+1601178: str xzr, [sp]
+160117c: cbz x19, #0x1601a10
+1601180: ldrb w8, [x19, #0x61]
+1601184: cbz w8, #0x16019c4
+1601188: mov x0, x19
+160118c: mov x1, xzr
+1601190: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+1601194: cbz x0, #0x1601a10
+1601198: adrp x27, #0x2b81000
+160119c: mov x21, x0
+16011a0: ldr x27, [x27, #0x780] ; TYPE Logic.Handler.MainPlayHandler [load 0x2b81780]
+16011a4: ldr x20, [x21, #0x198]
+16011a8: ldr x0, [x27] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+16011ac: ldr w8, [x0, #0xe4]
+16011b0: cbnz w8, #0x16011b8
+16011b4: bl #0x1167a84
+16011b8: adrp x26, #0x2b80000
+16011bc: ldr x26, [x26, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+16011c0: bl #0x15ffc74 ; Logic.Handler.MainPlayHandler.IsChainPlayMode
+16011c4: adrp x29, #0x2db0000
+16011c8: tbnz w0, #0, #0x16012f0
+16011cc: ldr w8, [x21, #0x130]
+16011d0: cmp w8, #0x64
+16011d4: b.lt #0x16012f0
+16011d8: adrp x8, #0x2b81000
+16011dc: ldr x8, [x8, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]
+16011e0: ldr x8, [x8] ; TYPE Store.StoreRoot [load 0x2c7d3e0]
+16011e4: ldr x8, [x8, #0xb8]
+16011e8: ldr x8, [x8]
+16011ec: cbz x8, #0x1601a10
+16011f0: ldr x8, [x8, #0x58]
+16011f4: cbz x8, #0x1601a10
+16011f8: ldr w8, [x8, #0x34]
+16011fc: cmp w8, #3
+1601200: b.lt #0x16012f0
+1601204: adrp x22, #0x2b94000
+1601208: ldr x22, [x22, #0x910] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 110) [load 0x2b94910]
+160120c: ldr x0, [x21, #0x20]
+1601210: ldr x1, [x22] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 110) [load 0x2c97988]
+1601214: bl #0x1a72a50
+1601218: tbnz w0, #0, #0x1601250
+160121c: ldr x0, [x21, #0x18]
+1601220: ldr x1, [x22] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 110) [load 0x2c97988]
+1601224: bl #0x1a72a50
+1601228: tbnz w0, #0, #0x1601250
+160122c: adrp x8, #0x2b94000
+1601230: ldr x8, [x8, #0x908] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 20) [load 0x2b94908]
+1601234: ldr x0, [x21, #0x28]
+1601238: ldr x1, [x8] ; GENERIC System.Linq.Enumerable.Any (53556, -1, 20) [load 0x2c97970]
+160123c: bl #0x1a72820
+1601240: tbnz w0, #0, #0x1601250
+1601244: ldr w8, [x21, #0x168]
+1601248: cmp w8, #1
+160124c: b.lt #0x16012e8
+1601250: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601254: ldr w8, [x0, #0xe4]
+1601258: cbnz w8, #0x1601260
+160125c: bl #0x1167a84
+1601260: ldrb w8, [x29, #0x3be]
+1601264: cbnz w8, #0x160127c
+1601268: adrp x0, #0x2b80000
+160126c: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1601270: bl #0x116794c
+1601274: mov w8, #1
+1601278: strb w8, [x29, #0x3be]
+160127c: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601280: ldr w8, [x0, #0xe4]
+1601284: cbnz w8, #0x1601290
+1601288: bl #0x1167a84
+160128c: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601290: ldr x8, [x0, #0xb8]
+1601294: ldr x0, [x8]
+1601298: cbz x0, #0x1601a10
+160129c: mov x1, xzr
+16012a0: bl #0x186eeb4 ; Platform.AbTest.AbTestMgr.StainHalfLevelEasier
+16012a4: ldrb w8, [x29, #0x3be]
+16012a8: cbnz w8, #0x16012c0
+16012ac: adrp x0, #0x2b80000
+16012b0: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+16012b4: bl #0x116794c
+16012b8: mov w8, #1
+16012bc: strb w8, [x29, #0x3be]
+16012c0: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16012c4: ldr w8, [x0, #0xe4]
+16012c8: cbnz w8, #0x16012d4
+16012cc: bl #0x1167a84
+16012d0: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16012d4: ldr x8, [x0, #0xb8]
+16012d8: ldr x0, [x8]
+16012dc: cbz x0, #0x1601a10
+16012e0: mov x1, xzr
+16012e4: bl #0x186ef08 ; Platform.AbTest.AbTestMgr.StainHalfLevelEasierTest2
+16012e8: mov w22, #1
+16012ec: b #0x16012f4
+16012f0: mov w22, wzr
+16012f4: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16012f8: ldr w8, [x0, #0xe4]
+16012fc: cbnz w8, #0x1601304
+1601300: bl #0x1167a84
+1601304: ldrb w8, [x29, #0x3be]
+1601308: cbnz w8, #0x1601320
+160130c: adrp x0, #0x2b80000
+1601310: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1601314: bl #0x116794c
+1601318: mov w8, #1
+160131c: strb w8, [x29, #0x3be]
+1601320: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601324: ldr w8, [x0, #0xe4]
+1601328: cbnz w8, #0x1601334
+160132c: bl #0x1167a84
+1601330: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601334: ldr x8, [x0, #0xb8]
+1601338: ldr x0, [x8]
+160133c: cbz x0, #0x1601a10
+1601340: mov x1, xzr
+1601344: bl #0x186b4d8 ; Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest1
+1601348: and w8, w22, w0
+160134c: cmp w8, #1
+1601350: b.ne #0x16019c4
+1601354: adrp x8, #0x2b80000
+1601358: ldr x8, [x8, #0x138] ; TYPE System.Text.StringBuilder [load 0x2b80138]
+160135c: ldr x0, [x8] ; TYPE System.Text.StringBuilder [load 0x2c7d450]
+1601360: bl #0x1167ba0
+1601364: mov x1, xzr
+1601368: mov x22, x0
+160136c: bl #0x21f205c ; System.Text.StringBuilder..ctor
+1601370: cbz x20, #0x1601a10
+1601374: adrp x28, #0x2b8e000
+1601378: adrp x8, #0x2b94000
+160137c: ldr x28, [x28, #0xd78] ; STRING_LITERAL #700 [load 0x2b8ed78]
+1601380: ldr x8, [x8, #0x938] ; STRING_LITERAL #16506 [load 0x2b94938]
+1601384: ldr x25, [x20, #0x30]
+1601388: ldr x24, [x28] ; STRING_LITERAL #700 [load 0x2cabcd8]
+160138c: ldr x23, [x8] ; STRING_LITERAL #16506 [load 0x2ccaab0]
+1601390: cbnz x25, #0x16013b8
+1601394: adrp x8, #0x2b81000
+1601398: ldr x8, [x8, #0x740] ; USAGE kind=1 idx=5972 [load 0x2b81740]
+160139c: ldr x0, [x8] ; USAGE kind=1 idx=5972 [load 0x2c75b20]
+16013a0: bl #0x1167ba0
+16013a4: adrp x8, #0x2b81000
+16013a8: mov x25, x0
+16013ac: ldr x8, [x8, #0x748] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2b81748]
+16013b0: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2c8ea38]
+16013b4: bl #0x1ec1474
+16013b8: mov x0, x24
+16013bc: mov x1, x25
+16013c0: mov x2, xzr
+16013c4: bl #0x21ec5b8 ; System.String.Join
+16013c8: mov x1, x0
+16013cc: mov x0, x23
+16013d0: mov x2, xzr
+16013d4: bl #0x21e1750 ; System.String.Concat
+16013d8: cbz x22, #0x1601a10
+16013dc: mov x1, x0
+16013e0: mov x0, x22
+16013e4: mov x2, xzr
+16013e8: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+16013ec: adrp x8, #0x2b94000
+16013f0: ldr x8, [x8, #0x928] ; STRING_LITERAL #16504 [load 0x2b94928]
+16013f4: ldr x25, [x20, #0x28]
+16013f8: ldr x24, [x28] ; STRING_LITERAL #700 [load 0x2cabcd8]
+16013fc: ldr x23, [x8] ; STRING_LITERAL #16504 [load 0x2ccaaa0]
+1601400: cbnz x25, #0x1601428
+1601404: adrp x8, #0x2b81000
+1601408: ldr x8, [x8, #0x740] ; USAGE kind=1 idx=5972 [load 0x2b81740]
+160140c: ldr x0, [x8] ; USAGE kind=1 idx=5972 [load 0x2c75b20]
+1601410: bl #0x1167ba0
+1601414: adrp x8, #0x2b81000
+1601418: mov x25, x0
+160141c: ldr x8, [x8, #0x748] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2b81748]
+1601420: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2c8ea38]
+1601424: bl #0x1ec1474
+1601428: mov x0, x24
+160142c: mov x1, x25
+1601430: mov x2, xzr
+1601434: bl #0x21ec5b8 ; System.String.Join
+1601438: mov x1, x0
+160143c: mov x0, x23
+1601440: mov x2, xzr
+1601444: bl #0x21e1750 ; System.String.Concat
+1601448: mov x1, x0
+160144c: mov x0, x22
+1601450: mov x2, xzr
+1601454: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+1601458: adrp x24, #0x2b80000
+160145c: ldr x24, [x24, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+1601460: ldr x0, [x24] ; TYPE System.DateTime [load 0x2c791b8]
+1601464: ldr w8, [x0, #0xe4]
+1601468: cbnz w8, #0x1601470
+160146c: bl #0x1167a84
+1601470: mov x0, xzr
+1601474: bl #0x22f0604 ; System.DateTime.get_Now
+1601478: adrp x23, #0x2b94000
+160147c: mov x2, xzr
+1601480: ldr x23, [x23, #0x960] ; STRING_LITERAL #23053 [load 0x2b94960]
+1601484: str x0, [sp, #0x10]
+1601488: add x0, sp, #0x10
+160148c: ldr x1, [x23] ; STRING_LITERAL #23053 [load 0x2cd7748]
+1601490: bl #0x22f1704 ; System.DateTime.ToString
+1601494: ldr x1, [x23] ; STRING_LITERAL #23053 [load 0x2cd7748]
+1601498: mov x23, x0
+160149c: add x0, x21, #0x1c8
+16014a0: mov x2, xzr
+16014a4: bl #0x22f1704 ; System.DateTime.ToString
+16014a8: adrp x8, #0x2b94000
+16014ac: adrp x9, #0x2b94000
+16014b0: mov x3, x0
+16014b4: ldr x8, [x8, #0x920] ; STRING_LITERAL #16505 [load 0x2b94920]
+16014b8: ldr x9, [x9, #0x940] ; STRING_LITERAL #282 [load 0x2b94940]
+16014bc: mov x1, x23
+16014c0: mov x4, xzr
+16014c4: ldr x8, [x8] ; STRING_LITERAL #16505 [load 0x2ccaaa8]
+16014c8: ldr x2, [x9] ; STRING_LITERAL #282 [load 0x2caafc8]
+16014cc: mov x0, x8
+16014d0: bl #0x21ebcfc ; System.String.Concat
+16014d4: mov x1, x0
+16014d8: mov x0, x22
+16014dc: mov x2, xzr
+16014e0: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+16014e4: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16014e8: ldr w8, [x0, #0xe4]
+16014ec: cbnz w8, #0x16014f4
+16014f0: bl #0x1167a84
+16014f4: ldrb w8, [x29, #0x3be]
+16014f8: cbnz w8, #0x1601510
+16014fc: adrp x0, #0x2b80000
+1601500: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1601504: bl #0x116794c
+1601508: mov w8, #1
+160150c: strb w8, [x29, #0x3be]
+1601510: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601514: ldr w8, [x0, #0xe4]
+1601518: cbnz w8, #0x1601524
+160151c: bl #0x1167a84
+1601520: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601524: ldr x8, [x0, #0xb8]
+1601528: ldr x8, [x8]
+160152c: cbz x8, #0x1601a10
+1601530: add x0, x8, #0x1b8
+1601534: mov x1, xzr
+1601538: bl #0x230d394 ; System.Int64.ToString
+160153c: ldr x8, [x27] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1601540: mov x23, x0
+1601544: ldr w9, [x8, #0xe4]
+1601548: cbnz w9, #0x1601554
+160154c: mov x0, x8
+1601550: bl #0x1167a84
+1601554: bl #0x160f16c ; Logic.Handler.MainPlayHandler.GetHalfLevelEasierTimeThreshold
+1601558: str w0, [sp, #0xc]
+160155c: add x0, sp, #0xc
+1601560: mov x1, xzr
+1601564: bl #0x230c300 ; System.Int32.ToString
+1601568: adrp x8, #0x2b94000
+160156c: adrp x9, #0x2b94000
+1601570: mov x3, x0
+1601574: ldr x8, [x8, #0x930] ; STRING_LITERAL #16508 [load 0x2b94930]
+1601578: ldr x9, [x9, #0x918] ; STRING_LITERAL #309 [load 0x2b94918]
+160157c: mov x1, x23
+1601580: mov x4, xzr
+1601584: ldr x8, [x8] ; STRING_LITERAL #16508 [load 0x2ccaac0]
+1601588: ldr x2, [x9] ; STRING_LITERAL #309 [load 0x2cab0a0]
+160158c: mov x0, x8
+1601590: bl #0x21ebcfc ; System.String.Concat
+1601594: mov x1, x0
+1601598: mov x0, x22
+160159c: mov x2, xzr
+16015a0: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+16015a4: ldr x8, [x21, #0x20]
+16015a8: cbz x8, #0x1601a10
+16015ac: ldr x9, [x21, #0x18]
+16015b0: cbz x9, #0x1601a10
+16015b4: ldr w10, [x8, #0x18]
+16015b8: ldr w9, [x9, #0x18]
+16015bc: subs w9, w9, w10
+16015c0: b.ne #0x16015d0
+16015c4: mov w9, #2
+16015c8: str w9, [sp, #0x1c]
+16015cc: b #0x1601640
+16015d0: add w8, w9, #1
+16015d4: adrp x23, #0x2db0000
+16015d8: fmov s9, #1.50000000
+16015dc: scvtf s8, w8
+16015e0: ldrb w8, [x23, #0xae7]
+16015e4: cbnz w8, #0x16015fc
+16015e8: adrp x0, #0x2b7d000
+16015ec: ldr x0, [x0, #0xb68] ; TYPE System.Math [load 0x2b7db68]
+16015f0: bl #0x116794c
+16015f4: mov w8, #1
+16015f8: strb w8, [x23, #0xae7]
+16015fc: adrp x8, #0x2b7d000
+1601600: fmul s8, s8, s9
+1601604: ldr x8, [x8, #0xb68] ; TYPE System.Math [load 0x2b7db68]
+1601608: ldr x0, [x8] ; TYPE System.Math [load 0x2c7b5b0]
+160160c: ldr w8, [x0, #0xe4]
+1601610: cbnz w8, #0x1601618
+1601614: bl #0x1167a84
+1601618: frintp s0, s8
+160161c: mov w8, #0x7f800000
+1601620: fcvtps w9, s8
+1601624: fmov s1, w8
+1601628: mov w10, #-0xffffffff80000000
+160162c: ldr x8, [x21, #0x20]
+1601630: fcmp s0, s1
+1601634: csel w9, w10, w9, eq
+1601638: str w9, [sp, #0x1c]
+160163c: cbz x8, #0x1601a10
+1601640: ldr w9, [x21, #0x168]
+1601644: ldr w8, [x8, #0x18]
+1601648: add x0, sp, #0x18
+160164c: mov x1, xzr
+1601650: add w8, w8, w9
+1601654: str w8, [sp, #0x18]
+1601658: bl #0x230c300 ; System.Int32.ToString
+160165c: mov x23, x0
+1601660: add x0, sp, #0x1c
+1601664: mov x1, xzr
+1601668: bl #0x230c300 ; System.Int32.ToString
+160166c: adrp x8, #0x2b94000
+1601670: adrp x9, #0x2b94000
+1601674: mov x3, x0
+1601678: ldr x8, [x8, #0x948] ; STRING_LITERAL #16507 [load 0x2b94948]
+160167c: ldr x9, [x9, #0x968] ; STRING_LITERAL #152 [load 0x2b94968]
+1601680: mov x1, x23
+1601684: mov x4, xzr
+1601688: ldr x8, [x8] ; STRING_LITERAL #16507 [load 0x2ccaab8]
+160168c: ldr x2, [x9] ; STRING_LITERAL #152 [load 0x2caabb8]
+1601690: mov x0, x8
+1601694: bl #0x21ebcfc ; System.String.Concat
+1601698: mov x1, x0
+160169c: mov x0, x22
+16016a0: mov x2, xzr
+16016a4: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+16016a8: ldr x0, [x24] ; TYPE System.DateTime [load 0x2c791b8]
+16016ac: ldr w8, [x0, #0xe4]
+16016b0: cbnz w8, #0x16016b8
+16016b4: bl #0x1167a84
+16016b8: mov x0, xzr
+16016bc: bl #0x22f0604 ; System.DateTime.get_Now
+16016c0: ldr x1, [x21, #0x1c8]
+16016c4: str x0, [sp, #0x10]
+16016c8: add x0, sp, #0x10
+16016cc: mov x2, xzr
+16016d0: bl #0x22f135c ; System.DateTime.Subtract
+16016d4: adrp x23, #0x2b80000
+16016d8: ldr x23, [x23, #0x6b8] ; TYPE System.TimeSpan [load 0x2b806b8]
+16016dc: str x0, [sp]
+16016e0: ldr x8, [x23] ; TYPE System.TimeSpan [load 0x2c7da70]
+16016e4: ldr w9, [x8, #0xe4]
+16016e8: cbnz w9, #0x16016f4
+16016ec: mov x0, x8
+16016f0: bl #0x1167a84
+16016f4: mov x0, sp
+16016f8: mov x1, xzr
+16016fc: bl #0x2324e54 ; System.TimeSpan.get_TotalSeconds
+1601700: adrp x8, #0x6ea000
+1601704: ldr d1, [x8, #0x4f8] ; const at 0x6ea4f8: 21600.0
+1601708: fcmp d0, d1
+160170c: b.lt #0x1601754
+1601710: ldp w8, w9, [sp, #0x18]
+1601714: cmp w8, w9
+1601718: b.le #0x1601754
+160171c: ldr x8, [x20, #0x30]
+1601720: cbz x8, #0x1601754
+1601724: ldr w8, [x8, #0x18]
+1601728: cmp w8, #1
+160172c: b.lt #0x1601754
+1601730: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1601734: ldr w8, [x0, #0xe4]
+1601738: cbnz w8, #0x1601740
+160173c: bl #0x1167a84
+1601740: mov x0, xzr
+1601744: bl #0x1577ca0
+1601748: cbz x0, #0x1601a10
+160174c: mov x1, xzr
+1601750: bl #0x186ef5c ; Platform.AbTest.AbTestMgr.StainHalfLevelEasierTest3
+1601754: ldr x0, [x24] ; TYPE System.DateTime [load 0x2c791b8]
+1601758: ldr w8, [x0, #0xe4]
+160175c: cbnz w8, #0x1601764
+1601760: bl #0x1167a84
+1601764: mov x0, xzr
+1601768: bl #0x22f0604 ; System.DateTime.get_Now
+160176c: ldr x1, [x21, #0x1c8]
+1601770: str x0, [sp, #0x10]
+1601774: add x0, sp, #0x10
+1601778: mov x2, xzr
+160177c: bl #0x22f135c ; System.DateTime.Subtract
+1601780: ldr x8, [x23] ; TYPE System.TimeSpan [load 0x2c7da70]
+1601784: str x0, [sp]
+1601788: ldr w9, [x8, #0xe4]
+160178c: cbnz w9, #0x1601798
+1601790: mov x0, x8
+1601794: bl #0x1167a84
+1601798: mov x0, sp
+160179c: mov x1, xzr
+16017a0: bl #0x2324e54 ; System.TimeSpan.get_TotalSeconds
+16017a4: ldr x0, [x27] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+16017a8: fmov d8, d0
+16017ac: ldr w8, [x0, #0xe4]
+16017b0: cbnz w8, #0x16017b8
+16017b4: bl #0x1167a84
+16017b8: bl #0x160f16c ; Logic.Handler.MainPlayHandler.GetHalfLevelEasierTimeThreshold
+16017bc: scvtf d0, w0
+16017c0: fcmp d8, d0
+16017c4: b.lt #0x16018d8
+16017c8: ldp w8, w9, [sp, #0x18]
+16017cc: cmp w8, w9
+16017d0: b.le #0x16018d8
+16017d4: ldr x0, [x27] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+16017d8: ldr w8, [x0, #0xe4]
+16017dc: cbnz w8, #0x16017e4
+16017e0: bl #0x1167a84
+16017e4: bl #0x160f218 ; Logic.Handler.MainPlayHandler.ShouldTriggerHalfLevelEasierByChurnProb
+16017e8: tbz w0, #0, #0x16018d8
+16017ec: ldr x0, [x26] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16017f0: ldr w8, [x0, #0xe4]
+16017f4: cbnz w8, #0x16017fc
+16017f8: bl #0x1167a84
+16017fc: mov x0, xzr
+1601800: bl #0x1577ca0
+1601804: cbz x0, #0x1601a10
+1601808: mov x1, xzr
+160180c: bl #0x186b508 ; Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest3Group2
+1601810: tbz w0, #0, #0x1601898
+1601814: mov x0, xzr
+1601818: bl #0x1552f28 ; Utils.DefineSymbolsUtils.IsInAndroid
+160181c: tbnz w0, #0, #0x160188c
+1601820: adrp x8, #0x2b80000
+1601824: ldr x8, [x8, #0x680] ; TYPE Logic.Handler.CommonHandler [load 0x2b80680]
+1601828: ldr x0, [x8] ; TYPE Logic.Handler.CommonHandler [load 0x2c78568]
+160182c: ldr w8, [x0, #0xe4]
+1601830: cbnz w8, #0x1601838
+1601834: bl #0x1167a84
+1601838: mov w0, wzr
+160183c: mov x1, xzr
+1601840: bl #0x1591e4c ; Logic.Handler.CommonHandler.TrySetSeed
+1601844: adrp x23, #0x2db0000
+1601848: ldrb w8, [x23, #0x8c0]
+160184c: cbnz w8, #0x1601864
+1601850: adrp x0, #0x2b83000
+1601854: ldr x0, [x0, #0xf40] ; TYPE Platform.UserTag.UserTagMgr [load 0x2b83f40]
+1601858: bl #0x116794c
+160185c: mov w8, #1
+1601860: strb w8, [x23, #0x8c0]
+1601864: adrp x8, #0x2b83000
+1601868: ldr x8, [x8, #0xf40] ; TYPE Platform.UserTag.UserTagMgr [load 0x2b83f40]
+160186c: ldr x8, [x8] ; TYPE Platform.UserTag.UserTagMgr [load 0x2c7e138]
+1601870: ldr x8, [x8, #0xb8]
+1601874: ldr x8, [x8]
+1601878: cbz x8, #0x1601a10
+160187c: fmov s1, #0.50000000
+1601880: ldr s0, [x8, #0x70]
+1601884: fcmp s0, s1
+1601888: b.le #0x16019e8
+160188c: mov x0, x19
+1601890: mov x1, xzr
+1601894: bl #0x17ab00c ; Data.GamePlay.MainPlay.MainPlayDataMgr.RevealHalfLevelEasierLetter
+1601898: ldr x1, [x20, #0x30]
+160189c: cbz x1, #0x16018f4
+16018a0: ldr w8, [x1, #0x18]
+16018a4: cmp w8, #1
+16018a8: b.lt #0x16018d8
+16018ac: mov x0, x20
+16018b0: mov x2, xzr
+16018b4: bl #0x17f34d8 ; Data.GamePlay.CommonPlay.Config.BaseLevelConfig.AddExtra
+16018b8: ldr x0, [x20, #0x30]
+16018bc: cbz x0, #0x1601a10
+16018c0: adrp x8, #0x2b87000
+16018c4: ldr x8, [x8, #0x430] ; GENERIC System.Collections.Generic.List`1.Clear (35581, 110, -1) [load 0x2b87430]
+16018c8: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1.Clear (35581, 110, -1) [load 0x2c8ea60]
+16018cc: bl #0x10358c4
+16018d0: mov w8, #0x3f800000
+16018d4: str w8, [x21, #0x1c4]
+16018d8: ldr x23, [x20, #0x30]
+16018dc: cbz x23, #0x16018f4
+16018e0: adrp x8, #0x2b94000
+16018e4: ldr x8, [x8, #0x958] ; STRING_LITERAL #16503 [load 0x2b94958]
+16018e8: ldr x21, [x28] ; STRING_LITERAL #700 [load 0x2cabcd8]
+16018ec: ldr x19, [x8] ; STRING_LITERAL #16503 [load 0x2ccaa98]
+16018f0: b #0x1601928
+16018f4: adrp x8, #0x2b94000
+16018f8: adrp x9, #0x2b81000
+16018fc: ldr x8, [x8, #0x958] ; STRING_LITERAL #16503 [load 0x2b94958]
+1601900: ldr x9, [x9, #0x740] ; USAGE kind=1 idx=5972 [load 0x2b81740]
+1601904: ldr x21, [x28] ; STRING_LITERAL #700 [load 0x2cabcd8]
+1601908: ldr x0, [x9] ; USAGE kind=1 idx=5972 [load 0x2c75b20]
+160190c: ldr x19, [x8] ; STRING_LITERAL #16503 [load 0x2ccaa98]
+1601910: bl #0x1167ba0
+1601914: adrp x8, #0x2b81000
+1601918: mov x23, x0
+160191c: ldr x8, [x8, #0x748] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2b81748]
+1601920: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2c8ea38]
+1601924: bl #0x1ec1474
+1601928: mov x0, x21
+160192c: mov x1, x23
+1601930: mov x2, xzr
+1601934: bl #0x21ec5b8 ; System.String.Join
+1601938: mov x1, x0
+160193c: mov x0, x19
+1601940: mov x2, xzr
+1601944: bl #0x21e1750 ; System.String.Concat
+1601948: mov x1, x0
+160194c: mov x0, x22
+1601950: mov x2, xzr
+1601954: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+1601958: adrp x8, #0x2b94000
+160195c: ldr x8, [x8, #0x950] ; STRING_LITERAL #16502 [load 0x2b94950]
+1601960: ldr x21, [x20, #0x28]
+1601964: ldr x20, [x28] ; STRING_LITERAL #700 [load 0x2cabcd8]
+1601968: ldr x19, [x8] ; STRING_LITERAL #16502 [load 0x2ccaa90]
+160196c: cbnz x21, #0x1601994
+1601970: adrp x8, #0x2b81000
+1601974: ldr x8, [x8, #0x740] ; USAGE kind=1 idx=5972 [load 0x2b81740]
+1601978: ldr x0, [x8] ; USAGE kind=1 idx=5972 [load 0x2c75b20]
+160197c: bl #0x1167ba0
+1601980: adrp x8, #0x2b81000
+1601984: mov x21, x0
+1601988: ldr x8, [x8, #0x748] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2b81748]
+160198c: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 110, -1) [load 0x2c8ea38]
+1601990: bl #0x1ec1474
+1601994: mov x0, x20
+1601998: mov x1, x21
+160199c: mov x2, xzr
+16019a0: bl #0x21ec5b8 ; System.String.Join
+16019a4: mov x1, x0
+16019a8: mov x0, x19
+16019ac: mov x2, xzr
+16019b0: bl #0x21e1750 ; System.String.Concat
+16019b4: mov x1, x0
+16019b8: mov x0, x22
+16019bc: mov x2, xzr
+16019c0: bl #0x21f3d00 ; System.Text.StringBuilder.AppendLine
+16019c4: ldp x20, x19, [sp, #0x80]
+16019c8: ldp x22, x21, [sp, #0x70]
+16019cc: ldp x24, x23, [sp, #0x60]
+16019d0: ldp x26, x25, [sp, #0x50]
+16019d4: ldp x28, x27, [sp, #0x40]
+16019d8: ldp x29, x30, [sp, #0x30]
+16019dc: ldp d9, d8, [sp, #0x20]
+16019e0: add sp, sp, #0x90
+16019e4: ret 
+16019e8: adrp x8, #0x6e9000
+16019ec: ldr s1, [x8, #0xca4] ; const at 0x6e9ca4: 0.30000001192092896
+16019f0: fcmp s0, s1
+16019f4: b.le #0x1601898
+16019f8: mov x0, xzr
+16019fc: bl #0x29421a8 ; UnityEngine.Random.get_value
+1601a00: fmov s1, #0.50000000
+1601a04: fcmp s0, s1
+1601a08: b.mi #0x160188c
+1601a0c: b #0x1601898
+1601a10: bl #0x1167bb0
+
+FUNCTION Logic.Handler.MainPlayHandler.GetHalfLevelEasierTest2DecayProbGroup1 0x160f6fc
+160f6fc: fmov s0, #1.00000000
+160f700: cmp w0, #0x1f
+160f704: b.lt #0x160f730
+160f708: cmp w0, #0x29
+160f70c: b.lo #0x160f734
+160f710: fmov s0, #0.50000000
+160f714: cmp w0, #0x33
+160f718: b.lo #0x160f730
+160f71c: cmp w0, #0x3c
+160f720: adrp x9, #0x6e9000
+160f724: add x9, x9, #0xf00
+160f728: cset w8, hi
+160f72c: ldr s0, [x9, w8, uxtw #2]
+160f730: ret 
+160f734: adrp x8, #0x6e9000
+160f738: ldr s0, [x8, #0x96c] ; const at 0x6e996c: 0.6000000238418579
+160f73c: ret 
+
+FUNCTION Logic.Handler.MainPlayHandler.GetHalfLevelEasierTest2DecayProbGroup2 0x160f740
+160f740: fmov s0, #1.00000000
+160f744: cmp w0, #0x1a
+160f748: b.lt #0x160f76c
+160f74c: fmov s0, #0.50000000
+160f750: cmp w0, #0x24
+160f754: b.lo #0x160f76c
+160f758: movi d0, #0000000000000000
+160f75c: adrp x8, #0x6e9000
+160f760: cmp w0, #0x2d
+160f764: ldr s1, [x8, #0xca4] ; const at 0x6e9ca4: 0.30000001192092896
+160f768: fcsel s0, s0, s1, hi
+160f76c: ret 
+
+FUNCTION Logic.Handler.MainPlayHandler.GetHalfLevelEasierTest2DaysSinceFirstTrigger 0x160f5ac
+160f5ac: sub sp, sp, #0x30
+160f5b0: stp x30, x21, [sp, #0x10]
+160f5b4: stp x20, x19, [sp, #0x20]
+160f5b8: adrp x20, #0x2db2000
+160f5bc: adrp x19, #0x2b81000
+160f5c0: ldrb w8, [x20, #0x32c]
+160f5c4: ldr x19, [x19, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]
+160f5c8: tbnz w8, #0, #0x160f5f8
+160f5cc: adrp x0, #0x2b80000
+160f5d0: ldr x0, [x0, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+160f5d4: bl #0x116794c
+160f5d8: adrp x0, #0x2b81000
+160f5dc: ldr x0, [x0, #0xcd8] ; TYPE Store.StoreRoot [load 0x2b81cd8]
+160f5e0: bl #0x116794c
+160f5e4: adrp x0, #0x2b80000
+160f5e8: ldr x0, [x0, #0x6b8] ; TYPE System.TimeSpan [load 0x2b806b8]
+160f5ec: bl #0x116794c
+160f5f0: mov w8, #1
+160f5f4: strb w8, [x20, #0x32c]
+160f5f8: ldr x8, [x19] ; TYPE Store.StoreRoot [load 0x2c7d3e0]
+160f5fc: stp xzr, xzr, [sp]
+160f600: ldr x8, [x8, #0xb8]
+160f604: ldr x8, [x8]
+160f608: cbz x8, #0x160f6f8
+160f60c: ldr x19, [x8, #0x110]
+160f610: cbz x19, #0x160f6f8
+160f614: adrp x21, #0x2b80000
+160f618: ldr x21, [x21, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+160f61c: ldr x20, [x19, #0x278]
+160f620: ldr x0, [x21] ; TYPE System.DateTime [load 0x2c791b8]
+160f624: ldr w8, [x0, #0xe4]
+160f628: cbnz w8, #0x160f634
+160f62c: bl #0x1167a84
+160f630: ldr x0, [x21] ; TYPE System.DateTime [load 0x2c791b8]
+160f634: ldr x8, [x0, #0xb8]
+160f638: mov x0, x20
+160f63c: mov x2, xzr
+160f640: add x19, x19, #0x278
+160f644: ldr x1, [x8, #0x10]
+160f648: bl #0x22f2268 ; System.DateTime.op_Equality
+160f64c: mov w8, w0
+160f650: ldr x0, [x21] ; TYPE System.DateTime [load 0x2c791b8]
+160f654: ldr w9, [x0, #0xe4]
+160f658: tbz w8, #0, #0x160f67c
+160f65c: cbnz w9, #0x160f664
+160f660: bl #0x1167a84
+160f664: mov x0, xzr
+160f668: bl #0x22f0604 ; System.DateTime.get_Now
+160f66c: mov x8, x0
+160f670: mov w0, wzr
+160f674: str x8, [x19]
+160f678: b #0x160f6e8
+160f67c: cbnz w9, #0x160f684
+160f680: bl #0x1167a84
+160f684: mov x0, xzr
+160f688: bl #0x22f0604 ; System.DateTime.get_Now
+160f68c: str x0, [sp, #8]
+160f690: add x0, sp, #8
+160f694: mov x1, xzr
+160f698: bl #0x22eff1c ; System.DateTime.get_Date
+160f69c: mov x20, x0
+160f6a0: mov x0, x19
+160f6a4: mov x1, xzr
+160f6a8: bl #0x22eff1c ; System.DateTime.get_Date
+160f6ac: mov x1, x0
+160f6b0: mov x0, x20
+160f6b4: mov x2, xzr
+160f6b8: bl #0x22f2200 ; System.DateTime.op_Subtraction
+160f6bc: adrp x8, #0x2b80000
+160f6c0: ldr x8, [x8, #0x6b8] ; TYPE System.TimeSpan [load 0x2b806b8]
+160f6c4: str x0, [sp]
+160f6c8: ldr x8, [x8] ; TYPE System.TimeSpan [load 0x2c7da70]
+160f6cc: ldr w9, [x8, #0xe4]
+160f6d0: cbnz w9, #0x160f6dc
+160f6d4: mov x0, x8
+160f6d8: bl #0x1167a84
+160f6dc: mov x0, sp
+160f6e0: mov x1, xzr
+160f6e4: bl #0x2324cd0 ; System.TimeSpan.get_Days
+160f6e8: ldp x20, x19, [sp, #0x20]
+160f6ec: ldp x30, x21, [sp, #0x10]
+160f6f0: add sp, sp, #0x30
+160f6f4: ret 
+160f6f8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.RevealHalfLevelEasierLetter 0x17ab00c
+17ab00c: stp x29, x30, [sp, #-0x60]!
+17ab010: stp x28, x27, [sp, #0x10]
+17ab014: stp x26, x25, [sp, #0x20]
+17ab018: stp x24, x23, [sp, #0x30]
+17ab01c: stp x22, x21, [sp, #0x40]
+17ab020: stp x20, x19, [sp, #0x50]
+17ab024: adrp x19, #0x2db3000
+17ab028: ldrb w8, [x19, #0x86]
+17ab02c: tbnz w8, #0, #0x17ab0bc
+17ab030: adrp x0, #0x2b81000
+17ab034: ldr x0, [x0, #0x3d8] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2b813d8]
+17ab038: bl #0x116794c
+17ab03c: adrp x0, #0x2b87000
+17ab040: ldr x0, [x0, #0x4d0] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56570, 20, -1) [load 0x2b874d0]
+17ab044: bl #0x116794c
+17ab048: adrp x0, #0x2b81000
+17ab04c: ldr x0, [x0, #0x440] ; USAGE kind=1 idx=4176 [load 0x2b81440]
+17ab050: bl #0x116794c
+17ab054: adrp x0, #0x2b83000
+17ab058: ldr x0, [x0, #0x268] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2b83268]
+17ab05c: bl #0x116794c
+17ab060: adrp x0, #0x2b87000
+17ab064: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17ab068: bl #0x116794c
+17ab06c: adrp x0, #0x2b87000
+17ab070: ldr x0, [x0, #0x5d0] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2b875d0]
+17ab074: bl #0x116794c
+17ab078: adrp x0, #0x2b80000
+17ab07c: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17ab080: bl #0x116794c
+17ab084: adrp x0, #0x2b80000
+17ab088: ldr x0, [x0, #0x758] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 20, -1) [load 0x2b80758]
+17ab08c: bl #0x116794c
+17ab090: adrp x0, #0x2b80000
+17ab094: ldr x0, [x0, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17ab098: bl #0x116794c
+17ab09c: adrp x0, #0x2b80000
+17ab0a0: ldr x0, [x0, #0x760] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2b80760]
+17ab0a4: bl #0x116794c
+17ab0a8: adrp x0, #0x2b80000
+17ab0ac: ldr x0, [x0, #0xc0] ; USAGE kind=1 idx=5737 [load 0x2b800c0]
+17ab0b0: bl #0x116794c
+17ab0b4: mov w8, #1
+17ab0b8: strb w8, [x19, #0x86]
+17ab0bc: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17ab0c0: cbz x0, #0x17ab2dc
+17ab0c4: ldr x25, [x0, #0x198]
+17ab0c8: cbz x25, #0x17ab368
+17ab0cc: ldr x8, [x25, #0x20]
+17ab0d0: cbz x8, #0x17ab368
+17ab0d4: ldr w8, [x8, #0x18]
+17ab0d8: cbz w8, #0x17ab368
+17ab0dc: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17ab0e0: cbz x0, #0x17ab2dc
+17ab0e4: mov x1, xzr
+17ab0e8: bl #0x17b7edc ; Data.GamePlay.MainPlay.RestoreData.GetSpecialCells
+17ab0ec: mov x19, x0
+17ab0f0: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17ab0f4: cbz x0, #0x17ab2dc
+17ab0f8: adrp x8, #0x2b81000
+17ab0fc: ldr x8, [x8, #0x440] ; USAGE kind=1 idx=4176 [load 0x2b81440]
+17ab100: ldr x20, [x0, #0x28]
+17ab104: ldr x0, [x8] ; USAGE kind=1 idx=4176 [load 0x2c747f8]
+17ab108: bl #0x1167ba0
+17ab10c: adrp x8, #0x2b87000
+17ab110: mov x1, x20
+17ab114: mov x21, x0
+17ab118: ldr x8, [x8, #0x4d0] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56570, 20, -1) [load 0x2b874d0]
+17ab11c: ldr x2, [x8] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56570, 20, -1) [load 0x2c89f20]
+17ab120: bl #0x1db84dc
+17ab124: adrp x8, #0x2b80000
+17ab128: ldr x8, [x8, #0xc0] ; USAGE kind=1 idx=5737 [load 0x2b800c0]
+17ab12c: ldr x0, [x8] ; USAGE kind=1 idx=5737 [load 0x2c756c0]
+17ab130: bl #0x1167ba0
+17ab134: adrp x8, #0x2b87000
+17ab138: mov x20, x0
+17ab13c: ldr x8, [x8, #0x5d0] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2b875d0]
+17ab140: ldr x1, [x8] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2c8d2a8]
+17ab144: bl #0x1e9c22c
+17ab148: ldr x0, [x25, #0x20]
+17ab14c: cbz x0, #0x17ab2dc
+17ab150: adrp x28, #0x2b81000
+17ab154: mov w27, wzr
+17ab158: mov w22, wzr
+17ab15c: ldr x28, [x28, #0x3d8] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2b813d8]
+17ab160: mov w29, #1
+17ab164: ldr w8, [x0, #0x18]
+17ab168: cmp w22, w8
+17ab16c: b.ge #0x17ab2e0
+17ab170: adrp x8, #0x2b80000
+17ab174: mov w1, w22
+17ab178: ldr x8, [x8, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17ab17c: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17ab180: bl #0x1ec1a0c
+17ab184: mov x23, x0
+17ab188: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17ab18c: cbz x0, #0x17ab2dc
+17ab190: ldr x0, [x0, #0x18]
+17ab194: cbz x0, #0x17ab2dc
+17ab198: adrp x8, #0x2b87000
+17ab19c: mov x1, x23
+17ab1a0: ldr x8, [x8, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17ab1a4: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17ab1a8: bl #0x1ec1f30
+17ab1ac: tbnz w0, #0, #0x17ab2cc
+17ab1b0: cbz x23, #0x17ab2dc
+17ab1b4: ldr w8, [x23, #0x10]
+17ab1b8: cmp w8, #1
+17ab1bc: b.lt #0x17ab210
+17ab1c0: mov w26, wzr
+17ab1c4: mov w24, wzr
+17ab1c8: cbz x19, #0x17ab2dc
+17ab1cc: ldr x2, [x28] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2c89f38]
+17ab1d0: add w1, w27, w26
+17ab1d4: mov x0, x19
+17ab1d8: bl #0x1db8a4c
+17ab1dc: tbnz w0, #0, #0x17ab1fc
+17ab1e0: cbz x21, #0x17ab2dc
+17ab1e4: ldr x2, [x28] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2c89f38]
+17ab1e8: add w1, w27, w26
+17ab1ec: mov x0, x21
+17ab1f0: bl #0x1db8a4c
+17ab1f4: bic w8, w29, w0
+17ab1f8: add w24, w24, w8
+17ab1fc: ldr w8, [x23, #0x10]
+17ab200: add w26, w26, #1
+17ab204: cmp w26, w8
+17ab208: b.lt #0x17ab1c8
+17ab20c: b #0x17ab214
+17ab210: mov w24, wzr
+17ab214: cmp w24, #1
+17ab218: b.le #0x17ab2cc
+17ab21c: cmp w8, #1
+17ab220: b.lt #0x17ab2cc
+17ab224: cbz x19, #0x17ab2dc
+17ab228: mov w26, wzr
+17ab22c: ldr x2, [x28] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2c89f38]
+17ab230: add w24, w27, w26
+17ab234: mov x0, x19
+17ab238: mov w1, w24
+17ab23c: bl #0x1db8a4c
+17ab240: tbnz w0, #0, #0x17ab2bc
+17ab244: cbz x21, #0x17ab2dc
+17ab248: ldr x2, [x28] ; GENERIC System.Collections.Generic.HashSet`1.Contains (56576, 20, -1) [load 0x2c89f38]
+17ab24c: mov x0, x21
+17ab250: mov w1, w24
+17ab254: bl #0x1db8a4c
+17ab258: tbnz w0, #0, #0x17ab2bc
+17ab25c: cbz x20, #0x17ab2dc
+17ab260: adrp x9, #0x2b83000
+17ab264: ldr w10, [x20, #0x1c]
+17ab268: ldr x8, [x20, #0x10]
+17ab26c: ldr x9, [x9, #0x268] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2b83268]
+17ab270: add w10, w10, #1
+17ab274: ldr x9, [x9] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2c8d2c0]
+17ab278: str w10, [x20, #0x1c]
+17ab27c: cbz x8, #0x17ab2dc
+17ab280: ldrsw x10, [x20, #0x18]
+17ab284: ldr w11, [x8, #0x18]
+17ab288: cmp w10, w11
+17ab28c: b.hs #0x17ab2a4
+17ab290: add x8, x8, x10, lsl #2
+17ab294: add w9, w10, #1
+17ab298: str w9, [x20, #0x18]
+17ab29c: str w24, [x8, #0x20]
+17ab2a0: b #0x17ab2bc
+17ab2a4: ldr x8, [x9, #0x20]
+17ab2a8: mov x0, x20
+17ab2ac: mov w1, w24
+17ab2b0: ldr x8, [x8, #0xc0]
+17ab2b4: ldr x2, [x8, #0x70]
+17ab2b8: bl #0x1e9cabc
+17ab2bc: ldr w8, [x23, #0x10]
+17ab2c0: add w26, w26, #1
+17ab2c4: cmp w26, w8
+17ab2c8: b.lt #0x17ab22c
+17ab2cc: ldr x0, [x25, #0x20]
+17ab2d0: add w22, w22, #1
+17ab2d4: add w27, w27, #0x64
+17ab2d8: cbnz x0, #0x17ab164
+17ab2dc: bl #0x1167bb0
+17ab2e0: cbz x20, #0x17ab2dc
+17ab2e4: ldr w1, [x20, #0x18]
+17ab2e8: cbz w1, #0x17ab368
+17ab2ec: mov w0, wzr
+17ab2f0: mov x2, xzr
+17ab2f4: bl #0x2942120 ; UnityEngine.Random.Range
+17ab2f8: adrp x8, #0x2b80000
+17ab2fc: mov w1, w0
+17ab300: mov x0, x20
+17ab304: ldr x8, [x8, #0x760] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2b80760]
+17ab308: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2c8d350]
+17ab30c: bl #0x1e9c7c4
+17ab310: mov w19, w0
+17ab314: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17ab318: cbz x0, #0x17ab2dc
+17ab31c: ldr x0, [x0, #0x28]
+17ab320: cbz x0, #0x17ab2dc
+17ab324: adrp x9, #0x2b83000
+17ab328: ldr w10, [x0, #0x1c]
+17ab32c: ldr x8, [x0, #0x10]
+17ab330: ldr x9, [x9, #0x268] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2b83268]
+17ab334: add w10, w10, #1
+17ab338: ldr x9, [x9] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2c8d2c0]
+17ab33c: str w10, [x0, #0x1c]
+17ab340: cbz x8, #0x17ab2dc
+17ab344: ldrsw x10, [x0, #0x18]
+17ab348: ldr w11, [x8, #0x18]
+17ab34c: cmp w10, w11
+17ab350: b.hs #0x17ab388
+17ab354: add x8, x8, x10, lsl #2
+17ab358: add w9, w10, #1
+17ab35c: str w9, [x0, #0x18]
+17ab360: str w19, [x8, #0x20]
+17ab364: b #0x17ab39c
+17ab368: mov w0, wzr
+17ab36c: ldp x20, x19, [sp, #0x50]
+17ab370: ldp x22, x21, [sp, #0x40]
+17ab374: ldp x24, x23, [sp, #0x30]
+17ab378: ldp x26, x25, [sp, #0x20]
+17ab37c: ldp x28, x27, [sp, #0x10]
+17ab380: ldp x29, x30, [sp], #0x60
+17ab384: ret 
+17ab388: ldr x8, [x9, #0x20]
+17ab38c: mov w1, w19
+17ab390: ldr x8, [x8, #0xc0]
+17ab394: ldr x2, [x8, #0x70]
+17ab398: bl #0x1e9cabc
+17ab39c: mov w0, #1
+17ab3a0: b #0x17ab36c
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.GetWarmLevelRemoveAnswerCount 0x17b13cc
+17b13cc: str x30, [sp, #-0x30]!
+17b13d0: stp x22, x21, [sp, #0x10]
+17b13d4: stp x20, x19, [sp, #0x20]
+17b13d8: adrp x22, #0x2db3000
+17b13dc: mov w20, w2
+17b13e0: mov x21, x1
+17b13e4: ldrb w8, [x22, #0xa5]
+17b13e8: mov x19, x0
+17b13ec: tbnz w8, #0, #0x17b1428
+17b13f0: adrp x0, #0x2ba3000
+17b13f4: ldr x0, [x0, #0xbf0] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 2048, -1) [load 0x2ba3bf0]
+17b13f8: bl #0x116794c
+17b13fc: adrp x0, #0x2b80000
+17b1400: ldr x0, [x0, #0x758] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 20, -1) [load 0x2b80758]
+17b1404: bl #0x116794c
+17b1408: adrp x0, #0x2ba3000
+17b140c: ldr x0, [x0, #0xbf8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 2048, -1) [load 0x2ba3bf8]
+17b1410: bl #0x116794c
+17b1414: adrp x0, #0x2b80000
+17b1418: ldr x0, [x0, #0x760] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2b80760]
+17b141c: bl #0x116794c
+17b1420: mov w8, #1
+17b1424: strb w8, [x22, #0xa5]
+17b1428: mov x0, xzr
+17b142c: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17b1430: cbz x0, #0x17b1584
+17b1434: ldrb w8, [x0, #0x26]
+17b1438: cbz w8, #0x17b1570
+17b143c: mov x0, x19
+17b1440: mov x1, xzr
+17b1444: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17b1448: cbz x0, #0x17b1584
+17b144c: ldr x0, [x0, #0x18]
+17b1450: cbz x0, #0x17b1584
+17b1454: mov x1, xzr
+17b1458: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17b145c: cmp w0, #7
+17b1460: b.lt #0x17b1570
+17b1464: mov x0, x19
+17b1468: mov x1, xzr
+17b146c: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17b1470: cbz x0, #0x17b1584
+17b1474: ldr x0, [x0, #0x18]
+17b1478: cbz x0, #0x17b1584
+17b147c: mov x1, xzr
+17b1480: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17b1484: cmp w0, #0x3e8
+17b1488: b.gt #0x17b1570
+17b148c: cbz x21, #0x17b1570
+17b1490: ldr x8, [x19, #0xb8]
+17b1494: cbz x8, #0x17b1570
+17b1498: ldr x8, [x21, #0x48]
+17b149c: cbz x8, #0x17b1570
+17b14a0: bl #0x17b1588 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmBeginReduceLevelIndex
+17b14a4: cmp w0, #1
+17b14a8: b.lt #0x17b1570
+17b14ac: ldr x0, [x19, #0xb0]
+17b14b0: cbz x0, #0x17b1584
+17b14b4: mov w1, w20
+17b14b8: mov w2, #1
+17b14bc: mov x3, xzr
+17b14c0: bl #0x17f3e1c ; Data.GamePlay.CommonPlay.Config.LevelFileData.GetRealIndex
+17b14c4: ldr x8, [x19, #0xb8]
+17b14c8: cbz x8, #0x17b1584
+17b14cc: ldr x8, [x8, #0x10]
+17b14d0: cbz x8, #0x17b1584
+17b14d4: ldr w8, [x8, #0x18]
+17b14d8: mov w20, w0
+17b14dc: cmp w0, w8
+17b14e0: b.gt #0x17b1570
+17b14e4: mov x0, x19
+17b14e8: mov x1, xzr
+17b14ec: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17b14f0: cbz x0, #0x17b1584
+17b14f4: ldr x0, [x0, #0x18]
+17b14f8: cbz x0, #0x17b1584
+17b14fc: mov x1, xzr
+17b1500: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17b1504: mov w21, w0
+17b1508: bl #0x17b1588 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmBeginReduceLevelIndex
+17b150c: ldr x8, [x19, #0xb8]
+17b1510: cbz x8, #0x17b1584
+17b1514: mov w19, w0
+17b1518: ldr x0, [x8, #0x10]
+17b151c: cbz x0, #0x17b1584
+17b1520: adrp x8, #0x2ba3000
+17b1524: sub w1, w20, #1
+17b1528: ldr x8, [x8, #0xbf8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 2048, -1) [load 0x2ba3bf8]
+17b152c: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 2048, -1) [load 0x2c8d8e8]
+17b1530: bl #0x1ec1a0c
+17b1534: cbz x0, #0x17b1584
+17b1538: sub w1, w21, w19
+17b153c: tbnz w1, #0x1f, #0x17b1570
+17b1540: ldr x0, [x0, #0x10]
+17b1544: cbz x0, #0x17b1584
+17b1548: ldr w8, [x0, #0x18]
+17b154c: cmp w1, w8
+17b1550: b.ge #0x17b1570
+17b1554: adrp x8, #0x2b80000
+17b1558: ldr x8, [x8, #0x760] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2b80760]
+17b155c: ldp x20, x19, [sp, #0x20]
+17b1560: ldp x22, x21, [sp, #0x10]
+17b1564: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 20, -1) [load 0x2c8d350]
+17b1568: ldr x30, [sp], #0x30
+17b156c: b #0x1e9c7c4
+17b1570: ldp x20, x19, [sp, #0x20]
+17b1574: mov w0, #-1
+17b1578: ldp x22, x21, [sp, #0x10]
+17b157c: ldr x30, [sp], #0x30
+17b1580: ret 
+17b1584: bl #0x1167bb0

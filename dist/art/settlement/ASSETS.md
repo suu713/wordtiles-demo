@@ -1,8 +1,10 @@
 # Settlement art
 
+The active top symbol is `golden-book/book@2x.png`, copied unchanged from supplied slices (9), `tu@2x.png`, on 2026-11-04. Its original 1454×596 RGBA dimensions and SHA-256 are recorded in `golden-book/manifest.json`. Only the top symbol is replaced; the supplied white panel and divider are outside this change's scope. A central light appears first, then the complete original unfolds outward from the book spine, keeping its baked-in glow continuous. The unfold lasts 900 ms with a gentler ease; a subtle overshoot settles at 1030 ms, and one soft glint finishes at 1230 ms. There is no final image swap or perpetual movement. Reduced motion shows the complete symbol immediately. The ABC artwork below is retained as historical source material and is no longer loaded at runtime.
+
 `reference.png` is the user-supplied settlement reference, unchanged.
 
-`abc-wreath.png` is the new user-supplied transparent ABC wreath, copied unchanged on 2026-10-30. It replaces the WORD tiles and LOGIC PUZZLE caption.
+`abc-wreath.png` is the previous user-supplied transparent ABC wreath, copied unchanged on 2026-10-30. It replaced the WORD tiles and LOGIC PUZZLE caption before the golden-book update.
 
 `abc-wreath-back.png` and `abc-tiles-front.png` are transparent 1254×1254 layers extracted with the built-in imagegen tool on 2026-10-30. The wreath appears first and the ABC tiles begin fading in 320 ms later. The unchanged `abc-wreath.png` fades over them at 1320 ms and the extracted layers retire at 1580 ms, preserving the exact original resting artwork. Only this layered reveal is used; there is no separate wreath wobble. Full prompts are in `icon-generation.json`.
 

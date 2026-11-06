@@ -1,0 +1,6 @@
+{
+  "passed": 0,
+  "cases": [],
+  "pageErrors": [],
+  "error": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4173/?v=15\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4173/?v=15\", waiting until \"load\"\u001b[22m\n\n    at C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\scripts\\browser-test.mjs:77:14"
+}

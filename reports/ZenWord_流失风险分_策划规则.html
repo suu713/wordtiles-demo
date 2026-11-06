@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zen Word｜流失风险分 · 策划规则</title>
+<style>
+:root{--ink:#243e3a;--sub:#627775;--line:#dce5df;--paper:#fff;--bg:#f2f5ef;--green:#27785e;--blue:#386ea0;--pale:#e9f3ec;--amber:#9b681d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",sans-serif;line-height:1.65}
+main{max-width:1140px;margin:0 auto;padding:32px 28px 50px}header{padding-bottom:18px}.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--sub)}
+h1{font-size:30px;line-height:1.3;margin:9px 0 12px}h2{font-size:22px;line-height:1.4;margin:0 0 16px}h3{font-size:17px;margin:0 0 10px}p{margin:8px 0 14px}
+.lead{font-size:18px;max-width:930px}.meta,.muted{color:var(--sub);font-size:13px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+button{font:inherit;cursor:pointer}.tabs button{padding:10px 15px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);font-weight:700}
+.tabs button[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:white}.tabs button:focus-visible,summary:focus-visible{outline:3px solid #a4bfe0;outline-offset:3px}
+[hidden]{display:none!important}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:24px;border:1px solid var(--line);background:var(--paper);border-radius:14px;margin-bottom:18px}.grid>.card{margin:0}
+.wide{grid-column:1/-1}.callout{background:var(--pale);border-left:4px solid var(--green);padding:14px 18px;border-radius:7px;margin:15px 0}.caution{background:#fcf5e7;border-color:var(--amber)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.step{position:relative;padding:18px 16px;background:var(--pale);border-radius:10px;font-weight:700}.step small{font-weight:400;display:block;color:var(--sub);font-size:13px;margin-top:6px}.step:not(:last-child):after{content:"→";position:absolute;right:-11px;top:30px;color:var(--green);font-size:19px;z-index:1}
+table{width:100%;border-collapse:collapse;font-size:14px;table-layout:fixed}th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere}th{background:#eef3ef;color:var(--ink);font-weight:700}tbody tr:last-child td{border-bottom:0}.number{font-weight:800;color:var(--blue);font-size:17px}
+.badge{display:inline-block;border-radius:20px;padding:3px 10px;background:var(--pale);color:var(--green);font-size:12px;font-weight:700;margin-bottom:10px}.unknown{background:#fcf5e7;color:var(--amber)}
+ul,ol{padding-left:22px;margin:8px 0}li{margin:7px 0}details{border:1px solid var(--line);border-radius:9px;margin-top:14px;padding:12px 16px;background:#fafcf9}summary{font-weight:700;cursor:pointer}details>div{padding-top:10px}code{font-family:Consolas,monospace;overflow-wrap:anywhere;font-size:.92em}
+.facts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0}.fact{background:white;border:1px solid var(--line);padding:16px;border-radius:11px}.fact b{display:block;font-size:20px;margin-bottom:4px}.formula{padding:14px;background:#eaf0f6;color:#244e77;border-radius:8px;font-size:15px}.example{color:var(--blue);font-weight:700}a{color:var(--blue);text-underline-offset:3px}.foot{font-size:12px;color:var(--sub);border-top:1px solid var(--line);margin-top:24px;padding-top:14px}.small{font-size:13px}
+@media(max-width:700px){main{padding:22px 16px}h1{font-size:25px}.lead{font-size:16px}.grid,.facts{grid-template-columns:1fr}.wide{grid-column:auto}.flow{grid-template-columns:1fr 1fr}.step:after{display:none}.card{padding:18px}.tabs{gap:6px}.tabs button{font-size:13px;padding:8px 10px}th,td{padding:9px 7px;font-size:12px}.number{font-size:15px}}
+@media print{body{background:white}main{max-width:none;padding:0}.tabs{display:none}[role=tabpanel][hidden]{display:block!important}.grid{display:block}.card{break-inside:avoid;margin:15px 0!important}.foot{margin-top:12px}}
+</style><main>
+<header><div class="eyebrow">ZEN WORD · 2.44.0 / 189 · 原安装包核查</div>
+<h1>“风险分”怎么算，具体用在哪？</h1>
+<p class="lead">它是服务器下发的<strong>流失风险判断</strong>。客户端用它筛选回流帮助：让部分卡住的玩家更容易完成眼前这关。</p>
+<div class="meta">核查范围：用户提供的 APK + XAPK 中的 Android SDK 与 ARM64 游戏代码。未获取服务端模型、线上分组或玩家账户数据。</div></header>
+<nav class="tabs" role="tablist" aria-label="风险分规则">
+<button id="tab-origin" role="tab" aria-selected="true" aria-controls="origin" data-tab="origin">① 分数从哪来</button>
+<button id="tab-gates" role="tab" aria-selected="false" aria-controls="gates" data-tab="gates">② 风险怎么影响帮助</button>
+<button id="tab-action" role="tab" aria-selected="false" aria-controls="action" data-tab="action">③ 实际给什么帮助</button>
+<button id="tab-refresh" role="tab" aria-selected="false" aria-controls="refresh" data-tab="refresh">④ 更新与缓存</button>
+<button id="tab-related" role="tab" aria-selected="false" aria-controls="related" data-tab="related">⑤ 能力分与其他关联</button>
+</nav>
+<section id="origin" role="tabpanel" aria-labelledby="tab-origin">
+<div class="facts"><div class="fact"><b>公式不可见</b>包里能看到接收分数，不能还原后台如何算分。</div><div class="fact"><b>确实影响玩法</b>参与“未完成关卡回流帮助”的放行判断。</div><div class="fact"><b>不是即时算分</b>启动先读旧标签，远端更新后再替换。</div></div>
+<div class="card"><h2>实际数据链路</h2><div class="flow">
+<div class="step">服务端给出结果<small>输入、权重、预测周期不可见</small></div>
+<div class="step">SDK 接收并保存<small>标签名：churn_prob</small></div>
+<div class="step">游戏读成小数<small>按原数值保存，没有加权换算</small></div>
+<div class="step">按实验规则使用<small>风险门槛 → 帮助放行概率</small></div>
+<div class="callout">例如收到字符串 “0.62”，游戏就保存为数值 0.62。这里的转换只是“读数字”，不是重新计算风险。这个数字仅是格式示例。</div>
+<table><thead><tr><th>你想知道的内容</th><th>本次能确认到什么程度</th></tr></thead><tbody>
+<tr><td>是不是用能力分算出来的？</td><td>未找到本地换算关系。后台是否使用能力分，包内无法确认。</td></tr>
+<tr><td>是否看通关用时、错误率、多久没回来、付费等？</td><td>没有拿到风险模型的输入清单，不能把这些写成已确认的算分因素。</td></tr>
+<tr><td>0.3 是否就是“30% 会流失”？</td><td><strong>不能直接这样解释。</strong>未确认“流失”的定义、预测未来几天，以及概率是否经过校准。</td></tr>
+<tr><td>能否给出可复刻的算分公式？</td><td>不能。能复刻的是客户端如何接收和使用这个分数；算分本身需要后台模型或设计说明。</td></tr>
+</tbody></table></div>
+</section>
+<section id="gates" role="tabpanel" aria-labelledby="tab-gates" hidden>
+<div class="card"><h2>先看你截图里的方案：优先扶助高风险玩家</h2>
+<div class="callout"><strong>风险分 ≠ 获得帮助的概率。</strong>例如风险分为 0.4，并不是“40% 给帮助”；要先查下面的规则。</div>
+<table><thead><tr><th>当前风险分</th><th>这一道风险检查的结果</th></tr></thead><tbody>
+<tr><td>≤ 0.3</td><td><strong>不通过。</strong>0.3 也不通过。</td></tr>
+<tr><td>＞ 0.3 且 ≤ 0.5</td><td>按下面的天数表抽签。0.5 仍属于这一档。</td></tr>
+<tr><td>＞ 0.5</td><td><strong>直接通过风险检查。</strong>不读取、不初始化这一套概率衰减的起始日期。</td></tr>
+</tbody></table>
+<table style="margin-top:18px"><thead><tr><th>开始计时后的天数</th><th>0～25 天</th><th>26～35 天</th><th>36～45 天</th><th>46 天起</th></tr></thead><tbody><tr><td>中间风险档的放行概率</td><td class="number">100%</td><td class="number">50%</td><td class="number">30%</td><td class="number">0%</td></tr></tbody></table>
+<p class="example">同在第 40 天：风险 0.4 → 30% 放行；风险 0.6 → 直接放行；风险 0.3 → 不放行。</p>
+<p class="small muted">这是“风险这一步”的结果。关卡进度、回流间隔、尝试次数等条件仍须同时满足。</p></div>
+<div class="grid"><div class="card"><h3>另一套实验方案：风险超过 0.3 后，统一逐步减少帮助</h3>
+<table><thead><tr><th>天数</th><th>风险 ＞ 0.3 的放行概率</th></tr></thead><tbody>
+<tr><td>0～30 天</td><td class="number">100%</td></tr><tr><td>31～40 天</td><td class="number">60%</td></tr><tr><td>41～50 天</td><td class="number">50%</td></tr><tr><td>51～60 天</td><td class="number">40%</td></tr><tr><td>61 天起</td><td class="number">30%</td></tr></tbody></table>
+<p class="small">风险 ≤ 0.3 仍不通过。在这套方案里，0.9 和 0.4 用同一条天数曲线，没有“超过 0.5 永远放行”的规则。</p></div>
+<div class="card"><h3>“第几天”从什么时候算？</h3>
+<ol><li>首次真正走到“按天数计算概率”的代码时，记录当天，算第 0 天。</li><li>之后按自然日日期差计算，跨到下一天就增加 1。</li><li>这不是安装天数，也不一定等于首次实际得到帮助的日期。</li><li>切换关卡、再次帮助不会重开这只计时器；未发现因风险升降而重置。</li></ol>
+<div class="callout caution">高风险分支若从未启动计时，降到中间档后，首次进入天数计算才开始。若以前已启动，就继续沿用原日期。</div>
+<p class="small">两套风险方案之外的实验组会跳过这道风险筛选，但仍检查其他回流帮助条件。</p></div></div>
+</section>
+<section id="action" role="tabpanel" aria-labelledby="tab-action" hidden>
+<div class="grid"><div class="card"><h2>风险通过后，能给什么帮助？</h2>
+<span class="badge">已确认的玩法用途</span>
+<h3>1. 扩大“额外词替代答案”的范围</h3>
+<p>把本关原先只允许当额外词的那批词，放进可参与答案替换的词池。玩家连出的词若符合规则，就有机会算作目标答案。</p>
+<ul><li>仍须是本关词库里的额外词，而且没有收集过。</li><li>要与可替换目标同长度，并符合已经显示的字母位置。</li><li>保护词、特殊释义提示词等限制继续生效。</li><li>答案替换功能本身须已开启；有序模式还检查相邻答案排序。</li></ul>
+<h3 style="margin-top:22px">2. 相应实验组再免费揭示一个字母</h3>
+<p>所查 Android 包中，进入“揭字帮助”组且前面所有条件通过后，直接尝试揭字，没有额外一次 50% 抽签。</p>
+<ul><li>每次最多揭一个位置，不扣金币、道具，不要求看广告。</li><li>从符合条件的隐藏位置中随机选；对应词须至少还有两个可揭位置。</li><li>已显示字母和特殊格排除。没有候选位置就不揭字。</li></ul></div>
+<div class="card"><h2>高风险也要先过这些门槛</h2>
+<table><thead><tr><th style="width:36%">条件</th><th>规则</th></tr></thead><tbody>
+<tr><td>进入方式</td><td>回到一关尚未完成的存档，排除 Chain 模式。</td></tr>
+<tr><td>玩家进度</td><td>关卡号 ≥ 100，游玩日数记录 ≥ 3。</td></tr>
+<tr><td>功能开关</td><td>回流帮助主实验开启。</td></tr>
+<tr><td>回流间隔</td><td>根据实验组，距离上次进入本关 ≥ 6 小时或 ≥ 24 小时。</td></tr>
+<tr><td>尝试情况</td><td>本关的额外词数量与有效失败提交次数，须达到下面公式要求。</td></tr>
+<tr><td>风险筛选</td><td>再按上一页对应方案检查或抽签。</td></tr></tbody></table>
+<details><summary>展开：尝试次数怎样才算够？</summary><div>
+<p>A＝本关答案记录数；E＝已收集额外词数；T＝被系统计入的失败提交次数。</p>
+<div class="formula">A − E ＝ 0 时，门槛 H ＝ 2；<br>否则 H ＝ 向上取整［1.5 ×（A − E ＋ 1）］。<br><strong>只有 E ＋ T ＞ H 才通过，等于不通过。</strong></div>
+<p>例如没找到答案和额外词时，需要至少 3 次计入失败的提交。</p>
+<p class="small">重复提交已找到的答案或额外词不计入 T。不到 2 个字母不计；长度 ≥ 2 但不够答案最短长度时，是否计入还取决于长度错误实验。代码没有把 A − E 的负数截为 0。</p></div></details>
+<div class="callout caution">6／24 小时从“上次进入本关”计算，每次进入都会更新。频繁回来查看，会改变下一次可触发的时间。</div>
+<p>这条帮助没有“每关只给一次”的标记。以后再次满足间隔及其他条件时，可以再揭一个符合条件的字母；已经扩大的词池保留。</p></div></div>
+<div class="card" style="margin-top:18px"><h3>策划应该怎样描述这一功能？</h3><p style="margin-bottom:0">“对达到进度、反复尝试后隔了一段时间回来的玩家，再根据远端风险标签筛选，放宽当前关的答案接受范围，并可能送一个免费字母提示。”<strong>该流程没有按风险分切换五档关卡库，也没有直接生成新棋盘。</strong></p></div>
+</section>
+<section id="refresh" role="tabpanel" aria-labelledby="tab-refresh" hidden>
+<div class="card"><h2>什么时候得到新分数？</h2>
+<div class="flow"><div class="step">启动标签 SDK<small>读本机保存的旧标签</small></div><div class="step">冷启动首次进入前台<small>发起远端标签请求</small></div><div class="step">收到可用的新标签<small>更新本地保存及标签对象</small></div><div class="step">通知游戏<small>风险值变化后覆盖旧值</small></div></div>
+<p>本地归因数据变化时，SDK 还可能补发请求并更新远端标签。没有在这条客户端链上发现“每过一关重算风险”，也没有固定每隔几小时刷新风险分的规则。<strong>服务器何时重新算分，仍然未知。</strong></p>
+<div class="callout caution"><strong>20 秒／4 次不是风险分刷新规则。</strong>SDK 确实存在默认间隔 20 秒、最多 4 次的额外请求，但处理模式是“广告归因补拉”。远端风险标签处理器不接收该模式，因此不能把这组数字写进风险分策划规则。</div></div>
+<div class="card"><h2>断网、空值、旧缓存会怎样处理？</h2>
+<table><thead><tr><th style="width:32%">情况</th><th>真实处理</th><th>对帮助的影响</th></tr></thead><tbody>
+<tr><td>从未收到过风险分</td><td>游戏字段初始为 0。</td><td>在两种风险筛选组中都不通过。</td></tr>
+<tr><td>请求失败或断网</td><td>失败本身不清除旧标签；可能继续使用缓存。</td><td>旧高分仍可能生效，不能一律理解为归零。</td></tr>
+<tr><td>整组远端单值标签缺失或为空</td><td>Android 处理器直接返回，保留原单值标签。</td><td>空响应不等于把旧风险清零。</td></tr>
+<tr><td>新的一组单值标签有效且非空，但删掉了风险标签</td><td>先替换整组旧标签；风险标签消失后，游戏收到变化通知，解析结果为 0。</td><td>两种风险筛选组转为不通过。</td></tr>
+<tr><td>风险标签是普通不可解析文本</td><td>转数字失败，写入 0。</td><td>两种风险筛选组不通过。</td></tr>
+<tr><td>新值从 0.4 变成 0.7</td><td>直接覆盖，没有平滑、平均或逐步加分。</td><td>下次检查按新值处理。</td></tr>
+</tbody></table>
+<p class="small muted">这条缓存读写链上没有风险分到期自动作废的检查。不能承诺分数每天更新；长期没有可用更新时，旧值可能持续保留。</p>
+<details><summary>技术边界：格式和监听</summary><div class="small">缓存存放于 Android SharedPreferences。SDK 首次初始化、已有数据时补注册监听，以及标签值变化时，会回填或通知；相同值通常不重复触发专属变化通知。游戏使用 Single.TryParse，没有额外检查是否是有限数，也没有将数值限制到 0～1。若整个回调数据对象为空，读取函数直接返回，不覆盖当前值。</div></details>
+</div></section>
+<section id="related" role="tabpanel" aria-labelledby="tab-related" hidden>
+<div class="card"><h2>它与能力分、玩家分层、其他系统的关系</h2>
+<table><thead><tr><th style="width:24%">关联对象</th><th>确认结果</th></tr></thead><tbody>
+<tr><td>当前关卡的帮助</td><td><strong>直接关联。</strong>用风险阈值和天数概率控制是否放行回流帮助。</td></tr>
+<tr><td>玩家分层</td><td><strong>在帮助规则里做分档。</strong>按 0.3／0.5 切分风险范围；不能据此称它是全游戏统一的玩家能力等级。</td></tr>
+<tr><td>能力分 ELO</td><td>本地能力分有自己的计算及上报链。没有找到把它换算为风险分的本地规则；后台是否拿来建模无法确认。</td></tr>
+<tr><td>选择哪套帮助方案</td><td>由实验配置决定。包内一条策略把符合版本条件、奖励倾向标签落在两种指定档位的玩家送入截图里的方案。</td></tr>
+<tr><td>五档关卡库、下一关难度</td><td>未找到该风险值直接控制换库、下一关加难或减难的规则。已确认效果作用于当前未完成关卡。</td></tr>
+<tr><td>实验平台通用分组</td><td>风险标签会随所有用户标签进入实验匹配系统，具备作为条件的通路；包内配置未发现直接以 churn_prob 做分流的规则。线上配置不可见。</td></tr>
+<tr><td>广告频率、礼包价格</td><td>没有查到风险值直接决定这两者的游戏代码或包内策略，不能把其他广告／付费标签的规则套给它。</td></tr>
+<tr><td>统计分析</td><td>会随整组用户标签写入通用统计属性。这能证明存在统计通道，不能反向证明这些统计就是风险模型的输入。</td></tr>
+</tbody></table>
+<details><summary>展开：帮助方案二的已找到分组条件</summary><div>
+<p>包内配置：应用版本 ≥ 2.26，且远端奖励倾向标签 <code>reward_propensity</code> 为 <code>level0_0-1</code> 或 <code>level1_1-4</code>，将 <code>half_level_easier_test2</code> 设置为 2。</p>
+<p>这些是奖励倾向标签的字面档名，不是能力分的 0～1／1～4 区间。它只解释一条包内分组策略，不代表每个线上账户都命中。</p></div></details>
+</div>
+<div class="card"><h2>证据入口</h2><p class="small">本次新增核查：Android 请求、缓存、数据通知及通用实验／统计通路；并重新核对 ARM64 的风险判断。</p>
+<table><thead><tr><th>规则</th><th>可复核入口</th></tr></thead><tbody>
+<tr><td>风险读取、默认值</td><td><code>UserTagMgr.ChurnProbTagUpdate 0x183f4b0</code>；构造函数 <code>0x18408e8</code></td></tr>
+<tr><td>两套概率方案、计时</td><td><code>0x160f364 / 0x160f48c / 0x160f5ac</code></td></tr>
+<tr><td>请求及缓存</td><td>DEX：<code>ic.j</code>、<code>qc.d</code>、<code>pc.g</code>；分别为请求调度、远端标签处理、持久化存储。</td></tr>
+<tr><td>20 秒补拉为何不更新风险</td><td><code>ic.j</code> 使用 AF_PUSH_API 模式；<code>qc.a.k</code> 仅接收 ALL / EXCLUDE_AF_PUSH_API 模式。</td></tr>
+<tr><td>实验／统计通路</td><td><code>AbUserTagManager.generaAbUserTagData</code>；<code>fc.e → sc.c → learnings_user_tags</code></td></tr>
+</tbody></table>
+<p><a href="zen-risk-score-evidence.txt">查看本次代码证据摘录</a>　·　<a href="zen-risk-score-rules.json">查看结构化规则</a>　·　<a href="ZenWord_动态难度_策划白话版.html">返回动态难度白话图谱</a></p>
+<div class="callout">要进一步回答“具体怎样算出 0.62”，需要的是后台流失模型的输入、权重和预测定义。当前安装包已经能够确认“接收结果 → 缓存 → 按规则使用”，不能补造服务端算分公式。</div></div>
+</section>
+<footer class="foot">依据：用户提供的 Zen Word 2.44.0，versionCode 189。结论来自静态代码与包内配置核查，2026-10-15。风险方案的百分比指本次风险检查放行概率，不是实际玩家流失率，也不是全体玩家获得帮助的比例。</footer>
+</main><script>
+const buttons=[...document.querySelectorAll('[role=tab]')];
+function show(id,focus=false){
+ if(!buttons.some(b=>b.dataset.tab===id))id='origin';
+ for(const b of buttons){const on=b.dataset.tab===id;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;document.getElementById(b.dataset.tab).hidden=!on;if(on&&focus)b.focus();}
+ history.replaceState(null,'','#'+id);
+}
+buttons.forEach((b,i)=>{b.addEventListener('click',()=>show(b.dataset.tab));b.addEventListener('keydown',e=>{let j=i;if(e.key==='ArrowRight')j=(i+1)%buttons.length;else if(e.key==='ArrowLeft')j=(i-1+buttons.length)%buttons.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=buttons.length-1;else return;e.preventDefault();show(buttons[j].dataset.tab,true);});});
+show(location.hash.slice(1));
+</script></html>

@@ -1,0 +1,1578 @@
+ZEN WORD 2.44.0 / 189 — RISK SCORE EVIDENCE
+Static reconstruction. Decompiled Java is cross-checked against DEX instructions.
+Literal #17860 = churn_prob. Instance field UserTagMgr +0x70 = ChurnProb.
+Game constructor has no nonzero initialization of ChurnProb; managed float default = 0.
+
+FUNCTION Platform.UserTag.UserTagMgr.AddInnerTagUpdateListener 0x183dc10
+183dc10: stp x29, x30, [sp, #-0x60]!
+183dc14: stp x28, x27, [sp, #0x10]
+183dc18: stp x26, x25, [sp, #0x20]
+183dc1c: stp x24, x23, [sp, #0x30]
+183dc20: stp x22, x21, [sp, #0x40]
+183dc24: stp x20, x19, [sp, #0x50]
+183dc28: adrp x21, #0x2ba6000
+183dc2c: adrp x20, #0x2ba6000
+183dc30: adrp x22, #0x2ba6000
+183dc34: adrp x29, #0x2ba6000
+183dc38: adrp x28, #0x2ba6000
+183dc3c: adrp x27, #0x2ba6000
+183dc40: adrp x26, #0x2ba6000
+183dc44: adrp x25, #0x2ba6000
+183dc48: adrp x24, #0x2ba6000
+183dc4c: adrp x23, #0x2db3000
+183dc50: ldr x21, [x21, #0xe78] ; USAGE kind=1 idx=2506 [load 0x2ba6e78]
+183dc54: ldr x20, [x20, #0xe80] ; Platform.UserTag.UserTagMgr.CampaignNameTagUpdate [load 0x2ba6e80]
+183dc58: ldr x22, [x22, #0xe88] ; STRING_LITERAL #17743 [load 0x2ba6e88]
+183dc5c: ldr x29, [x29, #0xe90] ; Platform.UserTag.UserTagMgr.PayProbTagUpdate [load 0x2ba6e90]
+183dc60: ldr x28, [x28, #0xe98] ; STRING_LITERAL #21210 [load 0x2ba6e98]
+183dc64: ldr x27, [x27, #0xea0] ; Platform.UserTag.UserTagMgr.ToleranceGroupTagUpdate [load 0x2ba6ea0]
+183dc68: ldr x26, [x26, #0xea8] ; STRING_LITERAL #22427 [load 0x2ba6ea8]
+183dc6c: ldr x25, [x25, #0xeb0] ; Platform.UserTag.UserTagMgr.ChurnProbTagUpdate [load 0x2ba6eb0]
+183dc70: ldr x24, [x24, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183dc74: ldrb w8, [x23, #0x831]
+183dc78: mov x19, x0
+183dc7c: tbnz w8, #0, #0x183dd6c
+183dc80: adrp x0, #0x2ba6000
+183dc84: ldr x0, [x0, #0xe78] ; USAGE kind=1 idx=2506 [load 0x2ba6e78]
+183dc88: bl #0x116794c
+183dc8c: adrp x0, #0x2ba6000
+183dc90: ldr x0, [x0, #0xec0] ; Platform.UserTag.UserTagMgr.AssistTypeTagUpdate [load 0x2ba6ec0]
+183dc94: bl #0x116794c
+183dc98: adrp x0, #0x2ba6000
+183dc9c: ldr x0, [x0, #0xe80] ; Platform.UserTag.UserTagMgr.CampaignNameTagUpdate [load 0x2ba6e80]
+183dca0: bl #0x116794c
+183dca4: adrp x0, #0x2ba6000
+183dca8: ldr x0, [x0, #0xeb0] ; Platform.UserTag.UserTagMgr.ChurnProbTagUpdate [load 0x2ba6eb0]
+183dcac: bl #0x116794c
+183dcb0: adrp x0, #0x2ba6000
+183dcb4: ldr x0, [x0, #0xec8] ; Platform.UserTag.UserTagMgr.HasAssistTagUpdate [load 0x2ba6ec8]
+183dcb8: bl #0x116794c
+183dcbc: adrp x0, #0x2ba6000
+183dcc0: ldr x0, [x0, #0xe90] ; Platform.UserTag.UserTagMgr.PayProbTagUpdate [load 0x2ba6e90]
+183dcc4: bl #0x116794c
+183dcc8: adrp x0, #0x2ba6000
+183dccc: ldr x0, [x0, #0xed0] ; Platform.UserTag.UserTagMgr.ReInstallTagUpdate [load 0x2ba6ed0]
+183dcd0: bl #0x116794c
+183dcd4: adrp x0, #0x2ba6000
+183dcd8: ldr x0, [x0, #0xed8] ; Platform.UserTag.UserTagMgr.RewardPropensityTagUpdate [load 0x2ba6ed8]
+183dcdc: bl #0x116794c
+183dce0: adrp x0, #0x2ba6000
+183dce4: ldr x0, [x0, #0xea0] ; Platform.UserTag.UserTagMgr.ToleranceGroupTagUpdate [load 0x2ba6ea0]
+183dce8: bl #0x116794c
+183dcec: adrp x0, #0x2ba6000
+183dcf0: ldr x0, [x0, #0xee0] ; Platform.UserTag.UserTagMgr.WordPropensityTagUpdate [load 0x2ba6ee0]
+183dcf4: bl #0x116794c
+183dcf8: adrp x0, #0x2ba6000
+183dcfc: ldr x0, [x0, #0xee8] ; STRING_LITERAL #19477 [load 0x2ba6ee8]
+183dd00: bl #0x116794c
+183dd04: adrp x0, #0x2ba6000
+183dd08: ldr x0, [x0, #0xef0] ; STRING_LITERAL #22879 [load 0x2ba6ef0]
+183dd0c: bl #0x116794c
+183dd10: adrp x0, #0x2ba6000
+183dd14: ldr x0, [x0, #0xef8] ; STRING_LITERAL #19861 [load 0x2ba6ef8]
+183dd18: bl #0x116794c
+183dd1c: adrp x0, #0x2ba6000
+183dd20: ldr x0, [x0, #0xe98] ; STRING_LITERAL #21210 [load 0x2ba6e98]
+183dd24: bl #0x116794c
+183dd28: adrp x0, #0x2ba6000
+183dd2c: ldr x0, [x0, #0xf00] ; STRING_LITERAL #21609 [load 0x2ba6f00]
+183dd30: bl #0x116794c
+183dd34: adrp x0, #0x2ba6000
+183dd38: ldr x0, [x0, #0xf08] ; STRING_LITERAL #17463 [load 0x2ba6f08]
+183dd3c: bl #0x116794c
+183dd40: adrp x0, #0x2ba6000
+183dd44: ldr x0, [x0, #0xe88] ; STRING_LITERAL #17743 [load 0x2ba6e88]
+183dd48: bl #0x116794c
+183dd4c: adrp x0, #0x2ba6000
+183dd50: ldr x0, [x0, #0xea8] ; STRING_LITERAL #22427 [load 0x2ba6ea8]
+183dd54: bl #0x116794c
+183dd58: adrp x0, #0x2ba6000
+183dd5c: ldr x0, [x0, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183dd60: bl #0x116794c
+183dd64: mov w8, #1
+183dd68: strb w8, [x23, #0x831]
+183dd6c: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183dd70: bl #0x1167ba0
+183dd74: ldr x2, [x20] ; Platform.UserTag.UserTagMgr.CampaignNameTagUpdate [load 0x2ca2758]
+183dd78: mov x1, x19
+183dd7c: mov x3, xzr
+183dd80: mov x20, x0
+183dd84: bl #0x1c1246c
+183dd88: ldr x1, [x22] ; STRING_LITERAL #17743 [load 0x2ccd158]
+183dd8c: mov x2, x20
+183dd90: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183dd94: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183dd98: bl #0x1167ba0
+183dd9c: ldr x2, [x29] ; Platform.UserTag.UserTagMgr.PayProbTagUpdate [load 0x2ca27a8]
+183dda0: mov x1, x19
+183dda4: mov x3, xzr
+183dda8: mov x20, x0
+183ddac: bl #0x1c1246c
+183ddb0: ldr x1, [x28] ; STRING_LITERAL #21210 [load 0x2cd3db0]
+183ddb4: mov x2, x20
+183ddb8: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183ddbc: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183ddc0: bl #0x1167ba0
+183ddc4: ldr x2, [x27] ; Platform.UserTag.UserTagMgr.ToleranceGroupTagUpdate [load 0x2ca27c8]
+183ddc8: mov x1, x19
+183ddcc: mov x3, xzr
+183ddd0: mov x20, x0
+183ddd4: bl #0x1c1246c
+183ddd8: ldr x1, [x26] ; STRING_LITERAL #22427 [load 0x2cd63b8]
+183dddc: mov x2, x20
+183dde0: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183dde4: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183dde8: bl #0x1167ba0
+183ddec: ldr x2, [x25] ; Platform.UserTag.UserTagMgr.ChurnProbTagUpdate [load 0x2ca2760]
+183ddf0: mov x1, x19
+183ddf4: mov x3, xzr
+183ddf8: mov x20, x0
+183ddfc: bl #0x1c1246c
+183de00: ldr x1, [x24] ; STRING_LITERAL #17860 [load 0x2ccd500]
+183de04: mov x2, x20
+183de08: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183de0c: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183de10: bl #0x1167ba0
+183de14: adrp x8, #0x2ba6000
+183de18: mov x1, x19
+183de1c: mov x3, xzr
+183de20: ldr x8, [x8, #0xee0] ; Platform.UserTag.UserTagMgr.WordPropensityTagUpdate [load 0x2ba6ee0]
+183de24: mov x20, x0
+183de28: ldr x2, [x8] ; Platform.UserTag.UserTagMgr.WordPropensityTagUpdate [load 0x2ca27e0]
+183de2c: bl #0x1c1246c
+183de30: adrp x8, #0x2ba6000
+183de34: mov x2, x20
+183de38: ldr x8, [x8, #0xef0] ; STRING_LITERAL #22879 [load 0x2ba6ef0]
+183de3c: ldr x1, [x8] ; STRING_LITERAL #22879 [load 0x2cd71d8]
+183de40: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183de44: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183de48: bl #0x1167ba0
+183de4c: adrp x8, #0x2ba6000
+183de50: mov x1, x19
+183de54: mov x3, xzr
+183de58: ldr x8, [x8, #0xed8] ; Platform.UserTag.UserTagMgr.RewardPropensityTagUpdate [load 0x2ba6ed8]
+183de5c: mov x20, x0
+183de60: ldr x2, [x8] ; Platform.UserTag.UserTagMgr.RewardPropensityTagUpdate [load 0x2ca27c0]
+183de64: bl #0x1c1246c
+183de68: adrp x8, #0x2ba6000
+183de6c: mov x2, x20
+183de70: ldr x8, [x8, #0xf00] ; STRING_LITERAL #21609 [load 0x2ba6f00]
+183de74: ldr x1, [x8] ; STRING_LITERAL #21609 [load 0x2cd4a28]
+183de78: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183de7c: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183de80: bl #0x1167ba0
+183de84: adrp x8, #0x2ba6000
+183de88: mov x1, x19
+183de8c: mov x3, xzr
+183de90: ldr x8, [x8, #0xed0] ; Platform.UserTag.UserTagMgr.ReInstallTagUpdate [load 0x2ba6ed0]
+183de94: mov x20, x0
+183de98: ldr x2, [x8] ; Platform.UserTag.UserTagMgr.ReInstallTagUpdate [load 0x2ca27b8]
+183de9c: bl #0x1c1246c
+183dea0: adrp x8, #0x2ba6000
+183dea4: mov x2, x20
+183dea8: ldr x8, [x8, #0xef8] ; STRING_LITERAL #19861 [load 0x2ba6ef8]
+183deac: ldr x1, [x8] ; STRING_LITERAL #19861 [load 0x2cd1388]
+183deb0: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183deb4: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183deb8: bl #0x1167ba0
+183debc: adrp x8, #0x2ba6000
+183dec0: mov x1, x19
+183dec4: mov x3, xzr
+183dec8: ldr x8, [x8, #0xec8] ; Platform.UserTag.UserTagMgr.HasAssistTagUpdate [load 0x2ba6ec8]
+183decc: mov x20, x0
+183ded0: ldr x2, [x8] ; Platform.UserTag.UserTagMgr.HasAssistTagUpdate [load 0x2ca2788]
+183ded4: bl #0x1c1246c
+183ded8: adrp x8, #0x2ba6000
+183dedc: mov x2, x20
+183dee0: ldr x8, [x8, #0xee8] ; STRING_LITERAL #19477 [load 0x2ba6ee8]
+183dee4: ldr x1, [x8] ; STRING_LITERAL #19477 [load 0x2cd0788]
+183dee8: bl #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+183deec: ldr x0, [x21] ; USAGE kind=1 idx=2506 [load 0x2c72b28]
+183def0: bl #0x1167ba0
+183def4: adrp x8, #0x2ba6000
+183def8: mov x1, x19
+183defc: mov x3, xzr
+183df00: ldr x8, [x8, #0xec0] ; Platform.UserTag.UserTagMgr.AssistTypeTagUpdate [load 0x2ba6ec0]
+183df04: mov x20, x0
+183df08: ldr x2, [x8] ; Platform.UserTag.UserTagMgr.AssistTypeTagUpdate [load 0x2ca2750]
+183df0c: bl #0x1c1246c
+183df10: adrp x8, #0x2ba6000
+183df14: mov x2, x20
+183df18: ldr x8, [x8, #0xf08] ; STRING_LITERAL #17463 [load 0x2ba6f08]
+183df1c: ldp x20, x19, [sp, #0x50]
+183df20: ldp x22, x21, [sp, #0x40]
+183df24: ldp x24, x23, [sp, #0x30]
+183df28: ldr x1, [x8] ; STRING_LITERAL #17463 [load 0x2ccc898]
+183df2c: ldp x26, x25, [sp, #0x20]
+183df30: ldp x28, x27, [sp, #0x10]
+183df34: ldp x29, x30, [sp], #0x60
+183df38: b #0x183ef80 ; Platform.UserTag.UserTagMgr.AddUserTagUpdateListener
+
+
+FUNCTION Platform.UserTag.UserTagMgr.ChurnProbTagUpdate 0x183f4b0
+183f4b0: sub sp, sp, #0x30
+183f4b4: stp x30, x21, [sp, #0x10]
+183f4b8: stp x20, x19, [sp, #0x20]
+183f4bc: adrp x21, #0x2db3000
+183f4c0: mov x20, x1
+183f4c4: mov x19, x0
+183f4c8: ldrb w8, [x21, #0x835]
+183f4cc: tbnz w8, #0, #0x183f4f0
+183f4d0: adrp x0, #0x2b80000
+183f4d4: ldr x0, [x0, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f4d8: bl #0x116794c
+183f4dc: adrp x0, #0x2ba6000
+183f4e0: ldr x0, [x0, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183f4e4: bl #0x116794c
+183f4e8: mov w8, #1
+183f4ec: strb w8, [x21, #0x835]
+183f4f0: str xzr, [sp, #8]
+183f4f4: str wzr, [sp, #4]
+183f4f8: cbz x20, #0x183f550
+183f4fc: mov x0, x20
+183f500: mov x1, xzr
+183f504: bl #0x197eca4 ; Learnings.Unity.UniKit.Runtime.UserTag.UserTagData.GetRemoteTagData
+183f508: cbz x0, #0x183f560
+183f50c: mov x1, xzr
+183f510: bl #0x1980018 ; .RemoteTagData.GetAllTagData
+183f514: cbz x0, #0x183f560
+183f518: adrp x8, #0x2ba6000
+183f51c: adrp x9, #0x2b80000
+183f520: add x2, sp, #8
+183f524: ldr x8, [x8, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183f528: ldr x9, [x9, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f52c: ldr x1, [x8] ; STRING_LITERAL #17860 [load 0x2ccd500]
+183f530: ldr x3, [x9] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2c86828]
+183f534: bl #0x1c6a540
+183f538: ldr x0, [sp, #8]
+183f53c: add x1, sp, #4
+183f540: mov x2, xzr
+183f544: bl #0x23216f8 ; System.Single.TryParse
+183f548: ldr s0, [sp, #4]
+183f54c: str s0, [x19, #0x70]
+183f550: ldp x20, x19, [sp, #0x20]
+183f554: ldp x30, x21, [sp, #0x10]
+183f558: add sp, sp, #0x30
+183f55c: ret 
+183f560: bl #0x1167bb0
+
+
+FUNCTION Platform.UserTag.UserTagMgr..ctor 0x18408e8
+18408e8: str x30, [sp, #-0x30]!
+18408ec: stp x22, x21, [sp, #0x10]
+18408f0: stp x20, x19, [sp, #0x20]
+18408f4: adrp x22, #0x2db3000
+18408f8: adrp x20, #0x2b8d000
+18408fc: adrp x21, #0x2b7d000
+1840900: ldrb w8, [x22, #0x863]
+1840904: ldr x20, [x20, #0xb30] ; STRING_LITERAL #20995 [load 0x2b8db30]
+1840908: ldr x21, [x21, #0x9c0] ; STRING_LITERAL #0 [load 0x2b7d9c0]
+184090c: mov x19, x0
+1840910: tbnz w8, #0, #0x1840934
+1840914: adrp x0, #0x2b8d000
+1840918: ldr x0, [x0, #0xb30] ; STRING_LITERAL #20995 [load 0x2b8db30]
+184091c: bl #0x116794c
+1840920: adrp x0, #0x2b7d000
+1840924: ldr x0, [x0, #0x9c0] ; STRING_LITERAL #0 [load 0x2b7d9c0]
+1840928: bl #0x116794c
+184092c: mov w8, #1
+1840930: strb w8, [x22, #0x863]
+1840934: ldr x1, [x20] ; STRING_LITERAL #20995 [load 0x2cd36f8]
+1840938: mov x0, x19
+184093c: str x1, [x0, #0x10]!
+1840940: bl #0x11678f8
+1840944: ldr x1, [x20] ; STRING_LITERAL #20995 [load 0x2cd36f8]
+1840948: mov x0, x19
+184094c: str x1, [x0, #0x18]!
+1840950: bl #0x11678f8
+1840954: ldr x1, [x21] ; STRING_LITERAL #0 [load 0x2caa6f8]
+1840958: mov x0, x19
+184095c: str x1, [x0, #0x20]!
+1840960: bl #0x11678f8
+1840964: ldr x1, [x21] ; STRING_LITERAL #0 [load 0x2caa6f8]
+1840968: mov x0, x19
+184096c: str x1, [x0, #0x28]!
+1840970: bl #0x11678f8
+1840974: ldr x1, [x21] ; STRING_LITERAL #0 [load 0x2caa6f8]
+1840978: mov x0, x19
+184097c: str x1, [x0, #0x30]!
+1840980: bl #0x11678f8
+1840984: ldr x1, [x21] ; STRING_LITERAL #0 [load 0x2caa6f8]
+1840988: mov x0, x19
+184098c: str x1, [x0, #0x60]!
+1840990: bl #0x11678f8
+1840994: ldr x1, [x20] ; STRING_LITERAL #20995 [load 0x2cd36f8]
+1840998: mov x0, x19
+184099c: str x1, [x0, #0x88]!
+18409a0: bl #0x11678f8
+18409a4: ldr x1, [x20] ; STRING_LITERAL #20995 [load 0x2cd36f8]
+18409a8: mov x0, x19
+18409ac: str x1, [x0, #0x90]!
+18409b0: bl #0x11678f8
+18409b4: adrp x8, #0x2b7d000
+18409b8: mov x0, x19
+18409bc: ldr x8, [x8, #0xaf8]
+18409c0: ldr x8, [x8, #0x90]
+18409c4: ldr x8, [x8, #0xb8]
+18409c8: ldr x1, [x8]
+18409cc: str x1, [x0, #0xa0]!
+18409d0: bl #0x11678f8
+18409d4: mov x0, x19
+18409d8: ldp x20, x19, [sp, #0x20]
+18409dc: ldp x22, x21, [sp, #0x10]
+18409e0: mov x1, xzr
+18409e4: ldr x30, [sp], #0x30
+18409e8: b #0x234c22c ; System.Object..ctor
+
+
+FUNCTION Platform.UserTag.UserTagMgr.Init 0x18409ec
+18409ec: stp x30, x19, [sp, #-0x10]!
+18409f0: mov x19, x0
+18409f4: bl #0x183dc10 ; Platform.UserTag.UserTagMgr.AddInnerTagUpdateListener
+18409f8: mov x0, x19
+18409fc: ldp x30, x19, [sp], #0x10
+1840a00: b #0x183df3c ; Platform.UserTag.UserTagMgr.AddLocalTagUpdateListener
+
+// CLASS Lic/a;
+package ic;
+public class a {
+    private ic.a$b a;
+    private java.util.Map b;
+    private java.util.Map c;
+    private ic.a$a d;
+    private java.util.Map e;
+    private java.util.Map f;
+    private java.util.Map g;
+
+    public a()
+    {
+        return;
+    }
+
+    static ic.a a(org.json.JSONObject p12)
+    {
+        ic.a v0_1 = new ic.a();
+        String v1_5 = p12.optJSONObject("user_prop");
+        if (v1_5 != null) {
+            int v2_2 = new ic.a$b();
+            v0_1.p(v2_2);
+            v2_2.m(v1_5.optString("user_id"));
+            v2_2.h(v1_5.optString("first_app_version"));
+            v2_2.i(v1_5.optLong("create_dt"));
+            v2_2.l(v1_5.optString("luid"));
+            if (sc.a.j(v1_5, "low_perf_device")) {
+                v2_2.k(Boolean.valueOf(v1_5.optBoolean("low_perf_device")));
+            }
+            java.util.ArrayList v3_11 = v1_5.optJSONArray("user_tags");
+            if ((v3_11 != null) && (v3_11.length() > 0)) {
+                org.json.JSONArray v6_4 = new java.util.ArrayList();
+                v2_2.n(v6_4);
+                java.util.ArrayList v7_3 = 0;
+                while (v7_3 < v3_11.length()) {
+                    int v8_6 = v3_11.optJSONObject(v7_3);
+                    if (v8_6 != 0) {
+                        String v9_3 = new ic.a$b$b();
+                        String v10_0 = v8_6.optString("tag_id");
+                        if (!android.text.TextUtils.isEmpty(v10_0)) {
+                            v9_3.d(v10_0);
+                            v9_3.e(v8_6.optString("tag_value"));
+                            v6_4.add(v9_3);
+                        }
+                    }
+                    v7_3++;
+                }
+            }
+            String v1_6 = v1_5.optJSONArray("user_tag_list");
+            if ((v1_6 != null) && (v1_6.length() > 0)) {
+                java.util.ArrayList v3_15 = new java.util.ArrayList();
+                v2_2.j(v3_15);
+                int v2_0 = 0;
+                while (v2_0 < v1_6.length()) {
+                    org.json.JSONArray v6_0 = v1_6.optJSONObject(v2_0);
+                    if (v6_0 != null) {
+                        java.util.ArrayList v7_0 = v6_0.optString("tag_id");
+                        if (!android.text.TextUtils.isEmpty(v7_0)) {
+                            org.json.JSONArray v6_1 = v6_0.optJSONArray("tag_value_list");
+                            if ((v6_1 != null) && (v6_1.length() != 0)) {
+                                int v8_4 = new ic.a$b$a();
+                                v3_15.add(v8_4);
+                                v8_4.d(v7_0);
+                                java.util.ArrayList v7_2 = new java.util.ArrayList();
+                                v8_4.e(v7_2);
+                                int v8_5 = 0;
+                                while (v8_5 < v6_1.length()) {
+                                    v7_2.add(v6_1.optString(v8_5));
+                                    v8_5++;
+                                }
+                            }
+                        }
+                    }
+                    v2_0++;
+                }
+            }
+        }
+        String v1_8 = p12.optJSONObject("campaign_prop");
+        if (v1_8 != null) {
+            v0_1.m(ic.a.i(v1_8));
+        }
+        String v1_11 = p12.optJSONObject("campaign_prop_af_push_api");
+        if (v1_11 != null) {
+            v0_1.j(ic.a.i(v1_11));
+        }
+        String v1_14 = p12.optJSONObject("ecpm_rank");
+        if (v1_14 != null) {
+            int v2_4 = new ic.a$a();
+            v0_1.n(v2_4);
+            v2_4.d(v1_14.optDouble("high"));
+            v2_4.e(v1_14.optDouble("mid"));
+        }
+        String v1_16 = p12.optJSONObject("ua_ad_tag");
+        if (v1_16 != null) {
+            v0_1.o(ic.a.i(v1_16));
+        }
+        String v1_1 = p12.optJSONObject("ua_ad_tag_af_push_api");
+        if (v1_1 != null) {
+            v0_1.l(ic.a.i(v1_1));
+        }
+        java.util.Map v12_1 = p12.optJSONObject("af_push_api_tags");
+        if (v12_1 != null) {
+            v0_1.k(ic.a.i(v12_1));
+        }
+        return v0_1;
+    }
+
+    private static java.util.Map i(org.json.JSONObject p4)
+    {
+        java.util.HashMap v0_1 = new java.util.HashMap();
+        java.util.Iterator v1 = p4.keys();
+        while (v1.hasNext()) {
+            String v2_0 = ((String) v1.next());
+            if (!android.text.TextUtils.isEmpty(v2_0)) {
+                v0_1.put(v2_0, p4.optString(v2_0));
+            }
+        }
+        return v0_1;
+    }
+
+    public java.util.Map b()
+    {
+        return this.c;
+    }
+
+    public java.util.Map c()
+    {
+        return this.g;
+    }
+
+    public java.util.Map d()
+    {
+        return this.f;
+    }
+
+    public java.util.Map e()
+    {
+        return this.b;
+    }
+
+    public ic.a$a f()
+    {
+        return this.d;
+    }
+
+    public java.util.Map g()
+    {
+        return this.e;
+    }
+
+    public ic.a$b h()
+    {
+        return this.a;
+    }
+
+    public void j(java.util.Map p1)
+    {
+        this.c = p1;
+        return;
+    }
+
+    public void k(java.util.Map p1)
+    {
+        this.g = p1;
+        return;
+    }
+
+    public void l(java.util.Map p1)
+    {
+        this.f = p1;
+        return;
+    }
+
+    public void m(java.util.Map p1)
+    {
+        this.b = p1;
+        return;
+    }
+
+    public void n(ic.a$a p1)
+    {
+        this.d = p1;
+        return;
+    }
+
+    public void o(java.util.Map p1)
+    {
+        this.e = p1;
+        return;
+    }
+
+    public void p(ic.a$b p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    public String toString()
+    {
+        String v0_1 = new StringBuilder();
+        v0_1.append("ConfigData{ecpmRank=");
+        v0_1.append(this.d);
+        v0_1.append(125);
+        return v0_1.toString();
+    }
+}
+
+
+
+// CLASS Lic/j$a;
+package ic;
+ class j$a implements ic.f$a {
+    final synthetic ic.j a;
+
+    j$a(ic.j p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    public void a(Throwable p1)
+    {
+        this.a.f();
+        return;
+    }
+
+    public void b(ic.a p3)
+    {
+        ic.j.d(this.a).a(p3, ic.j$e.c);
+        this.a.f();
+        return;
+    }
+}
+
+
+
+// CLASS Lic/j$b;
+package ic;
+ class j$b implements ic.f$a {
+    final synthetic ic.j a;
+
+    j$b(ic.j p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    private void c()
+    {
+        pc.e.b().c("task_key_init_request");
+        this.a.f();
+        return;
+    }
+
+    public void a(Throwable p1)
+    {
+        this.c();
+        return;
+    }
+
+    public void b(ic.a p3)
+    {
+        ic.j.d(this.a).a(p3, ic.j$e.b);
+        this.c();
+        return;
+    }
+}
+
+
+
+// CLASS Lic/j$c;
+package ic;
+ class j$c implements ic.f$a {
+    final synthetic ic.j a;
+
+    j$c(ic.j p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    public void a(Throwable p1)
+    {
+        ic.j.e(this.a);
+        return;
+    }
+
+    public void b(ic.a p3)
+    {
+        ic.j.d(this.a).a(p3, ic.j$e.d);
+        ic.j.e(this.a);
+        return;
+    }
+}
+
+
+
+// CLASS Lic/j$e;
+package ic;
+public final enum class j$e extends java.lang.Enum {
+    public static final enum ic.j$e b;
+    public static final enum ic.j$e c;
+    public static final enum ic.j$e d;
+    private static final synthetic ic.j$e[] e;
+
+    static j$e()
+    {
+        ic.j$e.b = new ic.j$e("ALL", 0);
+        ic.j$e.c = new ic.j$e("AF_PUSH_API", 1);
+        ic.j$e.d = new ic.j$e("EXCLUDE_AF_PUSH_API", 2);
+        ic.j$e.e = ic.j$e.a();
+        return;
+    }
+
+    private j$e(String p1, int p2)
+    {
+        super(p1, p2);
+        return;
+    }
+
+    private static synthetic ic.j$e[] a()
+    {
+        return new ic.j$e[] {ic.j$e.b, ic.j$e.c, ic.j$e.d});
+    }
+
+    public static ic.j$e valueOf(String p1)
+    {
+        return ((ic.j$e) Enum.valueOf(ic.j$e, p1));
+    }
+
+    public static ic.j$e[] values()
+    {
+        return ((ic.j$e[]) ic.j$e.e.clone());
+    }
+}
+
+
+
+// CLASS Lic/j;
+package ic;
+public class j {
+    private final String a;
+    private final String b;
+    private final long c;
+    private final int d;
+    private int e;
+    private ic.f f;
+    private ic.j$d g;
+    private android.content.Context h;
+    private java.util.concurrent.ExecutorService i;
+    private java.util.concurrent.ExecutorService j;
+    private final Runnable k;
+
+    private j()
+    {
+        this.a = "UserTag_ConfigResultManager";
+        this.b = "task_key_init_request";
+        this.c = 20000;
+        this.d = 4;
+        this.e = 0;
+        this.i = java.util.concurrent.Executors.newSingleThreadExecutor();
+        this.j = java.util.concurrent.Executors.newSingleThreadExecutor();
+        this.k = new ic.i(this);
+        return;
+    }
+
+    synthetic j(ic.k p1)
+    {
+        return;
+    }
+
+    public static synthetic void a(ic.j p0)
+    {
+        p0.k();
+        return;
+    }
+
+    public static synthetic void b(ic.j p0)
+    {
+        p0.i();
+        return;
+    }
+
+    public static synthetic void c(ic.j p0)
+    {
+        p0.j();
+        return;
+    }
+
+    static bridge synthetic ic.j$d d(ic.j p0)
+    {
+        return p0.g;
+    }
+
+    static bridge synthetic void e(ic.j p0)
+    {
+        p0.n();
+        return;
+    }
+
+    public static ic.j g()
+    {
+        return ic.j$f.a();
+    }
+
+    private synthetic void i()
+    {
+        sc.e.b("UserTag_ConfigResultManager", "request for init");
+        this.f.g(this.i, new ic.j$b(this));
+        return;
+    }
+
+    private synthetic void j()
+    {
+        sc.e.b("UserTag_ConfigResultManager", "request for local af");
+        this.f.g(this.i, new ic.j$c(this));
+        return;
+    }
+
+    private synthetic void k()
+    {
+        this.e = (this.e + 1);
+        ic.f v0_5 = new StringBuilder();
+        v0_5.append("request for remote afPushApiData, current afPushApiRequestCount: ");
+        v0_5.append(this.e);
+        sc.e.b("UserTag_ConfigResultManager", v0_5.toString());
+        this.f.g(this.j, new ic.j$a(this));
+        return;
+    }
+
+    private void m()
+    {
+        int v0_0 = this.j;
+        if ((v0_0 != 0) && (!v0_0.isShutdown())) {
+            this.j.shutdown();
+            this.j = 0;
+        }
+        return;
+    }
+
+    private void n()
+    {
+        int v0_0 = this.i;
+        if ((v0_0 != 0) && (!v0_0.isShutdown())) {
+            this.i.shutdown();
+            this.i = 0;
+        }
+        return;
+    }
+
+    public void f()
+    {
+        if (!rc.b.s(this.h)) {
+            if (this.e < 4) {
+                long v2_0 = mc.i0.a().c();
+                if (v2_0 <= 0) {
+                    v2_0 = 20000;
+                }
+                Runnable v0_3 = new StringBuilder();
+                v0_3.append("add request for remote afPushApiData delayTask\uff0c delayTime\uff1a");
+                v0_3.append(v2_0);
+                sc.e.b("UserTag_ConfigResultManager", v0_3.toString());
+                sc.g.a(this.k);
+                sc.g.c(this.k, v2_0);
+                return;
+            } else {
+                sc.e.b("UserTag_ConfigResultManager", "request for remote afPushApiData reached the max count, not request");
+                this.m();
+                return;
+            }
+        } else {
+            sc.e.b("UserTag_ConfigResultManager", "has local afPushApiData, not request");
+            this.m();
+            return;
+        }
+    }
+
+    public void h(fc.v p2, ic.j$d p3)
+    {
+        this.h = p2.a();
+        this.f = new ic.f(p2);
+        this.g = p3;
+        pc.e.b().a("task_key_app_enter_front", new ic.g(this));
+        return;
+    }
+
+    public void l()
+    {
+        pc.e.b().a("task_key_init_request", new ic.h(this));
+        return;
+    }
+}
+
+
+
+// CLASS Lpc/g$b;
+package pc;
+public class g$b {
+    private final android.content.SharedPreferences a;
+
+    private g$b(android.content.Context p2, String p3)
+    {
+        this.a = p2.getSharedPreferences(p3, 0);
+        return;
+    }
+
+    synthetic g$b(android.content.Context p1, String p2, pc.h p3)
+    {
+        this(p1, p2);
+        return;
+    }
+
+    public void a()
+    {
+        this.e().clear().apply();
+        return;
+    }
+
+    public boolean b(String p2)
+    {
+        return this.a.contains(p2);
+    }
+
+    public java.util.Map c()
+    {
+        return this.a.getAll();
+    }
+
+    public boolean d(String p2, boolean p3)
+    {
+        return this.a.getBoolean(p2, p3);
+    }
+
+    public android.content.SharedPreferences$Editor e()
+    {
+        return this.a.edit();
+    }
+
+    public long f(String p2, long p3)
+    {
+        return this.a.getLong(p2, p3);
+    }
+
+    public String g(String p2, String p3)
+    {
+        return this.a.getString(p2, p3);
+    }
+
+    public void h(String p2)
+    {
+        this.e().remove(p2).apply();
+        return;
+    }
+
+    public void i(String p2, boolean p3)
+    {
+        this.e().putBoolean(p2, p3).apply();
+        return;
+    }
+
+    public void j(String p2, long p3)
+    {
+        this.e().putLong(p2, p3).apply();
+        return;
+    }
+
+    public void k(String p2, String p3)
+    {
+        this.e().putString(p2, p3).apply();
+        return;
+    }
+}
+
+
+
+// CLASS Lpc/g;
+package pc;
+public class g {
+    private final String a;
+    private final String b;
+    private final String c;
+    private final String d;
+    private final String e;
+    private final String f;
+    private final String g;
+    private final String h;
+    private final String i;
+    private final String j;
+    private final java.util.Map k;
+
+    private g()
+    {
+        this.a = "user_tag_sdk_sp_file";
+        this.b = "user_tag_sdk_local_sp_file";
+        this.c = "user_tag_list_sdk_local_sp_file";
+        this.d = "user_tag_sdk_remote_sp_file";
+        this.e = "user_tag_list_sdk_remote_sp_file";
+        this.f = "user_tag_flow_domain_sp_file";
+        this.g = "user_tag_pm_flow_domain_sp_file";
+        this.h = "user_tag_ua_ad_tag_sp_file";
+        this.i = "user_tag_af_push_api_ua_ad_tag_sp_file";
+        this.j = "sp_lxuid";
+        this.k = new java.util.concurrent.ConcurrentHashMap();
+        return;
+    }
+
+    synthetic g(pc.h p1)
+    {
+        return;
+    }
+
+    public static pc.g a()
+    {
+        return pc.g$a.a();
+    }
+
+    public pc.g$b b(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_af_push_api_ua_ad_tag_sp_file");
+    }
+
+    public pc.g$b c(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_sdk_sp_file");
+    }
+
+    public pc.g$b d(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_list_sdk_local_sp_file");
+    }
+
+    public pc.g$b e(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_sdk_local_sp_file");
+    }
+
+    public pc.g$b f(android.content.Context p2)
+    {
+        return this.k(p2, "sp_lxuid");
+    }
+
+    public pc.g$b g(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_flow_domain_sp_file");
+    }
+
+    public pc.g$b h(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_pm_flow_domain_sp_file");
+    }
+
+    public pc.g$b i(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_list_sdk_remote_sp_file");
+    }
+
+    public pc.g$b j(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_sdk_remote_sp_file");
+    }
+
+    public pc.g$b k(android.content.Context p4, String p5)
+    {
+        if (!this.k.containsKey(p5)) {
+            this.k.put(p5, new pc.g$b(p4, p5, 0));
+        }
+        return ((pc.g$b) this.k.get(p5));
+    }
+
+    public pc.g$b l(android.content.Context p2)
+    {
+        return this.k(p2, "user_tag_ua_ad_tag_sp_file");
+    }
+}
+
+
+
+// CLASS Lqc/d;
+package qc;
+public class d extends qc.a {
+
+    public d(fc.d p1)
+    {
+        super(p1);
+        return;
+    }
+
+    private pc.g$b o(android.content.Context p2)
+    {
+        return pc.g.a().i(p2);
+    }
+
+    private pc.g$b p(android.content.Context p2)
+    {
+        return pc.g.a().j(p2);
+    }
+
+    private void q(fc.v p4)
+    {
+        java.util.Iterator v4_5 = this.o(p4.a()).c();
+        if ((v4_5 != null) && (!v4_5.isEmpty())) {
+            java.util.Map v0_2 = this.m().f().a();
+            java.util.Iterator v4_3 = v4_5.entrySet().iterator();
+            while (v4_3.hasNext()) {
+                java.util.List v1_2 = ((java.util.Map$Entry) v4_3.next());
+                v0_2.put(((String) v1_2.getKey()), sc.d.a(ic.a$b$a.b(String.valueOf(v1_2.getValue()))));
+            }
+        }
+        return;
+    }
+
+    private void r(fc.v p4)
+    {
+        java.util.Iterator v4_5 = this.p(p4.a()).c();
+        if ((v4_5 != null) && (!v4_5.isEmpty())) {
+            java.util.Map v0_2 = this.m().f().b();
+            java.util.Iterator v4_3 = v4_5.entrySet().iterator();
+            while (v4_3.hasNext()) {
+                String v1_2 = ((java.util.Map$Entry) v4_3.next());
+                v0_2.put(((String) v1_2.getKey()), ic.a$b$b.c(String.valueOf(v1_2.getValue())));
+            }
+        }
+        return;
+    }
+
+    private void s(ic.a p8)
+    {
+        java.util.Iterator v8_1 = p8.h();
+        if (v8_1 != null) {
+            java.util.Iterator v8_3 = v8_1.c();
+            if ((v8_3 != null) && (!v8_3.isEmpty())) {
+                pc.g$b v0_1 = pc.c.j().k();
+                pc.g$b v1 = this.o(v0_1);
+                java.util.Map v2_2 = this.m().f().a();
+                v1.a();
+                v2_2.clear();
+                pc.g$b v0_2 = this.p(v0_1);
+                java.util.Map v3_2 = this.m().f().b();
+                java.util.Iterator v8_2 = v8_3.iterator();
+                while (v8_2.hasNext()) {
+                    String v4_2 = ((ic.a$b$a) v8_2.next());
+                    String v5 = v4_2.a();
+                    v2_2.put(v5, v4_2.c());
+                    v1.k(v5, v4_2.f());
+                    v0_2.h(v5);
+                    v3_2.remove(v5);
+                }
+            }
+        }
+        return;
+    }
+
+    private void t(ic.a p6)
+    {
+        java.util.Iterator v6_1 = p6.h();
+        if (v6_1 != null) {
+            java.util.Iterator v6_3 = v6_1.f();
+            if ((v6_3 != null) && (!v6_3.isEmpty())) {
+                pc.g$b v0_2 = this.p(pc.c.j().k());
+                java.util.Map v1_2 = this.m().f().b();
+                v0_2.a();
+                v1_2.clear();
+                java.util.Iterator v6_2 = v6_3.iterator();
+                while (v6_2.hasNext()) {
+                    String v2_2 = ((ic.a$b$b) v6_2.next());
+                    String v3 = v2_2.a();
+                    v1_2.put(v3, v2_2.b());
+                    v0_2.k(v3, v2_2.f());
+                }
+            }
+        }
+        return;
+    }
+
+    public void g(fc.v p1)
+    {
+        this.r(p1);
+        this.q(p1);
+        return;
+    }
+
+    public void n(ic.a p1)
+    {
+        this.t(p1);
+        this.s(p1);
+        return;
+    }
+}
+
+
+
+// CLASS Lsc/c;
+package sc;
+public class c {
+
+    public static void a(String p0, android.os.Bundle p1)
+    {
+        hc.c.h(p0, p1);
+        return;
+    }
+
+    public static void b(java.util.Map p1)
+    {
+        hc.c.i("learnings_user_tags", sc.d.c(p1));
+        return;
+    }
+}
+
+// CLASS Lfc/z$a;
+package fc;
+ class z$a implements pc.c$b {
+    final synthetic fc.z a;
+
+    z$a(fc.z p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    public void a()
+    {
+        pc.e.b().c("task_key_app_enter_front");
+        pc.c.j().q(this);
+        return;
+    }
+}
+
+
+
+// CLASS Lpc/c$a;
+package pc;
+ class c$a implements android.app.Application$ActivityLifecycleCallbacks {
+    final synthetic pc.c b;
+
+    c$a(pc.c p1)
+    {
+        this.b = p1;
+        return;
+    }
+
+    public void onActivityCreated(android.app.Activity p1, android.os.Bundle p2)
+    {
+        pc.c.c(this.b, p1);
+        if ((!pc.a.a().b(p1.getClass())) && (!pc.c.a(this.b))) {
+            sc.e.b("UserTag_LifeCycleManager", "ColdStartToForeground");
+            pc.c.g(this.b);
+            pc.c.b(this.b, 1);
+        }
+        return;
+    }
+
+    public void onActivityDestroyed(android.app.Activity p2)
+    {
+        pc.c.d(this.b, p2);
+        return;
+    }
+
+    public void onActivityPaused(android.app.Activity p1)
+    {
+        return;
+    }
+
+    public void onActivityResumed(android.app.Activity p1)
+    {
+        return;
+    }
+
+    public void onActivitySaveInstanceState(android.app.Activity p1, android.os.Bundle p2)
+    {
+        return;
+    }
+
+    public void onActivityStarted(android.app.Activity p2)
+    {
+        pc.c.e(this.b, p2);
+        return;
+    }
+
+    public void onActivityStopped(android.app.Activity p2)
+    {
+        pc.c.f(this.b, p2);
+        return;
+    }
+}
+
+
+
+// CLASS Lpc/e;
+package pc;
+public class e {
+    private final java.util.Map a;
+    private final java.util.Set b;
+
+    private e()
+    {
+        this.a = new androidx.collection.ArrayMap();
+        this.b = new androidx.collection.ArraySet();
+        return;
+    }
+
+    synthetic e(pc.f p1)
+    {
+        return;
+    }
+
+    public static pc.e b()
+    {
+        return pc.e$a.a();
+    }
+
+    private void d(String p2)
+    {
+        java.util.Set v0_2 = ((Runnable) this.a.get(p2));
+        if (v0_2 != null) {
+            v0_2.run();
+            this.a.remove(p2);
+            this.b.remove(p2);
+            return;
+        } else {
+            return;
+        }
+    }
+
+    public void a(String p2, Runnable p3)
+    {
+        if (!this.a.containsKey(p2)) {
+            this.a.put(p2, p3);
+            if (this.b.contains(p2)) {
+                this.d(p2);
+            }
+            return;
+        } else {
+            return;
+        }
+    }
+
+    public void c(String p2)
+    {
+        if (!this.b.contains(p2)) {
+            this.b.add(p2);
+            this.d(p2);
+            return;
+        } else {
+            return;
+        }
+    }
+}
+
+
+
+// CLASS Lqc/a;
+package qc;
+public abstract class a implements qc.b {
+    private final fc.d a;
+
+    public a(fc.d p1)
+    {
+        this.a = p1;
+        return;
+    }
+
+    protected static pc.g$b l(android.content.Context p1)
+    {
+        return pc.g.a().c(p1);
+    }
+
+    public void a(hc.d p1)
+    {
+        return;
+    }
+
+    public void b(hc.d p1)
+    {
+        return;
+    }
+
+    public void c(String p1, java.util.List p2)
+    {
+        return;
+    }
+
+    public void d(String p1)
+    {
+        return;
+    }
+
+    public void e(java.util.Map p1)
+    {
+        return;
+    }
+
+    public void f(ic.a p1, ic.j$e p2)
+    {
+        if (this.k(p2)) {
+            this.n(p1);
+        }
+        return;
+    }
+
+    public void h(java.util.Map p1)
+    {
+        return;
+    }
+
+    public void i(String p1, String p2)
+    {
+        return;
+    }
+
+    public void j(java.util.Map p1)
+    {
+        return;
+    }
+
+    public boolean k(ic.j$e p2)
+    {
+        if ((p2 != ic.j$e.b) && (p2 != ic.j$e.d)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    protected fc.d m()
+    {
+        return this.a;
+    }
+
+    public void n(ic.a p1)
+    {
+        return;
+    }
+}
+
+
+
+// CLASS Lcom/learnings/abcenter/bridge/AbUserTagManager;
+package com.learnings.abcenter.bridge;
+public class AbUserTagManager {
+    private android.content.Context mContext;
+
+    private AbUserTagManager()
+    {
+        return;
+    }
+
+    synthetic AbUserTagManager(com.learnings.abcenter.bridge.b p1)
+    {
+        return;
+    }
+
+    public static synthetic void a(com.learnings.abcenter.bridge.AbUserTagManager p0, com.learnings.abcenter.bridge.AbUserTagManager$BridgeListener p1, fc.d p2)
+    {
+        p0.lambda$observeAbUserTagChange$0(p1, p2);
+        return;
+    }
+
+    public static com.learnings.abcenter.bridge.AbUserTagManager get()
+    {
+        return com.learnings.abcenter.bridge.AbUserTagManager$Holder.a();
+    }
+
+    private synthetic void lambda$observeAbUserTagChange$0(com.learnings.abcenter.bridge.AbUserTagManager$BridgeListener p1, fc.d p2)
+    {
+        if (p1 != null) {
+            p1.onAbUserTagDataChange(this.generaAbUserTagData());
+        }
+        return;
+    }
+
+    public com.learnings.abcenter.bridge.AbUserTagData generaAbUserTagData()
+    {
+        com.learnings.abcenter.bridge.AbUserTagData v0_1 = new com.learnings.abcenter.bridge.AbUserTagData();
+        String v1_0 = fc.a.f();
+        StringBuilder v2_2 = v1_0.c();
+        v0_1.setFirstAppVersion(v2_2.t());
+        v0_1.setAppVersion(v2_2.h());
+        v0_1.setFirstInstallTime(v2_2.u());
+        v0_1.setDeviceResolution(((lc.c) v2_2.q().a()).getName());
+        v0_1.setDeviceCategory(((lc.b) v2_2.m().a()).getName());
+        v0_1.setDeviceRam(v2_2.p());
+        v0_1.setMediaSource(v2_2.B());
+        v0_1.setCampaignId(v2_2.i());
+        v0_1.setLivingDays(v2_2.z());
+        v0_1.setOsVersion(v2_2.G());
+        v0_1.setHasAdIdentify(v2_2.x());
+        StringBuilder v2_3 = new java.util.HashMap();
+        v2_3.putAll(v1_0.a());
+        v0_1.setAllTagData(v2_3);
+        StringBuilder v2_5 = new java.util.HashMap();
+        v2_5.putAll(v1_0.c().C());
+        v0_1.setOriginMoFlowDomainData(v2_5);
+        StringBuilder v2_7 = new java.util.HashMap();
+        v2_7.putAll(v1_0.c().H());
+        v0_1.setOriginPmFlowDomainData(v2_7);
+        StringBuilder v2_9 = new java.util.HashMap();
+        v2_9.putAll(v1_0.e());
+        String v1_2 = this.mContext;
+        if (v1_2 != null) {
+            v2_9.put("country", com.learnings.abcenter.util.AbCenterUtil.getCountry(v1_2));
+        }
+        v0_1.setOriginAllTagData(v2_9);
+        return v0_1;
+    }
+
+    public String getAbUserInfoJson(android.content.Context p2)
+    {
+        return this.generaAbUserTagData().toJson(p2);
+    }
+
+    public void observeAbUserTagChange(com.learnings.abcenter.bridge.AbUserTagManager$BridgeListener p3)
+    {
+        try {
+            fc.a.e(new com.learnings.abcenter.bridge.a(this, p3));
+            return;
+        } catch (String v3_2) {
+            StringBuilder v0_3 = new StringBuilder();
+            v0_3.append("observeUserTag fail\uff1a");
+            v0_3.append(v3_2);
+            com.learnings.abcenter.util.AbCenterLogUtil.log(v0_3.toString());
+            return;
+        }
+    }
+
+    public void setContext(android.content.Context p1)
+    {
+        this.mContext = p1;
+        return;
+    }
+
+    public boolean setMoFlowDomainTag(java.util.Map p2)
+    {
+        try {
+            fc.t.s().A(p2);
+            return 1;
+        } catch (Throwable) {
+            return 0;
+        }
+    }
+
+    public boolean setPmFlowDomainTag(java.util.Map p2)
+    {
+        try {
+            fc.t.s().B(p2);
+            return 1;
+        } catch (Throwable) {
+            return 0;
+        }
+    }
+}
+
+
+
+// CLASS Lfc/d;
+package fc;
+public class d {
+    private fc.d$a a;
+    private fc.d$b b;
+    private fc.d$c c;
+
+    public d()
+    {
+        return;
+    }
+
+    public java.util.Map a()
+    {
+        java.util.HashMap v0_1 = new java.util.HashMap();
+        v0_1.putAll(this.c().g());
+        v0_1.putAll(this.d().b());
+        v0_1.putAll(sc.a.l(this.d().a()));
+        v0_1.putAll(this.f().b());
+        v0_1.putAll(sc.a.l(this.f().a()));
+        return v0_1;
+    }
+
+    java.util.Map b()
+    {
+        java.util.HashMap v0_1 = new java.util.HashMap();
+        v0_1.putAll(this.c().s());
+        v0_1.putAll(this.d().b());
+        v0_1.putAll(this.d().a());
+        v0_1.putAll(this.f().b());
+        v0_1.putAll(this.f().a());
+        return v0_1;
+    }
+
+    public fc.d$a c()
+    {
+        if (this.a == null) {
+            this.a = new fc.d$a();
+        }
+        return this.a;
+    }
+
+    public fc.d$b d()
+    {
+        if (this.b == null) {
+            this.b = new fc.d$b();
+        }
+        return this.b;
+    }
+
+    public java.util.Map e()
+    {
+        java.util.HashMap v0_1 = new java.util.HashMap();
+        v0_1.putAll(this.c().F());
+        v0_1.putAll(this.d().b());
+        v0_1.putAll(this.d().a());
+        v0_1.putAll(this.f().b());
+        v0_1.putAll(this.f().a());
+        return v0_1;
+    }
+
+    public fc.d$c f()
+    {
+        if (this.c == null) {
+            this.c = new fc.d$c();
+        }
+        return this.c;
+    }
+
+    public String toString()
+    {
+        String v0_1 = new StringBuilder();
+        v0_1.append("UserTagData{\ninnerTagData = ");
+        v0_1.append(this.c());
+        v0_1.append("\nlocalTagData = ");
+        v0_1.append(this.d());
+        v0_1.append("\nremoteTagData = ");
+        v0_1.append(this.f());
+        v0_1.append("\noriginAllTagData = ");
+        v0_1.append(sc.d.c(this.e()));
+        v0_1.append("\nallTagData = ");
+        v0_1.append(sc.a.k(this.a()));
+        v0_1.append("\n");
+        v0_1.append(125);
+        return v0_1.toString();
+    }
+}
+
+

@@ -1,0 +1,5705 @@
+{
+  "investigationDate": "2026-10-13",
+  "source": {
+    "path": "C:\\Users\\huyi\\Downloads\\Zen Word - v2.44.0.apk",
+    "sha256": "6d5678c333fbe74bad85f3d63de46cdcdb1360e480afccef64fbc6d303957770",
+    "size": 234257067,
+    "bundles": 54,
+    "unityVersion": "6000.3.16f1",
+    "manifestAttributes": [
+      {
+        "element": "manifest",
+        "attributes": {
+          "versionCode": 189,
+          "versionName": "2.44.0",
+          "installLocation": 2,
+          "compileSdkVersion": 36,
+          "compileSdkVersionCodename": "16",
+          "requiredSplitTypes": "base__abi",
+          "splitTypes": "",
+          "package": "kidultlovin.word.zen",
+          "platformBuildVersionCode": 36,
+          "platformBuildVersionName": 16
+        }
+      },
+      {
+        "element": "meta-data",
+        "attributes": {
+          "name": "com.android.vending.splits.required",
+          "value": true
+        }
+      },
+      {
+        "element": "meta-data",
+        "attributes": {
+          "name": "com.android.vending.splits",
+          "resource": 2132148240
+        }
+      }
+    ]
+  },
+  "scope": {
+    "mainVariants": {
+      "purchase_android": 1000,
+      "purchase_ios": 1000,
+      "t1": 1000,
+      "t1_wordtime": 1000,
+      "t3": 1000
+    },
+    "dailyVariants": {
+      "base": 369,
+      "ph": 369
+    },
+    "localDictionaryEntries": 1232,
+    "shortDefinitionEntries": 17817,
+    "remoteDictionaryBundlesNotInAPK": 26,
+    "nativeGameplayLibraryPresent": false,
+    "interpretation": "Configuration membership and stored wording are confirmed; acceptance, reward, collection, display filtering, and live variant selection are not native-code verified."
+  },
+  "txtblacklists": [
+    {
+      "id": 0,
+      "text": "cunt"
+    },
+    {
+      "id": 1,
+      "text": "fuck"
+    },
+    {
+      "id": 2,
+      "text": "cünt"
+    }
+  ],
+  "sensitiveCount": 5281,
+  "rareWordCount": 4163,
+  "focusWords": {
+    "BRA": {
+      "shortDefinition": "An item of clothing, usually underwear worn to support the breasts.",
+      "localDetailedDefinitions": [
+        "(noun) A brassiere.",
+        " Synonymous with BRI (Basic Rate Interface).The term BRA generally is used outside North America. See BRI.",
+        "(noun) an undergarment worn by women to support the breasts or give a desired contour to the bust"
+      ],
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "ASS": {
+      "shortDefinition": "Any of several species of horse-like animals, especially Equus asinus, the domesticated of which are used as beasts of burden.",
+      "localDetailedDefinitions": [
+        "(noun) Any of several hoofed mammals of the genus Equus, resembling and closely related to the horses but having a smaller build and longer ears, and including the domesticated donkey.",
+        "(adjective) Used in combination with adjectives as an intensive:",
+        "(affix) added to adjectives as an intensifier"
+      ],
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "SEX": {
+      "shortDefinition": "A category into which sexually-reproducing organisms are divided on the basis of their reproductive roles in their species; the system of such categories, which can differ by organism or by taxonomic branch.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "NUDE": {
+      "shortDefinition": "Without clothing or other covering of the skin; without clothing on the genitals or female nipples.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "NAKED": {
+      "shortDefinition": "Bare, not covered by clothing.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "TIT": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "TITS": {
+      "shortDefinition": "plural of tit",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "COCK": {
+      "shortDefinition": "A male bird, especially:",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "DICK": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "PENIS": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "PUSSY": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "BOOB": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "BREAST": {
+      "shortDefinition": "Either of the two organs on the front of a female human's chest, which contain the mammary glands; also the analogous organs in males.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "VAGINA": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "FUCK": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": true
+    },
+    "SHIT": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "BITCH": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "RAPE": {
+      "shortDefinition": "The act of forcing sex upon another person without their consent or against their will; originally coitus forced by a man on a woman, but now generally any sex act forced by any person upon another person; by extension, any non-consensual sex act forced on or perpetrated by any being.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "GOOSE": {
+      "shortDefinition": "Any of various grazing waterfowl of the family Anatidae, which have feathers and webbed feet and are capable of flying, swimming, and walking on land, and which are bigger than ducks.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "NATURAL": {
+      "shortDefinition": "Existing in nature.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "PRIVATE": {
+      "shortDefinition": "Belonging or pertaining to an individual person, group of people, or entity that is not the state.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "RATED": {
+      "shortDefinition": "Scolded, rebuked.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "DELL": {
+      "shortDefinition": "A valley or sunken area of ground, especially in the form of a natural hollow, small and deep.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "NAT": {
+      "shortDefinition": null,
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "WINE": {
+      "shortDefinition": "An alcoholic beverage made by fermenting grape juice, with an ABV ranging from 5.5–16%.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "BET": {
+      "shortDefinition": "A wager, an agreement between two parties that a stake (usually money) will be paid by the loser to the winner (the winner being the one who correctly forecast the outcome of an event).",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "DEAD": {
+      "shortDefinition": "No longer living; deceased. (Also used as a noun.",
+      "localDetailedDefinitions": null,
+      "inSensitiveTable": true,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "HOT": {
+      "shortDefinition": "Relating to heat and conditions which produce it.",
+      "localDetailedDefinitions": [
+        "(noun) Strong sexual attraction or desire. Used with the.",
+        "(adverb) In a hot manner; hotly.",
+        "(adjective) Being at or exhibiting a temperature that is higher than normal or desirable:"
+      ],
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "HOTS": {
+      "shortDefinition": "A condition of physical attraction toward (for",
+      "localDetailedDefinitions": [
+        "(noun) strong sexual desire",
+        "(noun) (slang) to have the 'hots' for someone means to be physically attracted to them"
+      ],
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    },
+    "EROS": {
+      "shortDefinition": "A winged figure of a child representing love or its power.",
+      "localDetailedDefinitions": [
+        "(noun) A winged figure of a child representing love and/or its power",
+        "(noun) Physical love; sexual desire",
+        "(noun) a type of love that seeks fulfillment without violation or something else"
+      ],
+      "inSensitiveTable": false,
+      "inRareWordList": false,
+      "inTextBlacklist": false
+    }
+  },
+  "mainAndDailyStatistics": {
+    "main": {
+      "purchase_android": {
+        "levelCount": 1000,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              77,
+              122,
+              138,
+              149,
+              155,
+              365,
+              451,
+              488,
+              519,
+              532,
+              561,
+              670,
+              709,
+              753,
+              769,
+              803
+            ]
+          },
+          "GOOSE": {
+            "answer": [
+              952
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SEX": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              953,
+              997
+            ],
+            "bonus": []
+          },
+          "ASS": {
+            "answer": [
+              270
+            ],
+            "extra": [],
+            "onlyExtra": [
+              31,
+              186,
+              307,
+              336,
+              358,
+              508,
+              580,
+              666,
+              668,
+              698,
+              736,
+              836,
+              898
+            ],
+            "bonus": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NUDE": {
+            "answer": [
+              617,
+              857,
+              864,
+              990
+            ],
+            "extra": [],
+            "onlyExtra": [
+              167
+            ],
+            "bonus": []
+          },
+          "NAKED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              241,
+              272,
+              282,
+              332,
+              369,
+              375,
+              384,
+              394,
+              396,
+              492,
+              608,
+              641,
+              701,
+              796,
+              817,
+              881
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RATED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DELL": {
+            "answer": [
+              850
+            ],
+            "extra": [],
+            "onlyExtra": [
+              933
+            ],
+            "bonus": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "WINE": {
+            "answer": [
+              355,
+              628,
+              802,
+              911,
+              967
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BET": {
+            "answer": [
+              108,
+              133,
+              137,
+              148,
+              227,
+              268,
+              293,
+              304,
+              347,
+              378,
+              387,
+              396,
+              471,
+              539,
+              558,
+              588,
+              646,
+              834,
+              880,
+              881,
+              995
+            ],
+            "extra": [],
+            "onlyExtra": [
+              484
+            ],
+            "bonus": []
+          },
+          "DEAD": {
+            "answer": [
+              442
+            ],
+            "extra": [],
+            "onlyExtra": [
+              629,
+              841,
+              857,
+              878,
+              985
+            ],
+            "bonus": []
+          }
+        }
+      },
+      "purchase_ios": {
+        "levelCount": 1000,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              57,
+              73,
+              74,
+              133,
+              155,
+              365,
+              451,
+              488,
+              519,
+              532,
+              561,
+              670,
+              709,
+              753,
+              769,
+              803
+            ]
+          },
+          "GOOSE": {
+            "answer": [
+              952
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SEX": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              953,
+              997
+            ],
+            "bonus": []
+          },
+          "ASS": {
+            "answer": [
+              270
+            ],
+            "extra": [],
+            "onlyExtra": [
+              92,
+              186,
+              307,
+              336,
+              358,
+              508,
+              580,
+              666,
+              668,
+              698,
+              736,
+              836,
+              898
+            ],
+            "bonus": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NUDE": {
+            "answer": [
+              617,
+              857,
+              864,
+              990
+            ],
+            "extra": [],
+            "onlyExtra": [
+              167
+            ],
+            "bonus": []
+          },
+          "NAKED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              241,
+              272,
+              282,
+              332,
+              369,
+              375,
+              384,
+              394,
+              396,
+              492,
+              608,
+              641,
+              701,
+              796,
+              817,
+              881
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RATED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DELL": {
+            "answer": [
+              850
+            ],
+            "extra": [],
+            "onlyExtra": [
+              933
+            ],
+            "bonus": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "WINE": {
+            "answer": [
+              355,
+              628,
+              911,
+              967
+            ],
+            "extra": [],
+            "onlyExtra": [
+              802
+            ],
+            "bonus": []
+          },
+          "BET": {
+            "answer": [
+              28,
+              81,
+              106,
+              109,
+              227,
+              268,
+              293,
+              304,
+              347,
+              378,
+              387,
+              396,
+              471,
+              539,
+              558,
+              588,
+              646,
+              834,
+              880,
+              881,
+              995
+            ],
+            "extra": [],
+            "onlyExtra": [
+              484
+            ],
+            "bonus": []
+          },
+          "DEAD": {
+            "answer": [
+              442,
+              857
+            ],
+            "extra": [],
+            "onlyExtra": [
+              629,
+              841,
+              878,
+              985
+            ],
+            "bonus": []
+          }
+        }
+      },
+      "t1": {
+        "levelCount": 1000,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              57,
+              73,
+              74,
+              133,
+              155,
+              365,
+              451,
+              488,
+              519,
+              532,
+              561,
+              670,
+              709,
+              753,
+              769,
+              803
+            ]
+          },
+          "GOOSE": {
+            "answer": [
+              952
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SEX": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              953,
+              997
+            ],
+            "bonus": []
+          },
+          "ASS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              92,
+              186,
+              270,
+              307,
+              336,
+              358,
+              508,
+              580,
+              666,
+              668,
+              698,
+              736,
+              836,
+              898
+            ],
+            "bonus": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NUDE": {
+            "answer": [
+              617,
+              857,
+              864,
+              990
+            ],
+            "extra": [],
+            "onlyExtra": [
+              167
+            ],
+            "bonus": []
+          },
+          "NAKED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              241,
+              272,
+              282,
+              332,
+              369,
+              375,
+              384,
+              394,
+              396,
+              492,
+              608,
+              641,
+              701,
+              796,
+              817,
+              881
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RATED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DELL": {
+            "answer": [
+              850
+            ],
+            "extra": [],
+            "onlyExtra": [
+              933
+            ],
+            "bonus": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "WINE": {
+            "answer": [
+              355,
+              628,
+              911
+            ],
+            "extra": [],
+            "onlyExtra": [
+              802,
+              967
+            ],
+            "bonus": []
+          },
+          "BET": {
+            "answer": [
+              28,
+              81,
+              106,
+              109,
+              227,
+              268,
+              293,
+              304,
+              347,
+              378,
+              387,
+              396,
+              471,
+              539,
+              558,
+              588,
+              646,
+              834,
+              880,
+              881,
+              995
+            ],
+            "extra": [],
+            "onlyExtra": [
+              484
+            ],
+            "bonus": []
+          },
+          "DEAD": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              442,
+              629,
+              841,
+              857,
+              878,
+              985
+            ],
+            "bonus": []
+          }
+        }
+      },
+      "t1_wordtime": {
+        "levelCount": 1000,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              57,
+              73,
+              74,
+              133,
+              155,
+              365,
+              451,
+              488,
+              519,
+              532,
+              561,
+              670,
+              709,
+              753,
+              769,
+              803
+            ]
+          },
+          "GOOSE": {
+            "answer": [
+              952
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SEX": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              953,
+              997
+            ],
+            "bonus": []
+          },
+          "ASS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              92,
+              186,
+              270,
+              307,
+              336,
+              358,
+              508,
+              580,
+              666,
+              668,
+              698,
+              736,
+              836,
+              898
+            ],
+            "bonus": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NUDE": {
+            "answer": [
+              617,
+              857,
+              864,
+              990
+            ],
+            "extra": [],
+            "onlyExtra": [
+              167
+            ],
+            "bonus": []
+          },
+          "NAKED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              241,
+              272,
+              282,
+              332,
+              369,
+              375,
+              384,
+              394,
+              396,
+              492,
+              608,
+              641,
+              701,
+              796,
+              817,
+              881
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RATED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DELL": {
+            "answer": [
+              850
+            ],
+            "extra": [],
+            "onlyExtra": [
+              933
+            ],
+            "bonus": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "WINE": {
+            "answer": [
+              355,
+              628,
+              911
+            ],
+            "extra": [],
+            "onlyExtra": [
+              802,
+              967
+            ],
+            "bonus": []
+          },
+          "BET": {
+            "answer": [
+              28,
+              81,
+              106,
+              109,
+              227,
+              268,
+              293,
+              304,
+              347,
+              378,
+              387,
+              396,
+              471,
+              539,
+              558,
+              588,
+              646,
+              834,
+              880,
+              881,
+              995
+            ],
+            "extra": [],
+            "onlyExtra": [
+              484
+            ],
+            "bonus": []
+          },
+          "DEAD": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              442,
+              629,
+              841,
+              857,
+              878,
+              985
+            ],
+            "bonus": []
+          }
+        }
+      },
+      "t3": {
+        "levelCount": 1000,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              57,
+              73,
+              74,
+              133,
+              155,
+              365,
+              451,
+              488,
+              519,
+              532,
+              561,
+              670,
+              709,
+              753,
+              769,
+              803
+            ]
+          },
+          "GOOSE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              952
+            ],
+            "bonus": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SEX": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              953,
+              997
+            ],
+            "bonus": []
+          },
+          "ASS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              92,
+              186,
+              270,
+              307,
+              336,
+              358,
+              508,
+              580,
+              666,
+              668,
+              698,
+              736,
+              836,
+              898
+            ],
+            "bonus": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "NUDE": {
+            "answer": [
+              990
+            ],
+            "extra": [],
+            "onlyExtra": [
+              167,
+              617,
+              857,
+              864
+            ],
+            "bonus": []
+          },
+          "NAKED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": [
+              241,
+              272,
+              282,
+              332,
+              369,
+              375,
+              384,
+              394,
+              396,
+              492,
+              608,
+              641,
+              701,
+              796,
+              817,
+              881
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "RATED": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "DELL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              850,
+              933
+            ],
+            "bonus": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "WINE": {
+            "answer": [
+              355,
+              628,
+              802,
+              911,
+              967
+            ],
+            "extra": [],
+            "onlyExtra": [],
+            "bonus": []
+          },
+          "BET": {
+            "answer": [
+              28,
+              81,
+              106,
+              109,
+              227,
+              268,
+              293,
+              304,
+              347,
+              378,
+              387,
+              396,
+              471,
+              539,
+              558,
+              588,
+              646,
+              834,
+              880,
+              881,
+              995
+            ],
+            "extra": [],
+            "onlyExtra": [
+              484
+            ],
+            "bonus": []
+          },
+          "DEAD": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              442,
+              629,
+              841,
+              857,
+              878,
+              985
+            ],
+            "bonus": []
+          }
+        }
+      }
+    },
+    "daily": {
+      "base": {
+        "levelCount": 369,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              16,
+              24,
+              42,
+              144,
+              157,
+              177,
+              236,
+              342
+            ]
+          },
+          "GOOSE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "SEX": {
+            "answer": [
+              357
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "ASS": {
+            "answer": [
+              4,
+              13,
+              82,
+              154,
+              183,
+              271
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "NUDE": {
+            "answer": [
+              67
+            ],
+            "extra": [
+              49,
+              50,
+              75,
+              113,
+              195,
+              215,
+              261,
+              314,
+              340
+            ],
+            "onlyExtra": []
+          },
+          "NAKED": {
+            "answer": [
+              226,
+              237
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              84,
+              257,
+              299,
+              361
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "RATED": {
+            "answer": [
+              21,
+              315,
+              329
+            ],
+            "extra": [
+              55,
+              207,
+              225,
+              270,
+              318
+            ],
+            "onlyExtra": []
+          },
+          "DELL": {
+            "answer": [],
+            "extra": [
+              79,
+              150,
+              221
+            ],
+            "onlyExtra": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "WINE": {
+            "answer": [
+              254,
+              262,
+              322
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BET": {
+            "answer": [
+              17,
+              24,
+              42,
+              71,
+              73,
+              76,
+              162,
+              202,
+              208,
+              213,
+              227,
+              232,
+              242,
+              278,
+              333
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "DEAD": {
+            "answer": [
+              18,
+              38,
+              59,
+              69,
+              152,
+              157,
+              179,
+              284,
+              298,
+              316,
+              317,
+              351
+            ],
+            "extra": [],
+            "onlyExtra": []
+          }
+        }
+      },
+      "ph": {
+        "levelCount": 369,
+        "stats": {
+          "BRA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              16,
+              24,
+              42,
+              144,
+              157,
+              177,
+              236,
+              342
+            ]
+          },
+          "GOOSE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "NATURAL": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PRIVATE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "SEX": {
+            "answer": [
+              357
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "ASS": {
+            "answer": [
+              4,
+              13,
+              82,
+              154,
+              183,
+              271
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "COCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "DICK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PENIS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "PUSSY": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "NUDE": {
+            "answer": [
+              67
+            ],
+            "extra": [
+              49,
+              50,
+              75,
+              113,
+              195,
+              215,
+              261,
+              314,
+              340
+            ],
+            "onlyExtra": []
+          },
+          "NAKED": {
+            "answer": [
+              226,
+              237
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "TIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": [
+              84,
+              257,
+              299,
+              361
+            ]
+          },
+          "TITS": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BOOB": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BREAST": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "VAGINA": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "FUCK": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "SHIT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BITCH": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "RAPE": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "RATED": {
+            "answer": [
+              21,
+              315,
+              329
+            ],
+            "extra": [
+              55,
+              207,
+              225,
+              270,
+              318
+            ],
+            "onlyExtra": []
+          },
+          "DELL": {
+            "answer": [],
+            "extra": [
+              79,
+              150,
+              221
+            ],
+            "onlyExtra": []
+          },
+          "NAT": {
+            "answer": [],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "WINE": {
+            "answer": [
+              254,
+              262,
+              322
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "BET": {
+            "answer": [
+              17,
+              24,
+              42,
+              71,
+              73,
+              76,
+              162,
+              202,
+              208,
+              213,
+              227,
+              232,
+              242,
+              278,
+              333
+            ],
+            "extra": [],
+            "onlyExtra": []
+          },
+          "DEAD": {
+            "answer": [
+              18,
+              38,
+              59,
+              69,
+              157,
+              179,
+              284,
+              298,
+              316,
+              317,
+              351
+            ],
+            "extra": [
+              152
+            ],
+            "onlyExtra": []
+          }
+        }
+      }
+    }
+  },
+  "otherModeStatistics": {
+    "local_config_game_campaign_en-us_difficulty0_55abd2c1c600d9a6b954dcfdd65263f0_Campaign_en-US_Difficulty0.decoded.json": {
+      "count": 30,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_campaign_en-us_difficulty1_6913f34d8bdee1474efb2ab9892d7ef4_Campaign_en-US_Difficulty1.decoded.json": {
+      "count": 60,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_campaign_en-us_difficulty2_253f34c652858489bca409d96bd9a53a_Campaign_en-US_Difficulty2.decoded.json": {
+      "count": 90,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_campaign_en-us_difficulty3_ea4c37e67889a60b0d75f8236dfd189c_Campaign_en-US_Difficulty3.decoded.json": {
+      "count": 120,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_campaign_en-us_difficulty4_1c9f7140393e2fd1856f45217edcb5f8_Campaign_en-US_Difficulty4.decoded.json": {
+      "count": 150,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_chain_241_en-us_02f71699f0da38af37f558294b4b5163_Chain_en-US.decoded.json": {
+      "count": 60,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_chain_en-us_f8084fd18189547b37e5da24e85ec655_Chain_en-US.decoded.json": {
+      "count": 60,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_play_en-us_t1_wordtime_hard_replace243_e0f15d93bd7698d930e10b3e7f863263_Play_en-US_T1_WordTime_hard_replace243.decoded.json": {
+      "count": 92,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 3,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 1,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_play_en-us_t1_wordtime_replace243_78e133642b9c6b3dca329cd92766db81_Play_en-US_T1_WordTime_replace243.decoded.json": {
+      "count": 115,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 3,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 3,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 1,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 3,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 1,
+          "answers": 0,
+          "extra": 2,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_play_en-us_t3_hard_replace243_5bf95c23e0bc5458b6b77126f44117d9_Play_en-US_T3_hard_replace243.decoded.json": {
+      "count": 92,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 2,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 1,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 2,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    },
+    "local_config_game_play_en-us_t3_replace243_1a22e0e45abfa00d00f52d7291edfea8_Play_en-US_T3_replace243.decoded.json": {
+      "count": 115,
+      "stats": {
+        "BRA": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 4,
+          "bonus": 0
+        },
+        "SEX": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "ASS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 1,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NUDE": {
+          "answer": 1,
+          "answers": 0,
+          "extra": 2,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "NAKED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "COCK": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "PENIS": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "TIT": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 2,
+          "bonus": 0
+        },
+        "RATED": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 0,
+          "onlyExtra": 0,
+          "bonus": 0
+        },
+        "DELL": {
+          "answer": 0,
+          "answers": 0,
+          "extra": 3,
+          "onlyExtra": 0,
+          "bonus": 0
+        }
+      }
+    }
+  },
+  "managedDeclarations": [
+    {
+      "index": 193,
+      "name": "TeamInfoEditPage",
+      "namespace": "View.UI.TeamInfoEdit",
+      "fields": [
+        {
+          "name": "_ui",
+          "typeIndex": 18792,
+          "token": "0x4000671"
+        },
+        {
+          "name": "_nameTmpField",
+          "typeIndex": 18602,
+          "token": "0x4000672"
+        },
+        {
+          "name": "_desTmpField",
+          "typeIndex": 18602,
+          "token": "0x4000673"
+        },
+        {
+          "name": "_teamDataMgr",
+          "typeIndex": 18772,
+          "token": "0x4000674"
+        },
+        {
+          "name": "MaxDesCharacter",
+          "typeIndex": 14256,
+          "token": "0x4000675"
+        },
+        {
+          "name": "MinNameCharacter",
+          "typeIndex": 14256,
+          "token": "0x4000676"
+        },
+        {
+          "name": "MaxNameCharacter",
+          "typeIndex": 14256,
+          "token": "0x4000677"
+        },
+        {
+          "name": "_isAnyOne",
+          "typeIndex": 10095,
+          "token": "0x4000678"
+        },
+        {
+          "name": "_tempRequiredLevel",
+          "typeIndex": 14235,
+          "token": "0x4000679"
+        },
+        {
+          "name": "_nameSensitiveWord",
+          "typeIndex": 18431,
+          "token": "0x400067a"
+        },
+        {
+          "name": "_desSensitiveWord",
+          "typeIndex": 18431,
+          "token": "0x400067b"
+        },
+        {
+          "name": "_badgeIndex",
+          "typeIndex": 14235,
+          "token": "0x400067c"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "index": 1829,
+          "params": [],
+          "token": "0x6000726"
+        },
+        {
+          "name": "LocaleTranslate",
+          "index": 1830,
+          "params": [],
+          "token": "0x6000727"
+        },
+        {
+          "name": "Prepare",
+          "index": 1831,
+          "params": [
+            "args"
+          ],
+          "token": "0x6000728"
+        },
+        {
+          "name": "AddEvent",
+          "index": 1832,
+          "params": [],
+          "token": "0x6000729"
+        },
+        {
+          "name": "RemoveEvent",
+          "index": 1833,
+          "params": [],
+          "token": "0x600072a"
+        },
+        {
+          "name": "OnEndEditName",
+          "index": 1834,
+          "params": [
+            "str"
+          ],
+          "token": "0x600072b"
+        },
+        {
+          "name": "OnEndEditDes",
+          "index": 1835,
+          "params": [
+            "str"
+          ],
+          "token": "0x600072c"
+        },
+        {
+          "name": "OnChangeName",
+          "index": 1836,
+          "params": [
+            "inputInfo"
+          ],
+          "token": "0x600072d"
+        },
+        {
+          "name": "OnChangeDes",
+          "index": 1837,
+          "params": [
+            "inputInfo"
+          ],
+          "token": "0x600072e"
+        },
+        {
+          "name": "OnTeamLevelLeftClick",
+          "index": 1838,
+          "params": [],
+          "token": "0x600072f"
+        },
+        {
+          "name": "OnTeamLevelRightClick",
+          "index": 1839,
+          "params": [],
+          "token": "0x6000730"
+        },
+        {
+          "name": "OnToggleTeamType",
+          "index": 1840,
+          "params": [],
+          "token": "0x6000731"
+        },
+        {
+          "name": "UpdateToggleView",
+          "index": 1841,
+          "params": [],
+          "token": "0x6000732"
+        },
+        {
+          "name": "UpdateLevelClickView",
+          "index": 1842,
+          "params": [],
+          "token": "0x6000733"
+        },
+        {
+          "name": "UpdateCreateState",
+          "index": 1843,
+          "params": [],
+          "token": "0x6000734"
+        },
+        {
+          "name": "OnClickCloseBtn",
+          "index": 1844,
+          "params": [],
+          "token": "0x6000735"
+        },
+        {
+          "name": "OnClickSave",
+          "index": 1845,
+          "params": [],
+          "token": "0x6000736"
+        },
+        {
+          "name": "UpdateBadge",
+          "index": 1846,
+          "params": [
+            "index"
+          ],
+          "token": "0x6000737"
+        },
+        {
+          "name": "OnUpdateResult",
+          "index": 1847,
+          "params": [
+            "result"
+          ],
+          "token": "0x6000738"
+        },
+        {
+          "name": "OnClickSelectBadgeBtn",
+          "index": 1848,
+          "params": [],
+          "token": "0x6000739"
+        },
+        {
+          "name": ".ctor",
+          "index": 1849,
+          "params": [],
+          "token": "0x600073a"
+        }
+      ]
+    },
+    {
+      "index": 909,
+      "name": "DictionaryItem",
+      "namespace": "View.UI.GameDictionary",
+      "fields": [
+        {
+          "name": "DefaultExplanationCount",
+          "typeIndex": 14256,
+          "token": "0x400186b"
+        },
+        {
+          "name": "explanationParent",
+          "typeIndex": 19330,
+          "token": "0x400186c"
+        },
+        {
+          "name": "LoopScrollRect",
+          "typeIndex": 19546,
+          "token": "0x400186d"
+        },
+        {
+          "name": "wordUILanguage",
+          "typeIndex": 19538,
+          "token": "0x400186e"
+        },
+        {
+          "name": "feedbackButton",
+          "typeIndex": 19521,
+          "token": "0x400186f"
+        },
+        {
+          "name": "speakButton",
+          "typeIndex": 19521,
+          "token": "0x4001870"
+        },
+        {
+          "name": "_itemCache",
+          "typeIndex": 5197,
+          "token": "0x4001871"
+        },
+        {
+          "name": "_isEnable",
+          "typeIndex": 10095,
+          "token": "0x4001872"
+        },
+        {
+          "name": "_word",
+          "typeIndex": 18431,
+          "token": "0x4001873"
+        }
+      ],
+      "methods": [
+        {
+          "name": "get_BtnSpeak",
+          "index": 8204,
+          "params": [],
+          "token": "0x600200d"
+        },
+        {
+          "name": "Awake",
+          "index": 8205,
+          "params": [],
+          "token": "0x600200e"
+        },
+        {
+          "name": "OnEnable",
+          "index": 8206,
+          "params": [],
+          "token": "0x600200f"
+        },
+        {
+          "name": "UpdateItemInfo",
+          "index": 8207,
+          "params": [
+            "word"
+          ],
+          "token": "0x6002010"
+        },
+        {
+          "name": "Clear",
+          "index": 8208,
+          "params": [],
+          "token": "0x6002011"
+        },
+        {
+          "name": "UpdateExplanation",
+          "index": 8209,
+          "params": [
+            "word"
+          ],
+          "token": "0x6002012"
+        },
+        {
+          "name": "SetScroll",
+          "index": 8210,
+          "params": [],
+          "token": "0x6002013"
+        },
+        {
+          "name": "CreateExplanation",
+          "index": 8211,
+          "params": [],
+          "token": "0x6002014"
+        },
+        {
+          "name": "ClearExplanation",
+          "index": 8212,
+          "params": [],
+          "token": "0x6002015"
+        },
+        {
+          "name": "OnClickSpeak",
+          "index": 8213,
+          "params": [],
+          "token": "0x6002016"
+        },
+        {
+          "name": "OnClickFeedback",
+          "index": 8214,
+          "params": [],
+          "token": "0x6002017"
+        },
+        {
+          "name": "OnDestroy",
+          "index": 8215,
+          "params": [],
+          "token": "0x6002018"
+        },
+        {
+          "name": ".ctor",
+          "index": 8216,
+          "params": [],
+          "token": "0x6002019"
+        }
+      ]
+    },
+    {
+      "index": 912,
+      "name": "GameDictionaryPage",
+      "namespace": "View.UI.GameDictionary",
+      "fields": [
+        {
+          "name": "_ui",
+          "typeIndex": 13070,
+          "token": "0x400187c"
+        },
+        {
+          "name": "_dictionaryContent",
+          "typeIndex": 12025,
+          "token": "0x400187d"
+        },
+        {
+          "name": "_playDateMgr",
+          "typeIndex": 16451,
+          "token": "0x400187e"
+        },
+        {
+          "name": "_isPlayFinish",
+          "typeIndex": 10095,
+          "token": "0x400187f"
+        },
+        {
+          "name": "_word",
+          "typeIndex": 18431,
+          "token": "0x4001880"
+        },
+        {
+          "name": "_loadingSpeechInfos",
+          "typeIndex": 3377,
+          "token": "0x4001881"
+        },
+        {
+          "name": "_isOpenFromDicitonaryGuide",
+          "typeIndex": 10095,
+          "token": "0x4001882"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "index": 8238,
+          "params": [],
+          "token": "0x600202f"
+        },
+        {
+          "name": "LocaleTranslate",
+          "index": 8239,
+          "params": [],
+          "token": "0x6002030"
+        },
+        {
+          "name": "Prepare",
+          "index": 8240,
+          "params": [
+            "args"
+          ],
+          "token": "0x6002031"
+        },
+        {
+          "name": "OnUpdate",
+          "index": 8241,
+          "params": [],
+          "token": "0x6002032"
+        },
+        {
+          "name": "Clear",
+          "index": 8242,
+          "params": [],
+          "token": "0x6002033"
+        },
+        {
+          "name": "PlayOutAnimation",
+          "index": 8243,
+          "params": [
+            "callback"
+          ],
+          "token": "0x6002034"
+        },
+        {
+          "name": "AddEvent",
+          "index": 8244,
+          "params": [],
+          "token": "0x6002035"
+        },
+        {
+          "name": "RemoveEvent",
+          "index": 8245,
+          "params": [],
+          "token": "0x6002036"
+        },
+        {
+          "name": "OnClickClose",
+          "index": 8246,
+          "params": [],
+          "token": "0x6002037"
+        },
+        {
+          "name": "UpdateDictionary",
+          "index": 8247,
+          "params": [
+            "levelName"
+          ],
+          "token": "0x6002038"
+        },
+        {
+          "name": "RequestWordDataCallBack",
+          "index": 8248,
+          "params": [],
+          "token": "0x6002039"
+        },
+        {
+          "name": "UpdateTitleInfo",
+          "index": 8249,
+          "params": [
+            "word"
+          ],
+          "token": "0x600203a"
+        },
+        {
+          "name": "OnClickSpeak",
+          "index": 8250,
+          "params": [
+            "word"
+          ],
+          "token": "0x600203b"
+        },
+        {
+          "name": "OnLoadSpeechSuccess",
+          "index": 8251,
+          "params": [
+            "word",
+            "audioClip"
+          ],
+          "token": "0x600203c"
+        },
+        {
+          "name": "OnLoadSpeechFail",
+          "index": 8252,
+          "params": [
+            "word",
+            "errorRequestData"
+          ],
+          "token": "0x600203d"
+        },
+        {
+          "name": "ProcessLoadingSpeech",
+          "index": 8253,
+          "params": [],
+          "token": "0x600203e"
+        },
+        {
+          "name": ".ctor",
+          "index": 8254,
+          "params": [],
+          "token": "0x600203f"
+        }
+      ]
+    },
+    {
+      "index": 913,
+      "name": "WordExplanation",
+      "namespace": "View.UI.GameDictionary",
+      "fields": [
+        {
+          "name": "UILanguageExplanation",
+          "typeIndex": 19538,
+          "token": "0x4001885"
+        }
+      ],
+      "methods": [
+        {
+          "name": "SetExplanation",
+          "index": 8256,
+          "params": [
+            "str"
+          ],
+          "token": "0x6002041"
+        },
+        {
+          "name": ".ctor",
+          "index": 8257,
+          "params": [],
+          "token": "0x6002042"
+        }
+      ]
+    },
+    {
+      "index": 940,
+      "name": "ExtraInfoPage",
+      "namespace": "View.UI.ExtraInfo",
+      "fields": [
+        {
+          "name": "DefaultCount",
+          "typeIndex": 14256,
+          "token": "0x40018df"
+        },
+        {
+          "name": "_ui",
+          "typeIndex": 12564,
+          "token": "0x40018e0"
+        },
+        {
+          "name": "_itemCache",
+          "typeIndex": 5172,
+          "token": "0x40018e1"
+        },
+        {
+          "name": "_extraInfoItems",
+          "typeIndex": 5670,
+          "token": "0x40018e2"
+        },
+        {
+          "name": "_maxExtraCount",
+          "typeIndex": 14235,
+          "token": "0x40018e3"
+        },
+        {
+          "name": "_isAnim",
+          "typeIndex": 10095,
+          "token": "0x40018e4"
+        },
+        {
+          "name": "_finishCount",
+          "typeIndex": 14235,
+          "token": "0x40018e5"
+        },
+        {
+          "name": "_target",
+          "typeIndex": 13079,
+          "token": "0x40018e6"
+        },
+        {
+          "name": "_guideExtraProgress",
+          "typeIndex": 10095,
+          "token": "0x40018e7"
+        },
+        {
+          "name": "_requestAd",
+          "typeIndex": 17135,
+          "token": "0x40018e8"
+        },
+        {
+          "name": "_isAdReady",
+          "typeIndex": 10095,
+          "token": "0x40018e9"
+        },
+        {
+          "name": "_bgWindowRectTrans",
+          "typeIndex": 16954,
+          "token": "0x40018ea"
+        },
+        {
+          "name": "_oriHeight",
+          "typeIndex": 17916,
+          "token": "0x40018eb"
+        },
+        {
+          "name": "_newHeight",
+          "typeIndex": 17916,
+          "token": "0x40018ec"
+        },
+        {
+          "name": "_isReceiveRewardState",
+          "typeIndex": 10095,
+          "token": "0x40018ed"
+        },
+        {
+          "name": "_isClick",
+          "typeIndex": 10095,
+          "token": "0x40018ee"
+        },
+        {
+          "name": "_btnSeq",
+          "typeIndex": 17654,
+          "token": "0x40018ef"
+        },
+        {
+          "name": "_claimType",
+          "typeIndex": 14235,
+          "token": "0x40018f0"
+        },
+        {
+          "name": "_doubleClaim",
+          "typeIndex": 10095,
+          "token": "0x40018f1"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "index": 8490,
+          "params": [],
+          "token": "0x600212b"
+        },
+        {
+          "name": "LocaleTranslate",
+          "index": 8491,
+          "params": [],
+          "token": "0x600212c"
+        },
+        {
+          "name": "Prepare",
+          "index": 8492,
+          "params": [
+            "args"
+          ],
+          "token": "0x600212d"
+        },
+        {
+          "name": "PlayOutAnimation",
+          "index": 8493,
+          "params": [
+            "callback"
+          ],
+          "token": "0x600212e"
+        },
+        {
+          "name": "TryExtrawordResultRewardTestGroup",
+          "index": 8494,
+          "params": [],
+          "token": "0x600212f"
+        },
+        {
+          "name": "OnClickCloseBtn",
+          "index": 8495,
+          "params": [],
+          "token": "0x6002130"
+        },
+        {
+          "name": "Generate",
+          "index": 8496,
+          "params": [],
+          "token": "0x6002131"
+        },
+        {
+          "name": "RefreshProgress",
+          "index": 8497,
+          "params": [],
+          "token": "0x6002132"
+        },
+        {
+          "name": "Cleanup",
+          "index": 8498,
+          "params": [],
+          "token": "0x6002133"
+        },
+        {
+          "name": "OnBack",
+          "index": 8499,
+          "params": [],
+          "token": "0x6002134"
+        },
+        {
+          "name": "OnPointerUp",
+          "index": 8500,
+          "params": [
+            "eventData"
+          ],
+          "token": "0x6002135"
+        },
+        {
+          "name": "CloseUI",
+          "index": 8501,
+          "params": [],
+          "token": "0x6002136"
+        },
+        {
+          "name": "Clear",
+          "index": 8502,
+          "params": [],
+          "token": "0x6002137"
+        },
+        {
+          "name": "OnRemove",
+          "index": 8503,
+          "params": [],
+          "token": "0x6002138"
+        },
+        {
+          "name": "OnUpdate",
+          "index": 8504,
+          "params": [],
+          "token": "0x6002139"
+        },
+        {
+          "name": "OnAdReadyCallback",
+          "index": 8505,
+          "params": [
+            "ready"
+          ],
+          "token": "0x600213a"
+        },
+        {
+          "name": "OnClickClaimBtn",
+          "index": 8506,
+          "params": [],
+          "token": "0x600213b"
+        },
+        {
+          "name": "OnVideoClaimClick",
+          "index": 8507,
+          "params": [],
+          "token": "0x600213c"
+        },
+        {
+          "name": "ClaimRewardByVideo",
+          "index": 8508,
+          "params": [],
+          "token": "0x600213d"
+        },
+        {
+          "name": "UpdateShowReward",
+          "index": 8509,
+          "params": [],
+          "token": "0x600213e"
+        },
+        {
+          "name": ".ctor",
+          "index": 8510,
+          "params": [],
+          "token": "0x600213f"
+        },
+        {
+          "name": "<>n__0",
+          "index": 8511,
+          "params": [
+            "callback"
+          ],
+          "token": "0x6002140"
+        },
+        {
+          "name": "<ClaimRewardByVideo>b__38_0",
+          "index": 8512,
+          "params": [],
+          "token": "0x6002141"
+        },
+        {
+          "name": "<ClaimRewardByVideo>b__38_1",
+          "index": 8513,
+          "params": [],
+          "token": "0x6002142"
+        }
+      ]
+    },
+    {
+      "index": 1728,
+      "name": "GameDictionaryHandler",
+      "namespace": "Logic.Handler",
+      "fields": [],
+      "methods": [
+        {
+          "name": "OpenDictionary",
+          "index": 14780,
+          "params": [
+            "word",
+            "isFinish"
+          ],
+          "token": "0x60039bd"
+        },
+        {
+          "name": "SetCurLevel",
+          "index": 14781,
+          "params": [
+            "levelName",
+            "playDataMgr"
+          ],
+          "token": "0x60039be"
+        },
+        {
+          "name": "RequestCallbackNoView",
+          "index": 14782,
+          "params": [],
+          "token": "0x60039bf"
+        },
+        {
+          "name": "LoadWordDefine",
+          "index": 14783,
+          "params": [
+            "words",
+            "callback"
+          ],
+          "token": "0x60039c0"
+        },
+        {
+          "name": "PostWordData",
+          "index": 14784,
+          "params": [
+            "words",
+            "callback"
+          ],
+          "token": "0x60039c1"
+        },
+        {
+          "name": "ObjectToBytes",
+          "index": 14785,
+          "params": [
+            "obj"
+          ],
+          "token": "0x60039c2"
+        },
+        {
+          "name": "RequestDictionaryBundle",
+          "index": 14786,
+          "params": [],
+          "token": "0x60039c3"
+        },
+        {
+          "name": "LoadAssetBundle",
+          "index": 14787,
+          "params": [
+            "dictionaryWordData",
+            "map",
+            "words"
+          ],
+          "token": "0x60039c4"
+        },
+        {
+          "name": "JudgeCache",
+          "index": 14788,
+          "params": [
+            "words",
+            "dictionaryWordData"
+          ],
+          "token": "0x60039c5"
+        },
+        {
+          "name": "IsLocalExist",
+          "index": 14789,
+          "params": [],
+          "token": "0x60039c6"
+        }
+      ]
+    },
+    {
+      "index": 1758,
+      "name": "MainPlayHandler",
+      "namespace": "Logic.Handler",
+      "fields": [
+        {
+          "name": "CheatForceChainAllLevels",
+          "typeIndex": 10102,
+          "token": "0x4002a6d"
+        },
+        {
+          "name": "_isEnding",
+          "typeIndex": 10100,
+          "token": "0x4002a6e"
+        },
+        {
+          "name": "_lastLevelStartedInSession",
+          "typeIndex": 10100,
+          "token": "0x4002a6f"
+        },
+        {
+          "name": "_enterMainFrom",
+          "typeIndex": 19583,
+          "token": "0x4002a70"
+        },
+        {
+          "name": "_lastCheckTime",
+          "typeIndex": 17907,
+          "token": "0x4002a71"
+        },
+        {
+          "name": "_isShowDefineTip",
+          "typeIndex": 10100,
+          "token": "0x4002a72"
+        },
+        {
+          "name": "_behavior",
+          "typeIndex": 11957,
+          "token": "0x4002a73"
+        },
+        {
+          "name": "_autoHideCoroutine",
+          "typeIndex": 11296,
+          "token": "0x4002a74"
+        },
+        {
+          "name": "_showHideSequence",
+          "typeIndex": 17658,
+          "token": "0x4002a75"
+        },
+        {
+          "name": "_pfxInfo",
+          "typeIndex": 16330,
+          "token": "0x4002a76"
+        },
+        {
+          "name": "_oldDefineTipPfxInfo",
+          "typeIndex": 16330,
+          "token": "0x4002a77"
+        },
+        {
+          "name": "_randomBox",
+          "typeIndex": 5564,
+          "token": "0x4002a78"
+        },
+        {
+          "name": "_goldenRandomBox",
+          "typeIndex": 5564,
+          "token": "0x4002a79"
+        },
+        {
+          "name": "_randomElementBox",
+          "typeIndex": 5564,
+          "token": "0x4002a7a"
+        },
+        {
+          "name": "_isEnterShopFromHintFireworkShortage",
+          "typeIndex": 10100,
+          "token": "0x4002a7b"
+        },
+        {
+          "name": "_isJudgingFireworkAd",
+          "typeIndex": 10100,
+          "token": "0x4002a7c"
+        },
+        {
+          "name": "_isStainedDeleteWord",
+          "typeIndex": 10100,
+          "token": "0x4002a7d"
+        }
+      ],
+      "methods": [
+        {
+          "name": "IsCanShowChaimGuide",
+          "index": 15153,
+          "params": [],
+          "token": "0x6003b32"
+        },
+        {
+          "name": "ShowChaimGuide",
+          "index": 15154,
+          "params": [
+            "isAuto"
+          ],
+          "token": "0x6003b33"
+        },
+        {
+          "name": "IsCurrentChainLevel",
+          "index": 15155,
+          "params": [],
+          "token": "0x6003b34"
+        },
+        {
+          "name": "IsCanChainPlayMode",
+          "index": 15156,
+          "params": [],
+          "token": "0x6003b35"
+        },
+        {
+          "name": "IsChainCampaign",
+          "index": 15157,
+          "params": [],
+          "token": "0x6003b36"
+        },
+        {
+          "name": "IsChainTest02TargetUser",
+          "index": 15158,
+          "params": [],
+          "token": "0x6003b37"
+        },
+        {
+          "name": "IsChainTest02LevelIndex",
+          "index": 15159,
+          "params": [],
+          "token": "0x6003b38"
+        },
+        {
+          "name": "IsChainTest02NewLevel",
+          "index": 15160,
+          "params": [],
+          "token": "0x6003b39"
+        },
+        {
+          "name": "IsChainPlayMode",
+          "index": 15161,
+          "params": [],
+          "token": "0x6003b3a"
+        },
+        {
+          "name": "CheckMatchChainWordIndex",
+          "index": 15162,
+          "params": [],
+          "token": "0x6003b3b"
+        },
+        {
+          "name": "DoUpdateNeedRefreshView",
+          "index": 15163,
+          "params": [
+            "need"
+          ],
+          "token": "0x6003b3c"
+        },
+        {
+          "name": "DoUpdateNeedRefreshActivityView",
+          "index": 15164,
+          "params": [
+            "need"
+          ],
+          "token": "0x6003b3d"
+        },
+        {
+          "name": "get_IsEnding",
+          "index": 15165,
+          "params": [],
+          "token": "0x6003b3e"
+        },
+        {
+          "name": "StartGameMode",
+          "index": 15166,
+          "params": [],
+          "token": "0x6003b3f"
+        },
+        {
+          "name": "EndGameMode",
+          "index": 15167,
+          "params": [
+            "toUIType"
+          ],
+          "token": "0x6003b40"
+        },
+        {
+          "name": "CheckGameEnd",
+          "index": 15168,
+          "params": [],
+          "token": "0x6003b41"
+        },
+        {
+          "name": "StartGame",
+          "index": 15169,
+          "params": [],
+          "token": "0x6003b42"
+        },
+        {
+          "name": "ShowInterstitial",
+          "index": 15170,
+          "params": [
+            "onAdResult",
+            "position"
+          ],
+          "token": "0x6003b43"
+        },
+        {
+          "name": "EndGame",
+          "index": 15171,
+          "params": [],
+          "token": "0x6003b44"
+        },
+        {
+          "name": "GetEnterMainFrom",
+          "index": 15172,
+          "params": [],
+          "token": "0x6003b45"
+        },
+        {
+          "name": "TryStartGameMode",
+          "index": 15173,
+          "params": [
+            "from"
+          ],
+          "token": "0x6003b46"
+        },
+        {
+          "name": "SendGameScrEvent",
+          "index": 15174,
+          "params": [],
+          "token": "0x6003b47"
+        },
+        {
+          "name": "StartMain",
+          "index": 15175,
+          "params": [],
+          "token": "0x6003b48"
+        },
+        {
+          "name": "OnBack",
+          "index": 15176,
+          "params": [],
+          "token": "0x6003b49"
+        },
+        {
+          "name": "ShowBackInterstitial",
+          "index": 15177,
+          "params": [
+            "action"
+          ],
+          "token": "0x6003b4a"
+        },
+        {
+          "name": "BackInterCallback",
+          "index": 15178,
+          "params": [
+            "adShowType"
+          ],
+          "token": "0x6003b4b"
+        },
+        {
+          "name": "BackToHome",
+          "index": 15179,
+          "params": [],
+          "token": "0x6003b4c"
+        },
+        {
+          "name": "DoDealSelectData",
+          "index": 15180,
+          "params": [
+            "letterData"
+          ],
+          "token": "0x6003b4d"
+        },
+        {
+          "name": "DoSelectFinish",
+          "index": 15181,
+          "params": [],
+          "token": "0x6003b4e"
+        },
+        {
+          "name": "CheckShowErrorToast",
+          "index": 15182,
+          "params": [
+            "wordLength"
+          ],
+          "token": "0x6003b4f"
+        },
+        {
+          "name": "DoEndModeUIDealWith",
+          "index": 15183,
+          "params": [],
+          "token": "0x6003b50"
+        },
+        {
+          "name": "CloseInterCallBack",
+          "index": 15184,
+          "params": [
+            "adShowType"
+          ],
+          "token": "0x6003b51"
+        },
+        {
+          "name": "GameEndInterFinish",
+          "index": 15185,
+          "params": [
+            "adShowClose",
+            "playHideSound"
+          ],
+          "token": "0x6003b52"
+        },
+        {
+          "name": "HideMainPlay",
+          "index": 15186,
+          "params": [
+            "playHideSound"
+          ],
+          "token": "0x6003b53"
+        },
+        {
+          "name": "ToMainPlayFinish",
+          "index": 15187,
+          "params": [],
+          "token": "0x6003b54"
+        },
+        {
+          "name": "UpdateGameTime",
+          "index": 15188,
+          "params": [
+            "interval",
+            "isPlaying"
+          ],
+          "token": "0x6003b55"
+        },
+        {
+          "name": "UpdateStuckTime",
+          "index": 15189,
+          "params": [
+            "interval"
+          ],
+          "token": "0x6003b56"
+        },
+        {
+          "name": "UpdateGameRealTime",
+          "index": 15190,
+          "params": [
+            "interval"
+          ],
+          "token": "0x6003b57"
+        },
+        {
+          "name": "CheckShowHardWordTip",
+          "index": 15191,
+          "params": [],
+          "token": "0x6003b58"
+        },
+        {
+          "name": "CheckShowHardWordTipAssist",
+          "index": 15192,
+          "params": [],
+          "token": "0x6003b59"
+        },
+        {
+          "name": "CheckShowHardWordTip217",
+          "index": 15193,
+          "params": [],
+          "token": "0x6003b5a"
+        },
+        {
+          "name": "CheckAndShowDefineFreeHint",
+          "index": 15194,
+          "params": [],
+          "token": "0x6003b5b"
+        },
+        {
+          "name": "ShowDefineTip",
+          "index": 15195,
+          "params": [
+            "tipWord",
+            "define",
+            "isClick"
+          ],
+          "token": "0x6003b5c"
+        },
+        {
+          "name": "AutoHideTipCoroutine",
+          "index": 15196,
+          "params": [],
+          "token": "0x6003b5d"
+        },
+        {
+          "name": "CancelAutoHide",
+          "index": 15197,
+          "params": [],
+          "token": "0x6003b5e"
+        },
+        {
+          "name": "HideDefineTipWithAnimation",
+          "index": 15198,
+          "params": [],
+          "token": "0x6003b5f"
+        },
+        {
+          "name": "HideDefineTipsNoAnim",
+          "index": 15199,
+          "params": [],
+          "token": "0x6003b60"
+        },
+        {
+          "name": "FindTipWord",
+          "index": 15200,
+          "params": [
+            "mainPlayData",
+            "words"
+          ],
+          "token": "0x6003b61"
+        },
+        {
+          "name": "ChooseWord",
+          "index": 15201,
+          "params": [
+            "words"
+          ],
+          "token": "0x6003b62"
+        },
+        {
+          "name": "ChooseWordByTest217_1",
+          "index": 15202,
+          "params": [
+            "words"
+          ],
+          "token": "0x6003b63"
+        },
+        {
+          "name": "ChooseWordByTest217_2",
+          "index": 15203,
+          "params": [
+            "words"
+          ],
+          "token": "0x6003b64"
+        },
+        {
+          "name": "TryShowDefineTip",
+          "index": 15204,
+          "params": [
+            "boxData"
+          ],
+          "token": "0x6003b65"
+        },
+        {
+          "name": "TryShowBoxAnimGuide",
+          "index": 15205,
+          "params": [],
+          "token": "0x6003b66"
+        },
+        {
+          "name": "CanNotShowFinishPageBanner",
+          "index": 15206,
+          "params": [
+            "canShowActivityUnlockPreview"
+          ],
+          "token": "0x6003b67"
+        },
+        {
+          "name": "CanShowBottomEntranceFromFinish",
+          "index": 15207,
+          "params": [
+            "canShowActivityUnlockPreview"
+          ],
+          "token": "0x6003b68"
+        },
+        {
+          "name": "JudgeActivityOpen",
+          "index": 15208,
+          "params": [],
+          "token": "0x6003b69"
+        },
+        {
+          "name": "InitActivityItem",
+          "index": 15209,
+          "params": [],
+          "token": "0x6003b6a"
+        },
+        {
+          "name": "CleanupActivity",
+          "index": 15210,
+          "params": [
+            "isRestore"
+          ],
+          "token": "0x6003b6b"
+        },
+        {
+          "name": "SettleActivity",
+          "index": 15211,
+          "params": [],
+          "token": "0x6003b6c"
+        },
+        {
+          "name": "InitButterflyActivity",
+          "index": 15212,
+          "params": [],
+          "token": "0x6003b6d"
+        },
+        {
+          "name": "ClearButterflyActivity",
+          "index": 15213,
+          "params": [
+            "isRestore"
+          ],
+          "token": "0x6003b6e"
+        },
+        {
+          "name": "CloseButterflyActivity",
+          "index": 15214,
+          "params": [],
+          "token": "0x6003b6f"
+        },
+        {
+          "name": "InitActiveActivity",
+          "index": 15215,
+          "params": [],
+          "token": "0x6003b70"
+        },
+        {
+          "name": "ClearActiveActivity",
+          "index": 15216,
+          "params": [
+            "isRestore"
+          ],
+          "token": "0x6003b71"
+        },
+        {
+          "name": "CloseActiveActivity",
+          "index": 15217,
+          "params": [],
+          "token": "0x6003b72"
+        },
+        {
+          "name": "DoUpdatePurchaseFrequency",
+          "index": 15218,
+          "params": [],
+          "token": "0x6003b73"
+        },
+        {
+          "name": "SetEnterShopFromHintFireworkShortage",
+          "index": 15219,
+          "params": [
+            "flag"
+          ],
+          "token": "0x6003b74"
+        },
+        {
+          "name": "GetAndResetEnterShopFromHintFireworkShortage",
+          "index": 15220,
+          "params": [],
+          "token": "0x6003b75"
+        },
+        {
+          "name": "TryAddHintAdFromShopReturn",
+          "index": 15221,
+          "params": [],
+          "token": "0x6003b76"
+        },
+        {
+          "name": "TryAddHintAd",
+          "index": 15222,
+          "params": [
+            "fromNewTiming"
+          ],
+          "token": "0x6003b77"
+        },
+        {
+          "name": "TryJumpHintAd",
+          "index": 15223,
+          "params": [
+            "presetTarget"
+          ],
+          "token": "0x6003b78"
+        },
+        {
+          "name": "TryAddFireworkAd",
+          "index": 15224,
+          "params": [
+            "needTime"
+          ],
+          "token": "0x6003b79"
+        },
+        {
+          "name": "LevelFeedback",
+          "index": 15225,
+          "params": [
+            "comboPos"
+          ],
+          "token": "0x6003b7a"
+        },
+        {
+          "name": "UpdateSpecialBonusTime",
+          "index": 15226,
+          "params": [
+            "interval"
+          ],
+          "token": "0x6003b7b"
+        },
+        {
+          "name": "WarmthMatchingFirstThreeLevel",
+          "index": 15227,
+          "params": [],
+          "token": "0x6003b7c"
+        },
+        {
+          "name": "WarmthMatchingFirstReduceLevel",
+          "index": 15228,
+          "params": [],
+          "token": "0x6003b7d"
+        },
+        {
+          "name": "WarmthMatchingLevelOrder",
+          "index": 15229,
+          "params": [
+            "beginLevelIndex",
+            "oldWarmLevelBeginIndex",
+            "warmLevelRange"
+          ],
+          "token": "0x6003b7e"
+        },
+        {
+          "name": "TryShowAlphabetGuideTest",
+          "index": 15230,
+          "params": [],
+          "token": "0x6003b7f"
+        },
+        {
+          "name": "CompleteAlphabetGuideTest",
+          "index": 15231,
+          "params": [],
+          "token": "0x6003b80"
+        },
+        {
+          "name": "TryShowSpecialBonusTip",
+          "index": 15232,
+          "params": [],
+          "token": "0x6003b81"
+        },
+        {
+          "name": "GetCurrentDifficultTag",
+          "index": 15233,
+          "params": [],
+          "token": "0x6003b82"
+        },
+        {
+          "name": "GetPreDifficultTag",
+          "index": 15234,
+          "params": [],
+          "token": "0x6003b83"
+        },
+        {
+          "name": "GetLevelHardCoinNum",
+          "index": 15235,
+          "params": [
+            "tag"
+          ],
+          "token": "0x6003b84"
+        },
+        {
+          "name": "GetClickVideo",
+          "index": 15236,
+          "params": [],
+          "token": "0x6003b85"
+        },
+        {
+          "name": "GetChapterClickVideo",
+          "index": 15237,
+          "params": [],
+          "token": "0x6003b86"
+        },
+        {
+          "name": "UpdateClickVideo",
+          "index": 15238,
+          "params": [],
+          "token": "0x6003b87"
+        },
+        {
+          "name": "UpdateClickChapterVideo",
+          "index": 15239,
+          "params": [],
+          "token": "0x6003b88"
+        },
+        {
+          "name": "DoUpdateAlreadyShowFadeAnim",
+          "index": 15240,
+          "params": [],
+          "token": "0x6003b89"
+        },
+        {
+          "name": "TryShowFadeGuide",
+          "index": 15241,
+          "params": [],
+          "token": "0x6003b8a"
+        },
+        {
+          "name": "GetBtnType",
+          "index": 15242,
+          "params": [
+            "coinNum",
+            "wordPropensive",
+            "isFree"
+          ],
+          "token": "0x6003b8b"
+        },
+        {
+          "name": "CheckGridWords",
+          "index": 15243,
+          "params": [
+            "play"
+          ],
+          "token": "0x6003b8c"
+        },
+        {
+          "name": "ShowFadeLetterPfx",
+          "index": 15244,
+          "params": [],
+          "token": "0x6003b8d"
+        },
+        {
+          "name": "ShouldShowFadeGuide",
+          "index": 15245,
+          "params": [
+            "play"
+          ],
+          "token": "0x6003b8e"
+        },
+        {
+          "name": "TryStainFadeGuide",
+          "index": 15246,
+          "params": [],
+          "token": "0x6003b8f"
+        },
+        {
+          "name": "get__dataMgr",
+          "index": 15247,
+          "params": [],
+          "token": "0x6003b90"
+        },
+        {
+          "name": "GetHalfLevelEasierTimeThreshold",
+          "index": 15248,
+          "params": [],
+          "token": "0x6003b91"
+        },
+        {
+          "name": "TryApplyHalfLevelEasier",
+          "index": 15249,
+          "params": [
+            "play"
+          ],
+          "token": "0x6003b92"
+        },
+        {
+          "name": "ShouldTriggerHalfLevelEasierByChurnProb",
+          "index": 15250,
+          "params": [],
+          "token": "0x6003b93"
+        },
+        {
+          "name": "CheckHalfLevelEasierTest2Group1",
+          "index": 15251,
+          "params": [],
+          "token": "0x6003b94"
+        },
+        {
+          "name": "CheckHalfLevelEasierTest2Group2",
+          "index": 15252,
+          "params": [],
+          "token": "0x6003b95"
+        },
+        {
+          "name": "GetHalfLevelEasierTest2DecayProbGroup1",
+          "index": 15253,
+          "params": [
+            "days"
+          ],
+          "token": "0x6003b96"
+        },
+        {
+          "name": "GetHalfLevelEasierTest2DecayProbGroup2",
+          "index": 15254,
+          "params": [
+            "days"
+          ],
+          "token": "0x6003b97"
+        },
+        {
+          "name": "GetHalfLevelEasierTest2DaysSinceFirstTrigger",
+          "index": 15255,
+          "params": [],
+          "token": "0x6003b98"
+        },
+        {
+          "name": "TryAccumulateCh2WrongCount",
+          "index": 15256,
+          "params": [
+            "levelIndex",
+            "wrongCount"
+          ],
+          "token": "0x6003b99"
+        },
+        {
+          "name": ".cctor",
+          "index": 15257,
+          "params": [],
+          "token": "0x6003b9a"
+        }
+      ]
+    },
+    {
+      "index": 1788,
+      "name": "SensitiveWordHandler",
+      "namespace": "Logic.Handler",
+      "fields": [
+        {
+          "name": "map",
+          "typeIndex": 13332,
+          "token": "0x4002ae0"
+        },
+        {
+          "name": "blackLists",
+          "typeIndex": 13332,
+          "token": "0x4002ae1"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "index": 15600,
+          "params": [],
+          "token": "0x6003cf1"
+        },
+        {
+          "name": "InitFilter",
+          "index": 15601,
+          "params": [
+            "words"
+          ],
+          "token": "0x6003cf2"
+        },
+        {
+          "name": "InitBlackList",
+          "index": 15602,
+          "params": [
+            "words"
+          ],
+          "token": "0x6003cf3"
+        },
+        {
+          "name": "CheckBlackListWord",
+          "index": 15603,
+          "params": [
+            "txt",
+            "beginIndex"
+          ],
+          "token": "0x6003cf4"
+        },
+        {
+          "name": "CheckIsLegally",
+          "index": 15604,
+          "params": [
+            "txt",
+            "index"
+          ],
+          "token": "0x6003cf5"
+        },
+        {
+          "name": "CheckFilterWord",
+          "index": 15605,
+          "params": [
+            "txt",
+            "beginIndex"
+          ],
+          "token": "0x6003cf6"
+        },
+        {
+          "name": "BeginIndexIsTrue",
+          "index": 15606,
+          "params": [
+            "txt",
+            "index"
+          ],
+          "token": "0x6003cf7"
+        },
+        {
+          "name": "EndIndexIsTrue",
+          "index": 15607,
+          "params": [
+            "txt",
+            "index"
+          ],
+          "token": "0x6003cf8"
+        },
+        {
+          "name": "Filter",
+          "index": 15608,
+          "params": [
+            "txt"
+          ],
+          "token": "0x6003cf9"
+        },
+        {
+          "name": "GetSensitiveWord",
+          "index": 15609,
+          "params": [
+            "txt"
+          ],
+          "token": "0x6003cfa"
+        },
+        {
+          "name": "HasSensitiveWord",
+          "index": 15610,
+          "params": [
+            "txt"
+          ],
+          "token": "0x6003cfb"
+        },
+        {
+          "name": "GetFilterLen",
+          "index": 15611,
+          "params": [
+            "txt",
+            "i"
+          ],
+          "token": "0x6003cfc"
+        }
+      ]
+    },
+    {
+      "index": 1974,
+      "name": "GameDictionaryUI",
+      "namespace": "UI",
+      "fields": [
+        {
+          "name": "CloseBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4003fa6"
+        },
+        {
+          "name": "CloseBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4003fa7"
+        },
+        {
+          "name": "CloseBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4003fa8"
+        },
+        {
+          "name": "CloseBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4003fa9"
+        },
+        {
+          "name": "TitleGo",
+          "typeIndex": 13081,
+          "token": "0x4003faa"
+        },
+        {
+          "name": "TitleTrans",
+          "typeIndex": 16956,
+          "token": "0x4003fab"
+        },
+        {
+          "name": "TitleText",
+          "typeIndex": 18896,
+          "token": "0x4003fac"
+        },
+        {
+          "name": "TitleUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4003fad"
+        },
+        {
+          "name": "DictionaryContentGo",
+          "typeIndex": 13081,
+          "token": "0x4003fae"
+        },
+        {
+          "name": "DictionaryContentTrans",
+          "typeIndex": 16956,
+          "token": "0x4003faf"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Create",
+          "index": 16535,
+          "params": [],
+          "token": "0x6004098"
+        },
+        {
+          "name": ".ctor",
+          "index": 16536,
+          "params": [],
+          "token": "0x6004099"
+        }
+      ]
+    },
+    {
+      "index": 2134,
+      "name": "TeamInfoEditUI",
+      "namespace": "UI",
+      "fields": [
+        {
+          "name": "CloseBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4005b0c"
+        },
+        {
+          "name": "CloseBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b0d"
+        },
+        {
+          "name": "CloseBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b0e"
+        },
+        {
+          "name": "CloseBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4005b0f"
+        },
+        {
+          "name": "TitleGo",
+          "typeIndex": 13081,
+          "token": "0x4005b10"
+        },
+        {
+          "name": "TitleTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b11"
+        },
+        {
+          "name": "TitleText",
+          "typeIndex": 18896,
+          "token": "0x4005b12"
+        },
+        {
+          "name": "TitleUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b13"
+        },
+        {
+          "name": "TeamNameGo",
+          "typeIndex": 13081,
+          "token": "0x4005b14"
+        },
+        {
+          "name": "TeamNameTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b15"
+        },
+        {
+          "name": "TeamNameText",
+          "typeIndex": 18896,
+          "token": "0x4005b16"
+        },
+        {
+          "name": "TeamNameUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b17"
+        },
+        {
+          "name": "NameTypeContentGo",
+          "typeIndex": 13081,
+          "token": "0x4005b18"
+        },
+        {
+          "name": "NameTypeContentTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b19"
+        },
+        {
+          "name": "NameTypeContentImg",
+          "typeIndex": 14138,
+          "token": "0x4005b1a"
+        },
+        {
+          "name": "TeamBadgeGo",
+          "typeIndex": 13081,
+          "token": "0x4005b1b"
+        },
+        {
+          "name": "TeamBadgeTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b1c"
+        },
+        {
+          "name": "TeamBadgeText",
+          "typeIndex": 18896,
+          "token": "0x4005b1d"
+        },
+        {
+          "name": "TeamBadgeUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b1e"
+        },
+        {
+          "name": "BadgeGo",
+          "typeIndex": 13081,
+          "token": "0x4005b1f"
+        },
+        {
+          "name": "BadgeTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b20"
+        },
+        {
+          "name": "BadgeImg",
+          "typeIndex": 14138,
+          "token": "0x4005b21"
+        },
+        {
+          "name": "SelectGo",
+          "typeIndex": 13081,
+          "token": "0x4005b22"
+        },
+        {
+          "name": "SelectTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b23"
+        },
+        {
+          "name": "SelectUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b24"
+        },
+        {
+          "name": "SelectImg",
+          "typeIndex": 14138,
+          "token": "0x4005b25"
+        },
+        {
+          "name": "SelectInfoGo",
+          "typeIndex": 13081,
+          "token": "0x4005b26"
+        },
+        {
+          "name": "SelectInfoTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b27"
+        },
+        {
+          "name": "SelectInfoText",
+          "typeIndex": 18896,
+          "token": "0x4005b28"
+        },
+        {
+          "name": "SelectInfoUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b29"
+        },
+        {
+          "name": "DescriptionTitleGo",
+          "typeIndex": 13081,
+          "token": "0x4005b2a"
+        },
+        {
+          "name": "DescriptionTitleTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b2b"
+        },
+        {
+          "name": "DescriptionTitleText",
+          "typeIndex": 18896,
+          "token": "0x4005b2c"
+        },
+        {
+          "name": "DescriptionTitleUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b2d"
+        },
+        {
+          "name": "DescriptionContentGo",
+          "typeIndex": 13081,
+          "token": "0x4005b2e"
+        },
+        {
+          "name": "DescriptionContentTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b2f"
+        },
+        {
+          "name": "DescriptionContentImg",
+          "typeIndex": 14138,
+          "token": "0x4005b30"
+        },
+        {
+          "name": "TeamTypeGo",
+          "typeIndex": 13081,
+          "token": "0x4005b31"
+        },
+        {
+          "name": "TeamTypeTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b32"
+        },
+        {
+          "name": "TeamTypeText",
+          "typeIndex": 18896,
+          "token": "0x4005b33"
+        },
+        {
+          "name": "TeamTypeUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b34"
+        },
+        {
+          "name": "TypeLeftArrowBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4005b35"
+        },
+        {
+          "name": "TypeLeftArrowBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b36"
+        },
+        {
+          "name": "TypeLeftArrowBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4005b37"
+        },
+        {
+          "name": "TypeLeftArrowBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b38"
+        },
+        {
+          "name": "TypeRightArrowBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4005b39"
+        },
+        {
+          "name": "TypeRightArrowBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b3a"
+        },
+        {
+          "name": "TypeRightArrowBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4005b3b"
+        },
+        {
+          "name": "TypeRightArrowBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b3c"
+        },
+        {
+          "name": "RequestTypeGo",
+          "typeIndex": 13081,
+          "token": "0x4005b3d"
+        },
+        {
+          "name": "RequestTypeTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b3e"
+        },
+        {
+          "name": "RequestTypeText",
+          "typeIndex": 18896,
+          "token": "0x4005b3f"
+        },
+        {
+          "name": "RequestTypeUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b40"
+        },
+        {
+          "name": "NeedLevelGo",
+          "typeIndex": 13081,
+          "token": "0x4005b41"
+        },
+        {
+          "name": "NeedLevelTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b42"
+        },
+        {
+          "name": "NeedLevelText",
+          "typeIndex": 18896,
+          "token": "0x4005b43"
+        },
+        {
+          "name": "NeedLevelUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b44"
+        },
+        {
+          "name": "LevelLeftArrowBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4005b45"
+        },
+        {
+          "name": "LevelLeftArrowBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b46"
+        },
+        {
+          "name": "LevelLeftArrowBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4005b47"
+        },
+        {
+          "name": "LevelLeftArrowBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b48"
+        },
+        {
+          "name": "LevelRightArrowBtnGo",
+          "typeIndex": 13081,
+          "token": "0x4005b49"
+        },
+        {
+          "name": "LevelRightArrowBtnTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b4a"
+        },
+        {
+          "name": "LevelRightArrowBtnImg",
+          "typeIndex": 14138,
+          "token": "0x4005b4b"
+        },
+        {
+          "name": "LevelRightArrowBtnUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b4c"
+        },
+        {
+          "name": "LevelGo",
+          "typeIndex": 13081,
+          "token": "0x4005b4d"
+        },
+        {
+          "name": "LevelTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b4e"
+        },
+        {
+          "name": "LevelText",
+          "typeIndex": 18896,
+          "token": "0x4005b4f"
+        },
+        {
+          "name": "LevelUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b50"
+        },
+        {
+          "name": "SaveGo",
+          "typeIndex": 13081,
+          "token": "0x4005b51"
+        },
+        {
+          "name": "SaveTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b52"
+        },
+        {
+          "name": "SaveUIButton",
+          "typeIndex": 19523,
+          "token": "0x4005b53"
+        },
+        {
+          "name": "SaveImg",
+          "typeIndex": 14138,
+          "token": "0x4005b54"
+        },
+        {
+          "name": "SaveBgGo",
+          "typeIndex": 13081,
+          "token": "0x4005b55"
+        },
+        {
+          "name": "SaveBgTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b56"
+        },
+        {
+          "name": "SaveBgImg",
+          "typeIndex": 14138,
+          "token": "0x4005b57"
+        },
+        {
+          "name": "SaveInfoGo",
+          "typeIndex": 13081,
+          "token": "0x4005b58"
+        },
+        {
+          "name": "SaveInfoTrans",
+          "typeIndex": 16956,
+          "token": "0x4005b59"
+        },
+        {
+          "name": "SaveInfoText",
+          "typeIndex": 18896,
+          "token": "0x4005b5a"
+        },
+        {
+          "name": "SaveInfoUILanguage",
+          "typeIndex": 19540,
+          "token": "0x4005b5b"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Create",
+          "index": 16855,
+          "params": [],
+          "token": "0x60041d8"
+        },
+        {
+          "name": ".ctor",
+          "index": 16856,
+          "params": [],
+          "token": "0x60041d9"
+        }
+      ]
+    },
+    {
+      "index": 2439,
+      "name": "DealSelectResult",
+      "namespace": "Data.GamePlay.Play.Panel",
+      "fields": [
+        {
+          "name": "Type",
+          "typeIndex": 11870,
+          "token": "0x4006c1f"
+        },
+        {
+          "name": "LetterData",
+          "typeIndex": 14770,
+          "token": "0x4006c20"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2549,
+      "name": "DictionaryWordData",
+      "namespace": "Data.GameDictionary",
+      "fields": [
+        {
+          "name": "list",
+          "typeIndex": 5658,
+          "token": "0x4006ec1"
+        },
+        {
+          "name": "total",
+          "typeIndex": 14239,
+          "token": "0x4006ec2"
+        }
+      ],
+      "methods": [
+        {
+          "name": ".ctor",
+          "index": 21281,
+          "params": [],
+          "token": "0x6005322"
+        }
+      ]
+    },
+    {
+      "index": 2550,
+      "name": "DictionaryWordDataSingle",
+      "namespace": "Data.GameDictionary",
+      "fields": [
+        {
+          "name": "word",
+          "typeIndex": 18435,
+          "token": "0x4006ec3"
+        },
+        {
+          "name": "defines",
+          "typeIndex": 5976,
+          "token": "0x4006ec4"
+        }
+      ],
+      "methods": [
+        {
+          "name": ".ctor",
+          "index": 21282,
+          "params": [],
+          "token": "0x6005323"
+        }
+      ]
+    },
+    {
+      "index": 2554,
+      "name": "GameDictionaryDataMgr",
+      "namespace": "Data.GameDictionary",
+      "fields": [
+        {
+          "name": "_hardDefines",
+          "typeIndex": 3356,
+          "token": "0x4006eca"
+        },
+        {
+          "name": "_wordData",
+          "typeIndex": 12036,
+          "token": "0x4006ecb"
+        },
+        {
+          "name": "BundleFilePath",
+          "typeIndex": 2988,
+          "token": "0x4006ecc"
+        },
+        {
+          "name": "_wordDefineCache",
+          "typeIndex": 3308,
+          "token": "0x4006ecd"
+        },
+        {
+          "name": "_emptyTip",
+          "typeIndex": 5979,
+          "token": "0x4006ece"
+        },
+        {
+          "name": "<CurLevelName>k__BackingField",
+          "typeIndex": 18431,
+          "token": "0x4006ecf"
+        },
+        {
+          "name": "<LastRequestLevelName>k__BackingField",
+          "typeIndex": 18431,
+          "token": "0x4006ed0"
+        },
+        {
+          "name": "<CurWord>k__BackingField",
+          "typeIndex": 18431,
+          "token": "0x4006ed1"
+        },
+        {
+          "name": "<IsRequesting>k__BackingField",
+          "typeIndex": 10095,
+          "token": "0x4006ed2"
+        },
+        {
+          "name": "<LoadingLevelName>k__BackingField",
+          "typeIndex": 18431,
+          "token": "0x4006ed3"
+        },
+        {
+          "name": "CanPullBundle",
+          "typeIndex": 10099,
+          "token": "0x4006ed4"
+        }
+      ],
+      "methods": [
+        {
+          "name": "Init",
+          "index": 21286,
+          "params": [],
+          "token": "0x6005327"
+        },
+        {
+          "name": "Release",
+          "index": 21287,
+          "params": [],
+          "token": "0x6005328"
+        },
+        {
+          "name": "get_CurLevelName",
+          "index": 21288,
+          "params": [],
+          "token": "0x6005329"
+        },
+        {
+          "name": "set_CurLevelName",
+          "index": 21289,
+          "params": [
+            "value"
+          ],
+          "token": "0x600532a"
+        },
+        {
+          "name": "get_LastRequestLevelName",
+          "index": 21290,
+          "params": [],
+          "token": "0x600532b"
+        },
+        {
+          "name": "set_LastRequestLevelName",
+          "index": 21291,
+          "params": [
+            "value"
+          ],
+          "token": "0x600532c"
+        },
+        {
+          "name": "get_CurWord",
+          "index": 21292,
+          "params": [],
+          "token": "0x600532d"
+        },
+        {
+          "name": "set_CurWord",
+          "index": 21293,
+          "params": [
+            "value"
+          ],
+          "token": "0x600532e"
+        },
+        {
+          "name": "get_IsRequesting",
+          "index": 21294,
+          "params": [],
+          "token": "0x600532f"
+        },
+        {
+          "name": "set_IsRequesting",
+          "index": 21295,
+          "params": [
+            "value"
+          ],
+          "token": "0x6005330"
+        },
+        {
+          "name": "get_LoadingLevelName",
+          "index": 21296,
+          "params": [],
+          "token": "0x6005331"
+        },
+        {
+          "name": "set_LoadingLevelName",
+          "index": 21297,
+          "params": [
+            "value"
+          ],
+          "token": "0x6005332"
+        },
+        {
+          "name": "SetWordData",
+          "index": 21298,
+          "params": [
+            "data"
+          ],
+          "token": "0x6005333"
+        },
+        {
+          "name": "GetWordData",
+          "index": 21299,
+          "params": [],
+          "token": "0x6005334"
+        },
+        {
+          "name": "GetCacheDefines",
+          "index": 21300,
+          "params": [],
+          "token": "0x6005335"
+        },
+        {
+          "name": "AddCacheDefines",
+          "index": 21301,
+          "params": [
+            "defines"
+          ],
+          "token": "0x6005336"
+        },
+        {
+          "name": "TryFindDefinesFromWord",
+          "index": 21302,
+          "params": [
+            "word",
+            "defines"
+          ],
+          "token": "0x6005337"
+        },
+        {
+          "name": "UpdateRequestState",
+          "index": 21303,
+          "params": [
+            "state"
+          ],
+          "token": "0x6005338"
+        },
+        {
+          "name": "UpdateLoadingLevelName",
+          "index": 21304,
+          "params": [
+            "levelName"
+          ],
+          "token": "0x6005339"
+        },
+        {
+          "name": "UpdateCurWord",
+          "index": 21305,
+          "params": [
+            "word"
+          ],
+          "token": "0x600533a"
+        },
+        {
+          "name": "UpdateCurLevelName",
+          "index": 21306,
+          "params": [
+            "name"
+          ],
+          "token": "0x600533b"
+        },
+        {
+          "name": "UpdateLastRequestLevelName",
+          "index": 21307,
+          "params": [
+            "name"
+          ],
+          "token": "0x600533c"
+        },
+        {
+          "name": "SetDebugCanPullBundle",
+          "index": 21308,
+          "params": [
+            "flag"
+          ],
+          "token": "0x600533d"
+        },
+        {
+          "name": "TryGetHardDefine",
+          "index": 21309,
+          "params": [
+            "key",
+            "value"
+          ],
+          "token": "0x600533e"
+        },
+        {
+          "name": ".ctor",
+          "index": 21310,
+          "params": [],
+          "token": "0x600533f"
+        },
+        {
+          "name": "<AddCacheDefines>b__30_0",
+          "index": 21311,
+          "params": [
+            "dictionaryWordDataSingle"
+          ],
+          "token": "0x6005340"
+        }
+      ]
+    },
+    {
+      "index": 2555,
+      "name": "GameDictionaryDefine",
+      "namespace": "Data.GameDictionary",
+      "fields": [
+        {
+          "name": "LocalBundlePath",
+          "typeIndex": 18453,
+          "token": "0x4006ed5"
+        },
+        {
+          "name": "RemoteFilePath",
+          "typeIndex": 18453,
+          "token": "0x4006ed6"
+        },
+        {
+          "name": "PullIdentifier",
+          "typeIndex": 18453,
+          "token": "0x4006ed7"
+        },
+        {
+          "name": "LocalExistDefineMaxLevel",
+          "typeIndex": 14259,
+          "token": "0x4006ed8"
+        },
+        {
+          "name": "HardDefinePath",
+          "typeIndex": 18453,
+          "token": "0x4006ed9"
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2556,
+      "name": "SingleDictionaryInfos",
+      "namespace": "Data.GameDictionary",
+      "fields": [
+        {
+          "name": "defines",
+          "typeIndex": 5658,
+          "token": "0x4006eda"
+        }
+      ],
+      "methods": [
+        {
+          "name": ".ctor",
+          "index": 21312,
+          "params": [],
+          "token": "0x6005341"
+        }
+      ]
+    }
+  ],
+  "abTestWordSettings": [
+    {
+      "path": "assets/config/abtest_config.json.v6_exp[22].exp_group[0].group_data.extra_word_pop_1",
+      "value": 0
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_exp[22].exp_group[1].group_data.extra_word_pop_1",
+      "value": 1
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_exp[22].exp_group[2].group_data.extra_word_pop_1",
+      "value": 0
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[1].param_key",
+      "value": "dictionary_guide_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[4].param_key",
+      "value": "level_result_extra_word_content_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[17].param_key",
+      "value": "insensitive_shorten_cd_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[26].param_key",
+      "value": "extraword_result_reward_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[30].param_key",
+      "value": "extraword_result_reward_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[69].param_key",
+      "value": "extraword_result_reward_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[70].param_key",
+      "value": "extraword_result_reward_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[74].param_key",
+      "value": "insensitive_shorten_cd_test"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[90].param_key",
+      "value": "rare_word_combo_test_3"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[109].param_key",
+      "value": "rare_word_combo_test_1"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v6_strategy[119].param_key",
+      "value": "extra_word_pop_1"
+    },
+    {
+      "path": "assets/config/abtest_config.json.v5_config.params[36].key",
+      "value": "extra_word_guide2"
+    }
+  ],
+  "definitionWordingScreen": {
+    "detailedKeywordCandidates": 26,
+    "shortKeywordCandidates": 57,
+    "note": "Keyword matches are review candidates, not a list of prohibited words. Medical, biological, and neutral orientation definitions are included by the mechanical scan."
+  },
+  "method": [
+    "Read ZIP entries from the supplied APK without installing or executing it.",
+    "Decode Unity bundles with UnityPy 1.25.4, using the actual Unity 6000.3.16f1 version from data.unity3d.",
+    "Decode English level payloads with the packaged XOR format; read all records, verify word and ID fields, and consume the complete file including its footer.",
+    "Decode HardDefine at character level, preserving Unicode; do not XOR UTF-8 bytes as if they were characters.",
+    "Count a word once per level per role. Keep main variants and daily variants separate; do not add duplicate or replacement configurations to a single player frequency.",
+    "Read compressed metadata declarations using token and owner checks; metadata contains declarations, not executable method bodies."
+  ]
+}

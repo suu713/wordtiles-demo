@@ -8,19 +8,24 @@ import { GENERATOR_VERSION } from './core/wordtiles-algorithm.js';
 import { calculateLevelStatistics } from './core/level-statistics.js?v=15';
 import { createWordCollection, COLLECTION_KEY } from './core/word-collection.js?v=25';
 import { preloadArt } from './core/art-theme.js?v=22';
-import { preloadPlayerArt } from './core/player-art.js?v=6';
+import { preloadPlayerArt } from './core/player-art.js?v=8';
 import {mountBackgroundThemes} from './background-themes.js?v=1';
+import {mountTileMaterials} from './tile-materials.js?v=3';
 import { localCollectionDate, groupCollectionDays, shiftCollectionMonth, collectionMonthCells, collectionMonthGroups } from './core/collection-calendar.js?v=16';
-import { mountPlaytestLab } from './workbench-ui.js?v=56&settlement=7';
+import { mountPlaytestLab } from './workbench-ui.js?v=56&settlement=8';
 import {QUALITY_TEMPLATE,matchesQualityTemplate} from './core/quality-config.js?v=39';
 import {mountCollectionViews} from './collection-ui.js?v=25';
 import {mountEventViews} from './event-ui.js?v=30';
+import {mountDailyCheckin} from './checkin-ui.js?v=3';
 import {planTargetLengths,normalizeComposition} from './core/target-composition.js?v=28';
 import {letterHintsForSession} from './core/letter-hints.js?v=33';
 import {planTargetLayout} from './core/target-rows.js?v=31';
-import {TargetEffects} from './target-effects.js?v=3';
-import {BoardShatter} from './board-shatter.js?v=2';
-import {EncouragementBanners} from './encouragement-banners.js?v=3';
+import {TargetEffects} from './target-effects.js?v=8';
+import {WordReadout} from './word-readout.js?v=1';
+import {BoardShatter} from './board-shatter.js?v=3';
+import {EncouragementBanners} from './encouragement-banners.js?v=7';
+import {FloralBannerView} from './floral-banner-art.js?v=1';
+import {CompletionBanner} from './completion-banner.js?v=1';
 import {LevelEntrance} from './level-entrance.js?v=1';
 import {createPersonalProgress,PERSONAL_PROGRESS_KEY} from './core/personal-progress.js?v=25';
 import {clearAppData,dataEpoch,DATA_RESET_KEY,DATA_NOTICE_KEY,PREVIEW_COLLECTION_KEY} from './core/app-data.js?v=25';
@@ -39,6 +44,7 @@ let selectedAlgorithm = 2, ready = false, busyKind = null;
 let browserStorage;
 try { browserStorage=window.localStorage; } catch {}
 const backgroundThemes=mountBackgroundThemes({storage:browserStorage});
+const tileMaterials=mountTileMaterials({storage:browserStorage});
 const initialDataEpoch=dataEpoch(browserStorage);let dataResetting=false;
 let collection=createWordCollection(browserStorage);
 const personalProgress=createPersonalProgress(browserStorage);
@@ -48,12 +54,15 @@ const eventViews=mountEventViews({storage:browserStorage,
   onCollect:(result,language,origin)=>{if(collection.collect(result,language,origin))renderCollection();},
   onPersonalProgress:(session,snapshot,flush)=>{personalProgress.observe(session,snapshot);if(flush)personalProgress.flush();},
 });
+const dailyCheckin=mountDailyCheckin({storage:browserStorage,canPlay:()=>ready,
+  beforeOpen:()=>{closeSettings(false);hideHelp();},onPlay:()=>$('#start-game').click(),
+});
 let collectionMonth, collectionSelectedDate, collectionDateFilter = null;
 const banks = new Map(), savedSessions = new Map();
 let selection = [], activePointer = null, worker = null, busy = false;
 let epoch = 0, requestId = 0, generationStats = null, lastRejection = null;
 const tileElements = [];
-let rejectedWord = '', rejectionTimer = null;
+const wordReadout=new WordReadout($('#current-word'),{onExpire:()=>{feedback('');renderSelection();}});
 let answerPreviewOpen=false,answerPreviewGame=null;
 let targetElementsSession=null;
 const levelEntrance=new LevelEntrance({
@@ -61,6 +70,7 @@ const levelEntrance=new LevelEntrance({
   prepare:()=>{applyViewport();fitBoard();},
   onDone:session=>{
     if(game!==session||!$('#lobby').hidden||document.hidden)return;
+    encouragement.resume(session);
     render();
     if(document.activeElement===document.body||document.activeElement===$('#start-game'))tileElements.find(tile=>tile.getAttribute('aria-disabled')==='false')?.focus({preventScroll:true});
   },
@@ -74,22 +84,55 @@ const boardShatter=new BoardShatter({
   isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
 });
 const encouragementHost=$('#encouragement-banner');
+const encouragementIcon=$('#encouragement-icon');
+let encouragementFlightDelay=0;
+function syncEncouragementReadout(){
+  $('.play-panel').classList.toggle('feedback-showing',!encouragementHost.hidden||!encouragementIcon.hidden);
+}
 const encouragement=new EncouragementBanners({
+  storage:browserStorage,
   isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
-  show:(kind,duration)=>{
+  show:(kind,duration,presentation)=>{
     encouragementHost.classList.remove('banner-active');
-    encouragementHost.dataset.kind=kind;encouragementHost.style.setProperty('--banner-duration',duration+'ms');
-    encouragementHost.hidden=false;$('.play-panel').classList.add('banner-showing');
-    $('#encouragement-announcement').textContent=kind==='streak'?'连续找到三个目标词，太棒了！':'所有目标已完成，太棒了！';
+    encouragementHost.dataset.kind=kind;encouragementHost.dataset.presentation='banner';
+    encouragementHost.dataset.frame=presentation.frame;$('#encouragement-copy').textContent=presentation.text;
+    encouragementHost.style.setProperty('--banner-duration',Math.max(1,duration-encouragementFlightDelay)+'ms');
+    encouragementHost.style.setProperty('--feedback-delay',encouragementFlightDelay+'ms');
+    encouragementHost.hidden=false;$('.play-panel').classList.add('banner-showing');syncEncouragementReadout();fitEncouragementText();
+    $('#encouragement-announcement').textContent=presentation.text;
     void encouragementHost.offsetWidth;encouragementHost.classList.add('banner-active');
   },
-  hide:()=>{encouragementHost.hidden=true;encouragementHost.classList.remove('banner-active');$('.play-panel').classList.remove('banner-showing');$('#encouragement-announcement').textContent='';},
+  hide:()=>{encouragementHost.hidden=true;encouragementHost.classList.remove('banner-active');$('.play-panel').classList.remove('banner-showing');$('#encouragement-announcement').textContent='';syncEncouragementReadout();},
+  showIcon:(kind,duration,{scene})=>{
+    encouragementIcon.classList.remove('icon-active');encouragementIcon.dataset.kind=kind;encouragementIcon.dataset.scene=scene;
+    encouragementIcon.style.setProperty('--icon-duration',Math.max(1,duration-encouragementFlightDelay)+'ms');
+    encouragementIcon.style.setProperty('--feedback-delay',encouragementFlightDelay+'ms');encouragementIcon.hidden=false;
+    $('#encouragement-icon-announcement').textContent=kind==='thumbs'?'点赞':'鼓掌';syncEncouragementReadout();
+    void encouragementIcon.offsetWidth;encouragementIcon.classList.add('icon-active');
+  },
+  hideIcon:()=>{encouragementIcon.hidden=true;encouragementIcon.classList.remove('icon-active');$('#encouragement-icon-announcement').textContent='';syncEncouragementReadout();},
+  onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
+});
+const completionHost=$('#completion-banner'),completionArt=new FloralBannerView(completionHost);
+const completionBanner=new CompletionBanner({
+  view:{show:(...args)=>{completionHost.hidden=false;$('.play-panel').classList.add('completion-feedback');completionArt.show(...args);},
+    hide:()=>{completionArt.hide();completionHost.hidden=true;$('.play-panel').classList.remove('completion-feedback');}},
+  isVisible:()=>$('#lobby').hidden&&$('#game-screen').dataset.mode==='play'&&!document.hidden&&!playtestLab?.machineRunning,
   onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
 });
 function syncCompletionEffect(){
   if(game?.status!=='won'||levelEntrance.isRunning(game)||targetEffects.isRunning(game))return;
-  encouragement.complete(game);
-  if(!encouragement.isRunning(game))boardShatter.cancel();
+  if(encouragement.isRunning(game))return;
+  completionBanner.play(game);
+  if(!completionBanner.isRunning(game))boardShatter.cancel();
+}
+function fitEncouragementText(){
+  if(encouragementHost.hidden)return;
+  const text=$('#encouragement-text'),copy=$('#encouragement-copy');
+  text.style.fontSize='';
+  const area=text.getBoundingClientRect(),content=copy.getBoundingClientRect();
+  const scale=Math.min(1,area.width/Math.max(1,content.width),area.height/Math.max(1,content.height));
+  if(scale<1)text.style.fontSize=(parseFloat(getComputedStyle(text).fontSize)*scale)+'px';
 }
 const solutionCache = new WeakMap(), SOLUTIONS_PER_PAGE = 12;
 let solutionWorker = null, solutionLevel = null, solutionRequest = 0, solutionPage = 0;
@@ -129,6 +172,8 @@ function targetLabel(word,done=false){
 function readComposition(){return normalizeComposition({three:$('#generation-three-percent').value,four:$('#generation-four-percent').value});}
 function compositionLengths(random=()=>.5){if(qualityFixedTemplate)return [...QUALITY_TEMPLATE.wordLengths];return planTargetLengths({rows:Number($('#board-rows').value),cols:Number($('#board-cols').value),targetCount:Number($('#generation-target-count').value),composition:readComposition(),maxUses:webConfigDraft.maxUses??3},dictionary?[...new Set(dictionary.words.map(word=>word.length))]:bankLengthRange(),random);}
 const SVG_NS = 'http://www.w3.org/2000/svg';
+const selectionBridges=document.createElement('div');
+selectionBridges.className='selection-bridges';selectionBridges.setAttribute('aria-hidden','true');
 const connections = document.createElementNS(SVG_NS, 'svg');
 connections.classList.add('connections');
 connections.setAttribute('viewBox', '0 0 1000 1000');
@@ -157,7 +202,7 @@ function buildBoard(rows, cols) {
     const pips = document.createElement('span'); pips.className = 'tile-pips'; pips.setAttribute('aria-hidden', 'true');
     tile.append(letter, pips); board.append(tile); tileElements.push(tile);
   }
-  board.append(connections);
+  board.append(selectionBridges,connections);
 }
 
 function renderWordRows() {
@@ -414,7 +459,7 @@ $('#word-count').addEventListener('input', () => {
 function applyViewport() {
   const column = $('.preview-column');
   if ($('#game-screen').dataset.mode === 'play') {
-    // Identical sizing to .lobby-panel; editor zoom only affects its preview.
+    // Identical sizing to .lobby-panel.
     const width = Math.min(520, window.innerWidth, window.innerHeight * 9 / 16);
     column.style.setProperty('--device-width', 'min(100vw, calc(100dvh * 9 / 16), 520px)');
     column.style.setProperty('--device-height', 'calc(var(--device-width) * 16 / 9)');
@@ -425,12 +470,9 @@ function applyViewport() {
     return;
   }
   const style=getComputedStyle(column),availableWidth=column.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight),availableHeight=Math.max(1,column.clientHeight-(document.querySelector('.playtest-start-bar')?.offsetHeight||0)-parseFloat(style.paddingTop)-parseFloat(style.paddingBottom)-12);
-  let width, height;
-  if ($('#preview-device').value === 'auto') {
-    width = Math.max(1, Math.floor(Math.min(520, availableWidth, availableHeight * 9 / 16)));
-    height = width * 16 / 9;
-  } else [width,height] = $('#preview-device').value.split('x').map(Number);
-  const scale = Math.min(Number($('#preview-zoom').value) / 100, availableWidth / width, availableHeight / height);
+  const width = Math.max(1, Math.floor(Math.min(520, availableWidth, availableHeight * 9 / 16)));
+  const height = width * 16 / 9;
+  const scale = Math.min(1, availableWidth / width, availableHeight / height);
   column.style.setProperty('--device-width', width + 'px');
   column.style.setProperty('--device-height', height + 'px');
   column.style.setProperty('--preview-scale', String(scale));
@@ -446,6 +488,7 @@ function scheduleFit() {
 }
 function fitBoard() {
   if (!game) return;
+  fitEncouragementText();
   fitTargetRows();
   const targets = $('#targets');
   $('#targets-note').hidden = targets.scrollHeight <= targets.clientHeight + 1;
@@ -485,7 +528,6 @@ function fitTargetRows() {
   if(!sameRows&&!targetEffects.isRunning(game))container.replaceChildren(...rows.map(items=>{const row=document.createElement('div');row.className='target-row';row.append(...items);return row;}));
   container.scrollTop=scrollTop;
 }
-for (const id of ['#preview-device','#preview-zoom']) $(id).addEventListener('change', applyViewport);
 new ResizeObserver(applyViewport).observe($('.preview-column'));
 new ResizeObserver(scheduleFit).observe($('.game-board-area'));
 window.addEventListener('resize', applyViewport);
@@ -509,33 +551,39 @@ function clearSelection() {
 }
 function renderSelection() {
   tileElements.forEach((tile, cell) => tile.classList.toggle('selected', selection.includes(cell)));
-  const readout=selection.length&&game?selection.map(i=>game.initial.board.letters[i]).join(''):rejectedWord;
-  $('#readout-label').textContent = rejectedWord&&!selection.length?'连接未匹配':'正在连接';
-  if($('#current-word').textContent!==readout)$('#current-word').textContent=readout;
-  connections.replaceChildren();
+  const readout=selection.length&&game?selection.map(i=>game.initial.board.letters[i]).join(''):'';
+  wordReadout.select(readout);
+  $('#readout-label').textContent = wordReadout.mode==='rejected'&&!selection.length?'连接未匹配':wordReadout.mode==='repeated'?'已经找到':'正在连接';
+  connections.replaceChildren();selectionBridges.replaceChildren();
   if(selection.length<2)return;
   const area=board.getBoundingClientRect(),width=board.offsetWidth,height=board.offsetHeight;
   if(!area.width||!area.height)return;
   connections.setAttribute('viewBox',`0 0 ${width} ${height}`);
+  const style=getComputedStyle(board),cx=Number(style.getPropertyValue('--tile-bridge-center-x'))||.5,cy=Number(style.getPropertyValue('--tile-bridge-center-y'))||.5;
   const points=selection.map(cell=>{
     const rect=tileElements[cell].getBoundingClientRect();
-    return `${(rect.left+rect.width/2-area.left)/area.width*width},${(rect.top+rect.height/2-area.top)/area.height*height}`;
+    return {x:(rect.left+rect.width*cx-area.left)/area.width*width,y:(rect.top+rect.height*cy-area.top)/area.height*height,
+      size:Math.min(rect.width/area.width*width,rect.height/area.height*height)};
   });
-  const polyline=document.createElementNS(SVG_NS,'polyline');
-  polyline.setAttribute('points',points.join(' '));connections.append(polyline);
+  const fragment=document.createDocumentFragment();
+  for(let index=1;index<points.length;index++){
+    const from=points[index-1],to=points[index],dx=to.x-from.x,dy=to.y-from.y,distance=Math.hypot(dx,dy);
+    if(!distance)continue;
+    const thickness=Math.min(from.size,to.size)*.2,bridge=document.createElement('span');bridge.className='selection-bridge';
+    bridge.dataset.from=String(selection[index-1]);bridge.dataset.to=String(selection[index]);
+    Object.assign(bridge.style,{left:(from.x-thickness/2)+'px',top:from.y+'px',width:thickness+'px',height:distance+'px',transform:`rotate(${Math.atan2(dy,dx)*180/Math.PI-90}deg)`});
+    fragment.append(bridge);
+  }
+  selectionBridges.append(fragment);
 }
 function clearWordError() {
-  clearTimeout(rejectionTimer);rejectionTimer=null;rejectedWord='';
-  $('#current-word').classList.remove('rejected-word');
-  if(!selection.length)$('#current-word').textContent='';
+  wordReadout.clear();
   if($('#feedback').classList.contains('error'))feedback('');
 }
 function showWordError(path) {
   clearWordError();
-  rejectedWord=path.map(cell=>game.initial.board.letters[cell]).join('');
-  $('#current-word').classList.add('rejected-word');
+  wordReadout.reject(path.map(cell=>game.initial.board.letters[cell]).join(''));
   renderSelection();
-  rejectionTimer=setTimeout(()=>{clearWordError();renderSelection();},900);
 }
 function renderBonusWords() {
   const words = [...(game?.bonusCompleted || [])].sort((a, b) => a.localeCompare(b));
@@ -659,6 +707,7 @@ function render(consumed = []) {
     levelEntrance.cancel();targetEffects.cancel();$('#targets').replaceChildren();targetElementsSession=game;
   }
   encouragement.sync(game);
+  completionBanner.sync(game);
   const targetNodes=new Map([...$('#targets').querySelectorAll('.target')].map(item=>[item.dataset.word,item]));
   const pending=game.initial.targets.filter(target=>!game.completed.has(target.word));
   [...game.initial.targets].sort((a,b)=>[...a.word].length-[...b.word].length).forEach(target => {
@@ -792,7 +841,10 @@ $('#source-random').addEventListener('click', () => {
 function addCell(cell) {
   if (levelEntrance.isRunning(game)||(playtestLab&&!playtestLab.canPlay)) return;
   if (!game || game.status !== 'playing' || !(game.playableCounts||game.counts)[cell]) return;
-  if(!selection.length)encouragement.dismissStreak();
+  if(!selection.length){
+    targetEffects.dismissReadouts();
+    encouragement.clearChannel('banner');encouragement.clearChannel('icon');
+  }
   clearWordError();
   if (selection.length > 1 && selection.at(-2) === cell) selection.pop();
   else if (!selection.includes(cell) && (!selection.length || game.neighbors[selection.at(-1)].includes(cell))) selection.push(cell);
@@ -800,15 +852,23 @@ function addCell(cell) {
 }
 function commitSelection() {
   if (!selection.length || !game || (playtestLab&&!playtestLab.canPlay)) return;
-  const path = [...selection]; clearSelection();
+  wordReadout.freeze();
+  const path = [...selection],flight=targetEffects.capturePath(selection.map(cell=>tileElements[cell]),$('.play-panel'),$('#current-word'));clearSelection();
   const result = game.submit(path);
-  encouragement.record(game,result);
+  if(result.accepted&&result.status!=='anomaly')targetEffects.queueFlight(game,result.word,flight);
+  encouragementFlightDelay=result.accepted&&flight?.plate?320:0;
+  encouragement.record(game,result,{source:'manual',assisted:result.accepted&&[...result.word].some((_,index)=>playerHints().has(result.word,index))});
+  encouragementFlightDelay=0;
   playtestLab?.recordSubmit(path,result);
   if(collection.collect(result,game.initial.source?.language||'english',game.initial.algorithm===1?'wt-package':game.dictionary?.metadata?.origin)) renderCollection();
   render(result.accepted ? path : []);
   if (result.accepted && result.status === 'won') feedback(result.victoryReason==='empty-grid'?'棋盘次数已耗尽，触发清盘兜底。':'全部目标完成。', 'success');
   else if (result.accepted && result.status !== 'anomaly') feedback(`找到了 ${result.word}！继续找下一个。`, 'success');
-  else if (result.reason === 'already-completed') feedback(`${result.word} 已经找过了，次数保持不变。`);
+  else if (result.reason === 'already-completed') {
+    wordReadout.repeat(result.word);renderSelection();
+    targetEffects.remind(game,result.word,[...$('#targets').querySelectorAll('.target')].find(item=>item.dataset.word===result.word));
+    feedback(`${result.word} 已经找过了，次数保持不变。`);
+  }
   else if (result.reason === 'extra-word') feedback(result.isNew ? `额外词 ${result.word} 已记录，次数保持不变。` : `额外词 ${result.word} 已经记过，次数保持不变。`, 'success');
   else if (result.reason === 'not-target') { showWordError(path); feedback(`${result.word} 不在本关词库中，次数保持不变。`, 'error'); }
   else if (result.reason !== 'anomaly') { showWordError(path); feedback(result.message || '这次连接无效，次数保持不变。', 'error'); }
@@ -929,7 +989,7 @@ function collectFullyRevealedTargets(revealed){
   for(const word of new Set(revealed.map(item=>item.word))){
     if([...word].every((_,index)=>playerHints().has(word,index))){
       const result=game.collectRevealedTarget(word);
-      if(result.accepted){completed.push(word);if(collection.collect(result,'english','wt-package'))renderCollection();}
+      if(result.accepted){encouragement.record(game,result,{source:'prop'});completed.push(word);if(collection.collect(result,'english','wt-package'))renderCollection();}
     }
   }
   return completed;
@@ -1062,7 +1122,7 @@ $('#activity-button').addEventListener('click',()=>{resetCollectionMonth();rende
 $('#activity-close').addEventListener('click',()=>$('#activity-dialog').close());
 
 function showLobby() {
-  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();
+  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();
   answerPreviewOpen=false;renderAnswerPreview();
   cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
   $('#game-screen').classList.remove('information-open');
@@ -1076,7 +1136,7 @@ function openGameScreen(mode) {
   $('#game-screen').classList.remove('information-open');
   $('#game-screen').dataset.mode=mode;
   $('#lobby').hidden=true;$('#game-screen').hidden=false;
-  if(mode==='play')playtestLab?.startPlayer();
+  if(mode==='play'){playtestLab?.startPlayer();encouragement.resume(game);}
   else {playtestLab?.changeTab('edit');if(matchMedia('(max-width: 980px)').matches)document.body.classList.add('editor-open');}
   applyViewport();fitBoard();renderSelection();
   if(mode==='editor') {startSolutionAnalysis();$('.lab-tabs button')?.focus({preventScroll:true});}
@@ -1182,20 +1242,12 @@ async function fillPreviewCollection(){
   if(result.added)try{browserStorage.setItem(PREVIEW_COLLECTION_KEY,JSON.stringify({addedAt:new Date().toISOString(),count:result.added,total:result.total,words:result.words}));}catch{}
   renderCollection();return result;
 }
-$('#preview-collection').addEventListener('click',async()=>{
-  if(dataResetting)return;
-  $('#preview-collection').disabled=true;$('#data-status').textContent='正在收录…';
-  try{
-    const result=await fillPreviewCollection();if(!result)return;
-    $('#data-status').textContent=`已收录 ${result.total} 词`;closeSettings(false);$('#dictionary-button').click();
-  }catch(error){$('#data-status').textContent=error.message;}
-  finally{if(!dataResetting)$('#preview-collection').disabled=false;}
-});
 function prepareDataReset(){
-  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();
+  tileMaterials.prepareDataReset();
+  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();
   if(dataResetting)return;dataResetting=true;ready=false;
-  cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();
-  $('#preview-collection').disabled=true;$('#clear-all-data').disabled=true;$('#data-status').textContent='正在清除…';
+  cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();dailyCheckin.prepareDataReset();
+  $('#clear-all-data').disabled=true;$('#data-status').textContent='正在清除…';
 }
 $('#clear-all-data').addEventListener('click',async()=>{
   prepareDataReset();let session;try{session=window.sessionStorage;}catch{}
@@ -1255,9 +1307,9 @@ for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
 }
 $('#word-count').value = '3';
-window.addEventListener('pagehide', () => { levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
-document.addEventListener('visibilitychange',()=>{if(document.hidden){levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();}else if($('#lobby').hidden){scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
-playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game),
+window.addEventListener('pagehide', () => { wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
+document.addEventListener('visibilitychange',()=>{if(document.hidden){wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();}else if($('#lobby').hidden){encouragement.resume(game);scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
+playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game)||completionBanner.isRunning(game),
   recordPersonalProgress:(session,snapshot,flush=false)=>{personalProgress.observe(session,snapshot);eventViews.observe(session,snapshot);if(flush)personalProgress.flush();},
   resetCurrent:()=>{if(game)loadLevel(game.exportInitial||game.initial,$('#level-kind').textContent,{syncDraft:false,dismissEditor:false,dictionaryOverride:game.dictionary});},
   getDictionary:()=>dictionary,
@@ -1275,7 +1327,7 @@ for(const id of ['#generation-target-count','#generation-three-percent','#genera
 showMode(); renderWordRows(); updateEditor(); applyViewport();
 for (const id of ['#algorithm','#source-language','#source-order','#generate','#generate-seed','#hint','#load-sample','#import','#export']) $(id).disabled = true;
 try {
-  await Promise.all([preloadArt(),preloadPlayerArt(),backgroundThemes.ready]);
+  await Promise.all([preloadArt(),preloadPlayerArt(),backgroundThemes.ready,tileMaterials.ready]);
   dictionary=createBankDictionary(bankLengthRange(WORD_BANK_ORIGIN),WORD_BANK_ORIGIN);baseDictionary=dictionary;editorChanged();
   ready = true;
   for (const id of ['#algorithm','#source-language','#source-order','#load-sample','#import','#export']) $(id).disabled = false;
@@ -1287,6 +1339,7 @@ try {
   if(previewAtOpen)try{previewResult=await fillPreviewCollection();}catch(error){previewError=error.message;}
   $('#start-game').disabled=false;
   $('#lobby-editor').disabled=false;
+  dailyCheckin.update();
   let dataNotice='';try{dataNotice=sessionStorage.getItem(DATA_NOTICE_KEY)||'';sessionStorage.removeItem(DATA_NOTICE_KEY);}catch{}
   $('#lobby-status').textContent=dataNotice||previewError||(previewResult?`已收录 ${previewResult.total} 词`:'');
   if(previewResult)$('#dictionary-button').click();

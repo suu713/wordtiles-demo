@@ -1,0 +1,2618 @@
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.CheckExtraWordRules 0x17a87ec
+17a87ec: stp x30, x21, [sp, #-0x20]!
+17a87f0: stp x20, x19, [sp, #0x10]
+17a87f4: adrp x21, #0x2db3000
+17a87f8: mov x19, x1
+17a87fc: mov x20, x0
+17a8800: ldrb w8, [x21, #0x76]
+17a8804: tbnz w8, #0, #0x17a881c
+17a8808: adrp x0, #0x2b87000
+17a880c: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a8810: bl #0x116794c
+17a8814: mov w8, #1
+17a8818: strb w8, [x21, #0x76]
+17a881c: cbz x19, #0x17a8890
+17a8820: bl #0x17a4068 ; Data.GamePlay.MainPlay.MainPlayDataMgr.IsChainPlayMode
+17a8824: tbnz w0, #0, #0x17a8890
+17a8828: ldrb w8, [x19, #0x10]
+17a882c: cbnz w8, #0x17a8890
+17a8830: ldr x8, [x19, #0x18]
+17a8834: cbz x8, #0x17a88a8
+17a8838: ldr x0, [x20, #0x98]
+17a883c: cbz x0, #0x17a88a8
+17a8840: ldr w1, [x8, #0x10]
+17a8844: mov x2, xzr
+17a8848: bl #0x17bd910 ; Data.GamePlay.MainPlay.Grid.GridData.CheckWordValid
+17a884c: tbz w0, #0, #0x17a8890
+17a8850: ldr x8, [x19, #0x18]
+17a8854: cbz x8, #0x17a88a8
+17a8858: ldr w8, [x8, #0x10]
+17a885c: cmp w8, #2
+17a8860: b.lt #0x17a8890
+17a8864: mov x0, x20
+17a8868: bl #0x17a6014 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetConfig
+17a886c: cbz x0, #0x17a88a0
+17a8870: ldr x0, [x0, #0x30]
+17a8874: cbz x0, #0x17a88a0
+17a8878: adrp x8, #0x2b87000
+17a887c: ldr x8, [x8, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a8880: ldr x1, [x19, #0x18]
+17a8884: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17a8888: bl #0x1ec1f30
+17a888c: tbz w0, #0, #0x17a88a0
+17a8890: mov w0, wzr
+17a8894: ldp x20, x19, [sp, #0x10]
+17a8898: ldp x30, x21, [sp], #0x20
+17a889c: ret 
+17a88a0: mov w0, #1
+17a88a4: b #0x17a8894
+17a88a8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.CheckExtraReplaceableAnswer 0x17a88ac
+17a88ac: stp x30, x21, [sp, #-0x20]!
+17a88b0: stp x20, x19, [sp, #0x10]
+17a88b4: mov x20, x1
+17a88b8: mov x21, x0
+17a88bc: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a88c0: cbz x0, #0x17a8948
+17a88c4: ldr x19, [x0, #0x190]
+17a88c8: mov x0, xzr
+17a88cc: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a88d0: cbz x0, #0x17a8948
+17a88d4: ldrb w8, [x0, #0x23]
+17a88d8: ldr x21, [x21, #0x98]
+17a88dc: cbz w8, #0x17a8914
+17a88e0: cbz x20, #0x17a8948
+17a88e4: ldr x8, [x20]
+17a88e8: mov x0, x20
+17a88ec: ldp x9, x1, [x8, #0x168]
+17a88f0: blr x9
+17a88f4: cbz x21, #0x17a8948
+17a88f8: mov x2, x19
+17a88fc: ldp x20, x19, [sp, #0x10]
+17a8900: mov x1, x0
+17a8904: mov x0, x21
+17a8908: mov x3, xzr
+17a890c: ldp x30, x21, [sp], #0x20
+17a8910: b #0x17bad4c ; Data.GamePlay.MainPlay.Grid.GridData.CheckExtraReplaceableAnswerDisorderly
+17a8914: cbz x20, #0x17a8948
+17a8918: ldr x8, [x20]
+17a891c: mov x0, x20
+17a8920: ldp x9, x1, [x8, #0x168]
+17a8924: blr x9
+17a8928: cbz x21, #0x17a8948
+17a892c: mov x2, x19
+17a8930: ldp x20, x19, [sp, #0x10]
+17a8934: mov x1, x0
+17a8938: mov x0, x21
+17a893c: mov x3, xzr
+17a8940: ldp x30, x21, [sp], #0x20
+17a8944: b #0x17ba87c ; Data.GamePlay.MainPlay.Grid.GridData.CheckExtraReplaceableAnswer
+17a8948: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.ReplaceExtraAnswer 0x17a92a0
+17a92a0: str x30, [sp, #-0x30]!
+17a92a4: stp x22, x21, [sp, #0x10]
+17a92a8: stp x20, x19, [sp, #0x20]
+17a92ac: adrp x22, #0x2db3000
+17a92b0: mov x19, x2
+17a92b4: mov x20, x1
+17a92b8: ldrb w8, [x22, #0x78]
+17a92bc: mov x21, x0
+17a92c0: tbnz w8, #0, #0x17a92d8
+17a92c4: adrp x0, #0x2ba3000
+17a92c8: ldr x0, [x0, #0xaf0] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateConfigFromReplaceAnswer (21112, 1814, -1) [load 0x2ba3af0]
+17a92cc: bl #0x116794c
+17a92d0: mov w8, #1
+17a92d4: strb w8, [x22, #0x78]
+17a92d8: cbz x20, #0x17a9340
+17a92dc: ldr x0, [x21, #0x98]
+17a92e0: cbz x0, #0x17a9340
+17a92e4: ldur x1, [x20, #0x18]
+17a92e8: mov x2, x19
+17a92ec: mov x3, xzr
+17a92f0: bl #0x17bc3ac ; Data.GamePlay.MainPlay.Grid.GridData.ReplaceExtraAnswer
+17a92f4: tbz w0, #0, #0x17a9330
+17a92f8: adrp x8, #0x2ba3000
+17a92fc: mov x0, x21
+17a9300: mov x2, x19
+17a9304: ldr x8, [x8, #0xaf0] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateConfigFromReplaceAnswer (21112, 1814, -1) [load 0x2ba3af0]
+17a9308: ldur x1, [x20, #0x18]
+17a930c: ldr x3, [x8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateConfigFromReplaceAnswer (21112, 1814, -1) [load 0x2c91958]
+17a9310: bl #0x203a880
+17a9314: add x0, x20, #0x18
+17a9318: mov x1, x19
+17a931c: stur x19, [x20, #0x18]
+17a9320: ldp x20, x19, [sp, #0x20]
+17a9324: ldp x22, x21, [sp, #0x10]
+17a9328: ldr x30, [sp], #0x30
+17a932c: b #0x11678f8
+17a9330: ldp x20, x19, [sp, #0x20]
+17a9334: ldp x22, x21, [sp, #0x10]
+17a9338: ldr x30, [sp], #0x30
+17a933c: ret 
+17a9340: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.DoSelectFinish 0x17a9344
+17a9344: sub sp, sp, #0x50
+17a9348: stp x30, x25, [sp, #0x10]
+17a934c: stp x24, x23, [sp, #0x20]
+17a9350: stp x22, x21, [sp, #0x30]
+17a9354: stp x20, x19, [sp, #0x40]
+17a9358: adrp x20, #0x2db3000
+17a935c: mov x19, x0
+17a9360: ldrb w8, [x20, #0x79]
+17a9364: tbnz w8, #0, #0x17a93dc
+17a9368: adrp x0, #0x2b80000
+17a936c: ldr x0, [x0, #0x678] ; TYPE Platform.Analyze.AnalyzeMgr [load 0x2b80678]
+17a9370: bl #0x116794c
+17a9374: adrp x0, #0x2b7e000
+17a9378: ldr x0, [x0, #0x130] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2b7e130]
+17a937c: bl #0x116794c
+17a9380: adrp x0, #0x2b87000
+17a9384: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a9388: bl #0x116794c
+17a938c: adrp x0, #0x2ba3000
+17a9390: ldr x0, [x0, #0xaf8] ; GENERIC Logic.Message.Messager.Dispatch (13532, -1, 2649) [load 0x2ba3af8]
+17a9394: bl #0x116794c
+17a9398: adrp x0, #0x2b7e000
+17a939c: ldr x0, [x0, #0x140] ; TYPE Logic.Message.Messager [load 0x2b7e140]
+17a93a0: bl #0x116794c
+17a93a4: adrp x0, #0x2ba3000
+17a93a8: ldr x0, [x0, #0xb00] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.AddWrongDateTimes (21171, 1814, -1) [load 0x2ba3b00]
+17a93ac: bl #0x116794c
+17a93b0: adrp x0, #0x2ba3000
+17a93b4: ldr x0, [x0, #0xb08] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.TryAddLevelLotusNum (21158, 1814, -1) [load 0x2ba3b08]
+17a93b8: bl #0x116794c
+17a93bc: adrp x0, #0x2ba3000
+17a93c0: ldr x0, [x0, #0xb10] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateSelectResult (21145, 1814, -1) [load 0x2ba3b10]
+17a93c4: bl #0x116794c
+17a93c8: adrp x0, #0x2b85000
+17a93cc: ldr x0, [x0, #0xa78] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.get_ComboIndex (21146, 1814, -1) [load 0x2b85a78]
+17a93d0: bl #0x116794c
+17a93d4: mov w8, #1
+17a93d8: strb w8, [x20, #0x79]
+17a93dc: ldr x8, [x19, #0x10]
+17a93e0: stp xzr, xzr, [sp]
+17a93e4: cbz x8, #0x17a98e0
+17a93e8: ldr x20, [x8, #0x18]
+17a93ec: mov x0, x19
+17a93f0: mov x1, x20
+17a93f4: bl #0x17a98e4 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetExtraByWord
+17a93f8: mov x22, x0
+17a93fc: mov x2, sp
+17a9400: add x3, sp, #8
+17a9404: mov x0, x19
+17a9408: mov x1, x20
+17a940c: bl #0x17a9a3c ; Data.GamePlay.MainPlay.MainPlayDataMgr.ResolveAnswerWithAdjustAndExtraForUncross
+17a9410: ldp x3, x2, [sp]
+17a9414: mov x0, x19
+17a9418: mov x1, x20
+17a941c: bl #0x17a9cac ; Data.GamePlay.MainPlay.MainPlayDataMgr.ComputeSelectResult
+17a9420: mov w21, w0
+17a9424: mov x0, x19
+17a9428: mov x1, xzr
+17a942c: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17a9430: cbz x0, #0x17a98e0
+17a9434: ldr x0, [x0, #0x18]
+17a9438: cbz x0, #0x17a98e0
+17a943c: adrp x25, #0x2b7e000
+17a9440: mov x1, xzr
+17a9444: ldr x25, [x25, #0x130] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2b7e130]
+17a9448: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17a944c: cmp w21, #2
+17a9450: b.lo #0x17a9568
+17a9454: sub w8, w21, #5
+17a9458: cmp w8, #2
+17a945c: b.hs #0x17a9494
+17a9460: cmp w0, #1
+17a9464: b.eq #0x17a94b8
+17a9468: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a946c: cbz x0, #0x17a98e0
+17a9470: ldr w8, [x0, #0xb0]
+17a9474: add w8, w8, #1
+17a9478: str w8, [x0, #0xb0]
+17a947c: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9480: cbz x0, #0x17a98e0
+17a9484: ldr w8, [x0, #0xcc]
+17a9488: add w8, w8, #1
+17a948c: str w8, [x0, #0xcc]
+17a9490: b #0x17a94b8
+17a9494: cmp w21, #2
+17a9498: b.ne #0x17a94b8
+17a949c: cmp w0, #1
+17a94a0: b.eq #0x17a94b8
+17a94a4: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a94a8: cbz x0, #0x17a98e0
+17a94ac: ldr w8, [x0, #0xb0]
+17a94b0: add w8, w8, #1
+17a94b4: str w8, [x0, #0xb0]
+17a94b8: adrp x8, #0x2ba3000
+17a94bc: adrp x23, #0x2b85000
+17a94c0: adrp x24, #0x2ba3000
+17a94c4: ldr x8, [x8, #0xb10] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateSelectResult (21145, 1814, -1) [load 0x2ba3b10]
+17a94c8: ldr x23, [x23, #0xa78] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.get_ComboIndex (21146, 1814, -1) [load 0x2b85a78]
+17a94cc: ldr x24, [x24, #0xb08] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.TryAddLevelLotusNum (21158, 1814, -1) [load 0x2ba3b08]
+17a94d0: mov x0, x19
+17a94d4: mov w1, w21
+17a94d8: ldr x2, [x8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.UpdateSelectResult (21145, 1814, -1) [load 0x2c91970]
+17a94dc: bl #0x203cde0
+17a94e0: ldr x8, [x19]
+17a94e4: mov x0, x19
+17a94e8: mov w1, w21
+17a94ec: ldr x9, [x8, #0x418]
+17a94f0: ldr x2, [x8, #0x420]
+17a94f4: blr x9
+17a94f8: ldr x1, [x23] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.get_ComboIndex (21146, 1814, -1) [load 0x2c91980]
+17a94fc: mov x0, x19
+17a9500: bl #0x203cdf8
+17a9504: ldr x3, [x24] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.TryAddLevelLotusNum (21158, 1814, -1) [load 0x2c91940]
+17a9508: mov w2, w0
+17a950c: mov x0, x19
+17a9510: mov w1, w21
+17a9514: bl #0x203d06c
+17a9518: cmp w21, #3
+17a951c: b.eq #0x17a96b4
+17a9520: cmp w21, #4
+17a9524: b.ne #0x17a9568
+17a9528: cbz x20, #0x17a98e0
+17a952c: ldr x8, [x20]
+17a9530: mov x0, x20
+17a9534: ldp x9, x1, [x8, #0x168]
+17a9538: blr x9
+17a953c: ldr x8, [x19]
+17a9540: mov x1, x0
+17a9544: mov x0, x19
+17a9548: ldr x9, [x8, #0x248]
+17a954c: ldr x2, [x8, #0x250]
+17a9550: blr x9
+17a9554: ldr x8, [sp]
+17a9558: cbz x8, #0x17a98e0
+17a955c: mov w9, #1
+17a9560: strb w9, [x8, #0x10]
+17a9564: b #0x17a956c
+17a9568: cbz x20, #0x17a98e0
+17a956c: ldr x8, [x20]
+17a9570: mov x0, x20
+17a9574: ldp x9, x1, [x8, #0x168]
+17a9578: blr x9
+17a957c: ldr x8, [x25] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+17a9580: mov x22, x0
+17a9584: ldr w9, [x8, #0xe4]
+17a9588: cbnz w9, #0x17a9594
+17a958c: mov x0, x8
+17a9590: bl #0x1167a84
+17a9594: mov w0, w21
+17a9598: mov x1, x22
+17a959c: mov x2, xzr
+17a95a0: bl #0x15b19a8 ; Logic.Handler.CommonPlayHandler.CheckShowSpecialWordBulletChat
+17a95a4: cmp w21, #2
+17a95a8: b.eq #0x17a95f0
+17a95ac: cmp w21, #4
+17a95b0: b.ne #0x17a97d4
+17a95b4: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a95b8: cbz x0, #0x17a98e0
+17a95bc: str wzr, [x0, #0xf4]
+17a95c0: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a95c4: cbz x0, #0x17a98e0
+17a95c8: str wzr, [x0, #0xf8]
+17a95cc: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a95d0: cbz x0, #0x17a98e0
+17a95d4: ldr w8, [x0, #0xf0]
+17a95d8: ldr w9, [x19, #0xf0]
+17a95dc: add w8, w8, #1
+17a95e0: add w9, w9, #1
+17a95e4: str w8, [x0, #0xf0]
+17a95e8: str w9, [x19, #0xf0]
+17a95ec: b #0x17a97d4
+17a95f0: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a95f4: cbz x0, #0x17a98e0
+17a95f8: ldr w8, [x0, #0xf0]
+17a95fc: ldr w9, [x19, #0xf0]
+17a9600: add w8, w8, #1
+17a9604: add w9, w9, #1
+17a9608: str w8, [x0, #0xf0]
+17a960c: str w9, [x19, #0xf0]
+17a9610: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9614: cbz x0, #0x17a98e0
+17a9618: ldr w8, [x0, #0xf4]
+17a961c: add w8, w8, #1
+17a9620: str w8, [x0, #0xf4]
+17a9624: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9628: cbz x0, #0x17a98e0
+17a962c: ldr w8, [x0, #0xf8]
+17a9630: add w8, w8, #1
+17a9634: str w8, [x0, #0xf8]
+17a9638: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a963c: cbz x0, #0x17a98e0
+17a9640: ldr x8, [x25] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+17a9644: ldr w22, [x0, #0xf8]
+17a9648: ldr w9, [x8, #0xe4]
+17a964c: cbnz w9, #0x17a9658
+17a9650: mov x0, x8
+17a9654: bl #0x1167a84
+17a9658: mov w0, w22
+17a965c: mov x1, xzr
+17a9660: bl #0x15b3428 ; Logic.Handler.CommonPlayHandler.OnContinuousWrong
+17a9664: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9668: cbz x0, #0x17a98e0
+17a966c: ldr w8, [x0, #0xfc]
+17a9670: add w8, w8, #1
+17a9674: str w8, [x0, #0xfc]
+17a9678: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a967c: cbz x0, #0x17a98e0
+17a9680: ldr w8, [x0, #0x88]
+17a9684: tbnz w8, #0x1f, #0x17a969c
+17a9688: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a968c: cbz x0, #0x17a98e0
+17a9690: ldr w8, [x0, #0x88]
+17a9694: add w8, w8, #1
+17a9698: str w8, [x0, #0x88]
+17a969c: adrp x8, #0x2ba3000
+17a96a0: mov x0, x19
+17a96a4: ldr x8, [x8, #0xb00] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.AddWrongDateTimes (21171, 1814, -1) [load 0x2ba3b00]
+17a96a8: ldr x1, [x8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.AddWrongDateTimes (21171, 1814, -1) [load 0x2c91878]
+17a96ac: bl #0x203dbf0
+17a96b0: b #0x17a97d4
+17a96b4: ldr x8, [x19]
+17a96b8: ldr x1, [sp, #8]
+17a96bc: mov x0, x19
+17a96c0: ldr x9, [x8, #0x3a8]
+17a96c4: ldr x2, [x8, #0x3b0]
+17a96c8: blr x9
+17a96cc: ldr x8, [x19]
+17a96d0: mov x0, x19
+17a96d4: ldr x9, [x8, #0x3e8]
+17a96d8: ldr x1, [x8, #0x3f0]
+17a96dc: blr x9
+17a96e0: cmp x22, #0
+17a96e4: mov w8, #1
+17a96e8: cinc w22, w8, ne
+17a96ec: cbz x20, #0x17a98e0
+17a96f0: ldr x8, [x20]
+17a96f4: mov x0, x20
+17a96f8: ldp x9, x1, [x8, #0x168]
+17a96fc: blr x9
+17a9700: mov x23, x0
+17a9704: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9708: cbz x0, #0x17a98e0
+17a970c: ldr x8, [x20]
+17a9710: ldr x24, [x0, #0x1a8]
+17a9714: mov x0, x20
+17a9718: ldp x9, x1, [x8, #0x168]
+17a971c: blr x9
+17a9720: cbz x24, #0x17a98e0
+17a9724: adrp x8, #0x2b87000
+17a9728: mov x1, x0
+17a972c: mov x0, x24
+17a9730: ldr x8, [x8, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a9734: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17a9738: bl #0x1ec1f30
+17a973c: adrp x8, #0x2b80000
+17a9740: mov w24, w0
+17a9744: ldr x8, [x8, #0x678] ; TYPE Platform.Analyze.AnalyzeMgr [load 0x2b80678]
+17a9748: ldr x8, [x8] ; TYPE Platform.Analyze.AnalyzeMgr [load 0x2c77550]
+17a974c: ldr w9, [x8, #0xe4]
+17a9750: cbnz w9, #0x17a975c
+17a9754: mov x0, x8
+17a9758: bl #0x1167a84
+17a975c: and w1, w24, #1
+17a9760: mov x0, x23
+17a9764: mov w2, w22
+17a9768: mov x3, xzr
+17a976c: bl #0x18ad260 ; Platform.Analyze.AnalyzeMgr.SendWordRight
+17a9770: ldr x8, [x20]
+17a9774: mov x0, x20
+17a9778: ldp x9, x1, [x8, #0x168]
+17a977c: blr x9
+17a9780: ldr x8, [x25] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+17a9784: mov x22, x0
+17a9788: ldr w9, [x8, #0xe4]
+17a978c: cbnz w9, #0x17a9798
+17a9790: mov x0, x8
+17a9794: bl #0x1167a84
+17a9798: mov w0, #3
+17a979c: mov x1, x22
+17a97a0: mov x2, xzr
+17a97a4: bl #0x15b19a8 ; Logic.Handler.CommonPlayHandler.CheckShowSpecialWordBulletChat
+17a97a8: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a97ac: cbz x0, #0x17a98e0
+17a97b0: str wzr, [x0, #0xf0]
+17a97b4: str wzr, [x19, #0xf0]
+17a97b8: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a97bc: cbz x0, #0x17a98e0
+17a97c0: str wzr, [x0, #0xf4]
+17a97c4: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a97c8: cbz x0, #0x17a98e0
+17a97cc: str wzr, [x0, #0xf8]
+17a97d0: str wzr, [x19, #0xe8]
+17a97d4: adrp x22, #0x2b7e000
+17a97d8: adrp x24, #0x2ba3000
+17a97dc: mov x0, x20
+17a97e0: ldr x22, [x22, #0x140] ; TYPE Logic.Message.Messager [load 0x2b7e140]
+17a97e4: ldr x8, [x20]
+17a97e8: ldr x24, [x24, #0xaf8] ; GENERIC Logic.Message.Messager.Dispatch (13532, -1, 2649) [load 0x2ba3af8]
+17a97ec: ldp x9, x1, [x8, #0x168]
+17a97f0: blr x9
+17a97f4: ldr x8, [x22] ; TYPE Logic.Message.Messager [load 0x2c7b718]
+17a97f8: ldr x22, [sp, #8]
+17a97fc: mov x23, x0
+17a9800: ldr w9, [x8, #0xe4]
+17a9804: cbnz w9, #0x17a9810
+17a9808: mov x0, x8
+17a980c: bl #0x1167a84
+17a9810: ldr x4, [x24] ; GENERIC Logic.Message.Messager.Dispatch (13532, -1, 2649) [load 0x2c9cb30]
+17a9814: mov w0, #0x3d
+17a9818: mov x1, x23
+17a981c: mov w2, w21
+17a9820: mov x3, x22
+17a9824: bl #0x1ab1ad4
+17a9828: ldr x8, [x19, #0x10]
+17a982c: cbz x8, #0x17a98e0
+17a9830: ldr x0, [x8, #0x18]
+17a9834: cbz x0, #0x17a98e0
+17a9838: mov x1, xzr
+17a983c: bl #0x21f2b68 ; System.Text.StringBuilder.get_Length
+17a9840: cmp w0, #2
+17a9844: b.lt #0x17a985c
+17a9848: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a984c: cbz x0, #0x17a98e0
+17a9850: ldr w8, [x0, #0xc8]
+17a9854: add w8, w8, #1
+17a9858: str w8, [x0, #0xc8]
+17a985c: sub w8, w21, #1
+17a9860: cmp w8, #2
+17a9864: b.lo #0x17a988c
+17a9868: sub w8, w21, #3
+17a986c: cmp w8, #1
+17a9870: b.hi #0x17a98b8
+17a9874: bl #0x17a4068 ; Data.GamePlay.MainPlay.MainPlayDataMgr.IsChainPlayMode
+17a9878: mov w1, w21
+17a987c: mov x2, x20
+17a9880: tbz w0, #0, #0x17a98b4
+17a9884: bl #0x17a3690 ; Data.GamePlay.MainPlay.MainPlayDataMgr.StatisticsFirstLongWordChain
+17a9888: b #0x17a98b8
+17a988c: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9890: cbz x0, #0x17a98e0
+17a9894: ldr w8, [x0, #0x168]
+17a9898: mov x1, xzr
+17a989c: add w8, w8, #1
+17a98a0: str w8, [x0, #0x168]
+17a98a4: mov x0, x20
+17a98a8: bl #0x21f2b68 ; System.Text.StringBuilder.get_Length
+17a98ac: str w0, [x19, #0xf4]
+17a98b0: b #0x17a98b8
+17a98b4: bl #0x17a7e8c ; Data.GamePlay.MainPlay.MainPlayDataMgr.StatisticsFirstLongWordUncross
+17a98b8: ldr x0, [x19, #0x10]
+17a98bc: cbz x0, #0x17a98e0
+17a98c0: bl #0x17a0ac4 ; Data.GamePlay.Play.Panel.PanelData.ClearSelect
+17a98c4: mov w0, w21
+17a98c8: ldp x20, x19, [sp, #0x40]
+17a98cc: ldp x22, x21, [sp, #0x30]
+17a98d0: ldp x24, x23, [sp, #0x20]
+17a98d4: ldp x30, x25, [sp, #0x10]
+17a98d8: add sp, sp, #0x50
+17a98dc: ret 
+17a98e0: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.ResolveAnswerWithAdjustAndExtraForUncross 0x17a9a3c
+17a9a3c: stp x30, x23, [sp, #-0x30]!
+17a9a40: stp x22, x21, [sp, #0x10]
+17a9a44: stp x20, x19, [sp, #0x20]
+17a9a48: adrp x23, #0x2db3000
+17a9a4c: mov x19, x3
+17a9a50: mov x22, x2
+17a9a54: ldrb w8, [x23, #0x7a]
+17a9a58: mov x20, x1
+17a9a5c: mov x21, x0
+17a9a60: tbnz w8, #0, #0x17a9a9c
+17a9a64: adrp x0, #0x2b7e000
+17a9a68: ldr x0, [x0, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17a9a6c: bl #0x116794c
+17a9a70: adrp x0, #0x2b7e000
+17a9a74: ldr x0, [x0, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17a9a78: bl #0x116794c
+17a9a7c: adrp x0, #0x2b87000
+17a9a80: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a9a84: bl #0x116794c
+17a9a88: adrp x0, #0x2ba3000
+17a9a8c: ldr x0, [x0, #0xb38] ; STRING_LITERAL #16577 [load 0x2ba3b38]
+17a9a90: bl #0x116794c
+17a9a94: mov w8, #1
+17a9a98: strb w8, [x23, #0x7a]
+17a9a9c: mov x0, x21
+17a9aa0: mov x1, x20
+17a9aa4: bl #0x17a98e4 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetExtraByWord
+17a9aa8: mov x1, x0
+17a9aac: str x0, [x22]
+17a9ab0: mov x0, x22
+17a9ab4: bl #0x11678f8
+17a9ab8: mov x0, x21
+17a9abc: mov x1, x20
+17a9ac0: bl #0x17a9d30 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetAnswerByWord
+17a9ac4: mov x1, x0
+17a9ac8: str x0, [x19]
+17a9acc: mov x0, x19
+17a9ad0: bl #0x11678f8
+17a9ad4: mov x0, xzr
+17a9ad8: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a9adc: cbz x0, #0x17a9ca8
+17a9ae0: ldrb w8, [x0, #0x23]
+17a9ae4: cbz w8, #0x17a9bd8
+17a9ae8: mov x0, xzr
+17a9aec: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a9af0: cbz x0, #0x17a9ca8
+17a9af4: ldrb w8, [x0, #0x24]
+17a9af8: cbnz w8, #0x17a9bd8
+17a9afc: ldr x8, [x21]
+17a9b00: mov x0, x21
+17a9b04: ldr x9, [x8, #0x398]
+17a9b08: ldr x1, [x8, #0x3a0]
+17a9b0c: blr x9
+17a9b10: tbz w0, #0, #0x17a9bd8
+17a9b14: ldr x1, [x19]
+17a9b18: bl #0x17a874c ; Data.GamePlay.MainPlay.MainPlayDataMgr.CheckAdjustAnswerRules
+17a9b1c: tbz w0, #0, #0x17a9bd8
+17a9b20: mov x0, x21
+17a9b24: mov x1, x20
+17a9b28: bl #0x17a894c ; Data.GamePlay.MainPlay.MainPlayDataMgr.CheckAdjustAnswerOrder
+17a9b2c: mov x1, xzr
+17a9b30: mov x22, x0
+17a9b34: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17a9b38: tbnz w0, #0, #0x17a9c44
+17a9b3c: cbz x20, #0x17a9ca8
+17a9b40: ldr x8, [x20]
+17a9b44: mov x0, x20
+17a9b48: ldp x9, x1, [x8, #0x168]
+17a9b4c: blr x9
+17a9b50: mov x1, x0
+17a9b54: mov x0, x21
+17a9b58: mov x2, x22
+17a9b5c: bl #0x17a925c ; Data.GamePlay.MainPlay.MainPlayDataMgr.ReplaceAdjustAnswer
+17a9b60: mov x0, x21
+17a9b64: mov x1, x20
+17a9b68: bl #0x17a9d30 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetAnswerByWord
+17a9b6c: mov x1, x0
+17a9b70: str x0, [x19]
+17a9b74: mov x0, x19
+17a9b78: bl #0x11678f8
+17a9b7c: ldr x8, [x19]
+17a9b80: cbnz x8, #0x17a9c44
+17a9b84: adrp x8, #0x2b7e000
+17a9b88: ldr x8, [x8, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17a9b8c: ldr x0, [x8] ; USAGE kind=6 idx=36684 [load 0x2c931a8]
+17a9b90: bl #0x1032e30
+17a9b94: adrp x8, #0x2b7e000
+17a9b98: mov x19, x0
+17a9b9c: ldr x8, [x8, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17a9ba0: ldr x8, [x8] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2c78bf8]
+17a9ba4: ldr w9, [x8, #0xe4]
+17a9ba8: cbnz w9, #0x17a9bb4
+17a9bac: mov x0, x8
+17a9bb0: bl #0x1167a84
+17a9bb4: adrp x8, #0x2ba3000
+17a9bb8: mov x1, x19
+17a9bbc: mov x2, xzr
+17a9bc0: ldr x8, [x8, #0xb38] ; STRING_LITERAL #16577 [load 0x2ba3b38]
+17a9bc4: ldp x20, x19, [sp, #0x20]
+17a9bc8: ldp x22, x21, [sp, #0x10]
+17a9bcc: ldr x0, [x8] ; STRING_LITERAL #16577 [load 0x2ccace8]
+17a9bd0: ldp x30, x23, [sp], #0x30
+17a9bd4: b #0x1975864 ; Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f*.Error
+17a9bd8: ldr x8, [x21]
+17a9bdc: mov x0, x21
+17a9be0: ldr x9, [x8, #0x398]
+17a9be4: ldr x1, [x8, #0x3a0]
+17a9be8: blr x9
+17a9bec: tbz w0, #0, #0x17a9c44
+17a9bf0: ldr x1, [x22]
+17a9bf4: mov x0, x21
+17a9bf8: bl #0x17a87ec ; Data.GamePlay.MainPlay.MainPlayDataMgr.CheckExtraWordRules
+17a9bfc: tbz w0, #0, #0x17a9c44
+17a9c00: mov x0, x21
+17a9c04: mov x1, x20
+17a9c08: bl #0x17a88ac ; Data.GamePlay.MainPlay.MainPlayDataMgr.CheckExtraReplaceableAnswer
+17a9c0c: mov x1, xzr
+17a9c10: mov x23, x0
+17a9c14: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17a9c18: tbnz w0, #0, #0x17a9c44
+17a9c1c: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a9c20: cbz x0, #0x17a9ca8
+17a9c24: ldr x0, [x0, #0x1a8]
+17a9c28: cbz x0, #0x17a9ca8
+17a9c2c: adrp x8, #0x2b87000
+17a9c30: mov x1, x23
+17a9c34: ldr x8, [x8, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17a9c38: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17a9c3c: bl #0x1ec1f30
+17a9c40: tbz w0, #0, #0x17a9c54
+17a9c44: ldp x20, x19, [sp, #0x20]
+17a9c48: ldp x22, x21, [sp, #0x10]
+17a9c4c: ldp x30, x23, [sp], #0x30
+17a9c50: ret 
+17a9c54: ldr x1, [x22]
+17a9c58: mov x0, x21
+17a9c5c: mov x2, x23
+17a9c60: bl #0x17a92a0 ; Data.GamePlay.MainPlay.MainPlayDataMgr.ReplaceExtraAnswer
+17a9c64: mov x0, x21
+17a9c68: mov x1, x20
+17a9c6c: bl #0x17a98e4 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetExtraByWord
+17a9c70: mov x1, x0
+17a9c74: str x0, [x22]
+17a9c78: mov x0, x22
+17a9c7c: bl #0x11678f8
+17a9c80: mov x0, x21
+17a9c84: mov x1, x20
+17a9c88: bl #0x17a9d30 ; Data.GamePlay.MainPlay.MainPlayDataMgr.GetAnswerByWord
+17a9c8c: mov x1, x0
+17a9c90: mov x0, x19
+17a9c94: str x1, [x19]
+17a9c98: ldp x20, x19, [sp, #0x20]
+17a9c9c: ldp x22, x21, [sp, #0x10]
+17a9ca0: ldp x30, x23, [sp], #0x30
+17a9ca4: b #0x11678f8
+17a9ca8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.RestoreData.GetSpecialCells 0x17b7edc
+17b7edc: str x30, [sp, #-0x30]!
+17b7ee0: stp x22, x21, [sp, #0x10]
+17b7ee4: stp x20, x19, [sp, #0x20]
+17b7ee8: adrp x21, #0x2db3000
+17b7eec: adrp x22, #0x2b81000
+17b7ef0: adrp x20, #0x2b81000
+17b7ef4: ldrb w8, [x21, #0x117]
+17b7ef8: ldr x22, [x22, #0x440] ; USAGE kind=1 idx=4176 [load 0x2b81440]
+17b7efc: ldr x20, [x20, #0x448] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56568, 20, -1) [load 0x2b81448]
+17b7f00: mov x19, x0
+17b7f04: tbnz w8, #0, #0x17b7f34
+17b7f08: adrp x0, #0x2ba3000
+17b7f0c: ldr x0, [x0, #0xe18] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2ba3e18]
+17b7f10: bl #0x116794c
+17b7f14: adrp x0, #0x2b81000
+17b7f18: ldr x0, [x0, #0x448] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56568, 20, -1) [load 0x2b81448]
+17b7f1c: bl #0x116794c
+17b7f20: adrp x0, #0x2b81000
+17b7f24: ldr x0, [x0, #0x440] ; USAGE kind=1 idx=4176 [load 0x2b81440]
+17b7f28: bl #0x116794c
+17b7f2c: mov w8, #1
+17b7f30: strb w8, [x21, #0x117]
+17b7f34: ldr x0, [x22] ; USAGE kind=1 idx=4176 [load 0x2c747f8]
+17b7f38: bl #0x1167ba0
+17b7f3c: ldr x1, [x20] ; GENERIC System.Collections.Generic.HashSet`1..ctor (56568, 20, -1) [load 0x2c89f18]
+17b7f40: mov x20, x0
+17b7f44: bl #0x1db8438
+17b7f48: cbz x20, #0x17b7ff8
+17b7f4c: adrp x21, #0x2ba3000
+17b7f50: mov x0, x20
+17b7f54: ldr x21, [x21, #0xe18] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2ba3e18]
+17b7f58: ldr x1, [x19, #0x188]
+17b7f5c: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7f60: bl #0x1db9598
+17b7f64: ldr x1, [x19, #0x140]
+17b7f68: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7f6c: mov x0, x20
+17b7f70: bl #0x1db9598
+17b7f74: ldr x1, [x19, #0x148]
+17b7f78: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7f7c: mov x0, x20
+17b7f80: bl #0x1db9598
+17b7f84: ldr x1, [x19, #0x150]
+17b7f88: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7f8c: mov x0, x20
+17b7f90: bl #0x1db9598
+17b7f94: ldr x1, [x19, #0x158]
+17b7f98: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7f9c: mov x0, x20
+17b7fa0: bl #0x1db9598
+17b7fa4: ldr x1, [x19, #0x138]
+17b7fa8: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7fac: mov x0, x20
+17b7fb0: bl #0x1db9598
+17b7fb4: ldr x1, [x19, #0x30]
+17b7fb8: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7fbc: mov x0, x20
+17b7fc0: bl #0x1db9598
+17b7fc4: ldr x1, [x19, #0x38]
+17b7fc8: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7fcc: mov x0, x20
+17b7fd0: bl #0x1db9598
+17b7fd4: ldr x1, [x19, #0x40]
+17b7fd8: ldr x2, [x21] ; GENERIC System.Collections.Generic.HashSet`1.UnionWith (56587, 20, -1) [load 0x2c89f50]
+17b7fdc: mov x0, x20
+17b7fe0: bl #0x1db9598
+17b7fe4: mov x0, x20
+17b7fe8: ldp x20, x19, [sp, #0x20]
+17b7fec: ldp x22, x21, [sp, #0x10]
+17b7ff0: ldr x30, [sp], #0x30
+17b7ff4: ret 
+17b7ff8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.Grid.GridData.CheckExtraReplaceableAnswer 0x17ba87c
+17ba87c: stp x29, x30, [sp, #-0x60]!
+17ba880: stp x28, x27, [sp, #0x10]
+17ba884: stp x26, x25, [sp, #0x20]
+17ba888: stp x24, x23, [sp, #0x30]
+17ba88c: stp x22, x21, [sp, #0x40]
+17ba890: stp x20, x19, [sp, #0x50]
+17ba894: adrp x22, #0x2db3000
+17ba898: mov x19, x2
+17ba89c: mov x20, x1
+17ba8a0: ldrb w8, [x22, #0x136]
+17ba8a4: mov x21, x0
+17ba8a8: tbnz w8, #0, #0x17ba8e4
+17ba8ac: adrp x0, #0x2b87000
+17ba8b0: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17ba8b4: bl #0x116794c
+17ba8b8: adrp x0, #0x2b80000
+17ba8bc: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17ba8c0: bl #0x116794c
+17ba8c4: adrp x0, #0x2b80000
+17ba8c8: ldr x0, [x0, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17ba8cc: bl #0x116794c
+17ba8d0: adrp x0, #0x2b8e000
+17ba8d4: ldr x0, [x0, #0x128] ; TYPE Utils.StringUtils [load 0x2b8e128]
+17ba8d8: bl #0x116794c
+17ba8dc: mov w8, #1
+17ba8e0: strb w8, [x22, #0x136]
+17ba8e4: ldr x8, [x21, #0x28]
+17ba8e8: cbz x8, #0x17baa7c
+17ba8ec: ldr w8, [x8, #0x18]
+17ba8f0: adrp x26, #0x2b7d000
+17ba8f4: ldr x26, [x26, #0xaf8]
+17ba8f8: subs w22, w8, #1
+17ba8fc: b.mi #0x17baa50
+17ba900: adrp x27, #0x2b80000
+17ba904: adrp x28, #0x2b8e000
+17ba908: adrp x29, #0x2b87000
+17ba90c: ldr x27, [x27, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17ba910: ldr x28, [x28, #0x128] ; TYPE Utils.StringUtils [load 0x2b8e128]
+17ba914: ldr x29, [x29, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17ba918: ldr x0, [x21, #0x28]
+17ba91c: cbz x0, #0x17baa7c
+17ba920: ldr x2, [x27] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17ba924: mov w1, w22
+17ba928: bl #0x1ec1a0c
+17ba92c: mov x23, x0
+17ba930: cbz x19, #0x17ba948
+17ba934: ldr x2, [x29] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17ba938: mov x0, x19
+17ba93c: mov x1, x23
+17ba940: bl #0x1ec1f30
+17ba944: tbnz w0, #0, #0x17baa44
+17ba948: cbz w22, #0x17ba968
+17ba94c: ldr x0, [x21, #0x28]
+17ba950: cbz x0, #0x17baa7c
+17ba954: ldr x2, [x27] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17ba958: sub w1, w22, #1
+17ba95c: bl #0x1ec1a0c
+17ba960: mov x25, x0
+17ba964: b #0x17ba974
+17ba968: ldr x8, [x26, #0x90]
+17ba96c: ldr x8, [x8, #0xb8]
+17ba970: ldr x25, [x8]
+17ba974: ldr x0, [x21, #0x28]
+17ba978: cbz x0, #0x17baa7c
+17ba97c: ldr w8, [x0, #0x18]
+17ba980: sub w8, w8, #1
+17ba984: cmp w22, w8
+17ba988: b.ge #0x17ba9a0
+17ba98c: ldr x2, [x27] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17ba990: add w1, w22, #1
+17ba994: bl #0x1ec1a0c
+17ba998: mov x24, x0
+17ba99c: b #0x17ba9ac
+17ba9a0: ldr x8, [x26, #0x90]
+17ba9a4: ldr x8, [x8, #0xb8]
+17ba9a8: ldr x24, [x8]
+17ba9ac: ldr x0, [x28] ; TYPE Utils.StringUtils [load 0x2c7d4d0]
+17ba9b0: ldr w8, [x0, #0xe4]
+17ba9b4: cbnz w8, #0x17ba9bc
+17ba9b8: bl #0x1167a84
+17ba9bc: mov x0, x20
+17ba9c0: mov x1, x25
+17ba9c4: mov x2, xzr
+17ba9c8: bl #0x1555c44 ; Utils.StringUtils.CompareWordString
+17ba9cc: cmp w0, #1
+17ba9d0: b.lt #0x17baa44
+17ba9d4: ldr x0, [x28] ; TYPE Utils.StringUtils [load 0x2c7d4d0]
+17ba9d8: ldr w8, [x0, #0xe4]
+17ba9dc: cbnz w8, #0x17ba9e4
+17ba9e0: bl #0x1167a84
+17ba9e4: mov x0, x20
+17ba9e8: mov x1, x24
+17ba9ec: mov x2, xzr
+17ba9f0: bl #0x1555c44 ; Utils.StringUtils.CompareWordString
+17ba9f4: tbnz w0, #0x1f, #0x17baa08
+17ba9f8: mov x0, x24
+17ba9fc: mov x1, xzr
+17baa00: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17baa04: tbz w0, #0, #0x17baa44
+17baa08: cbz x23, #0x17baa7c
+17baa0c: cbz x20, #0x17baa7c
+17baa10: ldr w8, [x23, #0x10]
+17baa14: ldr w9, [x20, #0x10]
+17baa18: cmp w8, w9
+17baa1c: b.ne #0x17baa44
+17baa20: mov x0, x21
+17baa24: mov x1, x23
+17baa28: bl #0x17baa80 ; Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter
+17baa2c: tbz w0, #0, #0x17baa5c
+17baa30: mov x0, x21
+17baa34: mov x1, x23
+17baa38: mov x2, x20
+17baa3c: bl #0x17babf4 ; Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter
+17baa40: tbnz w0, #0, #0x17baa5c
+17baa44: cmp w22, #0
+17baa48: sub w22, w22, #1
+17baa4c: b.gt #0x17ba918
+17baa50: ldr x8, [x26, #0x90]
+17baa54: ldr x8, [x8, #0xb8]
+17baa58: ldr x23, [x8]
+17baa5c: mov x0, x23
+17baa60: ldp x20, x19, [sp, #0x50]
+17baa64: ldp x22, x21, [sp, #0x40]
+17baa68: ldp x24, x23, [sp, #0x30]
+17baa6c: ldp x26, x25, [sp, #0x20]
+17baa70: ldp x28, x27, [sp, #0x10]
+17baa74: ldp x29, x30, [sp], #0x60
+17baa78: ret 
+17baa7c: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.Grid.GridData.CheckExtraReplaceableAnswerDisorderly 0x17bad4c
+17bad4c: stp x30, x25, [sp, #-0x40]!
+17bad50: stp x24, x23, [sp, #0x10]
+17bad54: stp x22, x21, [sp, #0x20]
+17bad58: stp x20, x19, [sp, #0x30]
+17bad5c: adrp x22, #0x2db3000
+17bad60: mov x19, x2
+17bad64: mov x20, x1
+17bad68: ldrb w8, [x22, #0x137]
+17bad6c: mov x21, x0
+17bad70: tbnz w8, #0, #0x17bada0
+17bad74: adrp x0, #0x2b87000
+17bad78: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17bad7c: bl #0x116794c
+17bad80: adrp x0, #0x2b80000
+17bad84: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17bad88: bl #0x116794c
+17bad8c: adrp x0, #0x2b80000
+17bad90: ldr x0, [x0, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17bad94: bl #0x116794c
+17bad98: mov w8, #1
+17bad9c: strb w8, [x22, #0x137]
+17bada0: ldr x0, [x21, #0x28]
+17bada4: cbz x0, #0x17bae38
+17bada8: adrp x24, #0x2b80000
+17badac: adrp x25, #0x2b87000
+17badb0: mov w22, wzr
+17badb4: ldr x24, [x24, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17badb8: ldr x25, [x25, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17badbc: ldr w8, [x0, #0x18]
+17badc0: cmp w22, w8
+17badc4: b.ge #0x17bae3c
+17badc8: ldr x2, [x24] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17badcc: mov w1, w22
+17badd0: bl #0x1ec1a0c
+17badd4: cbz x0, #0x17bae38
+17badd8: cbz x20, #0x17bae38
+17baddc: ldr w8, [x0, #0x10]
+17bade0: ldr w9, [x20, #0x10]
+17bade4: mov x23, x0
+17bade8: cmp w8, w9
+17badec: b.ne #0x17bae2c
+17badf0: cbz x19, #0x17bae08
+17badf4: ldr x2, [x25] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17badf8: mov x0, x19
+17badfc: mov x1, x23
+17bae00: bl #0x1ec1f30
+17bae04: tbnz w0, #0, #0x17bae2c
+17bae08: mov x0, x21
+17bae0c: mov x1, x23
+17bae10: bl #0x17baa80 ; Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter
+17bae14: tbz w0, #0, #0x17bae50
+17bae18: mov x0, x21
+17bae1c: mov x1, x23
+17bae20: mov x2, x20
+17bae24: bl #0x17babf4 ; Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter
+17bae28: tbnz w0, #0, #0x17bae50
+17bae2c: ldr x0, [x21, #0x28]
+17bae30: add w22, w22, #1
+17bae34: cbnz x0, #0x17badbc
+17bae38: bl #0x1167bb0
+17bae3c: adrp x8, #0x2b7d000
+17bae40: ldr x8, [x8, #0xaf8]
+17bae44: ldr x8, [x8, #0x90]
+17bae48: ldr x8, [x8, #0xb8]
+17bae4c: ldr x23, [x8]
+17bae50: mov x0, x23
+17bae54: ldp x20, x19, [sp, #0x30]
+17bae58: ldp x22, x21, [sp, #0x20]
+17bae5c: ldp x24, x23, [sp, #0x10]
+17bae60: ldp x30, x25, [sp], #0x40
+17bae64: ret
+
+FUNCTION Data.GamePlay.MainPlay.Grid.GridData.ReplaceExtraAnswer 0x17bc3ac
+17bc3ac: sub sp, sp, #0x50
+17bc3b0: stp x30, x25, [sp, #0x10]
+17bc3b4: stp x24, x23, [sp, #0x20]
+17bc3b8: stp x22, x21, [sp, #0x30]
+17bc3bc: stp x20, x19, [sp, #0x40]
+17bc3c0: adrp x22, #0x2db3000
+17bc3c4: mov x19, x2
+17bc3c8: mov x20, x1
+17bc3cc: ldrb w8, [x22, #0x13c]
+17bc3d0: mov x21, x0
+17bc3d4: tbnz w8, #0, #0x17bc4a0
+17bc3d8: adrp x0, #0x2b7e000
+17bc3dc: ldr x0, [x0, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17bc3e0: bl #0x116794c
+17bc3e4: adrp x0, #0x2b7e000
+17bc3e8: ldr x0, [x0, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17bc3ec: bl #0x116794c
+17bc3f0: adrp x0, #0x2ba3000
+17bc3f4: ldr x0, [x0, #0xe80] ; GENERIC System.Collections.Generic.Dictionary`2.Add (35435, 651, -1) [load 0x2ba3e80]
+17bc3f8: bl #0x116794c
+17bc3fc: adrp x0, #0x2ba3000
+17bc400: ldr x0, [x0, #0xe98] ; GENERIC System.Collections.Generic.Dictionary`2.ContainsKey (35440, 651, -1) [load 0x2ba3e98]
+17bc404: bl #0x116794c
+17bc408: adrp x0, #0x2ba3000
+17bc40c: ldr x0, [x0, #0xea0] ; GENERIC System.Collections.Generic.Dictionary`2.Remove (35452, 651, -1) [load 0x2ba3ea0]
+17bc410: bl #0x116794c
+17bc414: adrp x0, #0x2b85000
+17bc418: ldr x0, [x0, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17bc41c: bl #0x116794c
+17bc420: adrp x0, #0x2b87000
+17bc424: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17bc428: bl #0x116794c
+17bc42c: adrp x0, #0x2b83000
+17bc430: ldr x0, [x0, #0x2a8] ; USAGE kind=6 idx=48427 [load 0x2b832a8]
+17bc434: bl #0x116794c
+17bc438: adrp x0, #0x2b80000
+17bc43c: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17bc440: bl #0x116794c
+17bc444: adrp x0, #0x2b83000
+17bc448: ldr x0, [x0, #0x2d0] ; USAGE kind=6 idx=48428 [load 0x2b832d0]
+17bc44c: bl #0x116794c
+17bc450: adrp x0, #0x2b80000
+17bc454: ldr x0, [x0, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17bc458: bl #0x116794c
+17bc45c: adrp x0, #0x2ba3000
+17bc460: ldr x0, [x0, #0xeb0] ; GENERIC System.Collections.Generic.List`1.set_Item (35573, 110, -1) [load 0x2ba3eb0]
+17bc464: bl #0x116794c
+17bc468: adrp x0, #0x2ba3000
+17bc46c: ldr x0, [x0, #0xf28] ; STRING_LITERAL #6637 [load 0x2ba3f28]
+17bc470: bl #0x116794c
+17bc474: adrp x0, #0x2ba3000
+17bc478: ldr x0, [x0, #0xee8] ; STRING_LITERAL #747 [load 0x2ba3ee8]
+17bc47c: bl #0x116794c
+17bc480: adrp x0, #0x2ba3000
+17bc484: ldr x0, [x0, #0xf30] ; STRING_LITERAL #6636 [load 0x2ba3f30]
+17bc488: bl #0x116794c
+17bc48c: adrp x0, #0x2ba3000
+17bc490: ldr x0, [x0, #0xf38] ; STRING_LITERAL #6638 [load 0x2ba3f38]
+17bc494: bl #0x116794c
+17bc498: mov w8, #1
+17bc49c: strb w8, [x22, #0x13c]
+17bc4a0: adrp x23, #0x2b7e000
+17bc4a4: adrp x22, #0x2b7e000
+17bc4a8: mov x0, x19
+17bc4ac: ldr x23, [x23, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17bc4b0: ldr x22, [x22, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17bc4b4: mov x1, xzr
+17bc4b8: str xzr, [sp, #8]
+17bc4bc: strh wzr, [sp, #4]
+17bc4c0: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17bc4c4: tbnz w0, #0, #0x17bc4d8
+17bc4c8: mov x0, x20
+17bc4cc: mov x1, xzr
+17bc4d0: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17bc4d4: tbz w0, #0, #0x17bc558
+17bc4d8: ldr x19, [x23] ; USAGE kind=6 idx=36684 [load 0x2c931a8]
+17bc4dc: ldr x8, [x19, #0x38]
+17bc4e0: cbnz x8, #0x17bc4f0
+17bc4e4: mov x0, x19
+17bc4e8: bl #0x119ee98
+17bc4ec: ldr x8, [x19, #0x38]
+17bc4f0: ldr x0, [x8, #0x10]
+17bc4f4: add x8, x0, #0x135
+17bc4f8: ldrh w8, [x8]
+17bc4fc: tbnz w8, #0, #0x17bc504
+17bc500: bl #0x119ee3c
+17bc504: ldr w8, [x0, #0xe4]
+17bc508: cbnz w8, #0x17bc510
+17bc50c: bl #0x1167a84
+17bc510: ldr x8, [x19, #0x38]
+17bc514: ldr x0, [x8, #0x10]
+17bc518: add x8, x0, #0x135
+17bc51c: ldrh w8, [x8]
+17bc520: tbnz w8, #0, #0x17bc528
+17bc524: bl #0x119ee3c
+17bc528: ldr x8, [x22] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2c78bf8]
+17bc52c: ldr x9, [x0, #0xb8]
+17bc530: adrp x20, #0x2ba3000
+17bc534: ldr w10, [x8, #0xe4]
+17bc538: ldr x20, [x20, #0xf28] ; STRING_LITERAL #6637 [load 0x2ba3f28]
+17bc53c: ldr x19, [x9]
+17bc540: cbnz w10, #0x17bc54c
+17bc544: mov x0, x8
+17bc548: bl #0x1167a84
+17bc54c: ldr x0, [x20] ; STRING_LITERAL #6637 [load 0x2cb7658]
+17bc550: mov x1, x19
+17bc554: b #0x17bc698
+17bc558: cbz x20, #0x17bc7f4
+17bc55c: cbz x19, #0x17bc7f4
+17bc560: ldr w8, [x20, #0x10]
+17bc564: ldr w9, [x19, #0x10]
+17bc568: cmp w8, w9
+17bc56c: b.ne #0x17bc588
+17bc570: mov x0, x20
+17bc574: mov x1, x19
+17bc578: mov w2, #5
+17bc57c: mov x3, xzr
+17bc580: bl #0x21e9d3c ; System.String.Equals
+17bc584: tbz w0, #0, #0x17bc594
+17bc588: adrp x8, #0x2ba3000
+17bc58c: ldr x8, [x8, #0xf38] ; STRING_LITERAL #6638 [load 0x2ba3f38]
+17bc590: b #0x17bc600
+17bc594: ldr x0, [x21, #0x28]
+17bc598: cbz x0, #0x17bc7f4
+17bc59c: adrp x8, #0x2b87000
+17bc5a0: mov x1, x19
+17bc5a4: ldr x8, [x8, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17bc5a8: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17bc5ac: bl #0x1ec1f30
+17bc5b0: tbz w0, #0, #0x17bc5f8
+17bc5b4: ldr x0, [x21, #0x18]
+17bc5b8: cbz x0, #0x17bc7f4
+17bc5bc: adrp x8, #0x2b85000
+17bc5c0: add x2, sp, #8
+17bc5c4: mov x1, x19
+17bc5c8: ldr x8, [x8, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17bc5cc: ldr x3, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2c860c0]
+17bc5d0: bl #0x1c6a540
+17bc5d4: tbz w0, #0, #0x17bc5f8
+17bc5d8: ldr x0, [x21, #0x18]
+17bc5dc: cbz x0, #0x17bc7f4
+17bc5e0: adrp x8, #0x2ba3000
+17bc5e4: mov x1, x20
+17bc5e8: ldr x8, [x8, #0xe98] ; GENERIC System.Collections.Generic.Dictionary`2.ContainsKey (35440, 651, -1) [load 0x2ba3e98]
+17bc5ec: ldr x2, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.ContainsKey (35440, 651, -1) [load 0x2c860a8]
+17bc5f0: bl #0x1c68f04
+17bc5f4: tbz w0, #0, #0x17bc6bc
+17bc5f8: adrp x8, #0x2ba3000
+17bc5fc: ldr x8, [x8, #0xf30] ; STRING_LITERAL #6636 [load 0x2ba3f30]
+17bc600: adrp x9, #0x2ba3000
+17bc604: mov x1, x20
+17bc608: mov x3, x19
+17bc60c: ldr x9, [x9, #0xee8] ; STRING_LITERAL #747 [load 0x2ba3ee8]
+17bc610: ldr x0, [x8] ; STRING_LITERAL #6636 [load 0x2cb7650]
+17bc614: mov x4, xzr
+17bc618: ldr x2, [x9] ; STRING_LITERAL #747 [load 0x2cabe50]
+17bc61c: bl #0x21ebcfc ; System.String.Concat
+17bc620: ldr x20, [x23] ; USAGE kind=6 idx=36684 [load 0x2c931a8]
+17bc624: mov x19, x0
+17bc628: ldr x8, [x20, #0x38]
+17bc62c: cbnz x8, #0x17bc63c
+17bc630: mov x0, x20
+17bc634: bl #0x119ee98
+17bc638: ldr x8, [x20, #0x38]
+17bc63c: ldr x0, [x8, #0x10]
+17bc640: add x8, x0, #0x135
+17bc644: ldrh w8, [x8]
+17bc648: tbnz w8, #0, #0x17bc650
+17bc64c: bl #0x119ee3c
+17bc650: ldr w8, [x0, #0xe4]
+17bc654: cbnz w8, #0x17bc65c
+17bc658: bl #0x1167a84
+17bc65c: ldr x8, [x20, #0x38]
+17bc660: ldr x0, [x8, #0x10]
+17bc664: add x8, x0, #0x135
+17bc668: ldrh w8, [x8]
+17bc66c: tbnz w8, #0, #0x17bc674
+17bc670: bl #0x119ee3c
+17bc674: ldr x8, [x22] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2c78bf8]
+17bc678: ldr x9, [x0, #0xb8]
+17bc67c: ldr w10, [x8, #0xe4]
+17bc680: ldr x20, [x9]
+17bc684: cbnz w10, #0x17bc690
+17bc688: mov x0, x8
+17bc68c: bl #0x1167a84
+17bc690: mov x0, x19
+17bc694: mov x1, x20
+17bc698: mov x2, xzr
+17bc69c: bl #0x1975864 ; Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f*.Error
+17bc6a0: mov w0, wzr
+17bc6a4: ldp x20, x19, [sp, #0x40]
+17bc6a8: ldp x22, x21, [sp, #0x30]
+17bc6ac: ldp x24, x23, [sp, #0x20]
+17bc6b0: ldp x30, x25, [sp, #0x10]
+17bc6b4: add sp, sp, #0x50
+17bc6b8: ret 
+17bc6bc: ldr x0, [x21, #0x18]
+17bc6c0: cbz x0, #0x17bc7f4
+17bc6c4: adrp x8, #0x2ba3000
+17bc6c8: mov x1, x19
+17bc6cc: ldr x8, [x8, #0xea0] ; GENERIC System.Collections.Generic.Dictionary`2.Remove (35452, 651, -1) [load 0x2ba3ea0]
+17bc6d0: ldr x2, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.Remove (35452, 651, -1) [load 0x2c860b8]
+17bc6d4: bl #0x1c6a22c
+17bc6d8: ldr x0, [x21, #0x18]
+17bc6dc: cbz x0, #0x17bc7f4
+17bc6e0: adrp x8, #0x2ba3000
+17bc6e4: mov x1, x20
+17bc6e8: ldr x8, [x8, #0xe80] ; GENERIC System.Collections.Generic.Dictionary`2.Add (35435, 651, -1) [load 0x2ba3e80]
+17bc6ec: ldr x2, [sp, #8]
+17bc6f0: ldr x3, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.Add (35435, 651, -1) [load 0x2c86098]
+17bc6f4: bl #0x1c68d10
+17bc6f8: ldr x0, [sp, #8]
+17bc6fc: cbz x0, #0x17bc7f4
+17bc700: adrp x24, #0x2b83000
+17bc704: adrp x25, #0x2b7d000
+17bc708: mov w22, wzr
+17bc70c: ldr x24, [x24, #0x2d0] ; USAGE kind=6 idx=48428 [load 0x2b832d0]
+17bc710: ldr x25, [x25, #0xaf8]
+17bc714: ldr w8, [x0, #0x18]
+17bc718: cmp w22, w8
+17bc71c: b.ge #0x17bc78c
+17bc720: ldr x2, [x24] ; USAGE kind=6 idx=48428 [load 0x2c8bb78]
+17bc724: mov w1, w22
+17bc728: bl #0x1ec1a0c
+17bc72c: mov x23, x0
+17bc730: mov x0, x20
+17bc734: mov w1, w22
+17bc738: mov x2, xzr
+17bc73c: bl #0x21e5f94 ; System.String.get_Chars
+17bc740: ldr x8, [x25, #0x88]
+17bc744: strh w0, [sp, #4]
+17bc748: ldr w9, [x8, #0xe4]
+17bc74c: cbnz w9, #0x17bc758
+17bc750: mov x0, x8
+17bc754: bl #0x1167a84
+17bc758: add x0, sp, #4
+17bc75c: mov x1, xzr
+17bc760: bl #0x22b6ee0 ; System.Char.ToString
+17bc764: cbz x23, #0x17bc7f4
+17bc768: ldr x8, [x23]
+17bc76c: mov x1, x0
+17bc770: mov x0, x23
+17bc774: ldp x9, x2, [x8, #0x1a8]
+17bc778: blr x9
+17bc77c: ldr x0, [sp, #8]
+17bc780: add w22, w22, #1
+17bc784: cbnz x0, #0x17bc714
+17bc788: b #0x17bc7f4
+17bc78c: ldr x0, [x21, #0x28]
+17bc790: cbz x0, #0x17bc7f4
+17bc794: adrp x23, #0x2b80000
+17bc798: adrp x24, #0x2ba3000
+17bc79c: mov w22, wzr
+17bc7a0: ldr x23, [x23, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17bc7a4: ldr x24, [x24, #0xeb0] ; GENERIC System.Collections.Generic.List`1.set_Item (35573, 110, -1) [load 0x2ba3eb0]
+17bc7a8: ldr w8, [x0, #0x18]
+17bc7ac: cmp w22, w8
+17bc7b0: b.ge #0x17bc7f8
+17bc7b4: ldr x2, [x23] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17bc7b8: mov w1, w22
+17bc7bc: bl #0x1ec1a0c
+17bc7c0: mov x1, x19
+17bc7c4: mov x2, xzr
+17bc7c8: bl #0x21ea2d8 ; System.String.op_Equality
+17bc7cc: tbz w0, #0, #0x17bc7e8
+17bc7d0: ldr x0, [x21, #0x28]
+17bc7d4: cbz x0, #0x17bc7f4
+17bc7d8: ldr x3, [x24] ; GENERIC System.Collections.Generic.List`1.set_Item (35573, 110, -1) [load 0x2c8eaf0]
+17bc7dc: mov w1, w22
+17bc7e0: mov x2, x20
+17bc7e4: bl #0x1ec1a60
+17bc7e8: ldr x0, [x21, #0x28]
+17bc7ec: add w22, w22, #1
+17bc7f0: cbnz x0, #0x17bc7a8
+17bc7f4: bl #0x1167bb0
+17bc7f8: mov w0, #1
+17bc7fc: b #0x17bc6a4
+
+FUNCTION Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter 0x17baa80
+17baa80: sub sp, sp, #0x50
+17baa84: stp x30, x21, [sp, #0x30]
+17baa88: stp x20, x19, [sp, #0x40]
+17baa8c: adrp x21, #0x2db3000
+17baa90: mov x19, x1
+17baa94: mov x20, x0
+17baa98: ldrb w8, [x21, #0x13d]
+17baa9c: tbnz w8, #0, #0x17baae4
+17baaa0: adrp x0, #0x2b85000
+17baaa4: ldr x0, [x0, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17baaa8: bl #0x116794c
+17baaac: adrp x0, #0x2b85000
+17baab0: ldr x0, [x0, #0x340] ; GENERIC .Enumerator.Dispose (35620, 78, -1) [load 0x2b85340]
+17baab4: bl #0x116794c
+17baab8: adrp x0, #0x2b85000
+17baabc: ldr x0, [x0, #0x350] ; GENERIC .Enumerator.MoveNext (35621, 78, -1) [load 0x2b85350]
+17baac0: bl #0x116794c
+17baac4: adrp x0, #0x2b85000
+17baac8: ldr x0, [x0, #0x368] ; GENERIC .Enumerator.get_Current (35623, 78, -1) [load 0x2b85368]
+17baacc: bl #0x116794c
+17baad0: adrp x0, #0x2b85000
+17baad4: ldr x0, [x0, #0x378] ; USAGE kind=6 idx=48425 [load 0x2b85378]
+17baad8: bl #0x116794c
+17baadc: mov w8, #1
+17baae0: strb w8, [x21, #0x13d]
+17baae4: ldr x0, [x20, #0x18]
+17baae8: stp xzr, xzr, [sp, #0x20]
+17baaec: stp xzr, xzr, [sp, #0x10]
+17baaf0: cbz x0, #0x17bab94
+17baaf4: adrp x8, #0x2b85000
+17baaf8: add x2, sp, #0x28
+17baafc: mov x1, x19
+17bab00: ldr x8, [x8, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17bab04: ldr x3, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2c860c0]
+17bab08: bl #0x1c6a540
+17bab0c: tbz w0, #0, #0x17bab78
+17bab10: ldr x0, [sp, #0x28]
+17bab14: cbz x0, #0x17bab94
+17bab18: adrp x8, #0x2b85000
+17bab1c: add x19, sp, #0x10
+17bab20: ldr x8, [x8, #0x378] ; USAGE kind=6 idx=48425 [load 0x2b85378]
+17bab24: ldr x1, [x8] ; USAGE kind=6 idx=48425 [load 0x2c8bb60]
+17bab28: add x8, sp, #0x10
+17bab2c: bl #0x1ec2580
+17bab30: adrp x20, #0x2b85000
+17bab34: ldr x20, [x20, #0x350] ; GENERIC .Enumerator.MoveNext (35621, 78, -1) [load 0x2b85350]
+17bab38: stp xzr, x19, [sp]
+17bab3c: ldr x1, [x20] ; GENERIC .Enumerator.MoveNext (35621, 78, -1) [load 0x2c87578]
+17bab40: add x0, sp, #0x10
+17bab44: bl #0x1ceb7e0
+17bab48: mov w19, w0
+17bab4c: tbz w0, #0, #0x17bab60
+17bab50: ldr x8, [sp, #0x20]
+17bab54: cbz x8, #0x17bab90
+17bab58: ldrb w8, [x8, #0x20]
+17bab5c: cbz w8, #0x17bab3c
+17bab60: adrp x8, #0x2b85000
+17bab64: add x0, sp, #0x10
+17bab68: ldr x8, [x8, #0x340] ; GENERIC .Enumerator.Dispose (35620, 78, -1) [load 0x2b85340]
+17bab6c: ldr x1, [x8] ; GENERIC .Enumerator.Dispose (35620, 78, -1) [load 0x2c87570]
+17bab70: bl #0x1ceb7dc
+17bab74: b #0x17bab7c
+17bab78: mov w19, wzr
+17bab7c: and w0, w19, #1
+17bab80: ldp x20, x19, [sp, #0x40]
+17bab84: ldp x30, x21, [sp, #0x30]
+17bab88: add sp, sp, #0x50
+17bab8c: ret 
+17bab90: bl #0x1167bb0
+17bab94: bl #0x1167bb0
+17bab98: b #0x17bab9c
+17bab9c: mov x19, x0
+17baba0: cmp w1, #1
+17baba4: b.ne #0x17babe0
+17baba8: mov x0, x19
+17babac: bl #0x2a53940 ; ELF import label (unverified): __cxa_begin_catch
+17babb0: ldr x19, [x0]
+17babb4: str x19, [sp]
+17babb8: bl #0x2a53950 ; ELF import label (unverified): __cxa_end_catch
+17babbc: adrp x8, #0x2b85000
+17babc0: ldr x8, [x8, #0x340] ; GENERIC .Enumerator.Dispose (35620, 78, -1) [load 0x2b85340]
+17babc4: ldr x0, [sp, #8]
+17babc8: ldr x1, [x8] ; GENERIC .Enumerator.Dispose (35620, 78, -1) [load 0x2c87570]
+17babcc: bl #0x1ceb7dc
+17babd0: cbz x19, #0x17bab7c
+17babd4: mov x0, x19
+17babd8: bl #0x1167ba8
+17babdc: mov x19, x0
+17babe0: mov x0, sp
+17babe4: bl #0x10338e0
+17babe8: mov x0, x19
+17babec: bl #0x125526c
+17babf0: bl #0x1032d60
+
+FUNCTION Data.GamePlay.MainPlay.Grid.GridData.IsOverfillLetter 0x17babf4
+17babf4: sub sp, sp, #0x40
+17babf8: stp x30, x23, [sp, #0x10]
+17babfc: stp x22, x21, [sp, #0x20]
+17bac00: stp x20, x19, [sp, #0x30]
+17bac04: adrp x22, #0x2db3000
+17bac08: mov x19, x2
+17bac0c: mov x20, x1
+17bac10: ldrb w8, [x22, #0x13e]
+17bac14: mov x21, x0
+17bac18: tbnz w8, #0, #0x17bac48
+17bac1c: adrp x0, #0x2b85000
+17bac20: ldr x0, [x0, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17bac24: bl #0x116794c
+17bac28: adrp x0, #0x2b83000
+17bac2c: ldr x0, [x0, #0x2a8] ; USAGE kind=6 idx=48427 [load 0x2b832a8]
+17bac30: bl #0x116794c
+17bac34: adrp x0, #0x2b83000
+17bac38: ldr x0, [x0, #0x2d0] ; USAGE kind=6 idx=48428 [load 0x2b832d0]
+17bac3c: bl #0x116794c
+17bac40: mov w8, #1
+17bac44: strb w8, [x22, #0x13e]
+17bac48: ldr x0, [x21, #0x18]
+17bac4c: str xzr, [sp, #8]
+17bac50: strh wzr, [sp, #4]
+17bac54: cbz x0, #0x17bad2c
+17bac58: adrp x8, #0x2b85000
+17bac5c: add x2, sp, #8
+17bac60: mov x1, x20
+17bac64: ldr x8, [x8, #0xad8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2b85ad8]
+17bac68: ldr x3, [x8] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 651, -1) [load 0x2c860c0]
+17bac6c: bl #0x1c6a540
+17bac70: tbz w0, #0, #0x17bad30
+17bac74: cbz x20, #0x17bad2c
+17bac78: cbz x19, #0x17bad2c
+17bac7c: ldr w8, [x20, #0x10]
+17bac80: ldr w9, [x19, #0x10]
+17bac84: cmp w8, w9
+17bac88: b.ne #0x17bad30
+17bac8c: ldr x0, [sp, #8]
+17bac90: cbz x0, #0x17bad2c
+17bac94: adrp x22, #0x2b83000
+17bac98: adrp x23, #0x2b7d000
+17bac9c: mov w21, wzr
+17baca0: ldr x22, [x22, #0x2d0] ; USAGE kind=6 idx=48428 [load 0x2b832d0]
+17baca4: ldr x23, [x23, #0xaf8]
+17baca8: mov w20, wzr
+17bacac: ldr w8, [x0, #0x18]
+17bacb0: cmp w20, w8
+17bacb4: b.ge #0x17bad34
+17bacb8: ldr x2, [x22] ; USAGE kind=6 idx=48428 [load 0x2c8bb78]
+17bacbc: mov w1, w20
+17bacc0: bl #0x1ec1a0c
+17bacc4: cbz x0, #0x17bad2c
+17bacc8: ldrb w8, [x0, #0x20]
+17baccc: cbz w8, #0x17bad20
+17bacd0: ldr x21, [x0, #0x18]
+17bacd4: mov x0, x19
+17bacd8: mov w1, w20
+17bacdc: mov x2, xzr
+17bace0: bl #0x21e5f94 ; System.String.get_Chars
+17bace4: ldr x8, [x23, #0x88]
+17bace8: strh w0, [sp, #4]
+17bacec: ldr w9, [x8, #0xe4]
+17bacf0: cbnz w9, #0x17bacfc
+17bacf4: mov x0, x8
+17bacf8: bl #0x1167a84
+17bacfc: add x0, sp, #4
+17bad00: mov x1, xzr
+17bad04: bl #0x22b6ee0 ; System.Char.ToString
+17bad08: mov x1, x0
+17bad0c: mov x0, x21
+17bad10: mov x2, xzr
+17bad14: bl #0x21ea2dc ; System.String.op_Inequality
+17bad18: tbnz w0, #0, #0x17bad30
+17bad1c: mov w21, #1
+17bad20: ldr x0, [sp, #8]
+17bad24: add w20, w20, #1
+17bad28: cbnz x0, #0x17bacac
+17bad2c: bl #0x1167bb0
+17bad30: mov w21, wzr
+17bad34: and w0, w21, #1
+17bad38: ldp x20, x19, [sp, #0x30]
+17bad3c: ldp x22, x21, [sp, #0x20]
+17bad40: ldp x30, x23, [sp, #0x10]
+17bad44: add sp, sp, #0x40
+17bad48: ret
+
+FUNCTION Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest1 0x186b4d8
+186b4d8: ldr x8, [x0, #0x1a8]
+186b4dc: cmp x8, #1
+186b4e0: cset w0, eq
+186b4e4: ret
+
+FUNCTION Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest2Group1 0x186b4e8
+186b4e8: ldr x8, [x0, #0x1b0]
+186b4ec: cmp x8, #1
+186b4f0: cset w0, eq
+186b4f4: ret
+
+FUNCTION Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest2Group2 0x186b4f8
+186b4f8: ldr x8, [x0, #0x1b0]
+186b4fc: cmp x8, #2
+186b500: cset w0, eq
+186b504: ret
+
+FUNCTION Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest3Group2 0x186b508
+186b508: ldr x8, [x0, #0x1b8]
+186b50c: cmp x8, #2
+186b510: cset w0, eq
+186b514: ret
+
+FUNCTION Platform.AbTest.AbTestMgr.get_IsHalfLevelEasierTest6Hours 0x186b518
+186b518: ldr x8, [x0, #0x1b8]
+186b51c: sub x8, x8, #1
+186b520: cmp x8, #2
+186b524: cset w0, lo
+186b528: ret
+
+FUNCTION Logic.Handler.MainPlayHandler.StartGameMode 0x16007a0
+16007a0: sub sp, sp, #0x60
+16007a4: stp x30, x27, [sp, #0x10]
+16007a8: stp x26, x25, [sp, #0x20]
+16007ac: stp x24, x23, [sp, #0x30]
+16007b0: stp x22, x21, [sp, #0x40]
+16007b4: stp x20, x19, [sp, #0x50]
+16007b8: adrp x19, #0x2db2000
+16007bc: adrp x24, #0x2b7e000
+16007c0: ldrb w8, [x19, #0x2d7]
+16007c4: ldr x24, [x24, #0x148] ; TYPE Logic.GameMgr [load 0x2b7e148]
+16007c8: tbnz w8, #0, #0x1600870
+16007cc: adrp x0, #0x2b80000
+16007d0: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+16007d4: bl #0x116794c
+16007d8: adrp x0, #0x2b94000
+16007dc: ldr x0, [x0, #0x420] ; TYPE Logic.Handler.BeginnerBonusHandler [load 0x2b94420]
+16007e0: bl #0x116794c
+16007e4: adrp x0, #0x2b80000
+16007e8: ldr x0, [x0, #0x680] ; TYPE Logic.Handler.CommonHandler [load 0x2b80680]
+16007ec: bl #0x116794c
+16007f0: adrp x0, #0x2b7e000
+16007f4: ldr x0, [x0, #0x130] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2b7e130]
+16007f8: bl #0x116794c
+16007fc: adrp x0, #0x2b80000
+1600800: ldr x0, [x0, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+1600804: bl #0x116794c
+1600808: adrp x0, #0x2b7e000
+160080c: ldr x0, [x0, #0x148] ; TYPE Logic.GameMgr [load 0x2b7e148]
+1600810: bl #0x116794c
+1600814: adrp x0, #0x2b82000
+1600818: ldr x0, [x0, #0x538] ; TYPE Logic.Handler.LotusLeaderboardHandler [load 0x2b82538]
+160081c: bl #0x116794c
+1600820: adrp x0, #0x2b81000
+1600824: ldr x0, [x0, #0x780] ; TYPE Logic.Handler.MainPlayHandler [load 0x2b81780]
+1600828: bl #0x116794c
+160082c: adrp x0, #0x2b80000
+1600830: ldr x0, [x0, #0x190] ; USAGE kind=1 idx=8377 [load 0x2b80190]
+1600834: bl #0x116794c
+1600838: adrp x0, #0x2b94000
+160083c: ldr x0, [x0, #0x8f8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.InitSpreadBox (21174, 1814, -1) [load 0x2b948f8]
+1600840: bl #0x116794c
+1600844: adrp x0, #0x2b94000
+1600848: ldr x0, [x0, #0x900] ; GENERIC View.UI.UIMgr.IsPageOpen (368, -1, 4541) [load 0x2b94900]
+160084c: bl #0x116794c
+1600850: adrp x0, #0x2b7e000
+1600854: ldr x0, [x0, #0x300] ; TYPE View.UI.UIType [load 0x2b7e300]
+1600858: bl #0x116794c
+160085c: adrp x0, #0x2b94000
+1600860: ldr x0, [x0, #0x828] ; STRING_LITERAL #23723 [load 0x2b94828]
+1600864: bl #0x116794c
+1600868: mov w8, #1
+160086c: strb w8, [x19, #0x2d7]
+1600870: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600874: ldr x8, [x8, #0xb8]
+1600878: ldr x8, [x8]
+160087c: cbz x8, #0x1600f94
+1600880: adrp x23, #0x2b7e000
+1600884: ldr x23, [x23, #0x300] ; TYPE View.UI.UIType [load 0x2b7e300]
+1600888: ldr x19, [x8, #0x48]
+160088c: ldr x0, [x23] ; TYPE View.UI.UIType [load 0x2c7de78]
+1600890: ldr w9, [x0, #0xe4]
+1600894: cbnz w9, #0x160089c
+1600898: bl #0x1167a84
+160089c: cbz x19, #0x1600f94
+16008a0: ldr x8, [x23] ; TYPE View.UI.UIType [load 0x2c7de78]
+16008a4: adrp x9, #0x2b94000
+16008a8: mov x0, x19
+16008ac: ldr x9, [x9, #0x900] ; GENERIC View.UI.UIMgr.IsPageOpen (368, -1, 4541) [load 0x2b94900]
+16008b0: ldr x8, [x8, #0xb8]
+16008b4: ldr x2, [x9] ; GENERIC View.UI.UIMgr.IsPageOpen (368, -1, 4541) [load 0x2ca20c0]
+16008b8: ldr x1, [x8, #0x28]
+16008bc: bl #0x1aeaeb0
+16008c0: tbnz w0, #0, #0x1600f78
+16008c4: adrp x22, #0x2b80000
+16008c8: ldr x22, [x22, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+16008cc: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+16008d0: ldr w8, [x0, #0xe4]
+16008d4: cbnz w8, #0x16008dc
+16008d8: bl #0x1167a84
+16008dc: adrp x26, #0x2db0000
+16008e0: ldrb w8, [x26, #0x3be]
+16008e4: cbnz w8, #0x16008fc
+16008e8: adrp x0, #0x2b80000
+16008ec: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+16008f0: bl #0x116794c
+16008f4: mov w8, #1
+16008f8: strb w8, [x26, #0x3be]
+16008fc: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600900: ldr w8, [x0, #0xe4]
+1600904: cbnz w8, #0x1600910
+1600908: bl #0x1167a84
+160090c: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600910: ldr x8, [x0, #0xb8]
+1600914: ldr x0, [x8]
+1600918: cbz x0, #0x1600f94
+160091c: mov x1, xzr
+1600920: bl #0x186df60 ; Platform.AbTest.AbTestMgr.TryStainSpecialLevelTest
+1600924: adrp x25, #0x2b81000
+1600928: ldr x25, [x25, #0x780] ; TYPE Logic.Handler.MainPlayHandler [load 0x2b81780]
+160092c: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600930: ldr w8, [x0, #0xe4]
+1600934: cbnz w8, #0x160093c
+1600938: bl #0x1167a84
+160093c: bl #0x1600fa8 ; Logic.Handler.MainPlayHandler.JudgeActivityOpen
+1600940: adrp x8, #0x2b80000
+1600944: ldr x8, [x8, #0x680] ; TYPE Logic.Handler.CommonHandler [load 0x2b80680]
+1600948: ldr x0, [x8] ; TYPE Logic.Handler.CommonHandler [load 0x2c78568]
+160094c: ldr w8, [x0, #0xe4]
+1600950: cbnz w8, #0x1600958
+1600954: bl #0x1167a84
+1600958: mov w0, #1
+160095c: mov x1, xzr
+1600960: bl #0x158b624 ; Logic.Handler.CommonHandler.DoSetCurrentScr
+1600964: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600968: ldr x8, [x8, #0xb8]
+160096c: ldr x8, [x8]
+1600970: cbz x8, #0x1600f94
+1600974: ldr x9, [x8, #0x40]
+1600978: cbz x9, #0x1600f94
+160097c: ldr x19, [x9, #0x30]
+1600980: cbz x19, #0x1600f94
+1600984: ldr x20, [x8, #0x48]
+1600988: mov x0, x19
+160098c: mov w1, wzr
+1600990: mov x2, xzr
+1600994: bl #0x17e5f70 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.UpdateStartGameState
+1600998: mov x0, x19
+160099c: mov x1, xzr
+16009a0: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+16009a4: cbz x0, #0x1600f94
+16009a8: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+16009ac: ldr x8, [x8, #0xb8]
+16009b0: ldr x8, [x8]
+16009b4: cbz x8, #0x1600f94
+16009b8: ldr x21, [x0, #0x10]
+16009bc: mov x0, x8
+16009c0: mov x1, xzr
+16009c4: bl #0x15697e4 ; Logic.GameMgr.get_SettingsDataMgr
+16009c8: cbz x0, #0x1600f94
+16009cc: mov x1, xzr
+16009d0: bl #0x175cab4 ; Data.Settings.SettingsDataMgr.get_CurLanguageCode
+16009d4: mov x1, x0
+16009d8: mov x0, x21
+16009dc: mov x2, xzr
+16009e0: bl #0x21ea2dc ; System.String.op_Inequality
+16009e4: tbz w0, #0, #0x1600a0c
+16009e8: mov x0, x19
+16009ec: mov w1, #1
+16009f0: mov x2, xzr
+16009f4: bl #0x17e5f68 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.UpdateGameEnd
+16009f8: ldr x8, [x19]
+16009fc: mov x0, x19
+1600a00: ldr x9, [x8, #0x2b8]
+1600a04: ldr x1, [x8, #0x2c0]
+1600a08: blr x9
+1600a0c: ldr x8, [x19]
+1600a10: mov x0, x19
+1600a14: ldr x9, [x8, #0x298]
+1600a18: ldr x1, [x8, #0x2a0]
+1600a1c: blr x9
+1600a20: ldrb w8, [x19, #0x5c]
+1600a24: and w9, w0, #1
+1600a28: strb w9, [x19, #0xc8]
+1600a2c: cbz w8, #0x1600ac8
+1600a30: mov x0, x19
+1600a34: mov x1, xzr
+1600a38: bl #0x17e5fc8 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.UpdateRestore
+1600a3c: ldrb w0, [x19, #0x61]
+1600a40: mov x1, xzr
+1600a44: bl #0x15e9a48 ; Logic.Handler.HintStuckHandler.OnPlayLevelStartInGame
+1600a48: mov x0, xzr
+1600a4c: bl #0x15e9ab4 ; Logic.Handler.HintStuckHandler.TryRewriteExistingDiscountToHalf
+1600a50: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600a54: ldr x8, [x8, #0xb8]
+1600a58: ldr x8, [x8]
+1600a5c: cbz x8, #0x1600f94
+1600a60: ldr x8, [x8, #0x40]
+1600a64: cbz x8, #0x1600f94
+1600a68: ldr x21, [x8, #0x68]
+1600a6c: ldrb w27, [x19, #0x61]
+1600a70: mov x0, xzr
+1600a74: bl #0x15716a0 ; Logic.Handler.ActiveActivityHandler.IsCanBrainMasterDirectlySettle
+1600a78: cbz x21, #0x1600f94
+1600a7c: cmp w27, #0
+1600a80: and w2, w0, #1
+1600a84: mov x0, x21
+1600a88: cset w1, ne
+1600a8c: mov x3, xzr
+1600a90: bl #0x18313dc ; Data.ActiveActivity.ActiveActivityDataMgr.UpdateRealTimeSettle
+1600a94: ldrb w8, [x19, #0x61]
+1600a98: mov x0, x19
+1600a9c: mov x2, xzr
+1600aa0: cmp w8, #0
+1600aa4: cset w1, eq
+1600aa8: bl #0x17e5f70 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.UpdateStartGameState
+1600aac: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600ab0: ldr w8, [x0, #0xe4]
+1600ab4: cbnz w8, #0x1600abc
+1600ab8: bl #0x1167a84
+1600abc: mov x0, x19
+1600ac0: bl #0x160100c ; Logic.Handler.MainPlayHandler.TryApplyHalfLevelEasier
+1600ac4: bl #0x1601a14 ; Logic.Handler.MainPlayHandler.StartGame
+1600ac8: mov x0, x19
+1600acc: mov x1, xzr
+1600ad0: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+1600ad4: adrp x8, #0x2b80000
+1600ad8: mov x21, x0
+1600adc: ldr x8, [x8, #0x688] ; TYPE System.DateTime [load 0x2b80688]
+1600ae0: ldr x8, [x8] ; TYPE System.DateTime [load 0x2c791b8]
+1600ae4: ldr w9, [x8, #0xe4]
+1600ae8: cbnz w9, #0x1600af4
+1600aec: mov x0, x8
+1600af0: bl #0x1167a84
+1600af4: mov x0, xzr
+1600af8: bl #0x22f0604 ; System.DateTime.get_Now
+1600afc: cbz x21, #0x1600f94
+1600b00: str x0, [x21, #0x1c8]
+1600b04: mov x0, x19
+1600b08: mov x1, xzr
+1600b0c: bl #0x17a4068 ; Data.GamePlay.MainPlay.MainPlayDataMgr.IsChainPlayMode
+1600b10: tbnz w0, #0, #0x1600c10
+1600b14: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600b18: ldr w8, [x0, #0xe4]
+1600b1c: cbnz w8, #0x1600b24
+1600b20: bl #0x1167a84
+1600b24: bl #0x15fff2c ; Logic.Handler.MainPlayHandler.get__dataMgr
+1600b28: cbz x0, #0x1600f94
+1600b2c: mov x1, xzr
+1600b30: bl #0x17a5c98 ; Data.GamePlay.MainPlay.MainPlayDataMgr.TryStainDuserLevelDeleteTest
+1600b34: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600b38: ldr w8, [x0, #0xe4]
+1600b3c: cbnz w8, #0x1600b44
+1600b40: bl #0x1167a84
+1600b44: ldrb w8, [x26, #0x3be]
+1600b48: cbnz w8, #0x1600b60
+1600b4c: adrp x0, #0x2b80000
+1600b50: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1600b54: bl #0x116794c
+1600b58: mov w8, #1
+1600b5c: strb w8, [x26, #0x3be]
+1600b60: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600b64: ldr w8, [x0, #0xe4]
+1600b68: cbnz w8, #0x1600b74
+1600b6c: bl #0x1167a84
+1600b70: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600b74: ldr x8, [x0, #0xb8]
+1600b78: ldr x0, [x8]
+1600b7c: cbz x0, #0x1600f94
+1600b80: mov x1, xzr
+1600b84: bl #0x186f7e4 ; Platform.AbTest.AbTestMgr.TryStainGamePageMotionTest
+1600b88: adrp x8, #0x2b7e000
+1600b8c: ldr x8, [x8, #0x130] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2b7e130]
+1600b90: ldr x0, [x8] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+1600b94: ldr w8, [x0, #0xe4]
+1600b98: cbnz w8, #0x1600ba0
+1600b9c: bl #0x1167a84
+1600ba0: mov x0, xzr
+1600ba4: bl #0x15a86b8 ; Logic.Handler.CommonPlayHandler.GetGameStageData
+1600ba8: cbz x0, #0x1600f94
+1600bac: mov x1, xzr
+1600bb0: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+1600bb4: cmp w0, #0xb
+1600bb8: b.lt #0x1600c10
+1600bbc: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600bc0: ldr w8, [x0, #0xe4]
+1600bc4: cbnz w8, #0x1600bcc
+1600bc8: bl #0x1167a84
+1600bcc: ldrb w8, [x26, #0x3be]
+1600bd0: cbnz w8, #0x1600be8
+1600bd4: adrp x0, #0x2b80000
+1600bd8: ldr x0, [x0, #0x48] ; TYPE Platform.AbTest.AbTestMgr [load 0x2b80048]
+1600bdc: bl #0x116794c
+1600be0: mov w8, #1
+1600be4: strb w8, [x26, #0x3be]
+1600be8: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600bec: ldr w8, [x0, #0xe4]
+1600bf0: cbnz w8, #0x1600bfc
+1600bf4: bl #0x1167a84
+1600bf8: ldr x0, [x22] ; TYPE Platform.AbTest.AbTestMgr [load 0x2c77238]
+1600bfc: ldr x8, [x0, #0xb8]
+1600c00: ldr x0, [x8]
+1600c04: cbz x0, #0x1600f94
+1600c08: mov x1, xzr
+1600c0c: bl #0x1870074 ; Platform.AbTest.AbTestMgr.TryStainWordGamepageUiTest01
+1600c10: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600c14: ldr w8, [x0, #0xe4]
+1600c18: cbnz w8, #0x1600c20
+1600c1c: bl #0x1167a84
+1600c20: bl #0x160215c ; Logic.Handler.MainPlayHandler.InitActivityItem
+1600c24: mov x0, x19
+1600c28: mov x1, xzr
+1600c2c: bl #0x17b29e0 ; Data.GamePlay.MainPlay.MainPlayDataMgr.InitSpecialBonusLevel
+1600c30: ldrb w8, [x19, #0x5d]
+1600c34: cbz w8, #0x1600d30
+1600c38: mov x0, x19
+1600c3c: mov x1, xzr
+1600c40: bl #0x17a7644 ; Data.GamePlay.MainPlay.MainPlayDataMgr.StatisticsAnswerState
+1600c44: adrp x8, #0x2b94000
+1600c48: mov x0, x19
+1600c4c: ldr x8, [x8, #0x8f8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.InitSpreadBox (21174, 1814, -1) [load 0x2b948f8]
+1600c50: ldr x1, [x8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.InitSpreadBox (21174, 1814, -1) [load 0x2c91900]
+1600c54: bl #0x203e22c
+1600c58: adrp x22, #0x2b7e000
+1600c5c: ldr x22, [x22, #0x130] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2b7e130]
+1600c60: ldr x0, [x22] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+1600c64: ldr w8, [x0, #0xe4]
+1600c68: cbnz w8, #0x1600c70
+1600c6c: bl #0x1167a84
+1600c70: mov x0, xzr
+1600c74: bl #0x15b9db0 ; Logic.Handler.CommonPlayHandler.GenerateBottleOnNewGame
+1600c78: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600c7c: ldr x8, [x8, #0xb8]
+1600c80: ldr x8, [x8]
+1600c84: cbz x8, #0x1600f94
+1600c88: ldr x8, [x8, #0x40]
+1600c8c: cbz x8, #0x1600f94
+1600c90: ldr x0, [x8, #0x28]
+1600c94: cbz x0, #0x1600f94
+1600c98: mov x1, xzr
+1600c9c: bl #0x17f0fb0 ; Data.GamePlay.CommonPlay.CommonPlayDataMgr.InitComboRewardLevel
+1600ca0: mov x0, xzr
+1600ca4: bl #0x15a86b8 ; Logic.Handler.CommonPlayHandler.GetGameStageData
+1600ca8: cbz x0, #0x1600f94
+1600cac: mov x1, xzr
+1600cb0: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+1600cb4: mov w21, w0
+1600cb8: mov w0, #-1
+1600cbc: mov x1, xzr
+1600cc0: bl #0x15b0618 ; Logic.Handler.CommonPlayHandler.IsMainPlaySpecialLevel
+1600cc4: tbnz w0, #0, #0x1600ce4
+1600cc8: ldr x0, [x22] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+1600ccc: ldr w8, [x0, #0xe4]
+1600cd0: cbnz w8, #0x1600cd8
+1600cd4: bl #0x1167a84
+1600cd8: mov x0, xzr
+1600cdc: bl #0x15b708c ; Logic.Handler.CommonPlayHandler.IsDifficultLevel
+1600ce0: tbz w0, #0, #0x1600cec
+1600ce4: mov w22, #1
+1600ce8: b #0x1600d08
+1600cec: ldr x0, [x22] ; TYPE Logic.Handler.CommonPlayHandler [load 0x2c78580]
+1600cf0: ldr w8, [x0, #0xe4]
+1600cf4: cbnz w8, #0x1600cfc
+1600cf8: bl #0x1167a84
+1600cfc: mov x0, xzr
+1600d00: bl #0x15b7fe0 ; Logic.Handler.CommonPlayHandler.IsMemoryLevelWithShown
+1600d04: mov w22, w0
+1600d08: adrp x8, #0x2b82000
+1600d0c: ldr x8, [x8, #0x538] ; TYPE Logic.Handler.LotusLeaderboardHandler [load 0x2b82538]
+1600d10: ldr x0, [x8] ; TYPE Logic.Handler.LotusLeaderboardHandler [load 0x2c7b358]
+1600d14: ldr w8, [x0, #0xe4]
+1600d18: cbnz w8, #0x1600d20
+1600d1c: bl #0x1167a84
+1600d20: and w1, w22, #1
+1600d24: mov w0, w21
+1600d28: mov x2, xzr
+1600d2c: bl #0x15f81d8 ; Logic.Handler.LotusLeaderboardHandler.TryApplyDoubleLotusOnLevelStart
+1600d30: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600d34: ldr w8, [x0, #0xe4]
+1600d38: cbnz w8, #0x1600d44
+1600d3c: bl #0x1167a84
+1600d40: ldr x0, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600d44: ldr x8, [x23] ; TYPE View.UI.UIType [load 0x2c7de78]
+1600d48: ldr x9, [x0, #0xb8]
+1600d4c: ldr w10, [x8, #0xe4]
+1600d50: strb wzr, [x9, #1]
+1600d54: cbnz w10, #0x1600d64
+1600d58: mov x0, x8
+1600d5c: bl #0x1167a84
+1600d60: ldr x8, [x23] ; TYPE View.UI.UIType [load 0x2c7de78]
+1600d64: adrp x9, #0x2b80000
+1600d68: ldr x8, [x8, #0xb8]
+1600d6c: mov w1, #1
+1600d70: ldr x9, [x9, #0x190] ; USAGE kind=1 idx=8377 [load 0x2b80190]
+1600d74: ldr x21, [x8, #0x28]
+1600d78: ldr x0, [x9] ; USAGE kind=1 idx=8377 [load 0x2c76b98]
+1600d7c: bl #0x11679f4
+1600d80: ldr x8, [x25] ; TYPE Logic.Handler.MainPlayHandler [load 0x2c7b4d0]
+1600d84: ldr x9, [x23] ; TYPE View.UI.UIType [load 0x2c7de78]
+1600d88: adrp x10, #0x2b7d000
+1600d8c: mov x22, x0
+1600d90: add x1, sp, #0xc
+1600d94: ldr x8, [x8, #0xb8]
+1600d98: ldr x9, [x9, #0xb8]
+1600d9c: ldr x8, [x8, #8]
+1600da0: ldr x9, [x9, #0x20]
+1600da4: ldr x10, [x10, #0xaf8]
+1600da8: cmp x8, x9
+1600dac: ldr x0, [x10, #0x28]
+1600db0: cset w8, eq
+1600db4: strb w8, [sp, #0xc]
+1600db8: bl #0x1167a8c
+1600dbc: cbz x22, #0x1600f94
+1600dc0: mov x23, x0
+1600dc4: cbz x0, #0x1600ddc
+1600dc8: ldr x8, [x22]
+1600dcc: mov x0, x23
+1600dd0: ldr x1, [x8, #0x40]
+1600dd4: bl #0x1167a88
+1600dd8: cbz x0, #0x1600f9c
+1600ddc: ldr w8, [x22, #0x18]
+1600de0: cbz w8, #0x1600f98
+1600de4: mov x0, x22
+1600de8: mov x1, x23
+1600dec: str x23, [x0, #0x20]!
+1600df0: bl #0x11678f8
+1600df4: cbz x20, #0x1600f94
+1600df8: ldr x8, [x20]
+1600dfc: mov x0, x20
+1600e00: mov x1, x21
+1600e04: mov x2, x22
+1600e08: ldp x9, x3, [x8, #0x198]
+1600e0c: blr x9
+1600e10: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600e14: ldr x8, [x8, #0xb8]
+1600e18: ldr x8, [x8]
+1600e1c: cbz x8, #0x1600f94
+1600e20: ldr x8, [x8, #0x40]
+1600e24: cbz x8, #0x1600f94
+1600e28: ldr x0, [x8, #0x20]
+1600e2c: cbz x0, #0x1600f94
+1600e30: mov x1, xzr
+1600e34: bl #0x180ace4 ; Data.Common.CommonDataMgr.ResetStuckTimeInfo
+1600e38: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600e3c: ldr x8, [x8, #0xb8]
+1600e40: ldr x8, [x8]
+1600e44: cbz x8, #0x1600f94
+1600e48: ldr x8, [x8, #0x40]
+1600e4c: cbz x8, #0x1600f94
+1600e50: ldr x0, [x8, #0x20]
+1600e54: cbz x0, #0x1600f94
+1600e58: mov x1, xzr
+1600e5c: bl #0x180b250 ; Data.Common.CommonDataMgr.ResetLevelEndShowInterstitialTime
+1600e60: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600e64: ldr x8, [x8, #0xb8]
+1600e68: ldr x8, [x8]
+1600e6c: cbz x8, #0x1600f94
+1600e70: ldr x8, [x8, #0x40]
+1600e74: cbz x8, #0x1600f94
+1600e78: ldr x0, [x8, #0x20]
+1600e7c: cbz x0, #0x1600f94
+1600e80: mov x1, xzr
+1600e84: bl #0x180be28 ; Data.Common.CommonDataMgr.ResetLastLinkWordLength
+1600e88: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600e8c: ldr x8, [x8, #0xb8]
+1600e90: ldr x8, [x8]
+1600e94: cbz x8, #0x1600f94
+1600e98: ldr x8, [x8, #0x40]
+1600e9c: cbz x8, #0x1600f94
+1600ea0: ldr x0, [x8, #0x20]
+1600ea4: cbz x0, #0x1600f94
+1600ea8: mov w1, wzr
+1600eac: mov x2, xzr
+1600eb0: bl #0x180be30 ; Data.Common.CommonDataMgr.UpdateIsCheckingHintAdVideoState
+1600eb4: mov x0, x19
+1600eb8: mov x1, xzr
+1600ebc: bl #0x179d2dc ; Data.GamePlay.Play.PlayDataMgr.CheckLastWordLeft
+1600ec0: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600ec4: ldr x8, [x8, #0xb8]
+1600ec8: ldr x8, [x8]
+1600ecc: cbz x8, #0x1600f94
+1600ed0: ldr x8, [x8, #0x40]
+1600ed4: cbz x8, #0x1600f94
+1600ed8: ldr x8, [x8, #0x28]
+1600edc: cbz x8, #0x1600f94
+1600ee0: ldr x0, [x8, #0x18]
+1600ee4: cbz x0, #0x1600f94
+1600ee8: mov x1, xzr
+1600eec: bl #0x17b8c88 ; Data.GamePlay.MainPlay.StageData.GetVerseString
+1600ef0: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600ef4: ldr x8, [x8, #0xb8]
+1600ef8: ldr x8, [x8]
+1600efc: cbz x8, #0x1600f94
+1600f00: ldr x8, [x8, #0x40]
+1600f04: cbz x8, #0x1600f94
+1600f08: ldr x1, [x8, #0x30]
+1600f0c: mov x2, xzr
+1600f10: bl #0x15e21c0 ; Logic.Handler.GameDictionaryHandler.SetCurLevel
+1600f14: adrp x19, #0x2b94000
+1600f18: ldr x19, [x19, #0x420] ; TYPE Logic.Handler.BeginnerBonusHandler [load 0x2b94420]
+1600f1c: ldr x8, [x19] ; TYPE Logic.Handler.BeginnerBonusHandler [load 0x2c77bd0]
+1600f20: ldr x8, [x8, #0xb8]
+1600f24: ldrb w8, [x8]
+1600f28: cbz w8, #0x1600f50
+1600f2c: adrp x8, #0x2b94000
+1600f30: mov w0, #0x14
+1600f34: mov x2, xzr
+1600f38: ldr x8, [x8, #0x828] ; STRING_LITERAL #23723 [load 0x2b94828]
+1600f3c: ldr x1, [x8] ; STRING_LITERAL #23723 [load 0x2cd8c38]
+1600f40: bl #0x15772f4 ; Logic.Handler.BeginnerBonusHandler.TryAddWillingScore
+1600f44: ldr x8, [x19] ; TYPE Logic.Handler.BeginnerBonusHandler [load 0x2c77bd0]
+1600f48: ldr x8, [x8, #0xb8]
+1600f4c: strb wzr, [x8]
+1600f50: ldr x8, [x24] ; TYPE Logic.GameMgr [load 0x2c79d50]
+1600f54: ldr x8, [x8, #0xb8]
+1600f58: ldr x8, [x8]
+1600f5c: cbz x8, #0x1600f94
+1600f60: ldr x8, [x8, #0x40]
+1600f64: cbz x8, #0x1600f94
+1600f68: ldr x0, [x8, #0x28]
+1600f6c: cbz x0, #0x1600f94
+1600f70: mov x1, xzr
+1600f74: bl #0x17ee06c ; Data.GamePlay.CommonPlay.CommonPlayDataMgr.SetHardMountainOnGameStart
+1600f78: ldp x20, x19, [sp, #0x50]
+1600f7c: ldp x22, x21, [sp, #0x40]
+1600f80: ldp x24, x23, [sp, #0x30]
+1600f84: ldp x26, x25, [sp, #0x20]
+1600f88: ldp x30, x27, [sp, #0x10]
+1600f8c: add sp, sp, #0x60
+1600f90: ret 
+1600f94: bl #0x1167bb0
+1600f98: bl #0x1167bb8
+1600f9c: bl #0x1167bd4
+1600fa0: mov x1, xzr
+1600fa4: bl #0x1167a74
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.SetBoxFind 0x17a81f8
+17a81f8: str x30, [sp, #-0x30]!
+17a81fc: stp x22, x21, [sp, #0x10]
+17a8200: stp x20, x19, [sp, #0x20]
+17a8204: adrp x21, #0x2db3000
+17a8208: mov x19, x1
+17a820c: mov x20, x0
+17a8210: ldrb w8, [x21, #0x70]
+17a8214: tbnz w8, #0, #0x17a8238
+17a8218: adrp x0, #0x2b81000
+17a821c: ldr x0, [x0, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+17a8220: bl #0x116794c
+17a8224: adrp x0, #0x2ba3000
+17a8228: ldr x0, [x0, #0xab8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21131, 1814, -1) [load 0x2ba3ab8]
+17a822c: bl #0x116794c
+17a8230: mov w8, #1
+17a8234: strb w8, [x21, #0x70]
+17a8238: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a823c: cbz x0, #0x17a82ec
+17a8240: ldr x8, [x20, #0x10]
+17a8244: cbz x8, #0x17a82ec
+17a8248: ldr x8, [x8, #0x18]
+17a824c: cbz x8, #0x17a82ec
+17a8250: ldr x9, [x8]
+17a8254: ldr x21, [x0, #0x18]
+17a8258: mov x0, x8
+17a825c: ldp x10, x1, [x9, #0x168]
+17a8260: blr x10
+17a8264: cbz x21, #0x17a82ec
+17a8268: adrp x9, #0x2b81000
+17a826c: ldr x9, [x9, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+17a8270: ldr w10, [x21, #0x1c]
+17a8274: ldr x8, [x21, #0x10]
+17a8278: ldr x9, [x9] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2c8ea50]
+17a827c: add w10, w10, #1
+17a8280: str w10, [x21, #0x1c]
+17a8284: cbz x8, #0x17a82ec
+17a8288: ldrsw x10, [x21, #0x18]
+17a828c: ldr w11, [x8, #0x18]
+17a8290: adrp x22, #0x2ba3000
+17a8294: ldr x22, [x22, #0xab8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21131, 1814, -1) [load 0x2ba3ab8]
+17a8298: mov x1, x0
+17a829c: cmp w10, w11
+17a82a0: b.hs #0x17a82bc
+17a82a4: add x0, x8, x10, lsl #3
+17a82a8: add w9, w10, #1
+17a82ac: str w9, [x21, #0x18]
+17a82b0: str x1, [x0, #0x20]!
+17a82b4: bl #0x11678f8
+17a82b8: b #0x17a82d0
+17a82bc: ldr x8, [x9, #0x20]
+17a82c0: mov x0, x21
+17a82c4: ldr x8, [x8, #0xc0]
+17a82c8: ldr x2, [x8, #0x70]
+17a82cc: bl #0x1ec1cdc
+17a82d0: ldr x2, [x22] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21131, 1814, -1) [load 0x2c91928]
+17a82d4: mov x0, x20
+17a82d8: mov x1, x19
+17a82dc: ldp x20, x19, [sp, #0x20]
+17a82e0: ldp x22, x21, [sp, #0x10]
+17a82e4: ldr x30, [sp], #0x30
+17a82e8: b #0x203be54
+17a82ec: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.SetBoxFind 0x17a82f0
+17a82f0: str x30, [sp, #-0x30]!
+17a82f4: stp x22, x21, [sp, #0x10]
+17a82f8: stp x20, x19, [sp, #0x20]
+17a82fc: adrp x22, #0x2db3000
+17a8300: mov x19, x2
+17a8304: mov x20, x1
+17a8308: ldrb w8, [x22, #0x71]
+17a830c: mov x21, x0
+17a8310: tbnz w8, #0, #0x17a8334
+17a8314: adrp x0, #0x2b81000
+17a8318: ldr x0, [x0, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+17a831c: bl #0x116794c
+17a8320: adrp x0, #0x2ba3000
+17a8324: ldr x0, [x0, #0xac0] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21132, 1814, -1) [load 0x2ba3ac0]
+17a8328: bl #0x116794c
+17a832c: mov w8, #1
+17a8330: strb w8, [x22, #0x71]
+17a8334: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17a8338: cbz x0, #0x17a83d0
+17a833c: ldr x0, [x0, #0x18]
+17a8340: cbz x0, #0x17a83d0
+17a8344: adrp x9, #0x2b81000
+17a8348: ldr x9, [x9, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+17a834c: ldr w10, [x0, #0x1c]
+17a8350: ldr x8, [x0, #0x10]
+17a8354: ldr x9, [x9] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2c8ea50]
+17a8358: add w10, w10, #1
+17a835c: str w10, [x0, #0x1c]
+17a8360: cbz x8, #0x17a83d0
+17a8364: ldrsw x10, [x0, #0x18]
+17a8368: ldr w11, [x8, #0x18]
+17a836c: adrp x22, #0x2ba3000
+17a8370: ldr x22, [x22, #0xac0] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21132, 1814, -1) [load 0x2ba3ac0]
+17a8374: cmp w10, w11
+17a8378: b.hs #0x17a839c
+17a837c: add x8, x8, x10, lsl #3
+17a8380: add w9, w10, #1
+17a8384: mov x1, x20
+17a8388: str w9, [x0, #0x18]
+17a838c: str x20, [x8, #0x20]!
+17a8390: mov x0, x8
+17a8394: bl #0x11678f8
+17a8398: b #0x17a83b0
+17a839c: ldr x8, [x9, #0x20]
+17a83a0: mov x1, x20
+17a83a4: ldr x8, [x8, #0xc0]
+17a83a8: ldr x2, [x8, #0x70]
+17a83ac: bl #0x1ec1cdc
+17a83b0: ldr x3, [x22] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.SetBoxFind (21132, 1814, -1) [load 0x2c91930]
+17a83b4: mov x0, x21
+17a83b8: mov x1, x20
+17a83bc: mov x2, x19
+17a83c0: ldp x20, x19, [sp, #0x20]
+17a83c4: ldp x22, x21, [sp, #0x10]
+17a83c8: ldr x30, [sp], #0x30
+17a83cc: b #0x203bf30
+17a83d0: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.IsStrategyEaShared 0x17a8620
+17a8620: str x30, [sp, #-0x20]!
+17a8624: stp x20, x19, [sp, #0x10]
+17a8628: mov x19, x0
+17a862c: mov x0, xzr
+17a8630: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a8634: cbz x0, #0x17a86e8
+17a8638: ldrb w8, [x0, #0x22]
+17a863c: cbnz w8, #0x17a8668
+17a8640: mov x0, xzr
+17a8644: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a8648: cbz x0, #0x17a86e8
+17a864c: ldrb w8, [x0, #0x23]
+17a8650: cbnz w8, #0x17a8668
+17a8654: mov x0, xzr
+17a8658: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a865c: cbz x0, #0x17a86e8
+17a8660: ldrb w8, [x0, #0x24]
+17a8664: cbz w8, #0x17a86ac
+17a8668: mov x0, xzr
+17a866c: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a8670: cbz x0, #0x17a86e8
+17a8674: ldr x8, [x0, #0x50]
+17a8678: cbz x8, #0x17a8698
+17a867c: mov x0, xzr
+17a8680: bl #0x15df43c ; Logic.Handler.FunctionBlockHandler.get_FunctionBlockData
+17a8684: cbz x0, #0x17a86e8
+17a8688: ldr x8, [x0, #0x50]
+17a868c: cbz x8, #0x17a86e8
+17a8690: ldr w20, [x8, #0x2c]
+17a8694: b #0x17a869c
+17a8698: mov w20, #0x10
+17a869c: mov x0, x19
+17a86a0: mov x1, xzr
+17a86a4: bl #0x17e5f38 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.IsFirstLevel
+17a86a8: tbz w0, #0, #0x17a86b4
+17a86ac: mov w0, wzr
+17a86b0: b #0x17a86dc
+17a86b4: mov x0, x19
+17a86b8: mov x1, xzr
+17a86bc: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17a86c0: cbz x0, #0x17a86e8
+17a86c4: ldr x0, [x0, #0x18]
+17a86c8: cbz x0, #0x17a86e8
+17a86cc: mov x1, xzr
+17a86d0: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17a86d4: cmp w0, w20
+17a86d8: cset w0, ge
+17a86dc: ldp x20, x19, [sp, #0x10]
+17a86e0: ldr x30, [sp], #0x20
+17a86e4: ret 
+17a86e8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.IsCanEaShared 0x17a86ec
+17a86ec: str x30, [sp, #-0x20]!
+17a86f0: stp x20, x19, [sp, #0x10]
+17a86f4: adrp x20, #0x2db3000
+17a86f8: mov x19, x0
+17a86fc: ldrb w8, [x20, #0x74]
+17a8700: tbnz w8, #0, #0x17a8718
+17a8704: adrp x0, #0x2ba3000
+17a8708: ldr x0, [x0, #0xad8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.IsCanEaShared (21129, 1814, -1) [load 0x2ba3ad8]
+17a870c: bl #0x116794c
+17a8710: mov w8, #1
+17a8714: strb w8, [x20, #0x74]
+17a8718: bl #0x17a4068 ; Data.GamePlay.MainPlay.MainPlayDataMgr.IsChainPlayMode
+17a871c: tbz w0, #0, #0x17a8730
+17a8720: ldp x20, x19, [sp, #0x10]
+17a8724: mov w0, wzr
+17a8728: ldr x30, [sp], #0x20
+17a872c: ret 
+17a8730: adrp x8, #0x2ba3000
+17a8734: mov x0, x19
+17a8738: ldr x8, [x8, #0xad8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.IsCanEaShared (21129, 1814, -1) [load 0x2ba3ad8]
+17a873c: ldp x20, x19, [sp, #0x10]
+17a8740: ldr x1, [x8] ; GENERIC Data.GamePlay.CommonPlay.TBasePlayDataMgr`1.IsCanEaShared (21129, 1814, -1) [load 0x2c91910]
+17a8744: ldr x30, [sp], #0x20
+17a8748: b #0x203bbb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.WarmLevelReduceWord 0x17b15e4
+17b15e4: sub sp, sp, #0x70
+17b15e8: stp x29, x30, [sp, #0x10]
+17b15ec: stp x28, x27, [sp, #0x20]
+17b15f0: stp x26, x25, [sp, #0x30]
+17b15f4: stp x24, x23, [sp, #0x40]
+17b15f8: stp x22, x21, [sp, #0x50]
+17b15fc: stp x20, x19, [sp, #0x60]
+17b1600: adrp x21, #0x2db3000
+17b1604: mov w22, w2
+17b1608: mov x19, x1
+17b160c: ldrb w8, [x21, #0xa7]
+17b1610: mov x20, x0
+17b1614: tbnz w8, #0, #0x17b1674
+17b1618: adrp x0, #0x2b7e000
+17b161c: ldr x0, [x0, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17b1620: bl #0x116794c
+17b1624: adrp x0, #0x2b7e000
+17b1628: ldr x0, [x0, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17b162c: bl #0x116794c
+17b1630: adrp x0, #0x2b87000
+17b1634: ldr x0, [x0, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17b1638: bl #0x116794c
+17b163c: adrp x0, #0x2b8a000
+17b1640: ldr x0, [x0, #0x248] ; GENERIC System.Collections.Generic.List`1.IndexOf (35599, 110, -1) [load 0x2b8a248]
+17b1644: bl #0x116794c
+17b1648: adrp x0, #0x2b80000
+17b164c: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17b1650: bl #0x116794c
+17b1654: adrp x0, #0x2b80000
+17b1658: ldr x0, [x0, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17b165c: bl #0x116794c
+17b1660: adrp x0, #0x2ba3000
+17b1664: ldr x0, [x0, #0xc00] ; STRING_LITERAL #16598 [load 0x2ba3c00]
+17b1668: bl #0x116794c
+17b166c: mov w8, #1
+17b1670: strb w8, [x21, #0xa7]
+17b1674: cbz x19, #0x17b18a0
+17b1678: cbz w22, #0x17b18a0
+17b167c: ldr x21, [x19, #0x48]
+17b1680: cbz x21, #0x17b18a0
+17b1684: ldr w8, [x21, #0x18]
+17b1688: cmp w8, #1
+17b168c: b.lt #0x17b18a0
+17b1690: ldr x9, [x19, #0x20]
+17b1694: cbz x9, #0x17b18c0
+17b1698: cmp w22, w8
+17b169c: mov x0, xzr
+17b16a0: csel w8, w22, w8, lt
+17b16a4: cmp w22, #0
+17b16a8: ldr w22, [x9, #0x18]
+17b16ac: csel w23, wzr, w8, lt
+17b16b0: bl #0x16268c4 ; Logic.Handler.SettingsHandler.IsEnglish
+17b16b4: mov w8, #-4
+17b16b8: tst w0, #1
+17b16bc: cinc w8, w8, eq
+17b16c0: add w8, w8, w22
+17b16c4: cmp w23, w8
+17b16c8: csel w25, w23, w8, lt
+17b16cc: cmp w25, #1
+17b16d0: b.lt #0x17b18a0
+17b16d4: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17b16d8: cbz x0, #0x17b18c0
+17b16dc: adrp x26, #0x2b80000
+17b16e0: adrp x29, #0x2b7e000
+17b16e4: adrp x27, #0x2b7e000
+17b16e8: adrp x28, #0x2b87000
+17b16ec: ldr x26, [x26, #0x9f8] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2b809f8]
+17b16f0: ldr x29, [x29, #0xf8] ; USAGE kind=6 idx=36684 [load 0x2b7e0f8]
+17b16f4: ldr x27, [x27, #0x170] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2b7e170]
+17b16f8: ldr x28, [x28, #0xb08] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2b87b08]
+17b16fc: mov w22, wzr
+17b1700: str wzr, [x0, #0x17c]
+17b1704: ldr x2, [x26] ; GENERIC System.Collections.Generic.List`1.get_Item (35572, 110, -1) [load 0x2c8eae8]
+17b1708: mov x0, x21
+17b170c: mov w1, w22
+17b1710: bl #0x1ec1a0c
+17b1714: mov x1, xzr
+17b1718: mov x23, x0
+17b171c: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17b1720: tbnz w0, #0, #0x17b179c
+17b1724: ldr x0, [x19, #0x20]
+17b1728: cbz x0, #0x17b18c0
+17b172c: ldr x2, [x28] ; GENERIC System.Collections.Generic.List`1.Contains (35582, 110, -1) [load 0x2c8ea68]
+17b1730: mov x1, x23
+17b1734: bl #0x1ec1f30
+17b1738: tbz w0, #0, #0x17b179c
+17b173c: ldr x0, [x19, #0x20]
+17b1740: cbz x0, #0x17b18c0
+17b1744: adrp x8, #0x2b8a000
+17b1748: mov x1, x23
+17b174c: ldr x8, [x8, #0x248] ; GENERIC System.Collections.Generic.List`1.IndexOf (35599, 110, -1) [load 0x2b8a248]
+17b1750: ldr x2, [x8] ; GENERIC System.Collections.Generic.List`1.IndexOf (35599, 110, -1) [load 0x2c8ea98]
+17b1754: bl #0x1ec272c
+17b1758: ldr x8, [x19]
+17b175c: mov w1, w0
+17b1760: mov x0, x19
+17b1764: ldp x9, x2, [x8, #0x198]
+17b1768: blr x9
+17b176c: mov x0, x19
+17b1770: mov x1, x23
+17b1774: mov x2, xzr
+17b1778: bl #0x17f33d8 ; Data.GamePlay.CommonPlay.Config.BaseLevelConfig.AddExtra
+17b177c: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17b1780: cbz x0, #0x17b18c0
+17b1784: ldr w23, [x0, #0x17c]
+17b1788: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17b178c: cbz x0, #0x17b18c0
+17b1790: sub w8, w23, #1
+17b1794: str w8, [x0, #0x17c]
+17b1798: b #0x17b1888
+17b179c: mov x0, x23
+17b17a0: mov x1, xzr
+17b17a4: bl #0x21eb178 ; System.String.IsNullOrEmpty
+17b17a8: tbnz w0, #0, #0x17b1888
+17b17ac: mov x0, x20
+17b17b0: mov x1, xzr
+17b17b4: bl #0x17e59e4 ; Data.GamePlay.CommonPlay.BasePlayDataMgr.get_CommonPlayDataMgr
+17b17b8: cbz x0, #0x17b18c0
+17b17bc: ldr x0, [x0, #0x18]
+17b17c0: cbz x0, #0x17b18c0
+17b17c4: mov x1, xzr
+17b17c8: bl #0x17b8250 ; Data.GamePlay.MainPlay.StageData.get_LevelIndex
+17b17cc: adrp x8, #0x2b7d000
+17b17d0: add x1, sp, #0xc
+17b17d4: ldr x8, [x8, #0xaf8]
+17b17d8: str w0, [sp, #0xc]
+17b17dc: ldr x8, [x8, #0x48]
+17b17e0: mov x0, x8
+17b17e4: bl #0x1167a8c
+17b17e8: adrp x8, #0x2ba3000
+17b17ec: mov x2, x0
+17b17f0: mov x1, x23
+17b17f4: ldr x8, [x8, #0xc00] ; STRING_LITERAL #16598 [load 0x2ba3c00]
+17b17f8: mov x3, xzr
+17b17fc: ldr x8, [x8] ; STRING_LITERAL #16598 [load 0x2ccad90]
+17b1800: mov x0, x8
+17b1804: bl #0x21ec0fc ; System.String.Format
+17b1808: ldr x24, [x29] ; USAGE kind=6 idx=36684 [load 0x2c931a8]
+17b180c: mov x23, x0
+17b1810: ldr x8, [x24, #0x38]
+17b1814: cbnz x8, #0x17b1824
+17b1818: mov x0, x24
+17b181c: bl #0x119ee98
+17b1820: ldr x8, [x24, #0x38]
+17b1824: ldr x0, [x8, #0x10]
+17b1828: add x8, x0, #0x135
+17b182c: ldrh w8, [x8]
+17b1830: tbnz w8, #0, #0x17b1838
+17b1834: bl #0x119ee3c
+17b1838: ldr w8, [x0, #0xe4]
+17b183c: cbnz w8, #0x17b1844
+17b1840: bl #0x1167a84
+17b1844: ldr x8, [x24, #0x38]
+17b1848: ldr x0, [x8, #0x10]
+17b184c: add x8, x0, #0x135
+17b1850: ldrh w8, [x8]
+17b1854: tbnz w8, #0, #0x17b185c
+17b1858: bl #0x119ee3c
+17b185c: ldr x8, [x27] ; TYPE Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f* [load 0x2c78bf8]
+17b1860: ldr x9, [x0, #0xb8]
+17b1864: ldr w10, [x8, #0xe4]
+17b1868: ldr x24, [x9]
+17b186c: cbnz w10, #0x17b1878
+17b1870: mov x0, x8
+17b1874: bl #0x1167a84
+17b1878: mov x0, x23
+17b187c: mov x1, x24
+17b1880: mov x2, xzr
+17b1884: bl #0x1975864 ; Log."f#f/f,f-f*f+f)f7f4f5f1f>f?f<f*.Error
+17b1888: add w22, w22, #1
+17b188c: cmp w25, w22
+17b1890: b.ne #0x17b1704
+17b1894: bl #0x17a1454 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_RestoreData
+17b1898: cbz x0, #0x17b18c0
+17b189c: str w25, [x0, #0x1b4]
+17b18a0: ldp x20, x19, [sp, #0x60]
+17b18a4: ldp x22, x21, [sp, #0x50]
+17b18a8: ldp x24, x23, [sp, #0x40]
+17b18ac: ldp x26, x25, [sp, #0x30]
+17b18b0: ldp x28, x27, [sp, #0x20]
+17b18b4: ldp x29, x30, [sp, #0x10]
+17b18b8: add sp, sp, #0x70
+17b18bc: ret 
+17b18c0: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.RestoreData.CheckRestore 0x17b7758
+17b7758: stp x30, x21, [sp, #-0x20]!
+17b775c: stp x20, x19, [sp, #0x10]
+17b7760: adrp x20, #0x2db3000
+17b7764: mov x19, x0
+17b7768: ldrb w8, [x20, #0x110]
+17b776c: tbnz w8, #0, #0x17b7790
+17b7770: adrp x0, #0x2b80000
+17b7774: ldr x0, [x0, #0x978] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 110, -1) [load 0x2b80978]
+17b7778: bl #0x116794c
+17b777c: adrp x0, #0x2b80000
+17b7780: ldr x0, [x0, #0x758] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 20, -1) [load 0x2b80758]
+17b7784: bl #0x116794c
+17b7788: mov w8, #1
+17b778c: strb w8, [x20, #0x110]
+17b7790: ldr x8, [x19, #0x188]
+17b7794: cbz x8, #0x17b7834
+17b7798: ldr w8, [x8, #0x18]
+17b779c: cmp w8, #0
+17b77a0: b.gt #0x17b7810
+17b77a4: adrp x21, #0x2db0000
+17b77a8: ldr w20, [x19, #0x1b4]
+17b77ac: ldrb w8, [x21, #0xb8d]
+17b77b0: cbnz w8, #0x17b77c8
+17b77b4: adrp x0, #0x2b7d000
+17b77b8: ldr x0, [x0, #0xb68] ; TYPE System.Math [load 0x2b7db68]
+17b77bc: bl #0x116794c
+17b77c0: mov w8, #1
+17b77c4: strb w8, [x21, #0xb8d]
+17b77c8: adrp x8, #0x2b7d000
+17b77cc: ldr x8, [x8, #0xb68] ; TYPE System.Math [load 0x2b7db68]
+17b77d0: ldr x0, [x8] ; TYPE System.Math [load 0x2c7b5b0]
+17b77d4: ldr w8, [x0, #0xe4]
+17b77d8: cbnz w8, #0x17b77e0
+17b77dc: bl #0x1167a84
+17b77e0: cmp w20, #0
+17b77e4: cneg w8, w20, mi
+17b77e8: cmp w8, #0
+17b77ec: b.gt #0x17b7810
+17b77f0: ldr s0, [x19, #0x1c4]
+17b77f4: fcmp s0, #0.0
+17b77f8: b.gt #0x17b7810
+17b77fc: ldr x8, [x19, #0x1a8]
+17b7800: cbz x8, #0x17b7834
+17b7804: ldr w8, [x8, #0x18]
+17b7808: cmp w8, #0
+17b780c: b.le #0x17b7820
+17b7810: ldp x20, x19, [sp, #0x10]
+17b7814: mov w0, #1
+17b7818: ldp x30, x21, [sp], #0x20
+17b781c: ret 
+17b7820: mov x0, x19
+17b7824: ldp x20, x19, [sp, #0x10]
+17b7828: mov x1, xzr
+17b782c: ldp x30, x21, [sp], #0x20
+17b7830: b #0x17f2e9c ; Data.GamePlay.CommonPlay.MainRestoreData.CheckRestore
+17b7834: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.Play.PlayDataMgr.AddFindExtraWord 0x179d08c
+179d08c: str d8, [sp, #-0x30]!
+179d090: str x30, [sp, #8]
+179d094: stp x22, x21, [sp, #0x10]
+179d098: stp x20, x19, [sp, #0x20]
+179d09c: adrp x21, #0x2db3000
+179d0a0: mov x19, x1
+179d0a4: mov x20, x0
+179d0a8: ldrb w8, [x21, #0x30]
+179d0ac: tbnz w8, #0, #0x179d0e8
+179d0b0: adrp x0, #0x2b7e000
+179d0b4: ldr x0, [x0, #0x148] ; TYPE Logic.GameMgr [load 0x2b7e148]
+179d0b8: bl #0x116794c
+179d0bc: adrp x0, #0x2ba3000
+179d0c0: ldr x0, [x0, #0x6c8] ; GENERIC System.Collections.Generic.List`1.Add (35577, 2177, -1) [load 0x2ba36c8]
+179d0c4: bl #0x116794c
+179d0c8: adrp x0, #0x2b81000
+179d0cc: ldr x0, [x0, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+179d0d0: bl #0x116794c
+179d0d4: adrp x0, #0x2ba3000
+179d0d8: ldr x0, [x0, #0x6d0] ; TYPE Data.GamePlay.MainPlay.WordTimeRecord [load 0x2ba36d0]
+179d0dc: bl #0x116794c
+179d0e0: mov w8, #1
+179d0e4: strb w8, [x21, #0x30]
+179d0e8: ldr x8, [x20]
+179d0ec: mov x0, x20
+179d0f0: ldr x9, [x8, #0x238]
+179d0f4: ldr x1, [x8, #0x240]
+179d0f8: blr x9
+179d0fc: mov x21, x0
+179d100: mov x0, x19
+179d104: mov x1, xzr
+179d108: bl #0x164300c ; Logic.Handler.WeeklyReportHandler.RecordCompletedWord
+179d10c: cbz x21, #0x179d2d8
+179d110: ldr x0, [x21, #0x20]
+179d114: cbz x0, #0x179d2d8
+179d118: adrp x22, #0x2b81000
+179d11c: ldr x22, [x22, #0x750] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2b81750]
+179d120: ldr w10, [x0, #0x1c]
+179d124: ldr x8, [x0, #0x10]
+179d128: ldr x9, [x22] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2c8ea50]
+179d12c: add w10, w10, #1
+179d130: str w10, [x0, #0x1c]
+179d134: cbz x8, #0x179d2d8
+179d138: ldrsw x10, [x0, #0x18]
+179d13c: ldr w11, [x8, #0x18]
+179d140: cmp w10, w11
+179d144: b.hs #0x179d168
+179d148: add x8, x8, x10, lsl #3
+179d14c: add w9, w10, #1
+179d150: mov x1, x19
+179d154: str w9, [x0, #0x18]
+179d158: str x19, [x8, #0x20]!
+179d15c: mov x0, x8
+179d160: bl #0x11678f8
+179d164: b #0x179d17c
+179d168: ldr x8, [x9, #0x20]
+179d16c: mov x1, x19
+179d170: ldr x8, [x8, #0xc0]
+179d174: ldr x2, [x8, #0x70]
+179d178: bl #0x1ec1cdc
+179d17c: ldr x0, [x20, #0x28]
+179d180: cbz x0, #0x179d2d8
+179d184: ldr w10, [x0, #0x1c]
+179d188: ldr x8, [x0, #0x10]
+179d18c: ldr x9, [x22] ; GENERIC System.Collections.Generic.List`1.Add (35577, 110, -1) [load 0x2c8ea50]
+179d190: add w10, w10, #1
+179d194: str w10, [x0, #0x1c]
+179d198: cbz x8, #0x179d2d8
+179d19c: ldrsw x10, [x0, #0x18]
+179d1a0: ldr w11, [x8, #0x18]
+179d1a4: adrp x22, #0x2b7e000
+179d1a8: ldr x22, [x22, #0x148] ; TYPE Logic.GameMgr [load 0x2b7e148]
+179d1ac: cmp w10, w11
+179d1b0: b.hs #0x179d1d4
+179d1b4: add x8, x8, x10, lsl #3
+179d1b8: add w9, w10, #1
+179d1bc: mov x1, x19
+179d1c0: str w9, [x0, #0x18]
+179d1c4: str x19, [x8, #0x20]!
+179d1c8: mov x0, x8
+179d1cc: bl #0x11678f8
+179d1d0: b #0x179d1e8
+179d1d4: ldr x8, [x9, #0x20]
+179d1d8: mov x1, x19
+179d1dc: ldr x8, [x8, #0xc0]
+179d1e0: ldr x2, [x8, #0x70]
+179d1e4: bl #0x1ec1cdc
+179d1e8: ldr x8, [x22] ; TYPE Logic.GameMgr [load 0x2c79d50]
+179d1ec: ldr x8, [x8, #0xb8]
+179d1f0: ldr x8, [x8]
+179d1f4: cbz x8, #0x179d2d8
+179d1f8: ldr x8, [x8, #0x40]
+179d1fc: cbz x8, #0x179d2d8
+179d200: ldr x0, [x8, #0x20]
+179d204: cbz x0, #0x179d2d8
+179d208: adrp x22, #0x2ba3000
+179d20c: mov x1, xzr
+179d210: ldr x22, [x22, #0x6d0] ; TYPE Data.GamePlay.MainPlay.WordTimeRecord [load 0x2ba36d0]
+179d214: bl #0x180ae34 ; Data.Common.CommonDataMgr.OnFindNewWord
+179d218: mov x0, x20
+179d21c: bl #0x179d2dc ; Data.GamePlay.Play.PlayDataMgr.CheckLastWordLeft
+179d220: ldr x0, [x22] ; TYPE Data.GamePlay.MainPlay.WordTimeRecord [load 0x2c7e538]
+179d224: ldr x20, [x21, #0x78]
+179d228: ldr s8, [x21, #0x98]
+179d22c: bl #0x1167ba0
+179d230: mov x1, xzr
+179d234: mov x21, x0
+179d238: bl #0x234c22c ; System.Object..ctor
+179d23c: mov x0, x21
+179d240: mov x1, x19
+179d244: str x19, [x0, #0x10]!
+179d248: bl #0x11678f8
+179d24c: str s8, [x21, #0x18]
+179d250: strb wzr, [x21, #0x1c]
+179d254: cbz x20, #0x179d2d8
+179d258: adrp x9, #0x2ba3000
+179d25c: ldr x9, [x9, #0x6c8] ; GENERIC System.Collections.Generic.List`1.Add (35577, 2177, -1) [load 0x2ba36c8]
+179d260: ldr w10, [x20, #0x1c]
+179d264: ldr x8, [x20, #0x10]
+179d268: ldr x9, [x9] ; GENERIC System.Collections.Generic.List`1.Add (35577, 2177, -1) [load 0x2c8f6f0]
+179d26c: add w10, w10, #1
+179d270: str w10, [x20, #0x1c]
+179d274: cbz x8, #0x179d2d8
+179d278: ldrsw x10, [x20, #0x18]
+179d27c: ldr w11, [x8, #0x18]
+179d280: cmp w10, w11
+179d284: b.hs #0x179d2b0
+179d288: add x0, x8, x10, lsl #3
+179d28c: add w8, w10, #1
+179d290: mov x1, x21
+179d294: str w8, [x20, #0x18]
+179d298: ldp x20, x19, [sp, #0x20]
+179d29c: str x21, [x0, #0x20]!
+179d2a0: ldr x30, [sp, #8]
+179d2a4: ldp x22, x21, [sp, #0x10]
+179d2a8: ldr d8, [sp], #0x30
+179d2ac: b #0x11678f8
+179d2b0: ldr x8, [x9, #0x20]
+179d2b4: mov x0, x20
+179d2b8: mov x1, x21
+179d2bc: ldp x20, x19, [sp, #0x20]
+179d2c0: ldr x30, [sp, #8]
+179d2c4: ldr x8, [x8, #0xc0]
+179d2c8: ldp x22, x21, [sp, #0x10]
+179d2cc: ldr x2, [x8, #0x70]
+179d2d0: ldr d8, [sp], #0x30
+179d2d4: b #0x1ec1cdc
+179d2d8: bl #0x1167bb0
+
+FUNCTION Data.GamePlay.MainPlay.MainPlayDataMgr.GetAfterLevelTime 0x17b1ab0
+17b1ab0: str x30, [sp, #-0x30]!
+17b1ab4: stp x22, x21, [sp, #0x10]
+17b1ab8: stp x20, x19, [sp, #0x20]
+17b1abc: adrp x21, #0x2db3000
+17b1ac0: adrp x22, #0x2b80000
+17b1ac4: adrp x20, #0x2b87000
+17b1ac8: ldrb w8, [x21, #0xb1]
+17b1acc: ldr x22, [x22, #0xc0] ; USAGE kind=1 idx=5737 [load 0x2b800c0]
+17b1ad0: ldr x20, [x20, #0x5d0] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2b875d0]
+17b1ad4: mov x19, x0
+17b1ad8: tbnz w8, #0, #0x17b1b14
+17b1adc: adrp x0, #0x2b83000
+17b1ae0: ldr x0, [x0, #0x268] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2b83268]
+17b1ae4: bl #0x116794c
+17b1ae8: adrp x0, #0x2b87000
+17b1aec: ldr x0, [x0, #0x5d0] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2b875d0]
+17b1af0: bl #0x116794c
+17b1af4: adrp x0, #0x2b80000
+17b1af8: ldr x0, [x0, #0x758] ; GENERIC System.Collections.Generic.List`1.get_Count (35566, 20, -1) [load 0x2b80758]
+17b1afc: bl #0x116794c
+17b1b00: adrp x0, #0x2b80000
+17b1b04: ldr x0, [x0, #0xc0] ; USAGE kind=1 idx=5737 [load 0x2b800c0]
+17b1b08: bl #0x116794c
+17b1b0c: mov w8, #1
+17b1b10: strb w8, [x21, #0xb1]
+17b1b14: ldr x0, [x22] ; USAGE kind=1 idx=5737 [load 0x2c756c0]
+17b1b18: bl #0x1167ba0
+17b1b1c: ldr x1, [x20] ; GENERIC System.Collections.Generic.List`1..ctor (35561, 20, -1) [load 0x2c8d2a8]
+17b1b20: mov x20, x0
+17b1b24: bl #0x1e9c22c
+17b1b28: bl #0x17a5e78 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmLevelOrder
+17b1b2c: cbz x0, #0x17b1bd4
+17b1b30: adrp x21, #0x2b83000
+17b1b34: mov w22, wzr
+17b1b38: ldr x21, [x21, #0x268] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2b83268]
+17b1b3c: ldr w8, [x0, #0x18]
+17b1b40: cmp w22, w8
+17b1b44: b.ge #0x17b1bd8
+17b1b48: bl #0x17a5ed4 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmBeginLevelIndex
+17b1b4c: ldr x8, [x19, #0xb0]
+17b1b50: cbz x8, #0x17b1bd4
+17b1b54: ldr x9, [x8]
+17b1b58: add w1, w0, w22
+17b1b5c: mov x0, x8
+17b1b60: mov w2, wzr
+17b1b64: ldp x10, x3, [x9, #0x1a8]
+17b1b68: blr x10
+17b1b6c: cbz x0, #0x17b1bc8
+17b1b70: cbz x20, #0x17b1bd4
+17b1b74: ldr w10, [x20, #0x1c]
+17b1b78: ldr x8, [x20, #0x10]
+17b1b7c: ldr w1, [x0, #0x40]
+17b1b80: ldr x9, [x21] ; GENERIC System.Collections.Generic.List`1.Add (35577, 20, -1) [load 0x2c8d2c0]
+17b1b84: add w10, w10, #1
+17b1b88: str w10, [x20, #0x1c]
+17b1b8c: cbz x8, #0x17b1bd4
+17b1b90: ldrsw x10, [x20, #0x18]
+17b1b94: ldr w11, [x8, #0x18]
+17b1b98: cmp w10, w11
+17b1b9c: b.hs #0x17b1bb4
+17b1ba0: add x8, x8, x10, lsl #2
+17b1ba4: add w9, w10, #1
+17b1ba8: str w9, [x20, #0x18]
+17b1bac: str w1, [x8, #0x20]
+17b1bb0: b #0x17b1bc8
+17b1bb4: ldr x8, [x9, #0x20]
+17b1bb8: mov x0, x20
+17b1bbc: ldr x8, [x8, #0xc0]
+17b1bc0: ldr x2, [x8, #0x70]
+17b1bc4: bl #0x1e9cabc
+17b1bc8: add w22, w22, #1
+17b1bcc: bl #0x17a5e78 ; Data.GamePlay.MainPlay.MainPlayDataMgr.get_WarmLevelOrder
+17b1bd0: cbnz x0, #0x17b1b3c
+17b1bd4: bl #0x1167bb0
+17b1bd8: mov x0, x20
+17b1bdc: ldp x20, x19, [sp, #0x20]
+17b1be0: ldp x22, x21, [sp, #0x10]
+17b1be4: ldr x30, [sp], #0x30
+17b1be8: ret

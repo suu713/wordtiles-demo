@@ -1,0 +1,23 @@
+.floral-banner{position:relative;width:100%;aspect-ratio:var(--floral-ratio,1172/368);pointer-events:none;isolation:isolate;filter:drop-shadow(0 3px 4px #3e254c35)}
+#game-screen .completion-banner{position:absolute;left:5%;top:49.5%;width:90%;translate:0 -50%;z-index:12;pointer-events:none}
+#game-screen .play-panel.completion-feedback .level-readout{visibility:hidden}
+.floral-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.floral-art image{pointer-events:none;user-select:none}
+.floral-bloom,.floral-sway{transform-box:view-box;transform-origin:var(--floral-origin)}
+.floral-plate{transform-box:view-box;transform-origin:center}
+.floral-banner .floral-label{position:absolute;left:var(--floral-text-left,30%);top:var(--floral-text-top,29%);width:var(--floral-text-width,46%);height:var(--floral-text-height,42%);display:flex;align-items:center;justify-content:center;margin:0;color:var(--floral-ink,#fffbed);font-family:'WordTiles Tile','Nunito Sans',sans-serif;font-size:6cqw;font-weight:1000;line-height:1.05;white-space:nowrap;text-align:center;text-shadow:0 1px 2px #61405966}
+.floral-label>span{display:block;flex:none}
+.floral-banner[data-variant='rose'] .floral-label{text-shadow:0 1px 1px #fff8}
+.floral-banner.floral-active{animation:floral-out 260ms ease calc(var(--floral-duration,2200ms) - 260ms) both}
+.floral-active .floral-bloom{animation:floral-bloom 580ms cubic-bezier(.2,.7,.25,1) both}
+.floral-active .floral-right{animation-delay:70ms}
+.floral-active .floral-sway{animation:floral-sway 1600ms ease-in-out 580ms both}
+.floral-active .floral-right .floral-sway{animation-direction:reverse}
+.floral-active .floral-plate{animation:floral-plate-in 480ms cubic-bezier(.2,.65,.25,1) 260ms both}
+.floral-active .floral-label{animation:floral-label-in 380ms ease 420ms both}
+@keyframes floral-bloom{0%{opacity:0;transform:scale(.62) rotate(-1.2deg)}42%{opacity:1;transform:scale(1.11) rotate(.5deg)}72%{opacity:1;transform:scale(1.015) rotate(0deg)}100%{opacity:1;transform:scale(1.025) rotate(0deg)}}
+@keyframes floral-sway{0%,100%{transform:rotate(0deg)}35%{transform:rotate(.65deg)}70%{transform:rotate(-.45deg)}}
+@keyframes floral-plate-in{from{opacity:0;transform:scaleX(.94)}to{opacity:1;transform:scaleX(1)}}
+@keyframes floral-label-in{from{opacity:0;translate:0 3px}to{opacity:1;translate:0 0}}
+@keyframes floral-out{0%{opacity:1;translate:0 0}100%{opacity:0;translate:0 -3px}}
+@media(prefers-reduced-motion:reduce){.floral-banner,.floral-banner *{animation:none!important;transition:none!important}}

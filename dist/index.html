@@ -14,14 +14,17 @@
   <link rel="stylesheet" href="./alps.css?v=30">
   <link rel="stylesheet" href="./collection-ui.css?v=25">
   <link rel="stylesheet" href="./event-ui.css?v=29">
-  <link rel="stylesheet" href="./game-screen.css?v=11">
-  <link rel="stylesheet" href="./completion.css?v=9">
-  <link rel="stylesheet" href="./encouragement.css?v=3">
+  <link rel="stylesheet" href="./game-screen.css?v=17">
+  <link rel="stylesheet" href="./tile-materials.css?v=5">
+  <link rel="stylesheet" href="./completion.css?v=12">
+  <link rel="stylesheet" href="./encouragement.css?v=8">
+  <link rel="stylesheet" href="./floral-banner.css?v=1">
   <link rel="stylesheet" href="./background-themes.css?v=1">
+  <link rel="stylesheet" href="./checkin-ui.css?v=3">
   <link rel="preload" as="image" href="./art/themes/desert.png">
   <link rel="preload" as="image" href="./art/settlement/reference.png">
   <link rel="preload" as="image" href="./art/settlement/foreground.png">
-  <link rel="preload" as="image" href="./art/settlement/abc-wreath.png">
+  <link rel="preload" as="image" href="./art/settlement/golden-book/book@2x.png">
   <link rel="preload" as="font" href="./art/alps/fonts/NunitoSans-Variable.ttf" type="font/ttf" crossorigin>
 </head>
 <body>
@@ -37,6 +40,7 @@
       <button id="lobby-editor" class="lobby-editor" type="button" disabled aria-controls="game-screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14v6Z"/></svg><span>关卡编辑器</span></button>
       <div class="lobby-center"><h1>WordTile</h1><p class="lobby-destination">Alps</p><p class="lobby-eyebrow">ITALY · ALPS</p></div>
       <div class="lobby-progress"><div id="lobby-progress-dots" class="progress-dots" aria-hidden="true"></div><p id="lobby-progress-label" aria-live="polite">0 / 5</p></div>
+      <button id="lobby-checkin" class="lobby-checkin" type="button" aria-label="每日签到" aria-haspopup="dialog" aria-controls="checkin-dialog"><img src="./art/checkin/entry/bi@2x.png" alt=""><span>每日签到</span></button>
       <div class="lobby-actions"><button id="start-game" class="lobby-start" type="button" disabled><span id="lobby-start-label">开始游戏</span><small id="lobby-continue-detail">正在准备关卡</small><img src="./art/alps/assets/icons/arrow-right.png" alt=""></button><p id="lobby-status" role="status" aria-live="polite">正在加载…</p></div>
     </section>
   </main>
@@ -66,7 +70,7 @@
           <button id="cancel-generation" class="cancel-button" type="button" hidden data-help="终止当前搜索，保留关卡和试玩进度。">取消生成</button>
         </div>
         <div class="editor-menus">
-          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘与目标、当前词库信息。"><option value="">更多设置…</option><option value="board">棋盘与目标</option><option value="lexicon" disabled>词库信息</option></select>
+          <label for="options-menu" class="sr-only">更多设置</label><select id="options-menu" aria-label="更多设置" data-help="查看棋盘与目标、画面材质和当前词库信息。"><option value="">更多设置…</option><option value="view">画面与材质</option><option value="board">棋盘与目标</option><option value="lexicon" disabled>词库信息</option></select>
           <label for="file-action" class="sr-only">关卡文件</label><select id="file-action" aria-label="关卡文件" data-help="导入或导出完整初始关卡 JSON。导入前会使用当前算法的词库和规则进行校验。"><option value="">关卡文件…</option><option value="import">导入 JSON</option><option value="export">导出 JSON</option><option value="sample" hidden>固定样例</option></select>
         </div>
         <section id="level-statistics" class="level-statistics" aria-label="关卡初始统计">
@@ -105,11 +109,22 @@
             <div class="sr-only"><span id="game-level-label">算法1 · 第1关</span><span id="readout-label"></span></div>
             <div class="level-readout"><strong id="current-word" aria-live="polite"></strong><p id="feedback" role="status" aria-live="polite"></p></div>
             <div id="encouragement-banner" class="encouragement-banner" role="status" aria-live="polite" aria-atomic="true" hidden>
-              <svg data-banner-art="streak" viewBox="19 152 2134 424" aria-hidden="true"><image href="./art/encouragement/great-streak.png" width="2172" height="724"/></svg>
-              <svg data-banner-art="complete" viewBox="62 116 2051 471" aria-hidden="true"><image href="./art/encouragement/great-complete.png" width="2172" height="724"/></svg>
+              <div class="encouragement-ribbon" aria-hidden="true">
+                <img data-banner-frame="blue" src="./art/encouragement/yanqi/caidai-1@2x.png" alt="" width="734" height="224">
+                <img data-banner-frame="gold" src="./art/encouragement/yanqi/caidai-12@2x.png" alt="" width="728" height="220">
+                <img data-banner-frame="purple" src="./art/encouragement/yanqi/caidai-13@2x.png" alt="" width="740" height="224">
+                <img data-banner-frame="red" src="./art/encouragement/yanqi/caidai-14@2x.png" alt="" width="736" height="224">
+                <strong id="encouragement-text"><span id="encouragement-copy"></span></strong>
+              </div>
               <span id="encouragement-announcement" class="sr-only"></span>
             </div>
+            <div id="encouragement-icon" class="encouragement-icon" role="status" aria-live="polite" aria-atomic="true" hidden>
+              <img class="encouragement-gesture" data-banner-icon="thumbs" src="./art/encouragement/yanqi/dianzan@2x.png" alt="" width="264" height="212" aria-hidden="true">
+              <img class="encouragement-gesture" data-banner-icon="applause" src="./art/encouragement/yanqi/guzhang@2x.png" alt="" width="240" height="224" aria-hidden="true">
+              <span id="encouragement-icon-announcement" class="sr-only"></span>
+            </div>
             <div id="targets" class="targets" aria-label="目标词"></div>
+            <div id="completion-banner" class="completion-banner" role="status" aria-live="polite" aria-atomic="true" hidden></div>
             <span id="targets-note" class="sr-only" hidden aria-label="上下滑动查看其余目标"></span>
             <div class="game-board-area"><div class="board-surround"><div class="board-top"><span id="board-size">3 × 3 棋盘</span><span id="remaining" data-help="每格右上角的数字表示剩余次数。次数归零后格子留空，棋盘不移动。" tabindex="0">剩余次数 9</span></div><div id="board" class="board" aria-label="字母棋盘"></div></div></div>
             <div class="game-spacer" aria-hidden="true"></div>
@@ -135,8 +150,13 @@
         <div hidden><select id="uniform-length"><option value="">按原关卡显示</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><span id="uses-note"></span><span id="cols-note"></span><span id="rows-note"></span><span id="count-note"></span><span id="length-note"></span><span id="uniform-note"></span></div>
       </div>
       <div data-settings-pane="view" hidden>
+        <fieldset class="tile-material-settings"><legend>方块材质</legend>
+          <div class="tile-material-heading"><button id="tile-material-next" type="button">切换下一款</button></div>
+          <div class="tile-material-controls"><label>材质<select id="tile-material-select" aria-label="方块材质"></select></label><label>按压样式<select id="tile-press-select" aria-label="按压样式"><option value="pressed">按压</option><option value="short">按压缩短</option></select></label></div>
+          <div id="tile-material-samples" class="tile-material-samples"><div class="tile-material-sample"><span class="tile-material-face" aria-hidden="true">A<small>3</small></span><span>普通</span></div><div class="tile-material-sample"><span class="tile-material-face" data-state="selected" aria-hidden="true">A<small>3</small></span><span>按住</span></div><div class="tile-material-sample"><span class="tile-material-face" data-state="collected" aria-hidden="true">A<small>3</small></span><span>收集后</span></div></div>
+          <p id="tile-material-status" role="status" aria-live="polite"></p>
+        </fieldset>
         <fieldset class="background-theme-settings"><legend>主题背景</legend><p class="background-theme-note">大厅、关卡和结算同步切换</p><div id="background-theme-options" class="background-theme-options"></div><p id="background-theme-status" role="status" aria-live="polite"></p></fieldset>
-        <label class="stack-field" for="preview-device" data-help="保持 9:16 竖屏比例，并在浏览器内完整显示。固定尺寸在空间不足时会等比缩小。">画面尺寸<select id="preview-device"><option value="auto">自动适配 · 9:16</option><option value="360x640">360 × 640</option><option value="405x720">405 × 720</option><option value="450x800">450 × 800</option></select></label><label class="stack-field" for="preview-zoom">画面缩放<select id="preview-zoom"><option value="100">100%</option><option value="85">85%</option><option value="75">75%</option></select></label>
       </div>
       <div data-settings-pane="lexicon" hidden>
         <label class="stack-field" for="dictionary-tier" hidden>范围库<select id="dictionary-tier" disabled><option value="all" selected>工作簿必答词 1～4级</option><option value="1">1级</option><option value="2">2级</option><option value="3">3级</option><option value="4">4级</option></select></label>
@@ -147,7 +167,7 @@
         <pre id="debug-generation" hidden>尚未进行自动生成。</pre><pre id="debug-rejection" hidden></pre><p id="version-note" hidden></p>
       </div>
       <div data-settings-pane="source" hidden><div id="source-metadata" data-help="额外词只记录，不扣次数。原包特殊障碍和其他字段完整保留在导出数据中；试玩沿用网页连词规则。" tabindex="0"><pre id="source-meta"></pre></div></div>
-      <section class="settings-data" aria-labelledby="settings-data-title"><h3 id="settings-data-title">数据</h3><button id="preview-collection" type="button">补足到 300 词</button><button id="clear-all-data" type="button" aria-describedby="clear-data-note">清除所有数据</button><p id="clear-data-note">收词、活动、回顾、试玩记录和自建关卡</p><p id="data-status" role="status" aria-live="polite"></p></section>
+      <section class="settings-data" aria-label="数据"><button id="clear-all-data" type="button" aria-describedby="clear-data-note">清除所有数据</button><p id="clear-data-note">收词、活动、回顾、试玩记录和自建关卡</p><p id="data-status" role="status" aria-live="polite"></p></section>
     </div>
   </section>
   <dialog id="bonus-dialog" class="bonus-dialog travel-dialog" aria-labelledby="bonus-title" aria-describedby="bonus-summary">
@@ -184,6 +204,6 @@
     <div class="weekly-footer"><button id="weekly-continue" type="button">继续游戏 <span aria-hidden="true">↗</span></button></div>
   </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=67&settlement=9"></script>
+  <script type="module" src="./app.js?v=77&settlement=10&settings=5&encouragement=7&checkin=3&floral=1"></script>
 </body>
 </html>

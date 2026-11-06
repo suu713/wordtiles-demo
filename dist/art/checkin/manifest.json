@@ -1,0 +1,181 @@
+{
+  "sourcePacks": [
+    5,
+    6,
+    7
+  ],
+  "processing": "Original user-supplied PNG files copied unchanged; live text and animation are code overlays.",
+  "assets": [
+    {
+      "path": "entry/bi@2x.png",
+      "size": [
+        148,
+        192
+      ],
+      "mode": "RGBA",
+      "sha256": "c555155888edfc01e63f071422b0ef818de707c125d57f11a67e0cf81066d8b1"
+    },
+    {
+      "path": "entry/frame_1@2x.png",
+      "size": [
+        308,
+        126
+      ],
+      "mode": "RGBA",
+      "sha256": "4968ccad03cfd04d44c1ab1de07bbd4ff8ae5f42ec73fae462af78d630adb999"
+    },
+    {
+      "path": "lit/bi@2x.png",
+      "size": [
+        480,
+        622
+      ],
+      "mode": "RGBA",
+      "sha256": "f60c23e957af041be040b542c715d59dc4d28f50426a6939b888c88fa79bd6e6"
+    },
+    {
+      "path": "lit/dd@2x.png",
+      "size": [
+        872,
+        400
+      ],
+      "mode": "RGBA",
+      "sha256": "e6b8d0c1fbcd351b6c6e4a21bf1c23e9cb15aa490696a20692f1c674ff060822"
+    },
+    {
+      "path": "lit/di@2x.png",
+      "size": [
+        1462,
+        518
+      ],
+      "mode": "RGBA",
+      "sha256": "254cf11c71fd262c720659fa73819e8b5235ad8cc4e094e43cf67ca428e5b9c4"
+    },
+    {
+      "path": "lit/guang@2x.png",
+      "size": [
+        1250,
+        1136
+      ],
+      "mode": "RGBA",
+      "sha256": "4ea4519dbd4545b3372050ecde00d3fb5e79283ca8e9fd8f68827507e91c6594"
+    },
+    {
+      "path": "lit/libao@2x.png",
+      "size": [
+        80,
+        78
+      ],
+      "mode": "RGBA",
+      "sha256": "7b3cfbd1ccae94e71a1dddea7bb7e4ee97b3847276807406b6cbdaf04172a621"
+    },
+    {
+      "path": "lit/shu@2x.png",
+      "size": [
+        1068,
+        742
+      ],
+      "mode": "RGBA",
+      "sha256": "4c943356982532209e236fa6163f6221a0887b6d6ee5386a716869702dcbbad6"
+    },
+    {
+      "path": "lit/wancheng@2x.png",
+      "size": [
+        152,
+        152
+      ],
+      "mode": "RGBA",
+      "sha256": "af97a02f6753f49888f57dce417a88365974411c79c464bdfe1fd38efe480b6e"
+    },
+    {
+      "path": "lit/xian@2x.png",
+      "size": [
+        1282,
+        42
+      ],
+      "mode": "RGBA",
+      "sha256": "f15dc3ddd503f5ee25868a4e1fce2b16dbae13882e8bec1e95ccea256729bef4"
+    },
+    {
+      "path": "lit/xx1@2x.png",
+      "size": [
+        108,
+        122
+      ],
+      "mode": "RGBA",
+      "sha256": "1fd0d34a0009039ed722b4878fa0d17cee8d9af7919931ef6fb3c46fe21aa075"
+    },
+    {
+      "path": "lit/xx2@2x.png",
+      "size": [
+        44,
+        48
+      ],
+      "mode": "RGBA",
+      "sha256": "f745c17a7dea45050882e0845ee8150db76d7e6d317476f2d9931881cc6d97f0"
+    },
+    {
+      "path": "lit/xx3@2x.png",
+      "size": [
+        62,
+        68
+      ],
+      "mode": "RGBA",
+      "sha256": "864bf7ed131add09ed8ff2af834fa10db71033c03e15d195461ad9d7136fc105"
+    },
+    {
+      "path": "lit/yuandi1@2x.png",
+      "size": [
+        152,
+        152
+      ],
+      "mode": "RGBA",
+      "sha256": "8319ff95bd4bd87bb172fccc59e565b3c06d2451546c15b4111fb0975c18ea5f"
+    },
+    {
+      "path": "lit/yumao1@2x(1).png",
+      "size": [
+        74,
+        150
+      ],
+      "mode": "RGBA",
+      "sha256": "3c4b728e16f478494594a7e561d4717e44a1c61fc5f6c7cab51b48e31f8f5de8"
+    },
+    {
+      "path": "lit/yumao1@2x.png",
+      "size": [
+        192,
+        170
+      ],
+      "mode": "RGBA",
+      "sha256": "d41f725d07fd6e1692deaa45bfa75f5a3f390a2cc4bd3c6dcbd4d793aef48071"
+    },
+    {
+      "path": "unlit/andi@2x.png",
+      "size": [
+        872,
+        172
+      ],
+      "mode": "RGBA",
+      "sha256": "8c4538c5da7e31c58b9e383b0d7e9266a376ab2b18b1d2a3eaa60be3d4f08034"
+    },
+    {
+      "path": "unlit/guang@2x.png",
+      "size": [
+        1188,
+        844
+      ],
+      "mode": "RGBA",
+      "sha256": "e8dba94a90d9fc5fb9d50bb8cfe7ce59110dfdea2a33bff1344bae9826094c2d"
+    },
+    {
+      "path": "unlit/weidianliang@2x.png",
+      "size": [
+        602,
+        794
+      ],
+      "mode": "RGBA",
+      "sha256": "a7b88a115390c58ff55cbc93aeb89a46ab2e1177a2857c2649aa16a2ce96739e"
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zen Word 能力分与动态难度｜XAPK 核查版</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f3f4ef;color:#26352d;font:16px/1.8 "Microsoft YaHei","Segoe UI",sans-serif}main{max-width:1080px;margin:24px auto;padding:30px 38px;background:#fff;border:1px solid #dfe4dc;border-radius:12px}h1{font-size:27px;line-height:1.45;margin:0 0 8px}h2{font-size:20px;margin:22px 0 10px}p{margin:12px 0}.meta{font-size:13px;color:#68776c}.lead{font-size:18px;font-weight:700;color:#245a40}.note{background:#f9f2e5;border-left:4px solid #b88a47;padding:12px 16px}.result{background:#eff7ed;border-left:4px solid #588b5d;padding:12px 16px}.tw{overflow-x:auto;margin:14px 0}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.65}th,td{text-align:left;vertical-align:top;padding:10px 12px;border:1px solid #dce3da;overflow-wrap:anywhere}th{background:#edf3e9}th:first-child{width:25%}details{margin:14px 0;border:1px solid #dbe2d7;border-radius:8px;padding:12px 16px;overflow-wrap:anywhere}summary{cursor:pointer;font-weight:700;font-size:17px}ul{padding-left:23px}li{margin:8px 0}a{color:#276c4d}code{background:#f2f3ec;font-size:.9em;padding:1px 4px;border-radius:3px;overflow-wrap:anywhere}small{color:#647267;font-size:12px}@media(max-width:650px){body{font-size:15px}main{margin:0;padding:20px 15px;border:0;border-radius:0}h1{font-size:23px}summary{font-size:16px}th,td{padding:7px;font-size:12px}}@media print{body{background:white}main{border:0;margin:0;padding:0}summary{font-size:16px}tr{break-inside:avoid}h2{break-after:avoid}}
+</style></head><body><main>
+<h1>Zen Word：能力分、玩家分层与动态难度</h1>
+<p class="meta">XAPK 核查版 · 2.44.0 / versionCode 189 · 2026-10-15 · 基础包与上轮完全一致，已补齐 ARM64 执行库</p>
+<p class="result"><b>动态难度已详细展开：</b><a href="ZenWord_动态难度规则详解.html">查看触发条件、概率、额外词换答案、免费揭字及重复触发规则</a>。本页第4项也已同步更新。</p>
+<p class="lead">新手活动的能力分确实会改变活动目标；主线 ELO 的已追踪客户端用途是计算与上报；庆典“能力组”按国家和语言选择。</p>
+<p>这次依据实际方法体、调用方和原始常量补查。此前“只有字段，无法判断”的多处关系，现在可以拆清楚：</p><div class="tw"><table><thead><tr><th>系统</th><th>本次确认的实际用处</th><th>是否由主线能力分决定</th></tr></thead><tbody><tr><td>主线 ELO／滚动能力分</td><td>过关后计算、保存历史，并按模型标签上报。已追查读取方与内联访问。</td><td>未发现其数值控制客户端选库、删词、活动分档或用户标签。</td></tr><tr><td>新手活动能力分＋意愿分</td><td>对应实验分支算出潜力档，决定活动目标关号和弹出提醒节点。</td><td>使用活动自己的整数分；不读取主线两份 ELO。</td></tr><tr><td>庆典高／中／低“能力组”</td><td>选择不同庆典任务参数；分组依据国家、当前语言及两者的匹配关系。</td><td>不读取个人能力分、耗时或错误次数。</td></tr><tr><td>恢复旧关卡的降难度帮助</td><td>按关号、游玩天数、距上次进入的时间、尝试进度、流失标签扩大可替代答案范围；部分组免费揭1字。</td><td>这条实际玩法分支不读取主线 ELO。</td></tr></tbody></table></div>
+<p class="result"><b>对产品设计的直接结论：</b>Zen 存在按行为与标签提供帮助的动态机制，但不能把它概括成“主线 ELO 高就换难库、低就换易库”。能明确追到的“分数 → 玩家档位 → 内容目标”链，在新手活动里，而且它还混合了付费和互动意愿。</p>
+<p class="note">以下“已确认”指本版本存在可执行分支和对应数据。某个账号是否实际命中实验、服务器是否另用 ELO 生成标签，需要运行状态或后台规则；没有据包内代码宣称所有玩家都走同一流程。</p>
+<details id="beginner"><summary>1. 新手活动：能力分具体怎样改变内容</summary>
+<p><b>先在前5关积累两种分数，再在对应实验的活动启动分支里分档。</b>能力分和意愿分超过第5关都不再由这两个加分入口累加。它们与主线 ELO 分别存储。</p>
+<div class="tw"><table><thead><tr><th>潜力档</th><th>判断条件（按顺序）</th><th>活动目标关号</th></tr></thead><tbody><tr><td>第三档</td><td>能力分≥40，且能力分＋意愿分≥60</td><td>35</td></tr><tr><td>第二档</td><td>未达到第三档；能力分≥30，或两分合计≥50</td><td>25</td></tr><tr><td>第一档</td><td>其余情况</td><td>15</td></tr></tbody></table></div><p>这里的15／25／35是<b>活动目标关号</b>，不是再额外通关15／25／35次，也不是把主线题目切成三个难度。目标分支与提醒列表都直接读取 <code>UserPotentialType</code>。</p>
+<h2>能力分怎么加</h2><div class="tw"><table><thead><tr><th>前期表现</th><th>活动能力分变化</th></tr></thead><tbody><tr><td>连出被判定为额外词的单词</td><td>每次＋10</td></tr><tr><td>第2～5关结算，错误次数≤2</td><td>每关＋10</td></tr><tr><td>第2关≤20秒／第3关≤18秒／第4关≤15秒／第5关≤25秒</td><td>对应关再＋10，可与少错误加分叠加</td></tr><tr><td>第2～5关累计触发连击展示；第5关结算</td><td>展示1次＋10，2次＋20，≥3次＋30</td></tr></tbody></table></div>
+<p>连击加分统计的是 <code>OnComboShow</code> 的触发次数；不能直接当作任意长度的连续正确词数。错误少、速度快、额外词和连击奖励可以累加。</p>
+<h2>意愿分怎么加</h2><div class="tw"><table><thead><tr><th>入口／行为</th><th>意愿分变化</th></tr></thead><tbody><tr><td>字典入口、提示按钮、返回大厅、商店入口</td><td>各＋10；仍受各入口流程条件限制</td></tr><tr><td>打乱字母</td><td>每次＋10，最多计2次</td></tr><tr><td>指定的激励视频按钮（章节奖励／关闭商店奖励）</td><td>点击入口＋30；不是证明已看完广告</td></tr><tr><td>本次会话中退出后重新进入主线</td><td>＋20，随后清除该次退出标志</td></tr><tr><td>内购成功</td><td>＋60</td></tr></tbody></table></div>
+<p><b>这是一套“能力＋投入意愿”的潜力分层。</b>例如内购能加意愿分，但如果能力分不到40，仍不能单靠付费进入第三档。各入口可能还有页面／状态条件，表中的数值是对应加分调用，不是所有点击必定无条件计分。</p>
+<h2>提醒与奖励的实际关系</h2><div class="tw"><table><thead><tr><th>潜力档</th><th>配置中的提醒候选关号</th></tr></thead><tbody><tr><td>第一档／默认列表</td><td>4、9、12、15、20、25、30</td></tr><tr><td>第二档</td><td>4、9、14、20、25</td></tr><tr><td>第三档</td><td>4、9、12、20、25、30、35</td></tr></tbody></table></div>
+<p>这些是提醒候选关号，显示还受活动状态、到期与完成等条件限制。第三档选专门列表，第二档选另一列表，第一档走默认列表。</p>
+<p><b>没有查到“潜力越高，直接奖励越多”。</b><code>GetReward</code> 不读取能力分、意愿分或潜力档；它根据成功／失败、活动实验、地区和阶段选择金币。潜力档在这条链中直接改变的是目标与提醒安排。</p>
+<h2>生效范围必须一起看</h2>
+<p>这套分档要求新手活动 <code>test2 group3</code> 及版本条件成立；启动逻辑在关号≥5时进行判断。新的 <code>EventUI2/3</code> 流程优先进入自己的启动分支；目标函数对新版活动也优先取新版目标。</p>
+<p>包内现有策略对<b>首次安装版本≥2.38.0</b>配置了 <code>beginner_bonus_event_ui_test=2</code>。因此，新装2.44账号若按这条本地策略运行，会优先使用新版流程；不能把上述潜力分档当成所有新账号当前都在使用的机制。实验分发／远端覆盖仍可改变实际命中。</p>
+</details>
+<details id="main-score"><summary>2. 主线能力分：参与条件、评分依据和真正输出</summary>
+<div class="tw"><table><thead><tr><th>规则</th><th>已核实内容</th></tr></thead><tbody><tr><td>触发时机</td><td>两种主线玩法的 EndGame 都调用评分入口；在推进到下一关之前执行。</td></tr><tr><td>贝叶斯资格</td><td>首次初始化时，当前关号≤991才纳入；资格保存下来。评分只处理当前关号≤1000。</td></tr><tr><td>初始定位</td><td>先收集10条表现与关卡参考数据；不足10条时不更新／上报这两份 ELO。第10条开始定位。</td></tr><tr><td>参考难度 L</td><td>Android 版读取 AndroidPassTime 的 p50：表值按分钟使用，乘60转秒，再乘4得到 L。</td></tr><tr><td>两份 ELO 更新</td><td>期望值 P=1÷(1+10^((L−旧分)/400))；新分=旧分+K×(W−P)。两份分数用不同 K。</td></tr><tr><td>更新幅度</td><td>旧的第一份分数＜2000：K1=30、K2=200；否则 K1=20、K2=100。第二份变化更敏感。</td></tr><tr><td>分数边界实现</td><td>负的新分压到0；2400的上限判断读取的是旧存储值，因此可能出现一次越界，不能宣称始终严格在0～2400。</td></tr><tr><td>滚动评分</td><td>每关耗时与10个参考耗时比较，取最接近项的序号＋1，得到1～10档；表按耗时递减排列，因此越快通常档位越高。</td></tr><tr><td>滚动历史与权重</td><td>只保留最近10条。不足或等于3条取平均；超过3条且最后3条相同，直接取最后一档；否则按由旧到新1、2…N的权重加权，再取整。</td></tr><tr><td>保存与上报</td><td>两份 ELO 保存到 AbilityScore/AbilityScore2；滚动方法保存历史列表，聚合结果直接上报。都带计算方案标签和关卡上下文。</td></tr></tbody></table></div><p>以上是 Android 分包的执行路径。包里还有 iOS 参考表，但没有把 Android 代码的读取结果扩写成 iOS 的已验证行为。</p>
+<h2>表现值怎样算</h2><div class="tw"><table><thead><tr><th>本关表现</th><th>送入 ELO 的表现值 W</th></tr></thead><tbody><tr><td>耗时≤本关 p50，且5项辅助计数都为0</td><td>1.0</td></tr><tr><td>耗时≤本关 p50，但使用过检查范围内的辅助</td><td>0.5</td></tr><tr><td>p50＜耗时≤p60</td><td>0.4</td></tr><tr><td>p60＜耗时≤p70</td><td>0.3</td></tr><tr><td>p70＜耗时≤p80</td><td>0.2</td></tr><tr><td>p80＜耗时≤p90</td><td>0.1</td></tr><tr><td>耗时＞p90</td><td>0.0</td></tr></tbody></table></div>
+<p>5项辅助计数分别是：<b>提示、烟花、纸飞机、提示广告、烟花广告</b>。仅在耗时≤p50的快档中，使用辅助会把1.0降为0.5；慢于p50时直接走耗时分段，不在该函数里另叠加道具扣分。</p>
+<p>该表现函数<b>没有直接读取错误次数、打乱次数或额外词数量</b>。错误和额外探索可能延长耗时，但不能写成它们会固定扣多少主线分。前面活动的“额外词＋10”属于另一套分数。</p>
+<h2>分数到底指向哪里</h2>
+<p>两份分数的直接读取方都落在贝叶斯计算与更新模块；最终进入 <code>SendUserAbility</code>。也检查了直接访问存档对象的内联路径：另一处只处理测试模式的复位和切换关号，没有读取两份能力数值。</p>
+<p><b>在已核查的客户端选库、改题、标签和活动链中，没有找到这两个数值的玩法消费者。</b>这个结论比上轮仅靠命名更强：现在已经能看到实际读写与调用。后台是否用上报分数训练模型或生成标签，仍不在客户端代码里。</p>
+<p><small>初始定位还包含平均表现的对数反推分支：表现均值为0或1时分别用平均 L−400或平均 L＋400。中间分支的部分导入数学符号受保护而不一致，本报告没有把那一段的完整对数公式写成最终核验完成。更新公式、分位分数和滚动规则已单独核对。</small></p>
+</details>
+<details id="celebration"><summary>3. 庆典的高／中／低能力：实际是怎样选的</summary>
+<p>先判断高组：<b>国家在高组名单且国家／当前语言匹配检查通过，或者当前语言在高组语言名单</b>。不命中再按相同方式判断低组；都不命中就是中组。</p>
+<ul><li>高组语言：意大利语 <code>it</code>、法语 <code>fr</code>、德语 <code>de</code>。</li>
+<li>低组语言：葡萄牙语 <code>pt</code>、印尼语 <code>id</code>。</li>
+<li>高组国家名单4条，已还原美国、英国；另2条字面量仍受保护，未猜测填入。</li>
+<li>低组国家名单12条，已还原墨西哥、秘鲁、厄瓜多尔、委内瑞拉、印度、菲律宾、巴基斯坦、南非、尼日利亚、马来西亚；另2条字面量仍受保护。</li></ul>
+<p>新一天设置任务、刷新庆典任务都会调用这一分组函数。它没有读取主线能力分、新手能力分、玩家耗时或错误次数。<b>“高能力组”在这里是地区／语言配置组的名称，不能解释成这个玩家最近表现更强。</b></p>
+<p>分组后选择对应的任务参数数组。例如之前解出的配置ID0，高／中／低参数分别为[30,60,100]／[20,40,75]／[15,32,60]。本次确认了分组输入；不能把每个数组位置都直接当成同一种任务的找词数。</p>
+</details>
+<details id="difficulty"><summary>4. 真正会影响玩法的降难度：恢复旧关卡时的帮助</summary>
+
+<p class="result"><b>有，已确认存在条件式动态降难度。</b>玩家在一关中尝试较多，隔较长时间回来后，系统可能扩大可用于过关的词语范围，并免费揭示一个字母。这条机制按当前处境和流失标签帮助玩家，没有读取主线 ELO 能力分。</p>
+<h2>1. 什么时候触发</h2>
+<div class="tw"><table><thead><tr><th>检查项</th><th>实际规则</th></tr></thead><tbody><tr><td>关卡状态</td><td>重新进入有存档的未完成关卡；排除连词链模式。</td></tr><tr><td>进度／资历</td><td>当前关号≥100，累计游玩天数 PlayDays≥3。不是安装满3天就自动满足。</td></tr><tr><td>实验开关</td><td>half_level_easier_test=1；未开启就不走这条帮助。</td></tr><tr><td>等待时间</td><td>half_level_easier_test3 为1或2：至少6小时；其他值：至少24小时。</td></tr><tr><td>尝试量</td><td>本关已填答案、已收额外词与失败试词记录满足下方公式。</td></tr><tr><td>流失门槛</td><td>根据 test2 分组、远端 churn_prob 和衰减天数放行或抽概率。</td></tr></tbody></table></div>
+<p><b>6小时或24小时，从“上次进入这关”开始算。</b>每次进入都会把时间更新为当前时间，即使这次未获得帮助也会更新。它不是从退出游戏算，也不是在关内停留几秒自动触发。</p>
+<p>例如10:00进入、12:00退出、16:00回来，距上次进入已过6小时，满足6小时组的时间要求；是否获得帮助还要看其余条件。</p>
+<details id="attempt-rule"><summary>展开：系统如何判断“尝试得多，推进得少”</summary>
+<p>A＝存档中已完成的答案记录数；E＝已收集的额外词数；T＝失败试词记录数。<b>原代码确实计算 A−E，不能省掉减去额外词这一步。</b></p>
+<p>门槛 H：A−E＝0 时取2；否则取 <code>向上取整[1.5×(A−E＋1)]</code>。要求 <code>E＋T＞H</code>，等于门槛仍不通过。</p>
+<div class="tw"><table><thead><tr><th>已填答案 A</th><th>已收额外词 E</th><th>还要求失败试词 T 至少</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>3</td></tr><tr><td>1</td><td>0</td><td>4</td></tr><tr><td>2</td><td>0</td><td>6</td></tr><tr><td>2</td><td>1</td><td>3</td></tr><tr><td>3</td><td>2</td><td>2</td></tr></tbody></table></div>
+<p>T 只在判定为“错误词”或“长度错误”时加1。重复提交已经完成的答案或已经收过的额外词，虽然可能有其他错误统计，<b>不会增加这个 T</b>。不到2个字母不计入；至少2个字母但短于本关最短答案时，是否记作长度错误还受判词实验控制。</p>
+<p class="note">这套公式用来识别当前关的受阻状态，没有把玩家永久划成“低能力档”。本次也核对了写入端：答案与额外词分开记录；A−E 不是一个叫“净目标完成数”的现成字段。代码没有把负差值强制归零。</p>
+</details>
+<details id="churn-rule"><summary>展开：流失标签、触发概率与随时间衰减</summary>
+<div class="tw"><table><thead><tr><th>test2 分组</th><th>流失标签值</th><th>通过概率（其他前提已满足）</th></tr></thead><tbody><tr><td>第1组</td><td>≤0.3</td><td>0%</td></tr><tr><td>第1组</td><td>＞0.3</td><td>第0～30天100%；31～40天60%；41～50天50%；51～60天40%；第61天起30%。</td></tr><tr><td>第2组</td><td>≤0.3</td><td>0%</td></tr><tr><td>第2组</td><td>＞0.5</td><td>100%，不走衰减天数判断。</td></tr><tr><td>第2组</td><td>0.3＜值≤0.5</td><td>第0～25天100%；26～35天50%；36～45天30%；第46天起0%。</td></tr><tr><td>其他值</td><td>不作这项筛选</td><td>此函数直接放行；关号、实验、时间和尝试量条件仍需满足。</td></tr></tbody></table></div>
+<p>这里的天数从该机制的<b>衰减计时首次登记日期</b>算起，按本地自然日差计算；不是安装天数，也不是离开这关的小时数。代码把字段叫“首次触发时间”，实际在第一次进入衰减天数计算时登记。第2组流失值＞0.5的路径直接通过，不会在这里登记日期。</p>
+<p><code>churn_prob</code> 由远端标签数据提供。客户端只读取数值、判断门槛并抽概率；安装包没有包含后台如何算出这个数值的模型，不能据此认定它由 ELO 换算而来。</p>
+</details>
+<h2>2. 触发后，关卡到底怎么变容易</h2>
+<p><b>第一种帮助：让原来只能收进额外词包的部分词，也有机会填答案。</b>每关有答案词、普通额外词，以及“只能算额外词”的限制列表。触发时，把最后一类移入普通额外词池，并清空限制列表。</p>
+<p>玩家随后连出其中一个词时，系统可以用它替换一个现有答案，再把这次输入按答案成功处理。<b>答案格子的数量不变，但可接受的答案范围变宽。</b>被换下来的原答案转到额外词表示中。</p>
+<details id="replacement-rule"><summary>展开：哪些词能替代，哪些仍不能</summary>
+<ul>
+<li>当前策略必须开启“额外词与答案互换”。普通策略还有起始关号配置，缺省值为16；预装引导也有单独放行路径。帮助分支不会强行打开这个总开关。</li>
+<li>输入必须已经在<b>本关额外词数据</b>中、尚未被收集、至少2个字母，并符合当前答案长度范围。不能拿任意词典词直接塞进去。</li>
+<li>替代词与被替换答案必须<b>长度相同</b>；已经显示的字母必须在对应位置完全一致。因此已完成的答案也不能被换成另一个拼写。</li>
+<li>必答名单中的词不能替换；被选中的替换对象若在释义提示保护名单中，这次也不执行替换。</li>
+<li>有序模式还检查前后词的“词长优先、同长度按字母序”位置。无序模式省掉这一项；两种模式都保留长度、已揭字母和保护名单检查。</li>
+</ul>
+<p><b>示意例子：</b>一个4格答案原为 TEAR，RATE 原来在“只能算额外词”里。若互换功能开启、该答案没有受保护、已揭字母不冲突，并通过当前模式的顺序检查：帮助后再连 RATE，可以把这4格改为 RATE 并完成它。帮助前连 RATE 则只收额外词。若 RATE 已经收过，就不能靠重复提交再完成答案。</p>
+<p><small>实现：<code>onlyExtra → extra</code>，清空 <code>onlyExtra</code>，写入 <code>AdjustExtraConfigRatio=1</code>。随后正常判词流程完成替换。这个“1”不能直接解释成所有额外词都100%能替换；恢复检查也把它用作保留改动状态的条件。</small></p>
+</details>
+<p><b>第二种帮助：免费揭示1个字母。</b>要求 <code>half_level_easier_test3=2</code>，而且前面的时间、尝试量和流失门槛均已通过。本次提供的 Android 执行库在这一组直接进入揭字方法，<b>没有再额外抽一次50%</b>。</p>
+<ul>
+<li>只从尚未完成的答案里选。</li>
+<li>排除已经提示过的格子，以及金币、盲盒、奖励箱、瓶子、蛹广告、纸飞机、提示广告、烟花广告等被记录为特殊用途的格子。</li>
+<li>一个词排除这些位置后，必须还剩<b>至少2个可揭位置</b>，才进入候选池；只差最后一个普通字母的词不选。</li>
+<li>把所有合格位置合在一起，随机取1格。是按“格子”抽，不是每个词等概率，所以剩余合格格子较多的词更容易被选中。</li>
+<li>没有合格位置就不揭字，额外词池的放宽仍可执行。这条方法不扣金币、不消耗提示道具、不要求看广告，也没有增加普通提示使用次数。</li>
+</ul>
+<h2>3. 同一关能不能再次获得帮助</h2>
+<p><b>可以再次进入判定；本分支没有每关只触发一次的开关。</b>但每次进入都刷新时间，下一次仍要重新等待6或24小时，并再次通过进度、实验与流失检查。</p>
+<ul>
+<li>额外词池第一次放宽后已保存到该关配置，再次触发时，已清空的限制列表不会凭空增加新词。</li>
+<li>揭字组可以在之后符合条件的回访中再揭1格；已揭位置会排除，不重复抽同一格。</li>
+<li>函数没有固定“最多送几次”的计数上限；限制来自时间、概率、未完成词和剩余合格格子数。它不会用这一揭字规则直接补完最后一格。</li>
+<li>触发帮助不会清空此前的失败试词和答题进度。换关后按新关重新判断；衰减日期则保存在玩家数据中，不是每关重新从第0天开始。</li>
+</ul>
+<h2>4. 它和能力分、五个关卡库是什么关系</h2>
+<p><b>这条已证实的链路是：当前关受阻＋间隔回访＋实验／流失标签 → 放宽答案范围／免费揭字。</b>调用过程中没有读取主线两份 ELO，也没有把 ELO 分数映射成五档关卡库。</p>
+<p>五个关卡库的包内分流，仍主要由地区、语言、平台、付费状态和策略决定。新手活动的“能力＋意愿”分档会改变活动目标关号，是另一套系统。当前没有证据支持“ELO越高就自动换更难词库，越低就自动换更易词库”。</p>
+<details id="warmup-rule"><summary>补充：还有一套会改关卡的每日暖场机制</summary>
+<p>它在冷启动时检查游玩日是否变化，由独立策略开关控制。已有一关未完成时，以后面的新关作为暖场起点。属于按回访节奏调整内容。</p>
+<ul>
+<li><b>暖场重排：</b>维护接下来的15个位置，读取关卡配置的参考耗时，从中选较短的3项调到前面。不是读取玩家 ELO 来选3关。</li>
+<li><b>暖场减词：</b>关号7～1000范围内，按“从本次暖场起点前进了几关”读取预设删词数量。随包 T1／T1_WordTime 的每行有3项，对应暖场前三关的位置。</li>
+<li>按关卡预设的候选词顺序，从答案中移除指定词并放入额外词池。实际数量还受候选数量与保底限制：英语至少保留4个答案，其他语言至少保留3个。</li>
+<li>例如参考表一行写 [2,1,1]：同一个底层关卡若落在暖场第1个位置，可请求减2词；若落在第2或第3个位置，可请求减1词。不是同一关分三次累计删4词。</li>
+</ul>
+<p>两条暖场入口共用当天标记，重排入口先执行；不能把两种帮助视为每个账号每天都叠加。是否开启、加载哪张表仍由策略决定。这里同样没发现主线 ELO 数值参与判断。</p>
+</details>
+<details id="implementation-proof"><summary>实现顺序与核查证据</summary>
+<p>恢复存档 → 检查关卡／游玩日／实验 → 计算尝试门槛 → 检查距上次进入时间 → 按流失组抽概率 → 可选揭1字 → 放宽额外词池 → 恢复游戏画面 → 更新本次进入时间。</p>
+<p>玩家提交单词时，再走“本关额外词存在且未收集 → 功能与长度检查 → 找兼容答案 → 交换词语与格子内容 → 判为答案成功”。帮助入口本身不自动完成额外词。</p>
+<p><a href="zen-dynamic-difficulty-rules.json">结构化规则与函数地址</a> · <a href="zen-native-dynamic-proof.txt">关键方法体</a> · <a href="zen-native-half-easier.txt">触发与揭字代码</a> · <a href="zen-native-difficulty-consumers.txt">流失门槛代码</a></p>
+<p><small>证据来自你提供的 Zen Word 2.44.0 XAPK，基础包与 ARM64 执行库共同核对。已做公式、概率边界及暖场表结构检查；未运行 Android 账号，因此不声称某个账号当前命中了哪一组。远端流失标签的生成公式不在客户端包中。</small></p>
+</details>
+
+</details>
+<details id="stat-tag"><summary>5. 容易误读的字段：DynamicAdjustUserLevel 与测试模式</summary>
+<p><code>TryUpdateDynamicAdjustUserLevel</code> 在完成第10关、关号推进到11时检查当前语言的10条历史通关耗时。合计<b>≥686秒</b>写入 <code>Remove2</code>，否则写入 <code>None</code>。</p>
+<p>但它的读取接口只被<b>关卡通关统计上报</b>调用；补查直接访问存档字段的路径，也没有发现它在这些玩法链里执行删词。<b>不能因为枚举叫 Remove2，就把这次赋值写成“马上删掉2个目标词”。</b>暖场删词及上述恢复关卡帮助是另外的机制。</p>
+<p><code>AbilityLevelTestMode</code>、<code>AbilityLevelTestMode2</code> 确有客户端访问：功能配置刷新时会在特定模式值、英语、尚未记录切换关号的条件下，把模式复位为1并记录当前关号。这证明控制字段有代码，仍不等于能力数值正在自动决定切库。</p>
+</details>
+<details id="banks"><summary>6. 五个关卡库的结论是否改变</summary>
+<p>上轮解出的本地分流表仍然成立，主要按付费状态、国家、语言、平台选择方案：</p><div class="tw"><table><thead><tr><th>本地配置条目</th><th>关卡方案</th></tr></thead><tbody><tr><td>英语＋美国＋未付费</td><td>T1_WordTime，开启暖场删词</td></tr><tr><td>英语＋美国＋已付费＋iOS</td><td>Purchase_Ios，关闭暖场删词</td></tr><tr><td>英语＋美国＋已付费＋非iOS</td><td>Purchase_Android，关闭暖场删词</td></tr><tr><td>英语＋加拿大／英国／澳大利亚＋未付费</td><td>T1_WordTime，关闭暖场删词</td></tr><tr><td>英语＋菲律宾条目</td><td>T3，开启暖场重排；该条目本身未限定付费状态</td></tr></tbody></table></div>
+<p>五个库不是已证实的“个人能力由低到高五档”。具体账号的最终方案还受匹配顺序、实验和远端配置影响。<a href="zen-strategy-decoded.json">完整本地策略表</a>保留了30条分流规则与18条关卡方案，便于逐条核对。</p>
+</details>
+<details id="evidence"><summary>核查依据、验证范围与仍缺的证据</summary>
+<p>源文件：<code>ZenWord_2.44.0.xapk.xapk</code>；内含基础APK与 <code>config.arm64_v8a.apk</code>。原生库47,860,904字节，元数据与之前的基础APK逐字节相同。已定位主游戏25,965个方法表项，核查相关方法体、直接调用与内联字段访问。</p>
+<p>评分分段数组等7份静态数组通过字段名携带的SHA-256核验；潜力分档的白话规则与原分支顺序做了14,641组边界组合对照。没有安装或运行Android应用，因此未把静态分支等同于当前账号命中。</p>
+<p>仍不能从本包确定：服务器生成各远端标签的公式；具体账号实际实验分组；4个受保护国家字面量；初始 ELO 中间分支的完整数学导入对应关系。这些限制不影响上面已列出的具体调用与分层规则。</p>
+<p><a href="zen-native-ability-rules.json">结构化规则与证据</a> · <a href="zen-native-ability-annotated.txt">能力与新手活动原生代码</a> · <a href="zen-native-consumer-extras.txt">标签来源代码</a> · <a href="zen-native-half-easier.txt">恢复关卡帮助代码</a></p>
+<p><small>XAPK SHA-256：37fa8c5a2997fc50a722ec668f7014f196b6b49d9ad61c2efca8c723a4cb17a8<br>玩法库 SHA-256：e33b887b004ffd0496735621d295aa1bd5fda232fc66bfe81625a78b0757a0a7</small></p>
+</details></main></body></html>

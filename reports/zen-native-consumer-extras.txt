@@ -1,0 +1,185 @@
+
+FUNCTION Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3No5Eyes 0x18293f0
+18293f0: str x30, [sp, #-0x10]!
+18293f4: bl #0x1829218 ; Data.BeginnerBonus.BeginnerBonusDataMgr.get_RecBeginnerBonusTest2Num
+18293f8: cmp x0, #3
+18293fc: b.ne #0x1829410
+1829400: mov x0, xzr
+1829404: bl #0x1576c54 ; Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries
+1829408: eor w8, w0, #1
+182940c: b #0x1829414
+1829410: mov w8, wzr
+1829414: and w0, w8, #1
+1829418: ldr x30, [sp], #0x10
+182941c: ret 
+
+FUNCTION Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3Yes5Eyes 0x18294d0
+18294d0: str x30, [sp, #-0x10]!
+18294d4: bl #0x18292d4 ; Data.BeginnerBonus.BeginnerBonusDataMgr.get_RecBeginnerBonus5EyesTest2Num
+18294d8: cmp x0, #3
+18294dc: b.ne #0x18294ec
+18294e0: mov x0, xzr
+18294e4: ldr x30, [sp], #0x10
+18294e8: b #0x1576c54 ; Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries
+18294ec: mov w0, wzr
+18294f0: ldr x30, [sp], #0x10
+18294f4: ret 
+
+FUNCTION Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3 0x1829604
+1829604: str x30, [sp, #-0x10]!
+1829608: bl #0x18293f0 ; Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusTest2Group3No5Eyes
+182960c: tbz w0, #0, #0x1829618
+1829610: ldr x30, [sp], #0x10
+1829614: b #0x1829530 ; Data.BeginnerBonus.BeginnerBonusDataMgr.IsBeginnerBonusTest2Ver
+1829618: bl #0x18292d4 ; Data.BeginnerBonus.BeginnerBonusDataMgr.get_RecBeginnerBonus5EyesTest2Num
+182961c: cmp x0, #3
+1829620: b.ne #0x1829630
+1829624: mov x0, xzr
+1829628: bl #0x1576c54 ; Logic.Handler.BeginnerBonusHandler.IsFiveEyesCountries
+182962c: tbnz w0, #0, #0x1829610
+1829630: mov w0, wzr
+1829634: ldr x30, [sp], #0x10
+1829638: ret 
+
+FUNCTION Data.BeginnerBonus.BeginnerBonusDataMgr.get_IsBeginnerBonusEventUIContrast 0x182a6a4
+182a6a4: str x30, [sp, #-0x10]!
+182a6a8: bl #0x182a52c ; Data.BeginnerBonus.BeginnerBonusDataMgr.get_BeginnerBonusEventUITest
+182a6ac: cmp x0, #1
+182a6b0: cset w0, lt
+182a6b4: ldr x30, [sp], #0x10
+182a6b8: ret 
+
+FUNCTION Platform.UserTag.UserTagMgr.ChurnProbTagUpdate 0x183f4b0
+183f4b0: sub sp, sp, #0x30
+183f4b4: stp x30, x21, [sp, #0x10]
+183f4b8: stp x20, x19, [sp, #0x20]
+183f4bc: adrp x21, #0x2db3000
+183f4c0: mov x20, x1
+183f4c4: mov x19, x0
+183f4c8: ldrb w8, [x21, #0x835]
+183f4cc: tbnz w8, #0, #0x183f4f0
+183f4d0: adrp x0, #0x2b80000
+183f4d4: ldr x0, [x0, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f4d8: bl #0x116794c
+183f4dc: adrp x0, #0x2ba6000
+183f4e0: ldr x0, [x0, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183f4e4: bl #0x116794c
+183f4e8: mov w8, #1
+183f4ec: strb w8, [x21, #0x835]
+183f4f0: str xzr, [sp, #8]
+183f4f4: str wzr, [sp, #4]
+183f4f8: cbz x20, #0x183f550
+183f4fc: mov x0, x20
+183f500: mov x1, xzr
+183f504: bl #0x197eca4 ; Learnings.Unity.UniKit.Runtime.UserTag.UserTagData.GetRemoteTagData
+183f508: cbz x0, #0x183f560
+183f50c: mov x1, xzr
+183f510: bl #0x1980018 ; .RemoteTagData.GetAllTagData
+183f514: cbz x0, #0x183f560
+183f518: adrp x8, #0x2ba6000
+183f51c: adrp x9, #0x2b80000
+183f520: add x2, sp, #8
+183f524: ldr x8, [x8, #0xeb8] ; STRING_LITERAL #17860 [load 0x2ba6eb8]
+183f528: ldr x9, [x9, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f52c: ldr x1, [x8] ; STRING_LITERAL #17860 [load 0x2ccd500]
+183f530: ldr x3, [x9] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2c86828]
+183f534: bl #0x1c6a540
+183f538: ldr x0, [sp, #8]
+183f53c: add x1, sp, #4
+183f540: mov x2, xzr
+183f544: bl #0x23216f8 ; System.Single.TryParse
+183f548: ldr s0, [sp, #4]
+183f54c: str s0, [x19, #0x70]
+183f550: ldp x20, x19, [sp, #0x20]
+183f554: ldp x30, x21, [sp, #0x10]
+183f558: add sp, sp, #0x30
+183f55c: ret 
+183f560: bl #0x1167bb0
+
+FUNCTION Platform.UserTag.UserTagMgr.RewardPropensityTagUpdate 0x183f564
+183f564: sub sp, sp, #0x30
+183f568: stp x30, x21, [sp, #0x10]
+183f56c: stp x20, x19, [sp, #0x20]
+183f570: adrp x21, #0x2db3000
+183f574: mov x20, x1
+183f578: mov x19, x0
+183f57c: ldrb w8, [x21, #0x836]
+183f580: tbnz w8, #0, #0x183f5a4
+183f584: adrp x0, #0x2b80000
+183f588: ldr x0, [x0, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f58c: bl #0x116794c
+183f590: adrp x0, #0x2ba6000
+183f594: ldr x0, [x0, #0xf00] ; STRING_LITERAL #21609 [load 0x2ba6f00]
+183f598: bl #0x116794c
+183f59c: mov w8, #1
+183f5a0: strb w8, [x21, #0x836]
+183f5a4: str xzr, [sp, #8]
+183f5a8: cbz x20, #0x183f5f8
+183f5ac: mov x0, x20
+183f5b0: mov x1, xzr
+183f5b4: bl #0x197eca4 ; Learnings.Unity.UniKit.Runtime.UserTag.UserTagData.GetRemoteTagData
+183f5b8: cbz x0, #0x183f608
+183f5bc: mov x1, xzr
+183f5c0: bl #0x1980018 ; .RemoteTagData.GetAllTagData
+183f5c4: cbz x0, #0x183f608
+183f5c8: adrp x8, #0x2ba6000
+183f5cc: adrp x9, #0x2b80000
+183f5d0: add x2, sp, #8
+183f5d4: ldr x8, [x8, #0xf00] ; STRING_LITERAL #21609 [load 0x2ba6f00]
+183f5d8: ldr x9, [x9, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f5dc: ldr x1, [x8] ; STRING_LITERAL #21609 [load 0x2cd4a28]
+183f5e0: ldr x3, [x9] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2c86828]
+183f5e4: bl #0x1c6a540
+183f5e8: ldr x1, [sp, #8]
+183f5ec: str x1, [x19, #0x80]!
+183f5f0: mov x0, x19
+183f5f4: bl #0x11678f8
+183f5f8: ldp x20, x19, [sp, #0x20]
+183f5fc: ldp x30, x21, [sp, #0x10]
+183f600: add sp, sp, #0x30
+183f604: ret 
+183f608: bl #0x1167bb0
+
+FUNCTION Platform.UserTag.UserTagMgr.WordPropensityTagUpdate 0x183f698
+183f698: sub sp, sp, #0x30
+183f69c: stp x30, x21, [sp, #0x10]
+183f6a0: stp x20, x19, [sp, #0x20]
+183f6a4: adrp x21, #0x2db3000
+183f6a8: mov x20, x1
+183f6ac: mov x19, x0
+183f6b0: ldrb w8, [x21, #0x838]
+183f6b4: tbnz w8, #0, #0x183f6d8
+183f6b8: adrp x0, #0x2b80000
+183f6bc: ldr x0, [x0, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f6c0: bl #0x116794c
+183f6c4: adrp x0, #0x2ba6000
+183f6c8: ldr x0, [x0, #0xef0] ; STRING_LITERAL #22879 [load 0x2ba6ef0]
+183f6cc: bl #0x116794c
+183f6d0: mov w8, #1
+183f6d4: strb w8, [x21, #0x838]
+183f6d8: str xzr, [sp, #8]
+183f6dc: cbz x20, #0x183f72c
+183f6e0: mov x0, x20
+183f6e4: mov x1, xzr
+183f6e8: bl #0x197eca4 ; Learnings.Unity.UniKit.Runtime.UserTag.UserTagData.GetRemoteTagData
+183f6ec: cbz x0, #0x183f73c
+183f6f0: mov x1, xzr
+183f6f4: bl #0x1980018 ; .RemoteTagData.GetAllTagData
+183f6f8: cbz x0, #0x183f73c
+183f6fc: adrp x8, #0x2ba6000
+183f700: adrp x9, #0x2b80000
+183f704: add x2, sp, #8
+183f708: ldr x8, [x8, #0xef0] ; STRING_LITERAL #22879 [load 0x2ba6ef0]
+183f70c: ldr x9, [x9, #0x30] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2b80030]
+183f710: ldr x1, [x8] ; STRING_LITERAL #22879 [load 0x2cd71d8]
+183f714: ldr x3, [x9] ; GENERIC System.Collections.Generic.Dictionary`2.TryGetValue (35453, 162, -1) [load 0x2c86828]
+183f718: bl #0x1c6a540
+183f71c: ldr x1, [sp, #8]
+183f720: str x1, [x19, #0x78]!
+183f724: mov x0, x19
+183f728: bl #0x11678f8
+183f72c: ldp x20, x19, [sp, #0x20]
+183f730: ldp x30, x21, [sp, #0x10]
+183f734: add sp, sp, #0x30
+183f738: ret 
+183f73c: bl #0x1167bb0

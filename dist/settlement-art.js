@@ -26,9 +26,18 @@ export function settlementArtMarkup() {
         <use href="#settlement-source" clip-path="url(#settlement-progress-clip)"/>
       </g>
       <g class="settlement-entry settlement-icon" data-settlement-part="icon">
-        <image class="settlement-icon-wreath" href="./art/settlement/abc-wreath-back.png" x="290.5" y="136" width="360" height="360"/>
-        <image class="settlement-icon-tiles" href="./art/settlement/abc-tiles-front.png" x="290.5" y="136" width="360" height="360"/>
-        <image class="settlement-icon-original" href="./art/settlement/abc-wreath.png" x="290.5" y="136" width="360" height="360"/>
+        <svg class="settlement-book" x="75" y="130" width="791" height="324.24" viewBox="0 0 1454 596" overflow="visible">
+          <defs>
+            <image id="settlement-book-source" href="./art/settlement/golden-book/book@2x.png" width="1454" height="596"/>
+            <radialGradient id="settlement-book-light"><stop stop-color="#fffce8" stop-opacity=".85"/><stop offset=".3" stop-color="#ffda86" stop-opacity=".45"/><stop offset="1" stop-color="#ffd080" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="settlement-book-point">
+            <circle cx="727" cy="478" r="66" fill="url(#settlement-book-light)"/>
+            <path d="M727 458Q730 475 747 478Q730 481 727 498Q724 481 707 478Q724 475 727 458Z" fill="#fff9de"/>
+          </g>
+          <use class="settlement-book-page" href="#settlement-book-source"/>
+          <circle class="settlement-book-glint" cx="724" cy="204" r="110" fill="url(#settlement-book-light)"/>
+        </svg>
       </g>
     </svg>
     <div class="settlement-entry settlement-buttons" data-settlement-part="buttons" inert>

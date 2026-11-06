@@ -17,7 +17,7 @@ import {mountLevelQuality} from './quality-ui.js?v=39';
 import {wtSourceCatalogue,wtSourceBank,originalOrder} from './core/wt-source-library.js?v=40';
 import {convertWTLevel} from './core/wt-source-session.js?v=40';
 import {MAX_PLAYTEST_UPLOAD_BYTES} from './core/playtest-import.js?v=47';
-import {settlementArtMarkup} from './settlement-art.js?v=4';
+import {settlementArtMarkup} from './settlement-art.js?v=5';
 
 const $=id=>document.getElementById(id),fmt=n=>n==null?'不适用':Number(n).toFixed(1),pct=n=>n==null?'—':(n*100).toFixed(1)+'%';
 const BANKS=[{key:'main-en-us_t1',label:'主线 T1',file:'main-en-us_t1.json',count:1000},{key:'main-en-us_t3',label:'主线 T3',file:'main-en-us_t3.json',count:1000}];

@@ -1,0 +1,414 @@
+{
+  "style": "alps-light-glass",
+  "mode": "single-existing-package",
+  "source": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\alps-light-glass-resource-pack-v1",
+  "destination": "C:\\Users\\huyi\\Documents\\ChatGPT\\word\\wordtiles-demo\\dist\\art\\alps",
+  "verifiedSourceFiles": 159,
+  "sourceBytes": 26887224,
+  "backup": [
+    {
+      "path": "dist/index.html",
+      "sha256": "1d4284b159c9135fede164fa934057110b76795d2482ee25044c4cf613abcd38",
+      "bytes": 26593
+    },
+    {
+      "path": "dist/app.js",
+      "sha256": "1d4738ac368b0fb811257fdfa80f659da1513f37762079d4cf6b0175cd05b3c7",
+      "bytes": 80587
+    },
+    {
+      "path": "dist/core/art-theme.js",
+      "sha256": "6977945518d5e410baaf30b8d52a2f3a6c7141b6e069336dca3def8c48c3f53c",
+      "bytes": 426
+    },
+    {
+      "path": "dist/paris.css",
+      "sha256": "5542c124a627b05d9bae2de0ac1269fceb7c847b3f865dbc392a20188ff1c6e1",
+      "bytes": 13822
+    },
+    {
+      "path": "README.md",
+      "sha256": "f8df826976c7a106139289b8c8f7736bcbf5f0406829989f678cfdf64e96b16d",
+      "bytes": 17721
+    },
+    {
+      "path": "package.json",
+      "sha256": "2cc55ae10f1d4e1f783344f13b5db084358324995d43c9c07a19479c4868acdb",
+      "bytes": 1063
+    }
+  ],
+  "selectedRuntimeAssets": [
+    {
+      "id": "bg-lobby",
+      "path": "assets/backgrounds/bg-alps-lobby.png",
+      "width": 1080,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "fd53ca9dfdcf3649ff40c7d3316f819c049bc6b897fa36d68ca60cbf5115f100",
+      "runtimeTextBaked": false,
+      "source": "image_gen-clean-reconstruction-color-matched",
+      "opaque": true,
+      "reconstructedUnderUI": true,
+      "exactPixelExtraction": false,
+      "colorTransform": [
+        [
+          0.8884978816033855,
+          30.850632440084112
+        ],
+        [
+          1.0368308785590175,
+          9.485543071233698
+        ],
+        [
+          0.9815687908247895,
+          17.550978724037464
+        ]
+      ],
+      "saturationNormalization": 0.82
+    },
+    {
+      "id": "bg-level",
+      "path": "assets/backgrounds/bg-alps-level.png",
+      "width": 1080,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "57a211ebbd9f395b8708b069d9e208449cd4e7c14b558a2565689243916c39c5",
+      "runtimeTextBaked": false,
+      "source": "image_gen-clean-reconstruction-color-matched",
+      "opaque": true,
+      "reconstructedUnderUI": true,
+      "exactPixelExtraction": false,
+      "colorTransform": [
+        [
+          0.901235829351778,
+          26.33678237870134
+        ],
+        [
+          0.9718768867552329,
+          16.903780031276423
+        ],
+        [
+          0.9405914191490142,
+          21.465561384645827
+        ]
+      ],
+      "saturationNormalization": 0.82
+    },
+    {
+      "id": "glass-primary",
+      "path": "assets/ui/glass-primary.png",
+      "width": 900,
+      "height": 180,
+      "hasAlpha": true,
+      "sha256": "c285effa476c1e1b69417b91db9e2f31ddf15affe3cd90335d5c846c76a7c7a2",
+      "runtimeTextBaked": false,
+      "source": "image_gen-alpha-normalized",
+      "generatedSource": "glass_primary",
+      "cornerRadius": 34,
+      "centerAlpha": 0.59,
+      "nineSlice": {
+        "left": 38,
+        "right": 38,
+        "top": 38,
+        "bottom": 38
+      },
+      "requiresBackdropBlur": true,
+      "alphaMode": "straight"
+    },
+    {
+      "id": "glass-tile",
+      "path": "assets/ui/glass-tile.png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "sha256": "2d2abf8f3746a4428599fa70faee61e6684f3fd5939feeba899ea488deae46fb",
+      "runtimeTextBaked": false,
+      "source": "image_gen-alpha-normalized",
+      "generatedSource": "glass_tile",
+      "cornerRadius": 28,
+      "centerAlpha": 0.58,
+      "nineSlice": {
+        "left": 32,
+        "right": 32,
+        "top": 32,
+        "bottom": 32
+      },
+      "requiresBackdropBlur": true,
+      "alphaMode": "straight"
+    },
+    {
+      "id": "glass-utility",
+      "path": "assets/ui/glass-utility.png",
+      "width": 320,
+      "height": 200,
+      "hasAlpha": true,
+      "sha256": "e7bdd11d7c6352e85c8cdcdd47b32293f9553e974d6acd168847df2503cf948a",
+      "runtimeTextBaked": false,
+      "source": "image_gen-alpha-normalized",
+      "generatedSource": "glass_utility",
+      "cornerRadius": 94,
+      "centerAlpha": 0.6,
+      "nineSlice": {
+        "left": 98,
+        "right": 98,
+        "top": 98,
+        "bottom": 98
+      },
+      "requiresBackdropBlur": true,
+      "alphaMode": "straight"
+    },
+    {
+      "id": "answer-filled",
+      "path": "assets/ui/answer-filled.png",
+      "width": 160,
+      "height": 160,
+      "hasAlpha": true,
+      "sha256": "91c9e9081c5fa382109aa1d5d8f8d397cb014f5ee765ddae4b45107decb2c92a",
+      "runtimeTextBaked": false,
+      "source": "derived-from-glass-tile",
+      "cornerRadius": 18,
+      "nineSlice": {
+        "left": 23,
+        "right": 23,
+        "top": 23,
+        "bottom": 23
+      },
+      "requiresBackdropBlur": true
+    },
+    {
+      "id": "answer-empty",
+      "path": "assets/ui/answer-empty.png",
+      "width": 160,
+      "height": 160,
+      "hasAlpha": true,
+      "sha256": "dcb5bcfab2cd186ac7fc5423d2a893a134dfe9e65b818146e46bdaab707876aa",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/answer-empty.svg",
+      "cornerRadius": 24,
+      "nineSlice": {
+        "left": 28,
+        "right": 28,
+        "top": 28,
+        "bottom": 28
+      },
+      "requiresBackdropBlur": true
+    },
+    {
+      "id": "coin-pill",
+      "path": "assets/ui/coin-pill.png",
+      "width": 240,
+      "height": 100,
+      "hasAlpha": true,
+      "sha256": "488e981ec9b559bbf9828c0825e0ded269b213fc16d1a405202399fd5c79e1ec",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/coin-pill.svg",
+      "cornerRadius": 50,
+      "nineSlice": {
+        "left": 51,
+        "right": 51,
+        "top": 42,
+        "bottom": 42
+      },
+      "requiresBackdropBlur": true
+    },
+    {
+      "id": "sage-badge",
+      "path": "assets/ui/sage-badge.png",
+      "width": 96,
+      "height": 96,
+      "hasAlpha": true,
+      "sha256": "2acd033575b768f28ae0421e014f751b2822a6a46fdf40cd91c4c7178f61205d",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/sage-badge.svg",
+      "cornerRadius": 48
+    },
+    {
+      "id": "tile-selection",
+      "path": "assets/ui/tile-selection.png",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "sha256": "247b659c5b62f4be1a97d78bad5de6844199ec66ca99eee25e9ad67fd0361a01",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/tile-selection.svg",
+      "cornerRadius": 28,
+      "nineSlice": {
+        "left": 34,
+        "right": 34,
+        "top": 34,
+        "bottom": 34
+      }
+    },
+    {
+      "id": "calendar",
+      "path": "assets/icons/calendar.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "17d0471c089eb354382ce81165657c3f6765b5937f533a31f317a645c7166c98",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/calendar.svg",
+      "tintable": true
+    },
+    {
+      "id": "back",
+      "path": "assets/icons/back.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "b842122553e705c0501fe7d58a4e6781bb6057d58fcca79e8cf094adfdcd8e14",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/back.svg",
+      "tintable": true
+    },
+    {
+      "id": "arrow-right",
+      "path": "assets/icons/arrow-right.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "fcb84ff9e8e9df6256314488b2de536e0fa6fdb398851d411a09932394e6a91c",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/arrow-right.svg",
+      "tintable": true
+    },
+    {
+      "id": "settings",
+      "path": "assets/icons/settings.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "4243efdc36fff8112c0cd09c2a1f617ddd51c77ee79456074882ba4b3a7504ef",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/settings.svg",
+      "tintable": true
+    },
+    {
+      "id": "coin",
+      "path": "assets/icons/coin.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "c505e63b122afd22d123a13625df753df10b36add3166ef290c29c8c5cd9d971",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/coin.svg",
+      "tintable": true
+    },
+    {
+      "id": "shuffle",
+      "path": "assets/icons/shuffle.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "3612970879e3bf808b01638849a59855a03ad2e8e9926388becc47095e04bfd1",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/shuffle.svg",
+      "tintable": true
+    },
+    {
+      "id": "hint",
+      "path": "assets/icons/hint.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "f0348503ae6724def3b435caf6fa8a3e8fe04025b6d0169fb6063cf819feedd6",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/hint.svg",
+      "tintable": true
+    },
+    {
+      "id": "bag",
+      "path": "assets/icons/bag.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "6b414f1d0df66f6a99369dbf40da295094a69c3e9593e6445aa5346ffa998295",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/bag.svg",
+      "tintable": true
+    },
+    {
+      "id": "book",
+      "path": "assets/icons/book.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "c40c7f37bb8fd60adbdbaf575f9e83cd237d17018aff57fa20dac3292b906553",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/book.svg",
+      "tintable": true
+    },
+    {
+      "id": "book-light",
+      "path": "assets/icons/book-light.png",
+      "width": 128,
+      "height": 128,
+      "hasAlpha": true,
+      "sha256": "dc548d4f7246159c98174b0d18c25ee4379410cea676fbe5c61617ff1a5746ea",
+      "runtimeTextBaked": false,
+      "source": "vector-reconstruction",
+      "svg": "assets/svg/book-light.svg",
+      "tintable": true
+    }
+  ],
+  "glassMode": "dynamic backdrop blur plus supplied transparent skins",
+  "fixedPatches": "archived with package; unused for variable board geometry",
+  "runtimeOverlays": [
+    "real letters",
+    "real remaining tile counts",
+    "real completed targets",
+    "real collection count"
+  ],
+  "sourceGeneration": false,
+  "status": "complete",
+  "appliedFiles": [
+    {
+      "path": "dist/index.html",
+      "sha256": "d7efbc436876f3f6cdbc2997badc88151b5f487dc5d4a4bcdf71afaba1b8e7e1",
+      "bytes": 26834
+    },
+    {
+      "path": "dist/app.js",
+      "sha256": "e61a986b4e86337fa9549be438fe3b816579f7f81d1e153159e8566bcab8a080",
+      "bytes": 80939
+    },
+    {
+      "path": "dist/core/art-theme.js",
+      "sha256": "1dde737dc670b84fb87eefc53de94f51cb52d98a90ea8b0fa71e5a242bcbd13c",
+      "bytes": 724
+    },
+    {
+      "path": "dist/alps.css",
+      "sha256": "f37950a4ae4b5922c32c332f4363996d5344e5a9ffde025d8c2e71f5f3586937",
+      "bytes": 15488
+    },
+    {
+      "path": "package.json",
+      "sha256": "5549bd838ab29cb4339aa9cf798051b90d93c3b728fc213770a8d26417a04ff3",
+      "bytes": 1062
+    },
+    {
+      "path": "README.md",
+      "sha256": "e4c0ca7e0d1b556fdd43b6813218b46dd1c915c4abddcde3cb468210b5ec640b",
+      "bytes": 18905
+    },
+    {
+      "path": "scripts/check-alps-art.mjs",
+      "sha256": "9662d28777696509721f2b4e34ab3221d50b9821080dc0af75d413d7ea7ebd6e",
+      "bytes": 9138
+    }
+  ]
+}

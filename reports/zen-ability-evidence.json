@@ -1,0 +1,1782 @@
+{
+  "scope": {
+    "date": "2026-10-14",
+    "package": "Zen Word 2.44.0",
+    "metadataTypesInspected": 10497,
+    "basis": "Fields, method declarations and packaged settings; no gameplay native method bodies or account runtime trace.",
+    "declarationEdgesAreNotCalls": true
+  },
+  "declarations": [
+    {
+      "index": 1654,
+      "type": "Logic.Handler.BeginnerBonusHandler",
+      "nameMatch": false,
+      "fields": [],
+      "methods": [
+        {
+          "index": 13679,
+          "name": "TryAddAbilityScore",
+          "params": [
+            "score",
+            "from"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 1664,
+      "type": "Logic.Handler.CelebrationEventHandler",
+      "nameMatch": false,
+      "fields": [],
+      "methods": [
+        {
+          "index": 13810,
+          "name": "GetCelebrationAbility",
+          "params": [],
+          "returnTypeIndex": 10542,
+          "knownReturnType": "Data.CelebrationEvent.CelebrationAbility"
+        }
+      ]
+    },
+    {
+      "index": 1806,
+      "type": ".<>c",
+      "nameMatch": false,
+      "fields": [],
+      "methods": [
+        {
+          "index": 15955,
+          "name": "<TrySendBayesAbility>b__1_0",
+          "params": [
+            "ability"
+          ],
+          "returnTypeIndex": 12090,
+          "knownReturnType": "System.Double"
+        },
+        {
+          "index": 15956,
+          "name": "<TrySendBayesAbility>b__1_1",
+          "params": [
+            "ability"
+          ],
+          "returnTypeIndex": 12090,
+          "knownReturnType": "System.Double"
+        },
+        {
+          "index": 15958,
+          "name": "<GetAbility>b__12_0",
+          "params": [
+            "a",
+            "w"
+          ],
+          "returnTypeIndex": 12090,
+          "knownReturnType": "System.Double"
+        }
+      ]
+    },
+    {
+      "index": 1809,
+      "type": "Logic.Handler.UserAbilityHandler",
+      "nameMatch": true,
+      "fields": [],
+      "methods": [
+        {
+          "index": 15940,
+          "name": "TrySendAbilityEvent",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 15941,
+          "name": "TrySendBayesAbility",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 15942,
+          "name": "GetKCoefficient",
+          "params": [
+            "formulaIndex",
+            "score"
+          ],
+          "returnTypeIndex": 14234,
+          "knownReturnType": "System.Int32"
+        },
+        {
+          "index": 15943,
+          "name": "GetCurLevelScoreL",
+          "params": [],
+          "returnTypeIndex": 17901,
+          "knownReturnType": "System.Single"
+        },
+        {
+          "index": 15944,
+          "name": "GetCurLevelScoreW",
+          "params": [],
+          "returnTypeIndex": 17901,
+          "knownReturnType": "System.Single"
+        },
+        {
+          "index": 15945,
+          "name": "GetQuantile",
+          "params": [
+            "quantile",
+            "curLevel"
+          ],
+          "returnTypeIndex": 17901,
+          "knownReturnType": "System.Single"
+        },
+        {
+          "index": 15946,
+          "name": "ConvertSecondsToMinutes",
+          "params": [
+            "seconds"
+          ],
+          "returnTypeIndex": 17901,
+          "knownReturnType": "System.Single"
+        },
+        {
+          "index": 15947,
+          "name": "ConvertMinutesToSeconds",
+          "params": [
+            "minutes"
+          ],
+          "returnTypeIndex": 17901,
+          "knownReturnType": "System.Single"
+        },
+        {
+          "index": 15948,
+          "name": "TrySendRollingMatchAdjustAbility",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 15949,
+          "name": "GetRollingLevelArray",
+          "params": [
+            "level"
+          ],
+          "returnTypeIndex": 8457,
+          "knownReturnType": null
+        },
+        {
+          "index": 15950,
+          "name": "FindClosestIndex",
+          "params": [
+            "arr",
+            "target"
+          ],
+          "returnTypeIndex": 14234,
+          "knownReturnType": "System.Int32"
+        },
+        {
+          "index": 15951,
+          "name": "CalculateWeights",
+          "params": [
+            "abilityList",
+            "minWeight",
+            "increment"
+          ],
+          "returnTypeIndex": 5659,
+          "knownReturnType": null
+        },
+        {
+          "index": 15952,
+          "name": "GetAbility",
+          "params": [
+            "userAbility"
+          ],
+          "returnTypeIndex": 14234,
+          "knownReturnType": "System.Int32"
+        }
+      ]
+    },
+    {
+      "index": 2182,
+      "type": "Store.StoreRoot",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "UserAbility",
+          "typeIndex": 19843,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2187,
+      "type": "Store.BeginnerBonusData",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "AbilityScore",
+          "typeIndex": 14239,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2218,
+      "type": "Store.PlayData",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "SwitchingAbilityLevelIndex",
+          "typeIndex": 14239,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2244,
+      "type": "Store.UserAbilityData",
+      "nameMatch": true,
+      "fields": [
+        {
+          "name": "AbilityScore",
+          "typeIndex": 12094,
+          "knownType": null
+        },
+        {
+          "name": "AbilityScore2",
+          "typeIndex": 12094,
+          "knownType": null
+        },
+        {
+          "name": "CanParticipateBayesRecord",
+          "typeIndex": 14239,
+          "knownType": null
+        },
+        {
+          "name": "LocatedAbilityData",
+          "typeIndex": 5548,
+          "knownType": null
+        },
+        {
+          "name": "RollingMatchAdjustLevelList",
+          "typeIndex": 5741,
+          "knownType": null
+        },
+        {
+          "name": "FixedAbility",
+          "typeIndex": 14239,
+          "knownType": null
+        },
+        {
+          "name": "AbilityLevelTestMode",
+          "typeIndex": 14239,
+          "knownType": null
+        },
+        {
+          "name": "AbilityLevelTestMode2",
+          "typeIndex": 14239,
+          "knownType": null
+        },
+        {
+          "name": "AbilityValueDebug",
+          "typeIndex": 14239,
+          "knownType": null
+        }
+      ],
+      "methods": [
+        {
+          "index": 17078,
+          "name": "Reset",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17079,
+          "name": ".ctor",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 2256,
+      "type": "Data.DataMgr",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "<UserAbilityDataMgr>k__BackingField",
+          "typeIndex": 19845,
+          "knownType": null
+        }
+      ],
+      "methods": [
+        {
+          "index": 17190,
+          "name": "get_UserAbilityDataMgr",
+          "params": [],
+          "returnTypeIndex": 19844,
+          "knownReturnType": "Data.UserAbility.UserAbilityDataMgr"
+        },
+        {
+          "index": 17191,
+          "name": "set_UserAbilityDataMgr",
+          "params": [
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 2287,
+      "type": "Data.UserAbility.UserAbilityDataMgr",
+      "nameMatch": true,
+      "fields": [
+        {
+          "name": "<AbilityExploreProbability>k__BackingField",
+          "typeIndex": 17902,
+          "knownType": null
+        }
+      ],
+      "methods": [
+        {
+          "index": 17545,
+          "name": "Init",
+          "params": [
+            "level"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17546,
+          "name": "Release",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17547,
+          "name": "get_AbilityScore1",
+          "params": [],
+          "returnTypeIndex": 12090,
+          "knownReturnType": "System.Double"
+        },
+        {
+          "index": 17548,
+          "name": "set_AbilityScore1",
+          "params": [
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17549,
+          "name": "get_AbilityScore2",
+          "params": [],
+          "returnTypeIndex": 12090,
+          "knownReturnType": "System.Double"
+        },
+        {
+          "index": 17550,
+          "name": "set_AbilityScore2",
+          "params": [
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17551,
+          "name": "get_CanParticipateBayesRecord",
+          "params": [],
+          "returnTypeIndex": 14234,
+          "knownReturnType": "System.Int32"
+        },
+        {
+          "index": 17552,
+          "name": "set_CanParticipateBayesRecord",
+          "params": [
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17553,
+          "name": "get_LocatedAbilityData",
+          "params": [],
+          "returnTypeIndex": 5547,
+          "knownReturnType": null
+        },
+        {
+          "index": 17554,
+          "name": "get_RollingMatchAdjustLevelList",
+          "params": [],
+          "returnTypeIndex": 5737,
+          "knownReturnType": null
+        },
+        {
+          "index": 17555,
+          "name": "UpdateAbilityScore",
+          "params": [
+            "abilityScore",
+            "abilityScore2"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        },
+        {
+          "index": 17556,
+          "name": "IsCanParticipateBayesRecord",
+          "params": [],
+          "returnTypeIndex": 10094,
+          "knownReturnType": "System.Boolean"
+        },
+        {
+          "index": 17557,
+          "name": ".ctor",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 2288,
+      "type": "Data.UserAbility.Config.BayesAbilityData",
+      "nameMatch": true,
+      "fields": [
+        {
+          "name": "ScoreW",
+          "typeIndex": 12094,
+          "knownType": null
+        },
+        {
+          "name": "ScoreL",
+          "typeIndex": 12094,
+          "knownType": null
+        }
+      ],
+      "methods": [
+        {
+          "index": 17558,
+          "name": ".ctor",
+          "params": [],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 2659,
+      "type": "Data.CelebrationEvent.CelebrationEventDefine",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "CelebrationHighAbilityLan",
+          "typeIndex": 4194,
+          "knownType": null
+        },
+        {
+          "name": "CelebrationHighAbilityCountry",
+          "typeIndex": 4194,
+          "knownType": null
+        },
+        {
+          "name": "CelebrationLowAbilityLan",
+          "typeIndex": 4194,
+          "knownType": null
+        },
+        {
+          "name": "CelebrationLowAbilityCountry",
+          "typeIndex": 4194,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2660,
+      "type": "Data.CelebrationEvent.CelebrationAbility",
+      "nameMatch": true,
+      "fields": [
+        {
+          "name": "value__",
+          "typeIndex": 14254,
+          "knownType": null
+        },
+        {
+          "name": "LowAbility",
+          "typeIndex": 10543,
+          "knownType": null
+        },
+        {
+          "name": "MediumAbility",
+          "typeIndex": 10543,
+          "knownType": null
+        },
+        {
+          "name": "HighAbility",
+          "typeIndex": 10543,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 2670,
+      "type": "Data.BeginnerBonus.BeginnerBonusDataMgr",
+      "nameMatch": false,
+      "fields": [],
+      "methods": [
+        {
+          "index": 22634,
+          "name": "get_AbilityScore",
+          "params": [],
+          "returnTypeIndex": 14234,
+          "knownReturnType": "System.Int32"
+        },
+        {
+          "index": 22635,
+          "name": "set_AbilityScore",
+          "params": [
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 3010,
+      "type": ".FormulasEnum",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "FormulasBayesELO1",
+          "typeIndex": 25203,
+          "knownType": null
+        },
+        {
+          "name": "FormulasBayesELO2",
+          "typeIndex": 25203,
+          "knownType": null
+        },
+        {
+          "name": "FormulasRollingMatchAdjust1",
+          "typeIndex": 25203,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 3011,
+      "type": "Platform.Analyze.UserAbilityRecord",
+      "nameMatch": true,
+      "fields": [
+        {
+          "name": "Formulas",
+          "typeIndex": 25202,
+          "knownType": null
+        },
+        {
+          "name": "Score",
+          "typeIndex": 12094,
+          "knownType": null
+        },
+        {
+          "name": "CurLevel",
+          "typeIndex": 18435,
+          "knownType": null
+        },
+        {
+          "name": "LevelId",
+          "typeIndex": 18435,
+          "knownType": null
+        }
+      ],
+      "methods": [
+        {
+          "index": 25174,
+          "name": "get_Name",
+          "params": [],
+          "returnTypeIndex": 18430,
+          "knownReturnType": "System.String"
+        },
+        {
+          "index": 25175,
+          "name": "MakeTransaction",
+          "params": [
+            "tid"
+          ],
+          "returnTypeIndex": 10094,
+          "knownReturnType": "System.Boolean"
+        }
+      ]
+    },
+    {
+      "index": 3044,
+      "type": "Platform.Analyze.AnalyzeMgr",
+      "nameMatch": false,
+      "fields": [],
+      "methods": [
+        {
+          "index": 25353,
+          "name": "SendUserAbility",
+          "params": [
+            "formulasEnum",
+            "value"
+          ],
+          "returnTypeIndex": 20124,
+          "knownReturnType": "System.Void"
+        }
+      ]
+    },
+    {
+      "index": 3133,
+      "type": "Config.ConfCelebrationEvent",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "HighAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        },
+        {
+          "name": "MediumAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        },
+        {
+          "name": "LowAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 3187,
+      "type": "Config.ConfCelebrationEventTest1",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "HighAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        },
+        {
+          "name": "MediumAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        },
+        {
+          "name": "LowAbility",
+          "typeIndex": 8303,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    },
+    {
+      "index": 3203,
+      "type": "Config.ConfCelebrationEventStorable",
+      "nameMatch": false,
+      "fields": [
+        {
+          "name": "HighAbility",
+          "typeIndex": 8297,
+          "knownType": null
+        },
+        {
+          "name": "MediumAbility",
+          "typeIndex": 8297,
+          "knownType": null
+        },
+        {
+          "name": "LowAbility",
+          "typeIndex": 8297,
+          "knownType": null
+        }
+      ],
+      "methods": []
+    }
+  ],
+  "metadataLiteralDefaults": [
+    {
+      "type": "Data.CelebrationEvent.CelebrationAbility",
+      "field": "LowAbility",
+      "defaultTypeIndex": 14234,
+      "knownType": "System.Int32",
+      "value": null,
+      "rawHex": "666462646662666462606e6c66646260",
+      "dataOffset": 9455
+    },
+    {
+      "type": "Data.CelebrationEvent.CelebrationAbility",
+      "field": "MediumAbility",
+      "defaultTypeIndex": 14234,
+      "knownType": "System.Int32",
+      "value": null,
+      "rawHex": "6462646662666462606e6c666462606e",
+      "dataOffset": 9456
+    },
+    {
+      "type": "Data.CelebrationEvent.CelebrationAbility",
+      "field": "HighAbility",
+      "defaultTypeIndex": 14234,
+      "knownType": "System.Int32",
+      "value": null,
+      "rawHex": "62646662666462606e6c666462606e6c",
+      "dataOffset": 9457
+    }
+  ],
+  "configMatches": [],
+  "literalContexts": [
+    "low this rewrite.Rhaeto-RomanicRightRightMarkRightShiftRigidbody cannot be NULL.Rolling_Match_Adjust_1RomanianRomanian (Romania)Romansh (Switzerland)RootRoot Level Attribute ValueRoot Level Base64 Attribute ValueRoot Level Special Attribute ValueRoot el"
+  ],
+  "appendStats": {
+    "local_config_game_play_en-us_t1_wordtime_hard_replace243_e0f15d93bd7698d930e10b3e7f863263_Play_en-US_T1_WordTime_hard_replace243.decoded.json": {
+      "keys": [
+        "38",
+        "36",
+        "41",
+        "48",
+        "53",
+        "63",
+        "54",
+        "68",
+        "83",
+        "77",
+        "89",
+        "87"
+      ]
+    },
+    "local_config_game_play_en-us_t1_wordtime_replace243_78e133642b9c6b3dca329cd92766db81_Play_en-US_T1_WordTime_replace243.decoded.json": {
+      "keys": [
+        "45",
+        "50",
+        "42",
+        "37",
+        "39",
+        "60",
+        "57",
+        "55",
+        "59",
+        "58",
+        "72",
+        "88"
+      ]
+    }
+  },
+  "associatedModules": [
+    {
+      "type": "Logic.Handler.BeginnerBonusHandler",
+      "fields": [
+        "IsCurSessionQuitMainPlay"
+      ],
+      "methods": [
+        {
+          "name": "get__dataMgr",
+          "params": []
+        },
+        {
+          "name": "CanShowEntrance",
+          "params": []
+        },
+        {
+          "name": "ShowBeginnerBonusFromMg",
+          "params": []
+        },
+        {
+          "name": "ShowBeginnerBonusFromEntrance",
+          "params": [
+            "source"
+          ]
+        },
+        {
+          "name": "TryShowBeginnerBonusFromFinish",
+          "params": []
+        },
+        {
+          "name": "TryStartActivity",
+          "params": [
+            "curLevel"
+          ]
+        },
+        {
+          "name": "IsFiveEyesCountries",
+          "params": []
+        },
+        {
+          "name": "TryAddWillingScore",
+          "params": [
+            "score",
+            "from"
+          ]
+        },
+        {
+          "name": "TryAddWillingScoreFromShuffle",
+          "params": []
+        },
+        {
+          "name": "TryAddAbilityScore",
+          "params": [
+            "score",
+            "from"
+          ]
+        },
+        {
+          "name": "TryAddScoreWhenGameEnd",
+          "params": [
+            "wrongCount",
+            "timeCost"
+          ]
+        },
+        {
+          "name": "PrintScore",
+          "params": []
+        },
+        {
+          "name": "OnComboShow",
+          "params": []
+        },
+        {
+          "name": "GetLimitTimeHours",
+          "params": []
+        },
+        {
+          "name": "GetReward",
+          "params": [
+            "success"
+          ]
+        },
+        {
+          "name": "GetNeedExposureLevel",
+          "params": []
+        },
+        {
+          "name": "GetExposureLevelList",
+          "params": []
+        },
+        {
+          "name": "GetBeginnerBonusUIType",
+          "params": []
+        },
+        {
+          "name": "TryStartBeginnerBonusEventUITest1",
+          "params": [
+            "curLevel"
+          ]
+        },
+        {
+          "name": "GetStagedNeedLevel",
+          "params": [
+            "stage"
+          ]
+        },
+        {
+          "name": "GetStagedReward",
+          "params": [
+            "stage"
+          ]
+        },
+        {
+          "name": "GetTargetLevel",
+          "params": [
+            "stage"
+          ]
+        },
+        {
+          "name": "GetStageStartLevel",
+          "params": [
+            "stage"
+          ]
+        },
+        {
+          "name": "GetNowStage",
+          "params": []
+        },
+        {
+          "name": "GetEntranceProgress",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Logic.Handler.CelebrationEventHandler",
+      "fields": [],
+      "methods": [
+        {
+          "name": "GetCelebrationAbility",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Store.BeginnerBonusData",
+      "fields": [
+        "StartTime",
+        "FinishTime",
+        "ExpireTime",
+        "LastShowPlayedLevels",
+        "LastShowPlayedLevelsForFinishEntrance",
+        "LastShowRewardCoins",
+        "RewardCoins",
+        "State",
+        "RecBeginnerBonusTest2Num",
+        "RecBeginnerBonus5EyesTest2Num",
+        "RecBeginnerBonusNonT1TestNum",
+        "NonT1StagedClaimedCount",
+        "WillingScore",
+        "AbilityScore",
+        "UserPotentialType",
+        "AddScoreFromShuffleCont",
+        "ComboCount",
+        "RecBeginnerBonusIconMgNum",
+        "BeginnerBonusEventUITest",
+        "IsHasFailed",
+        "EventUITest3ClaimedStaged"
+      ],
+      "methods": [
+        {
+          "name": "Reset",
+          "params": []
+        },
+        {
+          "name": ".ctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Store.PlayData",
+      "fields": [
+        "LevelIndex",
+        "SkipLevel",
+        "SectionBgInfo",
+        "ComboIndex",
+        "Version",
+        "RestoreData",
+        "CrossRestoreData",
+        "WeekLevels",
+        "HasShowHintGuide",
+        "HasRewardHintGuide",
+        "HasShowFireworkGuide",
+        "HasShowNewbieReward",
+        "TodayStartLevel",
+        "CurrentLevelDifficulty",
+        "SwitchingAbilityLevelIndex",
+        "HistoricalPassTime",
+        "HardLevelSummaryChapter",
+        "HardCountInSummaryChapter",
+        "SuperHardCountInSummaryChapter",
+        "LegendaryCountInSummaryChapter",
+        "RecentSummaryDifficulties",
+        "WarmLevelOrder",
+        "WarmBeginLevelIndex",
+        "WarmBeginDay",
+        "WarmBeginReduceLevelIndex",
+        "NewbieGuideWordIndex",
+        "AlreadyShowChaimGuide",
+        "DynamicAdjustUserLevel",
+        "EarlyLevelDifficulty",
+        "CurMainGamePlayType",
+        "WrongDatesTimes",
+        "Is231PreinstallUser",
+        "ChainTest02LevelIndex",
+        "AlreadyShowChainThemeGuide",
+        "AlreadyShowChainLockGuide",
+        "HasBuyStarterBundle",
+        "HintAdUnlockLevel",
+        "LevelTestHistory",
+        "LastBeginNewLevelTime",
+        "ReviewLevelConfig",
+        "LastLevelMaxCombo",
+        "LastLevelWrongCount",
+        "AdaptiveDifficultyCh2WrongCountSum",
+        "LastLevelDuration",
+        "SpecialBonusTime",
+        "LastSettleSpecialBonusTimeLevel",
+        "ShowSpecialBeginTipLevel",
+        "CurDate",
+        "CurDateCompleteLevel",
+        "PushDisplayedTimes",
+        "NextPushDisplayTime",
+        "IsFirstDisplayed",
+        "PushTextIndexPool",
+        "TodayDontQuitLevelShowCount",
+        "MainPlayLevelBulletChatShowCount",
+        "DcLevelBulletChatShowCount",
+        "NextShowBulletChatTime",
+        "TodayShowedBulletChatText4",
+        "TodayShowedBulletChatText7",
+        "TodayShowedBulletChatText8",
+        "MainPlayLevelSpecialWordBulletChatShowCount",
+        "TodayShowedBulletChatSpecialWord",
+        "BulletChatSpecialWordShowDate",
+        "BulletChatSpecialWordShowLevel",
+        "TodayBarrageMultipleShowCount",
+        "MainPlayLevelBarrageMultipleCount",
+        "DcLevelBarrageMultipleCount",
+        "LastBulletChatStreamLevelIndex",
+        "LastShowMemoryLevel",
+        "NicknameEditGuideCount",
+        "NickNameEditGuideTestAfterLeaderShowTime",
+        "HasShowNicknameToast",
+        "CurBlindBoxReward",
+        "BlindBoxState",
+        "BlindBoxCountDownTimer",
+        "BlindBoxTestGroup",
+        "ShowedRewardGetAnim",
+        "BlindBoxTest2Group",
+        "LastRecIconPos",
+        "HasShowedBlindBoxDragGuide",
+        "BlindBoxContinuousFailCount",
+        "BlindBoxAppearDate",
+        "TodayShowedFloatRewardCount",
+        "NextTimeCanShowFloatReward",
+        "FloatRewardTest2AdWatchCount",
+        "CurFloatRewardList",
+        "TodayShowedRewardTvCount",
+        "AlreadyShowSpreadBoxGuide",
+        "ClickVideo",
+        "ClickChapterVideo",
+        "AlreadyShowFadeAnim",
+        "CheckFadeDayTime",
+        "LastShowFadeGuideIndex",
+        "FadeGuideDayShowCount",
+        "UnlockedBg",
+        "HasNewBgUnlock",
+        "SelectedBg",
+        "InterTicketGroup",
+        "InterTicketSkipCnt",
+        "InterTicketGroup219",
+        "HintGuideStep",
+        "HintGuideTimingGroup1Shown",
+        "HintGuideTimingGroup2Count",
+        "HintGuideTimingGroup2LastShownLevel",
+        "RecAdFreeLimitedTimeTestNum",
+        "TodayShowedNoAd5Min",
+        "LastCrossDayRecordedDays",
+        "TodayWatchedAdCount",
+        "NoAd5MinUnlockTime",
+        "IsNoAd5MinUnlock",
+        "TrialAttemptsCntTimeRatio",
+        "PassTimeRecord",
+        "TrialAttemptsCntRecord",
+        "ExitStateRecord",
+        "CurExitRecordLevelIndex",
+        "LifeCycleAutoShowDefineTipCnt",
+        "DayUseOrderShuffleCnt",
+        "DayUseOrderShuffleTime",
+        "HalfLevelEasierTest2FirstTriggerTime",
+        "HardMountainState",
+        "HardMountainStartTime",
+        "HardMountainEndTime",
+        "HardMountainCdEndTime",
+        "HardMountainTotalStep",
+        "HardMountainStep",
+        "HardMountainScore",
+        "HardMountainAddScore",
+        "HardMountainTest2Group",
+        "CurrentLevelCoinSpendSum",
+        "LevelCoinSpendHistory",
+        "CoinBalance",
+        "IsCoinBalanceHigh",
+        "PreTwoLevelsCoinSpendSum",
+        "IsPreTwoLevelsCoinSpendHigh",
+        "IsAnxietyHigh",
+        "VideoStage",
+        "RewardStage",
+        "RemainLevelToShow",
+        "PreDayStartTime",
+        "HasShowedDictionaryGuide",
+        "NewMistakeHintTestDailyHintAdCount",
+        "NewMistakeHintTestDailyHintAdDate",
+        "NewMistakeHintTestDailyFireworkAdCount",
+        "NewMistakeHintTestDailyFireworkAdDate",
+        "TodayShowWordRewardSpreadCount",
+        "IsSpreadBoxRightAdTagValue",
+        "LastBonusTestLevel",
+        "AlreadyShowLuckyLetterGuide",
+        "LuckyLetterGamesSinceLastShow",
+        "ExchangeChapter",
+        "ExchangeFile",
+        "HardBumpedCntByOther",
+        "HardSuppressOtherTag",
+        "NewUserGuideGroup",
+        "BottleState",
+        "BottleOpenSec",
+        "BottleIndex",
+        "BottleReward",
+        "BottleStyle",
+        "LastWordShowCount",
+        "DuserLevelTest",
+        "IsUseFreeFadeLetter",
+        "SpecialBonusReviveCnt",
+        "TileSelectId",
+        "TileThemeViewed",
+        "ComboRewardProgress",
+        "ComboRewardGroup",
+        "IsComboRewardLevel",
+        "ComboRewardClaimTotalCount",
+        "ComboRewardCooldownEndTime",
+        "HasShowComboRewardGuide",
+        "DoubleHintLastTriggerTime",
+        "DoubleHintActiveDeadline",
+        "HideLevelIntervalCnt",
+        "PlayEntranceScrollAnimCnt"
+      ],
+      "methods": [
+        {
+          "name": "Reset",
+          "params": []
+        },
+        {
+          "name": "CheatAddTodayPleaseDontQuitLevelShowCount",
+          "params": [
+            "val"
+          ]
+        },
+        {
+          "name": "CheatResetBulletChatData",
+          "params": []
+        },
+        {
+          "name": "CheatClearBulletChatCd",
+          "params": []
+        },
+        {
+          "name": ".ctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Data.GamePlay.MainPlay.Config.SingleAppendData",
+      "fields": [
+        "LevelLabel",
+        "Time",
+        "CanDeleteWord",
+        "CanAddWord"
+      ],
+      "methods": [
+        {
+          "name": ".ctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Data.CelebrationEvent.CelebrationEventDefine",
+      "fields": [
+        "CelebrationHighAbilityLan",
+        "CelebrationHighAbilityCountry",
+        "CelebrationLowAbilityLan",
+        "CelebrationLowAbilityCountry",
+        "BigRewardDescKeyDicTest"
+      ],
+      "methods": [
+        {
+          "name": ".cctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Data.CelebrationEvent.CelebrationAbility",
+      "fields": [
+        "value__",
+        "LowAbility",
+        "MediumAbility",
+        "HighAbility"
+      ],
+      "methods": []
+    },
+    {
+      "type": "Data.BeginnerBonus.BeginnerBonusDataMgr",
+      "fields": [],
+      "methods": [
+        {
+          "name": "Init",
+          "params": []
+        },
+        {
+          "name": "Release",
+          "params": []
+        },
+        {
+          "name": "set_StartTime",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "set_FinishTime",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_ExpireTime",
+          "params": []
+        },
+        {
+          "name": "set_ExpireTime",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_State",
+          "params": []
+        },
+        {
+          "name": "set_State",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_Ready",
+          "params": []
+        },
+        {
+          "name": "get_Started",
+          "params": []
+        },
+        {
+          "name": "get_Ending",
+          "params": []
+        },
+        {
+          "name": "get_Success",
+          "params": []
+        },
+        {
+          "name": "get_Fail",
+          "params": []
+        },
+        {
+          "name": "get_Ended",
+          "params": []
+        },
+        {
+          "name": "get_LastShowPlayedLevels",
+          "params": []
+        },
+        {
+          "name": "set_LastShowPlayedLevels",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_LastShowPlayedLevelsForFinishEntrance",
+          "params": []
+        },
+        {
+          "name": "set_LastShowPlayedLevelsForFinishEntrance",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_LastShowRewardCoins",
+          "params": []
+        },
+        {
+          "name": "set_LastShowRewardCoins",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_RewardCoins",
+          "params": []
+        },
+        {
+          "name": "set_RewardCoins",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsBeginnerBonusValueTest1",
+          "params": []
+        },
+        {
+          "name": "IsBeginnerBonusValueTestVer",
+          "params": []
+        },
+        {
+          "name": "get_RecBeginnerBonusTest2Num",
+          "params": []
+        },
+        {
+          "name": "set_RecBeginnerBonusTest2Num",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_RecBeginnerBonus5EyesTest2Num",
+          "params": []
+        },
+        {
+          "name": "set_RecBeginnerBonus5EyesTest2Num",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group1No5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group2No5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group3No5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group4No5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_ForceNo5EyesActivityOn",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group1Yes5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group2Yes5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group3Yes5Eyes",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group1",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group2",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group3",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusTest2Group4",
+          "params": []
+        },
+        {
+          "name": "IsBeginnerBonusTest2Ver",
+          "params": []
+        },
+        {
+          "name": "get_RecBeginnerBonusNonT1TestNum",
+          "params": []
+        },
+        {
+          "name": "set_RecBeginnerBonusNonT1TestNum",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_NonT1StagedClaimedCount",
+          "params": []
+        },
+        {
+          "name": "set_NonT1StagedClaimedCount",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsNonT1CountryTierB",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusNonT1Test1",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusNonT1Test2",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusNonT1Active",
+          "params": []
+        },
+        {
+          "name": "get_RecBeginnerBonusIconMgNum",
+          "params": []
+        },
+        {
+          "name": "set_RecBeginnerBonusIconMgNum",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsBeginnerBonusIconMgTest1",
+          "params": []
+        },
+        {
+          "name": "InitBeginnerBonusTest2Group",
+          "params": []
+        },
+        {
+          "name": "InitBeginnerBonusNonT1Group",
+          "params": []
+        },
+        {
+          "name": "get_WillingScore",
+          "params": []
+        },
+        {
+          "name": "set_WillingScore",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_AbilityScore",
+          "params": []
+        },
+        {
+          "name": "set_AbilityScore",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_AddScoreFromShuffleCont",
+          "params": []
+        },
+        {
+          "name": "set_AddScoreFromShuffleCont",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_UserPotentialType",
+          "params": []
+        },
+        {
+          "name": "set_UserPotentialType",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_ComboCount",
+          "params": []
+        },
+        {
+          "name": "set_ComboCount",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "StartActivity",
+          "params": [
+            "initReward"
+          ]
+        },
+        {
+          "name": "EndingActivity",
+          "params": [
+            "success",
+            "coins"
+          ]
+        },
+        {
+          "name": "EndActivity",
+          "params": []
+        },
+        {
+          "name": "GetCurPlayedLevels",
+          "params": []
+        },
+        {
+          "name": "GetExpireTimeSpan",
+          "params": []
+        },
+        {
+          "name": "OnSecondUpdate",
+          "params": []
+        },
+        {
+          "name": "get_BeginnerBonusEventUITest",
+          "params": []
+        },
+        {
+          "name": "set_BeginnerBonusEventUITest",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsHasFailed",
+          "params": []
+        },
+        {
+          "name": "set_IsHasFailed",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_EventUITest3ClaimedStaged",
+          "params": []
+        },
+        {
+          "name": "set_EventUITest3ClaimedStaged",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "get_IsBeginnerBonusEventUIContrast",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusEventUITest1",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusEventUITest2",
+          "params": []
+        },
+        {
+          "name": "get_IsBeginnerBonusEventUITest3",
+          "params": []
+        },
+        {
+          "name": "IsBeginnerBonusEventUITestVer",
+          "params": []
+        },
+        {
+          "name": "InitBeginnerBonusEventUITest",
+          "params": []
+        },
+        {
+          "name": ".ctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Data.BeginnerBonus.BeginnerBonusDefine",
+      "fields": [
+        "RemindPopupLevelList",
+        "RemindPopupLevelListTest1",
+        "RemindPopupLevelListTest2",
+        "NonT1Test1TierARemindLevelList",
+        "NonT1Test1TierBRemindLevelList",
+        "NonT1Test2TierARemindLevelList",
+        "NonT1Test2TierAMilestones",
+        "NonT1Test2TierACoins",
+        "NonT1Test2TierBRemindLevelList",
+        "NonT1Test2TierBMilestones",
+        "NonT1Test2TierBCoins",
+        "EventUITest3Milestones",
+        "EventUITest3Coins",
+        "EventUITest1PopupLevelsFiveEyes",
+        "EventUITest1PopupLevelsNonFiveEyes"
+      ],
+      "methods": [
+        {
+          "name": "get_TargetLevelIndex",
+          "params": []
+        },
+        {
+          "name": ".cctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": ".FormulasEnum",
+      "fields": [
+        "<Value>k__BackingField",
+        "FormulasBayesELO1",
+        "FormulasBayesELO2",
+        "FormulasRollingMatchAdjust1"
+      ],
+      "methods": [
+        {
+          "name": "get_Value",
+          "params": []
+        },
+        {
+          "name": "set_Value",
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": ".ctor",
+          "params": [
+            "val"
+          ]
+        },
+        {
+          "name": ".cctor",
+          "params": []
+        }
+      ]
+    },
+    {
+      "type": "Platform.Analyze.AnalyzeMgr",
+      "fields": [
+        "_lastLoadTime",
+        "_living30MinVersion",
+        "_minVersion",
+        "_addLevelPassGrtMinVersion1",
+        "_addLevelPassGrtMinVersion2",
+        "_addLevelPassGrtMinVersion3",
+        "_addLevelPassGrtMinVersion4",
+        "_installVersion",
+        "_ltvMinVersion",
+        "_ltvMinVersion2",
+        "_adMinVersion",
+        "_adMinVersion2",
+        "_ltvMinVersion3",
+        "_ltvMinVersion4",
+        "_ltvMinVersion5",
+        "_ltvMinVersion6",
+        "_adRewardMinVersion",
+        "_adRewardMinVersion2",
+        "_minVersion160",
+        "_minVersion184",
+        "_firstOpenMinVersion",
+        "<Inst>k__BackingField",
+        "_isQuitting",
+        "_isLogging",
+        "_isFirebaseInited",
+        "_firebaseName",
+        "_hasInitAfData",
+        "_afData",
+        "_afDic",
+        "_afDataHasSuccessCallback",
+        "_onAfDataCallback",
+        "_onAfDicCallback"
+      ],
+      "methods": [
+        {
+          "name": "SendUserAbility",
+          "params": [
+            "formulasEnum",
+            "value"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Config.ConfCelebrationEvent",
+      "fields": [
+        "Data",
+        "ID",
+        "Weight",
+        "CoinReward",
+        "HighAbility",
+        "MediumAbility",
+        "LowAbility"
+      ],
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            "loader"
+          ]
+        },
+        {
+          "name": ".ctor",
+          "params": [
+            "loader"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Config.ConfCelebrationEventTest1",
+      "fields": [
+        "Data",
+        "ID",
+        "Weight",
+        "CoinReward",
+        "HighAbility",
+        "MediumAbility",
+        "LowAbility",
+        "PaperPlaneReward"
+      ],
+      "methods": [
+        {
+          "name": "Create",
+          "params": [
+            "loader"
+          ]
+        },
+        {
+          "name": ".ctor",
+          "params": [
+            "loader"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Config.ConfCelebrationEventStorable",
+      "fields": [
+        "ID",
+        "Weight",
+        "CoinReward",
+        "HighAbility",
+        "MediumAbility",
+        "LowAbility",
+        "PaperPlaneReward"
+      ],
+      "methods": [
+        {
+          "name": ".ctor",
+          "params": []
+        },
+        {
+          "name": ".ctor",
+          "params": [
+            "conf"
+          ]
+        },
+        {
+          "name": ".ctor",
+          "params": [
+            "conf"
+          ]
+        }
+      ]
+    }
+  ]
+}

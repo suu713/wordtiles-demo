@@ -16,12 +16,12 @@ const ready=p=>p.waitForFunction(()=>!document.getElementById('start-game').disa
 const stored=p=>p.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open('wordtiles-generated-sequence',1);r.onsuccess=()=>{const db=r.result,t=db.transaction('state','readonly'),get=t.objectStore('state').get('sequence');get.onsuccess=()=>resolve(get.result);t.oncomplete=()=>db.close();get.onerror=()=>reject(get.error);};r.onerror=()=>reject(r.error);}));
 try{
   await page.goto(url);await ready(page);await page.evaluate(()=>{localStorage.setItem('qa-unrelated','keep');sessionStorage.setItem('qa-unrelated','keep');});
-  await page.locator('#lobby-settings').click();assert.equal(await page.locator('#clear-all-data').isVisible(),true);await page.locator('#preview-collection').click();await page.locator('#dictionary-dialog').waitFor({state:'visible'});
+  await page.locator('#lobby-settings').click();assert.equal(await page.locator('#clear-all-data').isVisible(),true);assert.equal(await page.locator('#preview-device,#preview-zoom,#preview-collection,#settings-data-title').count(),0);await page.goto(url+'&preview=300');await ready(page);await page.locator('#dictionary-dialog').waitFor({state:'visible'});
   assert.equal(await page.locator('#dictionary-count').innerText(),'300');assert.equal(await page.locator('.theme-card').count(),8);assert.equal(await page.locator('.collection-banner,.collection-eyebrow,.theme-preview').count(),0);
   const collection=await page.evaluate(()=>JSON.parse(localStorage.getItem('wordtiles.collection.v1')));
   assert.equal(collection.entries.length,300);assert.equal(new Set(collection.entries.map(e=>e.word)).size,300);assert.ok(collection.entries.every(e=>bankContainsWord(e.word,'wt-workbook')));
   await page.screenshot({path:output+'preview-collection.png'});await page.locator('#dictionary-close').click();await page.locator('#weekly-button').click();assert.equal(await page.locator('[data-metric="words"] .weekly-metric-value').innerText(),'300');assert.equal(await page.locator('[data-metric="levels"] .weekly-metric-value').innerText(),'—');assert.equal(await page.locator('.weekly-hero,.collection-eyebrow').count(),0);await page.screenshot({path:output+'preview-weekly.png'});await page.locator('#weekly-close').click();
-  pass('设置内随机收录300个当前词库新词，八类覆盖，回顾更新且没有虚构试玩数据');
+  pass('设置移除画面尺寸、缩放和补词入口；预览链接仍能收录300词，回顾更新且没有虚构试玩数据');
 
   await page.reload();await ready(page);assert.equal(await page.locator('#dictionary-count').innerText(),'300');
   const other=await context.newPage();watch(other);await other.goto(url);await ready(other);assert.equal(await other.locator('#dictionary-count').innerText(),'300');
@@ -43,9 +43,9 @@ try{
   pass('一键清除收藏、回顾、真人记录、模型和旧自建关卡，活动页签重置且关闭/刷新不恢复旧数据');
 
   for(const [width,height] of [[390,844],[320,568]]){
-    await page.setViewportSize({width,height});await page.locator('#lobby-settings').click();const fit=await page.locator('#clear-all-data').evaluate(e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&r.top>=0&&r.bottom<=innerHeight+1;});assert.equal(fit,true);await page.screenshot({path:output+`settings-${width}.png`});await page.locator('#settings-close').click();
+    await page.setViewportSize({width,height});await page.locator('#lobby-settings').click();await page.locator('#clear-all-data').scrollIntoViewIfNeeded();const fit=await page.locator('#clear-all-data').evaluate(e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.right<=innerWidth+1&&r.top>=0&&r.bottom<=innerHeight+1;});assert.equal(fit,true);await page.screenshot({path:output+`settings-${width}.png`});await page.locator('#settings-close').click();
   }
-  pass('手机设置中的随机收词和清除按钮可见，无横向溢出');
+  pass('手机设置中的清除按钮可见，无横向溢出');
 
   const external=await browser.newContext({viewport:{width:1280,height:900},timezoneId:'Asia/Shanghai'});
   await external.addInitScript(pinInitialGameSeed);

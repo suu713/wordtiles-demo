@@ -11,6 +11,7 @@
     "test:travel": "node scripts/check-collection-browser.mjs",
     "test:collection": "node scripts/check-collection-browser.mjs",
     "test:data": "node scripts/check-data-settings-browser.mjs",
+    "test:checkin": "node scripts/check-checkin-browser.mjs",
     "test:batch": "node scripts/benchmark-v1.mjs 1000",
     "test:playtest": "node scripts/check-playtest-browser.mjs",
     "test:playtest-settings": "node scripts/check-playtest-settings-browser.mjs",

@@ -52,7 +52,7 @@ try {
   for(const entry of manifest.assets)assert.ok(loaded.has(entry.path),'素材没有成功加载：'+entry.path);
   for(const weight of [400,700,900])assert.equal(await page.evaluate(weight=>document.fonts.check(weight+' 20px "Nunito Sans"'),weight),true);
   await screenshot(page,'paris-lobby-desktop');pass('大厅、全部18素材、字体在首个可玩画面前加载');
-  await page.locator('#lobby-settings').click();assert.equal(await page.locator('#settings-popover').isVisible(),true);await page.locator('#preview-device').selectOption('360x640');await page.locator('#preview-device').selectOption('auto');await page.locator('#settings-close').click();assert.equal(await page.locator('#game-screen').isVisible(),false);
+  await page.locator('#lobby-settings').click();assert.equal(await page.locator('#settings-popover').isVisible(),true);assert.equal(await page.locator('#preview-device,#preview-zoom').count(),0);await page.locator('#settings-close').click();assert.equal(await page.locator('#game-screen').isVisible(),false);
   await page.locator('#activity-button').click();assert.equal(await page.locator('#activity-empty').isVisible(),true);await page.locator('#activity-close').click();pass('大厅设置与空日历可用，点击开始之前仍在大厅');
   await page.locator('#start-game').click();assert.match(await background(page,'.play-panel'),/bg-paris-level\.png/);assert.match(await background(page,'.tile'),/tile-letter\.png/);assert.match(await background(page,'.target-letter'),/tile-answer-empty\.png/);assert.deepEqual(await counts(page),fixture.initialCounts);
   await page.locator('#hint').click();assert.equal(await page.locator('#hint-remaining').textContent(),'5');assert.ok(await page.locator('.hint-arrow').count()>0);await screenshot(page,'paris-level-hint');

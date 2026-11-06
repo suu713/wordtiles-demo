@@ -1,0 +1,16 @@
+{
+  "sourcePack": 9,
+  "sourceFile": "tu@2x.png",
+  "processing": "Original supplied PNG copied unchanged. Runtime SVG transforms unfold the complete artwork from the spine, preserving its continuous baked-in glow.",
+  "assets": [
+    {
+      "file": "book@2x.png",
+      "size": [
+        1454,
+        596
+      ],
+      "mode": "RGBA",
+      "sha256": "674ad0d7a558d94dca2abdb05d82e9525ff1a54cc7b46042789d2a7ab87beae4"
+    }
+  ]
+}
