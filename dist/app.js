@@ -12,7 +12,7 @@ import { preloadPlayerArt } from './core/player-art.js?v=8';
 import {mountBackgroundThemes} from './background-themes.js?v=1';
 import {mountTileMaterials} from './tile-materials.js?v=3';
 import { localCollectionDate, groupCollectionDays, shiftCollectionMonth, collectionMonthCells, collectionMonthGroups } from './core/collection-calendar.js?v=16';
-import { mountPlaytestLab } from './workbench-ui.js?v=56&settlement=8';
+import { mountPlaytestLab } from './workbench-ui.js?v=57&settlement=8';
 import {QUALITY_TEMPLATE,matchesQualityTemplate} from './core/quality-config.js?v=39';
 import {mountCollectionViews} from './collection-ui.js?v=25';
 import {mountEventViews} from './event-ui.js?v=30';
@@ -20,12 +20,14 @@ import {mountDailyCheckin} from './checkin-ui.js?v=3';
 import {planTargetLengths,normalizeComposition} from './core/target-composition.js?v=28';
 import {letterHintsForSession} from './core/letter-hints.js?v=33';
 import {planTargetLayout} from './core/target-rows.js?v=31';
-import {TargetEffects} from './target-effects.js?v=8';
+import {TargetEffects} from './target-effects.js?v=9';
 import {WordReadout} from './word-readout.js?v=1';
-import {BoardShatter} from './board-shatter.js?v=3';
+import {BoardShatter} from './board-shatter.js?v=4';
 import {EncouragementBanners} from './encouragement-banners.js?v=7';
 import {FloralBannerView} from './floral-banner-art.js?v=1';
 import {CompletionBanner} from './completion-banner.js?v=1';
+import {mountSummitClimb} from './summit-climb.js?v=1';
+import {mountAcornActivity} from './acorn-activity.js?v=2';
 import {LevelEntrance} from './level-entrance.js?v=1';
 import {createPersonalProgress,PERSONAL_PROGRESS_KEY} from './core/personal-progress.js?v=25';
 import {clearAppData,dataEpoch,DATA_RESET_KEY,DATA_NOTICE_KEY,PREVIEW_COLLECTION_KEY} from './core/app-data.js?v=25';
@@ -39,6 +41,7 @@ function takePreviewRequest(){
 const board = $('#board');
 let dictionary, game, catalogue, sourceLoadRequest=0;
 let playtestLab;
+let acornActivity,mainBeforeAcorn=null;
 let baseDictionary, dictionaryLoading = false, dictionaryLoadError = null;
 let selectedAlgorithm = 2, ready = false, busyKind = null;
 let browserStorage;
@@ -77,6 +80,7 @@ const levelEntrance=new LevelEntrance({
 });
 const targetEffects=new TargetEffects({
   board,
+  onWordSettled:(session,word,target)=>acornActivity?.onWordSettled(session,word,target),
   isVisible:()=>$('#lobby').hidden&&!document.hidden&&!playtestLab?.machineRunning,
   onIdle:session=>{if(game===session){scheduleFit();syncCompletionEffect();if($('#lobby').hidden&&!document.hidden)playtestLab?.gameUpdated();}},
 });
@@ -120,11 +124,21 @@ const completionBanner=new CompletionBanner({
   isVisible:()=>$('#lobby').hidden&&$('#game-screen').dataset.mode==='play'&&!document.hidden&&!playtestLab?.machineRunning,
   onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
 });
+const summitClimb=mountSummitClimb({
+  storage:browserStorage,
+  isVisible:()=>$('#lobby').hidden&&$('#game-screen').dataset.mode==='play'&&!document.hidden&&!playtestLab?.machineRunning&&!acornActivity?.owns(game),
+  beforePreview:()=>{closeSettings(false);clearSelection();hideHelp();},
+  onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
+});
+acornActivity=mountAcornActivity({storage:browserStorage,onStart:startAcornRound,onExit:showLobby,
+  isVisible:()=>$('#lobby').hidden&&$('#game-screen').dataset.mode==='play'&&!document.hidden&&!playtestLab?.machineRunning,
+  onIdle:session=>{if(game===session&&$('#lobby').hidden&&!document.hidden){syncCompletionEffect();playtestLab?.gameUpdated();}},
+});
 function syncCompletionEffect(){
-  if(game?.status!=='won'||levelEntrance.isRunning(game)||targetEffects.isRunning(game))return;
+  if(game?.status!=='won'||levelEntrance.isRunning(game)||targetEffects.isRunning(game)||acornActivity?.isRunning(game))return;
   if(encouragement.isRunning(game))return;
   completionBanner.play(game);
-  if(!completionBanner.isRunning(game))boardShatter.cancel();
+  if(!completionBanner.isRunning(game)){boardShatter.cancel();if(!acornActivity?.owns(game))summitClimb.play(game);}
 }
 function fitEncouragementText(){
   if(encouragementHost.hidden)return;
@@ -356,6 +370,7 @@ function captureDraft() {
   return { rows:$('#board-rows').value, cols:$('#board-cols').value, count:$('#word-count').value, lengths:[...draftLengths] };
 }
 function rememberSession() {
+  if(acornActivity?.owns(game))return;
   if (!game || (game.initial.algorithm === 1 ? 1 : 2) !== selectedAlgorithm) return;
   savedSessions.set(selectedAlgorithm, { game, kind:$('#level-kind').textContent, draft:captureDraft(), generationStats, lastRejection });
 }
@@ -689,6 +704,7 @@ function renderDebug() {
 }
 function render(consumed = []) {
   if (!game) return;
+  acornActivity?.beforeRender(game,tileElements);
   boardShatter.sync(game,tileElements,$('.play-panel'));
   tileElements.forEach((tile, cell) => {
     const count = game.counts[cell],blocked=game.blockedCells?.includes(cell)===true;
@@ -708,6 +724,7 @@ function render(consumed = []) {
   }
   encouragement.sync(game);
   completionBanner.sync(game);
+  summitClimb.sync(game);
   const targetNodes=new Map([...$('#targets').querySelectorAll('.target')].map(item=>[item.dataset.word,item]));
   const pending=game.initial.targets.filter(target=>!game.completed.has(target.word));
   [...game.initial.targets].sort((a,b)=>[...a.word].length-[...b.word].length).forEach(target => {
@@ -732,6 +749,7 @@ function render(consumed = []) {
     });
   });
   targetEffects.sync(game,targetNodes);
+  acornActivity?.syncTargets(game,targetNodes,word=>targetEffects.isWordRunning(game,word));
   syncCompletionEffect();
   $('#completion').replaceChildren(document.createTextNode(`${game.completed.size} `));
   const tail = document.createElement('span'); tail.textContent = `/ ${game.initial.targets.length}`; $('#completion').append(tail);
@@ -780,7 +798,7 @@ function cancelGeneration(silent = false) {
     notice(previousKind === 'source' ? '载入已取消，当前关卡保留。' : '生成已取消，当前关卡保留。'); renderDebug();
   }
 }
-function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictionaryOverride = dictionary } = {}) {
+function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictionaryOverride = dictionary, acorn = null } = {}) {
   let next;
   try { next=createPlaySession(level,dictionaryOverride); }
   catch (error) {
@@ -792,6 +810,7 @@ function loadLevel(level, kind, { syncDraft = true, dismissEditor = true, dictio
   if (nextMode !== selectedAlgorithm) { rememberSession(); selectedAlgorithm = nextMode; showMode(); }
   playtestLab?.gameChanging();
   epoch++; game = next; lastRejection = null;compositionError='';
+  acornActivity?.bind(game,acorn);
   buildBoard(next.initial.board.rows,next.initial.board.cols);
   if (syncDraft) syncEditor(next.initial); else updateEditor();
   updateDictionaryUI();
@@ -1122,12 +1141,30 @@ $('#activity-button').addEventListener('click',()=>{resetCollectionMonth();rende
 $('#activity-close').addEventListener('click',()=>$('#activity-dialog').close());
 
 function showLobby() {
-  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();
+  const fromAcorn=acornActivity?.owns(game);
+  levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();summitClimb.cancel();
   answerPreviewOpen=false;renderAnswerPreview();
   cancelGeneration(true);cancelSolutionAnalysis();closeGameDialogs();clearSelection();closeSettings(false);closeEditor();hideHelp();
   $('#game-screen').classList.remove('information-open');
   const fromEditor=$('#game-screen').dataset.mode==='editor';
-  $('#game-screen').hidden=true;$('#lobby').hidden=false;renderCollection();$(fromEditor?'#lobby-editor':'#start-game').focus({preventScroll:true});
+  $('#game-screen').hidden=true;$('#lobby').hidden=false;
+  if(fromAcorn)restoreBeforeAcorn();
+  renderCollection();$(fromEditor?'#lobby-editor':'#start-game').focus({preventScroll:true});
+}
+async function startAcornRound(mode,number,isCurrent=()=>true){
+  if(!ready||dataResetting)return false;
+  const level=await wtSourceLevel(6+(number-1)%60,'level_list_0');
+  if(!isCurrent()||dataResetting)return false;
+  if(!mainBeforeAcorn)mainBeforeAcorn={game,selectedAlgorithm,generationStats,lastRejection,kind:$('#level-kind').textContent};
+  sourceLoadRequest++;
+  if(!loadLevel(level,'橡果收集活动',{acorn:{mode,number}}))return false;
+  openGameScreen('play');return true;
+}
+function restoreBeforeAcorn(){
+  playtestLab?.gameChanging();acornActivity.leave();
+  if(!mainBeforeAcorn)return;
+  ({game,selectedAlgorithm,generationStats,lastRejection}=mainBeforeAcorn);const kind=mainBeforeAcorn.kind;mainBeforeAcorn=null;epoch++;
+  showMode();buildBoard(game.initial.board.rows,game.initial.board.cols);syncEditor(game.initial);applyLevelInfo(kind);render();playtestLab?.gameChanged();
 }
 $('#back-lobby').addEventListener('click',showLobby);
 function openGameScreen(mode) {
@@ -1243,7 +1280,9 @@ async function fillPreviewCollection(){
   renderCollection();return result;
 }
 function prepareDataReset(){
+  acornActivity?.prepareDataReset();
   tileMaterials.prepareDataReset();
+  summitClimb.prepareDataReset();
   levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();
   if(dataResetting)return;dataResetting=true;ready=false;
   cancelGeneration(true);cancelSolutionAnalysis();playtestLab?.prepareDataReset();eventViews.prepareDataReset();dailyCheckin.prepareDataReset();
@@ -1307,9 +1346,10 @@ for (let value = 1; value <= 18; value++) {
   const option = document.createElement('option'); option.value = String(value); option.textContent = `${value} 个`; $('#word-count').append(option);
 }
 $('#word-count').value = '3';
-window.addEventListener('pagehide', () => { wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();cancelGeneration(true); cancelSolutionAnalysis(); });
-document.addEventListener('visibilitychange',()=>{if(document.hidden){wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();}else if($('#lobby').hidden){encouragement.resume(game);scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
-playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game)||completionBanner.isRunning(game),
+window.addEventListener('pagehide', () => { wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();summitClimb.cancel();acornActivity?.suspend();cancelGeneration(true); cancelSolutionAnalysis(); });
+document.addEventListener('visibilitychange',()=>{if(document.hidden){wordReadout.clear();levelEntrance.cancel();targetEffects.cancel();boardShatter.cancel();encouragement.cancel();completionBanner.cancel();summitClimb.cancel();acornActivity?.suspend();}else if($('#lobby').hidden){encouragement.resume(game);scheduleFit();syncCompletionEffect();playtestLab?.gameUpdated();}});
+playtestLab = mountPlaytestLab({getGame:()=>game,clearSelection,render,showLobby,isTargetAnimationRunning:()=>levelEntrance.isRunning(game)||targetEffects.isRunning(game)||encouragement.isRunning(game)||completionBanner.isRunning(game)||summitClimb.isRunning(game)||acornActivity?.isRunning(game),
+  showActivityCompletion:session=>acornActivity?.showCompletion(session),
   recordPersonalProgress:(session,snapshot,flush=false)=>{personalProgress.observe(session,snapshot);eventViews.observe(session,snapshot);if(flush)personalProgress.flush();},
   resetCurrent:()=>{if(game)loadLevel(game.exportInitial||game.initial,$('#level-kind').textContent,{syncDraft:false,dismissEditor:false,dictionaryOverride:game.dictionary});},
   getDictionary:()=>dictionary,
@@ -1338,6 +1378,7 @@ try {
   renderCollection();let previewResult=null,previewError='';
   if(previewAtOpen)try{previewResult=await fillPreviewCollection();}catch(error){previewError=error.message;}
   $('#start-game').disabled=false;
+  acornActivity.setReady(true);
   $('#lobby-editor').disabled=false;
   dailyCheckin.update();
   let dataNotice='';try{dataNotice=sessionStorage.getItem(DATA_NOTICE_KEY)||'';sessionStorage.removeItem(DATA_NOTICE_KEY);}catch{}

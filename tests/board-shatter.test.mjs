@@ -131,3 +131,10 @@ test('减弱动态、隐藏页面或没有可见尺寸时直接清格，不创�
     assert.equal(f.pendingFrames,0);
   }
 });
+
+test('目标木框可直接碎裂，所有碎片结束才通知；切关取消不触发旧关结算',()=>{
+  const idle=[],f=fixture({onIdle:session=>idle.push(session)}),session={counts:[1],status:'playing'};
+  assert.equal(f.shatter.burst(f.tiles,f.panel,session),true);assert.equal(f.shatter.isRunning(session),true);
+  f.advance(SHATTER_DURATION-1);assert.deepEqual(idle,[]);f.advance(1);assert.deepEqual(idle,[session]);
+  f.shatter.burst(f.tiles,f.panel,session);f.shatter.cancel();f.advance(SHATTER_DURATION);assert.deepEqual(idle,[session]);assert.equal(f.shatter.isRunning(session),false);
+});

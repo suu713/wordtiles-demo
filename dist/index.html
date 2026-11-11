@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="./floral-banner.css?v=1">
   <link rel="stylesheet" href="./background-themes.css?v=1">
   <link rel="stylesheet" href="./checkin-ui.css?v=3">
+  <link rel="stylesheet" href="./summit-climb.css?v=2">
+  <link rel="stylesheet" href="./acorn-activity.css?v=2">
   <link rel="preload" as="image" href="./art/themes/desert.png">
   <link rel="preload" as="image" href="./art/settlement/reference.png">
   <link rel="preload" as="image" href="./art/settlement/foreground.png">
@@ -150,6 +152,7 @@
         <div hidden><select id="uniform-length"><option value="">按原关卡显示</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select><span id="uses-note"></span><span id="cols-note"></span><span id="rows-note"></span><span id="count-note"></span><span id="length-note"></span><span id="uniform-note"></span></div>
       </div>
       <div data-settings-pane="view" hidden>
+        <fieldset class="summit-preview-settings"><legend>动效预览</legend><p>查看攀登、金币收取与登顶效果</p><button id="summit-preview" type="button" aria-haspopup="dialog" aria-controls="summit-dialog">登山预览 ↗</button></fieldset>
         <fieldset class="tile-material-settings"><legend>方块材质</legend>
           <div class="tile-material-heading"><button id="tile-material-next" type="button">切换下一款</button></div>
           <div class="tile-material-controls"><label>材质<select id="tile-material-select" aria-label="方块材质"></select></label><label>按压样式<select id="tile-press-select" aria-label="按压样式"><option value="pressed">按压</option><option value="short">按压缩短</option></select></label></div>
@@ -204,6 +207,6 @@
     <div class="weekly-footer"><button id="weekly-continue" type="button">继续游戏 <span aria-hidden="true">↗</span></button></div>
   </dialog>
   <div id="hover-help" class="hover-help" role="tooltip" hidden></div>
-  <script type="module" src="./app.js?v=77&settlement=10&settings=5&encouragement=7&checkin=3&floral=1"></script>
+  <script type="module" src="./app.js?v=80&settlement=10&settings=5&encouragement=7&checkin=3&floral=1&summit=1&acorn=2"></script>
 </body>
 </html>

@@ -6,9 +6,9 @@ export const TARGET_MILESTONES = Object.freeze({waveDuration:520,flipDelay:450,f
 export const TARGET_RAINBOW = Object.freeze({delay:160,step:110,duration:620});
 
 export class TargetEffects {
-  constructor({board=null,onIdle=()=>{},isVisible=()=>true,reducedMotion=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true,captureFlight=captureLetterOrigins,createFlight=createLetterFlight,setTimer=(fn,delay)=>globalThis.setTimeout(fn,delay),clearTimer=timer=>globalThis.clearTimeout(timer)}={}){
+  constructor({board=null,onIdle=()=>{},onWordSettled=()=>{},isVisible=()=>true,reducedMotion=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true,captureFlight=captureLetterOrigins,createFlight=createLetterFlight,setTimer=(fn,delay)=>globalThis.setTimeout(fn,delay),clearTimer=timer=>globalThis.clearTimeout(timer)}={}){
     this.board=board;
-    this.onIdle=onIdle;this.isVisible=isVisible;this.reducedMotion=reducedMotion;
+    this.onIdle=onIdle;this.onWordSettled=onWordSettled;this.isVisible=isVisible;this.reducedMotion=reducedMotion;
     this.setTimer=setTimer;this.clearTimer=clearTimer;
     this.captureFlight=captureFlight;this.createFlight=createFlight;
     this.session=null;this.completed=new Set();this.active=new Map();this.pendingFlights=new Map();this.reminders=new Map();
@@ -39,6 +39,7 @@ export class TargetEffects {
     this.pendingFlights.set(word,snapshot);return true;
   }
   isRunning(session){return this.session===session&&this.active.size>0;}
+  isWordRunning(session,word){return this.session===session&&this.active.has(word);}
   sync(session,targets){
     if(this.session!==session){
       this.cancel();this.session=session;this.completed=new Set(session.completed);return;
@@ -121,6 +122,7 @@ export class TargetEffects {
     for(const glyph of record.glyphs){glyph.style.removeProperty('--letter-delay');glyph.style.removeProperty('--letter-duration');}
     for(const slot of record.slots){slot.classList.remove('target-landed');slot.style.removeProperty('--glow-delay');slot.style.removeProperty('--glow-duration');slot.style.removeProperty('--motion-delay');slot.style.removeProperty('--motion-duration');slot.style.removeProperty('--rainbow-hue');}
     if(this.active.size===0)this.board?.classList.remove('word-accepted');
+    if(notify&&this.session===record.session)this.onWordSettled(record.session,record.word,record.target);
     if(notify&&this.active.size===0&&this.session===record.session)this.onIdle(record.session);
   }
   cancel(){

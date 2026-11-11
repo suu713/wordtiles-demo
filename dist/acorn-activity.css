@@ -1,0 +1,55 @@
+.acorn-entry{position:absolute;left:5%;top:49%;width:22%;padding:2cqw .8cqw 1.7cqw;border:1px solid #f5daa2;border-radius:5cqw;background:linear-gradient(150deg,#fff1cec9,#dbc493ed);box-shadow:0 3px 10px #65492235,inset 0 1px 0 #fff9;color:#5f3b20;display:flex;flex-direction:column;align-items:center;gap:.5cqw;cursor:pointer;z-index:3}
+.acorn-entry>svg{width:12cqw;height:13cqw;filter:drop-shadow(0 2px 1px #6e45232e)}
+.acorn-entry>span{font:900 3.5cqw/1.3 'WordTiles Tile','Microsoft YaHei',sans-serif;white-space:nowrap}
+.acorn-entry>small{font:650 2.6cqw/1.3 'Nunito Sans','Microsoft YaHei',sans-serif;color:#896544}
+.acorn-entry:hover{filter:brightness(1.05)}.acorn-entry:disabled{opacity:.5;cursor:wait}
+.acorn-dialog{position:fixed;inset:0;width:min(100vw,calc(100dvh * 9/16),520px);height:auto;aspect-ratio:9/16;max-width:none;max-height:none;padding:0;margin:auto;border:0;border-radius:0;box-shadow:0 12px 42px #253c3f45;container-type:inline-size;overflow:auto;color:#443a2c;font-family:'Nunito Sans','Microsoft YaHei',sans-serif;background:radial-gradient(ellipse at 50% 12%,#fff8df 0,transparent 65%),linear-gradient(165deg,#e8eed8,#f8edce 60%,#cfddc1)}
+.acorn-dialog::backdrop{background:#132f303d;backdrop-filter:blur(3px)}
+.acorn-dialog-close{position:absolute;right:5%;top:3%;z-index:3;width:8.5cqw;height:8.5cqw;display:grid;place-items:center;background:#fff8;border:1px solid #c5c9ac;border-radius:50%;color:#687652;font:400 6cqw/1 sans-serif;padding:0;cursor:pointer}
+.acorn-picker-hero{padding:6cqw 4cqw 0;text-align:center}
+.acorn-picker-hero>svg{display:block;width:17cqw;height:19cqw;margin:0 auto .5cqw;filter:drop-shadow(0 3px 2px #734e2325)}
+.acorn-picker-hero>span,.acorn-eyebrow{display:block;color:#9b885e;letter-spacing:.65cqw;font-size:2.5cqw;font-weight:800}
+.acorn-picker-hero h2{font:950 7cqw/1.3 'WordTiles Tile','Microsoft YaHei',sans-serif;letter-spacing:.6cqw;margin:1.2cqw 0 1.4cqw;color:#405b3b}
+.acorn-picker-hero p{font-size:3cqw;line-height:1.6;margin:0;color:#8b7e64}
+.acorn-total{margin:4cqw auto 4cqw;width:max-content;padding:1.3cqw 4.5cqw;border:1px solid #c5cea9;border-radius:99px;color:#6f7d4f;background:#fff8;font-size:3cqw}
+.acorn-total strong{font-size:4.2cqw;margin:0 1cqw;color:#71512d}
+.acorn-mode-list{display:grid;gap:3cqw;padding:0 5cqw}
+.acorn-mode-card{display:flex;align-items:center;gap:3cqw;width:100%;border:1px solid #d5c9a5;border-radius:4cqw;background:#fffaf0d9;box-shadow:0 2px 3px #71502a13;padding:3cqw;color:#5e503b;text-align:left;cursor:pointer}
+.acorn-mode-card:hover{background:#fffdf5;border-color:#8c9f6f}.acorn-mode-card:disabled{opacity:.5;cursor:wait}
+.acorn-mode-sample{display:grid;grid-template-columns:repeat(2,9cqw);gap:.8cqw;flex:none}
+.acorn-mode-sample i{width:9cqw;height:9cqw;display:grid;place-items:center;background:center/100% 100% no-repeat;font:900 5cqw/1 'WordTiles Tile',sans-serif;font-style:normal;padding-bottom:1cqw}
+.acorn-mode-sample i.sample-wood{background-image:url('./art/tile-materials/wood/highlight.png');color:#51321c}.acorn-mode-sample i.sample-plain{background-image:url('./art/yanqi/dancikuai_2@2x.png');color:#716053}
+.acorn-mode-sample svg{width:6cqw;height:7cqw}
+.acorn-mode-sample[data-sample='targets']{grid-template-columns:repeat(4,5cqw);width:19cqw;gap:0;align-self:flex-start;margin-top:7cqw}
+.acorn-mode-sample[data-sample='targets'] i{width:5.5cqw;height:6cqw;font-size:3cqw}.acorn-mode-sample[data-sample='targets'] svg{width:4cqw;height:5cqw}
+.acorn-mode-copy{display:flex;flex-direction:column;gap:.9cqw;flex:1;min-width:0}.acorn-mode-copy small{font-size:2.3cqw;letter-spacing:.4cqw;color:#a59873}.acorn-mode-copy strong{font-size:4.2cqw;font-weight:900;line-height:1.3;color:#4b6343}.acorn-mode-copy>span{font-size:2.9cqw;line-height:1.5;color:#8b816a}.acorn-mode-card>b{color:#9ba883;font-size:6cqw;font-weight:400}
+.acorn-picker-note{font-size:2.8cqw;line-height:1.5;color:#8b886d;text-align:center;margin:4cqw 3cqw 0}
+#acorn-picker-status,#acorn-complete-status{font-size:3cqw;color:#936c39;text-align:center;margin:2cqw 5cqw;min-height:4cqw;line-height:1.5}
+#game-screen[data-acorn-mode] .game-coin{display:none}
+.acorn-game-hud{position:absolute;top:3.7%;right:4%;width:25%;padding:.8cqw 1cqw;background:#324d30a8;border:1px solid #f4e5b178;border-radius:99px;display:flex;align-items:center;gap:1cqw;z-index:5;transform-origin:center}
+.acorn-hud-icon{display:block;width:7cqw;height:8cqw;flex:none}.acorn-hud-icon svg{width:100%;height:100%;filter:drop-shadow(0 1px 1px #122d2066)}
+.acorn-game-hud>span:last-child{display:flex;flex-direction:column;gap:.3cqw}.acorn-game-hud small{color:#e1e1b9;font-size:2.2cqw;line-height:1.2;white-space:nowrap}.acorn-game-hud strong{color:#fff1bc;font:900 4cqw/1.15 'WordTiles Tile',sans-serif;white-space:nowrap}
+#game-screen .acorn-mode-switch{position:absolute;top:10.8%;left:22%;width:56%;height:max-content;padding:.5cqw 1cqw;background:#344c2a70;backdrop-filter:blur(4px);border:1px solid #fff6;border-radius:99px;font:700 2.6cqw/1.25 'Nunito Sans','Microsoft YaHei',sans-serif;color:#fff4d2;cursor:pointer;z-index:5}
+#game-screen[data-acorn-mode] .targets{top:14.8%;height:31.7%}
+.acorn-game-hud[hidden],.acorn-mode-switch[hidden]{display:none!important}
+#game-screen .acorn-wood{--tile-material-normal:url('./art/tile-materials/wood/highlight.png');--tile-material-collected:url('./art/tile-materials/wood/normal.png');--tile-material-selected:url('./art/tile-materials/wood/pressed-short.png');--tile-material-pressed:url('./art/tile-materials/wood/pressed-short.png');--tile-material-ink:#40230d;--tile-material-target-ink:#40230d;--tile-material-selected-ink:#40230d;--tile-material-count:#40230d;--tile-material-selected-count:#40230d}
+#game-screen .acorn-plain{--tile-material-normal:url('./art/yanqi/dancikuai_2@2x.png');--tile-material-collected:url('./art/yanqi/dancikuai_1@2x.png');--tile-material-selected:url('./art/yanqi/dancikuai_1@2x.png');--tile-material-pressed:url('./art/yanqi/dancikuai_1@2x.png');--tile-material-ink:#211a14;--tile-material-target-ink:#574741;--tile-material-selected-ink:#fff;--tile-material-count:#30251d;--tile-material-selected-count:#fff2ff}
+#game-screen[data-acorn-mode='all'] #board{--tile-material-bridge:url('./art/tile-materials/wood/pressed-short.png');--tile-bridge-background-size:592.3077% 339.1304%;--tile-bridge-center-x:.49;--tile-bridge-center-y:.468}
+#game-screen[data-acorn-mode]:not([data-acorn-mode='all']) #board{--tile-material-bridge:url('./art/tile-materials/connectors/purple.png');--tile-bridge-background-size:100% 100%;--tile-bridge-center-x:.5;--tile-bridge-center-y:.5}
+#game-screen .acorn-target-slot{position:relative;--tile-material-collected:url('./art/tile-materials/wood/normal.png');--tile-material-selected-ink:#40230d}
+.acorn-target-icon{position:absolute;left:14%;top:9%;width:72%;height:76%;display:block;pointer-events:none;z-index:3;filter:drop-shadow(0 1px 1px #8c60352a)}
+.acorn-target-icon svg{display:block;width:100%;height:100%}
+#game-screen .target.completed .acorn-target-icon,#game-screen .target-letter.revealed .acorn-target-icon{left:auto;right:3%;top:1%;width:32%;height:36%}
+.acorn-fx-layer{position:absolute;inset:0;z-index:14;pointer-events:none;overflow:hidden}.acorn-flying{position:absolute;left:0;top:0;display:block;filter:drop-shadow(0 0 6px #fff1a7) drop-shadow(0 2px 1px #613b2a55);will-change:transform,opacity}.acorn-flying svg{width:100%;height:100%}
+.acorn-complete{overflow:hidden;text-align:center}
+.acorn-complete-art{position:absolute;top:17%;left:18%;width:64%;height:24%;display:flex;justify-content:center;align-items:center;background:radial-gradient(ellipse,#f7d88990,transparent 70%);animation:acorn-result-in .8s ease-out both}
+.acorn-complete-art svg{position:absolute;width:27cqw;height:31cqw;filter:drop-shadow(0 4px 2px #6a45293a)}.acorn-complete-art svg:first-child{transform:translate(-13cqw,2cqw) rotate(-25deg) scale(.85)}.acorn-complete-art svg:last-child{transform:translate(13cqw,2cqw) rotate(25deg) scale(.85)}.acorn-complete-art svg:nth-child(2){z-index:2}
+.acorn-complete>.acorn-eyebrow{position:absolute;top:42%;left:5%;width:90%;font-size:2.3cqw;letter-spacing:.35cqw}
+.acorn-complete h2{position:absolute;top:46%;left:5%;width:90%;font:900 6.6cqw/1.3 'WordTiles Tile','Microsoft YaHei',sans-serif;color:#496640;margin:0}
+#acorn-complete-gain{position:absolute;top:52.5%;left:5%;width:90%;font-size:3cqw;color:#8b7e62;margin:0;line-height:1.6}
+.acorn-complete-total{position:absolute;top:59%;left:20%;width:60%;padding:3cqw;border:1px solid #b8c79d;border-radius:3cqw;background:#fbfff09c;font-size:3.2cqw;color:#788658}.acorn-complete-total strong{display:block;font:950 8cqw/1.35 'WordTiles Tile',sans-serif;color:#89612d}
+.acorn-complete-actions{position:absolute;top:74.5%;left:16%;width:68%;display:grid;gap:2.2cqw}.acorn-complete-actions button{padding:3.4cqw 2cqw;border:1px solid #9fb48a;border-radius:99px;font:800 4cqw/1.3 'WordTiles Tile','Microsoft YaHei',sans-serif;cursor:pointer;color:#fffde7;background:linear-gradient(#64865a,#42663c);box-shadow:inset 0 1px 0 #efffd45c,0 2px 4px #31482a22}.acorn-complete-actions button:last-child{background:transparent;color:#687c50;border-color:#a6b78d;box-shadow:none}
+#acorn-complete-status{position:absolute;top:92%;left:0;width:90%;margin:0 5%}
+.acorn-dialog button:focus-visible,.acorn-entry:focus-visible,#game-screen .acorn-mode-switch:focus-visible{outline:2px solid #71965a;outline-offset:3px}
+@keyframes acorn-result-in{from{opacity:0;translate:0 15px;scale:.85}to{opacity:1;translate:0 0;scale:1}}
+@media(prefers-reduced-motion:reduce){.acorn-complete-art{animation:none}.acorn-flying{display:none}}

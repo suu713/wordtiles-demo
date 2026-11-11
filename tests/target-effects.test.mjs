@@ -19,6 +19,14 @@ function target(word){
   return {classList:classes(),querySelectorAll:()=>slots,slots,glyphs};
 }
 
+test('每个词落定后先启动木框收集，再释放通关；取消和重绘不会重复通知',()=>{
+  const clock=fakeClock(),events=[],session={completed:new Set()},cat=target('CAT'),dog=target('DOG'),nodes=new Map([['CAT',cat],['DOG',dog]]);
+  const effects=new TargetEffects({...clock,reducedMotion:()=>false,onWordSettled:(s,word,node)=>{assert.equal(s,session);assert.equal(node,nodes.get(word));events.push(word);},onIdle:()=>events.push('idle')});
+  effects.sync(session,nodes);session.completed.add('CAT');effects.sync(session,nodes);assert.equal(effects.isWordRunning(session,'CAT'),true);
+  clock.advance(2000);assert.deepEqual(events,['CAT','idle']);assert.equal(effects.isWordRunning(session,'CAT'),false);
+  effects.sync(session,nodes);session.completed.add('DOG');effects.sync(session,nodes);effects.cancel();clock.advance(2000);assert.deepEqual(events,['CAT','idle']);
+});
+
 test('载入进度不回放；新收词先落底色、逐字入场，重复更新不重启动画',()=>{
   const clock=fakeClock(),board={classList:classes(),offsetWidth:280},effects=new TargetEffects({...clock,board,reducedMotion:()=>false});
   const session={completed:new Set(['OLD'])},old=target('OLD'),cat=target('CAT'),nodes=new Map([['OLD',old],['CAT',cat]]);

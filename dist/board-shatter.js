@@ -85,10 +85,11 @@ export function buildShatterLayer(slots,panel){
   const bounds=panel.getBoundingClientRect(),width=panel.clientWidth,height=panel.clientHeight;
   if(!bounds.width||!bounds.height||!width||!height)return null;
   if(!slots.length)return null;
-  const profile=shatterProfile(panel.ownerDocument.documentElement.dataset.tileMaterial);
-  const layer=document.createElement('div');layer.className='board-shatter-layer';layer.setAttribute('aria-hidden','true');layer.dataset.material=profile.id;
+  const defaultMaterial=panel.ownerDocument.documentElement.dataset.tileMaterial;
+  const layer=document.createElement('div');layer.className='board-shatter-layer';layer.setAttribute('aria-hidden','true');layer.dataset.material=defaultMaterial||'original';
   const fragment=document.createDocumentFragment(),particles=[];
   slots.forEach((slot,index)=>{
+    const profile=shatterProfile(slot.dataset.shatterMaterial||defaultMaterial);
     const rect=slot.getBoundingClientRect(),style=getComputedStyle(slot);
     const x=(rect.left-bounds.left)/bounds.width*width,y=(rect.top-bounds.top)/bounds.height*height;
     const tileWidth=rect.width/bounds.width*width,tileHeight=rect.height/bounds.height*height;
@@ -112,10 +113,10 @@ export function buildShatterLayer(slots,panel){
 }
 
 export class BoardShatter {
-  constructor({isVisible=()=>true,reducedMotion=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true,createLayer=buildShatterLayer,setTimer=(fn,delay)=>globalThis.setTimeout(fn,delay),clearTimer=timer=>globalThis.clearTimeout(timer),requestFrame=fn=>globalThis.requestAnimationFrame(fn),cancelFrame=id=>globalThis.cancelAnimationFrame(id),now=()=>globalThis.performance.now()}={}){
+  constructor({isVisible=()=>true,reducedMotion=()=>globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches===true,createLayer=buildShatterLayer,setTimer=(fn,delay)=>globalThis.setTimeout(fn,delay),clearTimer=timer=>globalThis.clearTimeout(timer),requestFrame=fn=>globalThis.requestAnimationFrame(fn),cancelFrame=id=>globalThis.cancelAnimationFrame(id),now=()=>globalThis.performance.now(),onIdle=()=>{}}={}){
     this.isVisible=isVisible;this.reducedMotion=reducedMotion;this.createLayer=createLayer;this.setTimer=setTimer;this.clearTimer=clearTimer;
     this.requestFrame=requestFrame;this.cancelFrame=cancelFrame;this.now=now;
-    this.session=null;this.counts=[];this.active=new Set();
+    this.session=null;this.counts=[];this.active=new Set();this.onIdle=onIdle;
   }
   isRunning(session){return this.session===session&&this.active.size>0;}
   // Capture the old tile faces before render clears the newly exhausted cells.
@@ -125,7 +126,12 @@ export class BoardShatter {
     const exhausted=tiles.filter((tile,index)=>this.counts[index]>0&&session.counts[index]===0);
     this.counts=[...session.counts];
     if(!exhausted.length||session.status==='anomaly'||!this.isVisible()||this.reducedMotion())return false;
-    const effect=this.createLayer(exhausted,panel);if(!effect)return false;
+    return this.burst(exhausted,panel,session);
+  }
+  burst(slots,panel,session=this.session){
+    if(!slots.length||!this.isVisible()||this.reducedMotion())return false;
+    if(this.session!==session){this.cancel();this.session=session;}
+    const effect=this.createLayer(slots,panel);if(!effect)return false;
     const {layer,particles}=effect;
     const record={session,layer,particles,timer:null,frame:null,startedAt:this.now()};this.active.add(record);
     panel.append(layer);
@@ -147,6 +153,6 @@ export class BoardShatter {
     }
     record.frame=alive?this.requestFrame(next=>this.draw(record,next)):null;
   }
-  finish(record){if(!this.active.delete(record))return;this.clearTimer(record.timer);this.cancelFrame(record.frame);record.layer.remove();}
-  cancel(){for(const record of [...this.active])this.finish(record);}
+  finish(record,notify=true){if(!this.active.delete(record))return;this.clearTimer(record.timer);this.cancelFrame(record.frame);record.layer.remove();if(notify&&this.active.size===0)this.onIdle(record.session);}
+  cancel(){for(const record of [...this.active])this.finish(record,false);}
 }

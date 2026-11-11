@@ -1,0 +1,74 @@
+.summit-preview-settings{border:0;padding:14px 0 0;margin:14px 0 0;border-top:1px solid #cdd9db}
+.summit-preview-settings legend{font-weight:750;padding:0}
+.summit-preview-settings p{margin:7px 0 10px;font-size:12px;color:#6b8087}
+#summit-preview{width:100%;padding:11px 14px;border-radius:12px;background:#edf3f4;border:1px solid #bed0d7;color:#345263;font-weight:750;text-align:left;cursor:pointer}
+.summit-dialog{position:fixed;inset:0;width:min(100vw,calc(100dvh * 9/16),520px);height:auto;aspect-ratio:9/16;max-width:none;max-height:none;padding:0;margin:auto;border:0;border-radius:0;background:transparent;color:#fff;overflow:hidden;container-type:inline-size;box-shadow:0 12px 42px #14243b44;font-family:"Nunito Sans","Microsoft YaHei",sans-serif}
+.summit-dialog::backdrop{background:transparent}
+.summit-backdrop{position:absolute;inset:0;background:linear-gradient(180deg,#080c20da,#0c153ad9 55%,#060d1ee6);backdrop-filter:blur(.6px)}
+.summit-aura{position:absolute;left:-20%;top:17%;width:140%;height:66%;background:radial-gradient(ellipse,#5b60c94a,transparent 66%);pointer-events:none}
+.summit-topbar{position:absolute;top:5.5%;left:5%;right:5%;display:flex;align-items:center;gap:2.2cqw;z-index:3}
+.summit-disc{display:grid;place-items:center;flex:none;width:9.5cqw;height:9.5cqw;padding:0;border:1px solid #d8e2ff38;border-radius:50%;background:#c0d9ff0c;color:#f4f3ff;font:300 7cqw/1 sans-serif;cursor:pointer}
+#summit-mode{color:#c2c8e4;font-size:3.1cqw;letter-spacing:.15cqw}
+.summit-wallet{display:flex;align-items:center;gap:1.5cqw;margin-left:auto;transform-origin:80% 50%}
+.summit-wallet img{width:8.3cqw;height:8.3cqw;object-fit:contain;filter:drop-shadow(0 1px 4px #f3cd5355)}
+.summit-wallet div{display:flex;flex-direction:column;align-items:flex-end;gap:.2cqw}
+.summit-wallet small{font-size:2.6cqw;color:#d5cfb3;letter-spacing:.1cqw}
+.summit-wallet strong{font-size:5.1cqw;line-height:1;font-weight:850;min-width:2ch}
+.summit-heading{position:absolute;top:18%;left:5%;width:90%;text-align:center;z-index:2}
+.summit-heading>span{font-size:2.7cqw;font-weight:700;letter-spacing:.75cqw;color:#adbadb}
+.summit-heading h2{margin:2.1cqw 0 1.8cqw;color:#ffe7a0;font:700 9.1cqw/1.1 Georgia,"Times New Roman",serif;text-shadow:0 2px 1px #463c19,0 0 20px #e9bd4b33}
+.summit-heading p{margin:0;color:#d2d9ee;font-size:3.4cqw;letter-spacing:.2cqw}
+.summit-stage{position:absolute;left:5%;width:90%;top:32%;aspect-ratio:600/520;transform-origin:50% 85%;pointer-events:none}
+.summit-art{display:block;width:100%;height:100%;overflow:visible}
+.summit-mountain{filter:drop-shadow(0 3px 2px #070e3270)}
+.summit-route-shadow{fill:none;stroke:#143b6955;stroke-width:7;stroke-linecap:round}
+.summit-route-hint{fill:none;stroke:#d0e9ff7a;stroke-width:2.2;stroke-dasharray:.0035 .012;stroke-linecap:round}
+.summit-route-progress{fill:none;stroke:#ffdf8b;stroke-width:3.8;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 3px #ffd67b88)}
+.summit-camp{opacity:.6;transition:opacity 250ms}
+.summit-camp.reached{opacity:1;filter:drop-shadow(0 0 5px #ffe29588)}
+.summit-camp.reached path:last-of-type{fill:#ffdb80}
+.summit-peak-light{opacity:.38;transform-origin:301px 61px}
+.summit-flag{transform-origin:302px 64px}
+.is-peak .summit-peak-light{opacity:1;animation:summit-peak-breathe 2.4s ease-in-out infinite}
+.is-peak .summit-flag{animation:summit-flag-wave 2.3s ease-in-out infinite}
+.summit-walker-bob{transform-origin:0 -14px}
+.is-walking .summit-walker-bob{animation:summit-walk-bob 290ms ease-in-out infinite}
+.summit-front-leg,.summit-back-leg{transform-origin:0 -14px}
+.summit-front-arm,.summit-back-arm{transform-origin:0 -27px}
+.is-walking .summit-front-leg,.is-walking .summit-back-arm{animation:summit-walk-limb 290ms ease-in-out infinite alternate}
+.is-walking .summit-back-leg,.is-walking .summit-front-arm{animation:summit-walk-limb 290ms ease-in-out -290ms infinite alternate-reverse}
+.summit-reward-glow,.summit-reward-label{opacity:0;pointer-events:none}
+.summit-reward-label{fill:#fff0ae;font:900 32px/1 "Nunito Sans",sans-serif;paint-order:stroke;stroke:#976328;stroke-width:1.2;filter:drop-shadow(0 0 5px #ffd65488)}
+.summit-particles{position:absolute;inset:0;pointer-events:none;z-index:6;overflow:visible}
+.summit-flying-coin{position:absolute;left:0;top:0;width:36px;height:40px;opacity:0;transform-origin:center;filter:drop-shadow(0 0 5px #ffe48166);will-change:transform,opacity}
+.summit-caption{position:absolute;top:75%;left:11%;width:78%;text-align:center}
+#summit-route-count{margin:0;font-size:4cqw;font-weight:650;letter-spacing:.08cqw;color:#e8ebf6}
+#summit-route-count strong{font-size:5.1cqw;color:#ffe6a0;font-weight:850}
+#summit-next-camp{font-size:3cqw;margin:1.1cqw 0 0;color:#aebbd8}
+.summit-progress{height:1.2cqw;margin:3cqw auto 0;position:relative;background:#8ca4de27;border-radius:4cqw;box-shadow:inset 0 1px 2px #0003}
+.summit-progress>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#c99850,#ffe7a6);border-radius:inherit;box-shadow:0 0 6px #efd48338}
+.summit-progress>i{position:absolute;left:var(--camp-position);top:50%;translate:-50% -50%;width:2.2cqw;height:2.2cqw;border:1px solid #91a2ca;background:#273454;border-radius:50%}
+.summit-progress>i.reached{border-color:#fff1b1;background:#f7d984;box-shadow:0 0 6px #ffda7d88}
+.summit-status{position:absolute;top:85%;left:5%;width:90%;margin:0;text-align:center;font-size:2.8cqw;color:#b9c8df}
+.summit-footer{position:absolute;bottom:3.6%;left:15%;width:70%;display:flex;flex-direction:column;align-items:center;gap:1cqw;z-index:4;padding:0;margin:0;border:0}
+.summit-continue{background:transparent;border:0;padding:3cqw 6cqw;color:#fff4d0;font:700 3.8cqw/1.2 "Nunito Sans","Microsoft YaHei",sans-serif;cursor:pointer;text-shadow:0 1px 4px #0006}
+.summit-primary{width:100%;padding:3cqw 2cqw;color:#fff;border:1px solid #b3e8cd55;border-radius:99px;background:linear-gradient(#588e7c,#346858);box-shadow:inset 0 1px 0 #c7ffe644,0 3px 10px #0002;font:750 3.7cqw/1.2 "Nunito Sans","Microsoft YaHei",sans-serif;cursor:pointer}
+.summit-primary:disabled{opacity:.5;cursor:wait}
+.summit-replay{position:absolute;left:7%;bottom:4.7%;display:grid;place-items:center;width:8cqw;height:8cqw;border:1px solid #c3d9ff33;border-radius:50%;background:#c7deff0d;color:#cbd9f5;z-index:5;cursor:pointer}
+.summit-replay svg{width:4.2cqw;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.is-preview .summit-footer{bottom:2.2%;left:20%;width:60%;gap:.3cqw}
+.is-preview .summit-continue{font-size:3.1cqw;padding:2cqw 4cqw;color:#b3c3e3}
+.summit-dialog button:focus-visible{outline:2px solid #ffe5a0;outline-offset:3px}
+.summit-spark{position:absolute;width:2cqw;height:2cqw;background:#e8e4ff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);opacity:.5;animation:summit-twinkle 3.8s ease-in-out infinite}
+.spark-a{left:20%;top:20%;scale:.65}.spark-b{right:17%;top:45%;animation-delay:-1.1s;scale:.8}.spark-c{left:13%;top:63%;animation-delay:-2.4s;scale:.5}
+.summit-entering .summit-heading{animation:summit-heading-in 650ms cubic-bezier(.2,.65,.25,1) both}
+.summit-entering .summit-stage{animation:summit-mountain-in 500ms cubic-bezier(.17,.7,.25,1) 80ms both}
+.summit-entering .summit-caption{animation:summit-heading-in 650ms ease-out 230ms both}
+@keyframes summit-heading-in{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+@keyframes summit-mountain-in{0%{opacity:0;scale:.88;translate:0 12px}75%{opacity:1;scale:1.012;translate:0 0}100%{opacity:1;scale:1}}
+@keyframes summit-walk-bob{0%,100%{transform:translateY(0) rotate(5deg)}50%{transform:translateY(-1.7px) rotate(3deg)}}
+@keyframes summit-walk-limb{from{rotate:-19deg}to{rotate:21deg}}
+@keyframes summit-twinkle{0%,100%{opacity:.15}50%{opacity:.65}}
+@keyframes summit-peak-breathe{0%,100%{opacity:.65}50%{opacity:1}}
+@keyframes summit-flag-wave{0%,100%{rotate:-2deg}50%{rotate:3deg}}
+@media(prefers-reduced-motion:reduce){.summit-dialog *{animation:none!important;transition:none!important}.summit-flying-coin,.summit-spark{display:none}.summit-reward-glow,.summit-reward-label{opacity:0!important}}
